@@ -40,7 +40,7 @@ jobs:
           playwright install --with-deps chromium
 
       - name: Crawl JavaScript Wiki and convert to Markdown
-        run: python scripts/crawl_wiki.py --output-dir knowledge --force --prune-output
+        run: python -u scripts/crawl_wiki.py --output-dir knowledge --force --prune-output
 
       - name: Synchronize OpenAI Vector Store
         if: ${{ env.OPENAI_API_KEY != '' }}
@@ -64,6 +64,7 @@ jobs:
           fi
 
       - name: Upload Markdown artifact
+        if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: oasis-wiki-markdown

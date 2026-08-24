@@ -199,13 +199,25 @@ def extract_content(page: Page, timeout_ms: int) -> dict[str, Any]:
                     image.remove();
                     return;
                 }
-                const absolute = new URL(source, location.href).href;
+                let absolute;
+                try {
+                    absolute = new URL(source, location.href).href;
+                } catch {
+                    image.remove();
+                    return;
+                }
                 image.setAttribute('src', absolute);
                 image.removeAttribute('srcset');
                 images.push({url: absolute, alt: image.getAttribute('alt') || ''});
             });
             clone.querySelectorAll('a[href]').forEach((link) => {
-                link.setAttribute('href', new URL(link.getAttribute('href'), location.href).href);
+                try {
+                    link.setAttribute(
+                        'href', new URL(link.getAttribute('href'), location.href).href
+                    );
+                } catch {
+                    link.removeAttribute('href');
+                }
             });
             return {html: clone.innerHTML, codeBlocks, images};
         }"""
