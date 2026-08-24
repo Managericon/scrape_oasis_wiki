@@ -2,6 +2,13 @@ name: Crawl Oasis Wiki and update knowledge base
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/crawl-and-index.yml"
+      - "scripts/**"
+      - "requirements.txt"
   schedule:
     - cron: "0 18 * * 0"
 
