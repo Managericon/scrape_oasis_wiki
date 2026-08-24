@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -60,7 +62,8 @@ jobs:
             echo "No knowledge changes"
           else
             git commit -m "docs: refresh Oasis Wiki knowledge base"
-            git push
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
 
       - name: Upload Markdown artifact
