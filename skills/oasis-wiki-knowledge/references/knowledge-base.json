@@ -1,0 +1,10 @@
+{
+  "repository": "Managericon/scrape_oasis_wiki",
+  "branch": "main",
+  "catalog_id": "20418",
+  "article_count": 314,
+  "vector_store_id": "vs_6a8c21c806e48191bbd4d286b2113ef9",
+  "catalog_url": "https://raw.githubusercontent.com/Managericon/scrape_oasis_wiki/main/knowledge/catalog.json",
+  "manifest_url": "https://raw.githubusercontent.com/Managericon/scrape_oasis_wiki/main/knowledge/manifest.json"
+}
+

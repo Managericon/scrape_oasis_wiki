@@ -1,37 +1,31 @@
 ---
 name: oasis-wiki-knowledge
-description: Search and refresh the Tencent Oasis/绿洲启元 Wiki knowledge base. Use for questions that need current official Wiki evidence, semantic retrieval from the crawled Markdown corpus, or maintenance of the developer.gp.qq.com catalog 20418 crawl and Vector Store.
+description: Retrieve current official Tencent Oasis/绿洲启元 Wiki evidence with low-context local, catalog, or Vector Store search. Use for Wiki-backed feature, API, editor, Lua, debugging, template, release-note, and knowledge-base maintenance questions; do not use for unrelated general programming.
 ---
 
 # Oasis Wiki Knowledge
 
-Use the crawled official Wiki as the primary evidence source for Oasis editor, UGC Lua,
-gameplay systems, templates, debugging, and release-note questions.
+Retrieve the smallest sufficient set of official Wiki passages before answering. Prefer evidence over memory and include each article's original `Source` URL.
 
-## Search
+## Route
 
-1. If `knowledge/articles` exists in the current repository, search those Markdown files
-   with `rg` first and open only the most relevant documents.
-2. Otherwise run `scripts/search_vector_store.py "<query>"`. It reads the Vector Store ID
-   from `OASIS_VECTOR_STORE_ID` or a `knowledge/vector_store.json` state file.
-3. Base the answer on retrieved text and include the original `Source` URL when present.
-4. If retrieval returns weak or conflicting evidence, say so and search with a narrower
-   API, class, editor feature, or error-message keyword.
+1. Read [references/search-routing.md](references/search-routing.md) only when the best retrieval mode is unclear.
+2. For familiar domains, use [references/topic-map.md](references/topic-map.md) to expand the query without loading Wiki articles.
+3. Search with the first available mode:
+   - Local corpus: run `scripts/search_wiki.py "<query>"` from this skill directory. Pass `--directory <knowledge/articles>` when the corpus is outside the current repository.
+   - Bundled catalog: the same command falls back to `references/catalog.json` and returns candidate article URLs without loading article bodies.
+   - Semantic retrieval: when `OPENAI_API_KEY` is already available, run `scripts/search_vector_store.py "<query>"`. Never request or expose the key.
+4. Start with at most 5 results. Open at most 3 articles and only the relevant heading or excerpt. Broaden once only when evidence is weak.
+5. Distinguish current and legacy systems. Do not combine old and new editor workflows unless the user needs migration guidance.
 
-## Refresh
+## Answer
 
-Only mutate the remote Vector Store or crawl the public site when the user asks to refresh,
-sync, or rebuild the knowledge base. From this repository, run:
+- State the recommended path first, then concise implementation steps or code.
+- Cite the original Wiki URL near the supported claim.
+- Label inference, version uncertainty, or conflicting documentation explicitly.
+- Preserve fenced code and Markdown image URLs only when they are necessary to answer.
 
-```powershell
-python scripts/crawl_wiki.py --output-dir knowledge --force
-python scripts/vector_store.py --state knowledge/vector_store.json sync --directory knowledge/articles --prune
-```
+## Maintenance
 
-The crawler must use JavaScript rendering, recursively expand `.el-tree`, derive article
-routes from leaf-node `data-key` values, and extract `.github-markdown-body` before any
-fallback selector. Preserve fenced code blocks, Markdown images, source URLs, article IDs,
-and category paths. Never index navigation, `.articleTop`, search UI, or sidebar text.
-
-Vector Store writes require `OPENAI_API_KEY`. Do not print, store, or commit the key.
+Read [references/maintenance.md](references/maintenance.md) only for explicit refresh, crawl, sync, Vector Store, GitHub Actions, or indexing requests. Remote writes require the user's request and must not print or commit credentials.
 

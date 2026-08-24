@@ -1,5 +1,5 @@
 interface:
   display_name: "Oasis Wiki Knowledge"
-  short_description: "Crawl and search the Tencent Oasis Wiki knowledge base"
-  default_prompt: "Use $oasis-wiki-knowledge to refresh or search the Oasis Wiki knowledge base."
+  short_description: "Low-context retrieval from the official Oasis Wiki"
+  default_prompt: "Use $oasis-wiki-knowledge to find the smallest sufficient official Wiki evidence and cite its source."
 
