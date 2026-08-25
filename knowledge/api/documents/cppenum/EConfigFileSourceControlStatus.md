@@ -1,0 +1,18 @@
+---
+id: "api:cppenum:EConfigFileSourceControlStatus"
+title: "EConfigFileSourceControlStatus"
+source: "https://developer.gp.qq.com/api/cppenum/detail/EConfigFileSourceControlStatus.json"
+category: "API Wiki/cppenum"
+kind: "cppenum"
+api_root: "https://developer.gp.qq.com/api/"
+---
+
+# EConfigFileSourceControlStatus
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `CFSCS_Unknown` | `0` | - |
+| `CFSCS_Writable` | `1` | - |
+| `CFSCS_Locked` | `2` | - |

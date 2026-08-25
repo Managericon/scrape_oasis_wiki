@@ -1,0 +1,24 @@
+---
+id: "api:class:UWST_ButtonListenAction"
+title: "UWST_ButtonListenAction"
+source: "https://developer.gp.qq.com/api/class/detail/Others/UWST_ButtonListenAction.json"
+category: "API Wiki/class/Others"
+kind: "class"
+api_root: "https://developer.gp.qq.com/api/"
+---
+
+# UWST_ButtonListenAction
+
+## Inheritance
+
+`UWigetSkinType`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ListenActions` | `TArray < FButtonListenAction >` | - |
+
+## Language
+
+`cpp`

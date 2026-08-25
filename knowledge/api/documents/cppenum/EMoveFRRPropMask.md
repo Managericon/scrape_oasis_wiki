@@ -1,0 +1,27 @@
+---
+id: "api:cppenum:EMoveFRRPropMask"
+title: "EMoveFRRPropMask"
+source: "https://developer.gp.qq.com/api/cppenum/detail/EMoveFRRPropMask.json"
+category: "API Wiki/cppenum"
+kind: "cppenum"
+api_root: "https://developer.gp.qq.com/api/"
+---
+
+# EMoveFRRPropMask
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EPROP_NONE` | `0` | - |
+| `EPROP_TARGETACTOR_NGUID` | `-1` | - |
+| `EPROP_CPXSTATE` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `EPROP_BASEMOVEHEADER` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `EPROP_MOVEMODE` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `EPROP_BASEMOVE` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `EPROP_NORMALMOVE` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `EPROP_MOVEINPUTSTATE` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `EPROP_MELEEINF` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `EPROP_ROEMTEVIEWPITCH` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `EPROP_TOTALEND` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `EPROP_ALL` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |

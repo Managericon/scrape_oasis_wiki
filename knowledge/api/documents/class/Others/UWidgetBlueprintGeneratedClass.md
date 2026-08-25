@@ -1,0 +1,40 @@
+---
+id: "api:class:UWidgetBlueprintGeneratedClass"
+title: "UWidgetBlueprintGeneratedClass"
+source: "https://developer.gp.qq.com/api/class/detail/Others/UWidgetBlueprintGeneratedClass.json"
+category: "API Wiki/class/Others"
+kind: "class"
+api_root: "https://developer.gp.qq.com/api/"
+---
+
+# UWidgetBlueprintGeneratedClass
+
+The widget blueprint generated class allows us to create blueprint-able widgets for UMG at runtime.
+  All WBPGC's are of UUserWidget classes, and they perform special post initialization using this class
+  to give themselves many of the same capabilities as AActor blueprints, like dynamic delegate binding for
+  widgets.
+
+## Inheritance
+
+`UBlueprintGeneratedClass`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `WidgetTree` | `UWidgetTree *` | A tree of the widget templates to be created |
+| `WidgetTreePath` | `FSoftObjectPath` | - |
+| `bAutoReleaseWidgetTree` | `uint8` | - |
+| `bAllowTemplate` | `uint8` | - |
+| `bValidTemplate` | `uint8` | - |
+| `bTemplateInitialized` | `uint8` | - |
+| `bCookedTemplate` | `uint8` | - |
+| `Bindings` | `TArray < FDelegateRuntimeBinding >` | - |
+| `Animations` | `TArray < UWidgetAnimation * >` | - |
+| `NamedSlots` | `TArray < FName >` | - |
+| `TemplateAsset` | `TSoftObjectPtr < UUserWidget >` | - |
+| `Template` | `UUserWidget *` | - |
+
+## Language
+
+`cpp`

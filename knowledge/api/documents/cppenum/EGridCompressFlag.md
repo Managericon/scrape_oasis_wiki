@@ -1,0 +1,22 @@
+---
+id: "api:cppenum:EGridCompressFlag"
+title: "EGridCompressFlag"
+source: "https://developer.gp.qq.com/api/cppenum/detail/EGridCompressFlag.json"
+category: "API Wiki/cppenum"
+kind: "cppenum"
+api_root: "https://developer.gp.qq.com/api/"
+---
+
+# EGridCompressFlag
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `COMPRESS_None` | `0` | - |
+| `COMPRESS_ZLIB` | `1` | - |
+| `COMPRESS_GZIP` | `2` | - |
+| `COMPRESS_ZSTD` | `4` | - |
+| `COMPRESS_ZSTD_DIC` | `8` | - |
+| `COMPRESS_BiasMemory` | `16` | - |
+| `COMPRESS_BiasSpeed` | `32` | - |

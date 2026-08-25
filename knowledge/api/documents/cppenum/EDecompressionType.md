@@ -1,0 +1,24 @@
+---
+id: "api:cppenum:EDecompressionType"
+title: "EDecompressionType"
+source: "https://developer.gp.qq.com/api/cppenum/detail/EDecompressionType.json"
+category: "API Wiki/cppenum"
+kind: "cppenum"
+api_root: "https://developer.gp.qq.com/api/"
+---
+
+# EDecompressionType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `DTYPE_Setup` | `0` | - |
+| `DTYPE_Invalid` | `1` | - |
+| `DTYPE_Preview` | `2` | - |
+| `DTYPE_Native` | `3` | - |
+| `DTYPE_RealTime` | `4` | - |
+| `DTYPE_Procedural` | `5` | - |
+| `DTYPE_Xenon` | `6` | - |
+| `DTYPE_Streaming` | `7` | - |
+| `DTYPE_MAX` | `8` | - |

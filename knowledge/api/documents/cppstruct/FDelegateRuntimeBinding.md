@@ -1,0 +1,20 @@
+---
+id: "api:cppstruct:FDelegateRuntimeBinding"
+title: "FDelegateRuntimeBinding"
+source: "https://developer.gp.qq.com/api/cppstruct/detail/FDelegateRuntimeBinding.json"
+category: "API Wiki/cppstruct"
+kind: "cppstruct"
+api_root: "https://developer.gp.qq.com/api/"
+---
+
+# FDelegateRuntimeBinding
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ObjectName` | `FString` | The widget that will be bound to the live data. |
+| `PropertyName` | `FName` | The property on the widget that will have a binding placed on it. |
+| `FunctionName` | `FName` | The function or property we're binding to on the source object. |
+| `SourcePath` | `FDynamicPropertyPath` | - |
+| `Kind` | `EBindingKind` | The kind of binding we're performing, are we binding to a property or a function. |

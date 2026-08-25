@@ -1,0 +1,27 @@
+---
+id: "api:cppenum:EVehicleEffectParamType"
+title: "EVehicleEffectParamType"
+source: "https://developer.gp.qq.com/api/cppenum/detail/EVehicleEffectParamType.json"
+category: "API Wiki/cppenum"
+kind: "cppenum"
+api_root: "https://developer.gp.qq.com/api/"
+---
+
+# EVehicleEffectParamType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EVEPT_Default` | `0` | - |
+| `EVEPT_LinearVelocity` | `1` | - |
+| `EVEPT_LinearSpeed` | `2` | - |
+| `EVEPT_LinearSpeedKMH` | `3` | - |
+| `EVEPT_AngularVelocity` | `4` | - |
+| `EVEPT_LocalAngularVelocity` | `5` | - |
+| `EVEPT_YawAngularVelocity` | `6` | - |
+| `EVEPT_RollAngularVelocity` | `7` | - |
+| `EVEPT_PitchAngularVelocity` | `8` | - |
+| `EVEPT_LocalYawAngularVelocity` | `9` | - |
+| `EVEPT_LocalRollAngularVelocity` | `10` | - |
+| `EVEPT_LocalPitchAngularVelocity` | `11` | - |

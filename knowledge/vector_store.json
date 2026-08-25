@@ -2,6 +2,156 @@
   "vector_store_id": "vs_6a8c21c806e48191bbd4d286b2113ef9",
   "name": "Tencent Oasis Wiki",
   "files": {
+    "chunks/class/class_001.md": {
+      "sha256": "def5b2aa10f8af4ae25523934c255fa78623527da7950b60f19c4fab967ceefd",
+      "file_id": "file-BB8vzmFpjYxukUQ1K39AmZ",
+      "attributes": {
+        "id": "api-chunk:class:1",
+        "title": "Oasis API class chunk 1",
+        "source": "https://developer.gp.qq.com/api/",
+        "category": "API Wiki/class"
+      }
+    },
+    "chunks/class/class_002.md": {
+      "sha256": "97545ec9565bc9130d7562edf2d875daed06f8f1cd960e7726c114c9ebdd8845",
+      "file_id": "file-XHVDoay5evBzhZjoU3ZQwQ",
+      "attributes": {
+        "id": "api-chunk:class:2",
+        "title": "Oasis API class chunk 2",
+        "source": "https://developer.gp.qq.com/api/",
+        "category": "API Wiki/class"
+      }
+    },
+    "chunks/class/class_003.md": {
+      "sha256": "8b3159a3d3cdff68ab8718ea56635d803f56f5fa0bc2063458081c42df0bdac6",
+      "file_id": "file-4C4297FYSzpqvQWeWU4RVF",
+      "attributes": {
+        "id": "api-chunk:class:3",
+        "title": "Oasis API class chunk 3",
+        "source": "https://developer.gp.qq.com/api/",
+        "category": "API Wiki/class"
+      }
+    },
+    "chunks/class/class_004.md": {
+      "sha256": "f2bb41aad4e3c3fdac0b87ad26db11b39a5504fe493c11e4c402c5bf5733de5e",
+      "file_id": "file-2LvjhcVFUjA22242qtFjoy",
+      "attributes": {
+        "id": "api-chunk:class:4",
+        "title": "Oasis API class chunk 4",
+        "source": "https://developer.gp.qq.com/api/",
+        "category": "API Wiki/class"
+      }
+    },
+    "chunks/class/class_005.md": {
+      "sha256": "b924253d95ddce5a17b1c6d0e23ee0d935c6740126b661048a87afdfafbdafd5",
+      "file_id": "file-V9an26m4fsDwsfAMn5Jevv",
+      "attributes": {
+        "id": "api-chunk:class:5",
+        "title": "Oasis API class chunk 5",
+        "source": "https://developer.gp.qq.com/api/",
+        "category": "API Wiki/class"
+      }
+    },
+    "chunks/class/class_006.md": {
+      "sha256": "bcf6f1a83c7248f3424b4e8cbb8f99db3dd768f8b36b4ec96440cda0eb939c6a",
+      "file_id": "file-6pF7o7W9eJ1M1cARBRfyAJ",
+      "attributes": {
+        "id": "api-chunk:class:6",
+        "title": "Oasis API class chunk 6",
+        "source": "https://developer.gp.qq.com/api/",
+        "category": "API Wiki/class"
+      }
+    },
+    "chunks/class/class_007.md": {
+      "sha256": "6718e51c428a9020a584a5c90d91ace979d3132d297ebea622a1da6d258b572f",
+      "file_id": "file-XhzuF4Wivds9C5BQAPZmVG",
+      "attributes": {
+        "id": "api-chunk:class:7",
+        "title": "Oasis API class chunk 7",
+        "source": "https://developer.gp.qq.com/api/",
+        "category": "API Wiki/class"
+      }
+    },
+    "chunks/class/class_008.md": {
+      "sha256": "25b3d0123327c6f800653607d84473832d354f4bd8c0d6a786d0903230710711",
+      "file_id": "file-R1TMPzzhZjfYqNhgWr66wN",
+      "attributes": {
+        "id": "api-chunk:class:8",
+        "title": "Oasis API class chunk 8",
+        "source": "https://developer.gp.qq.com/api/",
+        "category": "API Wiki/class"
+      }
+    },
+    "chunks/cppenum/cppenum_001.md": {
+      "sha256": "887b2eeb4ad688b29f56dec85cbd84822d0b95498c0b47a23ac96f3f9141c220",
+      "file_id": "file-VCZdxd5JwMTSuEefDxsjsb",
+      "attributes": {
+        "id": "api-chunk:cppenum:1",
+        "title": "Oasis API cppenum chunk 1",
+        "source": "https://developer.gp.qq.com/api/",
+        "category": "API Wiki/cppenum"
+      }
+    },
+    "chunks/cppenum/cppenum_002.md": {
+      "sha256": "17647bc34288b8cad1259bd7712a41f693286207a87e7442767d0e0c8c9a552a",
+      "file_id": "file-Mpoqt4NVQstGR7iJpXPonx",
+      "attributes": {
+        "id": "api-chunk:cppenum:2",
+        "title": "Oasis API cppenum chunk 2",
+        "source": "https://developer.gp.qq.com/api/",
+        "category": "API Wiki/cppenum"
+      }
+    },
+    "chunks/cppenum/cppenum_003.md": {
+      "sha256": "23a6dcb8fae90512ea65b0e6c756df95ec31ba212b8a9d1338479b5723fb876b",
+      "file_id": "file-YThVY6kh6FTGnywbnDouRF",
+      "attributes": {
+        "id": "api-chunk:cppenum:3",
+        "title": "Oasis API cppenum chunk 3",
+        "source": "https://developer.gp.qq.com/api/",
+        "category": "API Wiki/cppenum"
+      }
+    },
+    "chunks/cppenum/cppenum_004.md": {
+      "sha256": "1f25c286dd656e9509146601bf05bba9bd1aef6e5a83b82f0db4e7f892bd584b",
+      "file_id": "file-JMLRrKaPY32TnMbXuYCU6Y",
+      "attributes": {
+        "id": "api-chunk:cppenum:4",
+        "title": "Oasis API cppenum chunk 4",
+        "source": "https://developer.gp.qq.com/api/",
+        "category": "API Wiki/cppenum"
+      }
+    },
+    "chunks/cppstruct/cppstruct_001.md": {
+      "sha256": "3c44dc71a785073e19fe89e789b2e15fac08d395d526ad5912c2d2cdc0a2f735",
+      "file_id": "file-1Zig45Zbzydqbaq4SmLUeA",
+      "attributes": {
+        "id": "api-chunk:cppstruct:1",
+        "title": "Oasis API cppstruct chunk 1",
+        "source": "https://developer.gp.qq.com/api/",
+        "category": "API Wiki/cppstruct"
+      }
+    },
+    "chunks/cppstruct/cppstruct_002.md": {
+      "sha256": "d00ad45d50003733f06de6ad3725b4dce6f443ec09e16cbd7b4d53c226a586eb",
+      "file_id": "file-VcLAce2JAcsLtaKin6FFr1",
+      "attributes": {
+        "id": "api-chunk:cppstruct:2",
+        "title": "Oasis API cppstruct chunk 2",
+        "source": "https://developer.gp.qq.com/api/",
+        "category": "API Wiki/cppstruct"
+      }
+    },
+    "chunks/globalfunc/globalfunc_001.md": {
+      "sha256": "028ce57ee9a9e98b85b82ea13e569b0563d0cdb9e89499123382eea84cd2fa8e",
+      "file_id": "file-KAUPyaE7VcZasDL322PG9Y",
+      "attributes": {
+        "id": "api-chunk:globalfunc:1",
+        "title": "Oasis API globalfunc chunk 1",
+        "source": "https://developer.gp.qq.com/api/",
+        "category": "API Wiki/globalfunc"
+      }
+    },
     "20002_和平营地绿洲专区使用说明书.md": {
       "sha256": "16cf20366c2836f3aa078f310656d609c458989675f96ee996ecc73d27d00df8",
       "file_id": "file-A8RQF1yYKJkBQamua3PLof",
@@ -3142,7 +3292,7 @@
     }
   },
   "summary": {
-    "uploaded": 0,
+    "uploaded": 15,
     "skipped": 314,
     "failed": 0
   }

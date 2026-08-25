@@ -1,0 +1,29 @@
+---
+id: "api:cppenum:EMeshCameraFacingOptions"
+title: "EMeshCameraFacingOptions"
+source: "https://developer.gp.qq.com/api/cppenum/detail/EMeshCameraFacingOptions.json"
+category: "API Wiki/cppenum"
+kind: "cppenum"
+api_root: "https://developer.gp.qq.com/api/"
+---
+
+# EMeshCameraFacingOptions
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `XAxisFacing_NoUp` | `0` | - |
+| `XAxisFacing_ZUp` | `1` | - |
+| `XAxisFacing_NegativeZUp` | `2` | - |
+| `XAxisFacing_YUp` | `3` | - |
+| `XAxisFacing_NegativeYUp` | `4` | - |
+| `LockedAxis_ZAxisFacing` | `5` | - |
+| `LockedAxis_NegativeZAxisFacing` | `6` | - |
+| `LockedAxis_YAxisFacing` | `7` | - |
+| `LockedAxis_NegativeYAxisFacing` | `8` | - |
+| `VelocityAligned_ZAxisFacing` | `9` | - |
+| `VelocityAligned_NegativeZAxisFacing` | `10` | - |
+| `VelocityAligned_YAxisFacing` | `11` | - |
+| `VelocityAligned_NegativeYAxisFacing` | `12` | - |
+| `EMeshCameraFacingOptions_MAX` | `13` | - |

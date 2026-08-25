@@ -1,0 +1,41 @@
+---
+id: "api:class:UGCGameplayTaskSystem"
+title: "UGCGameplayTaskSystem"
+source: "https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E5%B7%A5%E5%85%B7%E5%BA%93/UGCGameplayTaskSystem.json"
+category: "API Wiki/class/和平全局接口/工具库"
+kind: "class"
+api_root: "https://developer.gp.qq.com/api/"
+---
+
+# UGCGameplayTaskSystem
+
+异步任务接口库
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `UGCGameplayTaskSystem.General` | `-` | class General @通用异步任务 |
+| `UGCGameplayTaskSystem.General.SpawnActor` | `-` | class SpawnActor @通用异步任务：SpawnActor |
+| `UGCGameplayTaskSystem.Player` | `-` | class Player @玩家异步任务 |
+| `UGCGameplayTaskSystem.Player.AddCustomCameraData` | `-` | class AddCustomCameraData @玩家异步任务：添加自定义相机数据 |
+| `UGCGameplayTaskSystem.Player.SetEyeRotationMode` | `-` | class SetEyeRotationMode @玩家异步任务：添加自定义相机数据 |
+| `UGCGameplayTaskSystem.Player.RegisterDynamicState` | `-` | class RegisterDynamicState @玩家异步任务：注册一组状态互斥 |
+| `UGCGameplayTaskSystem.General.SelectLocationFromMap` | `-` | class SelectLocationFromMap @通用异步任务：从小地图上获得一个选点 |
+| `UGCGameplayTaskSystem.Player.SwitchWeapon` | `-` | class SwitchWeapon @玩家异步任务：切换武器 |
+| `UGCGameplayTaskSystem.PlayerPawn` | `-` | class PlayerPawn @角色异步任务 |
+| `UGCGameplayTaskSystem.PlayerPawn.TeleportPawn` | `-` | class TeleportPawn @角色异步任务：传送角色 |
+| `UGCGameplayTaskSystem.PlayerPawn.Sprint` | `-` | class TeleportPawn @角色异步任务：角色冲刺 |
+| `UGCGameplayTaskSystem.PlayerPawn.SetMaterial` | `-` | class SetMaterial @角色异步任务：角色换材质 |
+| `UGCGameplayTaskSystem.PlayerPawn.HitBack` | `-` | class SetMaterial @角色异步任务：击退 |
+| `UGCGameplayTaskSystem.PlayerPawn.AttachToCharacterScoket` | `-` | class Character @角色异步任务 |
+| `UGCGameplayTaskSystem.PlayerPawn.ReplaceAnim` | `-` | class Character @角色异步任务: 替换动画 |
+| `UGCGameplayTaskSystem.GenericCharacter` | `-` | class GenericCharacter @GenericCharacter异步任务 |
+| `UGCGameplayTaskSystem.GenericCharacter.ReplaceAnim` | `-` | class ReplaceAnim @GenericCharacter异步任务：替换动画 |
+| `UGCGameplayTaskSystem.Weapon` | `-` | class Weapon @武器异步任务 |
+| `UGCGameplayTaskSystem.Weapon.AutoAim` | `-` | class AutoAim @武器异步任务：自动瞄准 |
+| `UGCGameplayTaskSystem.Weapon.LaunchProjectile` | `-` | class LaunchProjectile @武器异步任务：发射抛体 |
+
+## Language
+
+`lua`
