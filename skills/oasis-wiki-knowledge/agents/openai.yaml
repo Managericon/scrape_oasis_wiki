@@ -3,3 +3,11 @@ interface:
   short_description: "Low-context Oasis tutorial and API retrieval"
   default_prompt: "Use $oasis-wiki-knowledge to find the smallest sufficient official tutorial or API evidence and cite its source."
 
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "ugcaskq"
+      description: "Local UGCAskQ proxy for live Oasis editor inspection and authorized operations"
+      transport: "sse"
+      url: "http://127.0.0.1:12463/sse"
+

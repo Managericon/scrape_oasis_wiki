@@ -1,6 +1,6 @@
 ---
 name: oasis-wiki-knowledge
-description: Retrieve current official Tencent Oasis/绿洲启元 tutorial Wiki and API reference evidence with low-context local, catalog, or Vector Store search. Use for Wiki-backed API, class, function, enum, struct, editor, Lua, debugging, template, release-note, and knowledge-base maintenance questions; do not use for unrelated general programming.
+description: Retrieve current official Tencent Oasis/绿洲启元 tutorial Wiki and API reference evidence with low-context local, catalog, or Vector Store search, with an optional UGCAskQ MCP proxy for live editor state. Use for Wiki-backed API, class, function, enum, struct, editor, Lua, debugging, template, release-note, and knowledge-base maintenance questions; do not use for unrelated general programming.
 ---
 
 # Oasis Wiki Knowledge
@@ -18,6 +18,7 @@ Retrieve the smallest sufficient set of official Wiki passages before answering.
 4. Start with at most 5 results. Open at most 3 articles and only the relevant heading or excerpt. Broaden once only when evidence is weak.
 5. Distinguish current and legacy systems. Do not combine old and new editor workflows unless the user needs migration guidance.
 6. For exact classes, functions, enums, structs, signatures, parameters, or execution scope, prefer API Wiki evidence over tutorial prose. Use tutorial Wiki for workflows and editor steps.
+7. Use the `ugcaskq` MCP only when the request needs live editor state, project-specific inspection, or an explicitly authorized editor operation. Read [references/mcp-proxy.md](references/mcp-proxy.md) only for those requests; ordinary knowledge retrieval must not call MCP.
 
 ## Answer
 
