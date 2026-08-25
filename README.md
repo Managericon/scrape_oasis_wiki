@@ -1,7 +1,7 @@
 # Tencent Oasis Wiki crawler
 
-面向腾讯绿洲启元 Wiki `catalog/20418` 的 JavaScript 深度爬虫、Markdown
-知识库与 OpenAI Vector Store 同步工作流。
+面向腾讯绿洲启元教程 Wiki `catalog/20418` 与 API Wiki 的 Markdown
+知识库和 OpenAI Vector Store 同步工作流。
 
 ## 工作流
 
@@ -10,6 +10,7 @@
 3. 依次访问 `#/catalog/{id}`，只提取 `.github-markdown-body` 正文。
 4. 使用 `html2text` 转换 Markdown；代码块保留语言围栏，图片转换为绝对链接或下载到本地。
 5. 分文档保存、生成合并文档，并按内容哈希增量同步到 OpenAI Vector Store。
+6. 从 API Wiki 官方静态 JSON 索引完整发现类、枚举、结构体和全局函数，分类生成 Markdown 与语义索引分片。
 
 ## 本地运行
 
@@ -20,6 +21,7 @@ pip install -r requirements.txt
 playwright install chromium
 
 python scripts/crawl_wiki.py --output-dir knowledge --force --prune-output
+python scripts/crawl_api_wiki.py --output-dir knowledge/api --force --prune-output
 ```
 
 测试少量文档：
@@ -53,7 +55,7 @@ python scripts/crawl_wiki.py --output-dir knowledge --download-images --force
 
 ```powershell
 python scripts/vector_store.py --state knowledge/vector_store.json sync `
-  --directory knowledge/articles --prune
+  --directory knowledge/articles --directory knowledge/api/chunks --prune
 
 python scripts/vector_store.py --state knowledge/vector_store.json search `
   "UGCGameSystem 如何使用"

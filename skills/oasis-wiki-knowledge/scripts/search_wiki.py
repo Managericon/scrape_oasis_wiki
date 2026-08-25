@@ -14,7 +14,10 @@ from typing import Iterable
 
 
 SKILL_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_CATALOG = SKILL_ROOT / "references" / "catalog.json"
+DEFAULT_CATALOGS = (
+    SKILL_ROOT / "references" / "catalog.json",
+    SKILL_ROOT / "references" / "api-catalog.json",
+)
 ALIASES = {
     "怪物": ("monster", "AI", "行为树", "黑板"),
     "技能": ("skill", "PESkill", "技能编辑器", "技能Task"),
@@ -41,8 +44,8 @@ class Hit:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("query")
-    parser.add_argument("--directory", type=Path)
-    parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG)
+    parser.add_argument("--directory", type=Path, action="append")
+    parser.add_argument("--catalog", type=Path, action="append")
     parser.add_argument("--max-results", type=int, default=5)
     parser.add_argument("--context-chars", type=int, default=700)
     parser.add_argument("--max-total-chars", type=int, default=5000)
@@ -50,21 +53,24 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def discover_articles(explicit: Path | None) -> Path | None:
+def discover_articles(explicit: list[Path] | None) -> list[Path]:
     candidates: list[Path] = []
     if explicit:
-        candidates.append(explicit)
+        candidates.extend(explicit)
     if os.getenv("OASIS_WIKI_DIR"):
-        candidates.append(Path(os.environ["OASIS_WIKI_DIR"]))
+        candidates.extend(Path(value) for value in os.environ["OASIS_WIKI_DIR"].split(os.pathsep))
     for parent in (Path.cwd(), *Path.cwd().parents):
-        candidates.append(parent / "knowledge" / "articles")
+        candidates.extend(
+            (parent / "knowledge" / "articles", parent / "knowledge" / "api" / "documents")
+        )
+    discovered: list[Path] = []
     for candidate in candidates:
         expanded = candidate.expanduser().resolve()
         if expanded.name == "knowledge" and (expanded / "articles").is_dir():
             expanded = expanded / "articles"
-        if expanded.is_dir() and next(expanded.rglob("*.md"), None):
-            return expanded
-    return None
+        if expanded.is_dir() and next(expanded.rglob("*.md"), None) and expanded not in discovered:
+            discovered.append(expanded)
+    return discovered
 
 
 def frontmatter(text: str) -> tuple[dict[str, str], str]:
@@ -172,30 +178,32 @@ def local_hits(
     return sorted(hits, key=lambda hit: (-hit.score, hit.title))
 
 
-def catalog_hits(catalog: Path, primary: list[str], aliases: list[str]) -> list[Hit]:
-    entries = json.loads(catalog.read_text(encoding="utf-8"))
+def catalog_hits(catalogs: list[Path], primary: list[str], aliases: list[str]) -> list[Hit]:
     hits: list[Hit] = []
-    for entry in entries:
-        title = str(entry.get("title", ""))
-        category = "/".join(entry.get("categories") or [])
-        score = (
-            count_score(title, primary, 20)
-            + count_score(category, primary, 10)
-            + count_score(title, aliases, 4, cap=1)
-            + count_score(category, aliases, 2, cap=1)
-            + combination_bonus((title, category), primary)
-        )
-        if score <= 0:
-            continue
-        hits.append(
-            Hit(
-                score=score,
-                title=title,
-                category=category,
-                source=str(entry.get("url", "")),
-                path=str(entry.get("file", "")),
+    for catalog in catalogs:
+        entries = json.loads(catalog.read_text(encoding="utf-8"))
+        for entry in entries:
+            title = str(entry.get("title") or entry.get("name") or "")
+            categories = entry.get("categories") or []
+            category = "/".join([entry.get("kind", ""), *categories]).strip("/")
+            score = (
+                count_score(title, primary, 20)
+                + count_score(category, primary, 10)
+                + count_score(title, aliases, 4, cap=1)
+                + count_score(category, aliases, 2, cap=1)
+                + combination_bonus((title, category), primary)
             )
-        )
+            if score <= 0:
+                continue
+            hits.append(
+                Hit(
+                    score=score,
+                    title=title,
+                    category=category,
+                    source=str(entry.get("url", "")),
+                    path=str(entry.get("file", "")),
+                )
+            )
     return sorted(hits, key=lambda hit: (-hit.score, hit.title))
 
 
@@ -224,15 +232,19 @@ def main() -> int:
     configure_console()
     args = parse_args()
     primary, aliases = query_terms(args.query)
-    directory = discover_articles(args.directory)
-    if directory:
-        hits = local_hits(directory, primary, aliases, max(200, args.context_chars))
-        mode = f"local:{directory}"
-    elif args.catalog.is_file():
-        hits = catalog_hits(args.catalog, primary, aliases)
-        mode = f"catalog:{args.catalog}"
+    directories = discover_articles(args.directory)
+    catalogs = [path for path in (args.catalog or list(DEFAULT_CATALOGS)) if path.is_file()]
+    if directories:
+        hits = []
+        for directory in directories:
+            hits.extend(local_hits(directory, primary, aliases, max(200, args.context_chars)))
+        hits.sort(key=lambda hit: (-hit.score, hit.title))
+        mode = "local:" + os.pathsep.join(map(str, directories))
+    elif catalogs:
+        hits = catalog_hits(catalogs, primary, aliases)
+        mode = "catalog:" + os.pathsep.join(map(str, catalogs))
     else:
-        raise RuntimeError("No local knowledge/articles directory or bundled catalog found")
+        raise RuntimeError("No local tutorial/API corpus or bundled catalog found")
     hits = hits[: max(1, min(12, args.max_results))]
     if args.json:
         print(json.dumps({"mode": mode, "results": [asdict(hit) for hit in hits]}, ensure_ascii=False, indent=2))

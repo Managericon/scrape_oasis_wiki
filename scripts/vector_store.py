@@ -23,7 +23,7 @@ def parse_args() -> argparse.Namespace:
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     sync = subparsers.add_parser("sync", help="Upload changed Markdown documents")
-    sync.add_argument("--directory", type=Path, default=Path("knowledge/articles"))
+    sync.add_argument("--directory", type=Path, action="append")
     sync.add_argument("--name", default="Tencent Oasis Wiki")
     sync.add_argument("--prune", action="store_true")
 
@@ -87,8 +87,8 @@ def resolve_store(client: OpenAI, args: argparse.Namespace, state: dict[str, Any
         return client.vector_stores.retrieve(vector_store_id)
     store = client.vector_stores.create(
         name=args.name,
-        description="JavaScript-rendered Tencent Oasis Wiki converted to Markdown",
-        metadata={"source": "developer.gp.qq.com", "catalog": "20418"},
+        description="Tencent Oasis Wiki and API reference converted to Markdown",
+        metadata={"source": "developer.gp.qq.com", "catalog": "20418+api"},
     )
     print(f"Created Vector Store {store.id}")
     return store
@@ -106,10 +106,16 @@ def remove_remote_file(client: OpenAI, vector_store_id: str, file_id: str) -> No
 
 
 def sync_store(client: OpenAI, args: argparse.Namespace, state: dict[str, Any]) -> int:
-    directory = args.directory.expanduser().resolve()
-    paths = sorted(path for path in directory.rglob("*.md") if path.is_file())
+    directories = args.directory or [Path("knowledge/articles")]
+    directories = [directory.expanduser().resolve() for directory in directories]
+    paths = sorted(
+        (directory, path)
+        for directory in directories
+        for path in directory.rglob("*.md")
+        if path.is_file()
+    )
     if not paths:
-        raise RuntimeError(f"No Markdown files found in {directory}")
+        raise RuntimeError("No Markdown files found in: " + ", ".join(map(str, directories)))
 
     store = resolve_store(client, args, state)
     old_files = state.get("files", {})
@@ -118,8 +124,9 @@ def sync_store(client: OpenAI, args: argparse.Namespace, state: dict[str, Any]) 
     skipped = 0
     failed = 0
 
-    for index, path in enumerate(paths, start=1):
-        relative = path.relative_to(directory).as_posix()
+    for index, (directory, path) in enumerate(paths, start=1):
+        local_relative = path.relative_to(directory).as_posix()
+        relative = local_relative if directory.name == "articles" else f"{directory.name}/{local_relative}"
         fingerprint = sha256(path)
         old = old_files.get(relative, {})
         if old.get("sha256") == fingerprint and old.get("file_id"):

@@ -1,5 +1,5 @@
 interface:
   display_name: "Oasis Wiki Knowledge"
-  short_description: "Low-context retrieval from the official Oasis Wiki"
-  default_prompt: "Use $oasis-wiki-knowledge to find the smallest sufficient official Wiki evidence and cite its source."
+  short_description: "Low-context Oasis tutorial and API retrieval"
+  default_prompt: "Use $oasis-wiki-knowledge to find the smallest sufficient official tutorial or API evidence and cite its source."
 

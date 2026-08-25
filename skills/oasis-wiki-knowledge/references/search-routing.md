@@ -6,7 +6,8 @@ Use one primary retrieval mode. Do not load this reference plus every topic refe
 
 | Request | First choice | Fallback |
 |---|---|---|
-| Exact API, class, event, error text, or catalog ID | Local lexical search | Catalog lookup, then exact official URL |
+| Exact API, class, function, enum, struct, signature, or parameter | API corpus lexical search | API catalog, then Vector Store |
+| Exact editor error text or tutorial catalog ID | Tutorial corpus lexical search | Tutorial catalog, then exact official URL |
 | Natural-language feature or architecture question | Local lexical search with topic aliases | Vector Store semantic search |
 | Latest/current/change/version question | Release-note titles and newest matching article | Narrow semantic search |
 | Known article title or category | Bundled catalog | Local lexical search |
@@ -23,6 +24,7 @@ Use one primary retrieval mode. Do not load this reference plus every topic refe
 ## Query Construction
 
 - Keep exact identifiers intact: `UGCGameSystem`, `UGC_CastSkill`, `Skill.Slot.Main`.
+- Prefer `API Wiki/class`, `API Wiki/cppenum`, `API Wiki/cppstruct`, or `API Wiki/globalfunc` results for signatures and types.
 - Add one domain term when a name is ambiguous: `怪物 行为树`, `技能 Task`, `UI 控件`.
 - For errors, search the exact stable substring first; omit timestamps, IDs, and paths.
 - For legacy/current ambiguity, include `1.0`, `2.0`, `旧版`, `新版`, or the release number.

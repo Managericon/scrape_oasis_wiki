@@ -27,8 +27,6 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-        with:
-          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -44,6 +42,14 @@ jobs:
       - name: Crawl JavaScript Wiki and convert to Markdown
         run: python -u scripts/crawl_wiki.py --output-dir knowledge --force --prune-output
 
+      - name: Crawl API reference and convert to Markdown
+        run: >-
+          python -u scripts/crawl_api_wiki.py
+          --output-dir knowledge/api --workers 12 --force --prune-output
+
+      - name: Refresh skill API catalog
+        run: cp knowledge/api/catalog.json skills/oasis-wiki-knowledge/references/api-catalog.json
+
       - name: Synchronize OpenAI Vector Store
         if: ${{ env.OPENAI_API_KEY != '' }}
         env:
@@ -51,19 +57,21 @@ jobs:
         run: >-
           python scripts/vector_store.py
           --state knowledge/vector_store.json
-          sync --directory knowledge/articles --prune
+          sync
+          --directory knowledge/articles
+          --directory knowledge/api/chunks
+          --prune
 
       - name: Commit refreshed Markdown and Vector Store state
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add knowledge
+          git add knowledge skills/oasis-wiki-knowledge/references/api-catalog.json
           if git diff --cached --quiet; then
             echo "No knowledge changes"
           else
             git commit -m "docs: refresh Oasis Wiki knowledge base"
-            git pull --rebase origin main
-            git push origin HEAD:main
+            git push
           fi
 
       - name: Upload Markdown artifact
