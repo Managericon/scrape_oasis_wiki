@@ -528,15 +528,16 @@
     "id": "20414",
     "title": "UGCAskQ MCP 使用说明",
     "categories": [
-      "绿洲编辑器基础内容"
+      "绿洲编辑器基础内容",
+      "UGCAskQ MCP"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20414",
     "status": "ok",
-    "file": "articles/绿洲编辑器基础内容/20414_UGCAskQ MCP 使用说明.md",
+    "file": "articles/绿洲编辑器基础内容/UGCAskQ MCP/20414_UGCAskQ MCP 使用说明.md",
     "selector": ".github-markdown-body",
     "images": 0,
     "code_blocks": 1,
-    "sha256": "3c9a9851e69083f0765bfeec44839537a6ca36fadd902b6ef703bfebd00b72ce"
+    "sha256": "b0ed1ad978c1be7442bb72c5a8a290dc6080bd97cff3b0cef6afd7a992237e96"
   },
   {
     "id": "298",
@@ -3195,9 +3196,9 @@
     "status": "ok",
     "file": "articles/进阶内容/20023_自定义行为统计.md",
     "selector": ".github-markdown-body",
-    "images": 4,
+    "images": 3,
     "code_blocks": 3,
-    "sha256": "30bcdefe1042c16390925b9e1f473cf27138eaf9ffec76c3c8f482398dbab37e"
+    "sha256": "2dc1325f7bde3ffb836c4a765d0369737200c07f603c6765515610389bc5ad88"
   },
   {
     "id": "20437",

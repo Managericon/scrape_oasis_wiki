@@ -5723,12 +5723,12 @@ b. 如果原团队需要保留，则可以在原团队先添加其他子账号�
 id: "20414"
 title: "UGCAskQ MCP 使用说明"
 source: "https://developer.gp.qq.com/wikieditor/#/catalog/20414"
-category: "绿洲编辑器基础内容"
+category: "绿洲编辑器基础内容/UGCAskQ MCP"
 ---
 
 # UGCAskQ MCP 使用说明
 
-创建于 2026-07-10 07:09 最后修改于 2026-07-10 07:16
+创建于 2026-07-10 07:09 最后修改于 2026-08-26 10:59
 
 > 本文档帮助开发者快速上手 UGCAskQ MCP，了解如何将 AI 助手接入绿洲启元编辑器，并高效完成玩法内容的制作。
 
@@ -31865,7 +31865,7 @@ category: "进阶内容"
 
 # 自定义行为统计
 
-最后修改于 2025-12-12 08:30
+创建于 2026-08-26 10:59
 
 开发者可以制定具体的数据指标来跟踪玩家的行为模式与偏好，玩法上线后通过分析这些数据，针对性优化游戏的设计与体验，包含但不限于：
 
@@ -31875,11 +31875,73 @@ category: "进阶内容"
 
 绿洲启元编辑器通过自定义行为上报的API支持了特定数据的收集，并于绿洲启元管理平台提供了 [查询统计数据](<https://gpeditor.qq.com/user#operationalData/2>) 的途径。
 
-> 查询功能仅在灰度环境中有效，如需在正式服上报自定义行为数据，请使用 [SendPgcGameTlog](<https://developer.gp.qq.com/api/#/searchContent/UGCGameSystem?classDetailShow=true&path=class%2Fdetail%2F%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3%2F%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD%2FUGCGameSystem.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UGCGameSystem&autoJump=SendPgcGameTlog>) 接口，且正式服的统计数据需联系官方运营人员获取
-
 ## 自定义行为上报
 
-### **SendGreyTLog**
+### **SendGameTlog**
+
+`SendGameTlog` 是目前**唯一支持正式服的日志上报接口** ，适用于所有UGC玩法，不区分测试环境、灰度环境或正式服环境。
+
+> `SendGameTlog`不支持管理平台查询数据，需提供埋点相关信息至官方运营团队做进一步拉取
+
+```
+-- 生效范围：服务器
+function UGCGameSystem.SendGameTlog(Index, UID, CustomData)
+end
+```
+
+  * Index：日志索引，数据类型为整型，范围 `[800800, 804800]`，不同范围对应不同校验规则
+  * UID：玩家UID，数据类型为整型，非整型会导致上报失败
+  * CustomData：自定义数据，类型为表，超过512字节会进行自动截断
+
+**使用规则**
+
+  1. 该接口仅在服务器端生效，客户端调用无效
+  2. 灰度和正式服均可使用，无需区分环境
+  3. 每个玩法实例每分钟最多调用 100 次，超过限制的调用会被静默丢弃
+
+**Index 范围说明**
+
+范围 | 用途 | CustomData 要求
+---|---|---
+`[800800, 801800]` | 自定义 TLog | 无结构限制，可自由定义
+`[801801, 802800]` | 二级及以下货币 TLog | 必须包含指定字段（见下方说明）
+`[802801, 804800]` | 物品流转信息 TLog | 必须包含指定字段（见下方说明）
+
+#### 货币 TLog 必填字段（Index `[801801, 802800]`）
+
+字段 | 类型 | 说明
+---|---|---
+`AfterMoney` | number | 变化后货币余额
+`iMoney` | number | 变化量
+`Reason` | number | 一级原因
+`SubReason` | number | 二级原因
+`AddOrReduce` | number | 增加/减少标识（1=增加, 0=减少）
+`iMoneyType` | number | 货币类型
+`CustomData` | table | 扩展数据（可为空表 `{}`）
+
+#### 物品流转 TLog 必填字段（Index `[802801, 804800]`）
+
+字段 | 类型 | 说明
+---|---|---
+`iGoodsType` | number | 物品类型
+`iGoodsId` | number | 物品 ID
+`iGoodsName` | string | 物品名称
+`iCount` | number | 变化数量
+`AfterCount` | number | 变化后数量
+`Reason` | number | 一级原因
+`SubReason` | number | 二级原因
+`AddOrReduce` | number | 增加/减少标识（1=增加, 0=减少）
+`CustomData` | table | 扩展数据（可为空表 `{}`）
+
+**注意事项**
+
+  1. CustomData 内不要嵌套过深，建议保持在 2-3 层以内
+  2. JSON 中的 `|`（竖线）会被替换为空格（后台规则），避免在数据中使用
+  3. 设计 CustomData 结构时注意精简字段名，优先使用短键名
+
+* * *
+
+### SendGreyTLog
 
 ```
 -- 生效范围：服务器
@@ -31895,30 +31957,11 @@ end
   1. 该接口仅在服务器端生效，客户端调用无效
   2. 仅在灰度环境中有效
 
-* * *
+#### 数据统计查询
 
-### **SendPgcGameTlog**
+玩法中加入了`SendGreyTLog`行为上报后，可以在绿洲启元管理平台 `项目数据 -> 运营数据页签 -> 运营数据(体验)` 页面中查询统计数据。
 
-```
--- 生效范围：服务器
-function UGCGameSystem.SendPgcGameTlog(Index, UID, CustomData)
-end
-```
-
-  * Index ：日志索引，数据类型为整型，且范围限定在 `[800800, 801800]` ，非整型和不合法Index都会导致上报失败
-  * UID：玩家UID，整型或留空，若非整型或UID无效/错误会导致上报失败
-  * CustomData：自定义数据，类型为表，超过512字节会进行自动截断，按照表格里的键值对进行截断
-
-**使用规则**
-
-  1. 该接口仅在服务器端生效，客户端调用无效
-  2. 仅在正式服中有效
-
-## 数据统计查询
-
-玩法中加入了行为上报后，可以在绿洲启元管理平台 `项目数据 -> 运营数据页签 -> 运营数据(体验)` 页面中查询统计数据。
-
-> 行为上报非实时生成统计数据，需要玩法在抢先体验专区产生完整一天的有效数据后，才能在管理平台查询到，另外正式服的统计数据需联系官方运营人员获取
+> 行为上报非实时生成统计数据，需要玩法在抢先体验专区产生完整一天的有效数据后，才能在管理平台查询到，`SendGameTlog`统计数据需联系官方运营人员获取
 
 ![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/CK24jimage.png)
 
@@ -31961,12 +32004,12 @@ function Lottery:LotteryHandle(PlayerKey)
     local rewardInfo = {
         result001 = {
             resultId = "AKM",
-            eventId = 800801,
+            eventId = 800800,
             rate = 40
         },
         result002 = {
             resultId = "M416",
-            eventId = 800802,
+            eventId = 800801,
             rate = 30
         },
         result003 = {
@@ -31991,32 +32034,19 @@ function Lottery:LotteryHandle(PlayerKey)
         end
     end
 
-    -- 上报抽奖结果事件
-    UGCGameSystem.SendGreyTLog(result.eventId, PlayerKey)
+    -- 上报抽奖结果事件（使用推荐的 SendGameTlog 接口）
+    local uid = UGCGameSystem.GetUIDByPlayerKey(PlayerKey)
+    UGCGameSystem.SendGameTlog(result.eventId, uid, { resultId = result.resultId })
 
 end
 ```
 
 在这段代码逻辑中，我们设计了一个简单的抽奖功能，在处理抽奖结果中上报了该行为事件。
 
-如上所示，当抽奖结果result返回后，使用 `UGCGameSystem.SendGreyTLog` 将结果进行上报，其中 `eventId` 对应的是每次抽奖结果的事件，一共有三个抽奖奖品，对应的事件ID分别为：800800，800801，800803。
+如上所示，当抽奖结果result返回后，使用 `UGCGameSystem.SendGameTlog` 将结果进行上报，其中 `eventId` 对应的是每次抽奖结果的事件，一共有三个抽奖奖品，对应的事件ID分别为：800800，800801，800803。
 
 > **注意：**
 >  行为上报只作为收集数据的方式，不应当对游戏流程产生任何的阻塞，并破坏玩家的游戏体验。
-
-* * *
-
-**数据分析**
-
-上报的数据将会自动统计到绿洲启元管理平台，我们可以查询数据并作进一步的分析。
-
-登录 [管理平台](<https://gpeditor.qq.com/user#operationalData/2>)，选择 `运营数据-自定义埋点数据` tab页，选择对应的游戏项目，并输入 `800800、800801与800803`，查询这三个ID所对应的奖品在 `最近30天` 的中奖情况：
-
-![Group 120.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/xVTSHGroup%20120\(1\).png)
-
-从统计的数据来看，AUG（800803）被抽中的次数明显最多，可以进一步分析中奖概率是否符合预期。
-
-> 以上测试数据仅供参考，具体指标计算方式参考页面说明
 
 
 ---

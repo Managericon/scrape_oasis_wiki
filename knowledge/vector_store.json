@@ -1470,16 +1470,6 @@
         "category": "玩法案例及模板/多人PVE模板"
       }
     },
-    "绿洲编辑器基础内容/20414_UGCAskQ MCP 使用说明.md": {
-      "sha256": "3c9a9851e69083f0765bfeec44839537a6ca36fadd902b6ef703bfebd00b72ce",
-      "file_id": "file-XQTEFumR8yj1KzXUjxXvWM",
-      "attributes": {
-        "id": "20414",
-        "title": "UGCAskQ MCP 使用说明",
-        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20414",
-        "category": "绿洲编辑器基础内容"
-      }
-    },
     "绿洲编辑器基础内容/289_绿洲启元编辑器介绍与安装.md": {
       "sha256": "5c8e327145638231ebcc5458db72365724783559ea7823967ac5f0708f893dcb",
       "file_id": "file-WQMzdSMmEbXBCuXrnbAMMX",
@@ -1528,6 +1518,16 @@
         "title": "绿洲启元管理平台使用指引",
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/381",
         "category": "绿洲编辑器基础内容"
+      }
+    },
+    "绿洲编辑器基础内容/UGCAskQ MCP/20414_UGCAskQ MCP 使用说明.md": {
+      "sha256": "b0ed1ad978c1be7442bb72c5a8a290dc6080bd97cff3b0cef6afd7a992237e96",
+      "file_id": "file-EGEUXA2CPrvbZYpmYrGrPL",
+      "attributes": {
+        "id": "20414",
+        "title": "UGCAskQ MCP 使用说明",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20414",
+        "category": "绿洲编辑器基础内容/UGCAskQ MCP"
       }
     },
     "绿洲编辑器基础内容/上传和发布玩法/363_项目设置.md": {
@@ -1741,8 +1741,8 @@
       }
     },
     "进阶内容/20023_自定义行为统计.md": {
-      "sha256": "30bcdefe1042c16390925b9e1f473cf27138eaf9ffec76c3c8f482398dbab37e",
-      "file_id": "file-WrPoYJXAU5YRrCsWCrhUaE",
+      "sha256": "2dc1325f7bde3ffb836c4a765d0369737200c07f603c6765515610389bc5ad88",
+      "file_id": "file-2hQRikqbY8aq8EdXXmKCdh",
       "attributes": {
         "id": "20023",
         "title": "自定义行为统计",
@@ -3292,8 +3292,8 @@
     }
   },
   "summary": {
-    "uploaded": 15,
-    "skipped": 314,
+    "uploaded": 2,
+    "skipped": 327,
     "failed": 0
   }
 }

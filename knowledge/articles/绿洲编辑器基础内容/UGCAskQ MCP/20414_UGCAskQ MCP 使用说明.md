@@ -2,12 +2,12 @@
 id: "20414"
 title: "UGCAskQ MCP 使用说明"
 source: "https://developer.gp.qq.com/wikieditor/#/catalog/20414"
-category: "绿洲编辑器基础内容"
+category: "绿洲编辑器基础内容/UGCAskQ MCP"
 ---
 
 # UGCAskQ MCP 使用说明
 
-创建于 2026-07-10 07:09 最后修改于 2026-07-10 07:16
+创建于 2026-07-10 07:09 最后修改于 2026-08-26 10:59
 
 > 本文档帮助开发者快速上手 UGCAskQ MCP，了解如何将 AI 助手接入绿洲启元编辑器，并高效完成玩法内容的制作。
 
