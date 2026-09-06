@@ -15,6 +15,11 @@ api_root: "https://developer.gp.qq.com/api/"
 
 | Name | Type/Value | Description |
 |---|---|---|
+| `UGCTeamSystem.OnTeamMemberJoinDelegate` | `-` | 有玩家加入当前局内玩法队伍时触发<br>生效范围：客户端<br>@param UID number @加入者的 UID |
+| `UGCTeamSystem.OnTeamMemberLeaveDelegate` | `-` | 有玩家离开当前局内玩法队伍时触发<br>生效范围：客户端<br>@param UID number @离开者的 UID |
+| `UGCTeamSystem.OnTeamIDChangedDelegate` | `-` | 自己的局内玩法队伍变更时触发<br>生效范围：客户端<br>@param TeamID number @变更后的队伍 ID |
+| `UGCTeamSystem.OnTeamMemberChangedDelegate` | `-` | 局内玩法队伍成员变更时触发<br>生效范围：服务器<br>@param PlayerKey number @发生变更的玩家 PlayerKey<br>@param OldTeamID number\|nil @变更前的队伍 ID，首次入队为 nil<br>@param NewTeamID number\|nil @变更后的队伍 ID，玩家退出 DS 时为 nil |
+| `UGCTeamSystem.OnInviteReceivedDelegate` | `-` | 收到他人发来的局内玩法组队邀请时触发<br>生效范围：客户端<br>@param InviterUID number @邀请者 UID<br>@param NickName string @邀请者昵称<br>@param IconUrl string @邀请者头像 URL<br>@param Gender number @邀请者性别，0=隐藏/未知，1=男，2=女 |
 | `UGCTeamSystem.NotifyInviteToJoinLobbyTeamDelegate` | `-` | 通知被邀请加入大厅队伍<br>生效范围：客户端<br>@param InviteToJoinLobbyTeamToken table @邀请到大厅队伍的 Token。InviteToJoinLobbyTeamToken.InviterUID int @邀请者 UID |
 | `UGCTeamSystem.NotifyRequestToJoinLobbyTeamDelegate` | `-` | 通知请求加入大厅队伍<br>生效范围：客户端<br>@param RequestToJoinLobbyTeamToken table @请求加入大厅队伍的 Token。RequestToJoinLobbyTeamToken.TeamID int @队伍 ID |
 
@@ -35,6 +40,21 @@ GetTeamComponent() -> TeamModeComponent
 |---|---|
 | `TeamModeComponent` | 队伍组件 |
 
+### `GetTeamPlayersNumber`
+
+```text
+GetTeamPlayersNumber() -> number
+```
+
+获取局内玩法队伍人数设置
+生效范围：服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 队伍人数，获取失败返回 0 |
+
 ### `ChangePlayerTeamID`
 
 ```text
@@ -50,6 +70,91 @@ ChangePlayerTeamID(PlayerKey: number, TeamID: number)
 |---|---|---|
 | `PlayerKey` | `number` | 玩家 PlayerKey |
 | `TeamID` | `number` | 队伍 ID |
+
+### `LeaveTeam`
+
+```text
+LeaveTeam()
+```
+
+主动退出当前局内玩法队伍
+生效范围：客户端
+
+### `KickMember`
+
+```text
+KickMember(TargetPlayerKey: number)
+```
+
+将指定玩家踢出局内玩法队伍，仅队长可用
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetPlayerKey` | `number` | 被踢玩家 PlayerKey |
+
+### `InviteInGamePlayer`
+
+```text
+InviteInGamePlayer(TargetUID: number)
+```
+
+邀请同 DS 玩家加入当前局内玩法组队
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetUID` | `number` | 被邀请玩家 UID |
+
+### `InviteLobbyFriend`
+
+```text
+InviteLobbyFriend(FriendUID: number)
+```
+
+邀请大厅好友加入当前 DS 局内玩法组队
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `FriendUID` | `number` | 被邀请好友 UID |
+
+### `RespondInvite`
+
+```text
+RespondInvite(InviterUID: number, Accept: boolean)
+```
+
+响应局内玩法组队邀请，接受时自动完成入队
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InviterUID` | `number` | 邀请者 UID |
+| `Accept` | `boolean` | true=接受 / false=拒绝 |
+
+### `GetTeamLeaderPlayerKeyInGame`
+
+```text
+GetTeamLeaderPlayerKeyInGame() -> number|nil
+```
+
+获取当前所在局内玩法队伍的队长 PlayerKey
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number\|nil` | 队长 PlayerKey，获取失败返回 nil |
 
 ### `GetUIDsByTeamID`
 
@@ -97,7 +202,7 @@ GetPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> @PlayerKey
 ### `GetAIPlayerKeysByTeamID`
 
 ```text
-GetAIPlayerKeysByTeamID(TeamID: number) -> @PlayerKey
+GetAIPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> @PlayerKey
 ```
 
 根据 TeamID 获取对应队伍里所有的假人玩家 AIPlayerKey，PlayerKey需要客户端连上DS后，才会被初始化，若在客户端连上DS前调用该接口，返回的PlayerKey列表不准确
@@ -108,6 +213,7 @@ GetAIPlayerKeysByTeamID(TeamID: number) -> @PlayerKey
 | Name | Type | Description |
 |---|---|---|
 | `TeamID` | `number` | 队伍 ID |
+| `bReturnAsLuaTable` | `boolean` | 是否以LuaTable返回 |
 
 **Returns**
 
@@ -181,7 +287,7 @@ GetPlayerStatesByTeamID(TeamID: number) -> @PlayerState
 ### `GetLobbyTeamUIDsByUID`
 
 ```text
-GetLobbyTeamUIDsByUID(UID: number) -> number[]
+GetLobbyTeamUIDsByUID(UID: number, bReturnAsLuaTable: boolean) -> number[]
 ```
 
 【废弃】请使用 UGCTeamSystem.GetLobbyTeammateUIDsByUID
@@ -193,6 +299,7 @@ GetLobbyTeamUIDsByUID(UID: number) -> number[]
 | Name | Type | Description |
 |---|---|---|
 | `UID` | `number` | 玩家 UID |
+| `bReturnAsLuaTable` | `boolean` | 是否以LuaTable返回 |
 
 **Returns**
 
@@ -203,7 +310,7 @@ GetLobbyTeamUIDsByUID(UID: number) -> number[]
 ### `GetLobbyTeammateUIDsByUID`
 
 ```text
-GetLobbyTeammateUIDsByUID(UID: number) -> number[]
+GetLobbyTeammateUIDsByUID(UID: number, bReturnAsLuaTable: boolean) -> number[]
 ```
 
 根据玩家的UID获取其大厅里组队的成员 UID 列表
@@ -214,6 +321,7 @@ GetLobbyTeammateUIDsByUID(UID: number) -> number[]
 | Name | Type | Description |
 |---|---|---|
 | `UID` | `number` | 玩家 UID |
+| `bReturnAsLuaTable` | `boolean` | 是否以LuaTable返回 |
 
 **Returns**
 
@@ -389,11 +497,17 @@ TransferLobbyTeamLeader(NewLeaderUID: number)
 ### `GetTeamIDs`
 
 ```text
-GetTeamIDs() -> @TeamID
+GetTeamIDs(bReturnAsLuaTable: boolean) -> @TeamID
 ```
 
 获取所有队伍的 ID
 生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bReturnAsLuaTable` | `boolean` | 是否以LuaTable返回 |
 
 **Returns**
 
@@ -510,7 +624,7 @@ GetIsLeaderOrNotByPlayerKey(PlayerKey: number) -> boolean
 ### `GetAllTeammatePlayerState`
 
 ```text
-GetAllTeammatePlayerState(bExcludeSelf: boolean) -> ASTExtraPlayerState[]
+GetAllTeammatePlayerState(bExcludeSelf: boolean, bReturnAsLuaTable: boolean) -> ASTExtraPlayerState[]
 ```
 
 获取所有队友的的PlayerState
@@ -521,6 +635,7 @@ GetAllTeammatePlayerState(bExcludeSelf: boolean) -> ASTExtraPlayerState[]
 | Name | Type | Description |
 |---|---|---|
 | `bExcludeSelf` | `boolean` | 是否排除玩家自身 |
+| `bReturnAsLuaTable` | `boolean` | 是否以LuaTable返回 |
 
 **Returns**
 

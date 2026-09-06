@@ -6,6 +6,3789 @@ category: "API Wiki/class"
 kind: "api_chunk"
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPersistEffectBuff.json -->
+
+# UPersistEffectBuff
+
+Buff系统归属与和平精英的技能系统，用于帮助开发者更方便快捷地实现Buff效果
+  通过与Tag、Attribute等系统的配合能够通过配置就实现大部分所需的效果
+  对于更细致的Buff效果也可以通过重写BP结尾的函数来实现定制化效果。
+
+## Inheritance
+
+`UPersistEffectBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `BuffInfo` | `FPEBuffInfo` | 生效范围：服务器&客户端<br>      Buff蓝图的配置信息 |
+
+## Functions
+
+### `AddStackNum`
+
+```text
+AddStackNum(Num: int32) -> void
+```
+
+生效范围：服务器
+	  修改堆叠层数，修改后的层数大于等于0且小于等于最大堆叠层数(MaxStackNum)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Num` | `int32` | 新增的层数 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetStackNum`
+
+```text
+GetStackNum() -> int32
+```
+
+生效范围：服务器&客户端
+	 获取当前层数
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | 当前层数 |
+
+### `GetCauser`
+
+```text
+GetCauser() -> AActor *
+```
+
+生效范围：服务器&客户端
+      获取Buff的施加者
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor *` | 施加者 |
+
+### `SetCauser`
+
+```text
+SetCauser(Causer: AActor *) -> void
+```
+
+生效范围：服务器
+	 设置Buff的施加者
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Causer` | `AActor *` | 施加者 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `TriggerAllLayer`
+
+```text
+TriggerAllLayer() -> void
+```
+
+生效范围：服务器
+      触发当前所有层的Buff的效果
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `TriggerSingleLayer`
+
+```text
+TriggerSingleLayer() -> void
+```
+
+生效范围：服务器
+	  触发单层的Buff的效果
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `RefreshBuff`
+
+```text
+RefreshBuff() -> void
+```
+
+生效范围：服务器
+	  重置Buff持续时间
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetBuffEnable`
+
+```text
+SetBuffEnable(IsEnable: bool) -> void
+```
+
+生效范围：服务器
+	  设置Buff是否生效
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `IsEnable` | `bool` | 是否生效 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `IsBuffEnable`
+
+```text
+IsBuffEnable() -> bool
+```
+
+生效范围：服务器&客户端
+	  获取Buff当前是否生效
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否生效 |
+
+### `Pause`
+
+```text
+Pause() -> void
+```
+
+生效范围：服务器
+	  暂停Buff持续减少剩余时间
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `Resume`
+
+```text
+Resume() -> void
+```
+
+生效范围：服务器
+	  恢复Buff持续减少剩余时间
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OverwriteBuffUIInfo`
+
+```text
+OverwriteBuffUIInfo(BuffName: FName &, BuffDetail: FString &, BuffIconPath: FString &) -> void
+```
+
+生效范围：客户端
+	  更改UI信息，但双端不同步
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `BuffName` | `FName &` | Buff名字 |
+| `BuffDetail` | `FString &` | Buff描述 |
+| `BuffIconPath` | `FString &` | Buff图标路径 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetBuffName`
+
+```text
+GetBuffName() -> SHADOWTRACKEREXTRA_API FName
+```
+
+生效范围：服务器&客户端
+	  获取Buff名字
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `SHADOWTRACKEREXTRA_API FName` | Buff名字 |
+
+### `GetBuffDetail`
+
+```text
+GetBuffDetail() -> SHADOWTRACKEREXTRA_API FString
+```
+
+生效范围：服务器&客户端
+	  获取Buff描述
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `SHADOWTRACKEREXTRA_API FString` | Buff描述 |
+
+### `GetBuffIconPath`
+
+```text
+GetBuffIconPath() -> FString
+```
+
+生效范围：服务器&客户端
+	  获取Buff图标路径
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FString` | Buff图标路径 |
+
+## Events
+
+### `OnTotalDurationChange_BP`
+
+```text
+OnTotalDurationChange_BP(Pre: float, Current: float) -> void
+```
+
+生效范围：服务器
+	  当Buff持续时间改变时调用，如修改ApplyTime、修改StackNum
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Pre` | `float` | 上一次的持续时间 |
+| `Current` | `float` | 当前的持续时间 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnStackChange_BP`
+
+```text
+OnStackChange_BP(PreNum: int32, CurrentNum: int32) -> void
+```
+
+生效范围：服务器&客户端
+	  当Buff堆叠层数变化时调用，如调用AddStackNum、消耗一层Buff
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PreNum` | `int32` | 上一次的堆叠层数 |
+| `CurrentNum` | `int32` | 当前的堆叠层数 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnRefresh_BP`
+
+```text
+OnRefresh_BP() -> void
+```
+
+生效范围：服务器&客户端
+	  Buff刷新时调用
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `CanTrigger_BP`
+
+```text
+CanTrigger_BP() -> bool
+```
+
+生效范围：服务器
+	  当Buff效果触发前调用，用于改写Buff触发条件，默认实现为直接返回True
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否可以触发 |
+
+### `OnTrigger_BP`
+
+```text
+OnTrigger_BP(Reason: EPEBuffTriggerType) -> void
+```
+
+生效范围：服务器&客户端
+	  当Buff效果触发时调用
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Reason` | `EPEBuffTriggerType` | 触发原因 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Delegates
+
+### `OnStackNumChange`
+
+```text
+OnStackNumChange(ChangeNum: int32) -> void
+```
+
+Event
+	  生效范围：服务器&客户端
+	  Buff层数改变事件
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ChangeNum` | `int32` | 改变的层数 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnUIInfoChange`
+
+```text
+OnUIInfoChange() -> void
+```
+
+Event
+	  生效范围：客户端
+	  Buff的UI信息改变事件
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPersistEffectSkill.json -->
+
+# UPersistEffectSkill
+
+技能实体
+
+## Inheritance
+
+`UPersistEffectWithState` -> `ISkillObjectInterface` -> `IPESkillTaskTrackConditionFilterInterface`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PESkillSlot` | `FGameplayTag` | 技能槽位Tag, 槽位为空时无法自动创建UI |
+| `ApplyTagGroup` | `FGameplayTagGroups` | Tag的配置组，包含该技能与各个Tag的互斥关系 |
+| `CustomActivateConditions` | `FPESkillConditionContainer` | 技能激活自定义条件 |
+| `ConsumeTime` | `EPESkillConsumeTimeType` | CD能量和消耗扣除时机 |
+| `SkillCD` | `FPESkillCDWapper` | 技能CD |
+| `CostConsume` | `FPESkillConsume` | 技能消耗 |
+| `UIInfo` | `FPESkillUIInfo` | 技能外显信息 |
+| `SkillGroup` | `FGameplayTag` | 技能组，同组互斥，不能同时激活同组的技能，如果填空的话则没有任何互斥关系 |
+| `bDefaultEnable` | `bool` | 默认是否可用，如果配置了false，则需要调用enable才能激活技能 |
+
+## Functions
+
+### `EnableSkill`
+
+```text
+EnableSkill() -> void
+```
+
+生效范围：S
+	  使技能可用
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `DisableSkill`
+
+```text
+DisableSkill() -> void
+```
+
+生效范围：S
+	  使技能不可用
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `IsSkillEnable`
+
+```text
+IsSkillEnable() -> bool
+```
+
+生效范围：SC
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 技能是否可用 |
+
+### `DeActivateSkill`
+
+```text
+DeActivateSkill(Reason: EPESkillDeActivateReason) -> void
+```
+
+生效范围：SC
+	  取消技能释放
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Reason` | `EPESkillDeActivateReason` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `CanActivateSkill`
+
+```text
+CanActivateSkill() -> bool
+```
+
+生效范围：SC
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 技能是否可用 |
+
+### `ActivateSkill`
+
+```text
+ActivateSkill() -> void
+```
+
+生效范围：SC
+	  释放技能
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `IsActivating`
+
+```text
+IsActivating() -> bool
+```
+
+生效范围：SC
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 技能是否正在激活 |
+
+### `CheckCDReady`
+
+```text
+CheckCDReady() -> bool
+```
+
+生效范围：服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 技能CD是否已准备好 |
+
+### `CheckCostReady`
+
+```text
+CheckCostReady() -> bool
+```
+
+生效范围：服务器
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 技能需要的消耗是否已准备好 |
+
+### `ConsumeCD`
+
+```text
+ConsumeCD() -> bool
+```
+
+生效范围：服务器
+	  消耗CD
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否成功消耗 |
+
+### `ConsumeCost`
+
+```text
+ConsumeCost() -> bool
+```
+
+生效范围：服务器
+	  消耗道具
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否成功消耗 |
+
+### `GetRemainingCDTime`
+
+```text
+GetRemainingCDTime() -> float
+```
+
+生效范围：服务器&客户端
+	  获取CD剩余时间
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | 剩余时间 |
+
+### `GetCDRecoveryTime`
+
+```text
+GetCDRecoveryTime() -> float
+```
+
+生效范围：服务器&客户端
+	  获取CD恢复时间
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | 剩余时间 |
+
+### `SetCDRecoveryTime`
+
+```text
+SetCDRecoveryTime(CDRecoveryTime: float) -> void
+```
+
+生效范围：服务器
+	  设置CD恢复时间
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `CDRecoveryTime` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetCDRecoverRate`
+
+```text
+GetCDRecoverRate() -> float
+```
+
+生效范围：服务器&客户端
+	  获取CD恢复速率
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | CD恢复速率 |
+
+### `SetCDRecoverRate`
+
+```text
+SetCDRecoverRate(Rate: float) -> void
+```
+
+生效范围：服务器
+	  设置CD恢复速率
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Rate` | `float` | CD恢复速率 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ChargeCDEnergy`
+
+```text
+ChargeCDEnergy(ChargeRate: float) -> void
+```
+
+生效范围：服务器
+	  恢复CD比例，1代表完全恢复一层CD，大于1代表恢复多层，不超过层数上限
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ChargeRate` | `float` | 恢复的层数 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ChargeCDTime`
+
+```text
+ChargeCDTime(ChargeTime: float) -> void
+```
+
+生效范围：服务器
+	  恢复CD固定时间，不超过层数上限
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ChargeTime` | `float` | 恢复的时间，单位秒 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `RefreshCD`
+
+```text
+RefreshCD() -> void
+```
+
+生效范围：服务器
+	  刷新技能CD
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetCDMaxLayer`
+
+```text
+SetCDMaxLayer(InMaxLayer: int) -> void
+```
+
+生效范围：服务器
+	  设置CD最大层数
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InMaxLayer` | `int` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OverwriteSkillUIInfo`
+
+```text
+OverwriteSkillUIInfo(SkillName: FName, SkillDetail: FString, SkillIconPath: FString) -> void
+```
+
+生效范围：服务器&客户端
+	  更改UI信息，但双端不同步
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SkillName` | `FName` | 技能名字 |
+| `SkillDetail` | `FString` | 技能描述 |
+| `SkillIconPath` | `FString` | 技能图标路径 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetSkillName`
+
+```text
+GetSkillName() -> FName
+```
+
+生效范围：服务器&客户端
+	  获取技能名字
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FName` | 技能名字 |
+
+### `GetSkillDetail`
+
+```text
+GetSkillDetail() -> FString
+```
+
+生效范围：服务器&客户端
+	  获取技能描述
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FString` | 技能描述 |
+
+### `GetSkillIconPath`
+
+```text
+GetSkillIconPath() -> FString
+```
+
+生效范围：服务器&客户端
+	  获取技能图标路径
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FString` | 技能图标路径 |
+
+### `SetShowTipsEnable`
+
+```text
+SetShowTipsEnable(bEnable: bool) -> void
+```
+
+生效范围：服务器
+	  设置是否开启技能激活检查失败显示Tips
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnable` | `bool` | 是否开启提示 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetPlayActivateFailedSoundEnable`
+
+```text
+SetPlayActivateFailedSoundEnable(bEnable: bool) -> void
+```
+
+生效范围：服务器
+	  设置是否开启技能激活检查失败播放提示音
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnable` | `bool` | 是否开启提示 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetSelectTargetActor`
+
+```text
+GetSelectTargetActor(SelectType: EPESkillSelectTarget) -> TArray < AActor * >
+```
+
+获取技能目标角色
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SelectType` | `EPESkillSelectTarget` | 选择类型 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TArray < AActor * >` | 技能目标角色 |
+
+### `SetSelectTargetActor`
+
+```text
+SetSelectTargetActor(Actors: TArray < AActor * > &) -> void
+```
+
+设置技能目标角色
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actors` | `TArray < AActor * > &` | Actor数组 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetSelectTargetOneActor`
+
+```text
+SetSelectTargetOneActor(pActor: AActor *) -> void
+```
+
+设置技能目标角色
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `pActor` | `AActor *` | Actor指针 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetSelectDirection`
+
+```text
+SetSelectDirection(Direction: FVector &) -> void
+```
+
+设置技能方向
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Direction` | `FVector &` | 方向 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetSelectDirection`
+
+```text
+GetSelectDirection() -> FVector
+```
+
+获取技能方向
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | 技能方向 |
+
+### `GetSelectTransform`
+
+```text
+GetSelectTransform() -> const FTransform &
+```
+
+获取技能目标位置
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `const FTransform &` | 技能目标位置 |
+
+### `SetSelectTransform`
+
+```text
+SetSelectTransform(Transform: FTransform &) -> void
+```
+
+设置技能目标位置
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Transform` | `FTransform &` | 技能目标位置 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetSelectTransforms`
+
+```text
+SetSelectTransforms(Transforms: TArray < FTransform > &) -> void
+```
+
+设置技能多目标位置
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Transforms` | `TArray < FTransform > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetSelectTransforms`
+
+```text
+GetSelectTransforms() -> const TArray < FTransform > &
+```
+
+获取技能多目标位置
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `const TArray < FTransform > &` | - |
+
+### `ClearSelectTransforms`
+
+```text
+ClearSelectTransforms() -> void
+```
+
+清除技能目标位置
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Events
+
+### `OnEnableSkill_BP`
+
+```text
+OnEnableSkill_BP() -> bool
+```
+
+生效范围：服务器
+	  技能可用通知
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `OnDisableSkill_BP`
+
+```text
+OnDisableSkill_BP() -> bool
+```
+
+生效范围：服务器
+	  技能不可用通知
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `OnActivateSkill_BP`
+
+```text
+OnActivateSkill_BP() -> bool
+```
+
+生效范围：服务器
+	  技能被触发
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `OnDeActivateSkill_BP`
+
+```text
+OnDeActivateSkill_BP(Reason: EPESkillDeActivateReason) -> void
+```
+
+生效范围：服务器
+	  技能结束
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Reason` | `EPESkillDeActivateReason` | 结束原因 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `CanActivateSkill_BP`
+
+```text
+CanActivateSkill_BP() -> bool
+```
+
+生效范围：服务器&客户端
+	  技能是否可用
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 技能是否可释放 |
+
+### `OnCDStateChange_BP`
+
+```text
+OnCDStateChange_BP(bIsCD: bool) -> void
+```
+
+生效范围：服务器&客户端
+	  技能CD状态改变
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bIsCD` | `bool` | 技能是否CD中 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnRegisterToSlot_BP`
+
+```text
+OnRegisterToSlot_BP(Slot: FGameplayTag) -> void
+```
+
+技能被挂载到 Slot 或从 Slot 上摘下时触发
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Slot` | `FGameplayTag` | 新挂载的 Slot Tag；被摘下时为空 Tag |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Delegates
+
+### `OnUIInfoChange`
+
+```text
+OnUIInfoChange() -> void
+```
+
+Event
+	  生效范围：客户端
+	  技能的UI信息改变事件
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `CDStateChangeHandle`
+
+```text
+CDStateChangeHandle(IsTrue: bool) -> void
+```
+
+Event
+	  生效范围：服务器&客户端
+	  客户端同步技能CD状态变化
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `IsTrue` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPersistEffectWithState.json -->
+
+# UPersistEffectWithState
+
+实现了状态机的PersistEffect，是PersistEffectSkill的基类
+
+## Inheritance
+
+`UPersistEffectBase` -> `IActivityStateInterface` -> `IClientConditionInerterface`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bTickStateMachineBeforeSequence` | `bool` | 控制Tick中状态机和Sequence的执行顺序<br>	  true: 先TickStateMachine再SequenceWrapper.Tick（默认，与原有逻辑一致）<br>	  false: 先SequenceWrapper.Tick再TickStateMachine |
+
+## Functions
+
+### `GetCurrentStateName`
+
+```text
+GetCurrentStateName() -> FName
+```
+
+获取当前状态的名字
+	  生效范围: 服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FName` | - |
+
+### `GetCurrentStateTime`
+
+```text
+GetCurrentStateTime() -> float
+```
+
+获取状态的运行时间
+	  生效范围: 服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `JumpToState`
+
+```text
+JumpToState(StateName: FName, EnterTime: float, bPause: bool) -> void
+```
+
+获取跳转到指定状态
+	  生效范围: 服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `StateName` | `FName` | 跳转的目标状态名 |
+| `EnterTime` | `float` | 跳转到目标状态的时间 |
+| `bPause` | `bool` | 是否暂停sequence播放 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `AddBindingByStateAndName`
+
+```text
+AddBindingByStateAndName(StateName: FName, BindingName: FName, Object: UObject *) -> void
+```
+
+按 State 名 + Binding 名一步绑定：将指定 State 的 SkillSequence 中
+	  名为 BindingName 的 Actor 轨道操控实例，绑定到 Object 指向的运行时目标。
+	  与编辑器 "Get 绑定" + "Add Binding" 节点等价，供  Lua 使用。
+	  生效范围: 服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `StateName` | `FName` | 技能状态名（需 SequenceType == GenerateSkillSequence 且配置了 SkillSequence） |
+| `BindingName` | `FName` | 该 SkillSequence 中目标轨道的名称（对应编辑器绑定下拉中的显示名） |
+| `Object` | `UObject *` | 要绑定的运行时目标 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPESkillPassiveSkill.json -->
+
+# UPESkillPassiveSkill
+
+被动技能实体
+
+## Inheritance
+
+`UPersistEffectSkill`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `MaxActivationCount` | `int32` | 最大激活次数，-1表示无限制 |
+
+## Events
+
+### `OnStackChange_BP`
+
+```text
+OnStackChange_BP(PreNum: int32, CurrentNum: int32) -> void
+```
+
+生效范围：服务器&客户端
+	  当 被动技能 堆叠层数变化时调用，比如技能被合并时
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PreNum` | `int32` | 上一次的堆叠层数 |
+| `CurrentNum` | `int32` | 当前的堆叠层数 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `CanClientRPCActivate_BP`
+
+```text
+CanClientRPCActivate_BP() -> bool
+```
+
+生效范围：服务器
+	  当 pes.BlockPassiveSkillClientRPC 开关关闭时，由蓝图决定是否允许客户端 RPC 激活被动技能
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true 允许激活，false 拒绝激活 |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPESkillWidget.json -->
+
+# UPESkillWidget
+
+技能UI基类
+
+## Inheritance
+
+`UUAEUserWidget` -> `ILuaInterface`
+
+## Functions
+
+### `BindToSlot`
+
+```text
+BindToSlot(Comp: UPersistBaseComponent *, SlotName: FGameplayTag) -> void
+```
+
+将技能绑定到指定PE组件的指定Slot上
+	  生效范围C
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Comp` | `UPersistBaseComponent *` | 绑定的组件 |
+| `SlotName` | `FGameplayTag` | 绑定的槽位 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetCurrentSkill`
+
+```text
+GetCurrentSkill() -> UPersistEffectSkill *
+```
+
+获取当前绑定的技能
+	  生效范围C
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UPersistEffectSkill *` | 当前绑定的技能 |
+
+### `BindImageAndTextForSkillNameAndIcon`
+
+```text
+BindImageAndTextForSkillNameAndIcon(IconImage: UImage *, NameText: UTextBlock *, DescribeText: UTextBlock *) -> void
+```
+
+绑定用于显示技能图标、名字、描述的控件
+	  生效范围C
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `IconImage` | `UImage *` | 图标控件 |
+| `NameText` | `UTextBlock *` | 名字控件 |
+| `DescribeText` | `UTextBlock *` | 描述控件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `RefreshSkillUI`
+
+```text
+RefreshSkillUI() -> void
+```
+
+刷新当前UI绑定的控件的内容
+	  生效范围C
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetSkillName`
+
+```text
+GetSkillName() -> FName
+```
+
+获取技能名字
+	  生效范围C
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FName` | 技能名字 |
+
+### `GetSkillDetail`
+
+```text
+GetSkillDetail() -> FString
+```
+
+获取技能描述
+	  生效范围C
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FString` | 技能描述 |
+
+### `GetSkillIcon`
+
+```text
+GetSkillIcon() -> FSoftObjectPath
+```
+
+获取技能图标
+	  生效范围C
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FSoftObjectPath` | 技能图标 |
+
+### `InitButton`
+
+```text
+InitButton(IconImage: UImage *, NameText: UTextBlock *, ClickButton: UButton *) -> void
+```
+
+绑定技能按钮控件
+	  生效范围C
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `IconImage` | `UImage *` | 图标控件 |
+| `NameText` | `UTextBlock *` | 名字控件 |
+| `ClickButton` | `UButton *` | 按钮控件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `InitLayer`
+
+```text
+InitLayer(LayerText: UTextBlock *, LayerPanel: UPanelWidget *) -> void
+```
+
+绑定技能使用层数控件
+	  生效范围C
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `LayerText` | `UTextBlock *` | 技能层数 |
+| `LayerPanel` | `UPanelWidget *` | 技能层数的Panel控件，控制层数的显隐 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `InitCDProgress`
+
+```text
+InitCDProgress(CDText: UTextBlock *, CDProgressImage: UImage *, CDProgressPanel: UPanelWidget *) -> void
+```
+
+绑定技能CD控件
+	  生效范围C
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `CDText` | `UTextBlock *` | 技能CD时间 |
+| `CDProgressImage` | `UImage *` | @技能CD进度条 |
+| `CDProgressPanel` | `UPanelWidget *` | 整个CD的Panel控件，控制CD的显隐 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `InitEnergyProgress`
+
+```text
+InitEnergyProgress(EnergyProgressImage: UImage *, EnergyCanvasPanel: UPanelWidget *) -> void
+```
+
+绑定技能能量控件
+	  生效范围C
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EnergyProgressImage` | `UImage *` | 技能能量进度条 |
+| `EnergyCanvasPanel` | `UPanelWidget *` | 技能能量Panel控件，控制能量进度条的显隐 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `InitTagDisableState`
+
+```text
+InitTagDisableState(TagDisableCanvasPanel: UPanelWidget *) -> void
+```
+
+绑定技能显示TagDisable状态的控件
+	  生效范围C
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TagDisableCanvasPanel` | `UPanelWidget *` | 技能TagDisable状态的Panel控件，控制TagDisable状态的显隐 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `InitEnableState`
+
+```text
+InitEnableState(EnableCanvasPanel: UPanelWidget *) -> void
+```
+
+绑定技能显示Enable状态的控件
+	  生效范围C
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EnableCanvasPanel` | `UPanelWidget *` | 技能Enable状态的Panel控件，控制Enable状态的显隐 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `InitVirtualJoystick`
+
+```text
+InitVirtualJoystick(VirtualJoystickPanel: UPanelWidget *, VirtualJoystick: UPESkillVirtualJoystick *) -> void
+```
+
+绑定技能摇杆输入控件
+	  生效范围C
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `VirtualJoystickPanel` | `UPanelWidget *` | - |
+| `VirtualJoystick` | `UPESkillVirtualJoystick *` | 技能技能摇杆控件，控制摇杆的生效和失效 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Events
+
+### `OnSkillBound_BP`
+
+```text
+OnSkillBound_BP(InOwnerSkill: UPersistEffectSkill *) -> void
+```
+
+当控件绑定到新的技能时触发
+	  生效范围C
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InOwnerSkill` | `UPersistEffectSkill *` | 当前绑定的技能 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `UpdateCD_BP`
+
+```text
+UpdateCD_BP(Delta: float) -> void
+```
+
+每帧触发，用于更新CD显示
+	  生效范围C
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Delta` | `float` | 每帧的时间 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnCDStateChange_BP`
+
+```text
+OnCDStateChange_BP(bIsCD: bool) -> void
+```
+
+当控件绑定的技能CD状态变化时触发
+	  生效范围C
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bIsCD` | `bool` | 技能是否处在CD状态 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnSkillUIInfoChange_BP`
+
+```text
+OnSkillUIInfoChange_BP() -> void
+```
+
+当控件绑定的技能的UI信息变化时触发
+	  生效范围C
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnEnableChange_BP`
+
+```text
+OnEnableChange_BP(bIsEnable: bool) -> void
+```
+
+当控件绑定的技能Enable状态变化时触发
+	  生效范围C
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bIsEnable` | `bool` | 技能是否Enable |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnTagDisableChange_BP`
+
+```text
+OnTagDisableChange_BP(bIsDisable: bool) -> void
+```
+
+当控件绑定的技能被禁用Tag(PawnState.ActivatingSkill)导致无法激活时触发
+	  生效范围C
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bIsDisable` | `bool` | 技能是否被Tag禁用 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnSkillDirectionInputEnableChange_BP`
+
+```text
+OnSkillDirectionInputEnableChange_BP(bEnable: bool) -> void
+```
+
+当控件绑定的技能的摇杆输入生效或失效时触发
+	  生效范围C
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnable` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPESkillWithPredict.json -->
+
+# UPESkillWithPredict
+
+带主端预测的技能实,目前暂未有技能实装，待测试
+
+## Inheritance
+
+`UPersistEffectSkill`
+
+## Functions
+
+### `ActivateSkillWithPredict`
+
+```text
+ActivateSkillWithPredict() -> void
+```
+
+生效范围：SC
+	  释放技能带主端预测
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `JumpToStateWithPredict`
+
+```text
+JumpToStateWithPredict(StateName: FName, EnterTime: float, bPause: bool) -> void
+```
+
+生效范围：SC
+	  跳转状态带主端预测
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `StateName` | `FName` | - |
+| `EnterTime` | `float` | - |
+| `bPause` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicalAnimationComponent.json -->
+
+# UPhysicalAnimationComponent
+
+## Inheritance
+
+`UActorComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `StrengthMultiplyer` | `float` | Multiplies the strength of any active motors. (can blend from 0-1 for example) |
+| `SkeletalMeshComponent` | `USkeletalMeshComponent *` | - |
+
+## Functions
+
+### `SetSkeletalMeshComponent`
+
+```text
+SetSkeletalMeshComponent(InSkeletalMeshComponent: USkeletalMeshComponent *) -> void
+```
+
+Sets the skeletal mesh we are driving through physical animation. Will erase any existing physical animation data.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InSkeletalMeshComponent` | `USkeletalMeshComponent *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ApplyPhysicalAnimationSettings`
+
+```text
+ApplyPhysicalAnimationSettings(BodyName: FName, PhysicalAnimationData: FPhysicalAnimationData &) -> void
+```
+
+Applies the physical animation settings to the body given.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `BodyName` | `FName` | - |
+| `PhysicalAnimationData` | `FPhysicalAnimationData &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ApplyPhysicalAnimationSettingsBelow`
+
+```text
+ApplyPhysicalAnimationSettingsBelow(BodyName: FName, PhysicalAnimationData: FPhysicalAnimationData &, bIncludeSelf: bool) -> void
+```
+
+Applies the physical animation settings to the body given and all bodies below.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `BodyName` | `FName` | - |
+| `PhysicalAnimationData` | `FPhysicalAnimationData &` | - |
+| `bIncludeSelf` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetStrengthMultiplyer`
+
+```text
+SetStrengthMultiplyer(InStrengthMultiplyer: float) -> void
+```
+
+Updates strength multiplyer and any active motors
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InStrengthMultiplyer` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ApplyPhysicalAnimationProfileBelow`
+
+```text
+ApplyPhysicalAnimationProfileBelow(BodyName: FName, ProfileName: FName, bIncludeSelf: bool, bClearNotFound: bool) -> void
+```
+
+Applies the physical animation profile to the body given and all bodies below.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `BodyName` | `FName` | The body from which we'd like to start applying the physical animation profile. Finds all bodies below in the skeleton hierarchy. None implies all bodies |
+| `ProfileName` | `FName` | The physical animation profile we'd like to apply. For each body in the physics asset we search for physical animation settings with this name. |
+| `bIncludeSelf` | `bool` | Whether to include the provided body name in the list of bodies we act on (useful to ignore for cases where a root has multiple children) |
+| `bClearNotFound` | `bool` | If true, bodies without the given profile name will have any existing physical animation settings cleared. If false, bodies without the given profile name are left untouched. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetBodyTargetTransform`
+
+```text
+GetBodyTargetTransform(BodyName: FName) -> FTransform
+```
+
+Returns the target transform for the given body. If physical animation component is not controlling this body, returns its current transform.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `BodyName` | `FName` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FTransform` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicalMaterial.json -->
+
+# UPhysicalMaterial
+
+Physical materials are used to define the response of a physical object when interacting dynamically with the world.
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Friction` | `float` | Friction value of surface, controls how easily things can slide on this surface (0 is frictionless, higher values increase the amount of friction) |
+| `FrictionCombineMode` | `TEnumAsByte < EFrictionCombineMode :: Type >` | Friction combine mode, controls how friction is computed for multiple materials. |
+| `bOverrideFrictionCombineMode` | `bool` | If set we will use the FrictionCombineMode of this material, instead of the FrictionCombineMode found in the project settings. |
+| `Restitution` | `float` | Restitution or 'bounciness' of this surface, between 0 (no bounce) and 1 (outgoing velocity is same as incoming). |
+| `RestitutionCombineMode` | `TEnumAsByte < EFrictionCombineMode :: Type >` | Restitution combine mode, controls how restitution is computed for multiple materials. |
+| `bOverrideRestitutionCombineMode` | `bool` | If set we will use the RestitutionCombineMode of this material, instead of the RestitutionCombineMode found in the project settings. |
+| `Density` | `float` | Used with the shape of the object to calculate its mass properties. The higher the number, the heavier the object. g per cubic cm. |
+| `RaiseMassToPower` | `float` | Used to adjust the way that mass increases as objects get larger. This is applied to the mass as calculated based on a 'solid' object. <br>	 	In actuality, larger objects do not tend to be solid, and become more like 'shells' (e.g. a car is not a solid piece of metal).<br>	 	Values are clamped to 1 or less. |
+| `DestructibleDamageThresholdScale` | `float` | How much to scale the damage threshold by on any destructible we are applied to |
+| `PhysicalMaterialProperty` | `UDEPRECATED_PhysicalMaterialPropertyBase *` | UPROPERTY(deprecated) |
+| `SurfaceType` | `TEnumAsByte < EPhysicalSurface >` | To edit surface type for your project, use ProjectSettingsPhysicsPhysicalSurface section |
+| `TireFrictionScale` | `float` | DEPRECATED - Overall tire friction scalar for every type of tire. This value is multiplied against our parents' values. |
+| `TireFrictionScales` | `TArray < FTireFrictionScalePair >` | DEPRECATED - Tire friction scales for specific types of tires. These values are multiplied against our parents' values. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsAsset.json -->
+
+# UPhysicsAsset
+
+PhysicsAsset contains a set of rigid bodies and constraints that make up a single ragdoll.
+  The asset is not limited to human ragdolls, and can be used for any physical simulation using bodies and constraints.
+  A SkeletalMesh has a single PhysicsAsset, which allows for easily turning ragdoll physics on or off for many SkeletalMeshComponents
+  The asset can be configured inside the Physics Asset Editor.
+ 
+  @see USkeletalMesh
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `BoundsBodies` | `TArray < int32 >` | Index of bodies that are marked bConsiderForBounds |
+| `SkeletalBodySetups` | `TArray < USkeletalBodySetup * >` | Array of SkeletalBodySetup objects. Stores information about collision shape etc. for each body.<br>		Does not include body position - those are taken from mesh. |
+| `ConstraintSetup` | `TArray < UPhysicsConstraintTemplate * >` | Array of RB_ConstraintSetup objects. <br>	 	Stores information about a joint between two bodies, such as position relative to each body, joint limits etc. |
+| `bUseAsyncScene` | `uint8` | If true, bodies of the physics asset will be put into the asynchronous physics scene. If false, they will be put into the synchronous physics scene. |
+| `ThumbnailInfo` | `UThumbnailInfo *` | Information for thumbnail rendering |
+| `BodySetup_DEPRECATED` | `TArray < UBodySetup * >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsCollisionHandler.json -->
+
+# UPhysicsCollisionHandler
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ImpactThreshold` | `float` | How hard an impact must be to trigger effectsound |
+| `ImpactReFireDelay` | `float` | Min time between effectsound being triggered |
+| `DefaultImpactSound` | `USoundBase *` | Sound to play |
+| `LastImpactSoundTime` | `float` | Time since last impact sound |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsConstraintComponent.json -->
+
+# UPhysicsConstraintComponent
+
+This is effectively a joint that allows you to connect 2 rigid bodies together. You can create different types of joints using the various parameters of this component.
+
+## Inheritance
+
+`USceneComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ConstraintActor1` | `AActor *` | Pointer to first Actor to constrain. |
+| `ComponentName1` | `FConstrainComponentPropName` | Name of first component property to constrain. If Actor1 is NULL, will look within Owner.<br>	 	If this is NULL, will use RootComponent of Actor1 |
+| `ConstraintActor2` | `AActor *` | Pointer to second Actor to constrain. |
+| `ComponentName2` | `FConstrainComponentPropName` | Name of second component property to constrain. If Actor2 is NULL, will look within Owner. <br>	 	If this is NULL, will use RootComponent of Actor2 |
+| `ConstraintSetup_DEPRECATED` | `UPhysicsConstraintTemplate *` | - |
+| `OnConstraintBroken` | `FConstraintBrokenSignature` | Notification when constraint is broken. |
+| `ConstraintInstance` | `FConstraintInstance` | All constraint settings |
+
+## Functions
+
+### `SetConstrainedComponents`
+
+```text
+SetConstrainedComponents(Component1: UPrimitiveComponent *, BoneName1: FName, Component2: UPrimitiveComponent *, BoneName2: FName) -> void
+```
+
+Directly specify component to connect. Will update frames based on current position.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component1` | `UPrimitiveComponent *` | - |
+| `BoneName1` | `FName` | - |
+| `Component2` | `UPrimitiveComponent *` | - |
+| `BoneName2` | `FName` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `BreakConstraint`
+
+```text
+BreakConstraint() -> void
+```
+
+Break this constraint
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLinearPositionDrive`
+
+```text
+SetLinearPositionDrive(bEnableDriveX: bool, bEnableDriveY: bool, bEnableDriveZ: bool) -> void
+```
+
+EnablesDisables linear position drive
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnableDriveX` | `bool` | Indicates whether the drive for the X-Axis should be enabled |
+| `bEnableDriveY` | `bool` | Indicates whether the drive for the Y-Axis should be enabled |
+| `bEnableDriveZ` | `bool` | Indicates whether the drive for the Z-Axis should be enabled |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLinearVelocityDrive`
+
+```text
+SetLinearVelocityDrive(bEnableDriveX: bool, bEnableDriveY: bool, bEnableDriveZ: bool) -> void
+```
+
+EnablesDisables linear position drive
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnableDriveX` | `bool` | Indicates whether the drive for the X-Axis should be enabled |
+| `bEnableDriveY` | `bool` | Indicates whether the drive for the Y-Axis should be enabled |
+| `bEnableDriveZ` | `bool` | Indicates whether the drive for the Z-Axis should be enabled |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAngularOrientationDrive`
+
+```text
+SetAngularOrientationDrive(bEnableSwingDrive: bool, bEnableTwistDrive: bool) -> void
+```
+
+EnablesDisables angular orientation drive. Only relevant if the AngularDriveMode is set to Twist and Swing
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnableSwingDrive` | `bool` | Indicates whether the drive for the swing axis should be enabled. Only relevant if the AngularDriveMode is set to Twist and Swing |
+| `bEnableTwistDrive` | `bool` | Indicates whether the drive for the twist axis should be enabled. Only relevant if the AngularDriveMode is set to Twist and Swing |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetOrientationDriveTwistAndSwing`
+
+```text
+SetOrientationDriveTwistAndSwing(bEnableTwistDrive: bool, bEnableSwingDrive: bool) -> void
+```
+
+EnablesDisables angular orientation drive. Only relevant if the AngularDriveMode is set to Twist and Swing
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnableTwistDrive` | `bool` | Indicates whether the drive for the twist axis should be enabled. Only relevant if the AngularDriveMode is set to Twist and Swing |
+| `bEnableSwingDrive` | `bool` | Indicates whether the drive for the swing axis should be enabled. Only relevant if the AngularDriveMode is set to Twist and Swing |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetOrientationDriveSLERP`
+
+```text
+SetOrientationDriveSLERP(bEnableSLERP: bool) -> void
+```
+
+EnablesDisables the angular orientation slerp drive. Only relevant if the AngularDriveMode is set to SLERP
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnableSLERP` | `bool` | Indicates whether the SLERP drive should be enabled. Only relevant if the AngularDriveMode is set to SLERP |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAngularVelocityDrive`
+
+```text
+SetAngularVelocityDrive(bEnableSwingDrive: bool, bEnableTwistDrive: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnableSwingDrive` | `bool` | - |
+| `bEnableTwistDrive` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAngularVelocityDriveTwistAndSwing`
+
+```text
+SetAngularVelocityDriveTwistAndSwing(bEnableTwistDrive: bool, bEnableSwingDrive: bool) -> void
+```
+
+EnablesDisables angular velocity twist and swing drive. Only relevant if the AngularDriveMode is set to Twist and Swing
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnableTwistDrive` | `bool` | Indicates whether the drive for the twist axis should be enabled. Only relevant if the AngularDriveMode is set to Twist and Swing |
+| `bEnableSwingDrive` | `bool` | Indicates whether the drive for the swing axis should be enabled. Only relevant if the AngularDriveMode is set to Twist and Swing |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAngularVelocityDriveSLERP`
+
+```text
+SetAngularVelocityDriveSLERP(bEnableSLERP: bool) -> void
+```
+
+EnablesDisables the angular velocity slerp drive. Only relevant if the AngularDriveMode is set to SLERP
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnableSLERP` | `bool` | Indicates whether the SLERP drive should be enabled. Only relevant if the AngularDriveMode is set to SLERP |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAngularDriveMode`
+
+```text
+SetAngularDriveMode(DriveMode: EAngularDriveMode :: Type) -> void
+```
+
+Switches the angular drive mode between SLERP and Twist And Swing
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `DriveMode` | `EAngularDriveMode :: Type` | The angular drive mode to use. SLERP uses shortest spherical path, but will not work if any angular constraints are locked. Twist and Swing decomposes the path into the different angular degrees of freedom but may experience gimbal lock |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLinearPositionTarget`
+
+```text
+SetLinearPositionTarget(InPosTarget: FVector &) -> void
+```
+
+Sets the target position for the linear drive.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPosTarget` | `FVector &` | Target position |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLinearVelocityTarget`
+
+```text
+SetLinearVelocityTarget(InVelTarget: FVector &) -> void
+```
+
+Sets the target velocity for the linear drive.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InVelTarget` | `FVector &` | Target velocity |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLinearDriveParams`
+
+```text
+SetLinearDriveParams(PositionStrength: float, VelocityStrength: float, InForceLimit: float) -> void
+```
+
+Sets the drive params for the linear drive.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PositionStrength` | `float` | Positional strength for the drive (stiffness) |
+| `VelocityStrength` | `float` | Velocity strength of the drive (damping) |
+| `InForceLimit` | `float` | Max force applied by the drive |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAngularOrientationTarget`
+
+```text
+SetAngularOrientationTarget(InPosTarget: FRotator &) -> void
+```
+
+Sets the target orientation for the angular drive.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPosTarget` | `FRotator &` | Target orientation |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAngularVelocityTarget`
+
+```text
+SetAngularVelocityTarget(InVelTarget: FVector &) -> void
+```
+
+Sets the target velocity for the angular drive.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InVelTarget` | `FVector &` | Target velocity |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAngularDriveParams`
+
+```text
+SetAngularDriveParams(PositionStrength: float, VelocityStrength: float, InForceLimit: float) -> void
+```
+
+Sets the drive params for the angular drive.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PositionStrength` | `float` | Positional strength for the drive (stiffness) |
+| `VelocityStrength` | `float` | Velocity strength of the drive (damping) |
+| `InForceLimit` | `float` | Max force applied by the drive |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLinearXLimit`
+
+```text
+SetLinearXLimit(ConstraintType: ELinearConstraintMotion, LimitSize: float) -> void
+```
+
+Sets the LinearX Motion Type
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ConstraintType` | `ELinearConstraintMotion` | New Constraint Type |
+| `LimitSize` | `float` | Size of limit |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLinearYLimit`
+
+```text
+SetLinearYLimit(ConstraintType: ELinearConstraintMotion, LimitSize: float) -> void
+```
+
+Sets the LinearY Motion Type
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ConstraintType` | `ELinearConstraintMotion` | New Constraint Type |
+| `LimitSize` | `float` | Size of limit |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLinearZLimit`
+
+```text
+SetLinearZLimit(ConstraintType: ELinearConstraintMotion, LimitSize: float) -> void
+```
+
+Sets the LinearZ Motion Type
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ConstraintType` | `ELinearConstraintMotion` | New Constraint Type |
+| `LimitSize` | `float` | Size of limit |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAngularSwing1Limit`
+
+```text
+SetAngularSwing1Limit(MotionType: EAngularConstraintMotion, Swing1LimitAngle: float) -> void
+```
+
+Sets the Angular Swing1 Motion Type
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `MotionType` | `EAngularConstraintMotion` | - |
+| `Swing1LimitAngle` | `float` | Size of limit in degrees |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAngularSwing2Limit`
+
+```text
+SetAngularSwing2Limit(MotionType: EAngularConstraintMotion, Swing2LimitAngle: float) -> void
+```
+
+Sets the Angular Swing2 Motion Type
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `MotionType` | `EAngularConstraintMotion` | - |
+| `Swing2LimitAngle` | `float` | Size of limit in degrees |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAngularTwistLimit`
+
+```text
+SetAngularTwistLimit(ConstraintType: EAngularConstraintMotion, TwistLimitAngle: float) -> void
+```
+
+Sets the Angular Twist Motion Type
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ConstraintType` | `EAngularConstraintMotion` | New Constraint Type |
+| `TwistLimitAngle` | `float` | Size of limit in degrees |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLinearBreakable`
+
+```text
+SetLinearBreakable(bLinearBreakable: bool, LinearBreakThreshold: float) -> void
+```
+
+Sets the Linear Breakable properties
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bLinearBreakable` | `bool` | Whether it is possible to break the joint with linear force |
+| `LinearBreakThreshold` | `float` | Force needed to break the joint |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAngularBreakable`
+
+```text
+SetAngularBreakable(bAngularBreakable: bool, AngularBreakThreshold: float) -> void
+```
+
+Sets the Angular Breakable properties
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bAngularBreakable` | `bool` | Whether it is possible to break the joint with angular force |
+| `AngularBreakThreshold` | `float` | Torque needed to break the joint |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetCurrentTwist`
+
+```text
+GetCurrentTwist() -> float
+```
+
+Gets the current Angular Twist of the constraint
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetCurrentSwing1`
+
+```text
+GetCurrentSwing1() -> float
+```
+
+Gets the current Swing1 of the constraint
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetCurrentSwing2`
+
+```text
+GetCurrentSwing2() -> float
+```
+
+Gets the current Swing2 of the constraint
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `SetConstraintReferenceFrame`
+
+```text
+SetConstraintReferenceFrame(Frame: EConstraintFrame :: Type, RefFrame: FTransform &) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Frame` | `EConstraintFrame :: Type` | - |
+| `RefFrame` | `FTransform &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetConstraintReferencePosition`
+
+```text
+SetConstraintReferencePosition(Frame: EConstraintFrame :: Type, RefPosition: FVector &) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Frame` | `EConstraintFrame :: Type` | - |
+| `RefPosition` | `FVector &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetConstraintReferenceOrientation`
+
+```text
+SetConstraintReferenceOrientation(Frame: EConstraintFrame :: Type, PriAxis: FVector &, SecAxis: FVector &) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Frame` | `EConstraintFrame :: Type` | - |
+| `PriAxis` | `FVector &` | - |
+| `SecAxis` | `FVector &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetDisableCollision`
+
+```text
+SetDisableCollision(bDisableCollision: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bDisableCollision` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetConstraintForce`
+
+```text
+GetConstraintForce(OutLinearForce: FVector &, OutAngularForce: FVector &) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `OutLinearForce` | `FVector &` | - |
+| `OutAngularForce` | `FVector &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `IsBroken`
+
+```text
+IsBroken() -> bool
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsConstraintTemplate.json -->
+
+# UPhysicsConstraintTemplate
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `DefaultInstance` | `FConstraintInstance` | - |
+| `ProfileHandles` | `TArray < FPhysicsConstraintProfileHandle >` | Handles to the constraint profiles applicable to this constraint |
+| `DefaultProfile` | `FConstraintProfileProperties` | When no profile is selected, use these settings. Only needed in editor as we serialize it into DefaultInstance on save |
+| `JointName_DEPRECATED` | `FName` | - |
+| `ConstraintBone1_DEPRECATED` | `FName` | - |
+| `ConstraintBone2_DEPRECATED` | `FName` | - |
+| `Pos1_DEPRECATED` | `FVector` | - |
+| `PriAxis1_DEPRECATED` | `FVector` | - |
+| `SecAxis1_DEPRECATED` | `FVector` | - |
+| `Pos2_DEPRECATED` | `FVector` | - |
+| `PriAxis2_DEPRECATED` | `FVector` | - |
+| `SecAxis2_DEPRECATED` | `FVector` | - |
+| `bEnableProjection_DEPRECATED` | `uint32` | - |
+| `ProjectionLinearTolerance_DEPRECATED` | `float` | - |
+| `ProjectionAngularTolerance_DEPRECATED` | `float` | - |
+| `LinearXMotion_DEPRECATED` | `TEnumAsByte < enum ELinearConstraintMotion >` | - |
+| `LinearYMotion_DEPRECATED` | `TEnumAsByte < enum ELinearConstraintMotion >` | - |
+| `LinearZMotion_DEPRECATED` | `TEnumAsByte < enum ELinearConstraintMotion >` | - |
+| `LinearLimitSize_DEPRECATED` | `float` | - |
+| `bLinearLimitSoft_DEPRECATED` | `uint32` | - |
+| `LinearLimitStiffness_DEPRECATED` | `float` | - |
+| `LinearLimitDamping_DEPRECATED` | `float` | - |
+| `bLinearBreakable_DEPRECATED` | `uint32` | - |
+| `LinearBreakThreshold_DEPRECATED` | `float` | - |
+| `AngularSwing1Motion_DEPRECATED` | `TEnumAsByte < enum EAngularConstraintMotion >` | - |
+| `AngularSwing2Motion_DEPRECATED` | `TEnumAsByte < enum EAngularConstraintMotion >` | - |
+| `AngularTwistMotion_DEPRECATED` | `TEnumAsByte < enum EAngularConstraintMotion >` | - |
+| `bSwingLimitSoft_DEPRECATED` | `uint32` | - |
+| `bTwistLimitSoft_DEPRECATED` | `uint32` | - |
+| `Swing1LimitAngle_DEPRECATED` | `float` | - |
+| `Swing2LimitAngle_DEPRECATED` | `float` | - |
+| `TwistLimitAngle_DEPRECATED` | `float` | - |
+| `SwingLimitStiffness_DEPRECATED` | `float` | - |
+| `SwingLimitDamping_DEPRECATED` | `float` | - |
+| `TwistLimitStiffness_DEPRECATED` | `float` | - |
+| `TwistLimitDamping_DEPRECATED` | `float` | - |
+| `bAngularBreakable_DEPRECATED` | `uint32` | - |
+| `AngularBreakThreshold_DEPRECATED` | `float` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsHandleComponent.json -->
+
+# UPhysicsHandleComponent
+
+Utility object for moving physics objects around.
+
+## Inheritance
+
+`UActorComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `GrabbedComponent` | `UPrimitiveComponent *` | Component we are currently holding |
+| `bSoftAngularConstraint` | `uint32` | - |
+| `bSoftLinearConstraint` | `uint32` | - |
+| `bInterpolateTarget` | `uint32` | - |
+| `LinearDamping` | `float` | Linear damping of the handle spring. |
+| `LinearStiffness` | `float` | Linear stiffness of the handle spring |
+| `AngularDamping` | `float` | Angular stiffness of the handle spring |
+| `AngularStiffness` | `float` | Angular stiffness of the handle spring |
+| `InterpolationSpeed` | `float` | How quickly we interpolate the physics target transform |
+
+## Functions
+
+### `GrabComponent`
+
+```text
+GrabComponent(Component: UPrimitiveComponent *, InBoneName: FName, GrabLocation: FVector, bConstrainRotation: bool) -> ENGINE_API virtual void
+```
+
+Grab the specified component
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent *` | - |
+| `InBoneName` | `FName` | - |
+| `GrabLocation` | `FVector` | - |
+| `bConstrainRotation` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API virtual void` | - |
+
+### `GrabComponentAtLocation`
+
+```text
+GrabComponentAtLocation(Component: UPrimitiveComponent *, InBoneName: FName, GrabLocation: FVector) -> ENGINE_API void
+```
+
+Grab the specified component at a given location. Does NOT constraint rotation which means the handle will pivot about GrabLocation.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent *` | - |
+| `InBoneName` | `FName` | - |
+| `GrabLocation` | `FVector` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+### `GrabComponentAtLocationWithRotation`
+
+```text
+GrabComponentAtLocationWithRotation(Component: UPrimitiveComponent *, InBoneName: FName, Location: FVector, Rotation: FRotator) -> ENGINE_API void
+```
+
+Grab the specified component at a given location and rotation. Constrains rotation.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent *` | - |
+| `InBoneName` | `FName` | - |
+| `Location` | `FVector` | - |
+| `Rotation` | `FRotator` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+### `ReleaseComponent`
+
+```text
+ReleaseComponent() -> ENGINE_API virtual void
+```
+
+Release the currently held component
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API virtual void` | - |
+
+### `GetGrabbedComponent`
+
+```text
+GetGrabbedComponent() -> ENGINE_API class UPrimitiveComponent *
+```
+
+Returns the currently grabbed component, or null if nothing is grabbed.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API class UPrimitiveComponent *` | - |
+
+### `SetTargetLocation`
+
+```text
+SetTargetLocation(NewLocation: FVector) -> ENGINE_API void
+```
+
+Set the target location
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewLocation` | `FVector` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+### `SetTargetRotation`
+
+```text
+SetTargetRotation(NewRotation: FRotator) -> ENGINE_API void
+```
+
+Set the target rotation
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewRotation` | `FRotator` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+### `SetTargetLocationAndRotation`
+
+```text
+SetTargetLocationAndRotation(NewLocation: FVector, NewRotation: FRotator) -> ENGINE_API void
+```
+
+Set target location and rotation
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewLocation` | `FVector` | - |
+| `NewRotation` | `FRotator` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+### `GetTargetLocationAndRotation`
+
+```text
+GetTargetLocationAndRotation(TargetLocation: FVector &, TargetRotation: FRotator &) -> ENGINE_API void
+```
+
+Get the current location and rotation
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetLocation` | `FVector &` | - |
+| `TargetRotation` | `FRotator &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+### `SetLinearDamping`
+
+```text
+SetLinearDamping(NewLinearDamping: float) -> ENGINE_API void
+```
+
+Set linear damping
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewLinearDamping` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+### `SetLinearStiffness`
+
+```text
+SetLinearStiffness(NewLinearStiffness: float) -> ENGINE_API void
+```
+
+Set linear stiffness
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewLinearStiffness` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+### `SetAngularDamping`
+
+```text
+SetAngularDamping(NewAngularDamping: float) -> ENGINE_API void
+```
+
+Set angular damping
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewAngularDamping` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+### `SetAngularStiffness`
+
+```text
+SetAngularStiffness(NewAngularStiffness: float) -> ENGINE_API void
+```
+
+Set angular stiffness
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewAngularStiffness` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+### `SetInterpolationSpeed`
+
+```text
+SetInterpolationSpeed(NewInterpolationSpeed: float) -> ENGINE_API void
+```
+
+Set interpolation speed
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewInterpolationSpeed` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsSettings.json -->
+
+# UPhysicsSettings
+
+Default physics settings.
+
+## Inheritance
+
+`UDeveloperSettings`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ServerPvdThresholdMs` | `float` | Default ServerPvdThresholdMs. |
+| `ClientPvdThresholdMs` | `float` | Default ClientPvdThresholdMs. |
+| `ServerPvdRecordTimeSeconds` | `int32` | Default ServerPvdRecordTimeSeconds. |
+| `ClientPvdRecordTimeSeconds` | `int32` | Default ClientPvdRecordTimeSeconds. |
+| `DefaultGravityZ` | `float` | Default gravity. |
+| `DefaultTerminalVelocity` | `float` | Default terminal velocity for Physics Volumes. |
+| `DefaultFluidFriction` | `float` | Default fluid friction for Physics Volumes. |
+| `SimulateScratchMemorySize` | `int32` | Amount of memory to reserve for PhysX simulate(), this is per pxscene and will be rounded up to the next 16K boundary |
+| `RagdollAggregateThreshold` | `int32` | Threshold for ragdoll bodies above which they will be added to an aggregate before being added to the scene |
+| `TriangleMeshTriangleMinAreaThreshold` | `float` | Triangles from triangle meshes (BSP) with an area less than or equal to this value will be removed from physics collision data. Set to less than 0 to disable. |
+| `bEnableAsyncScene` | `bool` | Enables the use of an async scene |
+| `bEnableShapeSharing` | `bool` | Enables shape sharing between sync and async scene for static rigid actors |
+| `bEnablePCM` | `bool` | Enables persistent contact manifolds. This will generate fewer contact points, but with more accuracy. Reduces stability of stacking, but can help energy conservation. |
+| `bEnableStabilization` | `bool` | Enables stabilization of contacts for slow moving bodies. This will help improve the stability of stacking. |
+| `bWarnMissingLocks` | `bool` | Whether to warn when physics locks are used incorrectly. Turning this off is not recommended and should only be used by very advanced users. |
+| `bEnable2DPhysics` | `bool` | Can 2D physics be used (Box2D)? |
+| `PhysicErrorCorrection` | `FRigidBodyErrorCorrectionNew` | Error correction data for replicating simulated physics (rigid bodies) |
+| `LockedAxis_DEPRECATED` | `TEnumAsByte < ESettingsLockedAxis :: Type >` | - |
+| `DefaultDegreesOfFreedom` | `TEnumAsByte < ESettingsDOF :: Type >` | Useful for constraining all objects in the world, for example if you are making a 2D game using 3D environments. |
+| `BounceThresholdVelocity` | `float` | Minimum relative velocity required for an object to bounce. A typical value for simulation stability is about 0.2  gravity |
+| `FrictionCombineMode` | `TEnumAsByte < EFrictionCombineMode :: Type >` | Friction combine mode, controls how friction is computed for multiple materials. |
+| `RestitutionCombineMode` | `TEnumAsByte < EFrictionCombineMode :: Type >` | Restitution combine mode, controls how restitution is computed for multiple materials. |
+| `MaxAngularVelocity` | `float` | Max angular velocity that a simulated object can achieve. |
+| `MaxDepenetrationVelocity` | `float` | Max velocity which may be used to depenetrate simulated physics objects. 0 means no maximum. |
+| `ContactOffsetMultiplier` | `float` | Contact offset multiplier. When creating a physics shape we look at its bounding volume and multiply its minimum value by this multiplier. A bigger number will generate contact points earlier which results in higher stability at the cost of performance. |
+| `MinContactOffset` | `float` | Min Contact offset. |
+| `MaxContactOffset` | `float` | Max Contact offset. |
+| `bSimulateSkeletalMeshOnDedicatedServer` | `bool` | If true, simulate physics for this component on a dedicated server.<br>	  This should be set if simulating physics and replicating with a dedicated server. |
+| `DefaultShapeComplexity` | `TEnumAsByte < ECollisionTraceFlag >` | Determines the default physics shape complexity. |
+| `bDefaultHasComplexCollision_DEPRECATED` | `bool` | If true, static meshes will use per poly collision as complex collision by default. If false the default behavior is the same as UseSimpleAsComplex. |
+| `bSuppressFaceRemapTable` | `bool` | If true, the internal physx face to UE face mapping will not be generated. This is a memory optimization available if you do not rely on face indices returned by scene queries. |
+| `bSupportUVFromHitResults` | `bool` | If true, store extra information to allow FindCollisionUV to derive UV info from a line trace hit result, using the FindCollisionUV utility |
+| `bDisableActiveActors` | `bool` | If true, physx will not update unreal with any bodies that have moved during the simulation. This should only be used if you have no physx simulation or you are manually updating the unreal data via polling physx. |
+| `bDisableCCD` | `bool` | If true CCD will be ignored. This is an optimization when CCD is never used which removes the need for physx to check it internally. |
+| `bEnableEnhancedDeterminism` | `bool` | If set to true, the scene will use enhanced determinism at the cost of a bit more resources. See eENABLE_ENHANCED_DETERMINISM to learn about the specifics |
+| `MaxPhysicsDeltaTime` | `float` | Max Physics Delta Time to be clamped. |
+| `bSubstepping` | `bool` | Whether to substep the physics simulation. This feature is still experimental. Certain functionality might not work correctly |
+| `bSubsteppingAsync` | `bool` | Whether to substep the async physics simulation. This feature is still experimental. Certain functionality might not work correctly |
+| `MaxSubstepDeltaTime` | `float` | Max delta time (in seconds) for an individual simulation substep. |
+| `MaxSubsteps` | `int32` | Max number of substeps for physics simulation. |
+| `ServerMaxSubstepDeltaTime` | `float` | pixelchen 服务器单独设置MaxSubstepDeltaTime |
+| `ServerMaxSubsteps` | `int32` | pixelchen 服务器单独设置MaxSubsteps |
+| `SyncSceneSmoothingFactor` | `float` | Physics delta time smoothing factor for sync scene. |
+| `AsyncSceneSmoothingFactor` | `float` | Physics delta time smoothing factor for async scene. |
+| `InitialAverageFrameRate` | `float` | Physics delta time initial average. |
+| `PhysXTreeRebuildRate` | `int` | The number of frames it takes to rebuild the PhysX scene query AABB tree. The bigger the number, the smaller fetchResults takes per frame, but the more the tree deteriorates until a new tree is built |
+| `PhysicalSurfaces` | `TArray < FPhysicalSurfaceName >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsSpringComponent.json -->
+
+# UPhysicsSpringComponent
+
+Note: this component is still work in progress. Uses raycast springs for simple vehicle forces
+ 	Used with objects that have physics to create a spring down the X direction
+ 	ie. point X in the direction you want generate spring.
+
+## Inheritance
+
+`USceneComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SpringStiffness` | `float` | Specifies how much strength the spring has. The higher the SpringStiffness the more force the spring can push on a body with. |
+| `SpringDamping` | `float` | Specifies how quickly the spring can absorb energy of a body. The higher the damping the less oscillation |
+| `SpringLengthAtRest` | `float` | Determines how long the spring will be along the X-axis at rest. The spring will apply 0 force on a body when it's at rest. |
+| `SpringRadius` | `float` | Determines the radius of the spring. |
+| `SpringChannel` | `TEnumAsByte < enum ECollisionChannel >` | Strength of thrust force applied to the base object. |
+| `bIgnoreSelf` | `bool` | If true, the spring will ignore all components in its own actor |
+| `SpringCompression` | `float` | The current compression of the spring. A spring at rest will have SpringCompression 0. |
+
+## Functions
+
+### `GetNormalizedCompressionScalar`
+
+```text
+GetNormalizedCompressionScalar() -> float
+```
+
+Returns the spring compression as a normalized scalar along spring direction.
+	   0 implies spring is at rest
+	   1 implies fully compressed
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetSpringRestingPoint`
+
+```text
+GetSpringRestingPoint() -> FVector
+```
+
+Returns the spring resting point in world space.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetSpringCurrentEndPoint`
+
+```text
+GetSpringCurrentEndPoint() -> FVector
+```
+
+Returns the spring current end point in world space.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetSpringDirection`
+
+```text
+GetSpringDirection() -> FVector
+```
+
+Returns the spring direction from start to resting point
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsThrusterComponent.json -->
+
+# UPhysicsThrusterComponent
+
+Used with objects that have physics to apply a force down the negative-X direction
+ 	ie. point X in the direction you want the thrust in.
+
+## Inheritance
+
+`USceneComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ThrustStrength` | `float` | Strength of thrust force applied to the base object. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPixelProjectedReflectionComponent.json -->
+
+# UPixelProjectedReflectionComponent
+
+UPixelProjectedReflectionComponent
+
+## Inheritance
+
+`USceneCaptureComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PreviewBox` | `UBoxComponent *` | - |
+| `NormalDistortionStrength` | `float` | Controls the strength of normals when distorting the planar reflection. |
+| `SkyDistanceFadeoutStart` | `float` | Receiving pixels at this distance from the reflection plane will begin to fade out the planar reflection. |
+| `SkyDistanceFadeoutEnd` | `float` | Receiving pixels at this distance from the reflection plane will have completely faded out the planar reflection. |
+| `DistanceFromPlaneFadeStart_DEPRECATED` | `float` | - |
+| `DistanceFromPlaneFadeEnd_DEPRECATED` | `float` | - |
+| `DistanceFromPlaneFadeoutStart` | `float` | Receiving pixels at this distance from the reflection plane will begin to fade out the planar reflection. |
+| `DistanceFromPlaneFadeoutEnd` | `float` | Receiving pixels at this distance from the reflection plane will have completely faded out the planar reflection. |
+| `AngleFromPlaneFadeStart` | `float` | Receiving pixels whose normal is at this angle from the reflection plane will begin to fade out the planar reflection. |
+| `AngleFromPlaneFadeEnd` | `float` | Receiving pixels whose normal is at this angle from the reflection plane will have completely faded out the planar reflection. |
+| `HeightAdjustmentVolumes` | `TArray < APixelProjectedReflectionHeightAdjustmentVolume * >` | - |
+| `VisibilityVolumes` | `TArray < APixelProjectedReflectionVisibilityVolume * >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPlanarReflectionComponent.json -->
+
+# UPlanarReflectionComponent
+
+UPlanarReflectionComponent
+
+## Inheritance
+
+`USceneCaptureComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PreviewBox` | `UBoxComponent *` | - |
+| `NormalDistortionStrength` | `float` | Controls the strength of normals when distorting the planar reflection. |
+| `PrefilterRoughnessY` | `float` | The vertical roughness value to prefilter the planar reflection texture with, useful for hiding low resolution.  Larger values have larger GPU cost. |
+| `PrefilterRoughnessDistanceY` | `float` | The vertical distance at which the prefilter roughness value will be achieved. |
+| `ScreenPercentage` | `int32` | Downsample percent, can be used to reduce GPU time rendering the planar reflection. |
+| `ExtraFOV` | `float` | Additional FOV used when rendering to the reflection texture.  <br>	  This is useful when normal distortion is causing reads outside the reflection texture. <br>	  Larger values increase rendering thread and GPU cost, as more objects and triangles have to be rendered into the planar reflection. |
+| `DistanceFromPlaneFadeStart_DEPRECATED` | `float` | - |
+| `DistanceFromPlaneFadeEnd_DEPRECATED` | `float` | - |
+| `DistanceFromPlaneFadeoutStart` | `float` | Receiving pixels at this distance from the reflection plane will begin to fade out the planar reflection. |
+| `DistanceFromPlaneFadeoutEnd` | `float` | Receiving pixels at this distance from the reflection plane will have completely faded out the planar reflection. |
+| `AngleFromPlaneFadeStart` | `float` | Receiving pixels whose normal is at this angle from the reflection plane will begin to fade out the planar reflection. |
+| `AngleFromPlaneFadeEnd` | `float` | Receiving pixels whose normal is at this angle from the reflection plane will have completely faded out the planar reflection. |
+| `bRenderSceneTwoSided` | `bool` | Whether to render the scene as two-sided, which can be useful to hide artifacts where normal distortion would read 'under' an object that has been clipped by the reflection plane. <br>	  With this setting enabled, the backfaces of a mesh would be displayed in the clipped region instead of the background which is potentially a bright sky.<br>	  Be sure to add the water plane to HiddenActors if enabling this, as the water plane will now block the reflection. |
+| `bBlurHorizontal` | `bool` | Whether to blur along horizontal direction |
+| `PrefilterRoughnessX` | `float` | The horizontal roughness value to prefilter the planar reflection texture with, useful for hiding low resolution.  Larger values have larger GPU cost. |
+| `PrefilterRoughnessDistanceX` | `float` | The horizontal distance at which the prefilter roughness value will be achieved. |
+| `PrefilterRoughnessLowerBound` | `float` | The Roughness Threshold For Prefilter |
+| `ScreenSizeCullScale` | `float` | The ScreenSize Cull Scale |
+| `FrustumOptim` | `bool` | Frustum Cull Range Optimization |
+| `NoReflectionShadow` | `bool` | Do Not Render Shadow for PlanarRefelction |
+| `FrameBufferCache` | `bool` | Enable FrameBuffer Cache Or Not |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPlaneReflectionCaptureComponent.json -->
+
+# UPlaneReflectionCaptureComponent
+
+## Inheritance
+
+`UReflectionCaptureComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `InfluenceRadiusScale` | `float` | Radius of the area that can receive reflections from this capture. |
+| `PreviewInfluenceRadius` | `UDrawSphereComponent *` | - |
+| `PreviewCaptureBox` | `UBoxComponent *` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPlatformEventsComponent.json -->
+
+# UPlatformEventsComponent
+
+Component to handle receiving notifications from the OS about platform events.
+
+## Inheritance
+
+`UActorComponent`
+
+## Functions
+
+### `IsInLaptopMode`
+
+```text
+IsInLaptopMode() -> bool
+```
+
+Check whether a convertible laptop is laptop mode.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true if in laptop mode, false otherwise or if not a convertible laptop. |
+
+### `IsInTabletMode`
+
+```text
+IsInTabletMode() -> bool
+```
+
+Check whether a convertible laptop is laptop mode.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true if in tablet mode, false otherwise or if not a convertible laptop. |
+
+### `SupportsConvertibleLaptops`
+
+```text
+SupportsConvertibleLaptops() -> bool
+```
+
+Check whether the platform supports convertible laptops.
+	 
+	  Note: This does not necessarily mean that the platform is a convertible laptop.
+	  For example, convertible laptops running Windows 7 or older will return false,
+	  and regular laptops running Windows 8 or newer will return true.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true for convertible laptop platforms, false otherwise. |
+
+## Delegates
+
+### `PlatformChangedToLaptopModeDelegate`
+
+```text
+PlatformChangedToLaptopModeDelegate() -> void
+```
+
+This is called when a convertible laptop changed into laptop mode.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `PlatformChangedToTabletModeDelegate`
+
+```text
+PlatformChangedToTabletModeDelegate() -> void
+```
+
+This is called when a convertible laptop changed into tablet mode.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPlatformGameInstance.json -->
+
+# UPlatformGameInstance
+
+UObject based class for handling mobile events. Having this object as an option gives the app lifetime access to these global delegates. The component UApplicationLifecycleComponent is destroyed at level loads
+
+## Inheritance
+
+`UGameInstance`
+
+## Delegates
+
+### `ApplicationWillDeactivateDelegate`
+
+```text
+ApplicationWillDeactivateDelegate() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ApplicationHasReactivatedDelegate`
+
+```text
+ApplicationHasReactivatedDelegate() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ApplicationWillEnterBackgroundDelegate`
+
+```text
+ApplicationWillEnterBackgroundDelegate() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ApplicationHasEnteredForegroundDelegate`
+
+```text
+ApplicationHasEnteredForegroundDelegate() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ApplicationWillTerminateDelegate`
+
+```text
+ApplicationWillTerminateDelegate() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ApplicationRegisteredForRemoteNotificationsDelegate`
+
+```text
+ApplicationRegisteredForRemoteNotificationsDelegate(inArray: const TArray<uint8>&) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `inArray` | `const TArray&` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ApplicationRegisteredForUserNotificationsDelegate`
+
+```text
+ApplicationRegisteredForUserNotificationsDelegate(inInt: int32) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `inInt` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ApplicationFailedToRegisterForRemoteNotificationsDelegate`
+
+```text
+ApplicationFailedToRegisterForRemoteNotificationsDelegate(inString: FString) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `inString` | `FString` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ApplicationReceivedRemoteNotificationDelegate`
+
+```text
+ApplicationReceivedRemoteNotificationDelegate(inString: FString, inAppState: EApplicationState::Type) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `inString` | `FString` | - |
+| `inAppState` | `EApplicationState::Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ApplicationReceivedLocalNotificationDelegate`
+
+```text
+ApplicationReceivedLocalNotificationDelegate(inString: FString, inInt: int32, inAppState: EApplicationState::Type) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `inString` | `FString` | - |
+| `inInt` | `int32` | - |
+| `inAppState` | `EApplicationState::Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ApplicationReceivedScreenOrientationChangedNotificationDelegate`
+
+```text
+ApplicationReceivedScreenOrientationChangedNotificationDelegate(inScreenOrientation: EScreenOrientation::Type) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `inScreenOrientation` | `EScreenOrientation::Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPlatformInterfaceBase.json -->
+
+# UPlatformInterfaceBase
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `AllDelegates` | `TArray < struct FDelegateArray >` | Array of delegate arrays. Only add and remove via helper functions, and call via the helper delegate call function |
+
+## Language
+
+`cpp`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPlatformInterfaceWebResponse.json -->
 
 # UPlatformInterfaceWebResponse
@@ -1179,6 +4962,7 @@ PrimitiveComponents are SceneComponents that contain or generate some sort of ge
 | `bForceRenderInShadowPass` | `uint8` | If true, this component will force be rendered in the shadow depth pass when bRenderInMainPass is false |
 | `HiddenInMainPassLocks` | `TArray < FName >` | If Num() == 0, this component will be rendered in the main pass (z prepass, basepass, transparency) |
 | `bRenderInMono` | `uint8` | If true, this component will be rendered in mono only if an HMD is connected and monoscopic far field rendering is activated. |
+| `bNeverFrustumCull` | `uint8` | If true, this component will never be culled by frustum culling. It will always be considered visible regardless of camera orientation. |
 | `bReceivesDecals` | `uint8` | Whether the primitive receives decals. |
 | `bOwnerNoSee` | `uint8` | If this is True, this component won't be visible when the view actor is the component's owner, directly or indirectly. |
 | `bOnlyOwnerSee` | `uint8` | If this is True, this component will only be visible when the view actor is the component's owner, directly or indirectly. |
@@ -3464,6 +7248,38 @@ Sets bRenderInMono property and marks the render state dirty.
 | Type | Description |
 |---|---|
 | `void` | - |
+
+### `SetNeverFrustumCull`
+
+```text
+SetNeverFrustumCull(bValue: bool) -> void
+```
+
+Sets bNeverFrustumCull property and marks the render state dirty. When true, this component will never be culled by frustum culling.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bValue` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `IsNeverFrustumCull`
+
+```text
+IsNeverFrustumCull() -> bool
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
 
 ### `SetForceIBL`
 
@@ -9123,6 +12939,18 @@ SkeletalMesh is geometry bound to a hierarchical skeleton of bones which can be 
 
 ## Functions
 
+### `RefreshBulkNotExistsLODCount`
+
+```text
+RefreshBulkNotExistsLODCount() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ### `GetBounds`
 
 ```text
@@ -9376,6 +13204,7 @@ SkeletalMeshComponent is used to create an instance of an animated SkeletalMesh 
 | `bBlendPhysics` | `uint32` | Enables blending in of physics bodies whether Simulate or not |
 | `bEnablePhysicsOnDedicatedServer` | `uint32` | If true, simulate physics for this component on a dedicated server.<br>	   This should be set if simulating physics and replicating with a dedicated server.<br>	 	Note: This property cannot be changed at runtime. |
 | `bEnableCreatePhysicsOnDedicatedServer` | `uint32` | - |
+| `bForceBoneTransformUpdateWithPhysics` | `uint32` | 当物理模拟激活时，强制在 EndPhysicsTick 中将物理结果写回骨骼 Transform。<br>	  用于 DS 上没有渲染但需要物理驱动骨骼位置更新的场景（如 Active Ragdoll）。<br>	  设置为 true 后，即使 ShouldBlendPhysicsBones() 返回 false，也会调用 FinalizeBoneTransform()。 |
 | `bNeedUpdatePhysicsTickRegisteredState` | `bool` | - |
 | `bUpdateJointsFromAnimation` | `uint32` | If we should pass joint position to joints each frame, so that they can be used by motorized joints to drive the<br>	 	ragdoll based on the animation. |
 | `bDisableClothSimulation` | `uint32` | Disable cloth simulation and play original animation without simulation |
@@ -9412,7 +13241,6 @@ SkeletalMeshComponent is used to create an instance of an animated SkeletalMesh 
 | `TeleportDistanceThreshold` | `float` | Conduct teleportation if the character's movement is greater than this threshold in 1 frame.<br>	 Zero or negative values will skip the check.<br>	 You can also do force teleport manually using ForceNextUpdateTeleport()  ForceNextUpdateTeleportAndReset(). |
 | `TeleportRotationThreshold` | `float` | Rotation threshold in degrees, ranging from 0 to 180.<br>	 Conduct teleportation if the character's rotation is greater than this threshold in 1 frame.<br>	 Zero or negative values will skip the check. |
 | `bEnableUpdateOverlapsEvent` | `uint8` | - |
-| `bEnableAsyncAnimUpdate` | `bool` | ImmediatePhysics Evaluation End<br>	 <br>	 Whether to enable async anim update for this component |
 | `SequenceToPlay_DEPRECATED` | `UAnimSequence *` | - |
 | `AnimToPlay_DEPRECATED` | `UAnimationAsset *` | - |
 | `bDefaultLooping_DEPRECATED` | `uint32` | - |
@@ -9440,6 +13268,8 @@ SkeletalMeshComponent is used to create an instance of an animated SkeletalMesh 
 | `bIsEnableBatchSection` | `bool` | For Dynamic Bone Scale Feature End |
 | `BatchSectionList` | `TArray < FDynamicBatchSectionInfo >` | - |
 | `OriginalMaterials` | `TArray < UMaterialInterface * >` | - |
+| `bCrossFrameAnimForceSync` | `bool` | When true, ShouldUseCrossFrameAnimUpdate() returns false regardless of<br>	    so external modifications during the force-sync period are preserved. |
+| `bEnableCrossFrameAnimUpdate` | `bool` | Whether to enable async anim update for this component |
 | `AnimationBlueprint_DEPRECATED` | `UAnimBlueprint *` | The blueprint for creating an AnimationScript. |
 | `bUpdateAnimationInEditor` | `uint32` | If true, this will Tick until disabled |
 | `BoneRetargetBaseRefMesh` | `USkeletalMesh *` | For Bone Retarget Feature Start |
@@ -10962,7 +14792,7 @@ Gets the current Angular state for a named bone constraint
 ### `HandleExistingParallelEvaluationTask`
 
 ```text
-HandleExistingParallelEvaluationTask(bBlockOnTask: bool, bPerformPostAnimEvaluation: bool, bBlockOnAsyncAnimUpdateTasks: bool) -> bool
+HandleExistingParallelEvaluationTask(bBlockOnTask: bool, bPerformPostAnimEvaluation: bool, bBlockOnCrossFrameAnimUpdateTasks: bool) -> bool
 ```
 
 **Parameters**
@@ -10971,7 +14801,7 @@ HandleExistingParallelEvaluationTask(bBlockOnTask: bool, bPerformPostAnimEvaluat
 |---|---|---|
 | `bBlockOnTask` | `bool` | - |
 | `bPerformPostAnimEvaluation` | `bool` | - |
-| `bBlockOnAsyncAnimUpdateTasks` | `bool` | - |
+| `bBlockOnCrossFrameAnimUpdateTasks` | `bool` | - |
 
 **Returns**
 
@@ -11374,6 +15204,24 @@ ClearInterpolateBoneCache(DurationTime: float) -> void
 | Name | Type | Description |
 |---|---|---|
 | `DurationTime` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetCrossFrameAnimUpdateEnabled`
+
+```text
+SetCrossFrameAnimUpdateEnabled(bEnable: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnable` | `bool` | - |
 
 **Returns**
 
@@ -12756,6 +16604,36 @@ Set whether this skinned mesh should be rendered as static mesh in a reference p
 | Type | Description |
 |---|---|
 | `void` | - |
+
+### `MarkAsAvatarMesh`
+
+```text
+MarkAsAvatarMesh(bAvatarMesh: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bAvatarMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `IsAvatarMesh`
+
+```text
+IsAvatarMesh() -> bool
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
 
 ### `IsSectionBatched`
 
@@ -17048,3441 +20926,6 @@ ModifyPostion(InPosition: FVector) -> FVector
 | Type | Description |
 |---|---|
 | `FVector` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USplineMeshComponent.json -->
-
-# USplineMeshComponent
-
-A Spline Mesh Component is a derivation of a Static Mesh Component which can be deformed using a spline. Only a start and end position (and tangent) can be specified.
-
-## Inheritance
-
-`UStaticMeshComponent` -> `IInterface_CollisionDataProvider`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SplineParams` | `FSplineMeshParams` | Spline that is used to deform mesh |
-| `SplineUpDir` | `FVector` | Axis (in component space) that is used to determine X axis for co-ordinates along spline |
-| `bAllowSplineEditingPerInstance` | `uint32` | If true, spline keys may be edited per instance in the level viewport. Otherwise, the spline should be initialized in the construction script. |
-| `bSmoothInterpRollScale` | `uint32` | If true, will use smooth interpolation (ease inout) for Scale, Roll, and Offset along this section of spline. If false, uses linear |
-| `ForwardAxis` | `TEnumAsByte < ESplineMeshAxis :: Type >` | Chooses the forward axis for the spline mesh orientation |
-| `SplineBoundaryMin` | `float` | Minimum coordinate along the spline forward axis which corresponds to start of spline. If set to 0.0, will use bounding box to determine bounds |
-| `SplineBoundaryMax` | `float` | Maximum coordinate along the spline forward axis which corresponds to end of spline. If set to 0.0, will use bounding box to determine bounds |
-| `BodySetup` | `UBodySetup *` | - |
-| `CachedMeshBodySetupGuid` | `FGuid` | - |
-| `bMeshDirty` | `uint32` | - |
-| `bHasBeenBakedWithLandcape` | `uint32` | - |
-
-## Functions
-
-### `UpdateMesh`
-
-```text
-UpdateMesh() -> void
-```
-
-Update the collision and render state on the spline mesh following changes to its geometry
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetStartPosition`
-
-```text
-GetStartPosition() -> FVector
-```
-
-Get the start position of spline in local space
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `SetStartPosition`
-
-```text
-SetStartPosition(StartPos: FVector, bUpdateMesh: bool) -> void
-```
-
-Set the start position of spline in local space
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `StartPos` | `FVector` | - |
-| `bUpdateMesh` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetStartTangent`
-
-```text
-GetStartTangent() -> FVector
-```
-
-Get the start tangent vector of spline in local space
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `SetStartTangent`
-
-```text
-SetStartTangent(StartTangent: FVector, bUpdateMesh: bool) -> void
-```
-
-Set the start tangent vector of spline in local space
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `StartTangent` | `FVector` | - |
-| `bUpdateMesh` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetEndPosition`
-
-```text
-GetEndPosition() -> FVector
-```
-
-Get the end position of spline in local space
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `SetEndPosition`
-
-```text
-SetEndPosition(EndPos: FVector, bUpdateMesh: bool) -> void
-```
-
-Set the end position of spline in local space
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EndPos` | `FVector` | - |
-| `bUpdateMesh` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetEndTangent`
-
-```text
-GetEndTangent() -> FVector
-```
-
-Get the end tangent vector of spline in local space
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `SetEndTangent`
-
-```text
-SetEndTangent(EndTangent: FVector, bUpdateMesh: bool) -> void
-```
-
-Set the end tangent vector of spline in local space
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EndTangent` | `FVector` | - |
-| `bUpdateMesh` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetStartAndEnd`
-
-```text
-SetStartAndEnd(StartPos: FVector, StartTangent: FVector, EndPos: FVector, EndTangent: FVector, bUpdateMesh: bool) -> void
-```
-
-Set the start and end, position and tangent, all in local space
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `StartPos` | `FVector` | - |
-| `StartTangent` | `FVector` | - |
-| `EndPos` | `FVector` | - |
-| `EndTangent` | `FVector` | - |
-| `bUpdateMesh` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetStartScale`
-
-```text
-GetStartScale() -> FVector2D
-```
-
-Get the start scaling
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector2D` | - |
-
-### `SetStartScale`
-
-```text
-SetStartScale(StartScale: FVector2D, bUpdateMesh: bool) -> void
-```
-
-Set the start scaling
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `StartScale` | `FVector2D` | - |
-| `bUpdateMesh` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetStartRoll`
-
-```text
-GetStartRoll() -> float
-```
-
-Get the start roll
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `SetStartRoll`
-
-```text
-SetStartRoll(StartRoll: float, bUpdateMesh: bool) -> void
-```
-
-Set the start roll
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `StartRoll` | `float` | - |
-| `bUpdateMesh` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetStartOffset`
-
-```text
-GetStartOffset() -> FVector2D
-```
-
-Get the start offset
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector2D` | - |
-
-### `SetStartOffset`
-
-```text
-SetStartOffset(StartOffset: FVector2D, bUpdateMesh: bool) -> void
-```
-
-Set the start offset
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `StartOffset` | `FVector2D` | - |
-| `bUpdateMesh` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetEndScale`
-
-```text
-GetEndScale() -> FVector2D
-```
-
-Get the end scaling
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector2D` | - |
-
-### `SetEndScale`
-
-```text
-SetEndScale(EndScale: FVector2D, bUpdateMesh: bool) -> void
-```
-
-Set the end scaling
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EndScale` | `FVector2D` | - |
-| `bUpdateMesh` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetEndRoll`
-
-```text
-GetEndRoll() -> float
-```
-
-Get the end roll
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `SetEndRoll`
-
-```text
-SetEndRoll(EndRoll: float, bUpdateMesh: bool) -> void
-```
-
-Set the end roll
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EndRoll` | `float` | - |
-| `bUpdateMesh` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetEndOffset`
-
-```text
-GetEndOffset() -> FVector2D
-```
-
-Get the end offset
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector2D` | - |
-
-### `SetEndOffset`
-
-```text
-SetEndOffset(EndOffset: FVector2D, bUpdateMesh: bool) -> void
-```
-
-Set the end offset
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EndOffset` | `FVector2D` | - |
-| `bUpdateMesh` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetForwardAxis`
-
-```text
-GetForwardAxis() -> ESplineMeshAxis :: Type
-```
-
-Get the forward axis
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ESplineMeshAxis :: Type` | - |
-
-### `SetForwardAxis`
-
-```text
-SetForwardAxis(InForwardAxis: ESplineMeshAxis :: Type, bUpdateMesh: bool) -> void
-```
-
-Set the forward axis
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InForwardAxis` | `ESplineMeshAxis :: Type` | - |
-| `bUpdateMesh` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetSplineUpDir`
-
-```text
-GetSplineUpDir() -> FVector
-```
-
-Get the spline up direction
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `SetSplineUpDir`
-
-```text
-SetSplineUpDir(InSplineUpDir: FVector &, bUpdateMesh: bool) -> void
-```
-
-Set the spline up direction
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InSplineUpDir` | `FVector &` | - |
-| `bUpdateMesh` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetBoundaryMin`
-
-```text
-GetBoundaryMin() -> float
-```
-
-Get the boundary min
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `SetBoundaryMin`
-
-```text
-SetBoundaryMin(InBoundaryMin: float, bUpdateMesh: bool) -> void
-```
-
-Set the boundary min
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InBoundaryMin` | `float` | - |
-| `bUpdateMesh` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetBoundaryMax`
-
-```text
-GetBoundaryMax() -> float
-```
-
-Get the boundary max
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `SetBoundaryMax`
-
-```text
-SetBoundaryMax(InBoundaryMax: float, bUpdateMesh: bool) -> void
-```
-
-Set the boundary max
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InBoundaryMax` | `float` | - |
-| `bUpdateMesh` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USpotLightComponent.json -->
-
-# USpotLightComponent
-
-A spot light component emits a directional cone shaped light (Eg a Torch).
-
-## Inheritance
-
-`UPointLightComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `InnerConeAngle` | `float` | Degrees. |
-| `OuterConeAngle` | `float` | Degrees. |
-| `bCastPhotonShadow` | `uint32` | #if WITH_PHOTON_SHADOW<br>	 Whether the light should cast photon shadow for character<br>	 #endif |
-| `NearPlaneOffset` | `float` | - |
-| `FarPlaneOffset` | `float` | - |
-| `LightShaftConeAngle` | `float` | Degrees. <br>	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=LightShaft, meta=(UIMin = "1.0", UIMax = "180.0")) |
-
-## Functions
-
-### `SetInnerConeAngle`
-
-```text
-SetInnerConeAngle(NewInnerConeAngle: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewInnerConeAngle` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetOuterConeAngle`
-
-```text
-SetOuterConeAngle(NewOuterConeAngle: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewOuterConeAngle` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USpringArmComponent.json -->
-
-# USpringArmComponent
-
-This component tries to maintain its children at a fixed distance from the parent,
-  but will retract the children if there is a collision, and spring back when there is no collision.
- 
-  Example: Use as a 'camera boom' to keep the follow camera for a player from colliding into the world.
-
-## Inheritance
-
-`USceneComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `TargetArmLength` | `float` | Natural length of the spring arm when there are no collisions |
-| `SocketOffset` | `FVector` | offset at end of spring arm; use this instead of the relative offset of the attached component to ensure the line trace works as desired |
-| `TargetOffset` | `FVector` | Offset at start of spring, applied in world space. Use this if you want a world-space offset from the parent component instead of the usual relative-space offset. |
-| `ProbeSize` | `float` | How big should the query probe sphere be (in unreal units) |
-| `ProbeChannel` | `TEnumAsByte < ECollisionChannel >` | Collision channel of the query probe (defaults to ECC_Camera) |
-| `bDoCollisionTest` | `uint32` | If true, do a collision test using ProbeChannel and ProbeSize to prevent camera clipping into level. |
-| `bUsePawnControlRotation` | `uint32` | If this component is placed on a pawn, should it use the viewcontrol rotation of the pawn where possible?<br>	  When disabled, the component will revert to using the stored RelativeRotation of the component.<br>	  Note that this component itself does not rotate, but instead maintains its relative rotation to its parent as normal,<br>	  and just repositions and rotates its children as desired by the inherited rotation settings. Use GetTargetRotation()<br>	  if you want the rotation target based on all the settings (UsePawnControlRotation, InheritPitch, etc).<br>	 <br>	  @see GetTargetRotation(), APawn::GetViewRotation() |
-| `bInheritPitch` | `uint32` | Should we inherit pitch from parent component. Does nothing if using Absolute Rotation. |
-| `bInheritYaw` | `uint32` | Should we inherit yaw from parent component. Does nothing if using Absolute Rotation. |
-| `bInheritRoll` | `uint32` | Should we inherit roll from parent component. Does nothing if using Absolute Rotation. |
-| `bEnableCameraLag` | `uint32` | If true, camera lags behind target position to smooth its movement.<br>	  @see CameraLagSpeed |
-| `bEnableCameraRotationLag` | `uint32` | If true, camera lags behind target rotation to smooth its movement.<br>	  @see CameraRotationLagSpeed |
-| `bUseCameraLagSubstepping` | `uint32` | If bUseCameraLagSubstepping is true, sub-step camera damping so that it handles fluctuating frame rates well (though this comes at a cost).<br>	  @see CameraLagMaxTimeStep |
-| `bDrawDebugLagMarkers` | `uint32` | If true and camera location lag is enabled, draws markers at the camera target (in green) and the lagged position (in yellow).<br>	  A line is drawn between the two locations, in green normally but in red if the distance to the lag target has been clamped (by CameraLagMaxDistance). |
-| `CameraLagSpeed` | `float` | If bEnableCameraLag is true, controls how quickly camera reaches target position. Low values are slower (more lag), high values are faster (less lag), while zero is instant (no lag). |
-| `CameraRotationLagSpeed` | `float` | If bEnableCameraRotationLag is true, controls how quickly camera reaches target position. Low values are slower (more lag), high values are faster (less lag), while zero is instant (no lag). |
-| `CameraLagMaxTimeStep` | `float` | Max time step used when sub-stepping camera lag. |
-| `CameraLagMaxDistance` | `float` | Max distance the camera target may lag behind the current location. If set to zero, no max distance is enforced. |
-| `IgnoredActors` | `TArray < AActor * >` | - |
-| `CacheHit` | `FHitResult` | - |
-
-## Functions
-
-### `GetTargetRotation`
-
-```text
-GetTargetRotation() -> FRotator
-```
-
-Get the target rotation we inherit, used as the base target for the boom rotation.
-	  This is derived from attachment to our parent and considering the UsePawnControlRotation and absolute rotation flags.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FRotator` | - |
-
-### `SetActive`
-
-```text
-SetActive(bNewActive: bool, bReset: bool) -> void
-```
-
-Sets whether the component is active or not
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bNewActive` | `bool` | - The new active state of the component |
-| `bReset` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `UpdateDesiredArmLocationCustom`
-
-```text
-UpdateDesiredArmLocationCustom(bDoTrace: bool, bDoLocationLag: bool, bDoRotationLag: bool, DeltaTime: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bDoTrace` | `bool` | - |
-| `bDoLocationLag` | `bool` | - |
-| `bDoRotationLag` | `bool` | - |
-| `DeltaTime` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetExtraIgnoreActors`
-
-```text
-GetExtraIgnoreActors() -> TArray < AActor * >
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `TArray < AActor * >` | - |
-
-### `GetExtraIgnoreCompoents`
-
-```text
-GetExtraIgnoreCompoents() -> TArray < UPrimitiveComponent * >
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `TArray < UPrimitiveComponent * >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStackBox.json -->
-
-# UStackBox
-
-A stack box widget is a layout panel allowing child widgets to be automatically laid out
-  vertically or horizontally.
- 
-   Many Children
-   Flows Vertical or Horizontal
-
-## Inheritance
-
-`UPanelWidget`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Orientation` | `TEnumAsByte < EOrientation >` | The orientation of the stack box. |
-
-## Functions
-
-### `GetOrientation`
-
-```text
-GetOrientation() -> UMG_API EOrientation
-```
-
-Get the orientation of the stack box.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UMG_API EOrientation` | - |
-
-### `SetOrientation`
-
-```text
-SetOrientation(InType: EOrientation) -> UMG_API void
-```
-
-Set the orientation of the stack box. The existing elements will be rearranged.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InType` | `EOrientation` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UMG_API void` | - |
-
-### `AddChildToStackBox`
-
-```text
-AddChildToStackBox(Content: UWidget *) -> UMG_API UStackBoxSlot *
-```
-
-Adds a new child widget to the container.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Content` | `UWidget *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UMG_API UStackBoxSlot *` | - |
-
-### `ReplaceStackBoxChildAt`
-
-```text
-ReplaceStackBoxChildAt(Index: int32, Content: UWidget *) -> UMG_API bool
-```
-
-Replace the widget at the given index it with a different widget.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `int32` | - |
-| `Content` | `UWidget *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UMG_API bool` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStackBoxSlot.json -->
-
-# UStackBoxSlot
-
-The Slot for the UStackBox, contains the widget that is flowed vertically or horizontally.
-
-## Inheritance
-
-`UPanelSlot`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Padding` | `FMargin` | The padding area between the slot and the content it contains. |
-| `Size` | `FSlateChildSize` | How much space this slot should occupy in the direction of the panel. |
-| `HorizontalAlignment` | `TEnumAsByte < EHorizontalAlignment >` | The alignment of the object horizontally. |
-| `VerticalAlignment` | `TEnumAsByte < EVerticalAlignment >` | The alignment of the object vertically. |
-
-## Functions
-
-### `GetPadding`
-
-```text
-GetPadding() -> UMG_API FMargin
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UMG_API FMargin` | - |
-
-### `SetPadding`
-
-```text
-SetPadding(InPadding: FMargin) -> UMG_API void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InPadding` | `FMargin` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UMG_API void` | - |
-
-### `GetSize`
-
-```text
-GetSize() -> UMG_API FSlateChildSize
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UMG_API FSlateChildSize` | - |
-
-### `SetSize`
-
-```text
-SetSize(InSize: FSlateChildSize) -> UMG_API void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InSize` | `FSlateChildSize` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UMG_API void` | - |
-
-### `GetHorizontalAlignment`
-
-```text
-GetHorizontalAlignment() -> UMG_API EHorizontalAlignment
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UMG_API EHorizontalAlignment` | - |
-
-### `SetHorizontalAlignment`
-
-```text
-SetHorizontalAlignment(InHorizontalAlignment: EHorizontalAlignment) -> UMG_API void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InHorizontalAlignment` | `EHorizontalAlignment` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UMG_API void` | - |
-
-### `GetVerticalAlignment`
-
-```text
-GetVerticalAlignment() -> UMG_API EVerticalAlignment
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UMG_API EVerticalAlignment` | - |
-
-### `SetVerticalAlignment`
-
-```text
-SetVerticalAlignment(InVerticalAlignment: EVerticalAlignment) -> UMG_API void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InVerticalAlignment` | `EVerticalAlignment` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UMG_API void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStaticMesh.json -->
-
-# UStaticMesh
-
-A StaticMesh is a piece of geometry that consists of a static set of polygons.
-  Static Meshes can be translated, rotated, and scaled, but they cannot have their vertices animated in any way. As such, they are more efficient
-  to render than other types of geometry such as USkeletalMesh, and they are often the basic building block of levels created in the engine.
- 
-  @see AStaticMeshActor, UStaticMeshComponent
-
-## Inheritance
-
-`UObject` -> `IInterface_CollisionDataProvider` -> `IInterface_AssetUserData`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bSkipHISMBoundCheck` | `bool` | - |
-| `bHasROCData` | `bool` | - |
-| `FSOCOccluder` | `UFlakeOccluder *` | - |
-| `ReplaceMaterial` | `UMaterialInterface *` | - |
-| `ShadowProxyMesh` | `UStaticMesh *` | Proxy mesh used by TA tools to generate hidden shadow caster components for components using this StaticMesh. |
-| `PerLODBiasTypeInfo` | `TArray < FMeshPerLODBiasArray >` | When autonomous or simulated pawn needs special LOD bias |
-| `bUseLODBiasExt` | `bool` | - |
-| `bAutoUpdateLODBiasExt` | `bool` | - |
-| `PerLODBiasTypeInfoExt` | `TArray < FMeshLODBiasCondition >` | - |
-| `MinLOD` | `int32` | Minimum LOD to use for rendering.  This is the default setting for the mesh and can be overridden by component settings. |
-| `Materials_DEPRECATED` | `TArray < UMaterialInterface * >` | Materials used by this static mesh. Individual sections index in to this array. |
-| `StaticMaterials` | `TArray < FStaticMaterial >` | - |
-| `LightmapUVDensity` | `float` | - |
-| `LightMapResolution` | `int32` | - |
-| `LightMapCoordinateIndex` | `int32` | The light map coordinate index |
-| `DistanceFieldSelfShadowBias` | `float` | Useful for reducing self shadowing from distance field methods when using world position offset to animate the mesh's vertices. |
-| `ExpectedQualityLimit` | `FExpectedQuality` | - |
-| `bGenerateMeshDistanceField` | `uint32` | Whether to generate a distance field for this mesh, which can be used by DistanceField Indirect Shadows.<br>	  This is ignored if the project's 'Generate Mesh Distance Fields' setting is enabled. |
-| `bLazyLoadBulkData` | `uint32` | Lazy load bulk data for reduce memory used |
-| `bAllowMinLodBiasCfg` | `uint32` | allow MinLodBias for global config (r.StaticMeshMinLodBias) |
-| `bDisableGenerateHLOD` | `uint32` | - |
-| `bHasHLODTag` | `uint32` | Runtime flag: whether this StaticMesh participates in HLOD (computed from ReorganizationTags at PreSave) |
-| `MinLodBiasDeviceGrade` | `uint8` | allow min lod bias if device grade < this |
-| `bUseFSOCOccluderIgnoreBlend` | `uint8` | - |
-| `BodySetup` | `UBodySetup *` | - |
-| `LODForCollision` | `int32` | Specifies which mesh LOD to use for complex (per-poly) collision.<br>	 	Sometimes it can be desirable to use a lower poly representation for collision to reduce memory usage, improve performance and behaviour.<br>	 	Collision representation does not change based on distance to camera. |
-| `CullingScreenSize` | `float` | Culling screen size |
-| `bUseScreenSizeModifier` | `bool` | - |
-| `ScreenSizeCullingRoughDistance` | `float` | Rough Distance of Screen size Culling |
-| `bIsGrass` | `bool` | grass flag, we need this special flag since grasses are so important in pubg game |
-| `bIsTree` | `bool` | - |
-| `bStripComplexCollisionForConsole_DEPRECATED` | `uint32` | If true, strips unwanted complex collision data aka kDOP tree when cooking for consoles.<br>		On the Playstation 3 data of this mesh will be stored in video memory. |
-| `bHasNavigationData` | `uint32` | If true, mesh will have NavCollision property with additional data for navmesh generation and usage.<br>	    Set to false for distant meshes (always outside navigation bounds) to save memory on collision data. |
-| `bIsStreamable` | `bool` | Streamable flag, determine whether to split the lod serialization, WITH_STREAMING_SM_LOD |
-| `HiddenStreamFactor` | `uint8` | - |
-| `bCompressData` | `bool` | - |
-| `bUseCoarseGIMip` | `bool` | - |
-| `NotInlineLODCount` | `uint8` | - |
-| `bSupportUniformlyDistributedSampling` | `uint32` | - |
-| `LpvBiasMultiplier` | `float` | Bias multiplier for Light Propagation Volume lighting |
-| `bAllowCPUAccess` | `bool` | If true, will keep geometry data CPU-accessible in cooked builds, rather than uploading to GPU memory and releasing it from CPU memory.<br>	 	This is required if you wish to access StaticMesh geometry data on the CPU at runtime in cooked builds (e.g. to convert StaticMesh to ProceduralMeshComponent) |
-| `bCustomWaterBeOccludeed` | `bool` | - |
-| `EncodeBits_Position` | `int32` | - |
-| `EncodeBits_TexCoord` | `int32` | - |
-| `EncodeBits_Normal` | `int32` | - |
-| `EncodeBits_Generic` | `int32` | - |
-| `EncodeBits_VertexColor` | `int32` | - |
-| `EncodeSpeed` | `int32` | - |
-| `DecodeSpeed` | `int32` | - |
-| `Sockets` | `TArray < UStaticMeshSocket * >` | Array of named socket locations, set up in editor and used as a shortcut instead of specifying<br>	 	everything explicitly to AttachComponent in the StaticMeshComponent. |
-| `PositiveBoundsExtension` | `FVector` | Bound extension values in the positive direction of XYZ, positive value increases bound size |
-| `NegativeBoundsExtension` | `FVector` | Bound extension values in the negative direction of XYZ, positive value increases bound size |
-| `ExtendedBounds` | `FBoxSphereBounds` | Original mesh bounds extended with PositiveNegativeBoundsExtension |
-| `SubLocalBounds` | `TArray < FBoxSphereBounds >` | - |
-| `OcclusionCullingVertex` | `TArray < FVector4 >` | - |
-| `IndirectLightingCachePositionOffset` | `FVector` | - |
-| `bUseQuantization` | `bool` | - |
-| `ElementToIgnoreForTexFactor` | `int32` | Index of an element to ignore while gathering streaming texture factors.<br>	  This is useful to disregard automatically generated vertex data which breaks texture factor heuristics. |
-| `AssetUserData` | `TArray < UAssetUserData * >` | Array of user data stored with the asset |
-| `NavCollision` | `UNavCollision *` | Pre-build navigation collision |
-| `SimpleMaterials` | `TArray < FStaticSimpleMaterial >` | Simple material setting |
-| `bCloseMeshOpt` | `bool` | - |
-| `UVDensityMultiplier` | `float` | - |
-| `SourceModels` | `TArray < FStaticMeshSourceModel >` | Imported raw mesh bulk data. |
-| `MeshDescriptions` | `UStaticMeshDescriptions *` | Container holding mesh descriptions for each LOD |
-| `SectionInfoMap` | `FMeshSectionInfoMap` | Map of LOD+Section index to per-section info. |
-| `OriginalSectionInfoMap` | `FMeshSectionInfoMap` | We need the OriginalSectionInfoMap to be able to build mesh in a non destructive way. Reduce has to play with SectionInfoMap in case some sections disappear.<br>	  This member will be update in the following situation<br>	  1. After a static mesh importreimport<br>	  2. Postload, if the OriginalSectionInfoMap is empty, we will fill it with the current SectionInfoMap<br>	 <br>	  We do not update it when the user shuffle section in the staticmesh editor because the OriginalSectionInfoMap must always be in sync with the saved rawMesh bulk data. |
-| `LODGroup` | `FName` | The LOD group to which this mesh belongs. |
-| `bAutoComputeLODScreenSize` | `uint32` | If true, the screen sizees at which LODs swap are computed automatically. |
-| `ImportVersion` | `int32` | The last import version |
-| `MaterialRemapIndexPerImportVersion` | `TArray < FMaterialRemapIndex >` | - |
-| `LightmapUVVersion` | `int32` | The lightmap UV generation version used during the last derived data build |
-| `Id_DEPRECATED` | `FGuid` | The following is unique identifier for UStaticMesh. for generating cache key. |
-| `bIsUsedInLandscapeFlaten` | `bool` | Whether to Flaten Landscape |
-| `FlattenXHalfLength` | `float` | Default to Bound.X0.5 + 100 |
-| `FlattenYHalfLength` | `float` | Default to Bound.Y0.5 + 100 |
-| `FlattenZHeight` | `float` | Default to 0 |
-| `FlattenFallOffDistance` | `float` | Default to 1000 |
-| `AssetImportData` | `UAssetImportData *` | Importing data and options used for this mesh |
-| `SourceFilePath_DEPRECATED` | `FString` | Path to the resource used to construct this static mesh |
-| `SourceFileTimestamp_DEPRECATED` | `FString` | DateTime-stamp of the file from the last import |
-| `ThumbnailInfo` | `UThumbnailInfo *` | Information for thumbnail rendering |
-| `EditorCameraPosition` | `FAssetEditorOrbitCameraPosition` | The stored camera position to use as a default for the static mesh editor |
-| `bCustomizedCollision` | `bool` | If the user has modified collision in any way or has custom collision imported. Used for determining if to auto generate collision on import |
-| `bUseFSOCOccluder` | `bool` | 是否使用FSOC遮挡体。当为true时，在运行时使用FSOCOccluder进行遮挡剔除。 |
-| `OccluderMesh` | `UStaticMesh *` | Specifies the custom occluder mesh for software occlusion |
-| `OccluderBadFaceMesh` | `UStaticMesh *` | - |
-| `OccluderAvgValidRate` | `float` | - |
-| `OccluderAvgErrorRate` | `float` | - |
-| `bUseAsCustomOccluder` | `bool` | 标记该Mesh是否作为其他Mesh的自定义Occluder使用。<br>	  当此属性为true时，在编辑器保存资产时会自动构建FSOCOccluder数据，<br>	  供其他Mesh作为OccluderMesh引用使用。<br>	  注意：设置OccluderMesh的Mesh会在Cook时复用OccluderMesh的FSOCOccluder数据。 |
-| `bPreviewDraco` | `bool` | - |
-| `bUseHighPrecision` | `bool` | - |
-| `bUseUVAverage` | `bool` | - |
-| `bOptimizeNormal` | `bool` | - |
-| `SubBoundsIncludedVertices` | `TArray < FSubBoundsIncludedVertices >` | - |
-| `ReorganizationTags` | `FReorganizationTagsContainer` | Reorganization tags for Level Partition system |
-| `LightmapType` | `ELightmapType` | Controls the Lightmap type used by the Component when creating an Actor from this StaticMesh |
-| `bGenerateSurfaceSample` | `uint8` | Controls whether the Component generates surface samples (VolumeProbeGI) when creating an Actor from this StaticMesh |
-
-## Functions
-
-### `GetAllSectionTexelDensities`
-
-```text
-GetAllSectionTexelDensities() -> ENGINE_API TArray < FSectionTexelDensity >
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API TArray < FSectionTexelDensity >` | - |
-
-### `GetNumLODs`
-
-```text
-GetNumLODs() -> ENGINE_API int32
-```
-
-Returns the number of LODs used by the mesh.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API int32` | - |
-
-### `GetBounds`
-
-```text
-GetBounds() -> ENGINE_API FBoxSphereBounds
-```
-
-Returns the number of bounds of the mesh.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API FBoxSphereBounds` | The bounding box represented as box origin with extents and also a sphere that encapsulates that box |
-
-### `GetBoundingBox`
-
-```text
-GetBoundingBox() -> ENGINE_API FBox
-```
-
-Returns the bounding box, in local space including bounds extension(s), of the StaticMesh asset
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API FBox` | - |
-
-### `GetNumSections`
-
-```text
-GetNumSections(InLOD: int32) -> ENGINE_API int32
-```
-
-Returns number of Sections that this StaticMesh has, in the supplied LOD (LOD 0 is the highest)
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InLOD` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API int32` | - |
-
-### `GetMaterial`
-
-```text
-GetMaterial(MaterialIndex: int32) -> ENGINE_API UMaterialInterface *
-```
-
-Gets a Material given a Material Index and an LOD number
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `MaterialIndex` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API UMaterialInterface *` | Requested material |
-
-### `GetMaterialIndex`
-
-```text
-GetMaterialIndex(MaterialSlotName: FName) -> ENGINE_API int32
-```
-
-Gets a Material index given a slot name
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `MaterialSlotName` | `FName` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API int32` | Requested material |
-
-### `GenerateLODForHLODMesh`
-
-```text
-GenerateLODForHLODMesh(Flags: int) -> ENGINE_API void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Flags` | `int` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStaticMeshComponent.json -->
-
-# UStaticMeshComponent
-
-StaticMeshComponent is used to create an instance of a UStaticMesh.
-  A static mesh is a piece of geometry that consists of a static set of polygons.
- 
-  @see UStaticMesh
-
-## Inheritance
-
-`UMeshComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ForcedLodModel` | `int32` | If 0, auto-select LOD level. if >0, force to (ForcedLodModel-1). |
-| `PreviousLODLevel` | `int32` | LOD that was desired for rendering this StaticMeshComponent last frame. |
-| `MinLOD` | `int32` | Specifies the smallest LOD that will be used for this component.<br>	  This is ignored if ForcedLodModel is enabled. |
-| `MaxLOD` | `int32` | - |
-| `StaticMesh` | `UStaticMesh *` | The static mesh that this component uses to render |
-| `TightBoundsOrigin` | `FVector` | - |
-| `TightBoundsBoxExtent` | `FVector` | - |
-| `TightBoundsSphereRadius` | `float` | - |
-| `CanUseTightBound` | `bool` | - |
-| `VisibilityCollisionColor` | `FColor` | Whether you want to turn on the collision display preview |
-| `bEnableSimpleMaterial` | `bool` | If true, WireframeColorOverride will be used. If false, color is determined based on mobility and physics simulation settings |
-| `bOverrideWireframeColor` | `uint8` | If true, WireframeColorOverride will be used. If false, color is determined based on mobility and physics simulation settings |
-| `bOverrideMinLOD` | `uint8` | Whether to override the MinLOD setting of the static mesh asset with the MinLOD of this component. |
-| `bOverrideNavigationExport` | `uint8` | If true, bForceNavigationObstacle flag will take priority over navigation data stored in StaticMesh |
-| `bForceNavigationObstacle` | `uint8` | Allows overriding navigation export behavior per component: full collisions or dynamic obstacle |
-| `bDisallowMeshPaintPerInstance` | `uint8` | If true, mesh painting is disallowed on this instance. Set if vertex colors are overridden in a construction script. |
-| `bHasHLODTag` | `uint8` | Whether this component participates in HLOD (computed from ReorganizationTags) |
-| `bIgnoreInstanceForTextureStreaming` | `uint8` | Ignore this instance of this static mesh when calculating streaming information.<br>	 	This can be useful when doing things like applying character textures to static geometry,<br>	 	to avoid them using distance-based streaming. |
-| `bOverrideLightMapRes` | `uint8` | Whether to override the lightmap resolution defined in the static mesh. |
-| `bOverrideCullingScreenSize` | `uint8` | - |
-| `bCastDistanceFieldIndirectShadow` | `uint8` | Whether to use the mesh distance field representation (when present) for shadowing indirect lighting (from lightmaps or skylight) on Movable components.<br>	  This works like capsule shadows on skeletal meshes, except using the mesh distance field so no physics asset is required.<br>	  The StaticMesh must have 'Generate Mesh Distance Field' enabled, or the project must have 'Generate Mesh Distance Fields' enabled for this feature to work. |
-| `bOverrideDistanceFieldSelfShadowBias` | `uint8` | Whether to override the DistanceFieldSelfShadowBias setting of the static mesh asset with the DistanceFieldSelfShadowBias of this component. |
-| `bUseSubDivisions` | `uint8` | Whether to use subdivisions or just the triangle's vertices. |
-| `bUseDefaultCollision` | `uint8` | Use the collision profile specified in the StaticMesh asset. |
-| `bForceNotHzbOccluder` | `uint8` | not a hzb Occluder |
-| `bUseAsOccluderIgnoreMobility` | `uint8` | - |
-| `bCanBeOccludeed` | `uint8` | - |
-| `bCustomWaterBeOccludeed` | `uint8` | - |
-| `bAllowCopyExpectedQualityFromMesh` | `uint8` | - |
-| `OverriddenLightMapRes` | `int32` | Light map resolution to use on this component, used if bOverrideLightMapRes is true and there is a valid StaticMesh. |
-| `StreamingDistanceMultiplier` | `float` | Allows adjusting the desired streaming distance of streaming textures that uses UV 0.<br>	  1.0 is the default, whereas a higher value makes the textures stream in sooner from far away.<br>	  A lower value (0.0-1.0) makes the textures stream in later (you have to be closer).<br>	  Value can be < 0 (from legcay content, or code changes) |
-| `LODData` | `TArray < FStaticMeshComponentLODInfo >` | Static mesh LOD data.  Contains static lighting data along with instanced mesh vertex colors. |
-| `StreamingTextureData` | `TArray < FStreamingTextureBuildInfo >` | The list of texture, bounds and scales. As computed in the texture streaming build process. |
-| `IsDynamicInstancingParametersEnabled` | `bool` | Is dynamic instancing parameters enabled |
-| `DynamicInstancingParameters` | `TMap < FString , FVector4 >` | Dynamic instancing parameters |
-| `LightmassSettings` | `FLightmassPrimitiveSettings` | The Lightmass settings for this object. |
-| `IdeaBakingSettings` | `FIdeaBakingPrimitiveSettings` | Add by luciuszhang: The IdeaBaking settings for this object. |
-| `AffectPointLightBPActors` | `TArray < TWeakObjectPtr < AActor > >` | - |
-| `PointLightStaticMeshLODResources` | `TArray < FStaticMeshPointLightVertexDataBuffer >` | - |
-| `bEnableISMbatching` | `uint8` | - |
-| `bForceUseDynamicElement` | `uint8` | - |
-| `LODSectionHiddenFlags` | `TArray < uint8 >` | Hidden Flags for Rendering Section (8 bits = flags, Support 8 Sections), add by connerxiong 2022.6.16. |
-| `OutlineStaticMesh` | `UStaticMesh *` | Outline Static Mesh |
-| `SubDivisionStepSize` | `int32` | Subdivision step size for static vertex lighting. |
-| `WireframeColorOverride` | `FColor` | Wireframe color to use if bOverrideWireframeColor is true |
-| `SelectedEditorSection` | `int32` | The section currently selected in the Editor. Used for highlighting |
-| `SelectedEditorMaterial` | `int32` | The material currently selected in the Editor. Used for highlighting |
-| `SectionIndexPreview` | `int32` | Index of the section to preview. If set to INDEX_NONE, all section will be rendered. Used for isolating in Static Mesh Tool |
-| `MaterialIndexPreview` | `int32` | Index of the material to preview. If set to INDEX_NONE, all section will be rendered. Used for isolating in Static Mesh Tool |
-| `ReorganizationTags` | `FReorganizationTagsContainer` | Reorganization tags for Level Partition system (inherits from StaticMesh by default) |
-| `bOverrideReorganizationTags` | `bool` | Legacy serialized switch. New editorruntime logic uses per-group override flags on ReorganizationTags entries. |
-| `StaticMeshImportVersion` | `int32` | The import version of the static mesh when it was assign this is update when:<br>	  - The user assign a new staticmesh to the component<br>	  - The component is serialize (IsSaving)<br>	  - Default value is BeforeImportStaticMeshVersionWasAdded<br>	 <br>	  If when the component get load (PostLoad) the version of the attach staticmesh is newer<br>	  then this value, we will remap the material override because the order of the materials list<br>	  in the staticmesh can be changed. Hopefully there is a remap table save in the staticmesh. |
-| `bCustomOverrideVertexColorPerLOD` | `uint8` | The component has some custom painting on LODs or not. |
-| `bDisplayVertexColors` | `uint8` | - |
-| `DistanceFieldIndirectShadowMinVisibility` | `float` | Controls how dark the dynamic indirect shadow can be. |
-| `DistanceFieldSelfShadowBias` | `float` | Useful for reducing self shadowing from distance field methods when using world position offset to animate the mesh's vertices. |
-| `IrrelevantLights_DEPRECATED` | `TArray < FGuid >` | - |
-| `StaticMeshDerivedDataKey` | `FString` | Derived data key of the static mesh, used to determine if an update from the source static mesh is required. |
-| `MaterialStreamingRelativeBoxes` | `TArray < uint32 >` | Material Bounds used for texture streaming. |
-
-## Functions
-
-### `OnRep_StaticMesh`
-
-```text
-OnRep_StaticMesh(OldStaticMesh: UStaticMesh *) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `OldStaticMesh` | `UStaticMesh *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetStaticMesh`
-
-```text
-SetStaticMesh(NewMesh: UStaticMesh *) -> bool
-```
-
-Change the StaticMesh used by this instance.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewMesh` | `UStaticMesh *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `SetDirty`
-
-```text
-SetDirty() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetVisibilityCollisionColor`
-
-```text
-SetVisibilityCollisionColor(CollisionColor: FColor) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `CollisionColor` | `FColor` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetVisibilityCollisionColor`
-
-```text
-GetVisibilityCollisionColor() -> FColor
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FColor` | - |
-
-### `K2_GetStaticMesh`
-
-```text
-K2_GetStaticMesh() -> UStaticMesh *
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UStaticMesh *` | - |
-
-### `SetOutlineMesh`
-
-```text
-SetOutlineMesh(InStaticMesh: UStaticMesh *) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InStaticMesh` | `UStaticMesh *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetForcedLodModel`
-
-```text
-SetForcedLodModel(NewForcedLodModel: int32) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewForcedLodModel` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetDistanceFieldSelfShadowBias`
-
-```text
-SetDistanceFieldSelfShadowBias(NewValue: float) -> void
-```
-
-Sets the component's DistanceFieldSelfShadowBias.  bOverrideDistanceFieldSelfShadowBias must be enabled for this to have an effect.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewValue` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetLocalBounds`
-
-```text
-GetLocalBounds(Min: FVector &, Max: FVector &) -> void
-```
-
-Get Local bounds
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Min` | `FVector &` | - |
-| `Max` | `FVector &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetDynamicInstancingParameter`
-
-```text
-SetDynamicInstancingParameter(MaterialIndex: int, Name: FString &, Value: FVector4 &) -> int32
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `MaterialIndex` | `int` | - |
-| `Name` | `FString &` | - |
-| `Value` | `FVector4 &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | - |
-
-### `EnableMeshClipPlane`
-
-```text
-EnableMeshClipPlane(ClipPlane: FPlane &, PlaneIndex: int32) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ClipPlane` | `FPlane &` | - |
-| `PlaneIndex` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `DisableMeshClipPlane`
-
-```text
-DisableMeshClipPlane(PlaneIndex: int32) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PlaneIndex` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `EnableMeshClipArc`
-
-```text
-EnableMeshClipArc(ClipPlane: FPlane &, ClipSphere: FVector4 &) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ClipPlane` | `FPlane &` | - |
-| `ClipSphere` | `FVector4 &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `DisableMeshClipArc`
-
-```text
-DisableMeshClipArc() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `EnableMeshClip4Planes`
-
-```text
-EnableMeshClip4Planes(ClipPlanes: TArray < FPlane > &, bBox: bool) -> void
-```
-
-Num of ClipPlanes is 4
-	  0: Top Plane
-	  1: Down Plane
-	  2: Left Plane
-	  3: Right Plane
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ClipPlanes` | `TArray < FPlane > &` | - |
-| `bBox` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `DisableMeshClip4Planes`
-
-```text
-DisableMeshClip4Planes() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `CheckSwitchSimpleMaterial`
-
-```text
-CheckSwitchSimpleMaterial() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStaticMeshIndoorVolumeComponent.json -->
-
-# UStaticMeshIndoorVolumeComponent
-
-## Inheritance
-
-`USceneComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `StaticMesh` | `UStaticMesh *` | - |
-| `SplitSizeScale` | `float` | - |
-| `SplitFadeSizeScale` | `float` | - |
-| `bLockGenerateSplit` | `bool` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStaticMeshIndoorVolumeContainerComponent.json -->
-
-# UStaticMeshIndoorVolumeContainerComponent
-
-## Inheritance
-
-`USceneComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `StaticMeshes` | `TArray < UStaticMesh * >` | - |
-| `InstanceRuns` | `TArray < FInstanceRun >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStaticMeshSocket.json -->
-
-# UStaticMeshSocket
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SocketName` | `FName` | Defines a named attachment location on the UStaticMesh. <br>	 	These are set up in editor and used as a shortcut instead of specifying <br>	 	everything explicitly to AttachComponent in the StaticMeshComponent.<br>	 	The Outer of a StaticMeshSocket should always be the UStaticMesh. |
-| `RelativeLocation` | `FVector` | - |
-| `RelativeRotation` | `FRotator` | - |
-| `RelativeScale` | `FVector` | - |
-| `Tag` | `FString` | - |
-| `bDynamicCreate` | `bool` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStaticMeshWidget.json -->
-
-# UStaticMeshWidget
-
-## Inheritance
-
-`UWidget`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `StaticMeshAsset` | `USlateVectorArtData *` | - |
-| `MeshScale` | `FVector2D` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E7%B1%BB%E4%BA%8B%E4%BB%B6/Buff/USTBaseBuffSystemComponent.json -->
-
-# USTBaseBuffSystemComponent
-
-Buff管理组件
-
-## Inheritance
-
-`UActorComponent` -> `IUTSkillInstanceNodeContainerInterface` -> `IObjectPoolInterface`
-
-## Delegates
-
-### `UGC_BuffAttachedDelegate`
-
-```text
-UGC_BuffAttachedDelegate(BuffName: const FName&) -> void
-```
-
-Buff添加委托
-	  生效范围：SC
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `BuffName` | `const FName&` | Buff名字 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `UGC_BuffDetachedDelegate`
-
-```text
-UGC_BuffDetachedDelegate(BuffName: const FName&) -> void
-```
-
-Buff移除委托
-	  生效范围：SC
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `BuffName` | `const FName&` | Buff名字 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStereoLayerComponent.json -->
-
-# UStereoLayerComponent
-
-A geometry layer within the stereo rendered viewport.
-
-## Inheritance
-
-`USceneComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bLiveTexture` | `uint32` | True if the stereo layer texture needs to update itself every frame(scene capture, video, etc.) |
-| `bSupportsDepth` | `uint32` | True if the stereo layer needs to support depth intersections with the scene geometry, if available on the platform |
-| `bNoAlphaChannel` | `uint32` | True if the texture should not use its own alpha channel (1.0 will be substituted) |
-| `Texture` | `UTexture *` | Texture displayed on the stereo layer (is stereocopic textures are supported on the platfrom and more than one texture is provided, this will be the right eye) |
-| `LeftTexture` | `UTexture *` | Texture displayed on the stereo layer for left eye, if stereoscopic textures are supported on the platform |
-| `bQuadPreserveTextureRatio` | `uint32` | True if the quad should internally set it's Y value based on the set texture's dimensions |
-| `QuadSize` | `FVector2D` | Size of the rendered stereo layer quad |
-| `UVRect` | `FBox2D` | UV coordinates mapped to the quad face |
-| `CylinderRadius` | `float` | Radial size of the rendered stereo layer cylinder |
-| `CylinderOverlayArc` | `float` | Arc angle for the stereo layer cylinder |
-| `CylinderHeight` | `int` | Height of the stereo layer cylinder |
-| `StereoLayerType` | `TEnumAsByte < enum EStereoLayerType >` | Specifies how and where the quad is rendered to the screen |
-| `StereoLayerShape` | `TEnumAsByte < enum EStereoLayerShape >` | Specifies which type of layer it is.  Note that some shapes will be supported only on certain platforms! |
-| `Priority` | `int32` | Render priority among all stereo layers, higher priority render on top of lower priority |
-
-## Functions
-
-### `SetTexture`
-
-```text
-SetTexture(InTexture: UTexture *) -> void
-```
-
-Change the texture displayed on the stereo layer quad
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InTexture` | `UTexture *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetTexture`
-
-```text
-GetTexture() -> UTexture *
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UTexture *` | - |
-
-### `SetQuadSize`
-
-```text
-SetQuadSize(InQuadSize: FVector2D) -> void
-```
-
-Change the quad size. This is the unscaled height and width, before component scale is applied.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InQuadSize` | `FVector2D` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetQuadSize`
-
-```text
-GetQuadSize() -> FVector2D
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector2D` | - |
-
-### `SetUVRect`
-
-```text
-SetUVRect(InUVRect: FBox2D) -> void
-```
-
-Change the UV coordinates mapped to the quad face
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InUVRect` | `FBox2D` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetUVRect`
-
-```text
-GetUVRect() -> FBox2D
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FBox2D` | - |
-
-### `SetPriority`
-
-```text
-SetPriority(InPriority: int32) -> void
-```
-
-Change the layer's render priority, higher priorities render on top of lower priorities
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InPriority` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetPriority`
-
-```text
-GetPriority() -> int32
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | - |
-
-### `MarkTextureForUpdate`
-
-```text
-MarkTextureForUpdate() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStereoLayerFunctionLibrary.json -->
-
-# UStereoLayerFunctionLibrary
-
-StereoLayer Extensions Function Library
-
-## Inheritance
-
-`UBlueprintFunctionLibrary`
-
-## Functions
-
-### `SetSplashScreen`
-
-```text
-SetSplashScreen(Texture: UTexture *, Scale: FVector2D, Offset: FVector2D, bShowLoadingMovie: bool, bShowOnSet: bool) -> void
-```
-
-Set splash screen attributes
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Texture` | `UTexture *` | (in) A texture to be used for the splash. B8R8G8A8 format. |
-| `Scale` | `FVector2D` | (in) Scale of the texture. |
-| `Offset` | `FVector2D` | (in) Position from which to start rendering the texture. |
-| `bShowLoadingMovie` | `bool` | - |
-| `bShowOnSet` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ShowSplashScreen`
-
-```text
-ShowSplashScreen() -> void
-```
-
-Show the splash screen and override the VR display
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `HideSplashScreen`
-
-```text
-HideSplashScreen() -> void
-```
-
-Hide the splash screen and return to normal display.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `EnableAutoLoadingSplashScreen`
-
-```text
-EnableAutoLoadingSplashScreen(InAutoShowEnabled: bool) -> void
-```
-
-Enablesdisables splash screen to be automatically shown when LoadMap is called.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InAutoShowEnabled` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USTExtraGameMagnitudeCalculation.json -->
-
-# USTExtraGameMagnitudeCalculation
-
-伤害公式
-
-## Inheritance
-
-`UGameMagnitudeCalculationBase` -> `ILocalCalculationVariableSupportInterface`
-
-## Functions
-
-### `IsHeadDamage`
-
-```text
-IsHeadDamage(Context: FGameMagnitudeContext &) -> bool
-```
-
-获取是否是爆头伤害
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Context` | `FGameMagnitudeContext &` | 公式的上下文对象 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 是否是爆头伤害 |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStreamingSettings.json -->
-
-# UStreamingSettings
-
-Streaming settings.
-
-## Inheritance
-
-`UDeveloperSettings`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `AsyncLoadingThreadEnabled` | `uint32` | - |
-| `WarnIfTimeLimitExceeded` | `uint32` | - |
-| `TimeLimitExceededMultiplier` | `float` | - |
-| `TimeLimitExceededMinTime` | `float` | - |
-| `MinBulkDataSizeForAsyncLoading` | `int32` | - |
-| `UseBackgroundLevelStreaming` | `uint32` | - |
-| `AsyncLoadingUseFullTimeLimit` | `uint32` | Whether to use the entire time limit even if blocked on IO |
-| `AsyncLoadingTimeLimit` | `float` | - |
-| `PriorityAsyncLoadingExtraTime` | `float` | - |
-| `LevelStreamingActorsUpdateTimeLimit` | `float` | Maximum allowed time to spend for actor registration steps during level streaming (ms per frame) |
-| `LevelStreamingComponentsRegistrationGranularity` | `int32` | Batching granularity used to register actor components during level streaming |
-| `LevelStreamingUnregisterComponentsTimeLimit` | `float` | Maximum allowed time to spend while unregistering components during level streaming (ms per frame) |
-| `LevelStreamingComponentsUnregistrationGranularity` | `int32` | Batching granularity used to unregister actor components during level streaming |
-| `EventDrivenLoaderEnabled` | `uint32` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStreamMediaSource.json -->
-
-# UStreamMediaSource
-
-## Inheritance
-
-`UBaseMediaSource`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `StreamUrl` | `FString` | The URL to the media stream to be played. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USubmixEffectDynamicsProcessorPreset.json -->
-
-# USubmixEffectDynamicsProcessorPreset
-
-## Inheritance
-
-`USoundEffectSubmixPreset`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Settings` | `FSubmixEffectDynamicsProcessorSettings` | - |
-
-## Functions
-
-### `SetSettings`
-
-```text
-SetSettings(InSettings: FSubmixEffectDynamicsProcessorSettings &) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InSettings` | `FSubmixEffectDynamicsProcessorSettings &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USubmixEffectReverbPreset.json -->
-
-# USubmixEffectReverbPreset
-
-## Inheritance
-
-`USoundEffectSubmixPreset`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Settings` | `FSubmixEffectReverbSettings` | - |
-
-## Functions
-
-### `SetSettings`
-
-```text
-SetSettings(InSettings: FSubmixEffectReverbSettings &) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InSettings` | `FSubmixEffectReverbSettings &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetSettingsWithReverbEffect`
-
-```text
-SetSettingsWithReverbEffect(InReverbEffect: UReverbEffect *, WetLevel: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InReverbEffect` | `UReverbEffect *` | - |
-| `WetLevel` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USubmixEffectSubmixEQPreset.json -->
-
-# USubmixEffectSubmixEQPreset
-
-## Inheritance
-
-`USoundEffectSubmixPreset`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Settings` | `FSubmixEffectSubmixEQSettings` | - |
-
-## Functions
-
-### `SetSettings`
-
-```text
-SetSettings(InSettings: FSubmixEffectSubmixEQSettings &) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InSettings` | `FSubmixEffectSubmixEQSettings &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USubsurfaceProfile.json -->
-
-# USubsurfaceProfile
-
-Subsurface Scattering profile asset, can be specified at the material. Only for "Subsurface Profile" materials, is use during Screenspace Subsurface Scattering
-  Don't change at runtime. All properties in here are per material - texture like variations need to come from properties that are in the GBuffer.
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Settings` | `FSubsurfaceProfileStruct` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USubUVAnimation.json -->
-
-# USubUVAnimation
-
-SubUV animation asset, which caches bounding geometry for regions in the SubUVTexture with non-zero opacity.
-  Particle emitters with a SubUV module which use this asset leverage the optimal bounding geometry to reduce overdraw.
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SubUVTexture` | `UTexture2D *` | Texture to generate bounding geometry from. |
-| `SubImages_Horizontal` | `int32` | The number of sub-images horizontally in the texture |
-| `SubImages_Vertical` | `int32` | The number of sub-images vertically in the texture |
-| `BoundingMode` | `TEnumAsByte < enum ESubUVBoundingVertexCount >` | More bounding vertices results in reduced overdraw, but adds more triangle overhead.<br>	  The eight vertex mode is best used when the SubUV texture has a lot of space to cut out that is not captured by the four vertex version,<br>	  and when the particles using the texture will be few and large. |
-| `OpacitySourceMode` | `TEnumAsByte < enum EOpacitySourceMode >` | - |
-| `AlphaThreshold` | `float` | Alpha channel values larger than the threshold are considered occupied and will be contained in the bounding geometry.<br>	  Raising this threshold slightly can reduce overdraw in particles using this animation asset. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USynthComponent.json -->
-
-# USynthComponent
-
-## Inheritance
-
-`USceneComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bAutoDestroy` | `uint8` | Auto destroy this component on completion |
-| `bStopWhenOwnerDestroyed` | `uint8` | Stop sound when owner is destroyed |
-| `bAllowSpatialization` | `uint8` | Is this audio component allowed to be spatialized? |
-| `bOverrideAttenuation` | `uint8` | Should the Attenuation Settings asset be used (false) or should the properties set directly on the component be used for attenuation properties |
-| `AttenuationSettings` | `USoundAttenuation *` | If bOverrideSettings is false, the asset to use to determine attenuation properties for sounds generated by this component |
-| `AttenuationOverrides` | `FSoundAttenuationSettings` | If bOverrideSettings is true, the attenuation properties to use for sounds generated by this component |
-| `ConcurrencySettings` | `USoundConcurrency *` | What sound concurrency to use for sounds generated by this audio component |
-| `SoundClass` | `USoundClass *` | Sound class this sound belongs to |
-| `SourceEffectChain` | `USoundEffectSourcePresetChain *` | The source effect chain to use for this sound. |
-| `SoundSubmix` | `USoundSubmix *` | Submix this sound belongs to |
-| `SoundSubmixSends` | `TArray < FSoundSubmixSendInfo >` | An array of submix sends. Audio from this sound will send a portion of its audio to these effects. |
-| `bIsUISound` | `uint8` | Whether or not this sound plays when the game is paused in the UI |
-| `Synth` | `USynthSound *` | - |
-| `AudioComponent` | `UAudioComponent *` | - |
-
-## Functions
-
-### `Start`
-
-```text
-Start() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `Stop`
-
-```text
-Stop() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `IsPlaying`
-
-```text
-IsPlaying() -> bool
-```
-
-Returns true if this component is currently playing.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `SetSubmixSend`
-
-```text
-SetSubmixSend(Submix: USoundSubmix *, SendLevel: float) -> void
-```
-
-Sets how much audio the sound should send to the given submix.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Submix` | `USoundSubmix *` | - |
-| `SendLevel` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTextBinding.json -->
-
-# UTextBinding
-
-## Inheritance
-
-`UPropertyBinding`
-
-## Functions
-
-### `GetTextValue`
-
-```text
-GetTextValue() -> FText
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FText` | - |
-
-### `GetStringValue`
-
-```text
-GetStringValue() -> FString
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FString` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTextBlock.json -->
-
-# UTextBlock
-
-A simple static text widget.
- 
-   No Children
-   Text
-
-## Inheritance
-
-`UTextLayoutWidget`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Text` | `FText` | The text to display |
-| `TextDelegate` | `FGetText` | A bindable delegate to allow logic to drive the text of the widget |
-| `ColorAndOpacity` | `FSlateColor` | The color of the text |
-| `ColorAndOpacityDelegate` | `FGetSlateColor` | A bindable delegate for the ColorAndOpacity. |
-| `Font` | `FSlateFontInfo` | The font to render the text with |
-| `ShadowOffset` | `FVector2D` | The direction the shadow is cast |
-| `ShadowColorAndOpacity` | `FLinearColor` | The color of the shadow |
-| `ShadowColorAndOpacityDelegate` | `FGetLinearColor` | A bindable delegate for the ShadowColorAndOpacity. |
-| `MinDesiredWidth` | `float` | The minimum desired size for the text |
-| `AutoEllipsisText` | `bool` | - |
-| `MutiEllipsisText` | `bool` | - |
-| `MutiEllipsisLine` | `int32` | - |
-| `bWrapWithInvalidationPanel` | `bool` | If true, it will automatically wrap this text widget with an invalidation panel |
-
-## Functions
-
-### `SetColorAndOpacity`
-
-```text
-SetColorAndOpacity(InColorAndOpacity: FSlateColor) -> void
-```
-
-Sets the color and opacity of the text in this text block
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InColorAndOpacity` | `FSlateColor` | The new text color and opacity |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetColorRGBStr`
-
-```text
-SetColorRGBStr(HexString: FString &) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `HexString` | `FString &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetOpacity`
-
-```text
-SetOpacity(InOpacity: float) -> void
-```
-
-Sets the opacity of the text in this text block
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InOpacity` | `float` | The new text opacity |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetShadowColorAndOpacity`
-
-```text
-SetShadowColorAndOpacity(InShadowColorAndOpacity: FLinearColor) -> void
-```
-
-Sets the color and opacity of the text drop shadow
-	  Note: if opacity is zero no shadow will be drawn
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InShadowColorAndOpacity` | `FLinearColor` | The new drop shadow color and opacity |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetShadowOffset`
-
-```text
-SetShadowOffset(InShadowOffset: FVector2D) -> void
-```
-
-Sets the offset that the text drop shadow should be drawn at
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InShadowOffset` | `FVector2D` | The new offset |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetFont`
-
-```text
-SetFont(InFontInfo: FSlateFontInfo) -> void
-```
-
-Dynamically set the font info for this text block
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InFontInfo` | `FSlateFontInfo` | THe new font info |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetJustification`
-
-```text
-SetJustification(InJustification: ETextJustify :: Type) -> void
-```
-
-Set the text justification for this text block
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InJustification` | `ETextJustify :: Type` | new justification |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetVerticalJustification`
-
-```text
-SetVerticalJustification(InJustification: ETextVerticalJustify :: Type) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InJustification` | `ETextVerticalJustify :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetNeedVerticalJustificationWhenOverflow`
-
-```text
-SetNeedVerticalJustificationWhenOverflow(InEnable: bool) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InEnable` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetMinDesiredWidth`
-
-```text
-SetMinDesiredWidth(InMinDesiredWidth: float) -> void
-```
-
-Set the minimum desired width for this text block
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InMinDesiredWidth` | `float` | new minimum desired width |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAutoEllipsisText`
-
-```text
-SetAutoEllipsisText(InAutoEllipsisText: bool) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InAutoEllipsisText` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetWrapTextAt`
-
-```text
-SetWrapTextAt(InWrapTextAt: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InWrapTextAt` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetMutiEllipsisText`
-
-```text
-SetMutiEllipsisText(InMutiEllipsisText: bool) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InMutiEllipsisText` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetText`
-
-```text
-GetText() -> FText
-```
-
-Gets the widget text
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FText` | The widget text |
-
-### `GetLocalText`
-
-```text
-GetLocalText() -> FText
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FText` | - |
-
-### `SetText`
-
-```text
-SetText(InText: FText) -> void
-```
-
-Directly sets the widget text.
-	  Warning: This will wipe any binding created for the Text property!
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InText` | `FText` | The text to assign to the widget |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Delegates
-
-### `OnTextBlockTextChangeDelegate`
-
-```text
-OnTextBlockTextChangeDelegate(TextChanged: FText) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TextChanged` | `FText` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTextBlockWidgetStyle.json -->
-
-# UTextBlockWidgetStyle
-
-## Inheritance
-
-`USlateWidgetStyleContainerBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `TextBlockStyle` | `FTextBlockStyle` | The actual data describing the button's appearance. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTextLayoutWidget.json -->
-
-# UTextLayoutWidget
-
-Base class for all widgets that use a text layout.
-  Contains the common options that should be exposed for the underlying Slate widget.
-
-## Inheritance
-
-`UWidget`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ShapedTextOptions` | `FShapedTextOptions` | Controls how the text within this widget should be shaped. |
-| `Justification` | `TEnumAsByte < ETextJustify :: Type >` | How the text should be aligned with the margin. |
-| `VerticalJustification` | `TEnumAsByte < ETextVerticalJustify :: Type >` | - |
-| `bNeedVerticalJustificationWhenOverflow` | `bool` | Should the text still be justified vertically when it overflow its block. |
-| `AutoWrapText` | `bool` | True if we're wrapping text automatically based on the computed horizontal space for this widget. |
-| `WrapTextAt` | `float` | Whether text wraps onto a new line when it's length exceeds this width; if this value is zero or negative, no wrapping occurs. |
-| `WrappingPolicy` | `ETextWrappingPolicy` | The wrapping policy to use. |
-| `Margin` | `FMargin` | The amount of blank space left around the edges of text area. |
-| `LineHeightPercentage` | `float` | The amount to scale each lines height by. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTextPropertyTestObject.json -->
-
-# UTextPropertyTestObject
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `DefaultedText` | `FText` | - |
-| `UndefaultedText` | `FText` | - |
-| `TransientText` | `FText` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTextRenderComponent.json -->
-
-# UTextRenderComponent
-
-Renders text in the world with given font. Contains usual font related attributes such as Scale, Alignment, Color etc.
-
-## Inheritance
-
-`UPrimitiveComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Text` | `FText` | Text content, can be multi line using   <br>as line separator |
-| `TextMaterial` | `UMaterialInterface *` | Text material |
-| `Font` | `UFont *` | Text font |
-| `HorizontalAlignment` | `TEnumAsByte < enum EHorizTextAligment >` | Horizontal text alignment |
-| `VerticalAlignment` | `TEnumAsByte < enum EVerticalTextAligment >` | Vertical text alignment |
-| `TextRenderColor` | `FColor` | Color of the text, can be accessed as vertex color |
-| `XScale` | `float` | Horizontal scale, default is 1.0 |
-| `YScale` | `float` | Vertical scale, default is 1.0 |
-| `WorldSize` | `float` | Vertical size of the fonts largest character in world units. Transform, XScale and YScale will affect final size. |
-| `InvDefaultSize` | `float` | The inverse of the Font's character height. |
-| `HorizSpacingAdjust` | `float` | Horizontal adjustment per character, default is 0.0 |
-| `VertSpacingAdjust` | `float` | Vertical adjustment per character, default is 0.0 |
-| `bAlwaysRenderAsText` | `uint32` | Allows text to draw unmodified when using debug visualization modes. |
-
-## Functions
-
-### `SetText`
-
-```text
-SetText(Value: FString &) -> void
-```
-
-Change the text value and signal the primitives to be rebuilt 
-	  The FString variant is deprecated in favor of the FText variant
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Value` | `FString &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `K2_SetText`
-
-```text
-K2_SetText(Value: FText &) -> void
-```
-
-Change the text value and signal the primitives to be rebuilt
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Value` | `FText &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetTextMaterial`
-
-```text
-SetTextMaterial(Material: UMaterialInterface *) -> void
-```
-
-Change the text material and signal the primitives to be rebuilt
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Material` | `UMaterialInterface *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetFont`
-
-```text
-SetFont(Value: UFont *) -> void
-```
-
-Change the font and signal the primitives to be rebuilt
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Value` | `UFont *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetHorizontalAlignment`
-
-```text
-SetHorizontalAlignment(Value: EHorizTextAligment) -> void
-```
-
-Change the horizontal alignment and signal the primitives to be rebuilt
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Value` | `EHorizTextAligment` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetVerticalAlignment`
-
-```text
-SetVerticalAlignment(Value: EVerticalTextAligment) -> void
-```
-
-Change the vertical alignment and signal the primitives to be rebuilt
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Value` | `EVerticalTextAligment` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetTextRenderColor`
-
-```text
-SetTextRenderColor(Value: FColor) -> void
-```
-
-Change the text render color and signal the primitives to be rebuilt
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Value` | `FColor` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetXScale`
-
-```text
-SetXScale(Value: float) -> void
-```
-
-Change the text X scale and signal the primitives to be rebuilt
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Value` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetYScale`
-
-```text
-SetYScale(Value: float) -> void
-```
-
-Change the text Y scale and signal the primitives to be rebuilt
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Value` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetHorizSpacingAdjust`
-
-```text
-SetHorizSpacingAdjust(Value: float) -> void
-```
-
-Change the text horizontal spacing adjustment and signal the primitives to be rebuilt
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Value` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetVertSpacingAdjust`
-
-```text
-SetVertSpacingAdjust(Value: float) -> void
-```
-
-Change the text vertical spacing adjustment and signal the primitives to be rebuilt
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Value` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetWorldSize`
-
-```text
-SetWorldSize(Value: float) -> void
-```
-
-Change the world size of the text and signal the primitives to be rebuilt
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Value` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetTextLocalSize`
-
-```text
-GetTextLocalSize() -> FVector
-```
-
-Get local size of text
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetTextWorldSize`
-
-```text
-GetTextWorldSize() -> FVector
-```
-
-Get world space size of text
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTextTextureAtlas.json -->
-
-# UTextTextureAtlas
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `TextAtlases` | `TArray < UTexture2D * >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTexture.json -->
-
-# UTexture
-
-## Inheritance
-
-`UObject` -> `IInterface_AssetUserData`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `LightingGuid` | `FGuid` | Unique ID for this material, used for caching during distributed lighting |
-| `LODBias` | `int32` | --------------------------------------------------------------------------<br>	--------------------------------------------------------------------------<br>	 A bias to the index of the top mip level to use. |
-| `ExpectedQualityLimit` | `FExpectedQuality` | - |
-| `NumCinematicMipLevels` | `int32` | Number of mip-levels to use for cinematic quality. |
-| `SRGB` | `uint32` | This should be unchecked if using alpha channels individually as masks. |
-| `bNotUsedInUltimateHighQuality` | `uint32` | - |
-| `bNotUsedInHighQuality` | `uint32` | - |
-| `bNotUsedInMediumQuality` | `uint32` | - |
-| `bNotUsedInLowQuality` | `uint32` | - |
-| `NeverStream` | `uint32` | - |
-| `bNoTiling` | `uint32` | If true, the RHI texture will be created using TexCreate_NoTiling |
-| `bUseCinematicMipLevels` | `uint32` | Whether to use the extra cinematic quality mip-levels, when we're forcing mip-levels to be resident. |
-| `AssetUserData` | `TArray < UAssetUserData * >` | Array of user data stored with the asset |
-| `CachedCombinedLODBias` | `int32` | Cached combined group and texture LOD bias to use. |
-| `bAsyncResourceReleaseHasBeenStarted` | `uint32` | Whether the async resource release process has already been kicked off or not |
-| `CompressionSettings` | `TEnumAsByte < enum TextureCompressionSettings >` | Compression settings to use when building the texture. |
-| `Filter` | `TEnumAsByte < enum TextureFilter >` | The texture filtering mode to use when sampling this texture. |
-| `LODGroup` | `TEnumAsByte < enum TextureGroup >` | Texture group this texture belongs to |
-| `CrunchSetting` | `TEnumAsByte < enum ETextureCrunchSetting >` | - |
-| `bOverrideCrunchCompressionAmount` | `uint32` | - |
-| `CrunchCompressionAmount` | `float` | - |
-| `BasisSetting` | `TEnumAsByte < enum ETextureBasisSetting >` | - |
-| `bOverrideBasisCompressionAmount` | `uint32` | - |
-| `BasisCompressionAmount` | `float` | - |
-| `Source` | `FTextureSource` | --------------------------------------------------------------------------<br>	-------------------------------------------------------------------------- |
-| `SourceFilePath_DEPRECATED` | `FString` | - |
-| `AssetImportData` | `UAssetImportData *` | - |
-| `AdjustBrightness` | `float` | Static texture brightness adjustment (scales HSV value.)  (Non-destructive; Requires texture source art to be available.) |
-| `AdjustBrightnessCurve` | `float` | Static texture curve adjustment (raises HSV value to the specified power.)  (Non-destructive; Requires texture source art to be available.) |
-| `AdjustVibrance` | `float` | Static texture "vibrance" adjustment (0 - 1) (HSV saturation algorithm adjustment.)  (Non-destructive; Requires texture source art to be available.) |
-| `AdjustSaturation` | `float` | Static texture saturation adjustment (scales HSV saturation.)  (Non-destructive; Requires texture source art to be available.) |
-| `AdjustRGBCurve` | `float` | Static texture RGB curve adjustment (raises linear-space RGB color to the specified power.)  (Non-destructive; Requires texture source art to be available.) |
-| `AdjustHue` | `float` | Static texture hue adjustment (0 - 360) (offsets HSV hue by value in degrees.)  (Non-destructive; Requires texture source art to be available.) |
-| `AdjustMinAlpha` | `float` | Remaps the alpha to the specified minmax range, defines the new value of 0 (Non-destructive; Requires texture source art to be available.) |
-| `AdjustMaxAlpha` | `float` | Remaps the alpha to the specified minmax range, defines the new value of 1 (Non-destructive; Requires texture source art to be available.) |
-| `CompressionNoAlpha` | `uint32` | If enabled, the texture's alpha channel will be discarded during compression |
-| `CompressionNone` | `uint32` | - |
-| `DeferCompression` | `uint32` | If enabled, defer compression of the texture until save. |
-| `MaxTextureSize` | `int32` | The maximum resolution for generated textures. A value of 0 means the maximum size for the format on each platform, except HDR longlat cubemaps, which default to a resolution of 512. |
-| `MaxTextureSizeHD` | `int32` | - |
-| `MaxTextureSizeWinOB` | `int32` | - |
-| `MaxTextureSizePC` | `int32` | - |
-| `CompressionQuality` | `TEnumAsByte < enum ETextureCompressionQuality >` | The compression quality for generated textures. |
-| `bDitherMipMapAlpha` | `uint32` | When true, the alpha channel of mip-maps and the base image are dithered for smooth LOD transitions. |
-| `AlphaCoverageThresholds` | `FVector4` | Alpha values per channel to compare to when preserving alpha coverage. |
-| `bPreserveBorder` | `uint32` | When true the texture's border will be preserved during mipmap generation. |
-| `bFlipGreenChannel` | `uint32` | When true the texture's green channel will be inverted. This is useful for some normal maps. |
-| `bForcePVRTC4` | `uint32` | For DXT1 textures, setting this will cause the texture to be twice the size, but better looking, on iPhone |
-| `bUseASTCForCookTargetPlatform` | `uint32` | Whether to use astc for cook target platform . |
-| `PowerOfTwoMode` | `TEnumAsByte < enum ETexturePowerOfTwoSetting :: Type >` | How to pad the texture to a power of 2 size (if necessary) |
-| `PaddingColor` | `FColor` | The color used to pad the texture out if it is resized due to PowerOfTwoMode |
-| `bChromaKeyTexture` | `bool` | Whether to chroma key the image, replacing any pixels that match ChromaKeyColor with transparent black |
-| `ChromaKeyThreshold` | `float` | The threshold that components have to match for the texel to be considered equal to the ChromaKeyColor when chroma keying (<=, set to 0 to require a perfect exact match) |
-| `ChromaKeyColor` | `FColor` | The color that will be replaced with transparent black if chroma keying is enabled |
-| `MipGenSettings` | `TEnumAsByte < enum TextureMipGenSettings >` | Per asset specific setting to define the mip-map generation properties like sharpening and kernel size. |
-| `bUseNewFilter_UE4` | `bool` | New Tex Mip Filter  Tex MaxSize Filter from UE5 |
-| `FloodFillByNearestThreshold` | `float` | For masked texture which using alpha channel as the clip value, flood fill background zone RGB values with nearest valid pixels.<br>	  Mask texture should setup this to actual clip value to avoid polluting color in high mip level.<br>	  All pixels has lower alpha value than this threshold will be filled by nearest valid pixel(which has higher value than threshold). Value of 0.0 means no flood fill process at all. |
-| `CompositeTexture` | `UTexture *` | Can be defined to modify the roughness based on the normal map variation (mostly from mip maps).<br>	  MaxAlpha comes in handy to define a base roughness if no source alpha was there.<br>	  Make sure the normal map has at least as many mips as this texture. |
-| `CompositeTextureMode` | `TEnumAsByte < enum ECompositeTextureMode >` | defines how the CompositeTexture is applied, e.g. CTM_RoughnessFromNormalAlpha |
-| `CompositePower` | `float` | default 1, high values result in a stronger effect e.g 1, 2, 4, 8<br>	  this is no slider because the texture update would not be fast enough |
-| `bIsCookingHDTexture` | `bool` | - |
-| `bIsCookingPCTexture` | `bool` | - |
-| `bUseLegacyGamma` | `uint32` | A flag for using the simplified legacy gamma space e.g pow(color,12.2) for converting from FColor to FLinearColor, if we're doing sRGB. |
-| `bKeepSourceDataWhenCookingUGCEditor` | `uint32` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTexture2D.json -->
-
-# UTexture2D
-
-## Inheritance
-
-`UTexture`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `StreamingIndex` | `int32` | FStreamingTexture index used by the texture streaming system. |
-| `LevelIndex` | `int32` | Level scope index of this texture. It is used to reduce the amount of lookup to map a texture to its level index.<br>	  Useful when building texture streaming data, as well as when filling the texture streamer with precomputed data.<br>      It relates to FStreamingTextureBuildInfo::TextureLevelIndex and also the index in ULevel::StreamingTextureGuids. <br>	  Default value of -1, indicates that the texture has an unknown index (not yet processed). At level load time, <br>	  -2 is also used to indicate that the texture has been processed but no entry were found in the level table.<br>	  After any of these processes, the LevelIndex is reset to INDEX_NONE. Making it ready for the next level task. |
-| `FirstResourceMemMip` | `int32` | keep track of first mip level used for ResourceMem creation |
-| `bSuperSamplingMipBiasResponsive` | `uint32` | - |
-| `PerTextureMipBias` | `int32` | - |
-| `bUseForTerrainRVT` | `uint32` | - |
-| `ImportedSize` | `FIntPoint` | The imported size of the texture. Only valid on cooked builds when texture source is not<br>	  available. Access ONLY via the GetImportedSize() accessor! |
-| `ForceMipLevelsToBeResidentTimestamp` | `double` | WorldSettings timestamp that tells the streamer to force all miplevels to be resident up until that time. |
-| `bTemporarilyDisableStreaming` | `bool` | True if streaming is temporarily disabled so we can update subregions of this texture's resource <br>	without streaming clobbering it. Automatically cleared before saving. |
-| `bIsStreamable` | `bool` | Whether the texture is currently streamable or not. |
-| `bHasStreamingUpdatePending` | `uint32` | Whether some mips might be streamed soon. If false, the texture is not planned resolution will be stable. |
-| `bForceMiplevelsToBeResident` | `uint32` | Override whether to fully stream even if texture hasn't been rendered. |
-| `bIgnoreStreamingMipBias` | `uint32` | Ignores the streaming mip bias used to accommodate memory constraints. |
-| `bGlobalForceMipLevelsToBeResident` | `uint32` | Global and serialized version of ForceMiplevelsToBeResident. |
-| `bIsTransient` | `uint32` | - |
-| `AddressX` | `TEnumAsByte < enum TextureAddress >` | The addressing mode to use for the X axis. |
-| `AddressY` | `TEnumAsByte < enum TextureAddress >` | The addressing mode to use for the Y axis. |
-| `NotInlineMipCountOverride` | `uint8` | - |
-| `bTryDownloadWhenSplit` | `bool` | - |
-| `bHasBeenPaintedInEditor` | `uint32` | Whether the texture has been painted in the editor. |
-
-## Functions
-
-### `Blueprint_GetSizeX`
-
-```text
-Blueprint_GetSizeX() -> int32
-```
-
-Gets the X size of the texture, in pixels
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | - |
-
-### `Blueprint_GetSizeY`
-
-```text
-Blueprint_GetSizeY() -> int32
-```
-
-Gets the Y size of the texture, in pixels
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | - |
-
-### `RefreshBulkNotExistsMipCount`
-
-```text
-RefreshBulkNotExistsMipCount() -> ENGINE_API void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
 
 ## Language
 

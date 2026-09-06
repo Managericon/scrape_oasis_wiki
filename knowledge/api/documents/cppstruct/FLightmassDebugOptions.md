@@ -16,9 +16,9 @@ Debug options for Lightmass
 | Name | Type/Value | Description |
 |---|---|---|
 | `bStatsEnabled` | `uint32` | If true, all participating Lightmass agents will report back detailed stats to the log. |
-| `bDebugMode` | `uint32` | If false, UnrealLightmass.exe is launched automatically (default)<br>	 	If true, it must be launched manually (e.g. through a debugger) with the -debug command line parameter. |
 | `bGatherBSPSurfacesAcrossComponents` | `uint32` | If true, BSP surfaces split across model components are joined into 1 mapping |
 | `CoplanarTolerance` | `float` | The tolerance level used when gathering BSP surfaces. |
+| `bDebugMode` | `uint32` | If false, UnrealLightmass.exe is launched automatically (default)<br>	 	If true, it must be launched manually (e.g. through a debugger) with the -debug command line parameter. |
 | `bUseImmediateImport` | `uint32` | If true, Lightmass will import mappings immediately as they complete.<br>	 	It will not process them, however. |
 | `bImmediateProcessMappings` | `uint32` | If true, Lightmass will process appropriate mappings as they are imported.<br>	 	NOTE: Requires ImmediateMode be enabled to actually work. |
 | `bSortMappings` | `uint32` | If true, Lightmass will sort mappings by texel cost. |

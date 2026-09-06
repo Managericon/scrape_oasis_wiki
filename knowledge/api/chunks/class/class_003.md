@@ -6,6 +6,819 @@ category: "API Wiki/class"
 kind: "api_chunk"
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCineCameraComponent.json -->
+
+# UCineCameraComponent
+
+A specialized version of a camera component, geared toward cinematic usage.
+
+## Inheritance
+
+`UCameraComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `FilmbackSettings` | `FCameraFilmbackSettings` | Controls the filmback of the camera. |
+| `LensSettings` | `FCameraLensSettings` | Controls the camera's lens. |
+| `FocusSettings` | `FCameraFocusSettings` | Controls the camera's focus. |
+| `CurrentFocalLength` | `float` | Current focal length of the camera (i.e. controls FoV, zoom) |
+| `CurrentAperture` | `float` | Current aperture, in terms of f-stop (e.g. 2.8 for f2.8) |
+| `CurrentFocusDistance` | `float` | Read-only. Control this value via FocusSettings. |
+| `FilmbackPresets` | `TArray < FNamedFilmbackPreset >` | List of available filmback presets |
+| `LensPresets` | `TArray < FNamedLensPreset >` | List of available lens presets |
+| `DefaultFilmbackPresetName` | `FString` | Name of the default filmback preset |
+| `DefaultLensPresetName` | `FString` | Name of the default lens preset |
+| `DefaultLensFocalLength` | `float` | Default focal length (will be constrained by default lens) |
+| `DefaultLensFStop` | `float` | Default aperture (will be constrained by default lens) |
+
+## Functions
+
+### `GetHorizontalFieldOfView`
+
+```text
+GetHorizontalFieldOfView() -> float
+```
+
+Returns the horizonal FOV of the camera with current settings.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetVerticalFieldOfView`
+
+```text
+GetVerticalFieldOfView() -> float
+```
+
+Returns the vertical FOV of the camera with current settings.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetFilmbackPresetName`
+
+```text
+GetFilmbackPresetName() -> FString
+```
+
+Returns the filmback name of the camera with the current settings.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FString` | - |
+
+### `SetFilmbackPresetByName`
+
+```text
+SetFilmbackPresetByName(InPresetName: FString &) -> void
+```
+
+Set the current preset settings by preset name.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPresetName` | `FString &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetLensPresetName`
+
+```text
+GetLensPresetName() -> FString
+```
+
+Returns the lens name of the camera with the current settings.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FString` | - |
+
+### `SetLensPresetByName`
+
+```text
+SetLensPresetByName(InPresetName: FString &) -> void
+```
+
+Set the current lens settings by preset name.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPresetName` | `FString &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCircularThrobber.json -->
+
+# UCircularThrobber
+
+A throbber widget that orients images in a spinning circle.
+  
+   No Children
+   Spinner Progress
+
+## Inheritance
+
+`UWidget`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `NumberOfPieces` | `int32` | How many pieces there are |
+| `Period` | `float` | The amount of time for a full circle (in seconds) |
+| `Radius` | `float` | The radius of the circle. If the throbber is a child of Canvas Panel, the 'Size to Content' option must be enabled in order to set Radius. |
+| `PieceImage_DEPRECATED` | `USlateBrushAsset *` | Image to use for each segment of the throbber |
+| `Image` | `FSlateBrush` | - |
+| `bEnableRadius` | `bool` | - |
+
+## Functions
+
+### `SetNumberOfPieces`
+
+```text
+SetNumberOfPieces(InNumberOfPieces: int32) -> void
+```
+
+Sets how many pieces there are.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InNumberOfPieces` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetPeriod`
+
+```text
+SetPeriod(InPeriod: float) -> void
+```
+
+Sets the amount of time for a full circle (in seconds).
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPeriod` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetRadius`
+
+```text
+SetRadius(InRadius: float) -> void
+```
+
+Sets the radius of the circle.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InRadius` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UClickActorComponentBase.json -->
+
+# UClickActorComponentBase
+
+一个提供给按钮使用的组件，用于实现靠近显示按钮的逻辑
+
+## Inheritance
+
+`UActorComponent` -> `IRegionObjectInterface` -> `IObjectPoolInterface` -> `IInteractorInterface`
+
+## Functions
+
+### `HandleEnable`
+
+```text
+HandleEnable() -> void
+```
+
+生效范围：S
+	  激活组件功能
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `HandleDisable`
+
+```text
+HandleDisable() -> void
+```
+
+生效范围：S
+	  停止组件功能
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UClipmapGenerateConfig.json -->
+
+# UClipmapGenerateConfig
+
+## Inheritance
+
+`UDataAsset`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `TargetTexture` | `UTexture2D *` | - |
+| `TargetClipmapTexture` | `UClipmapTexture *` | - |
+| `ClipmapWetnessConfig` | `FClipmapWetness` | - |
+| `FoliageHealthAndAbsorptionConfig` | `FClipmapFoliageHealthAndAbsorption` | - |
+| `LandscapeTintConfig` | `FClipmapLandscapeTint` | - |
+| `BurshTintNum` | `int32` | - |
+| `WeightBitsNum` | `int32` | - |
+| `WeightMax` | `int32` | - |
+
+## Functions
+
+### `GenerateGChannel`
+
+```text
+GenerateGChannel() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GenerateBAChannel`
+
+```text
+GenerateBAChannel() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GenerateCustomMips`
+
+```text
+GenerateCustomMips() -> void
+```
+
+统一的Mip后处理入口：先让引擎生成标准Mip，再后处理R通道(Max降采样)，可选BA通道(众数)
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UClipmapTexture.json -->
+
+# UClipmapTexture
+
+Runtime virtual texture UObject
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bSkipOneMip` | `bool` | - |
+| `DisFirstMip` | `float` | - |
+| `bUsePointSample` | `bool` | - |
+| `bUseBorder` | `bool` | - |
+| `TileSize` | `int32` | - |
+| `FirstMipImageSize` | `int32` | - |
+| `NumTile` | `int32` | - |
+| `bUseCompressType` | `bool` | - |
+| `NormalSetting` | `FClipmapSetting` | - |
+| `CompressSetting` | `TMap < FString , FClipmapSetting >` | - |
+| `bsRGB` | `bool` | - |
+| `FileDDCPath` | `FString` | - |
+| `ClipmapInfos` | `FClipmapInfos` | - |
+| `CompressInfos` | `TMap < FString , FClipmapInfos >` | - |
+| `DebugName` | `FString` | - |
+| `HashNum` | `uint32` | - |
+| `Owner` | `UClipmapTextureComponent *` | - |
+| `OriginTexture` | `UTexture2D *` | - |
+| `TargetTexture` | `TSoftObjectPtr < UTexture2D >` | - |
+
+## Functions
+
+### `CreateClipmapTargetTexture`
+
+```text
+CreateClipmapTargetTexture() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UClipmapTextureComponent.json -->
+
+# UClipmapTextureComponent
+
+Component used to place a URuntimeVirtualTexture in the world.
+
+## Inheritance
+
+`USceneComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ClipmapTexture` | `UClipmapTexture *` | - |
+| `bUseForCDLODMatID` | `bool` | - |
+| `BoundsSourceActor` | `AActor *` | Actor to copy the bounds from to set up the transform. |
+| `MipToDis` | `TMap < int32 , float >` | - |
+| `ClipmapInfo` | `FVector4` | - |
+
+## Functions
+
+### `SetTransformToBounds`
+
+```text
+SetTransformToBounds() -> void
+```
+
+Set this component transform to include the BoundsSourceActor bounds. Called by our UI details customization.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `RefreshClipmapInfo`
+
+```text
+RefreshClipmapInfo() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UClothingAsset.json -->
+
+# UClothingAsset
+
+## Inheritance
+
+`UClothingAssetBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PhysicsAsset` | `UPhysicsAsset *` | - |
+| `ClothConfig` | `FClothConfig` | - |
+| `LodData` | `TArray < FClothLODData >` | - |
+| `LodMap` | `TArray < int32 >` | - |
+| `UsedBoneNames` | `TArray < FName >` | - |
+| `UsedBoneIndices` | `TArray < int32 >` | - |
+| `ReferenceBoneIndex` | `int32` | - |
+| `CustomData` | `UClothingAssetCustomData *` | Custom data applied by the importer depending on where the asset was imported from |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UClothingAssetBase.json -->
+
+# UClothingAssetBase
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ImportedFilePath` | `FString` | - |
+| `AssetGuid` | `FGuid` | Guid to identify this asset. Will be embedded into chunks that are created using this asset |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCloudStorageBase.json -->
+
+# UCloudStorageBase
+
+Base class for the various platform interface classes.
+
+## Inheritance
+
+`UPlatformInterfaceBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LocalCloudFiles` | `TArray < FString >` | When using local storage (aka "cloud emulation"), this maintains a list of the file paths. |
+| `bSuppressDelegateCalls` | `uint32` | If true, delegate callbacks should be skipped. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCollisionProfile.json -->
+
+# UCollisionProfile
+
+Set up and modify collision settings.
+
+## Inheritance
+
+`UDeveloperSettings`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Profiles` | `TArray < FCollisionResponseTemplate >` | - |
+| `DefaultChannelResponses` | `TArray < FCustomChannelSetup >` | - |
+| `EditProfiles` | `TArray < FCustomProfile >` | - |
+| `ProfileRedirects` | `TArray < FRedirector >` | - |
+| `CollisionChannelRedirects` | `TArray < FRedirector >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UColorBinding.json -->
+
+# UColorBinding
+
+## Inheritance
+
+`UPropertyBinding`
+
+## Functions
+
+### `GetSlateValue`
+
+```text
+GetSlateValue() -> FSlateColor
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FSlateColor` | - |
+
+### `GetLinearValue`
+
+```text
+GetLinearValue() -> FLinearColor
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FLinearColor` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UColorGradient.json -->
+
+# UColorGradient
+
+## Inheritance
+
+`UWidget`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ColorRGBs` | `TArray < FColorGradientCellInfo >` | - |
+
+## Functions
+
+### `GetNum`
+
+```text
+GetNum() -> int32
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | - |
+
+### `GetCellByIndex`
+
+```text
+GetCellByIndex(Idx: int, OutPercent: float &, OutColorRGB: FLinearColor &) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Idx` | `int` | - |
+| `OutPercent` | `float &` | - |
+| `OutColorRGB` | `FLinearColor &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `FindIndexByPercent`
+
+```text
+FindIndexByPercent(InPercent: float) -> int32
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPercent` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | - |
+
+### `SetDatas`
+
+```text
+SetDatas(datas: TArray < FColorGradientCellInfo > &) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `datas` | `TArray < FColorGradientCellInfo > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Delegates
+
+### `ColorRGBsDelegate`
+
+```text
+ColorRGBsDelegate() -> TArray<FColorGradientCellInfo>
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TArray` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UColorGradientSlider.json -->
+
+# UColorGradientSlider
+
+## Inheritance
+
+`UColorGradient`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SliderStyle` | `FSliderStyle` | - |
+| `BarFrameNormal` | `FSlateBrush` | - |
+| `BarFrameSelect` | `FSlateBrush` | - |
+| `DefaultSelectIndex` | `int32` | - |
+| `CurSelectIndex` | `int32` | - |
+
+## Functions
+
+### `GetCurSelectIndex`
+
+```text
+GetCurSelectIndex() -> int32
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | - |
+
+### `SetCurSelectIndex`
+
+```text
+SetCurSelectIndex(Idx: int32) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Idx` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetDatas`
+
+```text
+SetDatas(datas: TArray < FColorGradientCellInfo > &) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `datas` | `TArray < FColorGradientCellInfo > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Delegates
+
+### `OnPercentChanged`
+
+```text
+OnPercentChanged(Idx: int32, InPercent: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Idx` | `int32` | - |
+| `InPercent` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnChildSelected`
+
+```text
+OnChildSelected(Idx: int32) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Idx` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UColorPicker.json -->
 
 # UColorPicker
@@ -5047,6 +5860,7 @@ Abstract base class of all Engine classes, responsible for management of systems
 | `HLODColorationColors` | `TArray < FLinearColor >` | The colors used to render LOD coloration. |
 | `LightmapColorationColors` | `TArray < FLinearColor >` | The colors used to render Lightmap type coloration. |
 | `StreamingAccuracyColors` | `TArray < FLinearColor >` | The colors used for texture streaming accuracy debug view modes. |
+| `TextureStreamingBudgetColors` | `TArray < FLinearColor >` | - |
 | `DesiredTexelDensity` | `int32` | - |
 | `TexelDensityTextureSuffixList` | `TArray < FString >` | - |
 | `TexelDensityAccuracyColors` | `TArray < FLinearColor >` | - |
@@ -13689,6 +14503,199 @@ GetActorByActorInstancePath(InstancePath: string) -> AActor
 |---|---|
 | `AActor` | Actor实例 |
 
+### `SetActorTickEnabled`
+
+```text
+SetActorTickEnabled(Actor: AActor, bEnabled: boolean)
+```
+
+启用或禁用 Actor 的 Tick
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+| `bEnabled` | `boolean` | 是否启用 Tick |
+
+### `IsActorTickEnabled`
+
+```text
+IsActorTickEnabled(Actor: AActor) -> @Tick
+```
+
+查询 Actor 的 Tick 是否启用
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `@Tick` | 是否启用 |
+
+### `SetActorLocation`
+
+```text
+SetActorLocation(Actor: AActor, Location: Vector)
+```
+
+设置 Actor 的世界坐标位置
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+| `Location` | `Vector` | 新坐标位置 |
+
+### `GetActorLocation`
+
+```text
+GetActorLocation(Actor: AActor) -> Vector
+```
+
+获取 Actor 的世界坐标位置
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Vector` | 当前位置 |
+
+### `SetActorRotation`
+
+```text
+SetActorRotation(Rotation: Rotator)
+```
+
+设置 Actor 的世界旋转
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Rotation` | `Rotator` | 新旋转角度 |
+
+### `GetActorRotation`
+
+```text
+GetActorRotation() -> Rotator
+```
+
+获取 Actor 的世界旋转
+生效范围：服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Rotator` | 当前旋转 |
+
+### `SetActorScale`
+
+```text
+SetActorScale(Actor: AActor, Scale: Vector)
+```
+
+设置 Actor 的缩放
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+| `Scale` | `Vector` | 新的缩放值 |
+
+### `GetActorScale`
+
+```text
+GetActorScale() -> Vector
+```
+
+获取 Actor 的缩放
+生效范围：服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Vector` | 当前缩放 |
+
+### `SetActorVisible`
+
+```text
+SetActorVisible(Actor: AActor, bVisible: boolean)
+```
+
+设置 Actor 的可见性
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+| `bVisible` | `boolean` | 是否可见 |
+
+### `IsActorVisible`
+
+```text
+IsActorVisible(Actor: AActor) -> boolean
+```
+
+查询 Actor 当前是否可见
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否可见 |
+
+### `GetComponentOwner`
+
+```text
+GetComponentOwner(Component: UComponent) -> AActor
+```
+
+获取组件所属的 Actor
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UComponent` | 任意组件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor` | 所属 Actor |
+
 ## Language
 
 `lua`
@@ -14079,7 +15086,6 @@ Announcements = {{Title:string, Content:string, EffectiveTime:number, bTop:boole
 | Name | Type/Value | Description |
 |---|---|---|
 | `UGCAsyncUtility.CoroutineManager` | `-` | - |
-| `UGCAsyncUtility.AsyncErrorType` | `-` | - |
 
 ## Functions
 
@@ -14181,11 +15187,297 @@ AsyncLoadSomething(AsyncFun: function, ParamTables: UGCAsyncSequenceParamTable[]
 |---|---|
 | `table` | loadedObjects |
 
+### `AsyncRun`
+
+```text
+AsyncRun(PF: UGCPromiseFuture, Opts: UGCAsyncOptions) -> UGCPromiseFuture
+```
+
+启动一个未驱动的 PromiseFuture（相当于 Python asyncio.run）
+接收 AsyncDefine(...) 返回的 AsyncFunc 调用得到的未驱动 PF，挂上 AutoResume 启动驱动
+如果 PF 已驱动或已 establish，**静默跳过**
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PF` | `UGCPromiseFuture` | 通常是 AsyncDefine(Fn)(...) 返回的未驱动的 UGCPromiseFuture |
+| `Opts` | `UGCAsyncOptions` | 可选参数 { Watched=UObject, Interval=number, Timeout=number } |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCPromiseFuture` | 同一个 PF |
+
+### `AsyncDefine`
+
+```text
+AsyncDefine(Fn: function) -> UGCAsyncFunction
+```
+
+定义一个 async 函数（相当于 Python 的 async def）
+返回 AsyncFunc：调用 AsyncFunc(...) 返回**未驱动**的 PromiseFuture
+未驱动 PF 不会自动推进，需要显式 AsyncRun(pf, opts) 启动，或在 Async 上下文内被 Await/AwaitAll/AwaitAny 等消费
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Fn` | `function` | async 函数体，签名为 function(...) ... end |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCAsyncFunction` | AsyncFunc：调用 AsyncFunc(...) 返回未驱动 UGCPromiseFuture |
+
+### `AsyncSelf`
+
+```text
+AsyncSelf() -> UGCPromiseFuture
+```
+
+获取当前 Async 任务的 PromiseFuture（仅在 Async 协程内有效）
+用于高级场景：手动 AddPrerequisites / Cancel / Yield 等
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCPromiseFuture` | - |
+
+### `Await`
+
+```text
+Await(PF: UGCPromiseFuture) -> any
+```
+
+在 Async 协程内等待任意 PromiseFuture 完成
+任务取消时，抛字符串 error（值 = AsyncErrorType.Cancelled）
+可用 AwaitSafe 简写或 pcall/xpcall 自行捕获
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PF` | `UGCPromiseFuture` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `any` | PF 的 Setter 返回值 |
+
+### `AwaitSafe`
+
+```text
+AwaitSafe(PF: UGCPromiseFuture) -> any
+```
+
+在 Async 协程内等待 PromiseFuture 完成的"安全版"——不抛错，返回 (Ok, ...Values 或 Err)
+与 lua 原生 pcall 语义对齐：捕获 Await 路径上的**任何** error（取消、超时、业务自抛等）
+成功时返回 (true, ...Values)
+失败时返回 (false, Err)：
+  * 取消：Err == AsyncErrorType.Cancelled（字符串）
+  * 超时：Err == AsyncErrorType.Timeout（字符串，由 WaitFor 抛出）
+  * 其它：Err 为原始 error 值（业务自抛的 string/table/任意值）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PF` | `UGCPromiseFuture` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `any` | Ok, ValuesOrErr |
+
+### `AsyncSleep`
+
+```text
+AsyncSleep(Seconds: number)
+```
+
+在 Async 协程内暂停指定秒数
+Seconds <= 0 时也会让出协程一次（"让出一帧"语义）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Seconds` | `number` | - |
+
+### `AwaitAll`
+
+```text
+AwaitAll(PFs: UGCPromiseFuture[]) -> any[]
+```
+
+等待一组 PromiseFuture 全部完成；任一被取消或发生业务异常即整体抛 error（table 形式，含 Err/Index/Values）
+其中 Err 字段：主动 Cancel 时为 AsyncErrorType.Cancelled 字符串；业务异常时为原始 error 对象
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PFs` | `UGCPromiseFuture[]` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `any[]` | 按顺序的结果数组，每项是 { PF:Get() 返回的多值 } |
+
+### `AwaitAllSettled`
+
+```text
+AwaitAllSettled(PFs: UGCPromiseFuture[])
+```
+
+等待一组 PromiseFuture 全部"沉淀"（完成或取消都算）；**永不抛错**
+与 AwaitAll 的区别：任一项失败不会中断/抛错，每项的成败状态独立返回
+适合"局部容错、各项失败互不影响"场景（对齐 JS Promise.allSettled）
+返回数组与传入任务顺序一一对应，每项形如：
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PFs` | `UGCPromiseFuture[]` | - |
+
+### `AwaitAny`
+
+```text
+AwaitAny(PFs: UGCPromiseFuture[]) -> any
+```
+
+等待一组 PromiseFuture，任一完成即返回；其余被 Cancel
+若全部被取消/异常则抛字符串 error（值 = AsyncErrorType.Cancelled）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PFs` | `UGCPromiseFuture[]` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `any` | 获胜索引以及该 PF 的返回值 |
+
+### `WaitFor`
+
+```text
+WaitFor(PF: UGCPromiseFuture, Seconds: number) -> any
+```
+
+在 Async 协程内等待 PromiseFuture 完成，并施加单点超时（相当于 Python asyncio.wait_for）
+在 Seconds 内任务未完成时，对任务 Cancel 并抛字符串 error（值 = AsyncErrorType.Timeout）
+任务先被别人 Cancel 时抛 AsyncErrorType.Cancelled，不覆盖为 Timeout
+精度受外层 AutoResume 的 Interval 限制：要求精确计时请保证 Opts.Interval = 0
+
+与 AsyncRun 的 Timeout 区别：
+  * AsyncRun({ Timeout = N })  ：整个任务的总超时
+  * WaitFor(PF, N)             ：单个 await 点的局部超时
+
+用法：
+  local Icon = UGCAsyncUtility.WaitFor(LoadIcon(Path), 5)
+  local Ok, Err = UGCAsyncUtility.WaitForSafe(LoadIcon(Path), 5)
+  if not Ok and Err == AsyncErrorType.Timeout then ... end
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PF` | `UGCPromiseFuture` | - |
+| `Seconds` | `number` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `any` | PF 的 Setter 返回值 |
+
+### `WaitForSafe`
+
+```text
+WaitForSafe(PF: UGCPromiseFuture, Seconds: number) -> any
+```
+
+WaitFor 的"安全版"——不抛错，返回 (Ok, ...Values 或 Err)
+成功时返回 (true, ...Values)
+失败时返回 (false, Err)：Err 为字符串 AsyncErrorType.Cancelled / AsyncErrorType.Timeout，或业务自抛的原始 error 值
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PF` | `UGCPromiseFuture` | - |
+| `Seconds` | `number` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `any` | Ok, ValuesOrErr |
+
+### `AsyncFromEvent`
+
+```text
+AsyncFromEvent(EventDelegate: Delegate) -> UGCPromiseFuture
+```
+
+把 Delegate 风格的事件订阅转换为**未驱动**的 PromiseFuture
+事件触发一次后自动 Remove，PF 携带事件参数 establish
+必须在 Async 上下文内 Await（或经 AsyncRun 启动）才会生效
+超时需求请用 WaitFor 包装：UGCAsyncUtility.WaitFor(UGCAsyncUtility.AsyncFromEvent(D), 30)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EventDelegate` | `Delegate` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCPromiseFuture` | - |
+
+### `AsyncFromCallback`
+
+```text
+AsyncFromCallback(Fn: function, ...: any) -> UGCPromiseFuture
+```
+
+把"传 callback"风格的函数封装为**未驱动**的 PromiseFuture
+用法：AsyncFromCallback(SomeAPI, Arg1, Arg2)，SomeAPI 的最后一个参数应当是 callback
+必须在 Async 上下文内 Await（或经 AsyncRun 启动）才会生效
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Fn` | `function` | 接受 callback 作为最后一个参数的函数 |
+| `...` | `any` | 透传给 Fn 的前置参数 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCPromiseFuture` | - |
+
 ### `AsyncCall`
 
 ```text
-AsyncCall(CallFunction: function, Callback: function, CheckFunction: function, Opts: table) -> PromiseFuture
+AsyncCall(CallFunction: function, Callback: function, CheckFunction: function, Opts: UGCAsyncOptions) -> UGCPromiseFuture
 ```
+
+异步调用函数，直到 CheckFunction 返回 true 时停止调用，然后执行 Callback 函数
 
 **Parameters**
 
@@ -14194,19 +15486,21 @@ AsyncCall(CallFunction: function, Callback: function, CheckFunction: function, O
 | `CallFunction` | `function` | 调用函数 |
 | `Callback` | `function` | 回调函数 |
 | `CheckFunction` | `function` | 检查函数 |
-| `Opts` | `table` | 可选参数 { Watched=UObject, Interval=number, Timeout=number } |
+| `Opts` | `UGCAsyncOptions` | 可选参数 { Watched=UObject, Interval=number, Timeout=number } |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `PromiseFuture` | - |
+| `UGCPromiseFuture` | - |
 
 ### `AsyncIfThen`
 
 ```text
-AsyncIfThen(IfFunction: function, ThenFunction: function, Opts: table)
+AsyncIfThen(IfFunction: function, ThenFunction: function, Opts: UGCAsyncOptions) -> UGCPromiseFuture
 ```
+
+异步调用函数，直到IfFunction返回true时执行ThenFunction
 
 **Parameters**
 
@@ -14214,13 +15508,21 @@ AsyncIfThen(IfFunction: function, ThenFunction: function, Opts: table)
 |---|---|---|
 | `IfFunction` | `function` | 条件函数，返回 true 时执行 ThenFunction |
 | `ThenFunction` | `function` | 条件满足时执行的函数 |
-| `Opts` | `table` | 可选参数 { Watched=UObject, Interval=number, Timeout=number } |
+| `Opts` | `UGCAsyncOptions` | 可选参数 { Watched=UObject, Interval=number, Timeout=number } |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCPromiseFuture` | - |
 
 ### `AsyncIfThenElse`
 
 ```text
-AsyncIfThenElse(IfFunction: function, ThenFunction: function, ElseFunction: function, Opts: table)
+AsyncIfThenElse(IfFunction: function, ThenFunction: function, ElseFunction: function, Opts: UGCAsyncOptions) -> UGCPromiseFuture
 ```
+
+异步调用函数，直到IfFunction返回true时执行ThenFunction，其他情况执行ElseFunction
 
 **Parameters**
 
@@ -14229,7 +15531,13 @@ AsyncIfThenElse(IfFunction: function, ThenFunction: function, ElseFunction: func
 | `IfFunction` | `function` | 条件函数，返回 true 时执行 ThenFunction，超时/取消时执行 ElseFunction |
 | `ThenFunction` | `function` | 条件满足时执行的函数 |
 | `ElseFunction` | `function` | 超时或取消时执行的函数 |
-| `Opts` | `table` | 可选参数 { Watched=UObject, Interval=number, Timeout=number } |
+| `Opts` | `UGCAsyncOptions` | 可选参数 { Watched=UObject, Interval=number, Timeout=number } |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCPromiseFuture` | - |
 
 ## Language
 
@@ -17000,13 +18308,95 @@ GetDetailsWidgetCustomPathByItemID(PlayerController: PlayerController, ItemID: n
 |---|---|
 | `string[]` | 自定义控件蓝图路径列表，未配置时返回空表 |
 
-### `FindItemInTable`
+### `GetBackpackPersistData`
 
 ```text
-FindItemInTable()
+GetBackpackPersistData(Player: PlayerPawn | PlayerController @玩家角色或者玩家控制器, ContainsNoPersist: boolean) -> table
 ```
 
+获取背包完整持久化数据（只读）
+在背包数据持久化时，会以此数据执行
+可以通过这个接口，分析并优化持久化数据大小和物品实例化数据大小
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Player` | `PlayerPawn \| PlayerController @玩家角色或者玩家控制器` | 玩家角色或者玩家控制器 |
+| `ContainsNoPersist` | `boolean` | true:包含不持久化物品数据, false:仅包含持久化物品数据. 默认false |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `table` | 背包完整持久化数据 |
+
+### `GetBackpackUIComponentConfig`
+
+```text
+GetBackpackUIComponentConfig(ConfigKey: EBackpackUIComponentConfigKey) -> table|nil
+```
+
+获取 BackpackUIComponent 上的配置属性
+通过枚举键值统一读取，替代各处直接访问 BackpackUIComponent.XXX 的方式
+直接通过 GetBackpackUIComponentV2 获取组件并访问属性，无需经手 BackpackManager
+新增配置属性只需扩展枚举，调用方无需改动
 生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ConfigKey` | `EBackpackUIComponentConfigKey` | 配置属性的枚举键值 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `table\|nil` | 对应属性的值（已转 Lua table），未注册或属性不存在时返回 nil |
+
+### `GetBackpackTipsConfig`
+
+```text
+GetBackpackTipsConfig(Player: PlayerPawn | PlayerController @玩家角色或者玩家控制器, Key: string) -> number|nil
+```
+
+获取背包Tips配置值
+通过Key查询BackpackTipsConfig TMap中对应的整型配置值
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Player` | `PlayerPawn \| PlayerController @玩家角色或者玩家控制器` | 玩家角色或者玩家控制器 |
+| `Key` | `string` | Tips配置Key |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number\|nil` | 对应TipsID，未找到返回nil |
+
+### `DisplayBackpackTipsV2`
+
+```text
+DisplayBackpackTipsV2(Player: PlayerPawn | PlayerController @玩家角色或者玩家控制器, TipKey: string, ItemDefineID: FItemDefineID, Count: number, Reason: number)
+```
+
+弹出背包Tips
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Player` | `PlayerPawn \| PlayerController @玩家角色或者玩家控制器` | 玩家角色或者玩家控制器 |
+| `TipKey` | `string` | Tips配置Key（对应BackpackTipsConfig中的键） |
+| `ItemDefineID` | `FItemDefineID` | 关联的物品DefineID |
+| `Count` | `number` | 物品数量，默认0 |
+| `Reason` | `number` | 物品操作原因（EUGCCommonItemReason），默认0（Default） |
 
 ## Language
 
@@ -18251,6 +19641,94 @@ ShowRechargeEntryUI() -> PromiseFuture
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UGCCommonDelegate.json -->
+
+# UGCCommonDelegate
+
+UGC通用委托
+
+## Functions
+
+### `Add`
+
+```text
+Add(Callback: function, CallbackOwner: any)
+```
+
+添加回调
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Callback` | `function` | 回调函数 |
+| `CallbackOwner` | `any` | 回调函数所有者，可不传 |
+
+### `Remove`
+
+```text
+Remove(Callback: function, CallbackOwner: any)
+```
+
+移除回调
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Callback` | `function` | 回调函数 |
+| `CallbackOwner` | `any` | 回调函数所有者，可不传 |
+
+### `RemoveAll`
+
+```text
+RemoveAll()
+```
+
+移除所有回调
+
+### `Broadcast`
+
+```text
+Broadcast(...: any)
+```
+
+广播事件，会根据委托类型进行不同的处理
+可以直接用函数调用的方式触发广播，例如`CommonDelegate(1, 2, 3)`
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `...` | `any` | 事件参数 |
+
+### `ToUEDelegate`
+
+```text
+ToUEDelegate(Outer: UObject) -> ULuaSingleDelegate
+```
+
+转换为UE的单播委托，可以传递给需要UE单播委托的接口
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Outer` | `UObject` | Outer 对象（GC 相关） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ULuaSingleDelegate` | 单播委托 |
+
+## Language
+
+`lua`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UGCCommonDragDropItem.json -->
 
 # UGCCommonDragDropItem
@@ -18967,6 +20445,26 @@ DestroyUEDelegate(UEDelegate: ULuaSingleDelegate)
 | Name | Type | Description |
 |---|---|---|
 | `UEDelegate` | `ULuaSingleDelegate` | 虚幻兼容单播委托 |
+
+### `CreateCommonDelegate`
+
+```text
+CreateCommonDelegate(Type: EUGCCommonDelegateType) -> UGCCommonDelegate
+```
+
+创建通用委托
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Type` | `EUGCCommonDelegateType` | 委托类型，不传则默认为普通委托 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCCommonDelegate` | - |
 
 ## Language
 
@@ -20073,7 +21571,7 @@ ForceReloadConfig()
 ### `SpawnFakePlayer`
 
 ```text
-SpawnFakePlayer(AIPlayerKey: number, TeamID: number)
+SpawnFakePlayer(AIPlayerKey: number, TeamID: number, InFakePlayerClass: UClass)
 ```
 
 生成假人玩家， GameMode 中 DataManager，AIProbe 数据中配置 AIController
@@ -20085,6 +21583,7 @@ SpawnFakePlayer(AIPlayerKey: number, TeamID: number)
 |---|---|---|
 | `AIPlayerKey` | `number` | AIPlayerKey，建议使用 UGCFakePlayerSystem.GetRandomAIPlayerKey 生成 |
 | `TeamID` | `number` | 队伍 ID |
+| `InFakePlayerClass` | `UClass` | 假人玩家的控制器类 |
 
 ### `GetRandomAIPlayerKey`
 
@@ -20271,366 +21770,6 @@ IsValid() -> boolean
 | Type | Description |
 |---|---|
 | `boolean` | - |
-
-## Language
-
-`lua`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E5%B7%A5%E5%85%B7%E5%BA%93/UGCGameplayTagSystem.json -->
-
-# UGCGameplayTagSystem
-
-GameplayTag接口库
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `UGCGameplayTagSystem.Tags.PawnState` | `-` | - |
-
-## Functions
-
-### `RequestGameplayTag`
-
-```text
-RequestGameplayTag(TagString: string) -> FGameplayTag
-```
-
-根据字符串获取FGameplayTag
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TagString` | `string` | Tag的字符串 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FGameplayTag` | 是否为合法的Tag |
-
-### `IsValidTag`
-
-```text
-IsValidTag(Tag: UGCGameplayTag|string|FGameplayTag) -> boolean
-```
-
-检查一个Tag是否合法
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Tag` | `UGCGameplayTag\|string\|FGameplayTag` | Tag |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | 是否为合法的Tag |
-
-### `IsUGCGameplayTag`
-
-```text
-IsUGCGameplayTag(Tag: UGCGameplayTag) -> boolean
-```
-
-检查一个Tag是否是UGCGameplayTag
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Tag` | `UGCGameplayTag` | UGCGameplayTag的lua对象 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | 是否为UGCGameplayTag |
-
-### `MatchesTag`
-
-```text
-MatchesTag(TagA: UGCGameplayTag|string|FGameplayTag, TagB: UGCGameplayTag|string|FGameplayTag, bExactMatch: boolean) -> boolean
-```
-
-检查TagA是否与TagB匹配
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TagA` | `UGCGameplayTag\|string\|FGameplayTag` | Tag |
-| `TagB` | `UGCGameplayTag\|string\|FGameplayTag` | Tag |
-| `bExactMatch` | `boolean` | 是否精确匹配 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | 是否匹配 |
-
-### `EqualsTag`
-
-```text
-EqualsTag(TagA: UGCGameplayTag|string|FGameplayTag, TagB: UGCGameplayTag|string|FGameplayTag) -> boolean
-```
-
-检查TagA是否与TagB相等
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TagA` | `UGCGameplayTag\|string\|FGameplayTag` | Tag |
-| `TagB` | `UGCGameplayTag\|string\|FGameplayTag` | Tag |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | 是否相等 |
-
-### `CreateGameplayTagContainer`
-
-```text
-CreateGameplayTagContainer() -> FGameplayTagContainer
-```
-
-创建一个空的FFGameplayTagContainer
-生效范围：服务器&客户端
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FGameplayTagContainer` | 空的FGameplayTagContainer |
-
-### `CreateGameplayTagContainerFromTag`
-
-```text
-CreateGameplayTagContainerFromTag(SingleTag: UGCGameplayTag|string|FGameplayTag) -> FGameplayTagContainer
-```
-
-创建一个包含指定FGameplayTag的FGameplayTagContainer
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `SingleTag` | `UGCGameplayTag\|string\|FGameplayTag` | 传入FGameplayTagContainer中的FGameplayTag |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FGameplayTagContainer` | 包含传入FGameplayTag的GameplayTagContainer |
-
-### `CreateGameplayTagContainerFromArray`
-
-```text
-CreateGameplayTagContainerFromArray(GameplayTags: FGameplayTag[]) -> FGameplayTagContainer
-```
-
-创建一个包含一组FGameplayTag的FGameplayTagContainer
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `GameplayTags` | `FGameplayTag[]` | 传入FGameplayTagContainer中的FGameplayTags |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FGameplayTagContainer` | 包含传入FGameplayTags的GameplayTagContainer |
-
-### `AddGameplayTagToContainer`
-
-```text
-AddGameplayTagToContainer(TagContainer: FGameplayTagContainer, Tag: FGameplayTag)
-```
-
-将单个FGameplayTag添加到传入的FGameplayTagContainer中
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TagContainer` | `FGameplayTagContainer` | 要追加到的FGameplayTagContainer |
-| `Tag` | `FGameplayTag` | 要添加到FGameplayTagContainer中的FGameplayTag |
-
-### `RemoveGameplayTagFromContainer`
-
-```text
-RemoveGameplayTagFromContainer(TagContainer: FGameplayTagContainer, Tag: FGameplayTag) -> boolean
-```
-
-从传入的FGameplayTagContainer中移除单个FGameplayTag，若找到并移除则返回 true ，否则返回 false
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TagContainer` | `FGameplayTagContainer` | 要从中移除的FGameplayTagContainer |
-| `Tag` | `FGameplayTag` | 要从FGameplayTagContainer中移除的FGameplayTag |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | 是否成功移除 |
-
-### `HasTag`
-
-```text
-HasTag(TagContainer: FGameplayTagContainer, Tag: FGameplayTag, bExactMatch: boolean) -> boolean
-```
-
-检查FGameplayTagContainer是否包含特定的FGameplayTag
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TagContainer` | `FGameplayTagContainer` | 要从中查找指定FGameplayTag的FGameplayTagContainer |
-| `Tag` | `FGameplayTag` | 要从FGameplayTagContainer中检查的FGameplayTag |
-| `bExactMatch` | `boolean` | 是否精确匹配 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | 是否包含Tag |
-
-## Language
-
-`lua`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E5%B7%A5%E5%85%B7%E5%BA%93/UGCGameplayTaskSystem.json -->
-
-# UGCGameplayTaskSystem
-
-异步任务接口库
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `UGCGameplayTaskSystem.General` | `-` | class General @通用异步任务 |
-| `UGCGameplayTaskSystem.General.SpawnActor` | `-` | class SpawnActor @通用异步任务：SpawnActor |
-| `UGCGameplayTaskSystem.Player` | `-` | class Player @玩家异步任务 |
-| `UGCGameplayTaskSystem.Player.AddCustomCameraData` | `-` | class AddCustomCameraData @玩家异步任务：添加自定义相机数据 |
-| `UGCGameplayTaskSystem.Player.SetEyeRotationMode` | `-` | class SetEyeRotationMode @玩家异步任务：添加自定义相机数据 |
-| `UGCGameplayTaskSystem.Player.RegisterDynamicState` | `-` | class RegisterDynamicState @玩家异步任务：注册一组状态互斥 |
-| `UGCGameplayTaskSystem.General.SelectLocationFromMap` | `-` | class SelectLocationFromMap @通用异步任务：从小地图上获得一个选点 |
-| `UGCGameplayTaskSystem.Player.SwitchWeapon` | `-` | class SwitchWeapon @玩家异步任务：切换武器 |
-| `UGCGameplayTaskSystem.PlayerPawn` | `-` | class PlayerPawn @角色异步任务 |
-| `UGCGameplayTaskSystem.PlayerPawn.TeleportPawn` | `-` | class TeleportPawn @角色异步任务：传送角色 |
-| `UGCGameplayTaskSystem.PlayerPawn.Sprint` | `-` | class TeleportPawn @角色异步任务：角色冲刺 |
-| `UGCGameplayTaskSystem.PlayerPawn.SetMaterial` | `-` | class SetMaterial @角色异步任务：角色换材质 |
-| `UGCGameplayTaskSystem.PlayerPawn.HitBack` | `-` | class SetMaterial @角色异步任务：击退 |
-| `UGCGameplayTaskSystem.PlayerPawn.AttachToCharacterScoket` | `-` | class Character @角色异步任务 |
-| `UGCGameplayTaskSystem.PlayerPawn.ReplaceAnim` | `-` | class Character @角色异步任务: 替换动画 |
-| `UGCGameplayTaskSystem.GenericCharacter` | `-` | class GenericCharacter @GenericCharacter异步任务 |
-| `UGCGameplayTaskSystem.GenericCharacter.ReplaceAnim` | `-` | class ReplaceAnim @GenericCharacter异步任务：替换动画 |
-| `UGCGameplayTaskSystem.Weapon` | `-` | class Weapon @武器异步任务 |
-| `UGCGameplayTaskSystem.Weapon.AutoAim` | `-` | class AutoAim @武器异步任务：自动瞄准 |
-| `UGCGameplayTaskSystem.Weapon.LaunchProjectile` | `-` | class LaunchProjectile @武器异步任务：发射抛体 |
-
-## Language
-
-`lua`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD/UGCGameSettingSystem.json -->
-
-# UGCGameSettingSystem
-
-游戏配置通用接口库
-
-## Functions
-
-### `GetDeviceLevel`
-
-```text
-GetDeviceLevel() -> number
-```
-
-获取设备水平（0=低端机，1=中端机，2=高端机）
-生效范围：客户端
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | 设备水平级别 |
-
-### `GetRenderQualitySetting`
-
-```text
-GetRenderQualitySetting() -> ERenderQuality
-```
-
-获取渲染水平设置（画面品质）
-生效范围：客户端
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ERenderQuality` | 渲染水平枚举值 |
-
-### `GetRenderStyleSetting`
-
-```text
-GetRenderStyleSetting() -> ERenderStyle
-```
-
-获取渲染风格设置（画面风格）
-生效范围：客户端
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ERenderStyle` | 渲染风格枚举值 |
-
-### `AllowSoftwareOcclusion`
-
-```text
-AllowSoftwareOcclusion(bEnabled: boolean)
-```
-
-是否开启软件遮挡剔除（默认开启）。2D 类游戏建议关闭，否则在手机上层次相近（接近重叠）的物体处，可能会出现（黑屏）闪烁
-生效范围：客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bEnabled` | `boolean` | 是否开启 |
 
 ## Language
 

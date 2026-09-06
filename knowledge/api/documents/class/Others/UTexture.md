@@ -38,8 +38,8 @@ api_root: "https://developer.gp.qq.com/api/"
 | `CrunchSetting` | `TEnumAsByte < enum ETextureCrunchSetting >` | - |
 | `bOverrideCrunchCompressionAmount` | `uint32` | - |
 | `CrunchCompressionAmount` | `float` | - |
-| `BasisSetting` | `TEnumAsByte < enum ETextureBasisSetting >` | - |
 | `bOverrideBasisCompressionAmount` | `uint32` | - |
+| `BasisSetting` | `TEnumAsByte < enum ETextureBasisSetting >` | - |
 | `BasisCompressionAmount` | `float` | - |
 | `Source` | `FTextureSource` | --------------------------------------------------------------------------<br>	-------------------------------------------------------------------------- |
 | `SourceFilePath_DEPRECATED` | `FString` | - |

@@ -170,6 +170,51 @@ IsLocalController(InController: AController) -> boolean
 |---|---|
 | `boolean` | 当前端是否为主控端 |
 
+### `MountCharacterPreset`
+
+```text
+MountCharacterPreset(PlayerController: PlayerController, DataAsset: UCharacterPresetDataAsset, PriorityOverride: number) -> number
+```
+
+挂载角色预设 DataAsset 到 PlayerController 的 UGCCharacterManager
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `DataAsset` | `UCharacterPresetDataAsset` | 角色预设数据 |
+| `PriorityOverride` | `number` | 优先级覆盖，可为 nil |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 挂载成功返回 Handle，失败返回 -1 |
+
+### `UnmountCharacterPreset`
+
+```text
+UnmountCharacterPreset(PlayerController: PlayerController, Handle: number) -> boolean
+```
+
+卸载 PlayerController 上的角色预设
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `Handle` | `number` | MountCharacterPreset 返回的 Handle |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | - |
+
 ## Language
 
 `lua`

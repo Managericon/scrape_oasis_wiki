@@ -36,9 +36,9 @@ api_root: "https://developer.gp.qq.com/api/"
 | `LODDistributionSetting` | `float` | The distribution setting used to change the LOD generation, 2 is the normal distribution, small number mean you want your last LODs to take more screen space and big number mean you want your first LODs to take more screen space. |
 | `NearMaxLOD_Baked` | `uint8` | - |
 | `NearFactor_Baked` | `float` | - |
-| `NearExtent_Baked` | `float` | - |
 | `FarFactor_Baked` | `float` | - |
 | `LandscapeRoughness` | `float` | - |
+| `NearExtent_Baked` | `float` | - |
 | `EnableImproveLOD` | `bool` | - |
 | `ImproveLODValues` | `TArray < float >` | LOD Values |
 | `NearMaxLOD` | `uint8` | - |
@@ -93,6 +93,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `bMobileMultiLayers` | `uint32` | - |
 | `NavigationGeometryGatheringMode` | `ENavDataGatheringMode` | - |
 | `bUseLandscapeForCullingInvisibleHLODVertices` | `bool` | Flag whether or not this Landscape's surface can be used for culling hidden triangles |
+| `OverwrittenDeformWeightData` | `ULandscapeDeformWeightDataAsset *` | - |
 | `DeformComponentMap` | `TMap < FIntPoint , int32 >` | - |
 | `DeformWeightTileMap` | `TArray < uint32 >` | - |
 | `DeformWeightData` | `TArray < uint8 >` | - |

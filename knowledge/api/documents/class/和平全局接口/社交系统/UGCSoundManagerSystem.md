@@ -195,6 +195,21 @@ PlaySoundWith2D(AKEvent: UAkAudioEvent, AttachedActor: Actor)
 | `AKEvent` | `UAkAudioEvent` | 音效资源（通过 UE.LoadObject(SoundPath) 获取） |
 | `AttachedActor` | `Actor` | 依附的 Actor |
 
+### `SetSoundListener`
+
+```text
+SetSoundListener(ListenerType: EUGCSoundListenerEnum)
+```
+
+切换收音的 Actor(收音监听器)
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ListenerType` | `EUGCSoundListenerEnum` | 收音监听器类型 |
+
 ## Language
 
 `lua`

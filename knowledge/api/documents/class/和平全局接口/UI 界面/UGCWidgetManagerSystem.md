@@ -19,6 +19,7 @@ UI控件管理器系统接口库
 CreateWidgetAsync(WidgetClassPath: string|FSoftObjectPath, OnCreatedCallback: fun(Widget:UUserWidget))
 ```
 
+【废弃】请使用 UGCWidgetUtility.CreateWidgetAsync
 异步创建一个控件，返回控件实例
 
 **Parameters**
@@ -34,6 +35,7 @@ CreateWidgetAsync(WidgetClassPath: string|FSoftObjectPath, OnCreatedCallback: fu
 CreateWidget(WidgetClass: UClass) -> UUserWidget
 ```
 
+【废弃】请使用 UGCWidgetUtility.CreateWidget
 创建一个控件，返回控件实例
 
 **Parameters**
@@ -54,6 +56,7 @@ CreateWidget(WidgetClass: UClass) -> UUserWidget
 DestroyWidget(Widget: UUserWidget)
 ```
 
+【废弃】请使用 UGCWidgetUtility.DestroyWidget
 销毁一个控件
 
 **Parameters**
@@ -68,6 +71,7 @@ DestroyWidget(Widget: UUserWidget)
 AddToSlot(Widget: UUserWidget, SlotName: string, ZOrder: number, AnchorData: FAnchorData)
 ```
 
+【废弃】请使用 UGCWidgetUtility.AddToSlot
 添加一个控件到指定 UI 挂点槽位
 
 **Parameters**
@@ -85,6 +89,7 @@ AddToSlot(Widget: UUserWidget, SlotName: string, ZOrder: number, AnchorData: FAn
 RemoveFromSlot(Widget: UUserWidget)
 ```
 
+【废弃】请使用 UGCWidgetUtility.RemoveFromSlot
 从 UI 挂点槽位移除控件
 
 **Parameters**
@@ -99,7 +104,8 @@ RemoveFromSlot(Widget: UUserWidget)
 SetWidgetLayout(LayoutPath: string)
 ```
 
-异步加载并设置当前的 WidgetLayout，同时只能设置一个，旧的 WidgetLayout 会被卸载。传入 “Default” 可卸载 WidgetLayout 回到默认状态。（主要用于可视化屏蔽玩法中不需要的和平 UI，UI 会强制隐藏）
+【废弃】请使用 UGCWidgetUtility.SetWidgetLayout
+异步加载并设置当前的 WidgetLayout，同时只能设置一个，旧的 WidgetLayout 会被卸载。传入 "Default" 可卸载 WidgetLayout 回到默认状态。（主要用于可视化屏蔽玩法中不需要的和平 UI，UI 会强制隐藏）
 
 **Parameters**
 
@@ -113,6 +119,7 @@ SetWidgetLayout(LayoutPath: string)
 ShowWidget(Widget: UUserWidget)
 ```
 
+【废弃】请使用 UGCWidgetUtility.ShowWidget
 显示一个控件，需要控件已经挂载到挂点槽上
 
 **Parameters**
@@ -127,6 +134,7 @@ ShowWidget(Widget: UUserWidget)
 HideWidget(Widget: UUserWidget)
 ```
 
+【废弃】请使用 UGCWidgetUtility.HideWidget
 隐藏一个控件
 
 **Parameters**
@@ -141,6 +149,7 @@ HideWidget(Widget: UUserWidget)
 IsWidgetAddedToSlot(Widget: UUserWidget) -> boolean
 ```
 
+【废弃】请使用 UGCWidgetUtility.IsWidgetAddedToSlot
 判断一个控件是否已经挂载在 UI 挂点上
 
 **Parameters**
@@ -161,6 +170,7 @@ IsWidgetAddedToSlot(Widget: UUserWidget) -> boolean
 IsWidgetVisible(Widget: UUserWidget) -> boolean
 ```
 
+【废弃】请使用 UGCWidgetUtility.IsWidgetVisible
 判断一个控件是否可见
 
 **Parameters**
@@ -181,6 +191,7 @@ IsWidgetVisible(Widget: UUserWidget) -> boolean
 GetSubWidget(Widget: UUserWidget, SubWidgetName: string) -> UWidget
 ```
 
+【废弃】请使用 UGCWidgetUtility.GetSubWidget
 获取子控件，可用于获取 UMG 蓝图里的子控件
 
 **Parameters**
@@ -202,6 +213,7 @@ GetSubWidget(Widget: UUserWidget, SubWidgetName: string) -> UWidget
 GetAllWidgetsOfClass(WidgetClass: UClass, bAddedToSlotOnly: boolean) -> UUserWidget[]
 ```
 
+【废弃】请使用 UGCWidgetUtility.GetAllWidgetsOfClass
 获取指定类别的所有控件，可筛选只获取已被添加到挂点的控件
 生效范围：客户端
 
@@ -284,6 +296,7 @@ GetSkillRootPanel() -> UserWidget
 GetUserWidgetByWidgetLayout(WidgetLayoutPath: string, UserWidgetName: string) -> UserWidget
 ```
 
+【废弃】请使用 UGCWidgetUtility.GetUserWidgetByWidgetLayout
 获取通过WidgetLayout加载的自定义UserWidget
 生效范围：客户端
 
@@ -306,7 +319,7 @@ GetUserWidgetByWidgetLayout(WidgetLayoutPath: string, UserWidgetName: string) ->
 SubWidgetHiddenLayer(Widget: UserWidget)
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.ShowWidget
+【废弃】请使用 UGCWidgetUtility.ShowWidget
 SubWidgetHiddenLayer为控件减少隐藏层数（主要用于屏蔽玩法中不需要的和平 UI，HiddenLayer>=1，UI 会强制隐藏）
 生效范围：客户端
 
@@ -373,6 +386,7 @@ Share(CloseCallBack: function) -> bool
 AddChildToTochButton(Widget: UserWidget)
 ```
 
+【废弃】请使用 UGCWidgetUtility.AddChildToTochButton
 把自定义 UI 挂到和平 UI 上并应用自定义布局
 生效范围：客户端
 
@@ -531,6 +545,43 @@ ShowTipsUIByServer(TipsContent: string, PlayerController: PlayerController)
 | `TipsContent` | `string` | Tips 文字内容 |
 | `PlayerController` | `PlayerController` | 玩家控制器 |
 
+### `ShowCustomTipsByIDWithPC`
+
+```text
+ShowCustomTipsByIDWithPC(ID: number, TipsContent: string, PlayerController: PlayerController)
+```
+
+在屏幕中间上方用用户配置的UI显示 Tips 内容，从DS发起，在传入的PC所属的客户端显示
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ID` | `number` | Tips Tips表里的ID |
+| `TipsContent` | `string` | Tips 文字内容 |
+| `PlayerController` | `PlayerController` | 玩家控制器 |
+
+### `ShowCustomTipsByID`
+
+```text
+ShowCustomTipsByID(ID: number, TipsContent: string|nil, ExtraParam: UUAEBlackboard|table|nil)
+```
+
+在屏幕中间上方显示用户配置的 Tips 内容
+生效范围：客户端
+  1. UUAEBlackboard 对象 — 直接使用
+  2. table 数组（推荐）— 如 {{SelectedKeyName="Point",Type=EUAEBlackboardType.EBT_Int,Value=20}, ...}，内部自动构造 Blackboard 并按 Type 设置值
+  3. nil/省略 — 不传额外参数
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ID` | `number` | Tips Tips表里的ID |
+| `TipsContent` | `string\|nil` | Tips 文字内容 |
+| `ExtraParam` | `UUAEBlackboard\|table\|nil` | Tips 额外参数，支持三种传入方式： |
+
 ### `GetGlobalOBUI`
 
 ```text
@@ -585,6 +636,7 @@ ChangeMapByMapID(MapID: number)
 ProjectWorldLocationToWidgetPosition(WorldLocation: FVector) -> FVector2D
 ```
 
+【废弃】请使用 UGCWidgetUtility.ProjectWorldLocationToWidgetPosition
 将世界坐标转换为控件坐标
 生效范围：客户端
 
@@ -606,6 +658,7 @@ ProjectWorldLocationToWidgetPosition(WorldLocation: FVector) -> FVector2D
 SlotAsCanvasSlot(Widget: UUserWidget) -> UCanvasPanelSlot
 ```
 
+【废弃】请使用 UGCWidgetUtility.SlotAsCanvasSlot
 获取 Canvas 插槽
 生效范围：客户端
 
@@ -627,6 +680,7 @@ SlotAsCanvasSlot(Widget: UUserWidget) -> UCanvasPanelSlot
 SlotAsOverlaySlot(Widget: UUserWidget) -> @Overlay
 ```
 
+【废弃】请使用 UGCWidgetUtility.SlotAsOverlaySlot
 获取 Overlay 插槽
 生效范围：客户端
 
@@ -648,6 +702,7 @@ SlotAsOverlaySlot(Widget: UUserWidget) -> @Overlay
 SlotAsVerticalBoxSlot(Widget: UUserWidget) -> @HorizontalBox
 ```
 
+【废弃】请使用 UGCWidgetUtility.SlotAsVerticalBoxSlot
 获取 HorizontalBox 插槽
 生效范围：客户端
 
@@ -669,6 +724,7 @@ SlotAsVerticalBoxSlot(Widget: UUserWidget) -> @HorizontalBox
 GetViewportScale() -> number
 ```
 
+【废弃】请使用 UGCWidgetUtility.GetViewportScale
 获取视口缩放比例
 生效范围：客户端
 
@@ -684,6 +740,7 @@ GetViewportScale() -> number
 GetViewportSize() -> FVector2D
 ```
 
+【废弃】请使用 UGCWidgetUtility.GetViewportSize
 获取视口尺寸
 生效范围：客户端
 
@@ -699,6 +756,7 @@ GetViewportSize() -> FVector2D
 GetViewportWidgetGeometry() -> FGeometry
 ```
 
+【废弃】请使用 UGCWidgetUtility.GetViewportWidgetGeometry
 获取视口 Widget 几何信息
 生效范围：客户端
 
@@ -714,6 +772,7 @@ GetViewportWidgetGeometry() -> FGeometry
 AbsoluteToLocal(Geometry: FGeometry, AbsoluteCoordinate: FVector2D) -> FVector2D
 ```
 
+【废弃】请使用 UGCWidgetUtility.AbsoluteToLocal
 绝对坐标转本地坐标
 生效范围：客户端
 
@@ -736,6 +795,7 @@ AbsoluteToLocal(Geometry: FGeometry, AbsoluteCoordinate: FVector2D) -> FVector2D
 LocalToAbsolute(Geometry: FGeometry, LocalCoordinate: FVector2D) -> FVector2D
 ```
 
+【废弃】请使用 UGCWidgetUtility.LocalToAbsolute
 本地坐标转绝对坐标
 生效范围：客户端
 
@@ -758,6 +818,7 @@ LocalToAbsolute(Geometry: FGeometry, LocalCoordinate: FVector2D) -> FVector2D
 GetLocalSize(Geometry: FGeometry) -> FVector2D
 ```
 
+【废弃】请使用 UGCWidgetUtility.GetLocalSize
 获取控件的本地尺寸
 生效范围：客户端
 
@@ -779,6 +840,7 @@ GetLocalSize(Geometry: FGeometry) -> FVector2D
 GetAbsoluteSize(Geometry: FGeometry) -> FVector2D
 ```
 
+【废弃】请使用 UGCWidgetUtility.GetAbsoluteSize
 获取控件的绝对尺寸
 生效范围：客户端
 
@@ -800,6 +862,7 @@ GetAbsoluteSize(Geometry: FGeometry) -> FVector2D
 GetAbsolutePosition(Geometry: FGeometry) -> FVector2D
 ```
 
+【废弃】请使用 UGCWidgetUtility.GetAbsolutePosition
 获取控件的绝对位置
 生效范围：客户端
 
@@ -821,7 +884,7 @@ GetAbsolutePosition(Geometry: FGeometry) -> FVector2D
 GetWidgetFromName(Widget: UserWidget, UserWidgetName: string) -> UserWidget
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.GetSubWidget
+【废弃】请使用 UGCWidgetUtility.GetSubWidget
 通过控件名获取某一控件的子控件
 生效范围：客户端
 
@@ -844,7 +907,7 @@ GetWidgetFromName(Widget: UserWidget, UserWidgetName: string) -> UserWidget
 LoadMainUIWidgetLayoutByPath(WidgetLayoutPath: string)
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.SetWidgetLayout
+【废弃】请使用 UGCWidgetUtility.SetWidgetLayout
 可视化设置主 UI 控件是否可见（主要用于可视化屏蔽玩法中不需要的和平 UI，UI 会强制隐藏）
 生效范围：客户端
 
@@ -860,7 +923,7 @@ LoadMainUIWidgetLayoutByPath(WidgetLayoutPath: string)
 UnloadMainUIWidgetLayoutByPath(WidgetLayoutPath: string)
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.SetWidgetLayout
+【废弃】请使用 UGCWidgetUtility.SetWidgetLayout
 可视化设置主 UI 控件是否可见（主要用于可视化屏蔽玩法中不需要的和平 UI，UI 会强制隐藏）
 生效范围：客户端
 
@@ -876,7 +939,7 @@ UnloadMainUIWidgetLayoutByPath(WidgetLayoutPath: string)
 AddChildToUISlotByPath(WidgetPath: string, UISlotName: string, ZOrder: number, AnchorData: FAnchorData) -> PromiseFuture
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.CreateWidgetAsync() + UGCWidgetManagerSystem.AddToSlot()
+【废弃】请使用 UGCWidgetUtility.CreateWidgetAsync + UGCWidgetUtility.AddToSlot
 把自定义 UI 挂到和平 UI 挂点上
 生效范围：客户端
 
@@ -901,7 +964,7 @@ AddChildToUISlotByPath(WidgetPath: string, UISlotName: string, ZOrder: number, A
 AddChildToUISlotByWidget(Widget: UserWidget, UISlotName: string, ZOrder: number, AnchorData: FAnchorData)
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.AddToSlot
+【废弃】请使用 UGCWidgetUtility.AddToSlot
 把自定义 UI 挂到和平 UI 挂点上
 生效范围：客户端
 
@@ -920,7 +983,7 @@ AddChildToUISlotByWidget(Widget: UserWidget, UISlotName: string, ZOrder: number,
 AddWidgetHiddenLayer(Widget: UserWidget)
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.HideWidget
+【废弃】请使用 UGCWidgetUtility.HideWidget
 为控件添加隐藏层数（主要用于屏蔽玩法中不需要的和平 UI，HiddenLayer>=1，UI 会强制隐藏）
 生效范围：客户端
 
@@ -936,7 +999,7 @@ AddWidgetHiddenLayer(Widget: UserWidget)
 AddNewUI(WidgetClassPath: string, IsAdaptation: boolean) -> UserWidget
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.CreateWidgetAsync() + UGCWidgetManagerSystem.AddToSlot()
+【废弃】请使用 UGCWidgetUtility.CreateWidgetAsync + UGCWidgetUtility.AddToSlot
 添加新 UI，将会自动完成 AddViewport 显示
 生效范围：客户端
 
@@ -959,7 +1022,7 @@ AddNewUI(WidgetClassPath: string, IsAdaptation: boolean) -> UserWidget
 CreateNewWidget(WidgetClassPath: string) -> UserWidget
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.CreateWidgetAsync
+【废弃】请使用 UGCWidgetUtility.CreateWidgetAsync
 创建新控件
 生效范围：客户端
 
@@ -981,7 +1044,7 @@ CreateNewWidget(WidgetClassPath: string) -> UserWidget
 CreateNewWidgetAsync(WidgetClassPath: string, InCreatedDelegate: ULuaSingleDelegate)
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.CreateWidgetAsync
+【废弃】请使用 UGCWidgetUtility.CreateWidgetAsync
 异步创建新控件，并绑定回调
 生效范围：客户端
 

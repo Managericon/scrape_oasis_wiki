@@ -15,6 +15,15 @@ UGC V2背包UI组件
 
 ## Functions
 
+### `PreloadWidgetClasses`
+
+```text
+PreloadWidgetClasses()
+```
+
+预加载所有控件 Class 并缓存：遍历 EBackpackUIComponentConfigKey
+Widget_ 前缀对应单个 ClassPath，WidgetList_ 前缀对应 SoftClassPath 数组
+
 ### `GetBackpackDragDropWidget`
 
 ```text
@@ -29,6 +38,15 @@ GetBackpackDragDropWidget() -> FSoftClassPath|nil
 | Type | Description |
 |---|---|
 | `FSoftClassPath\|nil` | 拖拽控件类，未配置则返回nil |
+
+### `RefreshBackpackBtn`
+
+```text
+RefreshBackpackBtn()
+```
+
+刷新背包入口按钮状态（等级+容量）
+ 由 OnBackPackCapacityRefresh 委托触发，也可手动调用
 
 ### `CloseLobbyPanel`
 

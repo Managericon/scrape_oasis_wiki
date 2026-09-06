@@ -22,3 +22,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `GoldRace` | `6` | - |
 | `DeadTrack` | `7` | - |
 | `Peace` | `8` | - |
+| `Nightmare` | `9` | - |

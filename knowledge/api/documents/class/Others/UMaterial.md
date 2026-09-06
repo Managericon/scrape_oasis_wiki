@@ -188,6 +188,7 @@ A Material is an asset which can be applied to a mesh to control the visual look
 | `bSkipDynamicSwitchOp` | `uint32` | - |
 | `bUsesDeviceLevelSwitch` | `uint32` | 缓存标记：材质是否使用了DeviceLevelSwitch节点且High输入已连接，在PostEditChangeProperty中自动更新 |
 | `bForceUsesDeviceLevelSwitch` | `uint32` | 强制开启DeviceLevelSwitch：勾选后bUsesDeviceLevelSwitch将被强制设为true，即使材质中没有DeviceLevelSwitch节点 |
+| `bCanChangeQualitySeparately` | `uint32` | 勾选后，该材质将使用独立的场景材质质量等级（r.SceneMaterialQualityLevel），而非全局 r.MaterialQualityLevel |
 | `bDisableShadowWPO` | `uint32` | - |
 | `bEnableGrassShadowScale` | `uint32` | - |
 | `bForceDisableVertexNormal` | `uint32` | - |

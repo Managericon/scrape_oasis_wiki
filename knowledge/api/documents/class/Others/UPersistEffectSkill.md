@@ -19,7 +19,7 @@ api_root: "https://developer.gp.qq.com/api/"
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `PESkillSlot` | `FGameplayTag` | 技能槽位Tag |
+| `PESkillSlot` | `FGameplayTag` | 技能槽位Tag, 槽位为空时无法自动创建UI |
 | `ApplyTagGroup` | `FGameplayTagGroups` | Tag的配置组，包含该技能与各个Tag的互斥关系 |
 | `CustomActivateConditions` | `FPESkillConditionContainer` | 技能激活自定义条件 |
 | `ConsumeTime` | `EPESkillConsumeTimeType` | CD能量和消耗扣除时机 |
@@ -524,7 +524,7 @@ SetSelectTargetOneActor(pActor: AActor *) -> void
 
 | Name | Type | Description |
 |---|---|---|
-| `pActor` | `AActor *` | - |
+| `pActor` | `AActor *` | Actor指针 |
 
 **Returns**
 
@@ -745,6 +745,26 @@ OnCDStateChange_BP(bIsCD: bool) -> void
 | Name | Type | Description |
 |---|---|---|
 | `bIsCD` | `bool` | 技能是否CD中 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnRegisterToSlot_BP`
+
+```text
+OnRegisterToSlot_BP(Slot: FGameplayTag) -> void
+```
+
+技能被挂载到 Slot 或从 Slot 上摘下时触发
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Slot` | `FGameplayTag` | 新挂载的 Slot Tag；被摘下时为空 Tag |
 
 **Returns**
 

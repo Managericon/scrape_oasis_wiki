@@ -60,6 +60,7 @@ PrimitiveComponents are SceneComponents that contain or generate some sort of ge
 | `bForceRenderInShadowPass` | `uint8` | If true, this component will force be rendered in the shadow depth pass when bRenderInMainPass is false |
 | `HiddenInMainPassLocks` | `TArray < FName >` | If Num() == 0, this component will be rendered in the main pass (z prepass, basepass, transparency) |
 | `bRenderInMono` | `uint8` | If true, this component will be rendered in mono only if an HMD is connected and monoscopic far field rendering is activated. |
+| `bNeverFrustumCull` | `uint8` | If true, this component will never be culled by frustum culling. It will always be considered visible regardless of camera orientation. |
 | `bReceivesDecals` | `uint8` | Whether the primitive receives decals. |
 | `bOwnerNoSee` | `uint8` | If this is True, this component won't be visible when the view actor is the component's owner, directly or indirectly. |
 | `bOnlyOwnerSee` | `uint8` | If this is True, this component will only be visible when the view actor is the component's owner, directly or indirectly. |
@@ -2345,6 +2346,38 @@ Sets bRenderInMono property and marks the render state dirty.
 | Type | Description |
 |---|---|
 | `void` | - |
+
+### `SetNeverFrustumCull`
+
+```text
+SetNeverFrustumCull(bValue: bool) -> void
+```
+
+Sets bNeverFrustumCull property and marks the render state dirty. When true, this component will never be culled by frustum culling.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bValue` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `IsNeverFrustumCull`
+
+```text
+IsNeverFrustumCull() -> bool
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
 
 ### `SetForceIBL`
 

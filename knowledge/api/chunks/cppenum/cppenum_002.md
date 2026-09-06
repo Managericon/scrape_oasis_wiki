@@ -6,6 +6,321 @@ category: "API Wiki/cppenum"
 kind: "api_chunk"
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeEquipReservedReason.json -->
+
+# EEscapeEquipReservedReason
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Drop` | `0` | - |
+| `NPC_Insurance` | `1` | - |
+| `Talent` | `2` | - |
+| `InsurancePolicy` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeFightingState.json -->
+
+# EEscapeFightingState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Normal` | `1` | - |
+| `ReadyPlayOff` | `2` | - |
+| `OnPlayOff` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeGalleryCrossHairType.json -->
+
+# EEscapeGalleryCrossHairType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Common` | `0` | - |
+| `Interact` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeGalleryExhibitType.json -->
+
+# EEscapeGalleryExhibitType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Invalid` | `0` | - |
+| `Daikin` | `1` | - |
+| `CatBed` | `2` | - |
+| `Carpet` | `3` | - |
+| `Fish` | `4` | - |
+| `Cat` | `5` | - |
+| `LegendaryPistol` | `6` | - |
+| `LegendaryWeapon` | `7` | - |
+| `Medal` | `8` | - |
+| `AchievementTrophy` | `9` | - |
+| `Treasure` | `10` | - |
+| `DogTag` | `11` | - |
+| `GoldenToilet` | `12` | - |
+| `MutationCore` | `13` | - |
+| `GuineaPig` | `14` | - |
+| `WindChimes` | `15` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeGameDifficultyType.json -->
+
+# EEscapeGameDifficultyType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Normal` | `1` | - |
+| `Advance` | `2` | - |
+| `Peak` | `3` | - |
+| `Bounty` | `4` | - |
+| `Tutorial` | `5` | - |
+| `GoldRace` | `6` | - |
+| `DeadTrack` | `7` | - |
+| `Peace` | `8` | - |
+| `Nightmare` | `9` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeGameType.json -->
+
+# EEscapeGameType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Common` | `0` | - |
+| `RoomMatch` | `1` | - |
+| `Popular` | `2` | - |
+| `WorryFree` | `3` | - |
+| `TmnProf` | `4` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeGoldRaceBattleType.json -->
+
+# EEscapeGoldRaceBattleType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Common` | `0` | - |
+| `RedEnvelope` | `1` | - |
+| `ShowDown` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeModeElevatorStateType.json -->
+
+# EEscapeModeElevatorStateType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `NONE` | `99` | - |
+| `STOP` | `0` | - |
+| `UP` | `1` | - |
+| `DOWN` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeModePlayerType.json -->
+
+# EEscapeModePlayerType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `NONE` | `0` | - |
+| `BOSS` | `1` | - |
+| `SOLDIER` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeMonsterDoingState.json -->
+
+# EEscapeMonsterDoingState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Before` | `0` | - |
+| `Doing` | `1` | - |
+| `After` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeSupplyBoxType.json -->
+
+# EEscapeSupplyBoxType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `NONE` | `0` | - |
+| `AI_BOX` | `1` | - |
+| `DRIEF_CASE` | `2` | - |
+| `FILE_CABINETS` | `3` | - |
+| `JERRICANCAN_BARREL` | `4` | - |
+| `MEDICAL` | `5` | - |
+| `PASSWORD` | `6` | - |
+| `RINGKEY_BOX` | `7` | - |
+| `SAFE_BOX` | `8` | - |
+| `SPE_EFFECT` | `9` | - |
+| `SUPPLY_BOX` | `10` | - |
+| `TASK` | `11` | - |
+| `TREASURE_BOX` | `12` | - |
+| `WEAPON` | `13` | - |
+| `WOOD` | `14` | - |
+| `TRASH` | `15` | - |
+| `TOOL_BOX` | `16` | - |
+| `LOCKERS` | `17` | - |
+| `RADIATION_BOX` | `18` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeType.json -->
+
+# EEscapeType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EET_None` | `0` | - |
+| `EET_Helicopter` | `1` | - |
+| `EET_Bunker` | `2` | - |
+| `EET_Taxi` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EESplayerColorCampType.json -->
+
+# EESplayerColorCampType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Blue` | `1` | - |
+| `Red` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EESPlayerRstType.json -->
+
+# EESPlayerRstType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LobbyItem` | `1` | - |
+| `War_equips` | `2` | - |
+| `Drop_equips` | `4` | - |
+| `Insure_equips` | `8` | - |
+| `Talent_equips` | `16` | - |
+| `InsurePolicy_equips` | `32` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EESPlayerSettleReason.json -->
+
+# EESPlayerSettleReason
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Success` | `1` | - |
+| `Dead` | `2` | - |
+| `Timeout` | `3` | - |
+| `Exit` | `4` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EESPlayerType.json -->
+
+# EESPlayerType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Normal` | `1` | - |
+| `UnderCover` | `2` | - |
+| `Mecha` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEvaluateCurveTableResult.json -->
+
+# EEvaluateCurveTableResult
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `RowFound` | `0` | - |
+| `RowNotFound` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEvaluationMethod.json -->
+
+# EEvaluationMethod
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Static` | `0` | - |
+| `Swept` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEvaluationRunSide.json -->
 
 # EEvaluationRunSide
@@ -279,6 +594,20 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EExecutionMode.json -->
+
+# EExecutionMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SEQUENTIAL` | `0` | - |
+| `PARALLEL` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EExitBehaviorReason.json -->
 
 # EExitBehaviorReason
@@ -290,6 +619,7 @@ kind: "api_chunk"
 | `None` | `0` | - |
 | `MoveEnd` | `1` | - |
 | `InterruptInMove` | `2` | - |
+| `VehicleStateInterrupt` | `3` | - |
 
 
 ---
@@ -421,6 +751,14 @@ kind: "api_chunk"
 | `MoveAimExtend_SprintToIdle_Left` | `10` | - |
 | `MoveAimExtend_SprintToIdle_Right` | `11` | - |
 | `MoveAimExtend_SprintCrushDoor` | `12` | - |
+| `MoveAimExtend_ForWardJump` | `101` | - |
+| `MoveAimExtend_InPlaceJump` | `102` | - |
+| `MoveAimExtend_Falling_Forward` | `103` | - |
+| `MoveAimExtend_Falling_InPlace` | `104` | - |
+| `MoveAimExtend_LandLight_Forward` | `105` | - |
+| `MoveAimExtend_LandLight_InPlace` | `106` | - |
+| `MoveAimExtend_LandHeavy_Forward` | `107` | - |
+| `MoveAimExtend_LandHeavy_InPlace` | `108` | - |
 
 
 ---
@@ -475,6 +813,25 @@ kind: "api_chunk"
 | `EWUT_Greanade` | `3` | - |
 | `EWUT_KeroseneFurnace` | `4` | - |
 | `EWUT_Shiled` | `5` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEyeSweepState.json -->
+
+# EEyeSweepState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Idle` | `0` | - |
+| `SweepingRight` | `1` | - |
+| `PausedRight` | `2` | - |
+| `SweepingLeft` | `3` | - |
+| `PausedLeft` | `4` | - |
+| `ReturningToBase` | `5` | - |
+| `DeployPitchBlend` | `6` | - |
 
 
 ---
@@ -571,6 +928,24 @@ kind: "api_chunk"
 |---|---|---|
 | `Linear` | `0` | - |
 | `Sine` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EFakePlayerPoseState.json -->
+
+# EFakePlayerPoseState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Stand` | `0` | - |
+| `Crouch` | `1` | - |
+| `Prone` | `2` | - |
+| `Jump` | `3` | - |
+| `LeftPeek` | `4` | - |
+| `RightPeek` | `5` | - |
 
 
 ---
@@ -932,6 +1307,21 @@ kind: "api_chunk"
 | `AddLOD` | `2` | - |
 | `ReimportLOD` | `3` | - |
 | `ImportReload` | `4` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EFDStyle.json -->
+
+# EFDStyle
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Disappear` | `0` | - |
+| `Blast` | `1` | - |
+| `Simulate` | `2` | - |
 
 
 ---
@@ -1745,6 +2135,7 @@ kind: "api_chunk"
 | `SequencePawn` | `0` | - |
 | `MonsterPawn` | `1` | - |
 | `MagicField` | `2` | - |
+| `Vehicle` | `3` | - |
 
 
 ---
@@ -1895,6 +2286,24 @@ kind: "api_chunk"
 | `OpacityMask` | `8` | - |
 | `AmbientOcclusion` | `16` | - |
 | `NumFlattenMaterialProperties` | `17` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EFlexSignificanceLevel.json -->
+
+# EFlexSignificanceLevel
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Highest` | `0` | - |
+| `High` | `1` | - |
+| `Medium` | `2` | - |
+| `Low` | `3` | - |
+| `Lowest` | `4` | - |
+| `Num` | `5` | - |
 
 
 ---
@@ -2219,6 +2628,20 @@ kind: "api_chunk"
 | `Invalid` | `0` | - |
 | `Left` | `1` | - |
 | `Right` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EFootstepIndoorMode.json -->
+
+# EFootstepIndoorMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ForceOutdoor` | `0` | - |
+| `ForceIndoor` | `1` | - |
 
 
 ---
@@ -2573,6 +2996,20 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EFriendRankListEnableType.json -->
+
+# EFriendRankListEnableType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Hide` | `0` | - |
+| `Show` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EFRR_Movetype.json -->
 
 # EFRR_Movetype
@@ -2853,6 +3290,22 @@ kind: "api_chunk"
 | `None` | `0` | - |
 | `xls` | `1` | - |
 | `csv` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EGameFrameworkAddComponentFlags.json -->
+
+# EGameFrameworkAddComponentFlags
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `AddUnique` | `-1` | - |
+| `AddIfNotChild` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `UseAutoGeneratedName` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
 
 
 ---
@@ -3231,6 +3684,43 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EGATD_MatUpgradeType.json -->
+
+# EGATD_MatUpgradeType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EGATD_MUT_None` | `0` | - |
+| `EGATD_MUT_CommonParent` | `-1` | - |
+| `EGATD_MUT_CommonMatInstance` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `EGATD_MUT_CustomParentMat` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `EGATD_MUT_CustomMatInstance` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `EGATD_MUT_All` | `255` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EGATD_OperationControlType.json -->
+
+# EGATD_OperationControlType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EGATD_OCT_None` | `0` | - |
+| `EGATD_OCT_InitInfo` | `1` | - |
+| `EGATD_OCT_InitSuit` | `2` | - |
+| `EGATD_OCT_ChangeSuit` | `3` | - |
+| `EGATD_OCT_Clear` | `4` | - |
+| `EGATD_OCT_Clint_AsyncPuton` | `5` | - |
+| `EGATD_OCT_Max` | `6` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EGBufferFormat.json -->
 
 # EGBufferFormat
@@ -3326,6 +3816,7 @@ kind: "api_chunk"
 | `DeathTrainPickup` | `21` | - |
 | `GeekerPocket` | `22` | - |
 | `EscapeTask` | `23` | - |
+| `BirdBackpack` | `24` | - |
 
 
 ---
@@ -3592,8 +4083,9 @@ kind: "api_chunk"
 |---|---|---|
 | `EGGameGalleryType_ClassicGallery` | `0` | - |
 | `EGGameGalleryType_EscapeGallery` | `1` | - |
-| `EGGameGalleryType_Other` | `2` | - |
-| `EGGameGalleryType_MAXNUM` | `3` | - |
+| `EGGameGalleryType_LostTombGallery` | `2` | - |
+| `EGGameGalleryType_Other` | `3` | - |
+| `EGGameGalleryType_MAXNUM` | `4` | - |
 
 
 ---
@@ -5146,6 +5638,22 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EHolographicEffectDirection.json -->
+
+# EHolographicEffectDirection
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Idle` | `0` | - |
+| `Forward` | `1` | - |
+| `LeftTurn` | `2` | - |
+| `RightTurn` | `3` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EHomeAuditState.json -->
 
 # EHomeAuditState
@@ -6599,6 +7107,49 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EISLDraggedItemBehavior.json -->
+
+# EISLDraggedItemBehavior
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `NoChange` | `0` | - |
+| `Hidden` | `1` | - |
+| `Collapsed` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EISLDragVisualAlignment.json -->
+
+# EISLDragVisualAlignment
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Center` | `0` | - |
+| `ClickPoint` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EISLDragVisualBoundsMode.json -->
+
+# EISLDragVisualBoundsMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `WholeItem` | `0` | - |
+| `DragPoint` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EItemAddAndEquipResultV2.json -->
 
 # EItemAddAndEquipResultV2
@@ -6639,6 +7190,8 @@ kind: "api_chunk"
 | `VehiclePrticleAudioShow` | `12` | - |
 | `VehicleDiversionShow` | `13` | - |
 | `VehicleChangeModeShow` | `14` | - |
+| `VehicleFakeManShow` | `15` | - |
+| `VehicleMontageShow` | `16` | - |
 | `ADSDestroyShow` | `20` | - |
 | `ADSSurroundingParticleShow` | `21` | - |
 | `ADSExplosionParticleShow` | `22` | - |
@@ -7723,6 +8276,22 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELegendaryWeaponFOVState.json -->
+
+# ELegendaryWeaponFOVState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Applying` | `0` | - |
+| `Idle` | `1` | - |
+| `Unapplying` | `2` | - |
+| `None` | `3` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELegendPosition.json -->
 
 # ELegendPosition
@@ -8213,22 +8782,6 @@ kind: "api_chunk"
 
 ---
 
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELimitType.json -->
-
-# ELimitType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `NotLimited` | `1` | 不限购 |
-| `DailyLimit` | `2` | 每日限购 |
-| `WeeklyLimit` | `3` | 每周限购 |
-| `PermanentLimit` | `4` | 永久限购 |
-
-
----
-
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELinearConstraintMotion.json -->
 
 # ELinearConstraintMotion
@@ -8275,6 +8828,21 @@ kind: "api_chunk"
 | `RightAligned` | `4` | - |
 | `CenterAligned` | `5` | - |
 | `Fill` | `6` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELiteDestructibleState.json -->
+
+# ELiteDestructibleState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Normal` | `0` | - |
+| `Destroyed` | `1` | - |
+| `Dead` | `2` | - |
 
 
 ---
@@ -8649,6 +9217,22 @@ kind: "api_chunk"
 |---|---|---|
 | `Male` | `0` | - |
 | `Female` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELobbySceneCVarValueType.json -->
+
+# ELobbySceneCVarValueType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Bool` | `0` | - |
+| `Int` | `1` | - |
+| `Float` | `2` | - |
+| `String` | `3` | - |
 
 
 ---
@@ -9120,6 +9704,37 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELostTombGalleryCrossHairType.json -->
+
+# ELostTombGalleryCrossHairType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Common` | `0` | - |
+| `Interact` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELostTombGalleryExhibitType.json -->
+
+# ELostTombGalleryExhibitType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Invalid` | `0` | - |
+| `Daikin` | `1` | - |
+| `Buddy` | `2` | - |
+| `Talisman` | `3` | - |
+| `LegendaryWeapon` | `4` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELostTombMonsterType.json -->
 
 # ELostTombMonsterType
@@ -9489,6 +10104,21 @@ kind: "api_chunk"
 | `CommonTab` | `15` | - |
 | `CommonTab1` | `16` | - |
 | `NewTabs` | `17` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EMapLayerSwitchStrategy.json -->
+
+# EMapLayerSwitchStrategy
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EMLSS_Ignore` | `0` | - |
+| `EMLSS_FollowMarkLayer` | `1` | - |
+| `EMLSS_SpecificLayers` | `2` | - |
 
 
 ---
@@ -10953,6 +11583,41 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EMeshMatSelectType.json -->
+
+# EMeshMatSelectType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `NetRole` | `1` | - |
+| `NetRoleAndQuality` | `2` | - |
+| `RoleAndTeamAndQuality` | `3` | - |
+| `MemoryLimit` | `4` | - |
+| `NetRoleAndMemoryLimit` | `5` | - |
+| `NetRoleAndQualityAndMemoryLimit` | `6` | - |
+| `RoleAndTeamAndQualityAndMemoryLimit` | `7` | - |
+| `Custom` | `101` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EMeshMatSelectType_NetRole.json -->
+
+# EMeshMatSelectType_NetRole
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Automouns` | `0` | - |
+| `Simulate` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EMeshMergeType.json -->
 
 # EMeshMergeType
@@ -12032,6 +12697,44 @@ kind: "api_chunk"
 | `NotMoved` | `1` | - |
 | `InvalidSection` | `2` | - |
 | `InvalidMontage` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EMotorWheelieEndReason.json -->
+
+# EMotorWheelieEndReason
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Normal` | `0` | - |
+| `DriverExit` | `1` | - |
+| `SeatChange` | `2` | - |
+| `VehicleExplosion` | `3` | - |
+| `SkillUnapplied` | `4` | - |
+| `RuntimeHealthCheck` | `5` | - |
+| `CollisionInterrupt` | `6` | - |
+| `RemoteStateSync` | `7` | - |
+| `Other` | `255` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EMotorWheelieState.json -->
+
+# EMotorWheelieState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Idle` | `0` | - |
+| `PendingPhysics` | `1` | - |
+| `Entering` | `2` | - |
+| `Wheelie` | `3` | - |
+| `Exiting` | `4` | - |
 
 
 ---
@@ -13144,6 +13847,7 @@ kind: "api_chunk"
 | `FollowEmote` | `3` | - |
 | `PairEmote` | `4` | - |
 | `SetEmoteRate` | `5` | - |
+| `ActivityEmote` | `6` | - |
 
 
 ---
@@ -13212,9 +13916,10 @@ kind: "api_chunk"
 | `Simulated_High` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
 | `Autonomous_UltraHigh` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
 | `Simulated_UltraHigh` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Autonomous_Higher_High` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Simulated_Higher_High` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `AllVisible` | `65535` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `UltraHighIndependent` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `Autonomous_Higher_High` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `Simulated_Higher_High` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `AllVisible` | `65535` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
 
 
 ---
@@ -13485,6 +14190,35 @@ kind: "api_chunk"
 | `NoneOpt` | `0` | - |
 | `TimeToSprint` | `1` | - |
 | `DistToSprint` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ENNETensorDataType.json -->
+
+# ENNETensorDataType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Char` | `1` | - |
+| `Boolean` | `2` | - |
+| `Half` | `3` | - |
+| `Float` | `4` | - |
+| `Double` | `5` | - |
+| `Int8` | `6` | - |
+| `Int16` | `7` | - |
+| `Int32` | `8` | - |
+| `Int64` | `9` | - |
+| `UInt8` | `10` | - |
+| `UInt16` | `11` | - |
+| `UInt32` | `12` | - |
+| `UInt64` | `13` | - |
+| `Complex64` | `14` | - |
+| `Complex128` | `15` | - |
+| `BFloat16` | `16` | - |
 
 
 ---
@@ -13839,23 +14573,6 @@ kind: "api_chunk"
 | `None` | `0` | - |
 | `WaitingGCPool` | `1` | - |
 | `ReadyPool` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EOBPlayerType.json -->
-
-# EOBPlayerType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EOBTypeNull` | `0` | - |
-| `EOBTypeCameraTypePlayer` | `1` | - |
-| `EOBTypeCameraTypeFreeView` | `2` | - |
-| `EOBTypeCameraTypeMap` | `3` | - |
-| `EOBTypeCameraTypePos` | `4` | - |
 
 
 ---
@@ -14226,6 +14943,21 @@ kind: "api_chunk"
 | `EOnHitBackEndReason_Collision` | `1` | - |
 | `EOnHitBackEndReason_ReplaceByPrior` | `2` | - |
 | `EOnHitBackEndReason_Unknown` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EOnlineAkAudioType.json -->
+
+# EOnlineAkAudioType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ExternalSource` | `0` | - |
+| `InputEvent` | `1` | - |
+| `Background` | `2` | - |
 
 
 ---
@@ -16270,6 +17002,20 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCCustomIntDataKeyType.json -->
+
+# EPCCustomIntDataKeyType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EPCCustomIntDataKeyType_EscapeHuntingLevel` | `0` | - |
+| `EPCCustomIntDataKeyType_EscapeWealthLevel` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGActorFilter.json -->
 
 # EPCGActorFilter
@@ -17567,6 +18313,22 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGRegionBrushVisMode.json -->
+
+# EPCGRegionBrushVisMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `PDIOnly` | `1` | - |
+| `LandscapeOverlay` | `2` | - |
+| `Decal` | `3` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGReverseSplineOperation.json -->
 
 # EPCGReverseSplineOperation
@@ -17704,6 +18466,36 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSphericalBrushActorSource.json -->
+
+# EPCGSphericalBrushActorSource
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `All` | `0` | - |
+| `Selected` | `1` | - |
+| `Manual` | `2` | - |
+| `ActorClass` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSphericalBrushMode.json -->
+
+# EPCGSphericalBrushMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Paint` | `0` | - |
+| `Erase` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSplineMeshForwardAxis.json -->
 
 # EPCGSplineMeshForwardAxis
@@ -17715,6 +18507,23 @@ kind: "api_chunk"
 | `X` | `0` | - |
 | `Y` | `1` | - |
 | `Z` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSplineMetadataType.json -->
+
+# EPCGSplineMetadataType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Int` | `0` | - |
+| `Float` | `1` | - |
+| `Vector` | `2` | - |
+| `Unknown` | `3` | - |
+| `Guid` | `4` | - |
 
 
 ---
@@ -17822,6 +18631,24 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGTerrainMaskRole.json -->
+
+# EPCGTerrainMaskRole
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Vegetation` | `0` | - |
+| `Water` | `1` | - |
+| `Road` | `2` | - |
+| `Exclusion` | `3` | - |
+| `Custom` | `4` | - |
+| `StoneAllowed` | `5` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGTextureAddressMode.json -->
 
 # EPCGTextureAddressMode
@@ -17907,6 +18734,23 @@ kind: "api_chunk"
 | `WorldDynamic` | `2` | - |
 | `All` | `3` | - |
 | `PhysicsBody` | `4` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGToolkitMaskColorScheme.json -->
+
+# EPCGToolkitMaskColorScheme
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `StableRandom` | `0` | - |
+| `Warm` | `1` | - |
+| `Cool` | `2` | - |
+| `HighContrast` | `3` | - |
+| `Soft` | `4` | - |
 
 
 ---
@@ -18224,7 +19068,6 @@ kind: "api_chunk"
 | `GameplayAdd` | `1` | - |
 | `ReviveReAdd` | `2` | - |
 | `RespawnReAdd` | `3` | - |
-| `GMAdd` | `4` | - |
 
 
 ---
@@ -18437,833 +19280,4 @@ kind: "api_chunk"
 | `EPEBuffOcclusionHighlightType_Causer` | `0` | - |
 | `EPEBuffOcclusionHighlightType_CauserCamp` | `1` | - |
 | `EPEBuffOcclusionHighlightType_All` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEBuffRemoveType.json -->
-
-# EPEBuffRemoveType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEBuffRemoveType_SpecificClass` | `0` | - |
-| `PEBuffRemoveType_TagAny` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEBuffTriggerType.json -->
-
-# EPEBuffTriggerType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEBuffTriggerType_Begin` | `0` | - |
-| `PEBuffTriggerType_End` | `1` | - |
-| `PEBuffTriggerType_Interval` | `2` | - |
-| `PEBuffTriggerType_Stack` | `3` | - |
-| `PEBuffTriggerType_Lua` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEBuffTriggerTypeDisplay.json -->
-
-# EPEBuffTriggerTypeDisplay
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEBuffTriggerTypeDisplay_Begin` | `0` | - |
-| `PEBuffTriggerTypeDisplay_End` | `1` | - |
-| `PEBuffTriggerTypeDisplay_Interval` | `2` | - |
-| `PEBuffTriggerTypeDisplay_Stack` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEConditionCheckDirectionType.json -->
-
-# EPEConditionCheckDirectionType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EPEConditionCheckDirectionType_SelectDirection` | `0` | - |
-| `EPEConditionCheckDirectionType_SelectTarget` | `1` | - |
-| `EPEConditionCheckDirectionType_SelectTransform` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEConditionCompareType.json -->
-
-# EPEConditionCompareType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEConditionCompareType_AND` | `0` | - |
-| `PEConditionCompareType_OR` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEConditionResultType.json -->
-
-# EPEConditionResultType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EPEConditionResultType_Normal` | `0` | - |
-| `EPEConditionResultType_Negation` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPeekMark.json -->
-
-# EPeekMark
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PeekNone` | `0` | - |
-| `PeekLeft` | `1` | - |
-| `PeekRight` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEGetterType.json -->
-
-# EPEGetterType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EPEGetterType_Property` | `0` | - |
-| `EPEGetterType_Attribute` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEMagnitudeWrapperAttrSourceType.json -->
-
-# EPEMagnitudeWrapperAttrSourceType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEMagnitudeWrapperAttrSourceType_Causer` | `0` | - |
-| `PEMagnitudeWrapperAttrSourceType_Target` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEMeleeAttackRefAnimDataType.json -->
-
-# EPEMeleeAttackRefAnimDataType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `TaskCachedCurveData` | `1` | - |
-| `SkillOfflineCurveData` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEMeleeAttackTrackType.json -->
-
-# EPEMeleeAttackTrackType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `OfflineAnimCurve` | `1` | - |
-| `RuntimeAnimation` | `2` | - |
-| `RuntimeAnimCurve` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEPassiveSkillDisplayType.json -->
-
-# EPEPassiveSkillDisplayType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEPassiveSkillDisplayType_Hidden` | `0` | - |
-| `PEPassiveSkillDisplayType_AlwaysShow` | `1` | - |
-| `PEPassiveSkillDisplayType_ShowWhenActive` | `2` | - |
-| `PEPassiveSkillDisplayType_ShowOnTrigger` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEPassiveSkillMergeType.json -->
-
-# EPEPassiveSkillMergeType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EPEPassiveSkillMergeType_TheOne` | `0` | - |
-| `EPEPassiveSkillMergeType_NoMerge` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEPassiveSkillTagsMatchType.json -->
-
-# EPEPassiveSkillTagsMatchType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EPEPassiveSkillTagsMatchType_And` | `0` | - |
-| `EPEPassiveSkillTagsMatchType_Or` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEPersonPerspectiveType.json -->
-
-# EPEPersonPerspectiveType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEPersonPerspectiveType_None` | `0` | - |
-| `PEPersonPerspectiveType_TPP` | `1` | - |
-| `PEPersonPerspectiveType_FPP` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerfAlertLevel.json -->
-
-# EPerfAlertLevel
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Excellent` | `0` | - |
-| `Good` | `1` | - |
-| `Normal` | `2` | - |
-| `Warning` | `3` | - |
-| `Critical` | `4` | - |
-| `MAX` | `5` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerfCollectionState.json -->
-
-# EPerfCollectionState
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Idle` | `0` | - |
-| `WaitingForReady` | `1` | - |
-| `MovingToNextPoint` | `2` | - |
-| `WaitingForStabilization` | `3` | - |
-| `Collecting` | `4` | - |
-| `Paused` | `5` | - |
-| `Completed` | `6` | - |
-| `Error` | `7` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerfDataDownloadStatus.json -->
-
-# EPerfDataDownloadStatus
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Idle` | `0` | - |
-| `FetchingList` | `1` | - |
-| `Downloading` | `2` | - |
-| `Completed` | `3` | - |
-| `Failed` | `4` | - |
-| `Cancelled` | `5` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerfHeatmapDisplayMode.json -->
-
-# EPerfHeatmapDisplayMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `TopDown` | `0` | - |
-| `SamplePoints` | `1` | - |
-| `Both` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerforceFileStatus.json -->
-
-# EPerforceFileStatus
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `NoEdit` | `0` | - |
-| `Modify` | `1` | - |
-| `Added` | `2` | - |
-| `Deleted` | `3` | - |
-| `Renamed` | `4` | - |
-| `Copoed` | `5` | - |
-| `Unmerged` | `6` | - |
-| `Untracked` | `7` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerformanceLabDevicePlatform.json -->
-
-# EPerformanceLabDevicePlatform
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Unknown` | `0` | - |
-| `Android` | `1` | - |
-| `IOS` | `2` | - |
-| `Windows` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerformJudgement.json -->
-
-# EPerformJudgement
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EPJ_KEEP` | `0` | - |
-| `EPJ_CPU_BOUND` | `1` | - |
-| `EPJ_GPU_BOUND` | `2` | - |
-| `EPJ_CPU_GPU_BOUND` | `3` | - |
-| `EPJ_UPGRADE` | `4` | - |
-| `EPJ_DOWNGRADE` | `5` | - |
-| `EPJ_CPU_HIGH_LOADING` | `6` | - |
-| `EPJ_GPU_HIGH_LOADING` | `7` | - |
-| `EPJ_THERMAL_NORMAL` | `8` | - |
-| `EPJ_THERMAL_LIGHT` | `9` | - |
-| `EPJ_THERMAL_LIGHT_POWER_HIGH` | `10` | - |
-| `EPJ_THERMAL_MODERATE` | `11` | - |
-| `EPJ_THERMAL_MODERATE_POWER_HIGH` | `12` | - |
-| `EPJ_THERMAL_SEVERE` | `13` | - |
-| `EPJ_THERMAL_SEVERE_POWER_HIGH` | `14` | - |
-| `EPJ_THERMAL_CRITICAL` | `15` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerformLinkType.json -->
-
-# EPerformLinkType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Default` | `0` | - |
-| `TakeElevator` | `1` | - |
-| `TakeTrackVehicle` | `2` | - |
-| `TakeZipline` | `3` | - |
-| `TakeInteractiveDoor` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerfReadyCondition.json -->
-
-# EPerfReadyCondition
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `PlayerPawnValid` | `-1` | - |
-| `PlayerInputEnabled` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `StreamingComplete` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Custom` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `PlayerControllable` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerfSampleDirection.json -->
-
-# EPerfSampleDirection
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Forward` | `0` | - |
-| `Right` | `1` | - |
-| `Back` | `2` | - |
-| `Left` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerfSamplingEditType.json -->
-
-# EPerfSamplingEditType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Moved` | `0` | - |
-| `Deleted` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerfSamplingGenerationMethod.json -->
-
-# EPerfSamplingGenerationMethod
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Random` | `0` | - |
-| `Grid` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerfSamplingTraceMethod.json -->
-
-# EPerfSamplingTraceMethod
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `NavMesh` | `0` | - |
-| `HeightTrace` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerfStandardDataProviderType.json -->
-
-# EPerfStandardDataProviderType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `StandardJson` | `0` | - |
-| `HeatmapColorRanges` | `1` | - |
-| `Custom` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerfStandardOperator.json -->
-
-# EPerfStandardOperator
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `GreaterThan` | `0` | - |
-| `GreaterThanOrEqual` | `1` | - |
-| `LessThan` | `2` | - |
-| `LessThanOrEqual` | `3` | - |
-| `Equal` | `4` | - |
-| `NotEqual` | `5` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerfTaskState.json -->
-
-# EPerfTaskState
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Pending` | `0` | - |
-| `Running` | `1` | - |
-| `Completed` | `2` | - |
-| `Failed` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerfValueType.json -->
-
-# EPerfValueType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Integer` | `0` | - |
-| `Float` | `1` | - |
-| `Percentage` | `2` | - |
-| `TimeMs` | `3` | - |
-| `MemoryBytes` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPersistEffectClientEvent.json -->
-
-# EPersistEffectClientEvent
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `InputPress` | `1` | - |
-| `InputRelease` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPersistEffectUnApplyReason.json -->
-
-# EPersistEffectUnApplyReason
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Normal` | `1` | - |
-| `Interrupt` | `2` | - |
-| `Cancel` | `3` | - |
-| `SwitchDS` | `4` | - |
-| `ClientLimit` | `5` | - |
-| `ComponentEndPlay` | `6` | - |
-| `Recycled` | `7` | - |
-| `Slot` | `8` | - |
-| `None` | `255` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPersistPlayMode.json -->
-
-# EPersistPlayMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EPlayMode_None` | `-1` | - |
-| `EPlayMode_Local` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `EPlayMode_OB` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `EPlayMode_Replay` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPersistRollState.json -->
-
-# EPersistRollState
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Not_Roll` | `0` | - |
-| `Rolling` | `1` | - |
-| `Rolled` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPersonalOperateType.json -->
-
-# EPersonalOperateType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EPersonalOperate_None` | `0` | - |
-| `EPersonalOperate_BtnDown` | `1` | - |
-| `EPersonalOperate_BtnUp` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPersonPriority.json -->
-
-# EPersonPriority
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `CustomLower` | `1` | - |
-| `CustomLow` | `2` | - |
-| `CustomNormal` | `3` | - |
-| `CustomHigh` | `4` | - |
-| `CustomHigher` | `5` | - |
-| `LockLower` | `6` | - |
-| `LockLow` | `7` | - |
-| `LockNormal` | `8` | - |
-| `LockHigh` | `9` | - |
-| `LockHigher` | `10` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerspectiveMode.json -->
-
-# EPerspectiveMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `TPP` | `0` | - |
-| `FPP` | `1` | - |
-| `AIM` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPerspectiveTypes.json -->
-
-# EPerspectiveTypes
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `ShootDamage` | `1` | - |
-| `SkillDetectGun` | `2` | - |
-| `ReconDrone` | `3` | - |
-| `SkillLifeDetector` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPESkillActivatableReason.json -->
-
-# EPESkillActivatableReason
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `E_PESKILL_ActivatableReason_OK` | `0` | - |
-| `E_PESKILL_ActivatableReason_Failed_InvalidParam` | `1` | - |
-| `E_PESKILL_ActivatableReason_Failed_CD` | `2` | - |
-| `E_PESKILL_ActivatableReason_Failed_Cost` | `3` | - |
-| `E_PESKILL_ActivatableReason_Failed_ActiveTag` | `4` | - |
-| `E_PESKILL_ActivatableReason_Failed_Blueprint` | `5` | - |
-| `E_PESKILL_ActivatableReason_Failed_Disable` | `6` | - |
-| `E_PESKILL_ActivatableReason_Failed_Activating` | `7` | - |
-| `E_PESKILL_ActivatableReason_Failed_CustomCheck` | `8` | - |
-| `E_PESKILL_ActivatableReason_Failed_Unknown` | `9` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPESkillAnimSlotType.json -->
-
-# EPESkillAnimSlotType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EPESkillAnimSlotType_FullBody` | `0` | - |
-| `EPESkillAnimSlotType_UpperBody` | `1` | - |
-| `EPESkillAnimSlotType_Chest` | `2` | - |
-| `EPESkillAnimSlotType_Arms` | `3` | - |
-| `EPESkillAnimSlotType_FullBody_PreAO` | `4` | - |
-| `EPESkillAnimSlotType_UpperBody_PreAO` | `5` | - |
-| `EPESkillAnimSlotType_Chest_PreAO` | `6` | - |
-| `EPESkillAnimSlotType_Melee` | `7` | - |
-| `EPESkillAnimSlotType_Custom` | `8` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPESkillAttachType.json -->
-
-# EPESkillAttachType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `AttachToSkillOwner` | `0` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPESkillCameraShakeTargetType.json -->
-
-# EPESkillCameraShakeTargetType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `E_PESKILL_CameraShakeTarget_Self` | `0` | - |
-| `E_PESKILL_CameraShakeTarget_SelectTargets` | `1` | - |
-| `E_PESKILL_CameraShakeTarget_SelectPoint` | `2` | - |
-| `E_PESKILL_CameraShakeTarget_SelfAround` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPESkillCameraShakeType.json -->
-
-# EPESkillCameraShakeType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `E_PESKILL_CameraShake_Random` | `0` | - |
-| `E_PESKILL_CameraShake_AxisX` | `1` | - |
-| `E_PESKILL_CameraShake_AxisY` | `2` | - |
-| `E_PESKILL_CameraShake_Custom` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPESkillCancelTaskAction.json -->
-
-# EPESkillCancelTaskAction
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PSkillCancelTaskAction_Deactivate` | `0` | - |
-| `PSkillCancelTaskAction_Event` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPESkillCDChargeType.json -->
-
-# EPESkillCDChargeType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PESkillCDChargeType_Rate` | `0` | - |
-| `PESkillCDChargeType_Absolute` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPESkillCDType.json -->
-
-# EPESkillCDType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `CDT_NONE` | `0` | - |
-| `CDT_Timer` | `1` | - |
-| `CDT_Energy` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPESkillChargeState.json -->
-
-# EPESkillChargeState
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PE_Charge_Failed` | `0` | - |
-| `PE_Charge_Succ` | `1` | - |
-| `PE_Charge_Full` | `2` | - |
-| `PE_Charge_Max` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPESkillConsumeTimeType.json -->
-
-# EPESkillConsumeTimeType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `E_PESKILL_ConsumeTime_Activate` | `0` | - |
-| `E_PESKILL_ConsumeTime_Finish` | `1` | - |
-| `E_PESKILL_ConsumeTime_Custom` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPESkillConsumeType.json -->
-
-# EPESkillConsumeType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `CD` | `0` | - |
-| `Cost` | `1` | - |
-| `Both` | `2` | - |
 

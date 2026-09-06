@@ -24,3 +24,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `ForceAndNoTips` | `8` | - |
 | `WarDogAdditionalBackpack` | `9` | - |
 | `DeathTrackBackpack` | `10` | - |
+| `BirdBackpack` | `11` | - |

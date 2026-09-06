@@ -15,8 +15,8 @@ Mesh merging settings
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `TargetLightMapResolution` | `int32` | Target lightmap resolution |
 | `bGenerateLightMapUV` | `bool` | Whether to generate lightmap UVs for a merged mesh |
+| `TargetLightMapResolution` | `int32` | Target lightmap resolution |
 | `bComputedLightMapResolution` | `bool` | Whether or not the lightmap resolution should be computed by summing the lightmap resolutions for the input Mesh Components |
 | `bImportVertexColors_DEPRECATED` | `bool` | Whether we should import vertex colors into merged mesh |
 | `bPivotPointAtZero` | `bool` | Whether merged mesh should have pivot at world origin, or at first merged component otherwise |

@@ -30,3 +30,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `ShowInDetails` | `ERankListDisplayType` | 是否在玩法详情页展示 |
 | `Desc` | `FString` | 排行榜说明 |
 | `ScoreFormatType` | `ERankListScoreFormatType` | 分数显示格式 |
+| `EnableFriendRank` | `EFriendRankListEnableType` | 是否启用好友榜 |

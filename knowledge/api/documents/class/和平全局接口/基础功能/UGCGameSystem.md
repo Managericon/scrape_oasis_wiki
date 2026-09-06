@@ -16,6 +16,8 @@ api_root: "https://developer.gp.qq.com/api/"
 | Name | Type/Value | Description |
 |---|---|---|
 | `UGCGameSystemImplementation.PlayerAntiAFKData` | `-` | - |
+| `UGCGameSystemImplementation.NationalArenaCachedData` | `-` | - |
+| `UGCGameSystemImplementation.CampDataBuffer` | `-` | - |
 | `UGCGameSystem._RateLimiters` | `-` | - |
 | `UGCGameSystem.GameMode` | `-` | GameMode变量<br>生效范围：服务器 |
 | `UGCGameSystem.GameState` | `-` | GameState变量<br>生效范围：服务器&客户端 |
@@ -1177,7 +1179,7 @@ SetTimer(Object: UObject, CallbackFunction: LuaFunction, Time: number, IsLooping
 ### `ClearTimer`
 
 ```text
-ClearTimer(Object: UObject, TimerHandle: ULuaSingleDelegate)
+ClearTimer(Object: UObject, TimerHandle: FTimerHandle)
 ```
 
 移除定时器
@@ -1188,7 +1190,7 @@ ClearTimer(Object: UObject, TimerHandle: ULuaSingleDelegate)
 | Name | Type | Description |
 |---|---|---|
 | `Object` | `UObject` | 上下文对象 |
-| `TimerHandle` | `ULuaSingleDelegate` | 定时器句柄，定时器回调 |
+| `TimerHandle` | `FTimerHandle` | 定时器句柄 |
 
 ### `SendTLog`
 
@@ -1273,6 +1275,55 @@ SendLiveStreamingTLog(LogType: number, Id: number, Value: table)
 | `LogType` | `number` | 类型 1-赛事，2-人生 |
 | `Id` | `number` | 事件ID(自定义) |
 | `Value` | `table` | 事件内容(自定义) |
+
+### `UploadOfficialModuleData`
+
+```text
+UploadOfficialModuleData(playerUid: string, moduleName: string, data: table)
+```
+
+上传玩家维度的官方模块自定义数据
+ moduleName = "national_arena"（全民赛场）:
+   用于团竞类赛事结算数据上报。内核强制只允许 4 个字段，全部 number，不多不少。
+   调用后仅缓存，不立即发送。等 ugc_result 发送时自动取用并合并到 UGCPlayerBattleResult，取后即清。
+   data 结构：
+     {
+       player_kill_num = 5,      -- number, 击杀数，只有团竞类才有
+       enemy_damage = 1280,      -- number, 对敌人伤害，团竞上报 / 造成伤害
+       team_win = 1,             -- number, 队伍胜负：1=胜 2=负 3=平
+       round_time = 632,         -- number, 对局时长（秒）
+     }
+
+ moduleName = "camp"（营地）:
+   用于玩家档案、最近游玩、玩法详情等自定义数据展示。字段不强制限制，推荐以下结构。
+   缓冲队列 + 防抖，同一 UID 10 秒内多次上传直接覆盖（不 deep merge），不发送。
+   后台协议未定，实际发送逻辑暂留空。
+   data 推荐结构：
+     {
+       profile = {               -- 数据档案
+         history_play = "128",   -- 历史游玩次数
+         max_power = "98000",    -- 最高战力
+         realm = "化神",         -- 境界
+       },
+       recent = {                -- 最近游玩
+         rank = "钻石",          -- 段位
+         score = "2600",         -- 积分
+         power = "87000",        -- 当前战力
+       },
+       detail = {                -- 玩法详情
+         title = "宗门长老",     -- 称号
+         career = "剑修",        -- 职业
+       },
+     }
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `playerUid` | `string` | 玩家账号 UID，用于标识数据归属 |
+| `moduleName` | `string` | 目标官方模块名，可选值：camp(营地)、national_arena(全民赛场) |
+| `data` | `table` | 自定义数据表，结构根据 moduleName 不同而不同 |
 
 ### `SetTournamentInfo`
 
@@ -1582,6 +1633,21 @@ AddFriend(UID: number)
 | Name | Type | Description |
 |---|---|---|
 | `UID` | `number` | 玩家 UID |
+
+### `OpenComplaintUI`
+
+```text
+OpenComplaintUI(UID: number)
+```
+
+打开举报界面
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `UID` | `number` | 目标玩家 UID |
 
 ### `GetUGCResourcesFullPath`
 
@@ -2223,10 +2289,10 @@ MakeCustomDamageNumberParams() -> FUGCDamageNumberParams
 ### `AddUGCCustomDamageNumber`
 
 ```text
-AddUGCCustomDamageNumber(WorldContext: UObject, TargetActor: Actor, Params: FUGCDamageNumberParams) -> boolean
+AddUGCCustomDamageNumber(WorldContext: UObject, TargetActor: Actor, Params: FUGCDamageNumberParams)
 ```
 
-显示自定义伤害数字
+在目标对象位置显示自定义伤害数字
 生效范围：客户端
 
 **Parameters**
@@ -2237,11 +2303,39 @@ AddUGCCustomDamageNumber(WorldContext: UObject, TargetActor: Actor, Params: FUGC
 | `TargetActor` | `Actor` | 伤害数字显示目标 |
 | `Params` | `FUGCDamageNumberParams` | 自定义伤害数字参数 |
 
-**Returns**
+### `AddUGCCustomDamageNumberByScreenOffset`
 
-| Type | Description |
-|---|---|
-| `boolean` | 是否为观战玩家 |
+```text
+AddUGCCustomDamageNumberByScreenOffset(WorldContext: UObject, ScreenOffset: Vector2D, Params: FUGCDamageNumberParams)
+```
+
+在屏幕特定位置显示自定义伤害数字
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContext` | `UObject` | 世界上下文对象 |
+| `ScreenOffset` | `Vector2D` | 伤害数字显示位置相对于屏幕中心点的偏移 |
+| `Params` | `FUGCDamageNumberParams` | 自定义伤害数字参数 |
+
+### `AddUGCCustomDamageNumberByNormalizedScreenPosition`
+
+```text
+AddUGCCustomDamageNumberByNormalizedScreenPosition(WorldContext: UObject, Pos: Vector2D, Params: FUGCDamageNumberParams)
+```
+
+在屏幕特定位置显示自定义伤害数字
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContext` | `UObject` | 世界上下文对象 |
+| `Pos` | `Vector2D` | 伤害数字在屏幕上的相对显示位置 如{X=0.5, Y=0.5} 为屏幕中心 |
+| `Params` | `FUGCDamageNumberParams` | 自定义伤害数字参数 |
 
 ### `IsOuterlineDEV`
 

@@ -323,6 +323,7 @@ Actor is the base class for an Object that can be placed or spawned in a level.
 | `Owner` | `AActor *` | Owner of this Actor, used primarily for replication (bNetUseOwnerRelevancy & bOnlyRelevantToOwner) and visibility (PrimitiveComponent bOwnerNoSee and bOnlyOwnerSee)<br>	  @see SetOwner(), GetOwner() |
 | `bReplicateMovement` | `uint8` | If true, replicate movementlocation related properties.<br>	  Actor must also be set to replicate.<br>	  @see SetReplicates() |
 | `bActorEnableCollision` | `uint8` | Enables any collision on this actor.<br>	  @see SetActorEnableCollision(), GetActorEnableCollision() |
+| `bDoNotNetAsyncDestroy` | `uint8` | - |
 | `bEnableDeferredConstructComponent` | `uint8` | - |
 | `bUseSpawnReplicatedActorMaxFrameDelayFromConfig` | `uint8` | - |
 | `PendingConstructComponents` | `TArray < FDeferedComponentUnit >` | - |
@@ -561,6 +562,18 @@ TickConstructComponentWithTime(OneFrameConstructTimeMS: float, bCreateImmediatel
 |---|---|
 | `float` | - |
 
+### `OnRep_ScriptNetworkReplicatedPropertyWrapper`
+
+```text
+OnRep_ScriptNetworkReplicatedPropertyWrapper() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ### `CallSubObjectLuaOnRep`
 
 ```text
@@ -572,18 +585,6 @@ CallSubObjectLuaOnRep(InObject: UObject *) -> void
 | Name | Type | Description |
 |---|---|---|
 | `InObject` | `UObject *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnRep_ScriptNetworkReplicatedPropertyWrapper`
-
-```text
-OnRep_ScriptNetworkReplicatedPropertyWrapper() -> void
-```
 
 **Returns**
 
@@ -881,26 +882,6 @@ Pushes this actor on to the stack of input being handled by a PlayerController.
 |---|---|
 | `void` | - |
 
-### `DisableInput`
-
-```text
-DisableInput(PlayerController: APlayerController *) -> void
-```
-
-Removes this actor from the stack of input being handled by a PlayerController.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PlayerController` | `APlayerController *` | The PlayerController whose input events we no longer want to receive. If null, this actor will stop receiving input from all PlayerControllers. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
 ### `GetInputAxisValue`
 
 ```text
@@ -920,6 +901,26 @@ Gets the value of the input axis if input is enabled for this actor.
 | Type | Description |
 |---|---|
 | `float` | - |
+
+### `DisableInput`
+
+```text
+DisableInput(PlayerController: APlayerController *) -> void
+```
+
+Removes this actor from the stack of input being handled by a PlayerController.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PlayerController` | `APlayerController *` | The PlayerController whose input events we no longer want to receive. If null, this actor will stop receiving input from all PlayerControllers. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
 
 ### `GetInputAxisKeyValue`
 
@@ -2050,20 +2051,6 @@ Remove tick dependency on PrerequisiteActor.
 |---|---|
 | `void` | - |
 
-### `GetTickableWhenPaused`
-
-```text
-GetTickableWhenPaused() -> bool
-```
-
-Gets whether this actor can tick when paused.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
 ### `RemoveTickPrerequisiteComponent`
 
 ```text
@@ -2083,6 +2070,20 @@ Remove tick dependency on PrerequisiteComponent.
 | Type | Description |
 |---|---|
 | `void` | - |
+
+### `GetTickableWhenPaused`
+
+```text
+GetTickableWhenPaused() -> bool
+```
+
+Gets whether this actor can tick when paused.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
 
 ### `SetTickableWhenPaused`
 
@@ -3872,13 +3873,13 @@ Called when a touch input is received over this component when touch events are 
 |---|---|
 | `void` | - |
 
-### `OnInputTouchEnter`
+### `OnInputTouchLeave`
 
 ```text
-OnInputTouchEnter(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
+OnInputTouchLeave(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
 ```
 
-Called when a finger is moved over this actor when touch over events are enabled in the player controller.
+Called when a finger is moved off this actor when touch over events are enabled in the player controller.
 
 **Parameters**
 
@@ -3893,13 +3894,13 @@ Called when a finger is moved over this actor when touch over events are enabled
 |---|---|
 | `void` | - |
 
-### `OnInputTouchLeave`
+### `OnInputTouchEnter`
 
 ```text
-OnInputTouchLeave(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
+OnInputTouchEnter(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
 ```
 
-Called when a finger is moved off this actor when touch over events are enabled in the player controller.
+Called when a finger is moved over this actor when touch over events are enabled in the player controller.
 
 **Parameters**
 
@@ -9082,9 +9083,9 @@ UFUNCTION(CallInEditor, Category = "Build Static Mesh", meta = (CallInEditor = "
 | `LODDistributionSetting` | `float` | The distribution setting used to change the LOD generation, 2 is the normal distribution, small number mean you want your last LODs to take more screen space and big number mean you want your first LODs to take more screen space. |
 | `NearMaxLOD_Baked` | `uint8` | - |
 | `NearFactor_Baked` | `float` | - |
-| `NearExtent_Baked` | `float` | - |
 | `FarFactor_Baked` | `float` | - |
 | `LandscapeRoughness` | `float` | - |
+| `NearExtent_Baked` | `float` | - |
 | `EnableImproveLOD` | `bool` | - |
 | `ImproveLODValues` | `TArray < float >` | LOD Values |
 | `NearMaxLOD` | `uint8` | - |
@@ -9139,6 +9140,7 @@ UFUNCTION(CallInEditor, Category = "Build Static Mesh", meta = (CallInEditor = "
 | `bMobileMultiLayers` | `uint32` | - |
 | `NavigationGeometryGatheringMode` | `ENavDataGatheringMode` | - |
 | `bUseLandscapeForCullingInvisibleHLODVertices` | `bool` | Flag whether or not this Landscape's surface can be used for culling hidden triangles |
+| `OverwrittenDeformWeightData` | `ULandscapeDeformWeightDataAsset *` | - |
 | `DeformComponentMap` | `TMap < FIntPoint , int32 >` | - |
 | `DeformWeightTileMap` | `TArray < uint32 >` | - |
 | `DeformWeightData` | `TArray < uint8 >` | - |
@@ -10100,8 +10102,8 @@ SetAffectTranslucentLighting(bNewValue: bool) -> void
 | `bIsClusterBasedHLOD` | `bool` | - |
 | `HLODGroupName` | `FName` | 该 LODActor 所属的 HLOD Group 名称（来自 WorldSettings HLODSetup[L].HLODGroups[i].GroupName）。<br>	  NAME_None  = Default 重组通道产物，使用关卡默认 BaseMaterial 与默认 DrawDistanceScale。<br>	  非空       = 由 Group 通道产物，烘焙时按此名反查 ProxyBaseMaterial，运行时反查 LODDrawDistanceScale。 |
 | `DebugHighlightDuration` | `float` | 调试包围盒持续时间（秒） |
-| `DebugHighlightThickness` | `float` | 调试包围盒线宽 |
 | `DebugHighlightColor` | `FColor` | 调试包围盒颜色 |
+| `DebugHighlightThickness` | `float` | 调试包围盒线宽 |
 | `bDebugPrintNodeIndex` | `bool` | 是否在 Cluster 节点中心打印 RefNode 索引文本（用于诊断哪个 Node 跑偏） |
 | `DebugHighlightRefIndices` | `TArray < int32 >` | 仅高亮指定索引的 ClusterRef（针对 ClusterRefs 数组下标）。<br>	  留空 = 高亮全部 ClusterRefs；填了任意值 = 只高亮命中数组中的 RefIndex。<br>	  例：[0, 2] 表示仅高亮 ClusterRefs[0] 与 ClusterRefs[2]。 |
 | `LODLevel` | `int32` | The hierarchy level of this actor; the first tier of HLOD is level 1, the second tier is level 2 and so on. |
@@ -11727,6 +11729,22 @@ PhysicsVolume: A bounding volume which affects actor physics.
 ## Inheritance
 
 `AUAENetActor` -> `IGeneratorActorInterface` -> `IPickupInterface` -> `IPickupCustomInterface` -> `IObjectPoolInterface` -> `IManagedActorInterface` -> `IDropActorCurveInterface` -> `IDropItemPerformanceInterface` -> `ILuaInterface` -> `IInteractorInterface` -> `IScopeInteractionInterface`
+
+## Functions
+
+### `GetDataList`
+
+```text
+GetDataList() -> TArray < FPickUpItemData >
+```
+
+获取拾取物数据列表
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TArray < FPickUpItemData >` | - |
 
 ## Delegates
 
@@ -15329,6 +15347,18 @@ FlushPressedMouseKeys() -> void
 |---|---|
 | `void` | - |
 
+### `FlushPressedMouseKeysImmediate`
+
+```text
+FlushPressedMouseKeysImmediate() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ### `SetAudioListenerOverride`
 
 ```text
@@ -16949,7 +16979,7 @@ UGC_TakeDamageOverrideEvent(Damage: float, DamageType: EDamageType :: DamageType
 
 ## Inheritance
 
-`AUAECharacter` -> `IUAESkillInterface` -> `ISTBaseBuffCarrierInterface` -> `IDamageableInterface` -> `IWeaponOwnerInterface` -> `IWeaponOwnerProxyFactory` -> `IAttrModifyInterface` -> `IItemGenerateInterface` -> `IObjectPoolInterface` -> `IActorHiddenInterface` -> `ILaserSeekAndLockOwnerInterface` -> `IBulletHitInterface` -> `IGameAttributeCarrierInterface` -> `IPickerEffectInterface` -> `ICustomMovementInterface` -> `IGenericCharacterInterface` -> `ITargetFilterInfoProviderInterface` -> `IStateAbilityInterface` -> `IOwnershipChainInterface` -> `IFieldApplyInterface` -> `ICharacterTypeInterface`
+`AUAECharacter` -> `IUAESkillInterface` -> `ISTBaseBuffCarrierInterface` -> `IDamageableInterface` -> `IWeaponOwnerInterface` -> `IWeaponOwnerProxyFactory` -> `IAttrModifyInterface` -> `IItemGenerateInterface` -> `IObjectPoolInterface` -> `IActorHiddenInterface` -> `ILaserSeekAndLockOwnerInterface` -> `IBulletHitInterface` -> `IGameAttributeCarrierInterface` -> `IPickerEffectInterface` -> `ICustomMovementInterface` -> `IGenericCharacterInterface` -> `ITargetFilterInfoProviderInterface` -> `IStateAbilityInterface` -> `IOwnershipChainInterface` -> `IFieldApplyInterface` -> `ICharacterTypeInterface` -> `ISkillAbilityInterface`
 
 ## Events
 
@@ -18537,6 +18567,7 @@ UGC_PlayerPickUpEvent(PlayerController: ASTExtraPlayerController *, Target: AAct
 | `bHealthBarShowWhenOcclusionHide` | `bool` | 被遮挡后血条是否仍显示 |
 | `HealthBarMaxShowDistance` | `float` | 血条实时显示最大距离，单位厘米 |
 | `HealthBarLocOffset` | `FVector` | 血条位置偏移 |
+| `bHealthBarLocScaleWithRoot` | `bool` | 血条偏移是否随缩放变化 |
 | `bHealthBarUseSocket` | `bool` | 血条是否附着到特定部位 |
 | `HealthBarSocketName` | `FName` | 血条附着的部位名 |
 | `bHealthBarShowWhenTakeDamage` | `bool` | 怪物受伤时显示血条 |
@@ -19902,6 +19933,15 @@ OnAllMobDie() -> void
 
 `APickUpWrapperActor`
 
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bPickUpWidgetEnable` | `bool` | 是否启用拾取物控件 |
+| `PickUpWidgetClass` | `TSoftClassPtr < UUGCWrapperPositionWidget >` | 拾取物控件蓝图路径 |
+| `PickUpWidgetLocOffset` | `FVector` | 拾取物控件位置偏移 |
+| `PickUpWidgetMaxShowNum` | `int32` | 拾取物控件最大显示个数 |
+
 ## Functions
 
 ### `OnRep_DefineID_BP`
@@ -19948,6 +19988,64 @@ GetItemCount() -> int32
 | Type | Description |
 |---|---|
 | `int32` | 物品数量 |
+
+### `TryGetBatchedMeshes`
+
+```text
+TryGetBatchedMeshes(InItemID: int32) -> bool
+```
+
+尝试用合批缓存创建并附加组件到拾取物
+	  只在客户端有效（IS_CLIENT）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InItemID` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true=合批命中，已创建组件；false=未命中或关闭，走原逻辑 |
+
+### `SubmitForCaching`
+
+```text
+SubmitForCaching(InItemID: int32, SourceActors: TArray < AActor * > &) -> bool
+```
+
+提交源 Actor 给合批缓存；请求被受理后注册替换回调。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InItemID` | `int32` | - |
+| `SourceActors` | `TArray < AActor * > &` | 当前已附加到拾取物的显示用子Actor |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true=已提交、已去重或等待材质；false=数量不足、请求拒绝或已同步命中缓存并替换 |
+
+### `CanShowPickUpWidget`
+
+```text
+CanShowPickUpWidget() -> bool
+```
+
+拾取物控件是否可见
+	  可重载并自定义
+	  客户端 被调用
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
 
 ## Events
 
@@ -20032,6 +20130,21 @@ OnUnInitPickupWrapper() -> void
 	  DS & 客户端 被调用
 	 
 	  能通过此事件，实现自定义的反初始化逻辑
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnBatchedMeshesReplaced`
+
+```text
+OnBatchedMeshesReplaced() -> void
+```
+
+合批结果已替换原始子Actor后回调（用于清空 Lua MeshActorList 等）
+	  客户端 被调用
 
 **Returns**
 
@@ -20524,6 +20637,7 @@ Actor containing all script accessible world properties.
 | `OriginOfTheRegion` | `FVector` | - |
 | `bEnableObjectPool` | `bool` | - |
 | `LevelReorganizationData` | `UDataAsset *` | - |
+| `bEnableParticleSignificance` | `bool` | - |
 | `bEnableHierarchicalLODSystem` | `uint32` | if set to true, hierarchical LODs will be built, which will create hierarchical LODActors |
 | `HLODSetupAsset` | `TSoftClassPtr < UHierarchicalLODSetup >` | If set overrides the level settings and global project settings |
 | `OverrideBaseMaterial` | `TSoftObjectPtr < UMaterialInterface >` | If set overrides the project-wide base material used for Proxy Materials |
@@ -20574,6 +20688,15 @@ UGC V2背包UI组件
 
 ## Functions
 
+### `PreloadWidgetClasses`
+
+```text
+PreloadWidgetClasses()
+```
+
+预加载所有控件 Class 并缓存：遍历 EBackpackUIComponentConfigKey
+Widget_ 前缀对应单个 ClassPath，WidgetList_ 前缀对应 SoftClassPath 数组
+
 ### `GetBackpackDragDropWidget`
 
 ```text
@@ -20588,6 +20711,15 @@ GetBackpackDragDropWidget() -> FSoftClassPath|nil
 | Type | Description |
 |---|---|
 | `FSoftClassPath\|nil` | 拖拽控件类，未配置则返回nil |
+
+### `RefreshBackpackBtn`
+
+```text
+RefreshBackpackBtn()
+```
+
+刷新背包入口按钮状态（等级+容量）
+ 由 OnBackPackCapacityRefresh 委托触发，也可手动调用
 
 ### `CloseLobbyPanel`
 
@@ -20824,6 +20956,8 @@ UGC物品拾取组件
 | `BP_UGCPickUpListComponent.ItemUsefulCache` | `-` | - |
 | `BP_UGCPickUpListComponent.PickupItemListCache` | `-` | - |
 | `BP_UGCPickUpListComponent.TomBoxItemListCache` | `-` | - |
+| `BP_UGCPickUpListComponent.PickUpFailCooldownMap` | `-` | - |
+| `BP_UGCPickUpListComponent.PendingPickUpUID` | `-` | - |
 | `BP_UGCPickUpListComponent.PickupItemListCacheChange` | `-` | - |
 | `BP_UGCPickUpListComponent.TomBoxItemListCacheChange` | `-` | - |
 | `BP_UGCPickUpListComponent.bUpDateListDataChange` | `-` | - |
@@ -21881,6 +22015,42 @@ GetPlayerListConfig() -> FPlayerListConfig
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/PlayerProfileManagerPlayerComponent.json -->
+
+# PlayerProfileManagerPlayerComponent
+
+玩家档案玩家组件
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PlayerProfileManagerPlayerComponent.OnPlayerProfileOpen` | `-` | 玩家档案打开委托<br>生效范围：客户端<br>@param UID number @玩家 UID<br>@param IconURL string @玩家头像 URL<br>@param NickName string @玩家昵称<br>@param PlatformGender number @玩家性别（0=未知，1=男，2=女）<br>@param bIsOnline boolean @玩家是否在线 |
+
+## Functions
+
+### `RequestPlayerProfile`
+
+```text
+RequestPlayerProfile(TargetUID: number)
+```
+
+请求打开指定 UID 的玩家档案
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetUID` | `number` | 目标玩家 UID |
+
+## Language
+
+`lua`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E5%B7%A5%E5%85%B7%E5%BA%93/PromiseFuture.json -->
 
 # PromiseFuture
@@ -22339,6 +22509,155 @@ GetShowRankData() -> table
 |---|---|
 | `table` | - |
 
+### `GetFriendRankData`
+
+```text
+GetFriendRankData(RankID: number)
+```
+
+获取好友榜数据（好友榜只有当期）
+生效范围：客户端
+调用后触发客户端直连大厅请求刷新好友分数，当次调用直接从本地缓存取数并排序后返回（可能为空）
+大厅数据到来后会写入FriendScoreData并广播ShowRankDataChangeDelegate
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `RankID` | `number` | 排行榜ID |
+
+### `RequestFriendUGCLevel`
+
+```text
+RequestFriendUGCLevel(FriendUIDList: table<number, number> @好友UID列表, OnComplete: fun(FilteredUIDList:table<number, number>) @全部profile获取完成后的回调，返回过滤后的UID列表)
+```
+
+异步获取好友绿洲等级(ugc_level)，profile数据存入ProfileDataList与排行榜数据复用
+通过ProfileMgr.GetProfileList批量获取（每批50个），profile返回数据中包含ugc_level字段
+全部批次回调完成后，剔除ugc_level<=1的好友，将剩余UID通过OnComplete回调返回
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `FriendUIDList` | `table @好友UID列表` | 好友UID列表 |
+| `OnComplete` | `fun(FilteredUIDList:table) @全部profile获取完成后的回调，返回过滤后的UID列表` | 全部profile获取完成后的回调，返回过滤后的UID列表 |
+
+### `IsFriendRankEnabled`
+
+```text
+IsFriendRankEnabled(RankID: number) -> boolean
+```
+
+判断指定榜单的好友榜是否开启
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `RankID` | `number` | 榜单ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 好友榜是否开启 |
+
+### `GetFriendScore`
+
+```text
+GetFriendScore(RankID: number, UID: number) -> number|nil
+```
+
+从本地数据中获取指定UID在指定榜单的分数
+优先从FriendScoreData.ScoreMap取，其次从ShowPlayerRankData取，最后从ShowRankData取
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `RankID` | `number` | 排行榜ID |
+| `UID` | `number` | 玩家UID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number\|nil` | 分数，nil表示未获取到 |
+
+### `BuildFriendRankList`
+
+```text
+BuildFriendRankList(RankID: number) -> {UID:number,
+```
+
+从本地FriendScoreData中，按好友列表过滤并排序，返回好友榜列表
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `RankID` | `number` | 排行榜ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `{UID:number,` | Score:number}> |
+
+### `GetSelfFriendRankData`
+
+```text
+GetSelfFriendRankData(RankID: number) -> Score:number}
+```
+
+获取当前客户端玩家在好友榜中的排名和分数
+从BuildFriendRankList的排序结果中查找当前客户端玩家的排名
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `RankID` | `number` | 排行榜ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Score:number}` | 排名(从1开始)，分数(无数据时为0) |
+
+### `RequestFriendRankScores`
+
+```text
+RequestFriendRankScores(FriendUIDList: table<number, number> @好友UID列表, RankID: number)
+```
+
+客户端直接向大厅发送好友分数查询协议（分批，每批最多100个）
+使用cbdata透传{TotalBatch=, BatchIdx=}标记批次，响应中据此判断是否全部请求完毕
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `FriendUIDList` | `table @好友UID列表` | 好友UID列表 |
+| `RankID` | `number` | 子榜ID |
+
+### `OnFriendRankScoresRsp`
+
+```text
+OnFriendRankScoresRsp()
+```
+
+客户端收到大厅返回的好友分数查询响应
+rsp参数：res, uids, sub_rank, rank_scores, cbdata
+cbdata透传{TotalBatch=, BatchIdx=}，用于判断是否全部批次请求完毕
+生效范围：客户端
+
 ### `OpenReportUI`
 
 ```text
@@ -22533,511 +22852,4 @@ GetPercentTaskPercent(TaskLineName: string, TaskID: number) -> number
 ## Language
 
 `lua`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E5%95%86%E4%B8%9A%E5%8C%96%E4%B8%8E%E5%8A%9F%E8%83%BD%E6%A8%A1%E6%9D%BF/TaskPlayerComponent.json -->
-
-# TaskPlayerComponent
-
-UGC任务系统玩家组件
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `TaskPlayerComponent.OnTaskLineAwardInfoChangeDelegate` | `-` | 生效范围：客户端<br>任务线奖励状态变更回调<br>@param TaskLineName string @任务线名称<br>@param Index number @奖励索引 |
-| `TaskPlayerComponent.OnTaskInfoChangeDelegate` | `-` | 生效范围：客户端<br>任务数据变更回调<br>@param Index UGCTaskIndex @榜单周期 |
-| `TaskPlayerComponent.OnTaskLineProgressChangeDelegate` | `-` | 生效范围：客户端&服务端<br>任务线进度变更回调<br>@param TaskLineName string @任务线名称 |
-
-## Functions
-
-### `ResetPercentTaskLine`
-
-```text
-ResetPercentTaskLine(TaskLineName: string)
-```
-
-重置活跃任务线
-生效范围：服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-
-### `ClaimLevelTaskAward`
-
-```text
-ClaimLevelTaskAward(TaskLineName: string, LevelIndex: number, TaskIndex: number)
-```
-
-领取成长任务奖励
-生效范围：客户端&&服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-| `LevelIndex` | `number` | - |
-| `TaskIndex` | `number` | - |
-
-### `ClaimPercentTaskAward`
-
-```text
-ClaimPercentTaskAward(TaskLineName: string, TaskIndex: number)
-```
-
-领取活跃任务奖励
-生效范围：客户端&&服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-| `TaskIndex` | `number` | - |
-
-### `GetTaskLineProgress`
-
-```text
-GetTaskLineProgress(TaskLineName: string) -> number
-```
-
-获取任务线进度
-生效范围：客户端&&服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | - |
-
-### `GetLevelTaskInfoList`
-
-```text
-GetLevelTaskInfoList(TaskLineName: string) -> FUGCLevelTaskPlayerData[]
-```
-
-获取成长任务线的任务信息列表
-生效范围：客户端&&服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FUGCLevelTaskPlayerData[]` | - |
-
-### `GetPercentTaskInfoList`
-
-```text
-GetPercentTaskInfoList(TaskLineName: string) -> FUGCTaskInfo[]
-```
-
-获取活跃任务线的任务信息列表
-生效范围：客户端&&服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FUGCTaskInfo[]` | - |
-
-### `GetPercentTaskLineAwardStateList`
-
-```text
-GetPercentTaskLineAwardStateList(TaskLineName: string) -> table
-```
-
-获取活跃任务线的奖励状态列表
-生效范围：客户端&&服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `table` | - |
-
-### `GetTaskLineAwardState`
-
-```text
-GetTaskLineAwardState(TaskLineName: string, Index: number) -> EUGCTaskLineAwardState
-```
-
-获取任务线奖励状态
-生效范围：客户端&&服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-| `Index` | `number` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `EUGCTaskLineAwardState` | - |
-
-### `ClaimAllAward`
-
-```text
-ClaimAllAward(TaskLineName: string)
-```
-
-领取任务线的全部奖励
-生效范围：客户端&&服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-
-### `ClaimTaskLineAward`
-
-```text
-ClaimTaskLineAward(TaskLineName: string, Index: number)
-```
-
-领取任务线奖励
-生效范围：客户端&&服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-| `Index` | `number` | - |
-
-### `SetTaskLineProgress`
-
-```text
-SetTaskLineProgress(TaskLineName: string, Progress: number)
-```
-
-设置任务线进度
-生效范围：服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-| `Progress` | `number` | - |
-
-### `GetPercentTaskProgress`
-
-```text
-GetPercentTaskProgress(TaskLineName: string, Index: number) -> number
-```
-
-获取活跃任务进度
-生效范围：客户端&&服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-| `Index` | `number` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | - |
-
-### `GetPercentTaskState`
-
-```text
-GetPercentTaskState(TaskLineName: string, Index: number) -> EUGCTaskState
-```
-
-获取活跃任务状态
-生效范围：客户端&&服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-| `Index` | `number` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `EUGCTaskState` | - |
-
-### `GetLevelTaskProgress`
-
-```text
-GetLevelTaskProgress(TaskLineName: string, LevelIndex: number, TaskIndex: number) -> number
-```
-
-获取成长任务进度
-生效范围：客户端&&服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-| `LevelIndex` | `number` | - |
-| `TaskIndex` | `number` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | - |
-
-### `GetLevelTaskState`
-
-```text
-GetLevelTaskState(TaskLineName: string, LevelIndex: number, TaskIndex: number) -> EUGCTaskState
-```
-
-获取成长任务状态
-生效范围：客户端&&服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-| `LevelIndex` | `number` | - |
-| `TaskIndex` | `number` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `EUGCTaskState` | - |
-
-### `GetTaskManager`
-
-```text
-GetTaskManager() -> TaskManager
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `TaskManager` | - |
-
-### `SetTaskLineTime`
-
-```text
-SetTaskLineTime(TaskLineName: string, BeginTime: number, EndTime: number)
-```
-
-设置任务线和任务线下所有任务的开始/结束时间
-生效范围：客户端&&服务端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TaskLineName` | `string` | - |
-| `BeginTime` | `number` | - |
-| `EndTime` | `number` | - |
-
-## Language
-
-`lua`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UActivityFakePossessComponent.json -->
-
-# UActivityFakePossessComponent
-
-能够将这个Actor的控制权传递给玩家的组件
-
-## Inheritance
-
-`UActorComponent` -> `IFakePossessInterface`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `OnPossess` | `FFakePossesserChangeDelegate` | 获取控制权事件事件委托<br>	 @param PC 获取到这个Actor控制权的PC |
-| `OnUnPossess` | `FFakePossesserChangeDelegate` | 解除控制权事件委托<br>	 @param PC 解除这个Actor控制权的PC |
-| `OnUnPossessWithReason` | `FFakeUnPossessDelegate` | 解除控制权事件委托<br>	 @param PC 解除这个Actor控制权的PC<br>	 @param Reason 解除控制权的原因 |
-
-## Functions
-
-### `FakePossess`
-
-```text
-FakePossess(PC: AController *) -> bool
-```
-
-生效范围：S
-	  让一个PlayerController控制这个Actor
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PC` | `AController *` | 获得控制权的PlayerController |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `FakeUnPossess`
-
-```text
-FakeUnPossess(Reason: EUnPossessReason) -> void
-```
-
-生效范围：S
-	  解除这个Actor上的PC的控制权
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Reason` | `EUnPossessReason` | 解除控制权的原因 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `FakePossessWithAttach`
-
-```text
-FakePossessWithAttach(PC: AController *, AttachScene: USceneComponent *, SocketName: FName, bMulticastToClient: bool) -> bool
-```
-
-生效范围：S
-	  让一个PlayerController控制这个Actor，并将当前控制的角色Attach到这个Actor上
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PC` | `AController *` | 获得控制权的PlayerController |
-| `AttachScene` | `USceneComponent *` | Attach到的组件 |
-| `SocketName` | `FName` | Attach到的Socket |
-| `bMulticastToClient` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `FakeUnPossessWithDettach`
-
-```text
-FakeUnPossessWithDettach(Reason: EUnPossessReason) -> void
-```
-
-生效范围：S
-	  解除这个Actor上的PC的控制权，并将角色从这个Actor上Detach
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Reason` | `EUnPossessReason` | 解除控制权的原因 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `CanBePossess`
-
-```text
-CanBePossess(Character: ASTExtraBaseCharacter *) -> bool
-```
-
-生效范围：S
-	  获取是否可以由这个Character控制当前Actor
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Character` | `ASTExtraBaseCharacter *` | 要检查的Character |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UActorChannel.json -->
-
-# UActorChannel
-
-A channel for exchanging actor and its subobject's properties and RPCs. ActorChannel manages the creation and lifetime of a replicated actor. Actual replication of properties and RPCs actually happens in FObjectReplicator now (see DataReplication.h). An ActorChannel bunch looks like this: |----------------------|---------------------------------------------------------------------------| | SpawnInfo | (Spawn Info) Initial bunch only | | -Actor Class | -Created by ActorChannel | | -Spawn LocRot | | | NetGUID assigns | | | -Actor NetGUID | | | -Component NetGUIDs | | |----------------------|---------------------------------------------------------------------------| | | | |----------------------|---------------------------------------------------------------------------| | NetGUID ObjRef | (Content chunks) x number of replicating objects (Actor + any components) | | | -Each chunk created by its own FObjectReplicator instance. | |----------------------|---------------------------------------------------------------------------| | | | | Properties... | | | | | | RPCs... | | | | | |----------------------|---------------------------------------------------------------------------| |  | | |----------------------|---------------------------------------------------------------------------|
-
-## Inheritance
-
-`UChannel`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Actor` | `AActor *` | - |
-| `ActorName` | `FName` | - |
-| `ActorStaticTag` | `uint64` | - |
-| `bPausedUntilSubObjectReliableACK` | `bool` | - |
-| `ServerScondsSinceWhenPauseReplicateForSubObjectAddOrRemove` | `float` | - |
-| `ServerScondsFirstReplicateSinceWhenPauseReplicateForSubObjectAddOrRemove` | `float` | - |
-| `LastWarningTimeForPauseTooLong_SinceWhenPauseReplicateForSubObjectAddOrRemove` | `float` | - |
-
-## Language
-
-`cpp`
 

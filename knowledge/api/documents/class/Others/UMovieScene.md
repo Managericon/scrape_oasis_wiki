@@ -32,6 +32,7 @@ Implements a movie scene asset.
 | `OutTime_DEPRECATED` | `float` | - |
 | `StartTime_DEPRECATED` | `float` | - |
 | `EndTime_DEPRECATED` | `float` | - |
+| `bGlobalUseQuaternionInterpolation` | `bool` | 全局四元数插值开关：开启后该 LevelSequence 中所有 Transform Section 的旋转都走四元数 Slerp（默认关闭） |
 | `EmptySections` | `TArray < UMovieSceneSection * >` | - |
 | `bPlaybackRangeLocked` | `bool` | User-defined playback range is locked. |
 | `ObjectsToDisplayNames` | `TMap < FString , FText >` | Maps object GUIDs to user defined display names. |

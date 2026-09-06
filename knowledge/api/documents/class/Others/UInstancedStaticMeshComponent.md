@@ -81,6 +81,29 @@ Add an instance to this component. Transform is given in world space.
 |---|---|
 | `int32` | - |
 
+### `SetInstanceDIP`
+
+```text
+SetInstanceDIP(InstanceIndex: int32, MaterialIndex: int32, Name: FString &, Value: FVector4 &) -> bool
+```
+
+Set a DIP value on one instance for the given material slot.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InstanceIndex` | `int32` | - |
+| `MaterialIndex` | `int32` | - |
+| `Name` | `FString &` | - |
+| `Value` | `FVector4 &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
 ### `GetInstanceTransform`
 
 ```text

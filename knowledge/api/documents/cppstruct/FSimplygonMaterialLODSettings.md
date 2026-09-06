@@ -24,8 +24,8 @@ api_root: "https://developer.gp.qq.com/api/"
 | `bReuseExistingCharts` | `bool` | - |
 | `ChannelsToCast` | `TArray < struct FSimplygonChannelCastingSettings >` | - |
 | `bBakeVertexData` | `bool` | - |
-| `bAllowMultiMaterial` | `bool` | - |
 | `bBakeActorData` | `bool` | - |
+| `bAllowMultiMaterial` | `bool` | - |
 | `bPreferTwoSideMaterials` | `bool` | - |
 | `bUseVertexWeights` | `bool` | - |
 | `OutputMaterialInfo` | `FOutputMaterialInfo` | - |

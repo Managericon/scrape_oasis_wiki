@@ -20,3 +20,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `SearchEnd` | `4` | - |
 | `Searching_Turn` | `5` | - |
 | `Searching_Search` | `6` | - |
+| `Searching_SearchEnd` | `7` | - |

@@ -23,6 +23,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `bHealthBarShowWhenOcclusionHide` | `bool` | 被遮挡后血条是否仍显示 |
 | `HealthBarMaxShowDistance` | `float` | 血条实时显示最大距离，单位厘米 |
 | `HealthBarLocOffset` | `FVector` | 血条位置偏移 |
+| `bHealthBarLocScaleWithRoot` | `bool` | 血条偏移是否随缩放变化 |
 | `bHealthBarUseSocket` | `bool` | 血条是否附着到特定部位 |
 | `HealthBarSocketName` | `FName` | 血条附着的部位名 |
 | `bHealthBarShowWhenTakeDamage` | `bool` | 怪物受伤时显示血条 |

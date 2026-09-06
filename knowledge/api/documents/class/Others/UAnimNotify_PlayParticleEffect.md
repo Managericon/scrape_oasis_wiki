@@ -25,6 +25,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `Scale` | `FVector` | - |
 | `bPlayOnce` | `bool` | - |
 | `bDestroyAtEnd` | `bool` | - |
+| `DestroyAtEndTag` | `FName` | - |
 | `SimulatedActivationOfQualityLevel` | `int32` | - |
 | `PSCInstace` | `TWeakObjectPtr < UParticleSystemComponent >` | - |
 | `Attached` | `uint32` | - |

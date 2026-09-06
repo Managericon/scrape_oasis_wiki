@@ -13,6 +13,6 @@ api_root: "https://developer.gp.qq.com/api/"
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `bChannel1` | `uint8` | - |
 | `bChannel0` | `uint8` | Default channel for all primitives and lights. |
+| `bChannel1` | `uint8` | - |
 | `bChannel2` | `uint8` | - |

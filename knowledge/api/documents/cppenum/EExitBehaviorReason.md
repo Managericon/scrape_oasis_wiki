@@ -16,3 +16,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `None` | `0` | - |
 | `MoveEnd` | `1` | - |
 | `InterruptInMove` | `2` | - |
+| `VehicleStateInterrupt` | `3` | - |

@@ -66,6 +66,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `BoundingMode` | `TEnumAsByte < enum ESubUVBoundingVertexCount >` | More bounding vertices results in reduced overdraw, but adds more triangle overhead.<br>	 The eight vertex mode is best used when the SubUV texture has a lot of space to cut out that is not captured by the four vertex version,<br>	 and when the particles using the texture will be few and large. |
 | `OpacitySourceMode` | `TEnumAsByte < enum EOpacitySourceMode >` | - |
 | `AlphaThreshold` | `float` | Alpha channel values larger than the threshold are considered occupied and will be contained in the bounding geometry.<br>	 Raising this threshold slightly can reduce overdraw in particles using this animation asset. |
+| `bCutoutUseSingleFrame` | `bool` | Generate Cutout geometry from the complete CutoutTexture instead of its SubUV grid. |
 | `CutoutSubImagesX` | `int32` | - |
 | `CutoutSubImagesY` | `int32` | The number of sub-images vertically in the texture |
 | `bEnableCutOut` | `bool` | - |

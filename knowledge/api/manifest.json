@@ -42,7 +42,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/AActor.md",
     "status": "ok",
-    "sha256": "568ae370859943aef13de37254b6ea587f875194a9fc80b5bc5836647a7fa01a"
+    "sha256": "aff33ea55e9328bc33cfc1b97ede787fb38117b519ff242d6498859572f0f874"
   },
   {
     "id": "api:class:AAggregatedCollisionActor",
@@ -597,7 +597,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/ALODActor.md",
     "status": "ok",
-    "sha256": "8775c23285a2e1a0d07fa3f24420b1bff7c307937df820c80eaf10e5ce36e640"
+    "sha256": "690d5246982d107116f7c1452ecd084ffa5496984b4f4602c8a76b9ee631d17f"
   },
   {
     "id": "api:class:ALandscape",
@@ -642,7 +642,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/ALandscapeProxy.md",
     "status": "ok",
-    "sha256": "c124397e4a7ac97157157bdad37a72ab35121e0b454182a4ba1541d1c600774c"
+    "sha256": "7899388c9a7c2f5ef3a4592112f52e8cc86b402e973266553d49c362d3e6bb4b"
   },
   {
     "id": "api:class:ALandscapeStreamingProxy",
@@ -1123,7 +1123,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平类事件/地面可拾取物类/APickUpWrapperActor.md",
     "status": "ok",
-    "sha256": "f8771deb1c397187982166b38eea7637baba683aa7e81c319d3cfaea1d4a698a"
+    "sha256": "c8c875d7b133c85c5a65cfacd0d86732703d4b677911b32c601c3ec166ad2038"
   },
   {
     "id": "api:class:APixelProjectedReflection",
@@ -1213,7 +1213,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/APlayerController.md",
     "status": "ok",
-    "sha256": "4f57628cf6bcd326fe01970e78ed8372bb191de30f4bd300f19011513b0f42a2"
+    "sha256": "7dde5d232102161904dbe71b75b830d6196d3130d8d5bb4a0ca562686e8ac6c0"
   },
   {
     "id": "api:class:APlayerStart",
@@ -1425,7 +1425,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平类事件/角色类（Pawn）/ASTExtraCharacter.md",
     "status": "ok",
-    "sha256": "b0691809c25cadd8d0819d940e5973b0689503284a21d62d2f0a9d5451e2c00e"
+    "sha256": "17f7d7c3810358b960306e2535cc6aa4e0ee1f9e015bae510cbe8c108dd3fd75"
   },
   {
     "id": "api:class:ASTExtraGameStateBase",
@@ -1759,7 +1759,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/AUGCGenericCharacter.md",
     "status": "ok",
-    "sha256": "597c599b09d7e37f80a5f36f0b8f23d6cf88f73d29540d223c3fb0bd33692038"
+    "sha256": "f8163e884cb70765bfc299fe2176b99bdac0dcef2cccffe2afa5149316b70e9f"
   },
   {
     "id": "api:class:AUGCItemSpawner",
@@ -1851,7 +1851,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/AUGCPickUpWrapperActor.md",
     "status": "ok",
-    "sha256": "fcb38a4c7229e272f57a7101ee2dd34c2a0a5f114e1fa488d887967f8af29780"
+    "sha256": "b3118adff20dda88a42bb15b1c45e5d128bcef85c20d9224a1753b3383597f06"
   },
   {
     "id": "api:class:AUniversalProjectileBase",
@@ -1956,7 +1956,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/AWorldSettings.md",
     "status": "ok",
-    "sha256": "4358d4fbaa13ce7f309c394edddca939a6ebd45a7db7a5fb88981fcc17712d89"
+    "sha256": "17eeaa47c9e9b81c752bce753b90113723bb902b11e9f7da85eb633d1db496d2"
   },
   {
     "id": "api:class:BP_UGCPickUpListComponent",
@@ -1971,7 +1971,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/BP_UGCPickUpListComponent.md",
     "status": "ok",
-    "sha256": "aff51d8d6eba3db09d63938410bbee5cec2bb7e7cd971c39e5e87bd83d233fea"
+    "sha256": "32394e4f3cf9569201050accfeee0168aeee7e0ee5656a0e3b69536ce82308ef"
   },
   {
     "id": "api:class:BP_UGCVehicleRefresherTool",
@@ -2001,7 +2001,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/BackpackUIComponent.md",
     "status": "ok",
-    "sha256": "3f1caac8becf1d4fa2afaeec76c45c40f0530e020051fee3bba39882ff332dae"
+    "sha256": "3536f1dd12bcf15154ba7c43abc9fa9558d69dd6d3c76e0b109ac09b514442c0"
   },
   {
     "id": "api:class:CommodityOperationManager",
@@ -2051,6 +2051,21 @@
     "sha256": "946a66c8476e5ced70be44e5cdb5fb9956a40eec4f7d4ae5c559e188a30b41b6"
   },
   {
+    "id": "api:class:PlayerProfileManagerPlayerComponent",
+    "name": "PlayerProfileManagerPlayerComponent",
+    "title": "PlayerProfileManagerPlayerComponent",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/PlayerProfileManagerPlayerComponent.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/PlayerProfileManagerPlayerComponent.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/PlayerProfileManagerPlayerComponent.md",
+    "status": "ok",
+    "sha256": "fe632d13ed114b44907bc648bf00ecb2507fdd9ec69fce1c0fe74b8b7b6451ff"
+  },
+  {
     "id": "api:class:PromiseFuture",
     "name": "PromiseFuture",
     "title": "PromiseFuture",
@@ -2080,7 +2095,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/商业化与功能模板/RankingListManager.md",
     "status": "ok",
-    "sha256": "6ce85a702b3e8dc4789865553d1ea5a3ceb7f1152dd50df8c1ee40c8d25b79f1"
+    "sha256": "3b7dc5410bdaca5c2df3c1d355a129e7c586a0414cf8a225512a947a34a68b17"
   },
   {
     "id": "api:class:RankingListPlayerComponent",
@@ -2129,6 +2144,36 @@
     "file": "documents/class/和平全局接口/商业化与功能模板/TaskPlayerComponent.md",
     "status": "ok",
     "sha256": "eb67925a9ce6068373847657d01c0b6c324c944f4f36c2b2ab3448fe87d2f4c0"
+  },
+  {
+    "id": "api:class:TeamRecruitGlobalActor",
+    "name": "TeamRecruitGlobalActor",
+    "title": "TeamRecruitGlobalActor",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/TeamRecruitGlobalActor.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/TeamRecruitGlobalActor.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/TeamRecruitGlobalActor.md",
+    "status": "ok",
+    "sha256": "c5fcdaff73debc00c4c5b58d92d464a7e2da1dbfc24df4bbe2e8f2c46953a8c9"
+  },
+  {
+    "id": "api:class:TeamRecruitPlayerComponent",
+    "name": "TeamRecruitPlayerComponent",
+    "title": "TeamRecruitPlayerComponent",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/TeamRecruitPlayerComponent.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/TeamRecruitPlayerComponent.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/TeamRecruitPlayerComponent.md",
+    "status": "ok",
+    "sha256": "82d6edb68681b49b62f142867fd922a58f9db0c499c4b67efd8b21c22c6a8b62"
   },
   {
     "id": "api:class:UAIAsyncTaskBlueprintProxy",
@@ -2548,7 +2593,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UActivityFakePossessComponent.md",
     "status": "ok",
-    "sha256": "4a4791440ac3e5548408d3122a64fcc5ea6a283a175dd56907fd05dbc59ce923"
+    "sha256": "c63391e61f36338d9345fe7ca15feb5119cba88fbff2a6a734e8f834654189e8"
   },
   {
     "id": "api:class:UActorChannel",
@@ -2623,7 +2668,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UAnimBlueprintGeneratedClass.md",
     "status": "ok",
-    "sha256": "4e5fb40066f20de835f4584b1dd2554a72312a1babec02142a7cf33109b646fc"
+    "sha256": "5f895ecc390ca8ee5fac4c55c629dae36b5bc9687085f2bbc57979735b09c8a8"
   },
   {
     "id": "api:class:UAnimClassData",
@@ -2698,7 +2743,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UAnimCompress_PerTrackCompression.md",
     "status": "ok",
-    "sha256": "69d1bf7db3b789d518388917d6f8c1cdf84a33980afc825291d18bda2856a85a"
+    "sha256": "b860375444d903196c18aff368986179e7a678d31e60b42183d5582222265f08"
   },
   {
     "id": "api:class:UAnimCompress_PerTrackVariableBit",
@@ -2803,7 +2848,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UAnimInstanceUpdateCondition.md",
     "status": "ok",
-    "sha256": "aa85509cf4189a9de3b89c6cd6eee21a4fb0252d9a8d35ab234a337bda30cd9c"
+    "sha256": "353a5271228effde076a6e517f3fce0a4ff058f534a240d4985d0bfae13cb58f"
   },
   {
     "id": "api:class:UAnimMontage",
@@ -2938,7 +2983,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UAnimNotify_PlayParticleEffect.md",
     "status": "ok",
-    "sha256": "a1d963d832c771b42a27f9377e830dae2fec714ad3ddbdd92c4f4661e1639dc9"
+    "sha256": "3390c5ac73d1b5338003b08df8b77345e0702b255671cb2fbac5d56f9e6e3557"
   },
   {
     "id": "api:class:UAnimNotify_PlaySound",
@@ -4004,7 +4049,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UBackpackComponentV2.md",
     "status": "ok",
-    "sha256": "d8d759aaf2388f387fec16114fb83c1c8c759cd55b1b43291f3eb5960e6e2553"
+    "sha256": "d79a234264d154837d7cfa88699aa5094c02b8624b31eb219c3a029256db4382"
   },
   {
     "id": "api:class:UBaseMediaSource",
@@ -6269,7 +6314,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UEngine.md",
     "status": "ok",
-    "sha256": "06c9449101e647c371fd229f515d6b696ecb3dbd997a489daaffaa187dc2db45"
+    "sha256": "8f630f3a4add58a22532ab036ef9cccfd946104e5a0e34281c02d9b83dd79e9c"
   },
   {
     "id": "api:class:UEngineMessage",
@@ -6976,7 +7021,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/基础功能/UGCActorComponentUtility.md",
     "status": "ok",
-    "sha256": "fa47d9d6dd0ff9089743a6bad75fdd45fe84d24790fb6d55c76579f97ada2022"
+    "sha256": "e3da067d56702f12ce26c4cd09631c94e62e535cbbcefabf2099af7a201fbc86"
   },
   {
     "id": "api:class:UGCAirAttachSystem",
@@ -7053,7 +7098,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/工具库/UGCAsyncUtility.md",
     "status": "ok",
-    "sha256": "114244f2ac64eaff3fe304015c36806e95a5aac9d28269e71f8f91ea3246018e"
+    "sha256": "e8c89be210842099f173b2f38971b85524f2f10ee19d963345d6796e5f3705ba"
   },
   {
     "id": "api:class:UGCAttributeSystem",
@@ -7101,7 +7146,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/物品与背包/UGCBackpackSystemV2.md",
     "status": "ok",
-    "sha256": "cc9ecdd650be7c464b8b562c9249d5199c360f3ed384ae7a24a3462c454f7137"
+    "sha256": "fb74edc99d81684e0a88a7904dfaaaf95189805aa21e7e420b42e3987cd978b0"
   },
   {
     "id": "api:class:UGCBuffSystem",
@@ -7199,6 +7244,21 @@
     "sha256": "3e5ac8126ad9ecf917ff6780d98d138cb5411d8e9698c38e12270167da42f23b"
   },
   {
+    "id": "api:class:UGCCommonDelegate",
+    "name": "UGCCommonDelegate",
+    "title": "UGCCommonDelegate",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/UGCCommonDelegate.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/UGCCommonDelegate.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/UGCCommonDelegate.md",
+    "status": "ok",
+    "sha256": "7ad7c945bf13cf506b51a2f2bcb075452eb21565d92bdc26f17efcea22e54dea"
+  },
+  {
     "id": "api:class:UGCCommonDragDropItem",
     "name": "UGCCommonDragDropItem",
     "title": "UGCCommonDragDropItem",
@@ -7258,7 +7318,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/基础功能/UGCDelegateUtility.md",
     "status": "ok",
-    "sha256": "01b71a206c33e1db397ce062de3a483c2c40d0c89264104630d829a051f9b5fb"
+    "sha256": "1042a98c0694a730968d2a73bbeb899a7806b6c79054ef7095de4218fc05e356"
   },
   {
     "id": "api:class:UGCDropSystem",
@@ -7335,7 +7395,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/怪物系统/UGCFakePlayerSystem.md",
     "status": "ok",
-    "sha256": "a34f91a012d0c633792d33637953589beffc7992e94fd965aa8d419f65a58580"
+    "sha256": "b35c622601978b1505cb47067fcc734e7f829dfd351a6d3daf69f170e1c1c47e"
   },
   {
     "id": "api:class:UGCGamePartSystem",
@@ -7383,7 +7443,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/基础功能/UGCGameSystem.md",
     "status": "ok",
-    "sha256": "22df6aef6e667fb92591cd05ed7ddb91e82c0819078ae5554bfb631b3bc023e4"
+    "sha256": "85a2e60e7546a0efc18d13477c56426f5de877843525503d80533131b6b09231"
   },
   {
     "id": "api:class:UGCGameplayTag",
@@ -7430,7 +7490,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/工具库/UGCGameplayTaskSystem.md",
     "status": "ok",
-    "sha256": "b45c9ef6edfaf7a174e7d63cca5ad94c148d356191e7a2e608f920ea7801e445"
+    "sha256": "3f33ad08aa88b32751524571c46a1e6572cb20237b4ace5db8ac4601e0a13263"
   },
   {
     "id": "api:class:UGCGenericCharacterSystem",
@@ -7462,7 +7522,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/工具库/UGCGenericMessageSystem.md",
     "status": "ok",
-    "sha256": "1e4fc9b980a0d8fb64b330bfce58f93d183bd44e8f8437fd20ca2238ab0d6d98"
+    "sha256": "16447b18f1ba7cb0ecaa50dc6e7f3e8aed4f5d8bb55d7933e062089bbd496d6e"
   },
   {
     "id": "api:class:UGCGunSystem",
@@ -7525,7 +7585,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/物品与背包/UGCItemSystemV2.md",
     "status": "ok",
-    "sha256": "9bca05334fd521ce57cb3a08bf68a081a9ae904bbbfcaf15301a3164d81cd27a"
+    "sha256": "eb69c1e8bf3805e38ccc6cf2f311639af30afdfbd79a72d7acf475f84a60ac28"
   },
   {
     "id": "api:class:UGCLevelFlowSystem",
@@ -7603,7 +7663,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/社交系统/UGCMessageSystem.md",
     "status": "ok",
-    "sha256": "9cd7bb90d67d9506f29a6c440356178805713ede722bdf2336d61abf3433ddf0"
+    "sha256": "919e3a574401ce481e6c1ee0619f0abefb73136c5f4beddb7953ccae0a0fac97"
   },
   {
     "id": "api:class:UGCMiscFunctionSystem",
@@ -7746,7 +7806,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/角色系统/UGCPlayerControllerSystem.md",
     "status": "ok",
-    "sha256": "80c73387161d474431c385a1d198c86f1d8506148d4dcd9f82faa516e30adff7"
+    "sha256": "83d7d7313d3c91635f7dfafc56a99ad1c6c2cfa4111aa1bfad88dfce9ea87771"
   },
   {
     "id": "api:class:UGCPlayerPawnSystem",
@@ -7761,7 +7821,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UGCPlayerPawnSystem.md",
     "status": "ok",
-    "sha256": "e016489551ba7a431a16cfb136d24f1514b1ff540bfb9d351692b76dc441744e"
+    "sha256": "a84852a7aa6a70879ce1e96adfbc77eed6cd6352b7131a49cce39e9325f64d34"
   },
   {
     "id": "api:class:UGCPlayerStateSystem",
@@ -7905,7 +7965,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/社交系统/UGCSoundManagerSystem.md",
     "status": "ok",
-    "sha256": "f3bdef84863be17accdd391757149bf1c6c35bacbf87e3c9c4ffa25721b88898"
+    "sha256": "c1da756e3c2361a5e43424029eb5730e82b375b8898b12d0c66493fe935a8cb8"
   },
   {
     "id": "api:class:UGCStringTextUtility",
@@ -7936,7 +7996,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/社交系统/UGCTeamSystem.md",
     "status": "ok",
-    "sha256": "1f8feb287d1808be5be0c674e7497fe7493dd21706e0e3b5e00a02bcf419d0fa"
+    "sha256": "ac9ba347738af2adbcd05695eabd56f52bba9ad1a92952d6c60eac80103e2b32"
   },
   {
     "id": "api:class:UGCTimerUtility",
@@ -7968,6 +8028,21 @@
     "file": "documents/class/Others/UGCTweenSystem.md",
     "status": "ok",
     "sha256": "02f08cc5df29d1f48122b2c2ce8a2253cb3617206da254895d41a040bd13f8ff"
+  },
+  {
+    "id": "api:class:UGCUIManagerSystem",
+    "name": "UGCUIManagerSystem",
+    "title": "UGCUIManagerSystem",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/UGCUIManagerSystem.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/UGCUIManagerSystem.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/UGCUIManagerSystem.md",
+    "status": "ok",
+    "sha256": "c34b9b7b58b22d8490afc8d553ec41aa62845b4dbb0cbcac644e85bbfce1704e"
   },
   {
     "id": "api:class:UGCVehicleCommonSystem",
@@ -8046,7 +8121,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/社交系统/UGCVoiceManagerSystem.md",
     "status": "ok",
-    "sha256": "53fee4a4863d744813aa6989a9c6e6df1b2373fbc18fd653dca8afe36ef341e5"
+    "sha256": "6e8c95543d3db7e728c117b337646208eca51bed5cb3a1d109556be454f37833"
   },
   {
     "id": "api:class:UGCWeaponManagerSystem",
@@ -8094,7 +8169,22 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/UI 界面/UGCWidgetManagerSystem.md",
     "status": "ok",
-    "sha256": "3cacf6d4282777b18c60c3a107a455509596bffaca967b6a065bed7c739ee1d6"
+    "sha256": "7c0677a9d267783a225cc9e108c18e8b9dc99bac7538ee0cbd2b7dea2e41f92f"
+  },
+  {
+    "id": "api:class:UGCWidgetUtility",
+    "name": "UGCWidgetUtility",
+    "title": "UGCWidgetUtility",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/UGCWidgetUtility.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/UGCWidgetUtility.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/UGCWidgetUtility.md",
+    "status": "ok",
+    "sha256": "5d3ec7ee30ac75e24f6ec2d8fdd7309d71263a186068d9c151f4603a3ab72d67"
   },
   {
     "id": "api:class:UGC_Backpack_Item_UIBP",
@@ -8936,7 +9026,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UInstancedStaticMeshComponent.md",
     "status": "ok",
-    "sha256": "7bf8eeb9ebbd97958d6c40759b78a5c8862e870a63a9e867a78d5c52cb9897aa"
+    "sha256": "eaad75c1b358195a5ba7674e30a1625891d8af69d29edc7ab38da6ca25496304"
   },
   {
     "id": "api:class:UInt32Binding",
@@ -9957,7 +10047,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/引擎/常用全局类/UKismetSystemLibrary.md",
     "status": "ok",
-    "sha256": "b4f63fd32ba01887851089179a1531a07b1c0205e4a2526ef1261c87b31d4045"
+    "sha256": "be61cc077a98830fbefaf44625a20af24ecb91eede03b4e88be4c476871f2766"
   },
   {
     "id": "api:class:UKismetTextLibrary",
@@ -10500,6 +10590,81 @@
     "sha256": "c5261bc33bb4500377f04129fcce407a91ad72cd385ee505f7798c8be9d4fe2f"
   },
   {
+    "id": "api:class:ULuaArrayHelper",
+    "name": "ULuaArrayHelper",
+    "title": "ULuaArrayHelper",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/ULuaArrayHelper.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/ULuaArrayHelper.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/ULuaArrayHelper.md",
+    "status": "ok",
+    "sha256": "71d5d814227f7dad629c2f771fbba3efb06c05042ebfb3fc88cedde64163edb4"
+  },
+  {
+    "id": "api:class:ULuaMapHelper",
+    "name": "ULuaMapHelper",
+    "title": "ULuaMapHelper",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/ULuaMapHelper.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/ULuaMapHelper.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/ULuaMapHelper.md",
+    "status": "ok",
+    "sha256": "59d2a82c33d63bed359d973a8298ec6ba14eebddc55479ca803e080d2d31fb92"
+  },
+  {
+    "id": "api:class:ULuaMulticastDelegate",
+    "name": "ULuaMulticastDelegate",
+    "title": "ULuaMulticastDelegate",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/ULuaMulticastDelegate.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/ULuaMulticastDelegate.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/ULuaMulticastDelegate.md",
+    "status": "ok",
+    "sha256": "5f4729e938418ffbb19bed0439cdc49e2673332870a4afbcd6d272a1c5fa6d06"
+  },
+  {
+    "id": "api:class:ULuaSetHelper",
+    "name": "ULuaSetHelper",
+    "title": "ULuaSetHelper",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/ULuaSetHelper.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/ULuaSetHelper.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/ULuaSetHelper.md",
+    "status": "ok",
+    "sha256": "64a68a077458142102788c9efd4318ae95af3e1254d7a080a938b7a5b4e81d05"
+  },
+  {
+    "id": "api:class:ULuaSingleDelegate",
+    "name": "ULuaSingleDelegate",
+    "title": "ULuaSingleDelegate",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/ULuaSingleDelegate.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/ULuaSingleDelegate.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/ULuaSingleDelegate.md",
+    "status": "ok",
+    "sha256": "ca0c6e2b02e7b77570fa917bb4287aaecc1802a05a340ea5317d3ad168430f21"
+  },
+  {
     "id": "api:class:UManagementRuleSetting",
     "name": "UManagementRuleSetting",
     "title": "UManagementRuleSetting",
@@ -10512,7 +10677,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UManagementRuleSetting.md",
     "status": "ok",
-    "sha256": "4885de85c0d3a0dda3639dbe269abfeb0808022114ba1428ec051bd54734485e"
+    "sha256": "ed599d933c3fed2f6f7e804a1521f62807858025af64faee94ba143e623ebfa2"
   },
   {
     "id": "api:class:UMapBuildDataRegistry",
@@ -10557,7 +10722,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UMaterial.md",
     "status": "ok",
-    "sha256": "5c86326a15678a64638c80f0a8779587b0b90af9cb8285688227199e2a0d1166"
+    "sha256": "d64755f7a289d35e47e5c6702ddc7eba2de8e2ca8faf6daa4a2004a3a8291676"
   },
   {
     "id": "api:class:UMaterialBillboardComponent",
@@ -12672,7 +12837,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UMaterialExpressionTextureCoordinate.md",
     "status": "ok",
-    "sha256": "ced7faa98f36466b2e20f879affb73a1e3e3e2d907e457fe3124c92a38754c24"
+    "sha256": "333f418e61846de99a676dba9299bacdf9db6876d1e615e19f121480dd6d2422"
   },
   {
     "id": "api:class:UMaterialExpressionTextureProperty",
@@ -12705,6 +12870,21 @@
     "sha256": "ce97e4b0454f1ccd29fc163a3f1ffe919f77893d8cc7b0dcc436a3392b45cd85"
   },
   {
+    "id": "api:class:UMaterialExpressionTextureSampleCondition",
+    "name": "UMaterialExpressionTextureSampleCondition",
+    "title": "UMaterialExpressionTextureSampleCondition",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/UMaterialExpressionTextureSampleCondition.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionTextureSampleCondition.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/UMaterialExpressionTextureSampleCondition.md",
+    "status": "ok",
+    "sha256": "e0d2d7980acc67e2f30177fb730172cd6c5eccb536c91f22803296df006fc885"
+  },
+  {
     "id": "api:class:UMaterialExpressionTextureSampleParameter",
     "name": "UMaterialExpressionTextureSampleParameter",
     "title": "UMaterialExpressionTextureSampleParameter",
@@ -12718,6 +12898,21 @@
     "file": "documents/class/Others/UMaterialExpressionTextureSampleParameter.md",
     "status": "ok",
     "sha256": "36e687a8cf573ff6ea6b3dedb7b09298a51e5420f8a36cf07d58c4b236684d57"
+  },
+  {
+    "id": "api:class:UMaterialExpressionTextureSampleParameterCondition",
+    "name": "UMaterialExpressionTextureSampleParameterCondition",
+    "title": "UMaterialExpressionTextureSampleParameterCondition",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/UMaterialExpressionTextureSampleParameterCondition.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionTextureSampleParameterCondition.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/UMaterialExpressionTextureSampleParameterCondition.md",
+    "status": "ok",
+    "sha256": "6a6274a0d6d746884f9d70d2538d8c66dd931208f73af8915362255a2d0f8aa9"
   },
   {
     "id": "api:class:UMaterialExpressionTextureSampleParameterSubUV",
@@ -13077,7 +13272,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UMeshComponent.md",
     "status": "ok",
-    "sha256": "1732bbf1113d46a077191962bc045675f36f6337a92d3061fdf4f8f938311f04"
+    "sha256": "c4d9895a1beb2e00a72e4b5d51c417bc5ad6aee6f89226fb1dd68487ac00c2a5"
   },
   {
     "id": "api:class:UMeshSimplificationSettings",
@@ -13212,7 +13407,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UMovieScene.md",
     "status": "ok",
-    "sha256": "582637d7d3359c46458c264b47db1b1f983f3c0e96f502a4d570582707f18cc2"
+    "sha256": "6e2deac4f79f2385935ffe8a4cff1ecd059933f19170dceb1254ceaa18c19520"
   },
   {
     "id": "api:class:UMovieScene2DTransformSection",
@@ -15987,7 +16182,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UParticleModuleRequired.md",
     "status": "ok",
-    "sha256": "83d3f252c912daaec41495cbe0f9d615c6617989ddacdd4d26fca1efc9dbd923"
+    "sha256": "2de86114a6e90641aca330359181ac70743a95d6aa8502a2b738d330ec24de02"
   },
   {
     "id": "api:class:UParticleModuleRotation",
@@ -16542,7 +16737,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UParticleSystem.md",
     "status": "ok",
-    "sha256": "8fbbac6ea402a75ac6254d3f7dfdb40223156d82538c72dfd38d806ffbd50c08"
+    "sha256": "b2b0d468a566bf31eddb680ba65db0a133775a8356727b9ea5f21fa1363992b8"
   },
   {
     "id": "api:class:UParticleSystemComponent",
@@ -16827,7 +17022,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UPersistEffectBuff.md",
     "status": "ok",
-    "sha256": "404013263395fba53e75ac60db58ddc4e03c642ae94e11ea5b0f57c4d474b268"
+    "sha256": "58d0d1dfc62433c2e4183860bd93ba8f2927e0061ef6e7ca3a137cd194ba5e75"
   },
   {
     "id": "api:class:UPersistEffectSkill",
@@ -16842,7 +17037,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UPersistEffectSkill.md",
     "status": "ok",
-    "sha256": "65c7c7468b88b8d4ff5ce0a09904188c7e7fd04c855be6635570d51c925d3f65"
+    "sha256": "20ca843d702c98c6a989fbe82a444682922d58453d524d26f8361108f5adf254"
   },
   {
     "id": "api:class:UPersistEffectWithState",
@@ -16857,7 +17052,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UPersistEffectWithState.md",
     "status": "ok",
-    "sha256": "9938d29cf80fbaf6a56ad7dfd85b66736ccdec119678f10a5d8fbd6c5ee5fc88"
+    "sha256": "29bfc637bb6c0d7bf8f8384ee237ffb65f867e33372ebc8e47256d398c808fe1"
   },
   {
     "id": "api:class:UPhysicalAnimationComponent",
@@ -17307,7 +17502,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UPrimitiveComponent.md",
     "status": "ok",
-    "sha256": "7436c890f16c7d324c6062d21fb3c8ca6a3d80d2375ee0cde2de387359d0fdc6"
+    "sha256": "7cd63d07ea77ff0ad4a671e897dc072c3f960a85808305b21de32f5d1befde05"
   },
   {
     "id": "api:class:UProceduralFoliageComponent",
@@ -17983,7 +18178,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/USkeletalMesh.md",
     "status": "ok",
-    "sha256": "c401fa97f5745d16cd3a88d2ea4bce19c57f8779df498a706207b40e9aeebd76"
+    "sha256": "471dd29fd17db9f331cd49055ec36fa35d9a01c3cc08d8377efa66fc5b24e5ed"
   },
   {
     "id": "api:class:USkeletalMeshComponent",
@@ -17998,7 +18193,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/USkeletalMeshComponent.md",
     "status": "ok",
-    "sha256": "0929ca0cd2a5f59fe4f5f06d53b53bb00dd0fad3c53f545a59354b389c442caf"
+    "sha256": "04e993db39559edbe1cac836de284c1c66d16b645b1cf8bb6a37a5564b73cae9"
   },
   {
     "id": "api:class:USkeletalMeshReductionSettings",
@@ -18058,7 +18253,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/USkinnedMeshComponent.md",
     "status": "ok",
-    "sha256": "349d495ce3e3a08fc9cae0ea8a9722a3acbd206ecdcd3b5a80c58162e82c8121"
+    "sha256": "9f8d2f4a3b60061a6f8e6e5efc3f99d38a778059bcb6ad4f5ae6bd7b0c54b58b"
   },
   {
     "id": "api:class:USkyLightComponent",
@@ -18883,7 +19078,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UStaticMesh.md",
     "status": "ok",
-    "sha256": "e35992268b6c296852897725aacc6af3ee9af674e5d5cba0e46b5c489c25d7c0"
+    "sha256": "5e6d1202f050bde8f7a91a0e7208b321a724e890555881b656e3dc5a4ab64af9"
   },
   {
     "id": "api:class:UStaticMeshComponent",
@@ -19228,7 +19423,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UTexture.md",
     "status": "ok",
-    "sha256": "681c20a8cbf2f2e018281fa3567b079cbc2878c171ec392e56ef7be977b6fd1f"
+    "sha256": "2e65bc7349d63fcedbc686d03fd4374520481ed2cb2fe2df2a2c75145f4126ac"
   },
   {
     "id": "api:class:UTexture2D",
@@ -19709,7 +19904,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UUserWidget.md",
     "status": "ok",
-    "sha256": "da36795a866382b2fcfdcdd48f91f12be9432ee1c18c00071fbcc5c5e2d39523"
+    "sha256": "ba1a61f7541f73194311cd3bae15ac642f80a04e3687b17c5e1a81f113f7bb38"
   },
   {
     "id": "api:class:UUserWidget3D",
@@ -19754,7 +19949,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UUserWidgetStyle.md",
     "status": "ok",
-    "sha256": "ba15b0aa6d30340ed30cb15974b4fbfbbd7ef2b53c03420125c3940f751cc7f2"
+    "sha256": "fb4c1e1628eae638e8ad3ee10806099b687326d86ca3a45e8f87a1532d8f1ef2"
   },
   {
     "id": "api:class:UUserWidgetUI",
@@ -19769,7 +19964,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UUserWidgetUI.md",
     "status": "ok",
-    "sha256": "055269fe80b68d5246ec77dcf4521f3c84dfc3415a7bc29bd8f405bff7c892af"
+    "sha256": "3e48ae784230bbb8fc40b2ed1be86887d8788fcce3263a81ac754eb67d6a8765"
   },
   {
     "id": "api:class:UVectorField",
@@ -20504,7 +20699,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UWidget.md",
     "status": "ok",
-    "sha256": "d4dbb4d926785f932a9ca7ff7c9b708b773517e131af77a23b53cc5bd037a308"
+    "sha256": "d738ad327d29d8e4ef773bb2ea08b261ccac1ae036d9be629d769a4fd3fcda2d"
   },
   {
     "id": "api:class:UWidget3DInstancedComponent",
@@ -21299,7 +21494,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/CustomGameAttributeType.md",
     "status": "ok",
-    "sha256": "a579d4cf9c60c7c08e94568fe5f0a03f6fc22a6a499d057bf11e0bb562b401e0"
+    "sha256": "8e36a19a5e762ff2722ad592db5aa864b08e992ee7557bef8e7716e13ab8f124"
   },
   {
     "id": "api:cppenum:CylinderHeightAxis",
@@ -21482,6 +21677,19 @@
     "file": "documents/cppenum/EAICheckShootingPoseType.md",
     "status": "ok",
     "sha256": "71c77c1e4328206357b3c4bc7cc3ebbab8ae16ac690074735fb3c57ae7fa4cec"
+  },
+  {
+    "id": "api:cppenum:EAIDebugPanelType",
+    "name": "EAIDebugPanelType",
+    "title": "EAIDebugPanelType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EAIDebugPanelType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAIDebugPanelType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EAIDebugPanelType.md",
+    "status": "ok",
+    "sha256": "6573ab126db58dc59d4f9394176011df2f2a3c79945ade87e4a1ab0c658147a3"
   },
   {
     "id": "api:cppenum:EAIDirectionTestType",
@@ -21900,32 +22108,6 @@
     "sha256": "1aa63376cca8acd2d902b693b2308e69df33b776b48e6c738415b38966742081"
   },
   {
-    "id": "api:cppenum:EAIOBPlayerInfoSource",
-    "name": "EAIOBPlayerInfoSource",
-    "title": "EAIOBPlayerInfoSource",
-    "kind": "cppenum",
-    "categories": [],
-    "json_path": "cppenum/detail/EAIOBPlayerInfoSource.json",
-    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAIOBPlayerInfoSource.json",
-    "api_root": "https://developer.gp.qq.com/api/",
-    "file": "documents/cppenum/EAIOBPlayerInfoSource.md",
-    "status": "ok",
-    "sha256": "3211bea31fc04cb141846aa8db38e1f15fa36c1f1ea5e7d50a1b0aba4de26a56"
-  },
-  {
-    "id": "api:cppenum:EAIOBPlayerState",
-    "name": "EAIOBPlayerState",
-    "title": "EAIOBPlayerState",
-    "kind": "cppenum",
-    "categories": [],
-    "json_path": "cppenum/detail/EAIOBPlayerState.json",
-    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAIOBPlayerState.json",
-    "api_root": "https://developer.gp.qq.com/api/",
-    "file": "documents/cppenum/EAIOBPlayerState.md",
-    "status": "ok",
-    "sha256": "88c11a9f682db1e9bfcf677e95626c3a9b6e750b9090971232eb45968d185a5f"
-  },
-  {
     "id": "api:cppenum:EAIOptionFlag",
     "name": "EAIOptionFlag",
     "title": "EAIOptionFlag",
@@ -22069,6 +22251,19 @@
     "sha256": "f273f7205599542934f518fb928a201bf5ac1f8d7aecb64e738ffd1c70967c66"
   },
   {
+    "id": "api:cppenum:EAISkillInfoType",
+    "name": "EAISkillInfoType",
+    "title": "EAISkillInfoType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EAISkillInfoType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAISkillInfoType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EAISkillInfoType.md",
+    "status": "ok",
+    "sha256": "04d8b1abe4b515ad5eb338cc7a24b4585256d26519afc95e1fb02815fdca9947"
+  },
+  {
     "id": "api:cppenum:EAIStatAliveState",
     "name": "EAIStatAliveState",
     "title": "EAIStatAliveState",
@@ -22196,7 +22391,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EAIStateItemStateType.md",
     "status": "ok",
-    "sha256": "bb66e8b157f7e32aaf68d5f3a458ada87060302db6cc5689d37a630c50fa0c4e"
+    "sha256": "5c476fd0e7ea63b1add78d66d6b98528c37d432521275e30b02f01640037625a"
   },
   {
     "id": "api:cppenum:EAIStateOperation",
@@ -23288,7 +23483,20 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EAirDropBoxSimulateCloseType.md",
     "status": "ok",
-    "sha256": "65e48262d668aac4f4f21f66c4c0f5bbf6ec602a2389537fa4d86ca169fd6279"
+    "sha256": "2c69d5c82bed29e098d79b59cd425fc34da5f3c8b4d775a24566d35e78f12f57"
+  },
+  {
+    "id": "api:cppenum:EAirDropBoxSimulateOpenType",
+    "name": "EAirDropBoxSimulateOpenType",
+    "title": "EAirDropBoxSimulateOpenType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EAirDropBoxSimulateOpenType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAirDropBoxSimulateOpenType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EAirDropBoxSimulateOpenType.md",
+    "status": "ok",
+    "sha256": "45101604e3cf3ea514c29c54f80c9244a06a5bcb2e7787bfc7f7d71cb0d979a7"
   },
   {
     "id": "api:cppenum:EAirDropType",
@@ -23731,6 +23939,19 @@
     "file": "documents/cppenum/EAnimLinkMethod.md",
     "status": "ok",
     "sha256": "487abcc581305c613faf252e7afa36774b7cfc86472ed8e446a3b2717fa7f52d"
+  },
+  {
+    "id": "api:cppenum:EAnimListAutoFill_ListType",
+    "name": "EAnimListAutoFill_ListType",
+    "title": "EAnimListAutoFill_ListType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EAnimListAutoFill_ListType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAnimListAutoFill_ListType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EAnimListAutoFill_ListType.md",
+    "status": "ok",
+    "sha256": "f333339d0c1896f452fc1e5f9e7eb7567f8e148dcb9cd3d250d00d976b0b19f4"
   },
   {
     "id": "api:cppenum:EAnimNotifyEventType",
@@ -24266,6 +24487,32 @@
     "sha256": "d04faafb866f7193fb231bbd49827360fa1d1afa9c3e48eafee2db714ce4511e"
   },
   {
+    "id": "api:cppenum:EAskQDependencyType",
+    "name": "EAskQDependencyType",
+    "title": "EAskQDependencyType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EAskQDependencyType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAskQDependencyType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EAskQDependencyType.md",
+    "status": "ok",
+    "sha256": "4c9ccc36e84ac9c5628a606ace6ad2ee61b30534cc576e2f6f94bb7e785e94a5"
+  },
+  {
+    "id": "api:cppenum:EAskQFunctionAccess",
+    "name": "EAskQFunctionAccess",
+    "title": "EAskQFunctionAccess",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EAskQFunctionAccess.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAskQFunctionAccess.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EAskQFunctionAccess.md",
+    "status": "ok",
+    "sha256": "d486de8596e0d6947bce9346fa37e44c38f74cdc5f796721511c1fbbbdd9e4f8"
+  },
+  {
     "id": "api:cppenum:EAskQMaterialParameterType",
     "name": "EAskQMaterialParameterType",
     "title": "EAskQMaterialParameterType",
@@ -24277,6 +24524,19 @@
     "file": "documents/cppenum/EAskQMaterialParameterType.md",
     "status": "ok",
     "sha256": "da4c233c0f22033be8aa70485054b068b9d1de6726c21f1559ecef5862dd5c61"
+  },
+  {
+    "id": "api:cppenum:EAskQPropertyFilter",
+    "name": "EAskQPropertyFilter",
+    "title": "EAskQPropertyFilter",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EAskQPropertyFilter.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAskQPropertyFilter.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EAskQPropertyFilter.md",
+    "status": "ok",
+    "sha256": "37e779df39ec08ddb3199107170987a01922687bfdc7753b54f0f029b7a02557"
   },
   {
     "id": "api:cppenum:EAskQPropertyVisibility",
@@ -24316,6 +24576,19 @@
     "file": "documents/cppenum/EAskQRecipeParamType.md",
     "status": "ok",
     "sha256": "72a8f8840d1a52efedd04cdc63ad81a769c81243bca1e7e200c43e17980e6e7f"
+  },
+  {
+    "id": "api:cppenum:EAskQTypeCategory",
+    "name": "EAskQTypeCategory",
+    "title": "EAskQTypeCategory",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EAskQTypeCategory.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAskQTypeCategory.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EAskQTypeCategory.md",
+    "status": "ok",
+    "sha256": "ea9801b8ced1971890c6ac9185a8817c470414552547a3b523ac5d724dba87d3"
   },
   {
     "id": "api:cppenum:EAspectRatioAxisConstraint",
@@ -24877,19 +25150,6 @@
     "sha256": "8fcb8fcd76670fc54912b24639f131f11dd6a08300e5a2894ff0af91276954b9"
   },
   {
-    "id": "api:cppenum:EAvailableForSale",
-    "name": "EAvailableForSale",
-    "title": "EAvailableForSale",
-    "kind": "cppenum",
-    "categories": [],
-    "json_path": "cppenum/detail/EAvailableForSale.json",
-    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAvailableForSale.json",
-    "api_root": "https://developer.gp.qq.com/api/",
-    "file": "documents/cppenum/EAvailableForSale.md",
-    "status": "ok",
-    "sha256": "94465346956f93e1bfed934515a7634ab1acaf0209283cabe3bf8ecbf757ef93"
-  },
-  {
     "id": "api:cppenum:EAvatarAnimAdapt_WingType",
     "name": "EAvatarAnimAdapt_WingType",
     "title": "EAvatarAnimAdapt_WingType",
@@ -24979,6 +25239,19 @@
     "file": "documents/cppenum/EAvatarDamagePosition.md",
     "status": "ok",
     "sha256": "ed4891638f996b59136266973a2c1c41a4816060fb4d8e1920901ec9b7196cde"
+  },
+  {
+    "id": "api:cppenum:EAvatarDebugMeshType",
+    "name": "EAvatarDebugMeshType",
+    "title": "EAvatarDebugMeshType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EAvatarDebugMeshType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAvatarDebugMeshType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EAvatarDebugMeshType.md",
+    "status": "ok",
+    "sha256": "3c80e2bf7d67e735d0926b67ff9871d6d0471f79e79b06ced9e6906d1b7ebffe"
   },
   {
     "id": "api:cppenum:EAvatarDetailMode",
@@ -25200,6 +25473,19 @@
     "file": "documents/cppenum/EAvatarNewFPPMatSetType.md",
     "status": "ok",
     "sha256": "db3181b657bf4a09e5667deea468b9cc086626f18a26bd5103c3f30507755522"
+  },
+  {
+    "id": "api:cppenum:EAvatarParamNumLimitCondi",
+    "name": "EAvatarParamNumLimitCondi",
+    "title": "EAvatarParamNumLimitCondi",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EAvatarParamNumLimitCondi.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAvatarParamNumLimitCondi.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EAvatarParamNumLimitCondi.md",
+    "status": "ok",
+    "sha256": "2ac533f260fa0570a09cd1841a5d7f81983cbd4f4902e45e2cd8d20ddb3543b5"
   },
   {
     "id": "api:cppenum:EAvatarResIdType",
@@ -25914,7 +26200,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EBattleItemClientPickupType.md",
     "status": "ok",
-    "sha256": "a804a80bf27d57654223856f6ca378b3fe9686429e48316e26cbc4bfa8d4929c"
+    "sha256": "249d0e64c7b8b375d453e3ed4143986c9fb0c8d4f0753dcce9f6b876c91104f5"
   },
   {
     "id": "api:cppenum:EBattleItemDisuseReason",
@@ -25940,7 +26226,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EBattleItemDropReason.md",
     "status": "ok",
-    "sha256": "05f70e359c3b3367558290719906a5327e40f571a2464a85a87e08136b0c38b7"
+    "sha256": "1887f1736c7f32de26be13bfd69f84954c48d8248307ff859e555a2c05b15281"
   },
   {
     "id": "api:cppenum:EBattleItemIconType",
@@ -25992,7 +26278,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EBattleItemPickupReason.md",
     "status": "ok",
-    "sha256": "b8b26e0512cf09ef975dc276587f21742661e70ba01fc5ca4fc22e0388f6672c"
+    "sha256": "0e945fbf411d245083e11eca469c1c6ff894927573fb91e50dc2208ec687ae87"
   },
   {
     "id": "api:cppenum:EBattleItemRepType",
@@ -26330,7 +26616,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EBlockButtonType.md",
     "status": "ok",
-    "sha256": "df834661d584a66fd01191b12136a84ed86e759c6cc0838251ac7e5be7cf7bc7"
+    "sha256": "bf01fed99b58e0e1acdb9adeae28e0acded55edd99bde6ec29578f65b37a5073"
   },
   {
     "id": "api:cppenum:EBlockNestType",
@@ -27035,6 +27321,19 @@
     "sha256": "a9afe63d8ed980d11cadf6e50b8f0bc1eca9cc2b5950fa25aaad7a34862cbece"
   },
   {
+    "id": "api:cppenum:EBotBTStateTargetType",
+    "name": "EBotBTStateTargetType",
+    "title": "EBotBTStateTargetType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBotBTStateTargetType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBotBTStateTargetType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBotBTStateTargetType.md",
+    "status": "ok",
+    "sha256": "2470d5e80b5cfc7f19deae47a072928760b086722d270797d07bcf47ce4dbf01"
+  },
+  {
     "id": "api:cppenum:EBotCategray",
     "name": "EBotCategray",
     "title": "EBotCategray",
@@ -27074,6 +27373,19 @@
     "sha256": "f10e537a9f149808a44f441735e845e63a284aebdf048b10bca7af8ca9fa8071"
   },
   {
+    "id": "api:cppenum:EBotConcreteType",
+    "name": "EBotConcreteType",
+    "title": "EBotConcreteType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBotConcreteType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBotConcreteType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBotConcreteType.md",
+    "status": "ok",
+    "sha256": "de6c518891db178114d8ed472cc44f69f8c3f74fe7f73827a64b2d9cb0d4023f"
+  },
+  {
     "id": "api:cppenum:EBotConnectionState",
     "name": "EBotConnectionState",
     "title": "EBotConnectionState",
@@ -27085,6 +27397,71 @@
     "file": "documents/cppenum/EBotConnectionState.md",
     "status": "ok",
     "sha256": "68e49270371e3a0c68010a86c461f0c344066397e2be34196fea3b0e7a50adf9"
+  },
+  {
+    "id": "api:cppenum:EBotConnectionType",
+    "name": "EBotConnectionType",
+    "title": "EBotConnectionType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBotConnectionType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBotConnectionType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBotConnectionType.md",
+    "status": "ok",
+    "sha256": "799767cebf8b5c02863c1f1c36207c806fa07fa1ba8adaf8cad60f74c8016959"
+  },
+  {
+    "id": "api:cppenum:EBotProxyAutoCondition",
+    "name": "EBotProxyAutoCondition",
+    "title": "EBotProxyAutoCondition",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBotProxyAutoCondition.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBotProxyAutoCondition.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBotProxyAutoCondition.md",
+    "status": "ok",
+    "sha256": "1beb23744ab434cdec292bfd28ab1a9cde3d152442c981c67b6fd97989932025"
+  },
+  {
+    "id": "api:cppenum:EBotProxyProtocolVersion",
+    "name": "EBotProxyProtocolVersion",
+    "title": "EBotProxyProtocolVersion",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBotProxyProtocolVersion.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBotProxyProtocolVersion.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBotProxyProtocolVersion.md",
+    "status": "ok",
+    "sha256": "61f81de94a7aa167493cf9c3562de7210bdacaae6e4974521dc063ae4f92573f"
+  },
+  {
+    "id": "api:cppenum:EBotProxyStatus",
+    "name": "EBotProxyStatus",
+    "title": "EBotProxyStatus",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBotProxyStatus.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBotProxyStatus.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBotProxyStatus.md",
+    "status": "ok",
+    "sha256": "d894c85a043438b098a72b8eeeb278ba9ba82e399b08d640ab510fb99a245fe6"
+  },
+  {
+    "id": "api:cppenum:EBotStateEntityCategory",
+    "name": "EBotStateEntityCategory",
+    "title": "EBotStateEntityCategory",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBotStateEntityCategory.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBotStateEntityCategory.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBotStateEntityCategory.md",
+    "status": "ok",
+    "sha256": "1f87b55ea3d244602ebe9d32ac73304fb5ea4ec26684a2aa9057270ac5a3745e"
   },
   {
     "id": "api:cppenum:EBountyBuyingResultType",
@@ -27256,6 +27633,19 @@
     "sha256": "9a519d36ef0104951e3a1d93fcb53aa2713769e152fd106c8faeabe68f947869"
   },
   {
+    "id": "api:cppenum:EBulletHitActionAddBuffClassTeamType",
+    "name": "EBulletHitActionAddBuffClassTeamType",
+    "title": "EBulletHitActionAddBuffClassTeamType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBulletHitActionAddBuffClassTeamType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBulletHitActionAddBuffClassTeamType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBulletHitActionAddBuffClassTeamType.md",
+    "status": "ok",
+    "sha256": "53e1acf53580041b67978348a0d6fdb5fbd1fc749d5c9d6cfbcae6a429a61526"
+  },
+  {
     "id": "api:cppenum:EBulletHitActionAddBuffTeamType",
     "name": "EBulletHitActionAddBuffTeamType",
     "title": "EBulletHitActionAddBuffTeamType",
@@ -27386,6 +27776,19 @@
     "sha256": "e077e6bba47ef1a6fa6e30fae5494347068d6f5b2e8cd06da8b72380ce6c0762"
   },
   {
+    "id": "api:cppenum:EButtonHandleState",
+    "name": "EButtonHandleState",
+    "title": "EButtonHandleState",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EButtonHandleState.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EButtonHandleState.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EButtonHandleState.md",
+    "status": "ok",
+    "sha256": "e8d6153d9fbe0d94b83116d9b1b4e066369ee7ee1e756324075f322f83ec0f53"
+  },
+  {
     "id": "api:cppenum:EButtonInputActionEvent",
     "name": "EButtonInputActionEvent",
     "title": "EButtonInputActionEvent",
@@ -27449,6 +27852,19 @@
     "file": "documents/cppenum/EButtonTouchMethod.md",
     "status": "ok",
     "sha256": "bac7c81acd9e4f6fd58d89421fe8156be4667332887cfb83edce0c956b0b9a9a"
+  },
+  {
+    "id": "api:cppenum:EBypassContainerCheck",
+    "name": "EBypassContainerCheck",
+    "title": "EBypassContainerCheck",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBypassContainerCheck.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBypassContainerCheck.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBypassContainerCheck.md",
+    "status": "ok",
+    "sha256": "27ef6176d781832d21f6ea07ef9b854a444cd6368c41544358d4fa02ea1913f6"
   },
   {
     "id": "api:cppenum:ECAM_ActorState",
@@ -27542,6 +27958,19 @@
     "sha256": "b99bfd8037d7ed34072550ce29753eff17b92c3579b9bc71247fdaa20b710d31"
   },
   {
+    "id": "api:cppenum:ECJDupVerifyMethod",
+    "name": "ECJDupVerifyMethod",
+    "title": "ECJDupVerifyMethod",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECJDupVerifyMethod.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECJDupVerifyMethod.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECJDupVerifyMethod.md",
+    "status": "ok",
+    "sha256": "2034090c01c9bc0c3b6ae090ab0c9105cca968392dcfccc81c501eda263b3e7a"
+  },
+  {
     "id": "api:cppenum:ECJFootPlacementApproachDirType",
     "name": "ECJFootPlacementApproachDirType",
     "title": "ECJFootPlacementApproachDirType",
@@ -27579,6 +28008,19 @@
     "file": "documents/cppenum/ECJLevelLightmapTypeMatch.md",
     "status": "ok",
     "sha256": "321ae9007997e0dfd451ddcdc87dad98c51c94a2d4133dd328ec5f6ffb675e6b"
+  },
+  {
+    "id": "api:cppenum:ECJMISwitchRelatedParamType",
+    "name": "ECJMISwitchRelatedParamType",
+    "title": "ECJMISwitchRelatedParamType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECJMISwitchRelatedParamType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECJMISwitchRelatedParamType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECJMISwitchRelatedParamType.md",
+    "status": "ok",
+    "sha256": "d87f0ac670f5436184db2197996fb799b70104cb74e4d7589475a2f2f9988a4c"
   },
   {
     "id": "api:cppenum:ECJPelvisHeightMode",
@@ -27656,7 +28098,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ECOSResourceType.md",
     "status": "ok",
-    "sha256": "5a773e73d1e5fd0afc7f016fbfb01aab6ac8a1c94ba3294686ce243a52d7dfd9"
+    "sha256": "1f9876b2ed16c7b94ce3eb98ba708b28d57961de3bb21a7ac6c7da207ad02b62"
   },
   {
     "id": "api:cppenum:ECOSResourceUpdateType",
@@ -27695,7 +28137,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ECVarType.md",
     "status": "ok",
-    "sha256": "a47e524841543ecf554af98aea498983457e5dffeb093faecbab094290cc4fe1"
+    "sha256": "75351cabb372c263f17063cccaab080c43436827503375d229de376d4aa97094"
   },
   {
     "id": "api:cppenum:ECableCarRunningState",
@@ -28462,7 +28904,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ECharacterNewFPPAnimType.md",
     "status": "ok",
-    "sha256": "d551c5a000f5230777b41487fdda815e4006590bf18c454113eb606fe244d913"
+    "sha256": "ac7e763153a106dea81730529da0b63eebe25b8305deb540a51c940c0089618a"
   },
   {
     "id": "api:cppenum:ECharacterParachuteAnimType",
@@ -28517,6 +28959,45 @@
     "sha256": "06df6b4285026d5f981d2383a2028e2c7fb9b3ce2146a9a3127bc4c037a6356e"
   },
   {
+    "id": "api:cppenum:ECharacterPresetCollisionType",
+    "name": "ECharacterPresetCollisionType",
+    "title": "ECharacterPresetCollisionType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECharacterPresetCollisionType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECharacterPresetCollisionType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECharacterPresetCollisionType.md",
+    "status": "ok",
+    "sha256": "326b3fe83cfeb075efb33d510f89b900caf884665f4cb5ed0cb29a55a184868d"
+  },
+  {
+    "id": "api:cppenum:ECharacterPresetMeshAndAnimType",
+    "name": "ECharacterPresetMeshAndAnimType",
+    "title": "ECharacterPresetMeshAndAnimType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECharacterPresetMeshAndAnimType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECharacterPresetMeshAndAnimType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECharacterPresetMeshAndAnimType.md",
+    "status": "ok",
+    "sha256": "fda91be2d323f41989f0a26c61ccf4ea80738c69148056bc1cf5b46fee1abdca"
+  },
+  {
+    "id": "api:cppenum:ECharacterPresetSocketMeshType",
+    "name": "ECharacterPresetSocketMeshType",
+    "title": "ECharacterPresetSocketMeshType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECharacterPresetSocketMeshType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECharacterPresetSocketMeshType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECharacterPresetSocketMeshType.md",
+    "status": "ok",
+    "sha256": "a8cb7bd9b2809761afe0658c84e53b41bbac980120cf7f1121ea8affb93c69fc"
+  },
+  {
     "id": "api:cppenum:ECharacterShieldAnimType",
     "name": "ECharacterShieldAnimType",
     "title": "ECharacterShieldAnimType",
@@ -28566,7 +29047,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ECharacterVehicleAnimType.md",
     "status": "ok",
-    "sha256": "d46c46e8a9074696944dbf7e0fa0177aa5822dd9849c70ba032a5e8b3604ae48"
+    "sha256": "ea08de1140173830e5f7029b8b7f1bec8aa426d5a866b8e482bee52d5b0057e3"
   },
   {
     "id": "api:cppenum:ECharacterVehicleHorseAnimType",
@@ -28879,6 +29360,19 @@
     "file": "documents/cppenum/EClassViewerDeveloperType.md",
     "status": "ok",
     "sha256": "5c6a7a37856be821b43718bc1a1c7e27970983c4bdb74e57420b992209836763"
+  },
+  {
+    "id": "api:cppenum:ECleanupGranularity",
+    "name": "ECleanupGranularity",
+    "title": "ECleanupGranularity",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECleanupGranularity.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECleanupGranularity.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECleanupGranularity.md",
+    "status": "ok",
+    "sha256": "29ed18399b408c097aea3e8b38bfeff0bc81a3985d424e03002a266e7c86757c"
   },
   {
     "id": "api:cppenum:EClearDroppedActorCategory",
@@ -29269,6 +29763,19 @@
     "file": "documents/cppenum/ECollisionMode.md",
     "status": "ok",
     "sha256": "15f1c0447e8f3660f77fa44ff80451d0376826f32145899e5ac279a97bfe09dc"
+  },
+  {
+    "id": "api:cppenum:ECollisionOverrideMode",
+    "name": "ECollisionOverrideMode",
+    "title": "ECollisionOverrideMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECollisionOverrideMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECollisionOverrideMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECollisionOverrideMode.md",
+    "status": "ok",
+    "sha256": "038a1d3a9881f4f80baa2ac93fee70e04d2d6f85f3f4cea9e88e579282df4a75"
   },
   {
     "id": "api:cppenum:ECollisionResponse",
@@ -30532,19 +31039,6 @@
     "sha256": "be9848f054780928f3e0e65bf53985d5cfe99c6703bf3ba6aeb4f80be29078db"
   },
   {
-    "id": "api:cppenum:ECurrencyType",
-    "name": "ECurrencyType",
-    "title": "ECurrencyType",
-    "kind": "cppenum",
-    "categories": [],
-    "json_path": "cppenum/detail/ECurrencyType.json",
-    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECurrencyType.json",
-    "api_root": "https://developer.gp.qq.com/api/",
-    "file": "documents/cppenum/ECurrencyType.md",
-    "status": "ok",
-    "sha256": "f7cdc7774a02d50780e2b5a43a0bd1f7167b49552beba4e0b18f80be0aca9927"
-  },
-  {
     "id": "api:cppenum:ECurveBlendOption",
     "name": "ECurveBlendOption",
     "title": "ECurveBlendOption",
@@ -30608,6 +31102,32 @@
     "file": "documents/cppenum/ECurvePlayerEndType.md",
     "status": "ok",
     "sha256": "0e4b7f7f59fcecc77e07b990dc31f03e6c291350a7f67990e8c645c91161d347"
+  },
+  {
+    "id": "api:cppenum:ECurveRootMotionGravityMode",
+    "name": "ECurveRootMotionGravityMode",
+    "title": "ECurveRootMotionGravityMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECurveRootMotionGravityMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECurveRootMotionGravityMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECurveRootMotionGravityMode.md",
+    "status": "ok",
+    "sha256": "7f588386bcf5164c9efb9bf87d58647cdbe847bf0ace5c1053409a51e58500fe"
+  },
+  {
+    "id": "api:cppenum:ECurveRootMotionNoFloorBehavior",
+    "name": "ECurveRootMotionNoFloorBehavior",
+    "title": "ECurveRootMotionNoFloorBehavior",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECurveRootMotionNoFloorBehavior.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECurveRootMotionNoFloorBehavior.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECurveRootMotionNoFloorBehavior.md",
+    "status": "ok",
+    "sha256": "e1bbe69d1e1d42bb69e7993de8599353b0bd9dca34bf2d5b62b31b3978ce01ee"
   },
   {
     "id": "api:cppenum:ECurveSportLoopType",
@@ -31023,7 +31543,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ECustomWalkingDirType.md",
     "status": "ok",
-    "sha256": "74de064f4aecf266e90edbffe955528b8910959bfcde5f56bb1dae08480ff677"
+    "sha256": "54c9b9cb09bc6b4490e7953f0e82012cc28d22d7c91642d2a75c6eb53de1bfb8"
   },
   {
     "id": "api:cppenum:ECustomizedToolMenuVisibility",
@@ -31088,7 +31608,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EDPSourceType.md",
     "status": "ok",
-    "sha256": "54ed9ceb969cacafd57fa8fc30452804bffc6b5d3ed590ee93acd616195e4dbe"
+    "sha256": "65c6ce61d07d5d4a72ba03bb9a9954bd57ccfe10b48c770717df9acff82fa995"
   },
   {
     "id": "api:cppenum:EDVPCActivateType",
@@ -31192,7 +31712,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EDamageType.md",
     "status": "ok",
-    "sha256": "4332436ac2c95954aadaf1471abde4c8e74a9e732c4c62c0e52c79c46f745594"
+    "sha256": "72ca0621632fa22da34e7a0f89a19100afd8c5d60d0563409000419b5376f5a4"
   },
   {
     "id": "api:cppenum:EDamageableGameObjectType",
@@ -31712,7 +32232,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EDepositMLAIType.md",
     "status": "ok",
-    "sha256": "5e78fcb166ed172381eed01e41e3802c4fdc859b2253eb7d9fd0263e3e005aad"
+    "sha256": "100ce3319470be2650b11a5aab81a645f19db2e1e9d51b950367ef3d633b716a"
   },
   {
     "id": "api:cppenum:EDepthOfFieldFunctionValue",
@@ -31897,6 +32417,19 @@
     "sha256": "f930670fbb47e9faa644306075cef4de9436fd490cf949327b028f522046463d"
   },
   {
+    "id": "api:cppenum:EDirectoryAssetTypeFilter",
+    "name": "EDirectoryAssetTypeFilter",
+    "title": "EDirectoryAssetTypeFilter",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDirectoryAssetTypeFilter.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDirectoryAssetTypeFilter.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDirectoryAssetTypeFilter.md",
+    "status": "ok",
+    "sha256": "159841af002d703ba8c69cfeac6c55760f7135228c1502cac8e4a71df5ba98a1"
+  },
+  {
     "id": "api:cppenum:EDisplayQuality",
     "name": "EDisplayQuality",
     "title": "EDisplayQuality",
@@ -31986,6 +32519,32 @@
     "file": "documents/cppenum/EDoBrakeReasonType.md",
     "status": "ok",
     "sha256": "21434235079f42d13dd73889b18bd27db0a6f292178f31b387a25b1b3eda5093"
+  },
+  {
+    "id": "api:cppenum:EDogSledAirMovePhase",
+    "name": "EDogSledAirMovePhase",
+    "title": "EDogSledAirMovePhase",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDogSledAirMovePhase.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDogSledAirMovePhase.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDogSledAirMovePhase.md",
+    "status": "ok",
+    "sha256": "e261565604fa27ffedc1881154828f729b6dd644385682d999ed052ff4f70f9a"
+  },
+  {
+    "id": "api:cppenum:EDogSledMovementMode",
+    "name": "EDogSledMovementMode",
+    "title": "EDogSledMovementMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDogSledMovementMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDogSledMovementMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDogSledMovementMode.md",
+    "status": "ok",
+    "sha256": "e9a6a7b99a12ff19c9ef13b1b210151a8864c03a942651ce744bcd751f897034"
   },
   {
     "id": "api:cppenum:EDolphinDancerPoseState",
@@ -32233,6 +32792,19 @@
     "file": "documents/cppenum/EDroneState.md",
     "status": "ok",
     "sha256": "85342ffac66d32e6175ebdb2ff49bb78fb173b61d3cad7ca7957d8cecfc74842"
+  },
+  {
+    "id": "api:cppenum:EDropExtraItemGeneratorType",
+    "name": "EDropExtraItemGeneratorType",
+    "title": "EDropExtraItemGeneratorType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDropExtraItemGeneratorType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDropExtraItemGeneratorType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDropExtraItemGeneratorType.md",
+    "status": "ok",
+    "sha256": "5e6cbfe5a524d6c6e935f94955aa578efcb85c3fadbf7e1735074c0200585be7"
   },
   {
     "id": "api:cppenum:EDropGroupType",
@@ -33155,7 +33727,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EEmoteType.md",
     "status": "ok",
-    "sha256": "e9151395a53103efd418dfe1a400bce14b855567d5a01de463a7e8384e99f36b"
+    "sha256": "1065571eb2a447051ed9675b5a645a37df4ad4940f7994d86f0aeb0f45b37dbd"
   },
   {
     "id": "api:cppenum:EEndPlayReason",
@@ -33506,7 +34078,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EEscapeActorType.md",
     "status": "ok",
-    "sha256": "ffca388ee46cc3581853d0ff7315df2195039f572ebda967b2954f6d2eb735e2"
+    "sha256": "1a4f6f7e71394149f158ee1e614a6007ad085811f1e8940188dd28adc0a9d024"
   },
   {
     "id": "api:cppenum:EEscapeAttachmentSlotType",
@@ -33520,6 +34092,19 @@
     "file": "documents/cppenum/EEscapeAttachmentSlotType.md",
     "status": "ok",
     "sha256": "53047d9881ae223cad8b41878e2ff66a0d155876a2b1e9e6a255250232d077f2"
+  },
+  {
+    "id": "api:cppenum:EEscapeBPTableType",
+    "name": "EEscapeBPTableType",
+    "title": "EEscapeBPTableType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EEscapeBPTableType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EEscapeBPTableType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EEscapeBPTableType.md",
+    "status": "ok",
+    "sha256": "d1d936060ff4bec91ebd3d5effe8080f2df084298511b0751af116a9641e8bca"
   },
   {
     "id": "api:cppenum:EEscapeEquipReservedReason",
@@ -33571,7 +34156,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EEscapeGalleryExhibitType.md",
     "status": "ok",
-    "sha256": "c0f3495cb6ff09e6989a053053cb7eef5d6921de320bd2ac2c577e405107e448"
+    "sha256": "a59a7137726872b33e356621f025c4d0dd8a89a9c00c6350eaba6708fd11b6ea"
   },
   {
     "id": "api:cppenum:EEscapeGameDifficultyType",
@@ -33584,7 +34169,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EEscapeGameDifficultyType.md",
     "status": "ok",
-    "sha256": "d45d0906ecfcfd8506ac057893d802248ecde3bc0165b67afef1d35028a151b3"
+    "sha256": "6984b07c00016fbf412f1eba0ba465aa234eb82b4d2a737ada7276414cd9374e"
   },
   {
     "id": "api:cppenum:EEscapeGameType",
@@ -33597,7 +34182,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EEscapeGameType.md",
     "status": "ok",
-    "sha256": "25980feb78c76b75dcbf7892eb46523ef1ef1a615181f68da16661ae86e7dae8"
+    "sha256": "eeae0b08613244abd05aea8f9a0a84075a8dec3fb8f0ba1d73acc1b8219eab9f"
   },
   {
     "id": "api:cppenum:EEscapeGoldRaceBattleType",
@@ -33886,6 +34471,19 @@
     "sha256": "9cdebdce6f1f95bdbdd357e1c2ced8e40b2945a0c5db40848d8f60397112e2c2"
   },
   {
+    "id": "api:cppenum:EExecutionMode",
+    "name": "EExecutionMode",
+    "title": "EExecutionMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EExecutionMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EExecutionMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EExecutionMode.md",
+    "status": "ok",
+    "sha256": "00fc71bc4493f93538024e6e7b9cd46faae6b3148efd0f4b6634501578ad4845"
+  },
+  {
     "id": "api:cppenum:EExitBehaviorReason",
     "name": "EExitBehaviorReason",
     "title": "EExitBehaviorReason",
@@ -33896,7 +34494,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EExitBehaviorReason.md",
     "status": "ok",
-    "sha256": "4730bdb5d745df3e24e07ba471628108a481a2feec0ea896b6f89034505d5b2a"
+    "sha256": "412d53b94b01684427fc8475e9156eae81b84f9ab57fdbaf2ae3364519df9377"
   },
   {
     "id": "api:cppenum:EExitFollowReason",
@@ -33987,7 +34585,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EExtraAnimDataType_MoveAimExtend.md",
     "status": "ok",
-    "sha256": "bafe4969269db48cec90cee58524088474114915e131693a71474c1b1a83a7a0"
+    "sha256": "a1795844eee33fe4ddb01d3ba57193349b40e3e5bc50ef2c60cae6f144bebb25"
   },
   {
     "id": "api:cppenum:EExtraHatredConditionType",
@@ -34027,6 +34625,19 @@
     "file": "documents/cppenum/EExtraWeaponUIType.md",
     "status": "ok",
     "sha256": "13c1d97c49733c0d98eee11b3409187fc3e3ec139e848410a54c73f296950b88"
+  },
+  {
+    "id": "api:cppenum:EEyeSweepState",
+    "name": "EEyeSweepState",
+    "title": "EEyeSweepState",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EEyeSweepState.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EEyeSweepState.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EEyeSweepState.md",
+    "status": "ok",
+    "sha256": "ff187543dcd0cd369d40c72e7e1c03434c4a67b5601a0698d3109b1e2195f966"
   },
   {
     "id": "api:cppenum:EFBXAnimationLengthImportType",
@@ -34159,6 +34770,19 @@
     "sha256": "f154411b2590864a700aee0c1783cc49bba05e84987c58f2f2f237021e704b67"
   },
   {
+    "id": "api:cppenum:EFDStyle",
+    "name": "EFDStyle",
+    "title": "EFDStyle",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EFDStyle.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EFDStyle.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EFDStyle.md",
+    "status": "ok",
+    "sha256": "f061b7585d8af97a86b72d4fb682670fc4c3e33c12f1faba86218d22702b8a9d"
+  },
+  {
     "id": "api:cppenum:EFPCacheState",
     "name": "EFPCacheState",
     "title": "EFPCacheState",
@@ -34287,6 +34911,19 @@
     "file": "documents/cppenum/EFadeCurveType.md",
     "status": "ok",
     "sha256": "8fec58cf6aa6aca85be059765a6e0e32d9671ec5d840cdb8a490f1033c96233b"
+  },
+  {
+    "id": "api:cppenum:EFakePlayerPoseState",
+    "name": "EFakePlayerPoseState",
+    "title": "EFakePlayerPoseState",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EFakePlayerPoseState.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EFakePlayerPoseState.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EFakePlayerPoseState.md",
+    "status": "ok",
+    "sha256": "1014aa699fa6904d02d731a8f536018571001ad96de18b508414fb9170767f40"
   },
   {
     "id": "api:cppenum:EFakePlayerType",
@@ -35040,7 +35677,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EFilterSkillEditorPawnType.md",
     "status": "ok",
-    "sha256": "725d5ca515866faf0217f8a0fa6e5e60681c19336c211c7c90666926de8963c0"
+    "sha256": "10537daa2a8a6e5ddc021d05b3d601a9f044f271dd1064ba6738af78c4ddb3d7"
   },
   {
     "id": "api:cppenum:EFindFollowPointSelectMode",
@@ -35158,6 +35795,19 @@
     "file": "documents/cppenum/EFlattenMaterialProperties.md",
     "status": "ok",
     "sha256": "b690d9769e905970bbc97359e57cbf00832a2ae08417fee824fd1d035fc952dd"
+  },
+  {
+    "id": "api:cppenum:EFlexSignificanceLevel",
+    "name": "EFlexSignificanceLevel",
+    "title": "EFlexSignificanceLevel",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EFlexSignificanceLevel.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EFlexSignificanceLevel.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EFlexSignificanceLevel.md",
+    "status": "ok",
+    "sha256": "68828e006aadf48fa1084dcb27a5e3696d44eb9582714b9d6645ccd85e103a0e"
   },
   {
     "id": "api:cppenum:EFlipbookAniType",
@@ -35433,6 +36083,19 @@
     "sha256": "ff4744d053dce9a989cd8fd02d69a1021e2b85ee14083701f54d13d0bc779176"
   },
   {
+    "id": "api:cppenum:EFootstepIndoorMode",
+    "name": "EFootstepIndoorMode",
+    "title": "EFootstepIndoorMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EFootstepIndoorMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EFootstepIndoorMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EFootstepIndoorMode.md",
+    "status": "ok",
+    "sha256": "ed5dbd079d71ce0910dacd3a344bb806cabbb58a15739753a00ec1e7c7da7857"
+  },
+  {
     "id": "api:cppenum:EFormatArgumentType",
     "name": "EFormatArgumentType",
     "title": "EFormatArgumentType",
@@ -35654,6 +36317,19 @@
     "sha256": "c161802a2349a9f6ed537bb3ebc80a55f9817e553022bcd2f5a02477e78e5629"
   },
   {
+    "id": "api:cppenum:EFriendRankListEnableType",
+    "name": "EFriendRankListEnableType",
+    "title": "EFriendRankListEnableType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EFriendRankListEnableType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EFriendRankListEnableType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EFriendRankListEnableType.md",
+    "status": "ok",
+    "sha256": "e1adee7cdd4d30441ad30be8d8d6044933d7d82fd857f9e7fcd6761691f2fe05"
+  },
+  {
     "id": "api:cppenum:EFullyLoadPackageType",
     "name": "EFullyLoadPackageType",
     "title": "EFullyLoadPackageType",
@@ -35719,6 +36395,32 @@
     "sha256": "73aa57083a87ee589c752945cb6bbb14ac1b265277cb0b5a68376e37d484d075"
   },
   {
+    "id": "api:cppenum:EGATD_MatUpgradeType",
+    "name": "EGATD_MatUpgradeType",
+    "title": "EGATD_MatUpgradeType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EGATD_MatUpgradeType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EGATD_MatUpgradeType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EGATD_MatUpgradeType.md",
+    "status": "ok",
+    "sha256": "314448fa17effd958b61a979907392a56c0cee0d4c20f93350888ddbacbc6036"
+  },
+  {
+    "id": "api:cppenum:EGATD_OperationControlType",
+    "name": "EGATD_OperationControlType",
+    "title": "EGATD_OperationControlType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EGATD_OperationControlType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EGATD_OperationControlType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EGATD_OperationControlType.md",
+    "status": "ok",
+    "sha256": "790c8fc6c2535ecf908b6ef2df29797b74fc0e8924f5476c0765fb8eca3af638"
+  },
+  {
     "id": "api:cppenum:EGBufferFormat",
     "name": "EGBufferFormat",
     "title": "EGBufferFormat",
@@ -35742,7 +36444,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EGGameGalleryType.md",
     "status": "ok",
-    "sha256": "3ae8b0bfa59b737dc41600b6915740b9f16872a0c3a12d914b990a3307cd7b92"
+    "sha256": "989f3462149a5b326af0de09963b6547151ed472f28041f4d73bdbea63d49a3f"
   },
   {
     "id": "api:cppenum:EGIFPlayStrategy",
@@ -36226,6 +36928,19 @@
     "sha256": "ce53f4b29f78f4030420a05e3768f97d75707d5c0bfc3bc4ef6dc880af28b654"
   },
   {
+    "id": "api:cppenum:EGameFrameworkAddComponentFlags",
+    "name": "EGameFrameworkAddComponentFlags",
+    "title": "EGameFrameworkAddComponentFlags",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EGameFrameworkAddComponentFlags.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EGameFrameworkAddComponentFlags.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EGameFrameworkAddComponentFlags.md",
+    "status": "ok",
+    "sha256": "6c23ae03db695b448546779075642fede83ba1c73edaa263010e3fd1ad53a7c7"
+  },
+  {
     "id": "api:cppenum:EGameMap",
     "name": "EGameMap",
     "title": "EGameMap",
@@ -36522,7 +37237,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EGenerateItemReason.md",
     "status": "ok",
-    "sha256": "5b2312566009dfbbb2a69d0bf698eda11e7a8635a92e34f66e559df3233381bd"
+    "sha256": "472b66414257cb8dfda571272716a7ce7880c5b90152e952d3e04fe75e0bb9a8"
   },
   {
     "id": "api:cppenum:EGeneratedContentType",
@@ -37539,6 +38254,19 @@
     "sha256": "d5a144b69262506bc58e440484236c42316350cded3d0a167a788c0f85f198de"
   },
   {
+    "id": "api:cppenum:EHolographicEffectDirection",
+    "name": "EHolographicEffectDirection",
+    "title": "EHolographicEffectDirection",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EHolographicEffectDirection.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EHolographicEffectDirection.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EHolographicEffectDirection.md",
+    "status": "ok",
+    "sha256": "e9a021e87140193c573b91891d251a3d60621f7850f12e0f3a57016c79a2d85a"
+  },
+  {
     "id": "api:cppenum:EHomeAuditState",
     "name": "EHomeAuditState",
     "title": "EHomeAuditState",
@@ -38057,6 +38785,45 @@
     "file": "documents/cppenum/EIOSVersion.md",
     "status": "ok",
     "sha256": "1652f338fbbc7273c2478a48ff703d3399addd3cf53d0e4eb759cf81ef68124a"
+  },
+  {
+    "id": "api:cppenum:EISLDragVisualAlignment",
+    "name": "EISLDragVisualAlignment",
+    "title": "EISLDragVisualAlignment",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EISLDragVisualAlignment.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EISLDragVisualAlignment.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EISLDragVisualAlignment.md",
+    "status": "ok",
+    "sha256": "a5e8be832f38baaf39fb994db3ef4c5bb45cefd46df01457c8631626aba4c876"
+  },
+  {
+    "id": "api:cppenum:EISLDragVisualBoundsMode",
+    "name": "EISLDragVisualBoundsMode",
+    "title": "EISLDragVisualBoundsMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EISLDragVisualBoundsMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EISLDragVisualBoundsMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EISLDragVisualBoundsMode.md",
+    "status": "ok",
+    "sha256": "c3fa31df1b28f2e14eb16eab9bce561410c9ec89de055b767dd14c4d1d71c95e"
+  },
+  {
+    "id": "api:cppenum:EISLDraggedItemBehavior",
+    "name": "EISLDraggedItemBehavior",
+    "title": "EISLDraggedItemBehavior",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EISLDraggedItemBehavior.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EISLDraggedItemBehavior.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EISLDraggedItemBehavior.md",
+    "status": "ok",
+    "sha256": "8a6d7ffe09dabf5aa4991c79148e964e8d2b04632e77b58d627afda931ea77bd"
   },
   {
     "id": "api:cppenum:EIconState",
@@ -38706,7 +39473,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EItemBehaviorType.md",
     "status": "ok",
-    "sha256": "480583cae5ac00ca004886b5742a453aca14d8bd48d61bed93bc704f12254283"
+    "sha256": "63b6977ace34add1371391ea1cf43b03a8080ba4f4a4a4f95c88804efb04bac5"
   },
   {
     "id": "api:cppenum:EItemCurveAnimState",
@@ -39554,6 +40321,19 @@
     "sha256": "35801008194ab42f63246849ed115de777fbf39d7e0d372e18de1708b65a549f"
   },
   {
+    "id": "api:cppenum:ELegendaryWeaponFOVState",
+    "name": "ELegendaryWeaponFOVState",
+    "title": "ELegendaryWeaponFOVState",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELegendaryWeaponFOVState.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELegendaryWeaponFOVState.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELegendaryWeaponFOVState.md",
+    "status": "ok",
+    "sha256": "a5ce9a78454245be1d47903d518c74da066a10497a31854926823b5e0d3cf70e"
+  },
+  {
     "id": "api:cppenum:ELerpInterpolationMode",
     "name": "ELerpInterpolationMode",
     "title": "ELerpInterpolationMode",
@@ -39918,19 +40698,6 @@
     "sha256": "8bbb8f5642acfa447d1a86056325721809e2782ebcfd2f9f1e0b58d9a4e3d5a3"
   },
   {
-    "id": "api:cppenum:ELimitType",
-    "name": "ELimitType",
-    "title": "ELimitType",
-    "kind": "cppenum",
-    "categories": [],
-    "json_path": "cppenum/detail/ELimitType.json",
-    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELimitType.json",
-    "api_root": "https://developer.gp.qq.com/api/",
-    "file": "documents/cppenum/ELimitType.md",
-    "status": "ok",
-    "sha256": "539676a22ef134d4704d54217929b72587a5556938d2474c6c6fb4aa1ba0d8d4"
-  },
-  {
     "id": "api:cppenum:ELimitedItemCase",
     "name": "ELimitedItemCase",
     "title": "ELimitedItemCase",
@@ -39981,6 +40748,19 @@
     "file": "documents/cppenum/EListenEscMethod.md",
     "status": "ok",
     "sha256": "a496eafccf6a0fb7d65ef213b30a13dd40dc4ecb3d92682c82c442673f818dac"
+  },
+  {
+    "id": "api:cppenum:ELiteDestructibleState",
+    "name": "ELiteDestructibleState",
+    "title": "ELiteDestructibleState",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELiteDestructibleState.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELiteDestructibleState.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELiteDestructibleState.md",
+    "status": "ok",
+    "sha256": "7130c3e90e8549a3ed1baabc1fba2c94dc456e398df610b3e963c0835a3029b8"
   },
   {
     "id": "api:cppenum:ELiteInstancedStructUtilsResult",
@@ -40267,6 +41047,19 @@
     "file": "documents/cppenum/ELobbyPreviewer_TaskViewTemplate.md",
     "status": "ok",
     "sha256": "acb4a105e9518038c3656c32b62badb733b8f7f90cf643f61438287590596614"
+  },
+  {
+    "id": "api:cppenum:ELobbySceneCVarValueType",
+    "name": "ELobbySceneCVarValueType",
+    "title": "ELobbySceneCVarValueType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELobbySceneCVarValueType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELobbySceneCVarValueType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELobbySceneCVarValueType.md",
+    "status": "ok",
+    "sha256": "3a2d1c0fa0d5ccfd86b0abff71a9ddbeb1bf9f6528aa252d5448d9e2d2ee708a"
   },
   {
     "id": "api:cppenum:ELobbyStateResourceConfigMode",
@@ -40644,6 +41437,32 @@
     "file": "documents/cppenum/ELostTombEquipSlotType.md",
     "status": "ok",
     "sha256": "ae6569434a03fa7eeb0459c3dc0124ee561f1c8cf36fe00ff208d884a026459a"
+  },
+  {
+    "id": "api:cppenum:ELostTombGalleryCrossHairType",
+    "name": "ELostTombGalleryCrossHairType",
+    "title": "ELostTombGalleryCrossHairType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELostTombGalleryCrossHairType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELostTombGalleryCrossHairType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELostTombGalleryCrossHairType.md",
+    "status": "ok",
+    "sha256": "0344d937b9b51bf63429d001fce6cee444861432b4a89769e6ca13f981adbfea"
+  },
+  {
+    "id": "api:cppenum:ELostTombGalleryExhibitType",
+    "name": "ELostTombGalleryExhibitType",
+    "title": "ELostTombGalleryExhibitType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELostTombGalleryExhibitType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELostTombGalleryExhibitType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELostTombGalleryExhibitType.md",
+    "status": "ok",
+    "sha256": "a3c5e488b5efc1e3acdc0f09ccff6fdf27884f235a86f2e816b07f3cccce4498"
   },
   {
     "id": "api:cppenum:ELostTombMonsterType",
@@ -41060,6 +41879,19 @@
     "file": "documents/cppenum/EMapExUIType.md",
     "status": "ok",
     "sha256": "a568c9ee5073ed5624b52aa3d30192cbeccc8f736406e2cfc15b1538c923bc27"
+  },
+  {
+    "id": "api:cppenum:EMapLayerSwitchStrategy",
+    "name": "EMapLayerSwitchStrategy",
+    "title": "EMapLayerSwitchStrategy",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EMapLayerSwitchStrategy.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EMapLayerSwitchStrategy.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EMapLayerSwitchStrategy.md",
+    "status": "ok",
+    "sha256": "1d3903454c86aaa02abe921bdf9844470e5fdf8204054686e1d1a0ffd8a8f967"
   },
   {
     "id": "api:cppenum:EMapRotateMode",
@@ -42076,6 +42908,32 @@
     "sha256": "8e4ca7fea1e15b5b2840e262ea0cd41e72107654579cea491864b00cf1147c5f"
   },
   {
+    "id": "api:cppenum:EMeshMatSelectType",
+    "name": "EMeshMatSelectType",
+    "title": "EMeshMatSelectType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EMeshMatSelectType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EMeshMatSelectType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EMeshMatSelectType.md",
+    "status": "ok",
+    "sha256": "5f7cae1ad8d222a4ff797b3fc30817e3272f31d2cba029f30a71d40f67ab16ab"
+  },
+  {
+    "id": "api:cppenum:EMeshMatSelectType_NetRole",
+    "name": "EMeshMatSelectType_NetRole",
+    "title": "EMeshMatSelectType_NetRole",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EMeshMatSelectType_NetRole.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EMeshMatSelectType_NetRole.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EMeshMatSelectType_NetRole.md",
+    "status": "ok",
+    "sha256": "307fbeff1df9cdc1c2c2e6afc05ac28949bee80125be2c16923b05cf8a4b5837"
+  },
+  {
     "id": "api:cppenum:EMeshMergeType",
     "name": "EMeshMergeType",
     "title": "EMeshMergeType",
@@ -42804,6 +43662,32 @@
     "sha256": "0719901407a77221dbe64d14d5556811ef979295084bc16cac5303ec4a0c27c9"
   },
   {
+    "id": "api:cppenum:EMotorWheelieEndReason",
+    "name": "EMotorWheelieEndReason",
+    "title": "EMotorWheelieEndReason",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EMotorWheelieEndReason.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EMotorWheelieEndReason.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EMotorWheelieEndReason.md",
+    "status": "ok",
+    "sha256": "5ab8c3c82fa83f5a902198922840cf6c804b720fd4b1ebd0b7253e7b99fe87e7"
+  },
+  {
+    "id": "api:cppenum:EMotorWheelieState",
+    "name": "EMotorWheelieState",
+    "title": "EMotorWheelieState",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EMotorWheelieState.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EMotorWheelieState.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EMotorWheelieState.md",
+    "status": "ok",
+    "sha256": "0faf3dfcd39c2a3056ef2c2aba009afaf15fd558939a47bf40c56b86fa9ddd31"
+  },
+  {
     "id": "api:cppenum:EMouseCaptureMode",
     "name": "EMouseCaptureMode",
     "title": "EMouseCaptureMode",
@@ -43285,6 +44169,19 @@
     "sha256": "4313c985ccf53f5bde47fd14281f3f3d3e9e45a93fbcd0efede8471ed7872ccc"
   },
   {
+    "id": "api:cppenum:ENNETensorDataType",
+    "name": "ENNETensorDataType",
+    "title": "ENNETensorDataType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ENNETensorDataType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ENNETensorDataType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ENNETensorDataType.md",
+    "status": "ok",
+    "sha256": "6b417f333b3edaba61210340d8b89bcfe9a8fca2e852e53e4aefbb27d9b1c4a9"
+  },
+  {
     "id": "api:cppenum:ENPCShowIdleType",
     "name": "ENPCShowIdleType",
     "title": "ENPCShowIdleType",
@@ -43529,7 +44426,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ENetEmoteType.md",
     "status": "ok",
-    "sha256": "d89284deac4985be53bd760a01030a7c45aa19645fdbee0f394eda29ab19cc0d"
+    "sha256": "db08edba88e725e59fb627aab9619982345e3d87cfed2bdb9dfabe13708b7c16"
   },
   {
     "id": "api:cppenum:ENetRelevantType",
@@ -43581,7 +44478,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ENetRoleAndQualityCondition.md",
     "status": "ok",
-    "sha256": "36e47a70a520ead21d1b3b2bf2c5713991a14ca8b784dc12ee38d7f07a68e87d"
+    "sha256": "c0c40a1b95115b70cd17ad6edabab068539e36533faed20d65a16a0d0d5ed19d"
   },
   {
     "id": "api:cppenum:ENetSequenceType",
@@ -43909,19 +44806,6 @@
     "sha256": "59ff2e3512a6838de3245641be2c930e89030642cbf422274eee31c34a961898"
   },
   {
-    "id": "api:cppenum:EOBPlayerType",
-    "name": "EOBPlayerType",
-    "title": "EOBPlayerType",
-    "kind": "cppenum",
-    "categories": [],
-    "json_path": "cppenum/detail/EOBPlayerType.json",
-    "url": "https://developer.gp.qq.com/api/cppenum/detail/EOBPlayerType.json",
-    "api_root": "https://developer.gp.qq.com/api/",
-    "file": "documents/cppenum/EOBPlayerType.md",
-    "status": "ok",
-    "sha256": "3bf8c54862325b848c7b64db06866c7d88cecab406720ca40f4818b0b1980943"
-  },
-  {
     "id": "api:cppenum:EOBReportReason",
     "name": "EOBReportReason",
     "title": "EOBReportReason",
@@ -44245,6 +45129,19 @@
     "file": "documents/cppenum/EOnHitBackEndReason.md",
     "status": "ok",
     "sha256": "6f630f4acc5f4d76f8dd7b21dc2fc4379b3a0c799b0163cc3d10360ab5ea241e"
+  },
+  {
+    "id": "api:cppenum:EOnlineAkAudioType",
+    "name": "EOnlineAkAudioType",
+    "title": "EOnlineAkAudioType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EOnlineAkAudioType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EOnlineAkAudioType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EOnlineAkAudioType.md",
+    "status": "ok",
+    "sha256": "01abcf2592973e165cb5b55fc279d0043fb5d914ddcb6d7c20f5adaca989790b"
   },
   {
     "id": "api:cppenum:EOpacitySourceMode",
@@ -44583,6 +45480,19 @@
     "file": "documents/cppenum/EPBRecordCond.md",
     "status": "ok",
     "sha256": "080533f9250cfb5b97c1dbb8197d95096c9b3abda4e9b9f6e01c5ea39b43709d"
+  },
+  {
+    "id": "api:cppenum:EPCCustomIntDataKeyType",
+    "name": "EPCCustomIntDataKeyType",
+    "title": "EPCCustomIntDataKeyType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCCustomIntDataKeyType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCCustomIntDataKeyType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCCustomIntDataKeyType.md",
+    "status": "ok",
+    "sha256": "b1aeec9dfea50918c22a9244a5cc435a1939170ab8e27910102304f77761b774"
   },
   {
     "id": "api:cppenum:EPCGActorFilter",
@@ -45573,6 +46483,19 @@
     "sha256": "f345e08e38245bafa4dd908714d783125d76486715b92a164969b53cdf8db207"
   },
   {
+    "id": "api:cppenum:EPCGRegionBrushVisMode",
+    "name": "EPCGRegionBrushVisMode",
+    "title": "EPCGRegionBrushVisMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGRegionBrushVisMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGRegionBrushVisMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGRegionBrushVisMode.md",
+    "status": "ok",
+    "sha256": "e2b1a14cbd64e8f93f03bac574c7a83bc7597a1e543de127912963790cbdb065"
+  },
+  {
     "id": "api:cppenum:EPCGReverseSplineOperation",
     "name": "EPCGReverseSplineOperation",
     "title": "EPCGReverseSplineOperation",
@@ -45677,6 +46600,32 @@
     "sha256": "8c9581d8e94225ebe3735a0c54ca4ffc04701a9465576b087d9ece8741e3e394"
   },
   {
+    "id": "api:cppenum:EPCGSphericalBrushActorSource",
+    "name": "EPCGSphericalBrushActorSource",
+    "title": "EPCGSphericalBrushActorSource",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGSphericalBrushActorSource.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGSphericalBrushActorSource.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGSphericalBrushActorSource.md",
+    "status": "ok",
+    "sha256": "9a0afd41a76c4579915b62a46e6d525e9990fbac9937dd5fba91b40981bac5c7"
+  },
+  {
+    "id": "api:cppenum:EPCGSphericalBrushMode",
+    "name": "EPCGSphericalBrushMode",
+    "title": "EPCGSphericalBrushMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGSphericalBrushMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGSphericalBrushMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGSphericalBrushMode.md",
+    "status": "ok",
+    "sha256": "6251632e686541cecf83b639c682ca8c0776abb2f969bf631b2f15119496c78a"
+  },
+  {
     "id": "api:cppenum:EPCGSplineMeshForwardAxis",
     "name": "EPCGSplineMeshForwardAxis",
     "title": "EPCGSplineMeshForwardAxis",
@@ -45688,6 +46637,19 @@
     "file": "documents/cppenum/EPCGSplineMeshForwardAxis.md",
     "status": "ok",
     "sha256": "bfc91d9ba92925fefbdf8cb47d10ad146a4eb3ca8d81238723c260fbd0b0d268"
+  },
+  {
+    "id": "api:cppenum:EPCGSplineMetadataType",
+    "name": "EPCGSplineMetadataType",
+    "title": "EPCGSplineMetadataType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGSplineMetadataType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGSplineMetadataType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGSplineMetadataType.md",
+    "status": "ok",
+    "sha256": "c0a46e62b59d4b2c931f330c67bb0e831a2b5d12626921139671d9c53b4f9c7c"
   },
   {
     "id": "api:cppenum:EPCGSplineSamplingDimension",
@@ -45781,6 +46743,19 @@
     "sha256": "d8eaaf67151dc142df1081de174009200fa9a1c80327cc90ffc2152c196fd9a5"
   },
   {
+    "id": "api:cppenum:EPCGTerrainMaskRole",
+    "name": "EPCGTerrainMaskRole",
+    "title": "EPCGTerrainMaskRole",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGTerrainMaskRole.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGTerrainMaskRole.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGTerrainMaskRole.md",
+    "status": "ok",
+    "sha256": "3fdaabc61625d28ce1d93ab2957034779577b7889f00cde455337eda3722c338"
+  },
+  {
     "id": "api:cppenum:EPCGTextureAddressMode",
     "name": "EPCGTextureAddressMode",
     "title": "EPCGTextureAddressMode",
@@ -45857,6 +46832,19 @@
     "file": "documents/cppenum/EPCGToolkitCollisionType.md",
     "status": "ok",
     "sha256": "41a4b6ca712d75946e774c7ea33eddb8f72ed7c421944c43a11d4739bd0a6f40"
+  },
+  {
+    "id": "api:cppenum:EPCGToolkitMaskColorScheme",
+    "name": "EPCGToolkitMaskColorScheme",
+    "title": "EPCGToolkitMaskColorScheme",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGToolkitMaskColorScheme.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGToolkitMaskColorScheme.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGToolkitMaskColorScheme.md",
+    "status": "ok",
+    "sha256": "e791af9f42e4d1a0bb59335b276e32d6964121a144d6cc08548ce6fc562b7109"
   },
   {
     "id": "api:cppenum:EPCGToolkitToolMessageType",
@@ -46090,7 +47078,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EPEAddonAddReason.md",
     "status": "ok",
-    "sha256": "b0b130ece238ba7acc5c04852bbf5b269af8d7ac4478813cbe95b21f829f6329"
+    "sha256": "f34bae3f26f01bdd76eba1267f33a2e865f3047cb70c0206f4997daa9f5b9f6d"
   },
   {
     "id": "api:cppenum:EPEAddonCustomParamType",
@@ -46613,6 +47601,19 @@
     "sha256": "950aad864bb5a4de817483b24b129cc6a1bbc9a2a2971911aa340ef41af6d096"
   },
   {
+    "id": "api:cppenum:EPESkillDirectionPickerCategory",
+    "name": "EPESkillDirectionPickerCategory",
+    "title": "EPESkillDirectionPickerCategory",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPESkillDirectionPickerCategory.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPESkillDirectionPickerCategory.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPESkillDirectionPickerCategory.md",
+    "status": "ok",
+    "sha256": "84536eb273bbb6754d6e00ad876a098c96f84e7d2c433a03cac9f440cda744c9"
+  },
+  {
     "id": "api:cppenum:EPESkillEventConditionMatchType",
     "name": "EPESkillEventConditionMatchType",
     "title": "EPESkillEventConditionMatchType",
@@ -46782,6 +47783,45 @@
     "sha256": "d6cd46e60180edb6b659f874806fbc180ad1fbc9aeb331222c639eb6f911c835"
   },
   {
+    "id": "api:cppenum:EPESkillNodeType",
+    "name": "EPESkillNodeType",
+    "title": "EPESkillNodeType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPESkillNodeType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPESkillNodeType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPESkillNodeType.md",
+    "status": "ok",
+    "sha256": "f6c75940e678212a5a8888be137bed5652afeead2311fee59fd733827609885b"
+  },
+  {
+    "id": "api:cppenum:EPESkillPickerCampFilter",
+    "name": "EPESkillPickerCampFilter",
+    "title": "EPESkillPickerCampFilter",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPESkillPickerCampFilter.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPESkillPickerCampFilter.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPESkillPickerCampFilter.md",
+    "status": "ok",
+    "sha256": "efbc81a5159cf8dab24e8661eb25ab56a385ea867e38b445bf6b648c5883640b"
+  },
+  {
+    "id": "api:cppenum:EPESkillPointPickerCategory",
+    "name": "EPESkillPointPickerCategory",
+    "title": "EPESkillPointPickerCategory",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPESkillPointPickerCategory.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPESkillPointPickerCategory.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPESkillPointPickerCategory.md",
+    "status": "ok",
+    "sha256": "26dfd1ae5c741148da6ca4de4a3df84469751bce10ed94cd6c64b4f4cd620287"
+  },
+  {
     "id": "api:cppenum:EPESkillPointPickerType",
     "name": "EPESkillPointPickerType",
     "title": "EPESkillPointPickerType",
@@ -46793,6 +47833,32 @@
     "file": "documents/cppenum/EPESkillPointPickerType.md",
     "status": "ok",
     "sha256": "f8af810cbdc9b4a91352687802a47d08a72abcbf47b080b523e70d5f9993f644"
+  },
+  {
+    "id": "api:cppenum:EPESkillReloadCheckResult",
+    "name": "EPESkillReloadCheckResult",
+    "title": "EPESkillReloadCheckResult",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPESkillReloadCheckResult.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPESkillReloadCheckResult.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPESkillReloadCheckResult.md",
+    "status": "ok",
+    "sha256": "d891de40d912c3338a019eb8e40f9882a286acd428fa4bbfdc631559416186de"
+  },
+  {
+    "id": "api:cppenum:EPESkillReloadState",
+    "name": "EPESkillReloadState",
+    "title": "EPESkillReloadState",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPESkillReloadState.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPESkillReloadState.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPESkillReloadState.md",
+    "status": "ok",
+    "sha256": "0e52178db41088f8c3dd2beeb1c70527ee68ff520fdd07e68e191f506c4a7eca"
   },
   {
     "id": "api:cppenum:EPESkillScreenParticleTargetType",
@@ -46819,6 +47885,45 @@
     "file": "documents/cppenum/EPESkillSelectTarget.md",
     "status": "ok",
     "sha256": "a0730a0306ecb89d6cddb7b20e15a8fd523d49193c9a663f45c1a38f060bbcf4"
+  },
+  {
+    "id": "api:cppenum:EPESkillShieldBlockPassType",
+    "name": "EPESkillShieldBlockPassType",
+    "title": "EPESkillShieldBlockPassType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPESkillShieldBlockPassType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPESkillShieldBlockPassType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPESkillShieldBlockPassType.md",
+    "status": "ok",
+    "sha256": "b560ea563fd92172ce511c1217db2fe265e8dd038478e1667a365ca462a62f7e"
+  },
+  {
+    "id": "api:cppenum:EPESkillShieldShape",
+    "name": "EPESkillShieldShape",
+    "title": "EPESkillShieldShape",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPESkillShieldShape.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPESkillShieldShape.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPESkillShieldShape.md",
+    "status": "ok",
+    "sha256": "572a19a90f252d6bb03faf9765977c4d63301f994d2c8d241277c5454a58b4a9"
+  },
+  {
+    "id": "api:cppenum:EPESkillShieldSpawnLocation",
+    "name": "EPESkillShieldSpawnLocation",
+    "title": "EPESkillShieldSpawnLocation",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPESkillShieldSpawnLocation.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPESkillShieldSpawnLocation.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPESkillShieldSpawnLocation.md",
+    "status": "ok",
+    "sha256": "bb083a123a434aa2a107316df7e5bae50a03e0076c2e3fb46968c53a6831bbef"
   },
   {
     "id": "api:cppenum:EPESkillSpawnTargetType",
@@ -46884,6 +47989,19 @@
     "file": "documents/cppenum/EPESkillTargetConditionType.md",
     "status": "ok",
     "sha256": "413165f26d32d1f55a850fda283b864eccd605e5d8b690f9debbc2f8095f7c49"
+  },
+  {
+    "id": "api:cppenum:EPESkillTargetPickerCategory",
+    "name": "EPESkillTargetPickerCategory",
+    "title": "EPESkillTargetPickerCategory",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPESkillTargetPickerCategory.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPESkillTargetPickerCategory.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPESkillTargetPickerCategory.md",
+    "status": "ok",
+    "sha256": "4289199d18796896e5e66704379171400f4612a6764b0f0eddeeb74336077297"
   },
   {
     "id": "api:cppenum:EPESkillTargetPickerType",
@@ -47131,6 +48249,19 @@
     "file": "documents/cppenum/EPKRoomState.md",
     "status": "ok",
     "sha256": "cd78be16008f75598faca802cc366d74038d216ba6a83f91d750742279921945"
+  },
+  {
+    "id": "api:cppenum:EPSCustomIntDataKeyType",
+    "name": "EPSCustomIntDataKeyType",
+    "title": "EPSCustomIntDataKeyType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPSCustomIntDataKeyType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPSCustomIntDataKeyType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPSCustomIntDataKeyType.md",
+    "status": "ok",
+    "sha256": "19603319e8170e7a7a32b2937eaa4a99d7027b163d5b6e3870da007ce0e01100"
   },
   {
     "id": "api:cppenum:EPSkillEventAttributeConditionType",
@@ -48950,7 +50081,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EPickUpItemFlowSourceType.md",
     "status": "ok",
-    "sha256": "489c4577104e9dc39b47a7afb0b7918134d8443b3bfe062811a22b81cec9a665"
+    "sha256": "5aa5ee2c04014cca7ab32acb5b4302a17f827b4142186bcd90c7abe2a58ce749"
   },
   {
     "id": "api:cppenum:EPickerFromBlackboard_DataType",
@@ -49002,7 +50133,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EPickupWrapperProtectType.md",
     "status": "ok",
-    "sha256": "d95f70124f0d16ed10b78743ed625227d79d3e9860635f832de88e1767030418"
+    "sha256": "a31fbed6aeaaa086f8db3bd96daf2d781292a2e79a5cc0c1e9efa13ef8050bbe"
   },
   {
     "id": "api:cppenum:EPinContainerType",
@@ -49210,7 +50341,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EPlayDefaultTimeSliceReason.md",
     "status": "ok",
-    "sha256": "d8162db7bd3c21df33b130a1898afd52f0588df2140c0a64baf50a65ad37a1cf"
+    "sha256": "80d63e64dc2ed91f1552357cfb618efe94f15f1a165f5c3027b6db72a4754ea1"
   },
   {
     "id": "api:cppenum:EPlayModeLocations",
@@ -49629,6 +50760,32 @@
     "sha256": "5f7fa535106f74d8af0ab698fbd0bac7f32e09a91da238c64b5cc43abeb20c6c"
   },
   {
+    "id": "api:cppenum:EPlayingWithFriendStatus",
+    "name": "EPlayingWithFriendStatus",
+    "title": "EPlayingWithFriendStatus",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPlayingWithFriendStatus.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPlayingWithFriendStatus.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPlayingWithFriendStatus.md",
+    "status": "ok",
+    "sha256": "1c72456093b1e233cbdf3ceba1db4db5bccb788569e8de7d4c2073d769d7c424"
+  },
+  {
+    "id": "api:cppenum:EPlotCinematicType",
+    "name": "EPlotCinematicType",
+    "title": "EPlotCinematicType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPlotCinematicType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPlotCinematicType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPlotCinematicType.md",
+    "status": "ok",
+    "sha256": "51aa0a26fcf126e68ce8a4fbade177321e9ef3ec5e1608bb9283ff943f5df1aa"
+  },
+  {
     "id": "api:cppenum:EPlotDialogueEndReason",
     "name": "EPlotDialogueEndReason",
     "title": "EPlotDialogueEndReason",
@@ -49653,6 +50810,32 @@
     "file": "documents/cppenum/EPlotDialoguePerformType.md",
     "status": "ok",
     "sha256": "537de198008eb6d406edfe558bb5f1f700797dc3986b45b2b6fe0e45c05721b9"
+  },
+  {
+    "id": "api:cppenum:EPlotRoleNum",
+    "name": "EPlotRoleNum",
+    "title": "EPlotRoleNum",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPlotRoleNum.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPlotRoleNum.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPlotRoleNum.md",
+    "status": "ok",
+    "sha256": "c630ead4fd0b2afb5dd88f29336842b08bb5cb8f608454aa8848263726949c60"
+  },
+  {
+    "id": "api:cppenum:EPlotRoleType",
+    "name": "EPlotRoleType",
+    "title": "EPlotRoleType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPlotRoleType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPlotRoleType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPlotRoleType.md",
+    "status": "ok",
+    "sha256": "6552d1cd9077c5dffa5ade12bedb8f4166842835159599369791640742cbb7f1"
   },
   {
     "id": "api:cppenum:EPlotState",
@@ -49967,17 +51150,17 @@
     "sha256": "f24a2030c2a42a997845851046bc893eae5258c9c2f925e7e536a2e2ca93ab52"
   },
   {
-    "id": "api:cppenum:EProductType",
-    "name": "EProductType",
-    "title": "EProductType",
+    "id": "api:cppenum:EProcessingState",
+    "name": "EProcessingState",
+    "title": "EProcessingState",
     "kind": "cppenum",
     "categories": [],
-    "json_path": "cppenum/detail/EProductType.json",
-    "url": "https://developer.gp.qq.com/api/cppenum/detail/EProductType.json",
+    "json_path": "cppenum/detail/EProcessingState.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EProcessingState.json",
     "api_root": "https://developer.gp.qq.com/api/",
-    "file": "documents/cppenum/EProductType.md",
+    "file": "documents/cppenum/EProcessingState.md",
     "status": "ok",
-    "sha256": "77da748bf8c4222325a3622f52eb9d0f4db9ceac697f0ffd1528ecba78b6ee2f"
+    "sha256": "f5b0259760beb53eba9fdd6abdc6d1063c5bb89a7962c4586ab2c2b6eae903e9"
   },
   {
     "id": "api:cppenum:EProgressBarFillType",
@@ -50994,6 +52177,19 @@
     "sha256": "a39cf2e839d2c5192c7aef855b84fe9517679ae0d4262f203f85d0c6d55d2db5"
   },
   {
+    "id": "api:cppenum:ERLMoveTaskType",
+    "name": "ERLMoveTaskType",
+    "title": "ERLMoveTaskType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ERLMoveTaskType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ERLMoveTaskType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ERLMoveTaskType.md",
+    "status": "ok",
+    "sha256": "826e8e7ff5bbdf4be72acd1a02efe5450611ee2330d2f0e0c0d873cb61cf54d3"
+  },
+  {
     "id": "api:cppenum:ERMAFoliageToolsFoliageSelectionMode",
     "name": "ERMAFoliageToolsFoliageSelectionMode",
     "title": "ERMAFoliageToolsFoliageSelectionMode",
@@ -51134,7 +52330,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ERTEFingerMotionType.md",
     "status": "ok",
-    "sha256": "022bcaf9d9a6e59cd706b720976f2c014c2fc4ecb49ac27f9ddc655f32691365"
+    "sha256": "7524e6766909416acb48939ecc927f9da302c0784753e476d83e9a7c69ab9678"
   },
   {
     "id": "api:cppenum:ERTEListener",
@@ -51551,6 +52747,19 @@
     "file": "documents/cppenum/ERecordAntiStrategyType.md",
     "status": "ok",
     "sha256": "434d30ba4b6043c8b9d009105db2e27124e8b094d7b2977d0eb6c0976aecfe58"
+  },
+  {
+    "id": "api:cppenum:ERecordFilterMode",
+    "name": "ERecordFilterMode",
+    "title": "ERecordFilterMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ERecordFilterMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ERecordFilterMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ERecordFilterMode.md",
+    "status": "ok",
+    "sha256": "62bc1a69c367b59e996caf126cfd2e6f798943c0cc8402ef211843095680cc0a"
   },
   {
     "id": "api:cppenum:ERecordType",
@@ -52746,7 +53955,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ERoleAndQualityCondition.md",
     "status": "ok",
-    "sha256": "27342cb76363bf7f2628a4a825d2c58af0c783475e461de23462ede0521bd634"
+    "sha256": "721717965631fdc6174c9ae105765e3a376eb02c5bf7d2131e2dcaa673dc9a6b"
   },
   {
     "id": "api:cppenum:ERoleAndQualityLobbyCondition",
@@ -52944,6 +54153,19 @@
     "sha256": "a50294512a13d037c0a1e3084c8fde8cab5add69be64fdc0af7f5d8ce638ccfc"
   },
   {
+    "id": "api:cppenum:ERulePointRCRBoxType",
+    "name": "ERulePointRCRBoxType",
+    "title": "ERulePointRCRBoxType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ERulePointRCRBoxType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ERulePointRCRBoxType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ERulePointRCRBoxType.md",
+    "status": "ok",
+    "sha256": "d5b21f2fabf3598ce1cb7a4153a72cafd8575dc49c23ebe8d93cca7ff7a33063"
+  },
+  {
     "id": "api:cppenum:ERulePriority",
     "name": "ERulePriority",
     "title": "ERulePriority",
@@ -52968,6 +54190,71 @@
     "file": "documents/cppenum/ERuleSetType.md",
     "status": "ok",
     "sha256": "b08ac9afac358cee652ce66c761fef15f9043ceda2f84b42dfbfdb1c14a3ddfe"
+  },
+  {
+    "id": "api:cppenum:ERuntimeDetailsFileType",
+    "name": "ERuntimeDetailsFileType",
+    "title": "ERuntimeDetailsFileType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ERuntimeDetailsFileType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ERuntimeDetailsFileType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ERuntimeDetailsFileType.md",
+    "status": "ok",
+    "sha256": "7d979eb8b56edd0f55320620dc842bc8e3013fd16f61029e5a139ac876d50cdf"
+  },
+  {
+    "id": "api:cppenum:ERuntimeDetailsResumeType",
+    "name": "ERuntimeDetailsResumeType",
+    "title": "ERuntimeDetailsResumeType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ERuntimeDetailsResumeType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ERuntimeDetailsResumeType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ERuntimeDetailsResumeType.md",
+    "status": "ok",
+    "sha256": "28e6a765a42d31da45b5a61413050100193c01f22eb7c9a3874e6029341e6bb6"
+  },
+  {
+    "id": "api:cppenum:ERuntimeDetailsTraversedType",
+    "name": "ERuntimeDetailsTraversedType",
+    "title": "ERuntimeDetailsTraversedType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ERuntimeDetailsTraversedType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ERuntimeDetailsTraversedType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ERuntimeDetailsTraversedType.md",
+    "status": "ok",
+    "sha256": "f58584633fee55076d2383f65544fca2ae54788c1678cad1601c8d4b10838189"
+  },
+  {
+    "id": "api:cppenum:ERuntimeDetailsUpdateIntervalType",
+    "name": "ERuntimeDetailsUpdateIntervalType",
+    "title": "ERuntimeDetailsUpdateIntervalType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ERuntimeDetailsUpdateIntervalType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ERuntimeDetailsUpdateIntervalType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ERuntimeDetailsUpdateIntervalType.md",
+    "status": "ok",
+    "sha256": "c0e3b4f3eab882e3f046018829f715cf97f5e0e54f2ddaaf5cf6c89be065302b"
+  },
+  {
+    "id": "api:cppenum:ERuntimeDetailsWidgetReflectorPickMode",
+    "name": "ERuntimeDetailsWidgetReflectorPickMode",
+    "title": "ERuntimeDetailsWidgetReflectorPickMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ERuntimeDetailsWidgetReflectorPickMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ERuntimeDetailsWidgetReflectorPickMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ERuntimeDetailsWidgetReflectorPickMode.md",
+    "status": "ok",
+    "sha256": "2c8120bc94cd3c8edaf2729372ac1259eced0475b2e530410ef2800f379c6819"
   },
   {
     "id": "api:cppenum:ERuntimeGenerationType",
@@ -53150,6 +54437,227 @@
     "file": "documents/cppenum/ESGLuaUnitTestFuncType.md",
     "status": "ok",
     "sha256": "d058251936fc0db4eb2d095a9c71fe4c6fce56011bf898f457a09fbd7f9b3876"
+  },
+  {
+    "id": "api:cppenum:ESJQPEffect",
+    "name": "ESJQPEffect",
+    "title": "ESJQPEffect",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPEffect.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPEffect.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPEffect.md",
+    "status": "ok",
+    "sha256": "e2e456677f03d7184415bbdd813b428a0a67d7e8574a75a091787ba8ce1f36e9"
+  },
+  {
+    "id": "api:cppenum:ESJQPGenerateScope",
+    "name": "ESJQPGenerateScope",
+    "title": "ESJQPGenerateScope",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPGenerateScope.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPGenerateScope.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPGenerateScope.md",
+    "status": "ok",
+    "sha256": "f23ebc3d2d4ea8b77b7a024a05f98bceccdba7834851408b8e10db55b3e9cf1b"
+  },
+  {
+    "id": "api:cppenum:ESJQPMeshType",
+    "name": "ESJQPMeshType",
+    "title": "ESJQPMeshType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPMeshType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPMeshType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPMeshType.md",
+    "status": "ok",
+    "sha256": "dfd11fc80303ea8f3d621438e5b043ac4a95260f81f36a4d5b099b0b76530e66"
+  },
+  {
+    "id": "api:cppenum:ESJQPPartCategory",
+    "name": "ESJQPPartCategory",
+    "title": "ESJQPPartCategory",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPPartCategory.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPPartCategory.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPPartCategory.md",
+    "status": "ok",
+    "sha256": "b6cca1cdb2a28ba62d3e30b5042d38f7c050ae566d721374a7f937c2956ec665"
+  },
+  {
+    "id": "api:cppenum:ESJQPPreflightErrorPolicy",
+    "name": "ESJQPPreflightErrorPolicy",
+    "title": "ESJQPPreflightErrorPolicy",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPPreflightErrorPolicy.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPPreflightErrorPolicy.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPPreflightErrorPolicy.md",
+    "status": "ok",
+    "sha256": "a3a278393312f780756fd9cde7e8b4787eeefbbf65ab9d2fa92ff8864454a26c"
+  },
+  {
+    "id": "api:cppenum:ESJQPPreflightIncompletePolicy",
+    "name": "ESJQPPreflightIncompletePolicy",
+    "title": "ESJQPPreflightIncompletePolicy",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPPreflightIncompletePolicy.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPPreflightIncompletePolicy.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPPreflightIncompletePolicy.md",
+    "status": "ok",
+    "sha256": "2c3b5bec42aff1ec04382d80c48921f865128f649198f8eed40155cad1e08f90"
+  },
+  {
+    "id": "api:cppenum:ESJQPPreflightManualRowsPolicy",
+    "name": "ESJQPPreflightManualRowsPolicy",
+    "title": "ESJQPPreflightManualRowsPolicy",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPPreflightManualRowsPolicy.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPPreflightManualRowsPolicy.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPPreflightManualRowsPolicy.md",
+    "status": "ok",
+    "sha256": "80bc9270469b63cb98ad723b536f7953073724a3ec7a98f0e0e75eb82be12aef"
+  },
+  {
+    "id": "api:cppenum:ESJQPPreflightNewModePolicy",
+    "name": "ESJQPPreflightNewModePolicy",
+    "title": "ESJQPPreflightNewModePolicy",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPPreflightNewModePolicy.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPPreflightNewModePolicy.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPPreflightNewModePolicy.md",
+    "status": "ok",
+    "sha256": "f709b3e9fc1cddc0ebd608d866f376b508e078a9d200daadb2ab2eb1acd7959f"
+  },
+  {
+    "id": "api:cppenum:ESJQPProductRefKind",
+    "name": "ESJQPProductRefKind",
+    "title": "ESJQPProductRefKind",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPProductRefKind.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPProductRefKind.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPProductRefKind.md",
+    "status": "ok",
+    "sha256": "696e9dabb0f692239425b1dc4cc8f4b9144b072a53b79137084b30d23a6dc265"
+  },
+  {
+    "id": "api:cppenum:ESJQPRedundantSource",
+    "name": "ESJQPRedundantSource",
+    "title": "ESJQPRedundantSource",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPRedundantSource.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPRedundantSource.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPRedundantSource.md",
+    "status": "ok",
+    "sha256": "f83141fb45595709a5df385b6c47932a1e35112032c068ce8163093914a9baee"
+  },
+  {
+    "id": "api:cppenum:ESJQPRelayBaseMatRefKind",
+    "name": "ESJQPRelayBaseMatRefKind",
+    "title": "ESJQPRelayBaseMatRefKind",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPRelayBaseMatRefKind.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPRelayBaseMatRefKind.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPRelayBaseMatRefKind.md",
+    "status": "ok",
+    "sha256": "8b910b04f23c3dc1a222bf06f4b8720df69347885c5a0808d1774cb8de3477d5"
+  },
+  {
+    "id": "api:cppenum:ESJQPRuleTier",
+    "name": "ESJQPRuleTier",
+    "title": "ESJQPRuleTier",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPRuleTier.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPRuleTier.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPRuleTier.md",
+    "status": "ok",
+    "sha256": "6bdcffc0099a9e25cc3123c7af7231cd0e670f7bf5d32719e4e0a4caf82d3313"
+  },
+  {
+    "id": "api:cppenum:ESJQPSituationKind",
+    "name": "ESJQPSituationKind",
+    "title": "ESJQPSituationKind",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPSituationKind.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPSituationKind.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPSituationKind.md",
+    "status": "ok",
+    "sha256": "dc841174824a29168edc3af6f1a7d49ce7c0791e66e463610a9441dbf5dc2437"
+  },
+  {
+    "id": "api:cppenum:ESJQPTier",
+    "name": "ESJQPTier",
+    "title": "ESJQPTier",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPTier.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPTier.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPTier.md",
+    "status": "ok",
+    "sha256": "0fd0b2225a322fa741829a7975104e2bc301285216cbfef65c073800d42c8939"
+  },
+  {
+    "id": "api:cppenum:ESJQPWritePlanOverrideMode",
+    "name": "ESJQPWritePlanOverrideMode",
+    "title": "ESJQPWritePlanOverrideMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPWritePlanOverrideMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPWritePlanOverrideMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPWritePlanOverrideMode.md",
+    "status": "ok",
+    "sha256": "0fa5e1507335e4823b6ddd655d0a4094ee832c9ed2bc18d92b4e9dbd2046b1d4"
+  },
+  {
+    "id": "api:cppenum:ESJQPWriteReportStatus",
+    "name": "ESJQPWriteReportStatus",
+    "title": "ESJQPWriteReportStatus",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPWriteReportStatus.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPWriteReportStatus.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPWriteReportStatus.md",
+    "status": "ok",
+    "sha256": "488d0a818cfa0130d2ba3534327b332813a7b05fc25669d05f270308137451c5"
+  },
+  {
+    "id": "api:cppenum:ESJQPWriteTarget",
+    "name": "ESJQPWriteTarget",
+    "title": "ESJQPWriteTarget",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESJQPWriteTarget.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESJQPWriteTarget.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESJQPWriteTarget.md",
+    "status": "ok",
+    "sha256": "16dbdccf270f08550eafd126e3d918fc6525cb42fdb933fbf74186443b0aa479"
   },
   {
     "id": "api:cppenum:ESLPCrossHair_WithValidation_Result",
@@ -53747,7 +55255,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ESTExtraVehicleType.md",
     "status": "ok",
-    "sha256": "500f231ca5d37d8536c13b45935ccc72e13f0637da6ed260b096b7e554bf490a"
+    "sha256": "d6a9d6f924865c499ee01ba434874053e6be645f5911184cbe76f60ce2e8183f"
   },
   {
     "id": "api:cppenum:ESTExtraVehicleUserState",
@@ -54088,6 +55596,19 @@
     "sha256": "fee2468beabab8ba7b667cb3666af5011c6133a493df5449632265c939c0d6d1"
   },
   {
+    "id": "api:cppenum:EScanMaterialShaderPlatform",
+    "name": "EScanMaterialShaderPlatform",
+    "title": "EScanMaterialShaderPlatform",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EScanMaterialShaderPlatform.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EScanMaterialShaderPlatform.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EScanMaterialShaderPlatform.md",
+    "status": "ok",
+    "sha256": "2df90ccba21fd11acb925232c9c1e44b9b1e99d570997a4f2ce9f2a9ccef481b"
+  },
+  {
     "id": "api:cppenum:EScanPropOperationType",
     "name": "EScanPropOperationType",
     "title": "EScanPropOperationType",
@@ -54372,6 +55893,19 @@
     "file": "documents/cppenum/EScannerGeneralOutType.md",
     "status": "ok",
     "sha256": "3a854674cd9979b1f28c99aad7b8f90ec4b80c9f44d8e6822a8e1f10459f5efe"
+  },
+  {
+    "id": "api:cppenum:EScannerGeneralSelectorType",
+    "name": "EScannerGeneralSelectorType",
+    "title": "EScannerGeneralSelectorType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EScannerGeneralSelectorType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EScannerGeneralSelectorType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EScannerGeneralSelectorType.md",
+    "status": "ok",
+    "sha256": "1a16d6cddd6376b0d8a79697d0a0bee90cbead4bdcd7e491be31c94073457491"
   },
   {
     "id": "api:cppenum:EScannerLODSelectorType",
@@ -54699,6 +56233,19 @@
     "sha256": "3e68fc88747face9b7c6369858ea6a146ea33a6e080f4e805bfc4a4673b069f8"
   },
   {
+    "id": "api:cppenum:EScannerSpawnCheckMode",
+    "name": "EScannerSpawnCheckMode",
+    "title": "EScannerSpawnCheckMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EScannerSpawnCheckMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EScannerSpawnCheckMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EScannerSpawnCheckMode.md",
+    "status": "ok",
+    "sha256": "96acd80cb1865fe0c5560d42cbdb145fdd5e737278b5c86567f9a3eadf917ae9"
+  },
+  {
     "id": "api:cppenum:EScannerTimeUnit",
     "name": "EScannerTimeUnit",
     "title": "EScannerTimeUnit",
@@ -54736,6 +56283,19 @@
     "file": "documents/cppenum/EScannerTriggerMode.md",
     "status": "ok",
     "sha256": "5aec9551a1d464d85868f447eaca2f31183bd453b2c6c4b41cbb042431444ed9"
+  },
+  {
+    "id": "api:cppenum:EScannerUVCoordinateMode",
+    "name": "EScannerUVCoordinateMode",
+    "title": "EScannerUVCoordinateMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EScannerUVCoordinateMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EScannerUVCoordinateMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EScannerUVCoordinateMode.md",
+    "status": "ok",
+    "sha256": "78cd0adab655d1cf7bf3794b5651a1d7b581d23bc4caccb13259f4f3b249f486"
   },
   {
     "id": "api:cppenum:ESceneCaptureCompositeMode",
@@ -55388,6 +56948,19 @@
     "sha256": "92876edc2d4306183c307447e5a11b786366bb74f5bf026e84a9f46b7e910131"
   },
   {
+    "id": "api:cppenum:EServerActionResult",
+    "name": "EServerActionResult",
+    "title": "EServerActionResult",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EServerActionResult.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EServerActionResult.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EServerActionResult.md",
+    "status": "ok",
+    "sha256": "0ce80055357b487ccc5fba1029d49843c44a16deff2dbd244e83f7019897b8f4"
+  },
+  {
     "id": "api:cppenum:EServerErrorCode",
     "name": "EServerErrorCode",
     "title": "EServerErrorCode",
@@ -55399,6 +56972,19 @@
     "file": "documents/cppenum/EServerErrorCode.md",
     "status": "ok",
     "sha256": "2f56a7ca9964399192699377fbb58d432f62155705921a65423a5f0d57c3f192"
+  },
+  {
+    "id": "api:cppenum:EServerMoveSmoothRetType",
+    "name": "EServerMoveSmoothRetType",
+    "title": "EServerMoveSmoothRetType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EServerMoveSmoothRetType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EServerMoveSmoothRetType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EServerMoveSmoothRetType.md",
+    "status": "ok",
+    "sha256": "fc451eed850e44e5d26bbd3f7268c63e159f94c599bee54e96122cc0d1adb4ce"
   },
   {
     "id": "api:cppenum:EServerTaskType",
@@ -55583,6 +57169,19 @@
     "sha256": "7b210f5349cca2d2afdd139fb9c963d231849705d433055042c27e3ac6546e2b"
   },
   {
+    "id": "api:cppenum:EShootEvent",
+    "name": "EShootEvent",
+    "title": "EShootEvent",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EShootEvent.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EShootEvent.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EShootEvent.md",
+    "status": "ok",
+    "sha256": "171cd5db2d9f7418e417fd2001f6303578b51c2995124ed26da411d7fbd1299c"
+  },
+  {
     "id": "api:cppenum:EShootIntervalVerifyFailedType",
     "name": "EShootIntervalVerifyFailedType",
     "title": "EShootIntervalVerifyFailedType",
@@ -55594,6 +57193,19 @@
     "file": "documents/cppenum/EShootIntervalVerifyFailedType.md",
     "status": "ok",
     "sha256": "239468471f97f51cef4388354f4c4a8d00213cca69c23ba9f360d7988eac32fc"
+  },
+  {
+    "id": "api:cppenum:EShootSide",
+    "name": "EShootSide",
+    "title": "EShootSide",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EShootSide.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EShootSide.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EShootSide.md",
+    "status": "ok",
+    "sha256": "ea4e2a244fb6da45b117519d67b341e0b185eed28b637146e88f0e6e96c5a4ee"
   },
   {
     "id": "api:cppenum:EShootTimeDataTransType",
@@ -56233,6 +57845,19 @@
     "sha256": "eefa26f9d10906a0a52d695264fce9ffb247853ff0f33c8a96b2f7c999ac05fc"
   },
   {
+    "id": "api:cppenum:ESkillButtonSensibilityType",
+    "name": "ESkillButtonSensibilityType",
+    "title": "ESkillButtonSensibilityType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESkillButtonSensibilityType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESkillButtonSensibilityType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESkillButtonSensibilityType.md",
+    "status": "ok",
+    "sha256": "bec3a57d8f3dd143ab789a4f66ac55d4e653d71de53952ca3bdea0a3f9a5809c"
+  },
+  {
     "id": "api:cppenum:ESkillCastType",
     "name": "ESkillCastType",
     "title": "ESkillCastType",
@@ -56555,7 +58180,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ESkipBulletNumVerifyMaskType.md",
     "status": "ok",
-    "sha256": "1c7c526ff27d75f8bb6ccb654bbf9c0a9984062230b0da028195ae6af6768ac9"
+    "sha256": "98dda2e7ba4813ef2340e446af1cdd37a50d130826e6b297599e5ac43ea0353a"
   },
   {
     "id": "api:cppenum:ESkipStartFireClipIDVerifyMaskType",
@@ -56815,7 +58440,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ESlotClickType.md",
     "status": "ok",
-    "sha256": "d50b7d141c3154243c470dd70ca29b9cdbd8b5cc6cbb8e8854085fa32de80a13"
+    "sha256": "73fe697a34aaeea6f1b96919045f2aab883b503f24e369cfceb586eaae378e67"
   },
   {
     "id": "api:cppenum:ESlotDisableShowType",
@@ -56842,6 +58467,19 @@
     "file": "documents/cppenum/ESlotInstallResult.md",
     "status": "ok",
     "sha256": "f1d90b0d0766b52ba04537be2d36a8c73861aa467b54a793e71617973465022e"
+  },
+  {
+    "id": "api:cppenum:ESlotPriority",
+    "name": "ESlotPriority",
+    "title": "ESlotPriority",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESlotPriority.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESlotPriority.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESlotPriority.md",
+    "status": "ok",
+    "sha256": "c78f4acbea8dcc98426d0944cce0e6ef7406641953316033a844e8dfefef5bde"
   },
   {
     "id": "api:cppenum:ESlotVisibilityCondition",
@@ -57559,6 +59197,19 @@
     "sha256": "9a21920af0e7a9901069ccb939efa867feab5e60b216d16bf7262592d10d4e6b"
   },
   {
+    "id": "api:cppenum:ESpreadingState",
+    "name": "ESpreadingState",
+    "title": "ESpreadingState",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESpreadingState.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESpreadingState.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESpreadingState.md",
+    "status": "ok",
+    "sha256": "a06d355a2aa99cb1e2a23cab1f0b75eca6632ea5b6ccddc480391dd7febcf7e0"
+  },
+  {
     "id": "api:cppenum:ESpriteCollisionMode",
     "name": "ESpriteCollisionMode",
     "title": "ESpriteCollisionMode",
@@ -57817,19 +59468,6 @@
     "file": "documents/cppenum/EStereoLayerType.md",
     "status": "ok",
     "sha256": "c73c061775c0ecc1aaab4d7ac0eee56fc4c79fad6ada1ff9b349e3be843bb4cb"
-  },
-  {
-    "id": "api:cppenum:EStoreId",
-    "name": "EStoreId",
-    "title": "EStoreId",
-    "kind": "cppenum",
-    "categories": [],
-    "json_path": "cppenum/detail/EStoreId.json",
-    "url": "https://developer.gp.qq.com/api/cppenum/detail/EStoreId.json",
-    "api_root": "https://developer.gp.qq.com/api/",
-    "file": "documents/cppenum/EStoreId.md",
-    "status": "ok",
-    "sha256": "daa974b1782776d77eaa33269262dfeaf156360a5ad26d76f6cd84888fdf3fae"
   },
   {
     "id": "api:cppenum:EStrategicApplyState",
@@ -58284,7 +59922,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ESwitchTableType.md",
     "status": "ok",
-    "sha256": "9e4e495dd0a4699b9396d53098d8d99507aa2ff98c449e663b139b2dd8ad71a9"
+    "sha256": "a2c0e5e66b200e9e29673de0eac2644c1f5ec21395c6d2a7cbaab90ea2307bb7"
   },
   {
     "id": "api:cppenum:ESwitchWeaponFlag",
@@ -59613,6 +61251,19 @@
     "sha256": "801a4d830d4e382ddb92daa358b2e4d08e75fc938d849a0eddfe0f7593ba5a4a"
   },
   {
+    "id": "api:cppenum:ETimeStampWindowMode",
+    "name": "ETimeStampWindowMode",
+    "title": "ETimeStampWindowMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ETimeStampWindowMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ETimeStampWindowMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ETimeStampWindowMode.md",
+    "status": "ok",
+    "sha256": "4a9a6cc3f2a8bec43afcff46faaf6ec42843367a4b79a2cd28d89321e97f3c1f"
+  },
+  {
     "id": "api:cppenum:ETimeStretchCurveMapping",
     "name": "ETimeStretchCurveMapping",
     "title": "ETimeStretchCurveMapping",
@@ -59691,6 +61342,19 @@
     "sha256": "b43d75e7edca995fc8cfa7582b422835891fdcdab6f8cfc0e1eb37b7edabfc2d"
   },
   {
+    "id": "api:cppenum:ETipHighPriorityInsertPolicy",
+    "name": "ETipHighPriorityInsertPolicy",
+    "title": "ETipHighPriorityInsertPolicy",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ETipHighPriorityInsertPolicy.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ETipHighPriorityInsertPolicy.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ETipHighPriorityInsertPolicy.md",
+    "status": "ok",
+    "sha256": "86a3b786940d6e530973291c5979df59bab34e99f62a3ba6145113ddadf56c9b"
+  },
+  {
     "id": "api:cppenum:ETipType",
     "name": "ETipType",
     "title": "ETipType",
@@ -59728,6 +61392,19 @@
     "file": "documents/cppenum/EToPlainTextMode.md",
     "status": "ok",
     "sha256": "41c750207dfa95dd85169287f87bb2fde5e08327383ae1a604a0a7595fc1eb8d"
+  },
+  {
+    "id": "api:cppenum:ETombBoxSkinValueType",
+    "name": "ETombBoxSkinValueType",
+    "title": "ETombBoxSkinValueType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ETombBoxSkinValueType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ETombBoxSkinValueType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ETombBoxSkinValueType.md",
+    "status": "ok",
+    "sha256": "4fc97dd6ce69fd49827f167fdb452f773277d56c6ff646fd7885de12391070ed"
   },
   {
     "id": "api:cppenum:EToolMenuInsertType",
@@ -60029,6 +61706,32 @@
     "sha256": "fb89c3ff790ee52e9051eb22af33685a7a02be8850c1c7d807c08ca48ddb4bce"
   },
   {
+    "id": "api:cppenum:ETraitEffectNetworkMode",
+    "name": "ETraitEffectNetworkMode",
+    "title": "ETraitEffectNetworkMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ETraitEffectNetworkMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ETraitEffectNetworkMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ETraitEffectNetworkMode.md",
+    "status": "ok",
+    "sha256": "c0e00fa17a50308caef9768d73fad12eb83999c6757fcf61b68a38a4e2ae26b2"
+  },
+  {
+    "id": "api:cppenum:ETraitTriggerMode",
+    "name": "ETraitTriggerMode",
+    "title": "ETraitTriggerMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ETraitTriggerMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ETraitTriggerMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ETraitTriggerMode.md",
+    "status": "ok",
+    "sha256": "4c9dfd456a650ebe3230809396acadb4c19981ef02863acef0ff99f7417e68c5"
+  },
+  {
     "id": "api:cppenum:ETrajectoryMoveState",
     "name": "ETrajectoryMoveState",
     "title": "ETrajectoryMoveState",
@@ -60118,6 +61821,19 @@
     "file": "documents/cppenum/ETransitionLogicType.md",
     "status": "ok",
     "sha256": "984fae18566131ad0d554ec13647c324f7b0f012dd269793ea68e1bda758a0a8"
+  },
+  {
+    "id": "api:cppenum:ETransitionPhase",
+    "name": "ETransitionPhase",
+    "title": "ETransitionPhase",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ETransitionPhase.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ETransitionPhase.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ETransitionPhase.md",
+    "status": "ok",
+    "sha256": "5259770a8bcf235fe97845d2fed3d2414a3fb7f03c7409f161a86c486ed3dcc4"
   },
   {
     "id": "api:cppenum:ETransitionType",
@@ -60835,6 +62551,19 @@
     "sha256": "b6429f1416553080776a1fc966cc94ef637cdbeeee778b9786d95bb3001cc18a"
   },
   {
+    "id": "api:cppenum:EUGCCommonDelegateType",
+    "name": "EUGCCommonDelegateType",
+    "title": "EUGCCommonDelegateType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCCommonDelegateType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCCommonDelegateType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCCommonDelegateType.md",
+    "status": "ok",
+    "sha256": "a0858531946761befe926c26afdf5b496029c850cb6ad9ac88e4c4b3ef359982"
+  },
+  {
     "id": "api:cppenum:EUGCCommonItemReason",
     "name": "EUGCCommonItemReason",
     "title": "EUGCCommonItemReason",
@@ -60845,7 +62574,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EUGCCommonItemReason.md",
     "status": "ok",
-    "sha256": "c81540e16b2b0ed85489ae6fe01311ae8bda2304b658ddb0f4c5eb20b027753d"
+    "sha256": "99b932de369286b08a704a3b2f34013a846f87f981921059394c8b4eb2095878"
   },
   {
     "id": "api:cppenum:EUGCCommonItemRepType",
@@ -60900,6 +62629,19 @@
     "sha256": "8c32dd35bcca5b2dbf7faf41a7f29cef2ba2f08c796755568729f8dc2fa28ecf"
   },
   {
+    "id": "api:cppenum:EUGCDamageNumberVisibility",
+    "name": "EUGCDamageNumberVisibility",
+    "title": "EUGCDamageNumberVisibility",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCDamageNumberVisibility.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCDamageNumberVisibility.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCDamageNumberVisibility.md",
+    "status": "ok",
+    "sha256": "decf0bddf254cc8ce4d0b65205f3065513ba2f681342f7815662a00c825eda13"
+  },
+  {
     "id": "api:cppenum:EUGCDeadDropType",
     "name": "EUGCDeadDropType",
     "title": "EUGCDeadDropType",
@@ -60939,6 +62681,19 @@
     "sha256": "2a7e783ff169d5f6b29ef25587608f7190c6167f371bd6103b0f696e4045958b"
   },
   {
+    "id": "api:cppenum:EUGCDynamicVarType",
+    "name": "EUGCDynamicVarType",
+    "title": "EUGCDynamicVarType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCDynamicVarType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCDynamicVarType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCDynamicVarType.md",
+    "status": "ok",
+    "sha256": "5763a64d9a49b9eff0227165905c8f56dcfef2cd2afca3e668fad86623f56c41"
+  },
+  {
     "id": "api:cppenum:EUGCEnemyHatredMaxDistanceType",
     "name": "EUGCEnemyHatredMaxDistanceType",
     "title": "EUGCEnemyHatredMaxDistanceType",
@@ -60976,6 +62731,45 @@
     "file": "documents/cppenum/EUGCExceptionVerbosity.md",
     "status": "ok",
     "sha256": "2b1906b15c3b783070a378fd0946ef460e9ddfb6842bdf0b25903f2b550e5424"
+  },
+  {
+    "id": "api:cppenum:EUGCFakePlayerAmmoEnoughType",
+    "name": "EUGCFakePlayerAmmoEnoughType",
+    "title": "EUGCFakePlayerAmmoEnoughType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCFakePlayerAmmoEnoughType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCFakePlayerAmmoEnoughType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCFakePlayerAmmoEnoughType.md",
+    "status": "ok",
+    "sha256": "55120261a1f8444c007dacbc764effd10cfacc7d39996b4824a16d177f10cd29"
+  },
+  {
+    "id": "api:cppenum:EUGCFakePlayerChooseEnemyStrategy",
+    "name": "EUGCFakePlayerChooseEnemyStrategy",
+    "title": "EUGCFakePlayerChooseEnemyStrategy",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCFakePlayerChooseEnemyStrategy.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCFakePlayerChooseEnemyStrategy.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCFakePlayerChooseEnemyStrategy.md",
+    "status": "ok",
+    "sha256": "4e17811d76af51cbac671736285ca7fe071d85addf09234e86920519edddd5e8"
+  },
+  {
+    "id": "api:cppenum:EUGCFakePlayerChooseEnemyType",
+    "name": "EUGCFakePlayerChooseEnemyType",
+    "title": "EUGCFakePlayerChooseEnemyType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCFakePlayerChooseEnemyType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCFakePlayerChooseEnemyType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCFakePlayerChooseEnemyType.md",
+    "status": "ok",
+    "sha256": "459ce0dc8769a12c98d5e367e1142ea7e0fbeed68d4ec08118929a2b430dc954"
   },
   {
     "id": "api:cppenum:EUGCFoliageDistribution",
@@ -61041,6 +62835,19 @@
     "file": "documents/cppenum/EUGCHatredType.md",
     "status": "ok",
     "sha256": "13bca05ab42a3ad9434da02e468c1f72111f63d4ebc1ef9c5d8589001efd9150"
+  },
+  {
+    "id": "api:cppenum:EUGCHealNumberVisibility",
+    "name": "EUGCHealNumberVisibility",
+    "title": "EUGCHealNumberVisibility",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCHealNumberVisibility.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCHealNumberVisibility.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCHealNumberVisibility.md",
+    "status": "ok",
+    "sha256": "a00fd7061314952beacbadeeee8cd4ce19326b05d9db6ccbe5d71af3210c754b"
   },
   {
     "id": "api:cppenum:EUGCItemChangeType",
@@ -61157,7 +62964,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EUGCMCustomBlockType.md",
     "status": "ok",
-    "sha256": "6d00cfa34f143f8643a10afb29e68373f530675217cf5ebed97f02ded6cbaca7"
+    "sha256": "22c472e4dd1e098a8812bbf54f808824db409e9b5fe3ec9ea35dc1280e01732d"
   },
   {
     "id": "api:cppenum:EUGCMDSWaitingExtraState",
@@ -61170,7 +62977,20 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EUGCMDSWaitingExtraState.md",
     "status": "ok",
-    "sha256": "1c01e84a2ef645349bb3fe5417611a0b95a65f74bd1c0154b03b787465e04c42"
+    "sha256": "f493c4a3782a917ea6dfe78cf42108e9af6c075aefa233dd6c71eee2ad837710"
+  },
+  {
+    "id": "api:cppenum:EUGCMEditModeStatus",
+    "name": "EUGCMEditModeStatus",
+    "title": "EUGCMEditModeStatus",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCMEditModeStatus.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMEditModeStatus.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCMEditModeStatus.md",
+    "status": "ok",
+    "sha256": "53d28d0a5828b3969ca0f3cadf862b21ab09c95d6db94b37bd32ff1101c3d076"
   },
   {
     "id": "api:cppenum:EUGCMInstigatorType",
@@ -61183,7 +63003,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EUGCMInstigatorType.md",
     "status": "ok",
-    "sha256": "5ad8d3cc8d866cdbaac0f91d40e432f7340b53283e9c4da6aebc7235c852e722"
+    "sha256": "c2817a57b8cc4d9859f8cd964828cce3e721fadc69fad8e6d27ba4bebc19c4b0"
   },
   {
     "id": "api:cppenum:EUGCMItemDecoratorParticleAttachMode",
@@ -61327,6 +63147,32 @@
     "file": "documents/cppenum/EUGCMSerializeType.md",
     "status": "ok",
     "sha256": "d67568f70b9016fa164af2fecced3be6b44fff8174348ed6ef26aaaf2cf77f8f"
+  },
+  {
+    "id": "api:cppenum:EUGCMSerializerKeepUUIDType",
+    "name": "EUGCMSerializerKeepUUIDType",
+    "title": "EUGCMSerializerKeepUUIDType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCMSerializerKeepUUIDType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMSerializerKeepUUIDType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCMSerializerKeepUUIDType.md",
+    "status": "ok",
+    "sha256": "00f72d6d737cc6a869455931f4a75f9108dc00b6b3b9eee5c48753e855b28949"
+  },
+  {
+    "id": "api:cppenum:EUGCMVVMConverterType",
+    "name": "EUGCMVVMConverterType",
+    "title": "EUGCMVVMConverterType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCMVVMConverterType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMVVMConverterType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCMVVMConverterType.md",
+    "status": "ok",
+    "sha256": "21037eee1507436b46e76e89c312327133fa2c4c6f93fbf65039f1221498324b"
   },
   {
     "id": "api:cppenum:EUGCM_ActorSelectType",
@@ -61862,6 +63708,19 @@
     "sha256": "710f2ec58164bd4097888d8fe77399287a6a799e33afe3c4d16a5ffbbe726a98"
   },
   {
+    "id": "api:cppenum:EUGCMobileOrientedBoxResult",
+    "name": "EUGCMobileOrientedBoxResult",
+    "title": "EUGCMobileOrientedBoxResult",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCMobileOrientedBoxResult.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMobileOrientedBoxResult.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCMobileOrientedBoxResult.md",
+    "status": "ok",
+    "sha256": "d8a92ab35f15804a540a1573f8471d584a0029501f5c7dc14634438b8424f57c"
+  },
+  {
     "id": "api:cppenum:EUGCMobilePendulumAxis",
     "name": "EUGCMobilePendulumAxis",
     "title": "EUGCMobilePendulumAxis",
@@ -62250,6 +64109,19 @@
     "file": "documents/cppenum/EUGCStateDealMethod.md",
     "status": "ok",
     "sha256": "b7a8e39397fe1c421694c4fe2f864e435eb6f07fcae69f050fc8f7acaa4defe4"
+  },
+  {
+    "id": "api:cppenum:EUGCTakePhotoType",
+    "name": "EUGCTakePhotoType",
+    "title": "EUGCTakePhotoType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCTakePhotoType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCTakePhotoType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCTakePhotoType.md",
+    "status": "ok",
+    "sha256": "cb6c48e0814b6a78e5be9ae0fc7091b79b8fc8e73d4941bffd86270ba7d1f892"
   },
   {
     "id": "api:cppenum:EUGCTaskCustomWeekResetType",
@@ -62822,6 +64694,162 @@
     "file": "documents/cppenum/EUserWidgetNameEqualPolitics.md",
     "status": "ok",
     "sha256": "f3d174cab76f1e149c2a45334c8ed2e7a9758cc320bf0db684c6c689a7bd7a3e"
+  },
+  {
+    "id": "api:cppenum:EVFXBakeStatus",
+    "name": "EVFXBakeStatus",
+    "title": "EVFXBakeStatus",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EVFXBakeStatus.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EVFXBakeStatus.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EVFXBakeStatus.md",
+    "status": "ok",
+    "sha256": "73bdf361754e6e29175ddd90059428da28cdfc298374fc331a1aa928c01d8dd2"
+  },
+  {
+    "id": "api:cppenum:EVFXBoundsViewDirection",
+    "name": "EVFXBoundsViewDirection",
+    "title": "EVFXBoundsViewDirection",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EVFXBoundsViewDirection.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EVFXBoundsViewDirection.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EVFXBoundsViewDirection.md",
+    "status": "ok",
+    "sha256": "dfd8854948ae4325a75c5d4d13cff76666286b12c03a84a7da22f84657ff4462"
+  },
+  {
+    "id": "api:cppenum:EVFXFlipbookAlignmentQuality",
+    "name": "EVFXFlipbookAlignmentQuality",
+    "title": "EVFXFlipbookAlignmentQuality",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EVFXFlipbookAlignmentQuality.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EVFXFlipbookAlignmentQuality.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EVFXFlipbookAlignmentQuality.md",
+    "status": "ok",
+    "sha256": "683a7636c839cb61dd956ea9e86e66b9da5e378680e92b033095f734953f06ce"
+  },
+  {
+    "id": "api:cppenum:EVFXFlipbookBackgroundMode",
+    "name": "EVFXFlipbookBackgroundMode",
+    "title": "EVFXFlipbookBackgroundMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EVFXFlipbookBackgroundMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EVFXFlipbookBackgroundMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EVFXFlipbookBackgroundMode.md",
+    "status": "ok",
+    "sha256": "60358a83e8a8b009f123cd23449d0e618ecfcdc0573083d2981e0c5928aa8fd9"
+  },
+  {
+    "id": "api:cppenum:EVFXFlipbookBakeMode",
+    "name": "EVFXFlipbookBakeMode",
+    "title": "EVFXFlipbookBakeMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EVFXFlipbookBakeMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EVFXFlipbookBakeMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EVFXFlipbookBakeMode.md",
+    "status": "ok",
+    "sha256": "87814bdbe022a501b34675b03c0eb87f49af8215d6c1782854745a8342f93b00"
+  },
+  {
+    "id": "api:cppenum:EVFXFlipbookBillboardFacingMode",
+    "name": "EVFXFlipbookBillboardFacingMode",
+    "title": "EVFXFlipbookBillboardFacingMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EVFXFlipbookBillboardFacingMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EVFXFlipbookBillboardFacingMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EVFXFlipbookBillboardFacingMode.md",
+    "status": "ok",
+    "sha256": "43f20ba7b8d51ca90ae9a1e37cc034741a5e3262b9a4c1fc7682ba76c470ba03"
+  },
+  {
+    "id": "api:cppenum:EVFXFlipbookCameraMode",
+    "name": "EVFXFlipbookCameraMode",
+    "title": "EVFXFlipbookCameraMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EVFXFlipbookCameraMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EVFXFlipbookCameraMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EVFXFlipbookCameraMode.md",
+    "status": "ok",
+    "sha256": "26fd4a517746eb881467f957084b2c1afe61b1132af2a6ce0712d9ba470293af"
+  },
+  {
+    "id": "api:cppenum:EVFXFlipbookOctaBlendMode",
+    "name": "EVFXFlipbookOctaBlendMode",
+    "title": "EVFXFlipbookOctaBlendMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EVFXFlipbookOctaBlendMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EVFXFlipbookOctaBlendMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EVFXFlipbookOctaBlendMode.md",
+    "status": "ok",
+    "sha256": "0a2a0aa60e089907ef12074f3f7f17dc3c670650b90d0b948c8ffa8643082973"
+  },
+  {
+    "id": "api:cppenum:EVFXFlipbookOctahedralDebugVisualizationMode",
+    "name": "EVFXFlipbookOctahedralDebugVisualizationMode",
+    "title": "EVFXFlipbookOctahedralDebugVisualizationMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EVFXFlipbookOctahedralDebugVisualizationMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EVFXFlipbookOctahedralDebugVisualizationMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EVFXFlipbookOctahedralDebugVisualizationMode.md",
+    "status": "ok",
+    "sha256": "49b237b473e6b40ad49ed26891e395b9cf22b17854531b8d48f2bf3124e514c9"
+  },
+  {
+    "id": "api:cppenum:EVFXFlipbookPlaybackMode",
+    "name": "EVFXFlipbookPlaybackMode",
+    "title": "EVFXFlipbookPlaybackMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EVFXFlipbookPlaybackMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EVFXFlipbookPlaybackMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EVFXFlipbookPlaybackMode.md",
+    "status": "ok",
+    "sha256": "c352a23dd51569fd3b5899da0e480429cc8fe7318d04a962414b5604184d1ff7"
+  },
+  {
+    "id": "api:cppenum:EVFXFlipbookPlaybackState",
+    "name": "EVFXFlipbookPlaybackState",
+    "title": "EVFXFlipbookPlaybackState",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EVFXFlipbookPlaybackState.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EVFXFlipbookPlaybackState.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EVFXFlipbookPlaybackState.md",
+    "status": "ok",
+    "sha256": "6949fdc97a9d2e3476f60d28a80e6e891ca9598d5b81e56bb50f5c7b90342e7a"
+  },
+  {
+    "id": "api:cppenum:EVFXFlipbookViewMode",
+    "name": "EVFXFlipbookViewMode",
+    "title": "EVFXFlipbookViewMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EVFXFlipbookViewMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EVFXFlipbookViewMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EVFXFlipbookViewMode.md",
+    "status": "ok",
+    "sha256": "eb9703916b4ed5c87fe09ccd7f442038062e05584161e390f3b18ad8c0f03cb8"
   },
   {
     "id": "api:cppenum:EVFXSamplingMode",
@@ -63432,7 +65460,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EVehicleEffectParamType.md",
     "status": "ok",
-    "sha256": "3079761306986dee4369ea61b7c2221739ba969f056d8341d2fb6490f459c477"
+    "sha256": "716e538b17076fe277020597a275cf14a8f837db5a288f99838e7031b34bd6f8"
   },
   {
     "id": "api:cppenum:EVehicleFailReason",
@@ -64004,7 +66032,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EViewLimitType.md",
     "status": "ok",
-    "sha256": "761be06baa539d013b10014d8c63eff16c3f2c27d6a0c9c312f831b2f055b022"
+    "sha256": "b27f1e5eb79d253c6effaa1b4c9ac5fad4d988000f0d0722f6ccce4803ae3b91"
   },
   {
     "id": "api:cppenum:EViewModeIndex",
@@ -64306,6 +66334,45 @@
     "sha256": "4b54ac9948f29e2d40bf3c193e16d98eb154c80a5da239f7085a47aabff2ed8a"
   },
   {
+    "id": "api:cppenum:EWarDogAvatarAdditionalDataType",
+    "name": "EWarDogAvatarAdditionalDataType",
+    "title": "EWarDogAvatarAdditionalDataType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EWarDogAvatarAdditionalDataType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EWarDogAvatarAdditionalDataType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EWarDogAvatarAdditionalDataType.md",
+    "status": "ok",
+    "sha256": "8d52f92c50f24495cd5d502e5de32fc1634cff38099f0c92ceab68acdf23a7b5"
+  },
+  {
+    "id": "api:cppenum:EWarDogAvatarSlotType",
+    "name": "EWarDogAvatarSlotType",
+    "title": "EWarDogAvatarSlotType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EWarDogAvatarSlotType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EWarDogAvatarSlotType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EWarDogAvatarSlotType.md",
+    "status": "ok",
+    "sha256": "070b79735862747dd6f4c77742f085159476f982552a17adbeb101ad5c2703b8"
+  },
+  {
+    "id": "api:cppenum:EWarDogAvatarType",
+    "name": "EWarDogAvatarType",
+    "title": "EWarDogAvatarType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EWarDogAvatarType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EWarDogAvatarType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EWarDogAvatarType.md",
+    "status": "ok",
+    "sha256": "267b38eda05f53c78041578761af0f61d06497077ddcc1a014f30c2fe81dfa96"
+  },
+  {
     "id": "api:cppenum:EWarDogCommandType",
     "name": "EWarDogCommandType",
     "title": "EWarDogCommandType",
@@ -64368,7 +66435,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EWarDogSearchState.md",
     "status": "ok",
-    "sha256": "4bfd2bffcfee390aa061da0157d6c4db87f94f288f3c51cc918a9ae3f4373843"
+    "sha256": "322d6baeb163eccc9ad307c75450f47e84dd494d09dc8a44fcd97e810d4a8601"
   },
   {
     "id": "api:cppenum:EWarDogVehicleState",
@@ -64670,6 +66737,19 @@
     "sha256": "989638715c0fae47951b47ee2eadb0841bdb70281ec87a6b7a0b6dabd2965559"
   },
   {
+    "id": "api:cppenum:EWeaponInspectAnimType",
+    "name": "EWeaponInspectAnimType",
+    "title": "EWeaponInspectAnimType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EWeaponInspectAnimType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EWeaponInspectAnimType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EWeaponInspectAnimType.md",
+    "status": "ok",
+    "sha256": "d45f952d25a37c307555cc54ab26d25670a2ecfb2184da5489d85859752eae4c"
+  },
+  {
     "id": "api:cppenum:EWeaponMeshType",
     "name": "EWeaponMeshType",
     "title": "EWeaponMeshType",
@@ -64709,6 +66789,19 @@
     "sha256": "9b7c47065f68ee9821b131f29e95001d8dcc3215e83c0379080e850978ad4cbc"
   },
   {
+    "id": "api:cppenum:EWeaponParticlePos",
+    "name": "EWeaponParticlePos",
+    "title": "EWeaponParticlePos",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EWeaponParticlePos.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EWeaponParticlePos.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EWeaponParticlePos.md",
+    "status": "ok",
+    "sha256": "37a8c7166ed7f3b251bf879f6b10870adaba1044906880f66d0d2d06e47aaf26"
+  },
+  {
     "id": "api:cppenum:EWeaponPendantSocketType",
     "name": "EWeaponPendantSocketType",
     "title": "EWeaponPendantSocketType",
@@ -64720,6 +66813,19 @@
     "file": "documents/cppenum/EWeaponPendantSocketType.md",
     "status": "ok",
     "sha256": "edf8e2fe69533e512b62ad87bb253ca63c334f56d7ac0245b4f650525d87936a"
+  },
+  {
+    "id": "api:cppenum:EWeaponPerfTier",
+    "name": "EWeaponPerfTier",
+    "title": "EWeaponPerfTier",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EWeaponPerfTier.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EWeaponPerfTier.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EWeaponPerfTier.md",
+    "status": "ok",
+    "sha256": "e55f6fb98c5aa65562b92dc7e3614a4398f43165659c241f8e0196955179a4ae"
   },
   {
     "id": "api:cppenum:EWeaponReloadMethod",
@@ -65333,6 +67439,32 @@
     "sha256": "87a2921fd2f1dc0af8fb039b21de138eeb4aaafc931ad54923776fec8cefc61a"
   },
   {
+    "id": "api:cppenum:EWpnInspectEnd",
+    "name": "EWpnInspectEnd",
+    "title": "EWpnInspectEnd",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EWpnInspectEnd.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EWpnInspectEnd.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EWpnInspectEnd.md",
+    "status": "ok",
+    "sha256": "a8a64429fa972ad2c7b06d3a9c444b2f6bf2d364cf6e588a44381f42cbae7545"
+  },
+  {
+    "id": "api:cppenum:EWpnInspectMeshType",
+    "name": "EWpnInspectMeshType",
+    "title": "EWpnInspectMeshType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EWpnInspectMeshType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EWpnInspectMeshType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EWpnInspectMeshType.md",
+    "status": "ok",
+    "sha256": "4e80d1feba386dfcdc697d8f275e3fbe03b7b08cf1b2875f4e4162252a123dda"
+  },
+  {
     "id": "api:cppenum:EWrapperMeshLoadType",
     "name": "EWrapperMeshLoadType",
     "title": "EWrapperMeshLoadType",
@@ -65395,7 +67527,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EZoneType.md",
     "status": "ok",
-    "sha256": "6f4cfd5ee7e7a5d680c439da9f2f4053db72a9ed31727dc3e8c954abaf3a1d5f"
+    "sha256": "1cc13de17de96707a69a3cb6515482d1bf29c69a7ab66e39a9de149333a59ffb"
   },
   {
     "id": "api:cppenum:E_AnimNotifyState_AdaptType",
@@ -65606,6 +67738,45 @@
     "sha256": "26b99e3dfe1b4751336b56382151fdd7963831521f349bc3ee0a2378f17ccc76"
   },
   {
+    "id": "api:cppenum:FDataDrivenEAttrOperator",
+    "name": "FDataDrivenEAttrOperator",
+    "title": "FDataDrivenEAttrOperator",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/FDataDrivenEAttrOperator.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/FDataDrivenEAttrOperator.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/FDataDrivenEAttrOperator.md",
+    "status": "ok",
+    "sha256": "b99307849d34ef2b929fa74326946c3cfeb50059b22bad7a8b44358080403b88"
+  },
+  {
+    "id": "api:cppenum:FDataDrivenEAttrOperator_DoChange",
+    "name": "FDataDrivenEAttrOperator_DoChange",
+    "title": "FDataDrivenEAttrOperator_DoChange",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/FDataDrivenEAttrOperator_DoChange.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/FDataDrivenEAttrOperator_DoChange.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/FDataDrivenEAttrOperator_DoChange.md",
+    "status": "ok",
+    "sha256": "aa9fa15c11c8c98ce4f7cc0cd110dd9fe0a3592fcb527e49893aa9aedd87527e"
+  },
+  {
+    "id": "api:cppenum:FDataDrivenEMovieScenePESkillTaskLifeMode",
+    "name": "FDataDrivenEMovieScenePESkillTaskLifeMode",
+    "title": "FDataDrivenEMovieScenePESkillTaskLifeMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/FDataDrivenEMovieScenePESkillTaskLifeMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/FDataDrivenEMovieScenePESkillTaskLifeMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/FDataDrivenEMovieScenePESkillTaskLifeMode.md",
+    "status": "ok",
+    "sha256": "5cbadd635f454c55342522bff0ea1a83143e984b63cb79b41dc1dc3b896994b3"
+  },
+  {
     "id": "api:cppenum:FDriverAttachmentType",
     "name": "FDriverAttachmentType",
     "title": "FDriverAttachmentType",
@@ -65786,6 +67957,19 @@
     "file": "documents/cppenum/FTeslaModelStatusType.md",
     "status": "ok",
     "sha256": "b31a39160288038e0c540f8f918b3aed6bd6468922553aa24e8ced544e5139f7"
+  },
+  {
+    "id": "api:cppenum:FUGCItemCustomInstanceDataValueType",
+    "name": "FUGCItemCustomInstanceDataValueType",
+    "title": "FUGCItemCustomInstanceDataValueType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/FUGCItemCustomInstanceDataValueType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/FUGCItemCustomInstanceDataValueType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/FUGCItemCustomInstanceDataValueType.md",
+    "status": "ok",
+    "sha256": "3c239177924beed49e2a11a139f87ae7a3c9c09e943723e49b0f12141a21f2ab"
   },
   {
     "id": "api:cppenum:FUGCMobileMotionStartStopState",
@@ -66084,7 +68268,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/NativeGameAttributeType.md",
     "status": "ok",
-    "sha256": "f0e4486b5f3b75d272471717bf50701aa280f5af2f91fba903f60c89b99aea96"
+    "sha256": "4c2976b4c1bccd436202d183c336dc5969b7fe006129934e3b614f7bef9c9187"
   },
   {
     "id": "api:cppenum:ObjectMovingType",
@@ -66266,7 +68450,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/QuickChatType.md",
     "status": "ok",
-    "sha256": "ed7a72aba17e04e41c3bcd24a6275cc0a09321fa3a2e8b6cc55e3c875f11307f"
+    "sha256": "15ee28c13f49e1bbec08955ef193722cf239e76515fd0ecae699af91edcb30fa"
   },
   {
     "id": "api:cppenum:RelevantToOwnerOwnerType",
@@ -66448,7 +68632,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/TextureGroup.md",
     "status": "ok",
-    "sha256": "b4b83c85dfe9d5945f8568eb92bcfd18aeffb501b51bcfae777e39fcc1ba5b2b"
+    "sha256": "23ca6bf566ac2996bffb42e8100518122d76f731ba8e0db59d2906b85202ee37"
   },
   {
     "id": "api:cppenum:TextureMipGenSettings",
@@ -66527,6 +68711,19 @@
     "file": "documents/cppenum/UDeviceSensorType.md",
     "status": "ok",
     "sha256": "854e2f5b68602b7d7ec7b1d854945920be3ef664871ce81857f3101c2a4f5ea0"
+  },
+  {
+    "id": "api:cppenum:UGCAsyncUtility.AsyncErrorType",
+    "name": "UGCAsyncUtility.AsyncErrorType",
+    "title": "UGCAsyncUtility.AsyncErrorType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/UGCAsyncUtility.AsyncErrorType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/UGCAsyncUtility.AsyncErrorType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/UGCAsyncUtility.AsyncErrorType.md",
+    "status": "ok",
+    "sha256": "3caf4b7032f86a27b3f248e90960bf0c128cfe9e1f8282ca639dd78b38bc459a"
   },
   {
     "id": "api:cppenum:UGetActorStrategy",
@@ -67735,7 +69932,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FAnimNode_CompnentPoseBase.md",
     "status": "ok",
-    "sha256": "09ebc7ff3f2c19bacd5bd59b140aac91b4fc599bb2c8eb8fd8eb614451014f8f"
+    "sha256": "16a73bddbc7e6b71879e7082e2bfb716246a3ed909df861abd407e4309f5e99a"
   },
   {
     "id": "api:cppstruct:FAnimNode_Constraint",
@@ -67969,7 +70166,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FAnimNode_LayeredBoneBlend.md",
     "status": "ok",
-    "sha256": "70735492e6a8c1005ebb88931252d5f7515bd378e83649cf9a7a413b9dc162a6"
+    "sha256": "befbb5b6afc700d4ccc4a1798db25fb6808e71503ca88dd2fae173d1bd475980"
   },
   {
     "id": "api:cppstruct:FAnimNode_LegIK",
@@ -68385,7 +70582,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FAnimNode_SkeletalControlBase.md",
     "status": "ok",
-    "sha256": "b8accd75680157f7c0833d0b1dd12b78a438e0b0e78c04ce1adb0d6e96a9020b"
+    "sha256": "a61a0f6c282b56c08b86a3af1242447954da9eea7dfa1e49c053877f9fd69261"
   },
   {
     "id": "api:cppstruct:FAnimNode_Slot",
@@ -68463,7 +70660,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FAnimNode_SubInstance.md",
     "status": "ok",
-    "sha256": "986ff7750bb735e3b568316e4bb0c816a356b80b12249b50517991312d6a21d2"
+    "sha256": "c3948a8b1d10fee4aa9c3e3c1f9f8b88d44c33d7ff1e3e7a556cd473d41b88bf"
   },
   {
     "id": "api:cppstruct:FAnimNode_Trail",
@@ -68788,7 +70985,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FAnimUpdateRateParameters.md",
     "status": "ok",
-    "sha256": "99d7b847534f460e402f1ae7e739fbff20bff11e79dce9e1e206aeb8274f80bc"
+    "sha256": "a1a3b3ff3fc92dfcf37bec139a8554c1a184f494dffd2b707245ee95821d2694"
   },
   {
     "id": "api:cppstruct:FAnimationActiveTransitionEntry",
@@ -68814,7 +71011,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FAnimationEventBinding.md",
     "status": "ok",
-    "sha256": "19dbf7bf3ffbc226501661a8a45bbde336a7503f8590d0fc62f2c51651d7f5e5"
+    "sha256": "7ac74cdb2935a83aec5d4c1719b218c9bb4b3382c61f350310e21a9f37f86f1d"
   },
   {
     "id": "api:cppstruct:FAnimationGroupReference",
@@ -70725,7 +72922,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FCollisionResponseContainer.md",
     "status": "ok",
-    "sha256": "533746be99ce4ca8f1b143a34d937f2df83beb8d0c97642420739e6b97d6d792"
+    "sha256": "3aa4435aba661f0c5a362b2d129ccc486d9224b96b34c67088baf741073a3339"
   },
   {
     "id": "api:cppstruct:FCollisionResponseTemplate",
@@ -71414,7 +73611,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FDataDrivenPESkillAttributeItem.md",
     "status": "ok",
-    "sha256": "0533dfe34ceba345f316d286f9463ecf693e8439d08caa43ee5d01f5284bc861"
+    "sha256": "b42857b68db0a2e420e4d5545f67f74774a71b637e08eccede31f648d96658f3"
   },
   {
     "id": "api:cppstruct:FDataDrivenPESkillCDWapper",
@@ -71427,7 +73624,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FDataDrivenPESkillCDWapper.md",
     "status": "ok",
-    "sha256": "59f26d080e4c2980c024489ea0b5663c94262f1cad0b0da592f1804b581ec925"
+    "sha256": "51a335422d0028cac00f41c67dd223b6efc84d3c663d931baddc12aa97069d76"
   },
   {
     "id": "api:cppstruct:FDataDrivenPESkillConsume",
@@ -73130,7 +75327,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FHitResult.md",
     "status": "ok",
-    "sha256": "d9563c22cddaa53326ade8d75ee7ca717148ba9252542d29a9a39731154174fc"
+    "sha256": "211f6a8bd61168039db5f9d17b99f30c1bf2f86665472e73059dc5614cb02e81"
   },
   {
     "id": "api:cppstruct:FHyperlinkStyle",
@@ -73338,7 +75535,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FInputChord.md",
     "status": "ok",
-    "sha256": "ebf93800ed8da1e48409ecc89df39970f4eab5e7593a2d930212a699411434ea"
+    "sha256": "6fa0e88e81582b6fe26d1e87b0da5475ad771628d01d1b8eb360b0f68fc6a3c6"
   },
   {
     "id": "api:cppstruct:FInputScaleBias",
@@ -74404,7 +76601,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FLightingChannels.md",
     "status": "ok",
-    "sha256": "d2ae92c9d7dfc9acf528de2dfbe825519e25ed633dae8614e4a5e4b95387fb19"
+    "sha256": "e33fddb7f203c6c2221d209c51555689d78b7dacc90aa286039350c536f5d95f"
   },
   {
     "id": "api:cppstruct:FLightmassDebugOptions",
@@ -74417,7 +76614,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FLightmassDebugOptions.md",
     "status": "ok",
-    "sha256": "aa7e27f7d1eaa7b42511861e2c9c3662c8d145ce31b644c4d44d652770190fbf"
+    "sha256": "d26e1ef5a197fa457839e80716c27349cddd9cd897cbbc1dc97845008df14965"
   },
   {
     "id": "api:cppstruct:FLightmassDirectionalLightSettings",
@@ -74482,7 +76679,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FLightmassPrimitiveSettings.md",
     "status": "ok",
-    "sha256": "2b768ff027d2a0b8c6d3fb3570cc3c8d8f0bd12163a205f615f73bc7886d0383"
+    "sha256": "06b7b5e4368fb783a80e5b5f4f4ae20733e06377ccb62db5d8cdfe4a3ae05822"
   },
   {
     "id": "api:cppstruct:FLightmassWorldInfoSettings",
@@ -74560,7 +76757,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FLocalizedSubtitle.md",
     "status": "ok",
-    "sha256": "d600d100c5b534645c0e55d9f2323436c689750a280932f3cb40c9b7c4978253"
+    "sha256": "a8a8df3c46d73d9df8774f6d915c961779c4f459732fddb5ee69393d1af1a395"
   },
   {
     "id": "api:cppstruct:FLocationBoneSocketInfo",
@@ -75028,7 +77225,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FMeshMergingSettings.md",
     "status": "ok",
-    "sha256": "f0a7f212c5b5f6719ec253ec33c37b4bae5333352f773410fb686e66c4fc3e22"
+    "sha256": "62b23bcc077cbef5261df6c04c39695e84269728fd1f078d69c0a7d4f1504a61"
   },
   {
     "id": "api:cppstruct:FMeshPerLODBiasArray",
@@ -75054,7 +77251,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FMeshProxySettings.md",
     "status": "ok",
-    "sha256": "bae05fe1eba373d0a49ac11e71426722f58b8d00ca88839fc2be73b6de04abb2"
+    "sha256": "549a3581938e0c4fb09acc4be8e2100822d1cfe9b67fbf2a4717205049e352f2"
   },
   {
     "id": "api:cppstruct:FMeshReductionSettings",
@@ -75262,7 +77459,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FMovieScene3DTransformTemplateData.md",
     "status": "ok",
-    "sha256": "14711826af5415d048d6a3fd16ae1b28c7ecadbfa1355d35bd9bf47abf8a724d"
+    "sha256": "fa275ce5bddd1321ed8478e306d5b2043ef1f668ec171c1cdb65b6448bec6e45"
   },
   {
     "id": "api:cppstruct:FMovieSceneBinding",
@@ -75795,7 +77992,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FMovieSceneSkeletalAnimationParams.md",
     "status": "ok",
-    "sha256": "b3ce659c234fa19f0717e9c382b77a8629fd33d50c3064f1617a4cf63d477c29"
+    "sha256": "8ae3c34ad92f83e7de8d2d498f943fba75c0cd5fbcd9bcbec1105fa88ef6d9d3"
   },
   {
     "id": "api:cppstruct:FMovieSceneSkeletalAnimationSectionTemplate",
@@ -76731,7 +78928,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FPacketSimulationSettings.md",
     "status": "ok",
-    "sha256": "333878dcb1f78f01fc7e7d711a1ff3725731fdbc5943c6b12f96dda1f3262036"
+    "sha256": "b524793e4972245a759ec7a67126f33c69cda5db68ffc24d295d221f9dfc18d8"
   },
   {
     "id": "api:cppstruct:FPaintedVertex",
@@ -77875,7 +80072,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FRigidBodyErrorCorrection.md",
     "status": "ok",
-    "sha256": "c1b3776fd172e63fbf377f4c841ad2638dd096ffb0e562a6537771c7bb4dd0ef"
+    "sha256": "aaf6945e6d27c74ab71a818c32e88bbc3247289f716407ed29b6f289a7283d0a"
   },
   {
     "id": "api:cppstruct:FRigidBodyErrorCorrectionNew",
@@ -77901,7 +80098,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FRigidBodyState.md",
     "status": "ok",
-    "sha256": "456bd3b180536e7d870eadc5b6e41460d35307d0f16339533326e0101b01cee0"
+    "sha256": "1ed122d7a9725abb516c657c60362f24c4137979b2c5759417dd197d8c0905f5"
   },
   {
     "id": "api:cppstruct:FRollbackNetStartupActorInfo",
@@ -78473,7 +80670,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FSimplygonMaterialLODSettings.md",
     "status": "ok",
-    "sha256": "ca6ea1826730abbf114edc47d7f0fbcbb2de2cc44ad39f0f853cf321e4282858"
+    "sha256": "0a6a8ec5af1817cb2353c06a7fb2a96c035d7c79d8f1663d28ec381d4f78e0aa"
   },
   {
     "id": "api:cppstruct:FSimplygonRemeshingSettings",
@@ -80410,7 +82607,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FUGCGenerateDropItemInfo.md",
     "status": "ok",
-    "sha256": "ef6414c5d4df90247a46da27ea6a8f64b8055d9e6ac3954cc520a65911370997"
+    "sha256": "51d2708f0708b09c6363a8b7315ed2ff4e3ed6b76ae6cbece1347c2dc13a1ac7"
   },
   {
     "id": "api:cppstruct:FUGCItemSpawnerInfo",
@@ -80592,7 +82789,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FUGCRankingListData.md",
     "status": "ok",
-    "sha256": "197728ef38f871510ce068633b6ef522ecc21f305a4464d5d0d344fe14d529c5"
+    "sha256": "ac93951a63d8461c24efc1b1b2fddb22dda312c5d2b01ec10d860de486e38560"
   },
   {
     "id": "api:cppstruct:FUGCSpawnActorNumLimitCfg",
@@ -80657,7 +82854,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FUserDetailSetting.md",
     "status": "ok",
-    "sha256": "98061fff667a4e9e15a1f8132c095fddcc5ec77327aed57175885f1472117ac4"
+    "sha256": "6b2bcd0379438b8fa36d66c864ac705a03f074bb7bf125307fe1bf1f4bdca3c0"
   },
   {
     "id": "api:cppstruct:FUserRefStyleInfo",
@@ -80683,7 +82880,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FUserWidgetRefInfo.md",
     "status": "ok",
-    "sha256": "c250b5c4b44274e47b9b789e7c57097751ef8d28d6685e4aa7a38284663ff8aa"
+    "sha256": "cb03e6e153572932a42638787d6e10ea0609ee6efb7872ee0ecbd1e476957869"
   },
   {
     "id": "api:cppstruct:FUserWidgetStyleInfo",
@@ -81177,7 +83374,7 @@
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FWorldRegionManager.md",
     "status": "ok",
-    "sha256": "d2a544325d41cd1f7d8b8c30204e13dbbe0b0a7c62ee51b5c99b560669dfaf40"
+    "sha256": "05dd12321cc36329fb0afc1c0b2b164805ff315d81dfce22d35862a23fea34db"
   },
   {
     "id": "api:cppstruct:FWorldTileExtraInfo",

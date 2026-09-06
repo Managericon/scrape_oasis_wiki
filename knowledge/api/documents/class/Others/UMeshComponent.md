@@ -30,6 +30,7 @@ MeshComponent is an abstract base for any component that is an instance of a ren
 | `bUseOverlayMaterials` | `bool` | Whether to render overlay materials. (Indexed or not) |
 | `OverlayMaterialMaxDrawDistance` | `float` | The max draw distance for overlay material. A distance of 0 indicates that overlay will be culled using primitive max distance. |
 | `bIsEnableRetrieveDefaultMat` | `bool` | - |
+| `bDisableLODBiasExt` | `uint8` | - |
 
 ## Functions
 
@@ -442,6 +443,44 @@ Set all occurrences of Vector Material Parameters with ParameterName in the set 
 |---|---|---|
 | `ParameterName` | `FName` | - |
 | `ParameterValue` | `FVector` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `UpdateLodBiasByDeviceLevel`
+
+```text
+UpdateLodBiasByDeviceLevel() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `UpdateLodBiasManually`
+
+```text
+UpdateLodBiasManually() -> void
+```
+
+绕过 ShouldUpdateLODBiasExt 闸门、用于手动刷新
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ResetLODBias`
+
+```text
+ResetLODBias() -> void
+```
 
 **Returns**
 

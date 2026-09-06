@@ -60,6 +60,7 @@ Actor is the base class for an Object that can be placed or spawned in a level.
 | `Owner` | `AActor *` | Owner of this Actor, used primarily for replication (bNetUseOwnerRelevancy & bOnlyRelevantToOwner) and visibility (PrimitiveComponent bOwnerNoSee and bOnlyOwnerSee)<br>	  @see SetOwner(), GetOwner() |
 | `bReplicateMovement` | `uint8` | If true, replicate movementlocation related properties.<br>	  Actor must also be set to replicate.<br>	  @see SetReplicates() |
 | `bActorEnableCollision` | `uint8` | Enables any collision on this actor.<br>	  @see SetActorEnableCollision(), GetActorEnableCollision() |
+| `bDoNotNetAsyncDestroy` | `uint8` | - |
 | `bEnableDeferredConstructComponent` | `uint8` | - |
 | `bUseSpawnReplicatedActorMaxFrameDelayFromConfig` | `uint8` | - |
 | `PendingConstructComponents` | `TArray < FDeferedComponentUnit >` | - |
@@ -298,6 +299,18 @@ TickConstructComponentWithTime(OneFrameConstructTimeMS: float, bCreateImmediatel
 |---|---|
 | `float` | - |
 
+### `OnRep_ScriptNetworkReplicatedPropertyWrapper`
+
+```text
+OnRep_ScriptNetworkReplicatedPropertyWrapper() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ### `CallSubObjectLuaOnRep`
 
 ```text
@@ -309,18 +322,6 @@ CallSubObjectLuaOnRep(InObject: UObject *) -> void
 | Name | Type | Description |
 |---|---|---|
 | `InObject` | `UObject *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnRep_ScriptNetworkReplicatedPropertyWrapper`
-
-```text
-OnRep_ScriptNetworkReplicatedPropertyWrapper() -> void
-```
 
 **Returns**
 
@@ -618,26 +619,6 @@ Pushes this actor on to the stack of input being handled by a PlayerController.
 |---|---|
 | `void` | - |
 
-### `DisableInput`
-
-```text
-DisableInput(PlayerController: APlayerController *) -> void
-```
-
-Removes this actor from the stack of input being handled by a PlayerController.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PlayerController` | `APlayerController *` | The PlayerController whose input events we no longer want to receive. If null, this actor will stop receiving input from all PlayerControllers. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
 ### `GetInputAxisValue`
 
 ```text
@@ -657,6 +638,26 @@ Gets the value of the input axis if input is enabled for this actor.
 | Type | Description |
 |---|---|
 | `float` | - |
+
+### `DisableInput`
+
+```text
+DisableInput(PlayerController: APlayerController *) -> void
+```
+
+Removes this actor from the stack of input being handled by a PlayerController.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PlayerController` | `APlayerController *` | The PlayerController whose input events we no longer want to receive. If null, this actor will stop receiving input from all PlayerControllers. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
 
 ### `GetInputAxisKeyValue`
 
@@ -1787,20 +1788,6 @@ Remove tick dependency on PrerequisiteActor.
 |---|---|
 | `void` | - |
 
-### `GetTickableWhenPaused`
-
-```text
-GetTickableWhenPaused() -> bool
-```
-
-Gets whether this actor can tick when paused.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
 ### `RemoveTickPrerequisiteComponent`
 
 ```text
@@ -1820,6 +1807,20 @@ Remove tick dependency on PrerequisiteComponent.
 | Type | Description |
 |---|---|
 | `void` | - |
+
+### `GetTickableWhenPaused`
+
+```text
+GetTickableWhenPaused() -> bool
+```
+
+Gets whether this actor can tick when paused.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
 
 ### `SetTickableWhenPaused`
 
@@ -3609,13 +3610,13 @@ Called when a touch input is received over this component when touch events are 
 |---|---|
 | `void` | - |
 
-### `OnInputTouchEnter`
+### `OnInputTouchLeave`
 
 ```text
-OnInputTouchEnter(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
+OnInputTouchLeave(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
 ```
 
-Called when a finger is moved over this actor when touch over events are enabled in the player controller.
+Called when a finger is moved off this actor when touch over events are enabled in the player controller.
 
 **Parameters**
 
@@ -3630,13 +3631,13 @@ Called when a finger is moved over this actor when touch over events are enabled
 |---|---|
 | `void` | - |
 
-### `OnInputTouchLeave`
+### `OnInputTouchEnter`
 
 ```text
-OnInputTouchLeave(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
+OnInputTouchEnter(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
 ```
 
-Called when a finger is moved off this actor when touch over events are enabled in the player controller.
+Called when a finger is moved over this actor when touch over events are enabled in the player controller.
 
 **Parameters**
 

@@ -27,3 +27,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `DogTag` | `11` | - |
 | `GoldenToilet` | `12` | - |
 | `MutationCore` | `13` | - |
+| `GuineaPig` | `14` | - |
+| `WindChimes` | `15` | - |

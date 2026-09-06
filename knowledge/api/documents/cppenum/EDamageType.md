@@ -59,5 +59,6 @@ api_root: "https://developer.gp.qq.com/api/"
 | `Laser` | `107` | - |
 | `ShovelDamage` | `108` | - |
 | `ElectricalDamage` | `109` | - |
+| `ThemedPropDamage` | `110` | - |
 | `UGCCustomDamageType` | `200` | - |
 | `InvalidDamageType` | `255` | - |

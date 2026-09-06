@@ -581,6 +581,8 @@ kind: "api_chunk"
 | `CG030_GameAttributeGroup_Player_CG30InvincibleShield` | `CG30InvincibleShield` | --CG030属性集 [无敌盾层数-CG30InvincibleShield], |
 | `CG032_Nezha_GameAttributeGroup_Player_NezhaInvincibleShield` | `NezhaInvincibleShield` | --CG032哪吒联动玩法属性集 [无敌盾层数-NezhaInvincibleShield], |
 | `CG036_GameAttributeGroup_Player_QTEShield` | `QTEShield` | --CG036属性集 [电吉他QTE护盾-QTEShield], |
+| `CG038_GameAttributeGroup_Player_PumpkinInvincibleShield` | `PumpkinInvincibleShield` | --CG038属性集 [南瓜头套盾-PumpkinInvincibleShield], |
+| `CG038_GameAttributeGroup_Player_BlossomPileShield` | `BlossomPileShield` | --CG038属性集 [梅花桩跳跃护盾-BlossomPileShield], |
 | `AttrGroupSuperPeople_Editor_LevelUpDamageScale` | `LevelUpDamageScale` | --超体-Editor [LevelUpDamageScale-LevelUpDamageScale], |
 | `AttrGroupSuperPeople_Editor_LevelUpShootDamageScale` | `LevelUpShootDamageScale` | --超体-Editor [LevelUpShootDamageScale-LevelUpShootDamageScale], |
 | `AttrGroupSuperPeople_Editor_LevelUpGrenadeDamageScale` | `LevelUpGrenadeDamageScale` | --超体-Editor [LevelUpGrenadeDamageScale-LevelUpGrenadeDamageScale], |
@@ -661,6 +663,12 @@ kind: "api_chunk"
 | `SP_FlashAttrGroup_FlashDashCDDecrease` | `FlashDashCDDecrease` | --超体-闪电属性集 [闪电主动减CD-FlashDashCDDecrease], |
 | `SP_FlashAttrGroup_FlashTransportRangeScale` | `FlashTransportRangeScale` | --超体-闪电属性集 [闪电大招传送范围系数-FlashTransportRangeScale], |
 | `SP_FlashAttrGroup_FlashTransportCDDecrease` | `FlashTransportCDDecrease` | --超体-闪电属性集 [闪电大招减CD-FlashTransportCDDecrease], |
+| `SP_GeekerAtrrGroup_GeekerActiveDamageScale` | `GeekerActiveDamageScale` | --超体-次元极客属性集 [次元极客小技能增伤系数-GeekerActiveDamageScale], |
+| `SP_GeekerAtrrGroup_GeekerActiveDurationScale` | `GeekerActiveDurationScale` | --超体-次元极客属性集 [次元极客小技能时长系数(废弃)-GeekerActiveDurationScale], |
+| `SP_GeekerAtrrGroup_GeekerActiveCDDecrease` | `GeekerActiveCDDecrease` | --超体-次元极客属性集 [次元极客小技能减CD-GeekerActiveCDDecrease], |
+| `SP_GeekerAtrrGroup_GeekerUltimateDamgeScale` | `GeekerUltimateDamgeScale` | --超体-次元极客属性集 [次元极客大招伤害系数-GeekerUltimateDamgeScale], |
+| `SP_GeekerAtrrGroup_GeekerUltimateRangeScale` | `GeekerUltimateRangeScale` | --超体-次元极客属性集 [次元极客大招范围系数-GeekerUltimateRangeScale], |
+| `SP_GeekerAtrrGroup_GeekerUltimateCDDecrease` | `GeekerUltimateCDDecrease` | --超体-次元极客属性集 [次元极客大招减CD-GeekerUltimateCDDecrease], |
 | `SP_GhostAttrGroup_PreparingDamageScale` | `PreparingDamageScale` | --超体-幻影猎手属性集 [被动伤害倍率百分比系数-PreparingDamageScale], |
 | `SP_GhostAttrGroup_ConsumePassiveToggle` | `ConsumePassiveToggle` | --超体-幻影猎手属性集 [空枪是否消耗被动开关-ConsumePassiveToggle], |
 | `SP_GhostAttrGroup_PassiveCDScale` | `PassiveCDScale` | --超体-幻影猎手属性集 [被动恢复速度百分比系数-PassiveCDScale], |
@@ -670,6 +678,13 @@ kind: "api_chunk"
 | `SP_GhostAttrGroup_SonarBeaconDurationScale` | `SonarBeaconDurationScale` | --超体-幻影猎手属性集 [大招持续时间百分比系数-SonarBeaconDurationScale], |
 | `SP_GhostAttrGroup_SkillCamouflageCD` | `SkillCamouflageCD` | --超体-幻影猎手属性集 [幻影主动技能减CD-SkillCamouflageCD], |
 | `SP_GhostAttrGroup_SkillSonarBeaconCD` | `SkillSonarBeaconCD` | --超体-幻影猎手属性集 [幻影大招减CD-SkillSonarBeaconCD], |
+| `SP_HorseManAtrrGroup_HorseManActiveCDDecrease` | `HorseManActiveCDDecrease` | --超体-驰风飞将属性集 [驰风飞将小技能减CD-HorseManActiveCDDecrease], |
+| `SP_HorseManAtrrGroup_HorseManUltimateDurationScale` | `HorseManUltimateDurationScale` | --超体-驰风飞将属性集 [驰风飞将大招持续时间系数-HorseManUltimateDurationScale], |
+| `SP_HorseManAtrrGroup_HorseManUltimateCDDecrease` | `HorseManUltimateCDDecrease` | --超体-驰风飞将属性集 [驰风飞将大招减CD-HorseManUltimateCDDecrease], |
+| `SP_IceAtrrGroup_IceActiveDamageScale` | `IceActiveDamageScale` | --超体-绝对零度属性集 [绝对零度小技能增伤系数-IceActiveDamageScale], |
+| `SP_IceAtrrGroup_IceActiveCDDecrease` | `IceActiveCDDecrease` | --超体-绝对零度属性集 [绝对零度小技能减CD-IceActiveCDDecrease], |
+| `SP_IceAtrrGroup_IceUltimateDamgeScale` | `IceUltimateDamgeScale` | --超体-绝对零度属性集 [绝对零度大招伤害系数-IceUltimateDamgeScale], |
+| `SP_IceAtrrGroup_IceUltimateCDDecrease` | `IceUltimateCDDecrease` | --超体-绝对零度属性集 [绝对零度大招减CD-IceUltimateCDDecrease], |
 | `SP_MusicGirlAttrGroup_MusicGirlPassiveHealthRecoverScale` | `MusicGirlPassiveHealthRecoverScale` | --超体-天籁之音属性集 [天籁之音被动回血系数-MusicGirlPassiveHealthRecoverScale], |
 | `SP_MusicGirlAttrGroup_MusicGirlListenTogetherRangeScale` | `MusicGirlListenTogetherRangeScale` | --超体-天籁之音属性集 [天籁之音主动范围系数-MusicGirlListenTogetherRangeScale], |
 | `SP_MusicGirlAttrGroup_MusicGirlListenTogetherSkillScale` | `MusicGirlListenTogetherSkillScale` | --超体-天籁之音属性集 [天籁之音主动回复值/移速增量系数-MusicGirlListenTogetherSkillScale], |
@@ -707,6 +722,10 @@ kind: "api_chunk"
 | `ChargeableUltimateSkillAttributeGroup_ChargeScale_CauseDamagePercent` | `ChargeScale_CauseDamagePercent` | --充能大招属性集 [造成伤害百分比充能系数-ChargeScale_CauseDamagePercent], |
 | `GameAttributeGroup_AngelDemon_Player_CurseValue` | `CurseValue` | --帕拉莫玩法角色属性集 [诅咒值-CurseValue], |
 | `GameAttributeGroup_AngelDemon_Player_SlateEnergy` | `SlateEnergy` | --帕拉莫玩法角色属性集 [石板能量值-SlateEnergy], |
+| `GameAttributeGroup_PlayerOnly_DiamondArena_DiamondArena_GlobalDamageScale` | `DiamondArena_GlobalDamageScale` | --钻石猎场玩家特有属性集 [【攻】全局伤害加成系数-DiamondArena_GlobalDamageScale], |
+| `GameAttributeGroup_PlayerOnly_DiamondArena_DiamondArena_GlobalDamageReduceVal` | `DiamondArena_GlobalDamageReduceVal` | --钻石猎场玩家特有属性集 [【防】全局减伤数值-DiamondArena_GlobalDamageReduceVal], |
+| `GameAttributeGroup_PlayerOnly_DiamondArena_DiamondArena_Shield_TitanSword` | `DiamondArena_Shield_TitanSword` | --钻石猎场玩家特有属性集 [钻石猎场-机甲大剑超载护盾-DiamondArena_Shield_TitanSword], |
+| `GameAttributeGroup_PlayerOnly_DiamondArena_DiamondArena_Shield_TitanSwordScale` | `DiamondArena_Shield_TitanSwordScale` | --钻石猎场玩家特有属性集 [钻石猎场-机甲大剑超载护盾缩放值-DiamondArena_Shield_TitanSwordScale], |
 | `GameAttributeGroup_EscapeMonster_MonsterShield` | `MonsterShield` | --地铁怪物属性集 [怪物护盾-MonsterShield], |
 | `GameAttributeGroup_EscapeMonster_MaxMonsterShield` | `MaxMonsterShield` | --地铁怪物属性集 [最大怪物护盾-MaxMonsterShield], |
 | `GameAttributeGroup_AlreadyExist_EscapeSkin_Escape_DexterousSpeedScale` | `Escape_DexterousSpeedScale` | --地铁皮肤修改属性集(仅作editor属性暴露用) [地铁皮肤修改开箱速度-Escape_DexterousSpeedScale], |
@@ -752,7 +771,8 @@ kind: "api_chunk"
 | `GameAttributeGroup_Escape_Escape_MeleeDamageScale` | `Escape_MeleeDamageScale` | --地铁属性集 [近战武器伤害加成系数-Escape_MeleeDamageScale], |
 | `GameAttributeGroup_Escape_Escape_GrenadeExplosionRangeScale` | `Escape_GrenadeExplosionRangeScale` | --地铁属性集 [投掷物伤害范围加成系数-Escape_GrenadeExplosionRangeScale], |
 | `GameAttributeGroup_Kader_Kader_SkillValueScale` | `Kader_SkillValueScale` | --卡德尔属性集 [卡德尔技能数值倍率-Kader_SkillValueScale], |
-| `GameAttributeGroup_Howitzer_Howitzer_CD` | `Howitzer_CD` | --肩炮榴弹技能属性 [肩炮充能时间-Howitzer_CD], |
+| `GameAttributeGroup_MechaSkill_Howitzer_CD` | `Howitzer_CD` | --机甲技能属性 [榴弹肩炮充能时间-Howitzer_CD], |
+| `GameAttributeGroup_MechaSkill_LaserBeam_EnergyScale` | `LaserBeam_EnergyScale` | --机甲技能属性 [激光肩炮能量缩放-LaserBeam_EnergyScale], |
 | `GameAttributeGroup_TitanSword_BlockEnergy` | `BlockEnergy` | --机甲大剑属性 [大剑 格挡能量-BlockEnergy], |
 | `GameAttributeGroup_TitanSword_BlockEnergyRecoverRate` | `BlockEnergyRecoverRate` | --机甲大剑属性 [大剑 格挡能量回复倍率-BlockEnergyRecoverRate], |
 | `GameAttributeGroup_Escape_DeadTrack_Escape_DeakTrack_CurrentTemperatureValue` | `Escape_DeakTrack_CurrentTemperatureValue` | --死轨属性集 [角色当前寒冷值-Escape_DeakTrack_CurrentTemperatureValue], |
@@ -789,6 +809,9 @@ kind: "api_chunk"
 | `BP_GAttributeGroup_Common_LostTomb_LT_SkEffectScale` | `LT_SkEffectScale` | --LostTomb通用属性集 [技能效果倍率-LT_SkEffectScale], |
 | `BP_GAttributeGroup_Common_LostTomb_LT_TakeFallDmgRedPct` | `LT_TakeFallDmgRedPct` | --LostTomb通用属性集 [受到坠落伤害减免百分比-LT_TakeFallDmgRedPct], |
 | `BP_GAttributeGroup_Common_LostTomb_LT_TakeTrapDmgRedPct` | `LT_TakeTrapDmgRedPct` | --LostTomb通用属性集 [受到陷阱机关伤害减免百分比-LT_TakeTrapDmgRedPct], |
+| `BP_GAttributeGroup_Common_LostTomb_LT_GunPenRPct` | `LT_GunPenRPct` | --LostTomb通用属性集 [枪械抗性百分比(特殊抗性乘区，非缩小乘算)-LT_GunPenRPct], |
+| `BP_GAttributeGroup_Common_LostTomb_LT_MeleePenRPct` | `LT_MeleePenRPct` | --LostTomb通用属性集 [近战抗性百分比(特殊抗性乘区，非缩小乘算)-LT_MeleePenRPct], |
+| `BP_GAttributeGroup_Common_LostTomb_LT_TakeSkillDmgPct` | `LT_TakeSkillDmgPct` | --LostTomb通用属性集 [受到技能伤害加成百分比-LT_TakeSkillDmgPct], |
 | `BP_GAttributeGroup_Hero_LostTomb_LT_BeSensedDistanceScale` | `LT_BeSensedDistanceScale` | --LostTomb玩家专属属性集 [被索敌距离倍率-LT_BeSensedDistanceScale], |
 | `BP_GAttributeGroup_Hero_LostTomb_LT_InteractionSpeedScale` | `LT_InteractionSpeedScale` | --LostTomb玩家专属属性集 [交互速度倍率-LT_InteractionSpeedScale], |
 | `BP_GAttributeGroup_Hero_LostTomb_LT_HumanDmgAddPct` | `LT_HumanDmgAddPct` | --LostTomb玩家专属属性集 [人类物种伤害加成百分比-LT_HumanDmgAddPct], |
@@ -836,6 +859,7 @@ kind: "api_chunk"
 | `BP_GAttributeGroup_Monster_LostTomb_LT_AttackFakePlayerDamageScale` | `LT_AttackFakePlayerDamageScale` | --LostTomb怪物专属属性集 [攻击AI玩家增伤系数-LT_AttackFakePlayerDamageScale], |
 | `BP_GAttributeGroup_Monster_LostTomb_LT_MonsterBaseHP` | `LT_MonsterBaseHP` | --LostTomb怪物专属属性集 [基础生命值-LT_MonsterBaseHP], |
 | `BP_GAttributeGroup_Monster_LostTomb_LT_MonsterHPAddPct` | `LT_MonsterHPAddPct` | --LostTomb怪物专属属性集 [生命值加成百分比-LT_MonsterHPAddPct], |
+| `BP_GAttributeGroup_Monster_LostTomb_LT_MonsterShield` | `LT_MonsterShield` | --LostTomb怪物专属属性集 [怪物护盾值-LT_MonsterShield], |
 | `MBRGameAttributeGroup_Player_MBRPlayerAttack` | `MBRPlayerAttack` | --大乱斗玩家属性集 [攻击力-MBRPlayerAttack], |
 | `MBRGameAttributeGroup_Player_MBRPlayerSpeedup_Value` | `MBRPlayerSpeedup_Value` | --大乱斗玩家属性集 [疾驰固定值-MBRPlayerSpeedup_Value], |
 | `MBRGameAttributeGroup_Player_MBRPlayerSpeedup_Radio` | `MBRPlayerSpeedup_Radio` | --大乱斗玩家属性集 [疾驰系数-MBRPlayerSpeedup_Radio], |
@@ -1920,6 +1944,21 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAIDebugPanelType.json -->
+
+# EAIDebugPanelType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `BTAI` | `1` | - |
+| `MLAI` | `2` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAIDirectionTestType.json -->
 
 # EAIDirectionTestType
@@ -2526,40 +2565,6 @@ kind: "api_chunk"
 
 ---
 
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAIOBPlayerInfoSource.json -->
-
-# EAIOBPlayerInfoSource
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EAIOBPIS_UNKNOWN` | `0` | - |
-| `EAIOBPIS_SERVER` | `1` | - |
-| `EAIOBPIS_CLIENT` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAIOBPlayerState.json -->
-
-# EAIOBPlayerState
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PLAYER_STATE_UNKNOWN` | `0` | - |
-| `PLAYER_STATE_INDEFAULT` | `1` | - |
-| `PLAYER_STATE_INPLANE` | `2` | - |
-| `PLAYER_STATE_INPARACHUTE` | `3` | - |
-| `PLAYER_STATE_INDYING` | `4` | - |
-| `PLAYER_STATE_INDIED` | `5` | - |
-| `PLAYER_STATE_OFFLINE` | `6` | - |
-
-
----
-
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAIOptionFlag.json -->
 
 # EAIOptionFlag
@@ -2820,8 +2825,21 @@ kind: "api_chunk"
 | `SimulateCloseType_CarriedValue` | `8` | - |
 | `SimulateCloseType_OutRange` | `16` | - |
 | `SimulateCloseType_Other1` | `32` | - |
-| `SimulateCloseType_Other2` | `48` | - |
-| `SimulateCloseType_Other3` | `64` | - |
+| `SimulateCloseType_Other2` | `64` | - |
+| `SimulateCloseType_Other3` | `128` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAirDropBoxSimulateOpenType.json -->
+
+# EAirDropBoxSimulateOpenType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SimulateOpenType_AttachParent` | `1` | - |
 
 
 ---
@@ -2964,6 +2982,22 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAISkillInfoType.json -->
+
+# EAISkillInfoType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Invalid` | `0` | - |
+| `AIPartner_BomberAirRaid` | `1` | - |
+| `AIPartner_MedicalUAV` | `2` | - |
+| `AIPartner_SonarBeacon` | `3` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAIStatAliveState.json -->
 
 # EAIStatAliveState
@@ -3009,6 +3043,7 @@ kind: "api_chunk"
 | `TombBox` | `0` | - |
 | `PickUpWrapper` | `1` | - |
 | `AirDrop` | `2` | - |
+| `EscapeSupplyBox` | `7` | - |
 | `Invalid` | `255` | - |
 
 
@@ -4038,6 +4073,26 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAnimListAutoFill_ListType.json -->
+
+# EAnimListAutoFill_ListType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `CH_Anim_TPP` | `0` | - |
+| `CH_Anim_FPP` | `1` | - |
+| `CH_Anim_NewFPP` | `2` | - |
+| `CH_Jump_TPP` | `3` | - |
+| `CH_Jump_FPP` | `4` | - |
+| `CH_Jump_NewFPP` | `5` | - |
+| `WEP_Anim_TPP` | `6` | - |
+| `WEP_Anim_NewFPP` | `7` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAnimNotifyEventType.json -->
 
 # EAnimNotifyEventType
@@ -4650,6 +4705,39 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAskQDependencyType.json -->
+
+# EAskQDependencyType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `All` | `0` | - |
+| `Hard` | `1` | - |
+| `Soft` | `2` | - |
+| `Packages` | `3` | - |
+| `SearchableName` | `4` | - |
+| `Manage` | `5` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAskQFunctionAccess.json -->
+
+# EAskQFunctionAccess
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Public` | `0` | - |
+| `Protected` | `1` | - |
+| `Private` | `2` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAskQMaterialParameterType.json -->
 
 # EAskQMaterialParameterType
@@ -4662,6 +4750,21 @@ kind: "api_chunk"
 | `Vector` | `1` | - |
 | `Texture` | `2` | - |
 | `StaticSwitch` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAskQPropertyFilter.json -->
+
+# EAskQPropertyFilter
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `All` | `0` | - |
+| `Editable` | `1` | - |
+| `Visible` | `2` | - |
 
 
 ---
@@ -4709,6 +4812,22 @@ kind: "api_chunk"
 | `Enum` | `2` | - |
 | `Bool` | `3` | - |
 | `Number` | `4` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAskQTypeCategory.json -->
+
+# EAskQTypeCategory
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Any` | `0` | - |
+| `Class` | `1` | - |
+| `Struct` | `2` | - |
+| `Enum` | `3` | - |
 
 
 ---
@@ -5493,21 +5612,6 @@ kind: "api_chunk"
 
 ---
 
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAvailableForSale.json -->
-
-# EAvailableForSale
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `NotForSale` | `1` | 不售卖 |
-| `PermanentSale` | `2` | 永久售卖 |
-| `LimitedTimeSale` | `3` | 限时售卖 |
-
-
----
-
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAvatarAnimAdapt_WingType.json -->
 
 # EAvatarAnimAdapt_WingType
@@ -5663,6 +5767,20 @@ kind: "api_chunk"
 | `VehiclePart17` | `53` | - |
 | `VehiclePart18` | `54` | - |
 | `VehiclePart19` | `55` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAvatarDebugMeshType.json -->
+
+# EAvatarDebugMeshType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Character` | `0` | - |
+| `BodyType_2_0` | `1` | - |
 
 
 ---
@@ -5958,6 +6076,24 @@ kind: "api_chunk"
 | `None` | `0` | - |
 | `Copy` | `1` | - |
 | `SameAsTPP` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAvatarParamNumLimitCondi.json -->
+
+# EAvatarParamNumLimitCondi
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Equal` | `0` | - |
+| `Less` | `1` | - |
+| `LessAndEqual` | `2` | - |
+| `Bigger` | `3` | - |
+| `BiggerAndEqual` | `4` | - |
+| `Interval` | `5` | - |
 
 
 ---
@@ -6794,6 +6930,7 @@ kind: "api_chunk"
 | `PickupIntoAdditionalBackpack` | `8` | - |
 | `PickupAutoSafetyBox` | `9` | - |
 | `PickupIntoGeekerPocket` | `10` | - |
+| `PickupIntoLTSpecialSafetyBox` | `11` | - |
 
 
 ---
@@ -6843,6 +6980,7 @@ kind: "api_chunk"
 | `EscapeForbidTeammatePickup` | `11` | - |
 | `DeathTrackBackpack` | `12` | - |
 | `GeekPockets` | `13` | - |
+| `BirdBackpack` | `14` | - |
 
 
 ---
@@ -6922,6 +7060,7 @@ kind: "api_chunk"
 | `ForceAndNoTips` | `8` | - |
 | `WarDogAdditionalBackpack` | `9` | - |
 | `DeathTrackBackpack` | `10` | - |
+| `BirdBackpack` | `11` | - |
 
 
 ---
@@ -7530,6 +7669,7 @@ kind: "api_chunk"
 | `Remove` | `1` | - |
 | `Setting` | `2` | - |
 | `Expand` | `3` | - |
+| `Optional` | `4` | - |
 
 
 ---
@@ -8513,6 +8653,21 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBotBTStateTargetType.json -->
+
+# EBotBTStateTargetType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Invalid` | `0` | - |
+| `Actor` | `1` | - |
+| `Location` | `2` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBotCategray.json -->
 
 # EBotCategray
@@ -8570,6 +8725,31 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBotConcreteType.json -->
+
+# EBotConcreteType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Unknown` | `0` | - |
+| `Player` | `1` | - |
+| `Enemy` | `2` | - |
+| `Partner` | `3` | - |
+| `Host` | `4` | - |
+| `WarDog` | `5` | - |
+| `BrozenHorse` | `6` | - |
+| `Parrot` | `7` | - |
+| `PartnerNPC` | `8` | - |
+| `Autopilot` | `9` | - |
+| `LoongLion` | `10` | - |
+| `MultiLeggedRobot` | `11` | - |
+| `EscapeMonster` | `12` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBotConnectionState.json -->
 
 # EBotConnectionState
@@ -8582,6 +8762,91 @@ kind: "api_chunk"
 | `Open` | `1` | - |
 | `Running` | `2` | - |
 | `Close` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBotConnectionType.json -->
+
+# EBotConnectionType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Invalid` | `0` | - |
+| `RL` | `1` | - |
+| `LLM` | `2` | - |
+| `ALL` | `100` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBotProxyAutoCondition.json -->
+
+# EBotProxyAutoCondition
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Manual` | `0` | - |
+| `OnBeginPlay` | `1` | - |
+| `OnBeginDestroy` | `2` | - |
+| `OnGameModeInitFinished` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBotProxyProtocolVersion.json -->
+
+# EBotProxyProtocolVersion
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `V1` | `1` | - |
+| `V2` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBotProxyStatus.json -->
+
+# EBotProxyStatus
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `UnInitialized` | `0` | - |
+| `Initialized` | `1` | - |
+| `Activating` | `2` | - |
+| `Active` | `3` | - |
+| `Paused` | `4` | - |
+| `Deactivating` | `5` | - |
+| `Inactive` | `6` | - |
+| `Error` | `7` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBotStateEntityCategory.json -->
+
+# EBotStateEntityCategory
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Unknown` | `0` | - |
+| `Player` | `1` | - |
+| `FakePlayer` | `2` | - |
+| `NPC` | `3` | - |
+| `Monster` | `4` | - |
+| `Pet` | `5` | - |
+| `Vehicle` | `6` | - |
 
 
 ---
@@ -9021,6 +9286,21 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBulletHitActionAddBuffClassTeamType.json -->
+
+# EBulletHitActionAddBuffClassTeamType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `OnlyEnemy` | `1` | - |
+| `OnlyTeammate` | `2` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBulletHitActionAddBuffTeamType.json -->
 
 # EBulletHitActionAddBuffTeamType
@@ -9218,6 +9498,21 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EButtonHandleState.json -->
+
+# EButtonHandleState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Invalid` | `0` | - |
+| `WaitHandle` | `1` | - |
+| `Handle` | `2` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EButtonInputActionEvent.json -->
 
 # EButtonInputActionEvent
@@ -9295,6 +9590,20 @@ kind: "api_chunk"
 |---|---|---|
 | `DownAndUp` | `0` | - |
 | `PreciseTap` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBypassContainerCheck.json -->
+
+# EBypassContainerCheck
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `No` | `0` | - |
+| `Yes` | `1` | - |
 
 
 ---
@@ -10387,6 +10696,7 @@ kind: "api_chunk"
 | `ECharNewFPPAnim_Turn_R` | `56` | - |
 | `ECharNewFPPAnim_PullingPlug` | `57` | - |
 | `ECharNewFPPAnim_PutDownWeapon` | `58` | - |
+| `ECharNewFPPAnim_PutDownWeaponEnter` | `129` | - |
 | `ECharNewFPPAnim_Peek` | `64` | - |
 | `ECharNewFPPAnim_PeekScope` | `65` | - |
 | `ECharNewFPPAnim_PeekLeftAim` | `66` | - |
@@ -10524,6 +10834,49 @@ kind: "api_chunk"
 | `ECharPose_Crouch` | `1` | - |
 | `ECharPose_Prone` | `2` | - |
 | `ECharPose_Max` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECharacterPresetCollisionType.json -->
+
+# ECharacterPresetCollisionType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Capsule` | `0` | - |
+| `Box` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECharacterPresetMeshAndAnimType.json -->
+
+# ECharacterPresetMeshAndAnimType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Pawn` | `0` | - |
+| `Static` | `1` | - |
+| `Preset` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECharacterPresetSocketMeshType.json -->
+
+# ECharacterPresetSocketMeshType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Static` | `0` | - |
+| `Skeletal` | `1` | - |
 
 
 ---
@@ -10696,26 +11049,31 @@ kind: "api_chunk"
 | `ECharVehAnim_MotorbikePassengerIdleBaseWithThrowObjDriverOn` | `48` | - |
 | `ECharVehAnim_MotorbikePassengerDriverOffAim` | `49` | - |
 | `ECharVehAnim_MotorbikePassengerDriverOffPoseOverride` | `50` | - |
-| `ECharVehAnim_MountainBikeJump` | `51` | - |
-| `ECharVehAnim_PassengerIdleGrenadeBSDriverOn` | `52` | - |
-| `ECharVehAnim_PassengerHighHoldGrenadeBSDriverOn` | `53` | - |
-| `ECharVehAnim_PassengerLowHoldGrenadeBSDriverOn` | `54` | - |
-| `ECharVehAnim_PassengerHighHoldGrenadeStartDriverOn` | `55` | - |
-| `ECharVehAnim_PassengerLowHoldGrenadeStartDriverOn` | `56` | - |
-| `ECharVehAnim_PassengerHighHoldGrenadeEndDriverOn` | `57` | - |
-| `ECharVehAnim_PassengerLowHoldGrenadeEndDriverOn` | `58` | - |
-| `ECharVehAnim_PassengerIdleGrenadeBSDriverOff` | `59` | - |
-| `ECharVehAnim_PassengerHighHoldGrenadeBSDriverOff` | `60` | - |
-| `ECharVehAnim_PassengerLowHoldGrenadeBSDriverOff` | `61` | - |
-| `ECharVehAnim_PassengerHighHoldGrenadeStartDriverOff` | `62` | - |
-| `ECharVehAnim_PassengerLowHoldGrenadeStartDriverOff` | `63` | - |
-| `ECharVehAnim_PassengerHighHoldGrenadeEndDriverOff` | `64` | - |
-| `ECharVehAnim_PassengerLowHoldGrenadeEndDriverOff` | `65` | - |
-| `ECharVehAnim_IdleCrouch` | `66` | - |
-| `ECharVehAnim_EnterCrouch` | `67` | - |
-| `ECharVehAnim_LeaveCrouch` | `68` | - |
-| `ECharVehAnim_DriverForward` | `69` | - |
-| `ECharVehAnim_Max` | `70` | - |
+| `ECharVehAnim_MotorbikePassengerFootFixRefPose` | `51` | - |
+| `ECharVehAnim_MountainBikeJump` | `52` | - |
+| `ECharVehAnim_PassengerIdleGrenadeBSDriverOn` | `53` | - |
+| `ECharVehAnim_PassengerHighHoldGrenadeBSDriverOn` | `54` | - |
+| `ECharVehAnim_PassengerLowHoldGrenadeBSDriverOn` | `55` | - |
+| `ECharVehAnim_PassengerHighHoldGrenadeStartDriverOn` | `56` | - |
+| `ECharVehAnim_PassengerLowHoldGrenadeStartDriverOn` | `57` | - |
+| `ECharVehAnim_PassengerHighHoldGrenadeEndDriverOn` | `58` | - |
+| `ECharVehAnim_PassengerLowHoldGrenadeEndDriverOn` | `59` | - |
+| `ECharVehAnim_PassengerIdleGrenadeBSDriverOff` | `60` | - |
+| `ECharVehAnim_PassengerHighHoldGrenadeBSDriverOff` | `61` | - |
+| `ECharVehAnim_PassengerLowHoldGrenadeBSDriverOff` | `62` | - |
+| `ECharVehAnim_PassengerHighHoldGrenadeStartDriverOff` | `63` | - |
+| `ECharVehAnim_PassengerLowHoldGrenadeStartDriverOff` | `64` | - |
+| `ECharVehAnim_PassengerHighHoldGrenadeEndDriverOff` | `65` | - |
+| `ECharVehAnim_PassengerLowHoldGrenadeEndDriverOff` | `66` | - |
+| `ECharVehAnim_IdleCrouch` | `67` | - |
+| `ECharVehAnim_EnterCrouch` | `68` | - |
+| `ECharVehAnim_LeaveCrouch` | `69` | - |
+| `ECharVehAnim_DriverForward` | `70` | - |
+| `ECharVehAnim_DriverAO_TPP` | `71` | - |
+| `ECharVehAnim_DriverBase_TPP` | `72` | - |
+| `ECharVehAnim_DriverAO_OldFPP` | `73` | - |
+| `ECharVehAnim_DriverBase_OldFPP` | `74` | - |
+| `ECharVehAnim_Max` | `75` | - |
 
 
 ---
@@ -11241,6 +11599,21 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECJDupVerifyMethod.json -->
+
+# ECJDupVerifyMethod
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `CRC32` | `0` | - |
+| `MD5` | `1` | - |
+| `SHA1` | `2` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECJFootPlacementApproachDirType.json -->
 
 # ECJFootPlacementApproachDirType
@@ -11285,6 +11658,26 @@ kind: "api_chunk"
 | `ForceVolumetric` | `2` | - |
 | `ForceVolumeProbeGI` | `3` | - |
 | `ForceVolumeProbeGIWithAO` | `4` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECJMISwitchRelatedParamType.json -->
+
+# ECJMISwitchRelatedParamType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `All` | `0` | - |
+| `Texture` | `1` | - |
+| `Scalar` | `2` | - |
+| `Vector` | `3` | - |
+| `Font` | `4` | - |
+| `StaticSwitch` | `5` | - |
+| `StaticComponentMask` | `6` | - |
+| `Invalid` | `7` | - |
 
 
 ---
@@ -11375,6 +11768,21 @@ kind: "api_chunk"
 | `CVDT_CurrentUser` | `1` | - |
 | `CVDT_All` | `2` | - |
 | `CVDT_Max` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECleanupGranularity.json -->
+
+# ECleanupGranularity
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `AsyncOnly` | `0` | - |
+| `DataOnly` | `1` | - |
+| `FullCleanup` | `2` | - |
 
 
 ---
@@ -11993,6 +12401,23 @@ kind: "api_chunk"
 | `Combined` | `3` | - |
 | `CCD` | `4` | - |
 | `LayeredHybrid` | `5` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECollisionOverrideMode.json -->
+
+# ECollisionOverrideMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `NoCollision` | `1` | - |
+| `QueryOnly` | `2` | - |
+| `PhysicsOnly` | `3` | - |
+| `QueryAndPhysics` | `4` | - |
 
 
 ---
@@ -13651,6 +14076,7 @@ kind: "api_chunk"
 | `None` | `0` | - |
 | `Data` | `1` | - |
 | `Pak` | `2` | - |
+| `PakPro` | `3` | - |
 
 
 ---
@@ -13759,21 +14185,6 @@ kind: "api_chunk"
 
 ---
 
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECurrencyType.json -->
-
-# ECurrencyType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `OasisCoin` | `1` | 绿洲币 |
-| `ActivityCoin` | `2` | 启元币 |
-| `OtherCoin` | `3` | 其他货币 |
-
-
----
-
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECurveBlendOption.json -->
 
 # ECurveBlendOption
@@ -13846,6 +14257,35 @@ kind: "api_chunk"
 | `EndNormal` | `1` | - |
 | `EndInterrupt` | `2` | - |
 | `InterruptNotNormalEnd` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECurveRootMotionGravityMode.json -->
+
+# ECurveRootMotionGravityMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `IgnoreCurveZ` | `1` | - |
+| `AddGravityToCurveZ` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECurveRootMotionNoFloorBehavior.json -->
+
+# ECurveRootMotionNoFloorBehavior
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Exit` | `0` | - |
+| `Floating` | `1` | - |
 
 
 ---
@@ -14470,6 +14910,7 @@ kind: "api_chunk"
 | `ECustomWalkingDirType_AccelerationDir` | `3` | - |
 | `ECustomWalkingDirType_SpecifyDirection` | `4` | - |
 | `ECustomWalkingDirType_AccelerationModifyDir` | `5` | - |
+| `ECustomWalkingDirType_Custom` | `6` | - |
 
 
 ---
@@ -14485,6 +14926,7 @@ kind: "api_chunk"
 | `Group` | `0` | - |
 | `BigWorld` | `1` | - |
 | `Permanent` | `2` | - |
+| `AntiCheatPermanent` | `3` | - |
 
 
 ---
@@ -14664,6 +15106,7 @@ kind: "api_chunk"
 | `Laser` | `107` | - |
 | `ShovelDamage` | `108` | - |
 | `ElectricalDamage` | `109` | - |
+| `ThemedPropDamage` | `110` | - |
 | `UGCCustomDamageType` | `200` | - |
 | `InvalidDamageType` | `255` | - |
 
@@ -15370,7 +15813,7 @@ kind: "api_chunk"
 | `DEPOSIT_WHEN_INFIGHTING` | `7` | - |
 | `DEPOSIT_WHEN_SPAWN_AI` | `8` | - |
 | `DEPOSIT_WHEN_TEAM_AI_SPAWN` | `9` | - |
-| `DEPOSIT_WHEN_NOVICE_AI_SPAWN` | `10` | - |
+| `DEPOSIT_NOVICE_AI` | `10` | - |
 
 
 ---
@@ -15603,6 +16046,21 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDirectoryAssetTypeFilter.json -->
+
+# EDirectoryAssetTypeFilter
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `All` | `0` | - |
+| `BlueprintClassOnly` | `1` | - |
+| `DataAssetOnly` | `2` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDisplayQuality.json -->
 
 # EDisplayQuality
@@ -15756,6 +16214,38 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDogSledAirMovePhase.json -->
+
+# EDogSledAirMovePhase
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Jumping` | `1` | - |
+| `Gliding` | `2` | - |
+| `Falling` | `3` | - |
+| `Landing` | `4` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDogSledMovementMode.json -->
+
+# EDogSledMovementMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `InAir` | `0` | - |
+| `InWater` | `1` | - |
+| `OnGround` | `2` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDolphinDancerPoseState.json -->
 
 # EDolphinDancerPoseState
@@ -15888,12 +16378,14 @@ kind: "api_chunk"
 | `DP_ScreenPhysicSize` | `13` | - |
 | `DP_MainBroadInfo` | `14` | - |
 | `DP_GamePlayFlag` | `15` | - |
-| `DP_HDRSupport` | `16` | - |
-| `DP_MapName` | `17` | - |
-| `DP_FrameInterpolation` | `18` | - |
-| `DP_HighFPS` | `19` | - |
-| `DP_PCQualityGrade` | `20` | - |
-| `DP_SRC_MAX` | `21` | - |
+| `DP_GamePlayIsPad` | `16` | - |
+| `DP_HDRSupport` | `17` | - |
+| `DP_MapName` | `18` | - |
+| `DP_FrameInterpolation` | `19` | - |
+| `DP_HighFPS` | `20` | - |
+| `DP_PCQualityGrade` | `21` | - |
+| `DP_RHIName` | `22` | - |
+| `DP_SRC_MAX` | `23` | - |
 
 
 ---
@@ -16137,6 +16629,22 @@ kind: "api_chunk"
 | Name | Type/Value | Description |
 |---|---|---|
 | `DST_DeathBox` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDropExtraItemGeneratorType.json -->
+
+# EDropExtraItemGeneratorType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EDropExtraItemType_Default` | `0` | - |
+| `EDropExtraItemType_PlayerRank` | `1` | - |
+| `EDropExtraItemType_GlobalRank` | `2` | - |
+| `EDropExtraItemType_None` | `3` | - |
 
 
 ---
@@ -17166,6 +17674,7 @@ kind: "api_chunk"
 | `AnimationEmote` | `0` | - |
 | `SkillEmote` | `1` | - |
 | `PairEmote` | `2` | - |
+| `ActivityEmote` | `3` | - |
 
 
 ---
@@ -17710,7 +18219,8 @@ kind: "api_chunk"
 | `Minecart` | `2` | - |
 | `HardPoint` | `3` | - |
 | `Backup` | `4` | - |
-| `Special` | `5` | - |
+| `WorldBoss` | `5` | - |
+| `MouseBall` | `6` | - |
 
 
 ---
@@ -17739,310 +18249,17 @@ kind: "api_chunk"
 
 ---
 
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeEquipReservedReason.json -->
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeBPTableType.json -->
 
-# EEscapeEquipReservedReason
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Drop` | `0` | - |
-| `NPC_Insurance` | `1` | - |
-| `Talent` | `2` | - |
-| `InsurancePolicy` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeFightingState.json -->
-
-# EEscapeFightingState
+# EEscapeBPTableType
 
 ## Variables
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `None` | `0` | - |
-| `Normal` | `1` | - |
-| `ReadyPlayOff` | `2` | - |
-| `OnPlayOff` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeGalleryCrossHairType.json -->
-
-# EEscapeGalleryCrossHairType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Common` | `0` | - |
-| `Interact` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeGalleryExhibitType.json -->
-
-# EEscapeGalleryExhibitType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Invalid` | `0` | - |
-| `Daikin` | `1` | - |
-| `CatBed` | `2` | - |
-| `Carpet` | `3` | - |
-| `Fish` | `4` | - |
-| `Cat` | `5` | - |
-| `LegendaryPistol` | `6` | - |
-| `LegendaryWeapon` | `7` | - |
-| `Medal` | `8` | - |
-| `AchievementTrophy` | `9` | - |
-| `Treasure` | `10` | - |
-| `DogTag` | `11` | - |
-| `GoldenToilet` | `12` | - |
-| `MutationCore` | `13` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeGameDifficultyType.json -->
-
-# EEscapeGameDifficultyType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Normal` | `1` | - |
-| `Advance` | `2` | - |
-| `Peak` | `3` | - |
-| `Bounty` | `4` | - |
-| `Tutorial` | `5` | - |
-| `GoldRace` | `6` | - |
-| `DeadTrack` | `7` | - |
-| `Peace` | `8` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeGameType.json -->
-
-# EEscapeGameType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Common` | `0` | - |
-| `RoomMatch` | `1` | - |
-| `Popular` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeGoldRaceBattleType.json -->
-
-# EEscapeGoldRaceBattleType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Common` | `0` | - |
-| `RedEnvelope` | `1` | - |
-| `ShowDown` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeModeElevatorStateType.json -->
-
-# EEscapeModeElevatorStateType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `NONE` | `99` | - |
-| `STOP` | `0` | - |
-| `UP` | `1` | - |
-| `DOWN` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeModePlayerType.json -->
-
-# EEscapeModePlayerType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `NONE` | `0` | - |
-| `BOSS` | `1` | - |
-| `SOLDIER` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeMonsterDoingState.json -->
-
-# EEscapeMonsterDoingState
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Before` | `0` | - |
-| `Doing` | `1` | - |
-| `After` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeSupplyBoxType.json -->
-
-# EEscapeSupplyBoxType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `NONE` | `0` | - |
-| `AI_BOX` | `1` | - |
-| `DRIEF_CASE` | `2` | - |
-| `FILE_CABINETS` | `3` | - |
-| `JERRICANCAN_BARREL` | `4` | - |
-| `MEDICAL` | `5` | - |
-| `PASSWORD` | `6` | - |
-| `RINGKEY_BOX` | `7` | - |
-| `SAFE_BOX` | `8` | - |
-| `SPE_EFFECT` | `9` | - |
-| `SUPPLY_BOX` | `10` | - |
-| `TASK` | `11` | - |
-| `TREASURE_BOX` | `12` | - |
-| `WEAPON` | `13` | - |
-| `WOOD` | `14` | - |
-| `TRASH` | `15` | - |
-| `TOOL_BOX` | `16` | - |
-| `LOCKERS` | `17` | - |
-| `RADIATION_BOX` | `18` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeType.json -->
-
-# EEscapeType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EET_None` | `0` | - |
-| `EET_Helicopter` | `1` | - |
-| `EET_Bunker` | `2` | - |
-| `EET_Taxi` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EESplayerColorCampType.json -->
-
-# EESplayerColorCampType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Blue` | `1` | - |
-| `Red` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EESPlayerRstType.json -->
-
-# EESPlayerRstType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `LobbyItem` | `1` | - |
-| `War_equips` | `2` | - |
-| `Drop_equips` | `4` | - |
-| `Insure_equips` | `8` | - |
-| `Talent_equips` | `16` | - |
-| `InsurePolicy_equips` | `32` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EESPlayerSettleReason.json -->
-
-# EESPlayerSettleReason
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Success` | `1` | - |
-| `Dead` | `2` | - |
-| `Timeout` | `3` | - |
-| `Exit` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EESPlayerType.json -->
-
-# EESPlayerType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Normal` | `1` | - |
-| `UnderCover` | `2` | - |
-| `Mecha` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEvaluateCurveTableResult.json -->
-
-# EEvaluateCurveTableResult
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `RowFound` | `0` | - |
-| `RowNotFound` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEvaluationMethod.json -->
-
-# EEvaluationMethod
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Static` | `0` | - |
-| `Swept` | `1` | - |
+| `Avatar` | `0` | - |
+| `Weapon` | `1` | - |
+| `Consumable` | `2` | - |
+| `CombineModel` | `3` | - |
+| `SeasonMission` | `4` | - |
 

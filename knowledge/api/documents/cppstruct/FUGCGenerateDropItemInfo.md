@@ -16,4 +16,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | Name | Type/Value | Description |
 |---|---|---|
 | `ItemID` | `int32` | 掉落物ItemID |
+| `ItemPresetIdx` | `int32` | 掉落物ItemID |
 | `Count` | `int32` | 掉落物数量 |

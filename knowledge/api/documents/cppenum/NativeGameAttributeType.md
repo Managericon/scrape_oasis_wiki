@@ -38,8 +38,9 @@ api_root: "https://developer.gp.qq.com/api/"
 | `Character_EnergyCurrent` | `Energy\|EnergyCurrent` | --Character [当前能量值-EnergyCurrent], |
 | `Character_EnergyAttenuateScale` | `Energy\|EnergyAttenuateScale` | --Character [当前能量值变化比例-EnergyAttenuateScale], |
 | `Character_GameModeOverride_AllReloadTimeModifier` | `WeaponOverrideAttrs\|GameModeOverride_AllReloadTimeModifier` | --Character [AllReloadTimeModifier-GameModeOverride_AllReloadTimeModifier], |
-| `Character_GameModeOverride_SpeedScaleModifier` | `CharacterOverrideAttrs\|GameModeOverride_SpeedScaleModifier` | --Character [移动速度倍率-GameModeOverride_SpeedScaleModifier], |
-| `Character_GameModeOverride_SwimSpeedScaleModifier` | `CharacterOverrideAttrs\|GameModeOverride_SwimSpeedScaleModifier` | --Character [游泳速度倍率-GameModeOverride_SwimSpeedScaleModifier], |
+| `Character_GameModeOverride_AllDeviationModifier` | `WeaponOverrideAttrs\|GameModeOverride_AllDeviationModifier` | --Character [AllDeviationModifier-GameModeOverride_AllDeviationModifier], |
+| `Character_GameModeOverride_SpeedScaleModifier` | `CharacterOverrideAttrs\|GameModeOverride_SpeedScaleModifier` | --Character [移动速度倍率 (需要勾选同步客户端)-GameModeOverride_SpeedScaleModifier], |
+| `Character_GameModeOverride_SwimSpeedScaleModifier` | `CharacterOverrideAttrs\|GameModeOverride_SwimSpeedScaleModifier` | --Character [游泳速度倍率 (需要勾选同步客户端)-GameModeOverride_SwimSpeedScaleModifier], |
 | `Character_GameModeOverride_AirControlScaleModifier` | `CharacterOverrideAttrs\|GameModeOverride_AirControlScaleModifier` | --Character [空中控制系数-GameModeOverride_AirControlScaleModifier], |
 | `Character_GameModeOverride_GravityScaleModifier` | `CharacterOverrideAttrs\|GameModeOverride_GravityScaleModifier` | --Character [重力系数-GameModeOverride_GravityScaleModifier], |
 | `Character_GameModeOverride_JumpVelocityZScaleModifier` | `CharacterOverrideAttrs\|GameModeOverride_JumpVelocityZScaleModifier` | --Character [跳跃Z速度倍率-GameModeOverride_JumpVelocityZScaleModifier], |
@@ -71,6 +72,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `Weapon_ShotNumSingleFire` | `ShotNumSingleFire` | --Weapon [非齐发射击模式单次开火射击次数-ShotNumSingleFire], |
 | `Weapon_BulletFireSpeed` | `ShootWeaponEntityComp\|BulletFireSpeed` | --Weapon [子弹速度-BulletFireSpeed], |
 | `Weapon_MaxBulletNumInOneClip` | `ShootWeaponEntityComp\|MaxBulletNumInOneClip` | --Weapon [弹夹最大子弹数-MaxBulletNumInOneClip], |
+| `Weapon_BurstShootBulletsNum` | `ShootWeaponEntityComp\|BurstShootBulletsNum` | --Weapon [连发数量-BurstShootBulletsNum], |
 | `Weapon_BurstShootCD` | `ShootWeaponEntityComp\|BurstShootCD` | --Weapon [两次连发射击间隔-BurstShootCD], |
 | `Weapon_BulletNumSingleShot` | `ShootWeaponEntityComp\|BulletNumSingleShot` | --Weapon [一次射击发射多少发子弹，用于散弹枪-BulletNumSingleShot], |
 | `Weapon_MaxProjectileBulletsNumSingleShot` | `ShootWeaponEntityComp\|MaxProjectileBulletsNumSingleShot` | --Weapon [一次射击最多发射多少发抛体子弹-MaxProjectileBulletsNumSingleShot], |

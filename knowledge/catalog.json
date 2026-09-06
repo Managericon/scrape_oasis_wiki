@@ -1,5 +1,13 @@
 [
   {
+    "id": "20472",
+    "title": "1.38 Release Notes",
+    "categories": [
+      "版本日志"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20472"
+  },
+  {
     "id": "20418",
     "title": "1.37 Release Notes",
     "categories": [
@@ -1085,6 +1093,28 @@
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20433"
   },
   {
+    "id": "20471",
+    "title": "背包流程概览",
+    "categories": [
+      "进阶内容",
+      "GamePlay系统",
+      "物资系统",
+      "物资编辑器2.0"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20471"
+  },
+  {
+    "id": "20470",
+    "title": "背包 / 物品 功能边界",
+    "categories": [
+      "进阶内容",
+      "GamePlay系统",
+      "物资系统",
+      "物资编辑器2.0"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20470"
+  },
+  {
     "id": "20144",
     "title": "怪物快速配置指南",
     "categories": [
@@ -1769,6 +1799,15 @@
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20383"
   },
   {
+    "id": "20445",
+    "title": "Tips系统",
+    "categories": [
+      "进阶内容",
+      "UI系统"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20445"
+  },
+  {
     "id": "20223",
     "title": "特效编辑器",
     "categories": [
@@ -2004,6 +2043,15 @@
       "存档"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20052"
+  },
+  {
+    "id": "20460",
+    "title": "PIE 本地存档",
+    "categories": [
+      "进阶内容",
+      "存档"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20460"
   },
   {
     "id": "20090",

@@ -19,4 +19,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `FingerMotion_SelectActor` | `3` | - |
 | `FingerMotion_MoveSelectActor` | `4` | - |
 | `FingerMotion_SelectBaseGizmo` | `5` | - |
-| `FingerMotion_Cancel` | `6` | - |
+| `FingerMotion_LongPress` | `6` | - |
+| `FingerMotion_Cancel` | `7` | - |

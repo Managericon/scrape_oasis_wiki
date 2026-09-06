@@ -15,5 +15,6 @@ api_root: "https://developer.gp.qq.com/api/"
 |---|---|---|
 | `EGGameGalleryType_ClassicGallery` | `0` | - |
 | `EGGameGalleryType_EscapeGallery` | `1` | - |
-| `EGGameGalleryType_Other` | `2` | - |
-| `EGGameGalleryType_MAXNUM` | `3` | - |
+| `EGGameGalleryType_LostTombGallery` | `2` | - |
+| `EGGameGalleryType_Other` | `3` | - |
+| `EGGameGalleryType_MAXNUM` | `4` | - |

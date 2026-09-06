@@ -144,6 +144,7 @@ Abstract base class of all Engine classes, responsible for management of systems
 | `HLODColorationColors` | `TArray < FLinearColor >` | The colors used to render LOD coloration. |
 | `LightmapColorationColors` | `TArray < FLinearColor >` | The colors used to render Lightmap type coloration. |
 | `StreamingAccuracyColors` | `TArray < FLinearColor >` | The colors used for texture streaming accuracy debug view modes. |
+| `TextureStreamingBudgetColors` | `TArray < FLinearColor >` | - |
 | `DesiredTexelDensity` | `int32` | - |
 | `TexelDensityTextureSuffixList` | `TArray < FString >` | - |
 | `TexelDensityAccuracyColors` | `TArray < FLinearColor >` | - |

@@ -337,7 +337,7 @@ SetAvatarVisibility(PlayerPawn: PlayerPawn, bHide: boolean, ExcludingAvatarSlot:
 ### `ChangeAvatarMesh`
 
 ```text
-ChangeAvatarMesh(PlayerPawn: PlayerPawn, SkeletalMesh: UClass|string)
+ChangeAvatarMesh(PlayerPawn: PlayerPawn, SkeletalMesh: UClass|string, bIsUseBoneRetarget: boolean)
 ```
 
 切换玩家角色使用的全身骨骼体
@@ -349,6 +349,7 @@ ChangeAvatarMesh(PlayerPawn: PlayerPawn, SkeletalMesh: UClass|string)
 |---|---|---|
 | `PlayerPawn` | `PlayerPawn` | 玩家角色 |
 | `SkeletalMesh` | `UClass\|string` | 全身骨骼体蓝图类或路径 |
+| `bIsUseBoneRetarget` | `boolean` | 是否使用骨骼重定向,默认false,外部导入的骨骼体需要设置为true |
 
 ### `RecoverAvatarMesh`
 
@@ -567,6 +568,560 @@ SetIsDirectlyDie(InPawn: PlayerPawn, bIsDirectlyDie: boolean)
 | `InPawn` | `PlayerPawn` | 角色 |
 | `bIsDirectlyDie` | `boolean` | 是否倒地后立即死亡 |
 
+### `ConfirmCarryOther`
+
+```text
+ConfirmCarryOther(InPawn: PlayerPawn, InTargetPawn: PlayerPawn) -> boolean
+```
+
+确认背负倒地队友
+生效范围：服务器
+前置条件：
+   1. 被背负者处于倒地状态（IsHaveLastBreathStatus）
+   2. 背负者未在背负他人（CarryWho == nil）
+   3. 双方都允许背负/被背负（bEnableCarryOther / bEnableCarriedByOther）
+   4. 不在脱离CD中
+   5. 背负者与被背负者距离在检测范围内
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 背负者 |
+| `InTargetPawn` | `PlayerPawn` | 被背负的倒地队友 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否调用了 RPC（不代表背负成功，需用 GetCarryState 验证） |
+
+### `ConfirmPutDownCarried`
+
+```text
+ConfirmPutDownCarried(InPawn: PlayerPawn) -> boolean
+```
+
+确认放下被背负的队友
+生效范围：服务器
+前置条件：
+   1. 正在背负他人（CarryWho != nil）
+   2. 当前状态为 Carring
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 背负者 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否调用了 RPC |
+
+### `InterruptCarry`
+
+```text
+InterruptCarry(InPawn: PlayerPawn, bIsCarrier: boolean) -> boolean
+```
+
+中断背负（单方面中断）
+生效范围：服务器
+前置条件：
+   bIsCarrier=true  时：正在背负他人（CarryWho != nil）
+   bIsCarrier=false 时：正在被他人背负（BeCarriedByWho != nil）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+| `bIsCarrier` | `boolean` | 是否是背负方 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否调用了函数 |
+
+### `BreakAwayFromCarrier`
+
+```text
+BreakAwayFromCarrier(InPawn: PlayerPawn) -> boolean
+```
+
+被背负者主动脱离
+生效范围：服务器
+前置条件：
+   1. 正在被他人背负（BeCarriedByWho != nil）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 被背负的角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否调用了 RPC |
+
+### `SetCarryOtherEnabled`
+
+```text
+SetCarryOtherEnabled(InPawn: PlayerPawn, bEnable: boolean)
+```
+
+设置是否允许背负倒地队友
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+| `bEnable` | `boolean` | 是否允许 |
+
+### `SetBeCarriedEnabled`
+
+```text
+SetBeCarriedEnabled(InPawn: PlayerPawn, bEnable: boolean)
+```
+
+设置是否允许被他人背负
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+| `bEnable` | `boolean` | 是否允许 |
+
+### `SetCarryDetectRange`
+
+```text
+SetCarryDetectRange(InPawn: PlayerPawn, Radius: number, Angle: number, Offset: number)
+```
+
+设置背负检测范围
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+| `Radius` | `number` | 检测半径 |
+| `Angle` | `number` | 扇形角度 |
+| `Offset` | `number` | 检测中心前向偏移 |
+
+### `SetBreakAwayCooldown`
+
+```text
+SetBreakAwayCooldown(InPawn: PlayerPawn, Cooldown: number)
+```
+
+设置脱离冷却时间
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+| `Cooldown` | `number` | 冷却时间（秒，0=无CD） |
+
+### `GetCarryState`
+
+```text
+GetCarryState(InPawn: PlayerPawn) -> ECarringState
+```
+
+获取背负状态
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ECarringState` | 背负状态枚举 |
+
+### `GetCarryTarget`
+
+```text
+GetCarryTarget(InPawn: PlayerPawn) -> PlayerPawn
+```
+
+获取正在背负的目标
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `PlayerPawn` | 被背负的角色，无则返回nil |
+
+### `GetCarriedByWho`
+
+```text
+GetCarriedByWho(InPawn: PlayerPawn) -> PlayerPawn
+```
+
+获取谁在背我
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `PlayerPawn` | 背负者，无则返回nil |
+
+### `IsBeingCarried`
+
+```text
+IsBeingCarried(InPawn: PlayerPawn) -> boolean
+```
+
+是否正在被背负
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否正在被背负 |
+
+### `IsCarryingOther`
+
+```text
+IsCarryingOther(InPawn: PlayerPawn) -> boolean
+```
+
+是否正在背负他人
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否正在背负他人 |
+
+### `IsCarriedByAI`
+
+```text
+IsCarriedByAI(InPawn: PlayerPawn) -> boolean
+```
+
+是否被AI背负
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否被AI背负 |
+
+### `AddOnCarryStateChanged`
+
+```text
+AddOnCarryStateChanged(InPawn: PlayerPawn, Callback: function, Context: table)
+```
+
+监听背负状态变化事件
+生效范围：服务器
+ bIsCarrier=true=Character是背负方，false=Character是被背负方
+ LastState/NewState 为 ECarringState 枚举: None(0)=无 Waitting(1)=等待 PuttingUp(2)=搬起中 Carring(3)=背负中 PuttingDown(4)=放下中
+ 背负开始: LastState~=Carring → NewState=Carring
+ 背负结束: LastState=Carring → NewState=None (放下/脱离/自杀/中断都是这个转换)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 要监听的玩家角色 |
+| `Callback` | `function` | 回调函数 function(Character, bIsCarrier, LastState, NewState) |
+| `Context` | `table` | 回调绑定的 self 对象（用于 Remove 时精确匹配，回调时作为 self 参数） |
+
+### `RemoveOnCarryStateChanged`
+
+```text
+RemoveOnCarryStateChanged(InPawn: PlayerPawn, Callback: function, Context: table)
+```
+
+取消监听背负状态变化事件
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 要取消监听的玩家角色 |
+| `Callback` | `function` | 注册时传入的回调函数 |
+| `Context` | `table` | 注册时传入的 self 对象 |
+
+### `ConfirmCarryDeadBox`
+
+```text
+ConfirmCarryDeadBox(InPawn: PlayerPawn, InTargetDeadBox: PlayerTombBox) -> boolean
+```
+
+确认搬起死亡盒子
+生效范围：服务器
+前置条件：
+   1. 目标死亡盒子有效且未被搬运
+   2. 当前未在搬运其他盒子（状态为 None）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 搬运者 |
+| `InTargetDeadBox` | `PlayerTombBox` | 目标死亡盒子 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否调用了 RPC（不代表搬起成功，需用 GetCarryDeadBoxState 验证） |
+
+### `ConfirmPutDownDeadBox`
+
+```text
+ConfirmPutDownDeadBox(InPawn: PlayerPawn) -> boolean
+```
+
+确认放下正在搬运的死亡盒子
+生效范围：服务器
+前置条件：
+   1. 正在搬运死亡盒子（状态非 None）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 搬运者 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否调用了 RPC |
+
+### `InterruptCarryDeadBox`
+
+```text
+InterruptCarryDeadBox(InPawn: PlayerPawn) -> boolean
+```
+
+中断搬运死亡盒子
+生效范围：服务器
+前置条件：
+   1. 正在搬运死亡盒子（状态非 None）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否调用了函数 |
+
+### `SetCarryDeadBoxEnabled`
+
+```text
+SetCarryDeadBoxEnabled(InPawn: PlayerPawn, bEnable: boolean)
+```
+
+设置搬运死亡盒子功能开关（全局）
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色（作为 WorldContext） |
+| `bEnable` | `boolean` | 是否允许 |
+
+### `SetCarryDeadBoxDetectRange`
+
+```text
+SetCarryDeadBoxDetectRange(InPawn: PlayerPawn, Radius: number, Angle: number, Offset: number)
+```
+
+设置搬运检测范围
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+| `Radius` | `number` | 检测半径 |
+| `Angle` | `number` | 扇形角度 |
+| `Offset` | `number` | 检测中心前向偏移 |
+
+### `SetCarryDeadBoxPutDownParams`
+
+```text
+SetCarryDeadBoxPutDownParams(InPawn: PlayerPawn, HalfExtent: FVector, ForwardDist: number, DownwardDist: number)
+```
+
+设置放下检测参数
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+| `HalfExtent` | `FVector` | 检测盒半边长 |
+| `ForwardDist` | `number` | 前向检测距离 |
+| `DownwardDist` | `number` | 向下检测距离 |
+
+### `GetCarryDeadBoxState`
+
+```text
+GetCarryDeadBoxState(InPawn: PlayerPawn) -> ECarringState
+```
+
+获取搬运死亡盒子状态
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ECarringState` | 搬运状态枚举 |
+
+### `GetCarriedDeadBox`
+
+```text
+GetCarriedDeadBox(InPawn: PlayerPawn) -> PlayerTombBox
+```
+
+获取正在搬运的死亡盒子
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `PlayerTombBox` | 死亡盒子对象，无则返回nil |
+
+### `IsCarryingDeadBox`
+
+```text
+IsCarryingDeadBox(InPawn: PlayerPawn) -> boolean
+```
+
+是否正在搬运死亡盒子
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否正在搬运死亡盒子 |
+
+### `AddOnCarryDeadBoxStateChanged`
+
+```text
+AddOnCarryDeadBoxStateChanged(InPawn: PlayerPawn, Callback: function, Context: table)
+```
+
+监听搬运死亡盒子状态变化事件
+生效范围：服务器
+ Character=角色自身（仅有搬运方，无被搬运方概念）
+ LastState/NewState 为 ECarringState 枚举: None(0)=无 Waitting(1)=等待 PuttingUp(2)=搬起中 Carring(3)=搬运中 PuttingDown(4)=放下中
+ 搬运开始: LastState~=Carring → NewState=Carring
+ 搬运结束: LastState=Carring → NewState=None (放下/中断)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 要监听的玩家角色（搬运者） |
+| `Callback` | `function` | 回调函数 function(Character, LastState, NewState) |
+| `Context` | `table` | 回调绑定的 self 对象（用于 Remove 时精确匹配，回调时作为 self 参数） |
+
+### `RemoveOnCarryDeadBoxStateChanged`
+
+```text
+RemoveOnCarryDeadBoxStateChanged(InPawn: PlayerPawn, Callback: function, Context: table)
+```
+
+取消监听搬运死亡盒子状态变化事件
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 要取消监听的玩家角色 |
+| `Callback` | `function` | 注册时传入的回调函数 |
+| `Context` | `table` | 注册时传入的 self 对象 |
+
 ### `DrawOutline`
 
 ```text
@@ -674,6 +1229,24 @@ SetUpSubViewTargetServer(InPawn: PlayerPawn, bSetUp: boolean, TargetActor: AActo
 | `bSetUp` | `boolean` | 是否启用 |
 | `TargetActor` | `AActor` | 是否启用 |
 | `BlendTime` | `number` | 缓动时间 |
+
+### `PickUpWrapperActor`
+
+```text
+PickUpWrapperActor(PlayerPawn: PlayerPawn, TargetWrapper: AActor, ItemData: FPickUpItemData, PickupCount: number)
+```
+
+拾取地面物品
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `TargetWrapper` | `AActor` | 目标地面拾取物 |
+| `ItemData` | `FPickUpItemData` | 拾取物品数据（可通过 WrapperActor:GetDataList() 获取） |
+| `PickupCount` | `number` | 拾取数量 |
 
 ## Language
 

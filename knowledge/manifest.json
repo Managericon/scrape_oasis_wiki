@@ -1,5 +1,19 @@
 [
   {
+    "id": "20472",
+    "title": "1.38 Release Notes",
+    "categories": [
+      "版本日志"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20472",
+    "status": "ok",
+    "file": "articles/版本日志/20472_1.38 Release Notes.md",
+    "selector": ".github-markdown-body",
+    "images": 0,
+    "code_blocks": 0,
+    "sha256": "9b82b6ade69112dcf7976893f47a3b14ef6686cc1fd3cbaf67b3b39bbe026802"
+  },
+  {
     "id": "20418",
     "title": "1.37 Release Notes",
     "categories": [
@@ -1177,9 +1191,9 @@
     "status": "ok",
     "file": "articles/进阶内容/GamePlay系统/技能系统/技能编辑器2.0/20091_技能编辑器.md",
     "selector": ".github-markdown-body",
-    "images": 52,
-    "code_blocks": 1,
-    "sha256": "b224c7e1e74f08f046403c1eee4eb84e068a6878d07b7e518f9f7e488e2429a3"
+    "images": 63,
+    "code_blocks": 5,
+    "sha256": "f79eb8e87373c8ba17c08b5118ab882e270f830e2b098bac7ac3227cd5765c35"
   },
   {
     "id": "20152",
@@ -1245,9 +1259,9 @@
     "status": "ok",
     "file": "articles/进阶内容/GamePlay系统/技能系统/技能编辑器2.0/20112_技能Event查询手册.md",
     "selector": ".github-markdown-body",
-    "images": 27,
+    "images": 28,
     "code_blocks": 0,
-    "sha256": "2b860f2b4d5881933468cc00826d6740333d247c03f448741ede2e6de927e775"
+    "sha256": "c9b42ff3cb745bba6296dbae6cc6fd80117e66db32b2a9ce005c0cd52c4cdfa5"
   },
   {
     "id": "20111",
@@ -1279,9 +1293,9 @@
     "status": "ok",
     "file": "articles/进阶内容/GamePlay系统/技能系统/技能编辑器2.0/20094_技能Task查询手册.md",
     "selector": ".github-markdown-body",
-    "images": 95,
+    "images": 96,
     "code_blocks": 3,
-    "sha256": "5c1e34490dfaaceb2f63aabde9c3b276361b9a940689964cb60857f2a3924396"
+    "sha256": "5cf0ad694e477a10ba978fc5d210a77d6ddfe189938e711800144442fcdcb4bc"
   },
   {
     "id": "20114",
@@ -1757,6 +1771,40 @@
     "sha256": "1bc53314190d9c9d8c53bb4e2e2cf95dea969b682ad510aec679eca88c2a6c99"
   },
   {
+    "id": "20471",
+    "title": "背包流程概览",
+    "categories": [
+      "进阶内容",
+      "GamePlay系统",
+      "物资系统",
+      "物资编辑器2.0"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20471",
+    "status": "ok",
+    "file": "articles/进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20471_背包流程概览.md",
+    "selector": ".github-markdown-body",
+    "images": 0,
+    "code_blocks": 0,
+    "sha256": "812cc1ae3854c22d154d5a5cdf6bced25c2c833df9cf70bd97823b8e524ef6ce"
+  },
+  {
+    "id": "20470",
+    "title": "背包 / 物品 功能边界",
+    "categories": [
+      "进阶内容",
+      "GamePlay系统",
+      "物资系统",
+      "物资编辑器2.0"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20470",
+    "status": "ok",
+    "file": "articles/进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20470_背包 _ 物品 功能边界.md",
+    "selector": ".github-markdown-body",
+    "images": 0,
+    "code_blocks": 2,
+    "sha256": "2d0951b141518454346923262a60f9c22c79ab4c4666d140053bd1c6877593f1"
+  },
+  {
     "id": "20144",
     "title": "怪物快速配置指南",
     "categories": [
@@ -2040,9 +2088,9 @@
     "status": "ok",
     "file": "articles/进阶内容/GamePlay系统/怪物系统/20179_任务节点查询手册.md",
     "selector": ".github-markdown-body",
-    "images": 19,
+    "images": 20,
     "code_blocks": 3,
-    "sha256": "9256595eb1fac9b94f7085a8bad05b444e176031dc7115d80887cac64f177b9b"
+    "sha256": "dac0445b46a4d9aa457f9b2f77fb7450e7e07c08e5090f3b2784f455db55cb2a"
   },
   {
     "id": "168",
@@ -2837,6 +2885,21 @@
     "sha256": "2a1e3cf521b07522b37d3dd9241767e14060240b1bf75b8cdf1fe33db25b65ee"
   },
   {
+    "id": "20445",
+    "title": "Tips系统",
+    "categories": [
+      "进阶内容",
+      "UI系统"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20445",
+    "status": "ok",
+    "file": "articles/进阶内容/UI系统/20445_Tips系统.md",
+    "selector": ".github-markdown-body",
+    "images": 4,
+    "code_blocks": 9,
+    "sha256": "318156839481c1c39e53c7a8dae5176e8af86ec148bbafedb9872335b2c746d1"
+  },
+  {
     "id": "20223",
     "title": "特效编辑器",
     "categories": [
@@ -3228,6 +3291,21 @@
     "images": 0,
     "code_blocks": 11,
     "sha256": "1dd488f97d1557342cb055a9e6ef85d2a477c8b2fca468f5ff94d53971a4424c"
+  },
+  {
+    "id": "20460",
+    "title": "PIE 本地存档",
+    "categories": [
+      "进阶内容",
+      "存档"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20460",
+    "status": "ok",
+    "file": "articles/进阶内容/存档/20460_PIE 本地存档.md",
+    "selector": ".github-markdown-body",
+    "images": 2,
+    "code_blocks": 5,
+    "sha256": "85a42b4a8cbcce1342e9d154443987944b758e4598c29ad0545e6b2b4affbc77"
   },
   {
     "id": "20090",
@@ -4620,9 +4698,9 @@
     "status": "ok",
     "file": "articles/性能优化及异常处理/20401_性能报告与内存记录.md",
     "selector": ".github-markdown-body",
-    "images": 7,
+    "images": 9,
     "code_blocks": 0,
-    "sha256": "142578f91f7cc8551ca7599f6d903d6a62dd4058c16423b70266e2e498ef3b9a"
+    "sha256": "1967ee95fb3ebcc0997ba2a5e93b17acbb4eb026904d8eb0cea761a30107ad4b"
   },
   {
     "id": "20428",

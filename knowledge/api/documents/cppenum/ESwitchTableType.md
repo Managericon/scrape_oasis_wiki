@@ -18,3 +18,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `BigWorld` | `2` | - |
 | `Permanent` | `3` | - |
 | `ABT` | `4` | - |
+| `AntiCheatPermanent` | `5` | - |

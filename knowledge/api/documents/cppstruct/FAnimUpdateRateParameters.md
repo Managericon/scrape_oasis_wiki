@@ -30,9 +30,9 @@ Container for Animation Update Rate parameters.
 | `MaxDistFromMainChar` | `float` | - |
 | `BaseVisibleDistanceFactorThesholds` | `TArray < float >` | Array of MaxDistanceFactor to use for AnimUpdateRate when mesh is visible (rendered).<br>	  MaxDistanceFactor is size on screen, as used by LODs<br>	  Example:<br>	 		BaseVisibleDistanceFactorThesholds.Add(0.4f)<br>	 		BaseVisibleDistanceFactorThesholds.Add(0.2f)<br>	  means:<br>	 		0 frame skip, MaxDistanceFactor > 0.4f<br>	 		1 frame skip, MaxDistanceFactor > 0.2f<br>	 		2 frame skip, MaxDistanceFactor > 0.0f |
 | `BaseVisibleDistanceFactorSkipNum` | `int32` | - |
-| `LODToFrameSkipMap` | `TMap < int32 , int32 >` | Map of LOD levels to frame skip amounts. if bShouldUseLodMap is set these values will be used for<br>	  the frameskip amounts and the distance factor thresholds will be ignored. The flag and these values<br>	  should be configured using the customization callback when parameters are created for a component.<br>	 <br>	  Note that this is # of frames to skip, so if you have 20, that means every 21th frame, it will update, and evaluate. |
 | `MinEvaluationRate` | `int32` | - |
 | `LockAnimUpdateRate` | `int32` | - |
 | `EnableUROInterpolation` | `bool` | - |
+| `LODToFrameSkipMap` | `TMap < int32 , int32 >` | Map of LOD levels to frame skip amounts. if bShouldUseLodMap is set these values will be used for<br>	  the frameskip amounts and the distance factor thresholds will be ignored. The flag and these values<br>	  should be configured using the customization callback when parameters are created for a component.<br>	 <br>	  Note that this is # of frames to skip, so if you have 20, that means every 21th frame, it will update, and evaluate. |
 | `MaxEvalRateForInterpolation` | `int32` | Max Evaluation Rate allowed for interpolation to be enabled. Beyond, interpolation will be turned off. |
 | `ShiftBucket` | `EUpdateRateShiftBucket` | The bucket to use when deciding which counter to use to calculate shift values |

@@ -6,6 +6,2422 @@ category: "API Wiki/class"
 kind: "api_chunk"
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterial.json -->
+
+# UMaterial
+
+A Material is an asset which can be applied to a mesh to control the visual look of the scene.
+  When light from the scene hits the surface, the shading model of the material is used to calculate how that light interacts with the surface.
+ 
+  Warning: Creating new materials directly increases shader compile times!  Consider creating a Material Instance off of an existing material instead.
+
+## Inheritance
+
+`UMaterialInterface`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PhysMaterial` | `UPhysicalMaterial *` | Physical material to use for this graphics material. Used for sounds, effects etc. |
+| `DiffuseColor_DEPRECATED` | `FColorMaterialInput` | - |
+| `SpecularColor_DEPRECATED` | `FColorMaterialInput` | - |
+| `BaseColor` | `FColorMaterialInput` | - |
+| `Metallic` | `FScalarMaterialInput` | - |
+| `Specular` | `FScalarMaterialInput` | - |
+| `Roughness` | `FScalarMaterialInput` | - |
+| `Normal` | `FVectorMaterialInput` | - |
+| `EmissiveColor` | `FColorMaterialInput` | - |
+| `Opacity` | `FScalarMaterialInput` | - |
+| `OpacityMask` | `FScalarMaterialInput` | - |
+| `ReplaceMaterial` | `UMaterialInterface *` | - |
+| `MaterialDomain` | `TEnumAsByte < enum EMaterialDomain >` | The domain that the material's attributes will be evaluated in.<br>	  Certain pieces of material functionality are only valid in certain domains, for example vertex normal is only valid on a surface. |
+| `BlendMode` | `TEnumAsByte < enum EBlendMode >` | Determines how the material's color is blended with background colors. |
+| `DecalBlendMode` | `TEnumAsByte < enum EDecalBlendMode >` | Defines how the GBuffer chanels are getting manipulated by a decal material pass. (only with MaterialDomain == MD_DeferredDecal) |
+| `MaterialDecalResponse` | `TEnumAsByte < enum EMaterialDecalResponse >` | Defines how the material reacts on DBuffer decals (Affects look, performance and texturesample usage).<br>	  Non DBuffer Decals can be disabled on the primitive (e.g. static mesh) |
+| `ShadingModel` | `TEnumAsByte < enum EMaterialShadingModel >` | Determines how inputs are combined to create the material's final color. |
+| `bIncludeShaderCode` | `uint32` | - |
+| `OpacityMaskClipValue` | `float` | If BlendMode is BLEND_Masked, the surface is not rendered where OpacityMask < OpacityMaskClipValue. |
+| `bTranslucentVelocityRendering` | `uint32` | - |
+| `TranslucentVelocityClipValue` | `float` | - |
+| `VertexOffsetAlongNormal` | `float` | pixels offset along vertex normal, for outline drawing. |
+| `bCastDynamicShadowAsMasked` | `uint32` | If true, translucent materials will cast dynamic shadows according to their opacity.<br>	 OpacityMaskClipValue is used as the threshold value. |
+| `bCastDynamicShadowAsUnlit` | `uint32` | - |
+| `OITBlendMode` | `TEnumAsByte < enum EOITBlendMode >` | - |
+| `WorldPositionOffset` | `FVectorMaterialInput` | Adds to world position in the vertex shader. |
+| `WorldDisplacement` | `FVectorMaterialInput` | Offset in world space applied to tessellated vertices. |
+| `TessellationMultiplier` | `FScalarMaterialInput` | Multiplies the tessellation factors applied when a tessellation mode is set. |
+| `SubsurfaceColor` | `FColorMaterialInput` | Inner material color, only used for ShadingModel=Subsurface |
+| `ClearCoat` | `FScalarMaterialInput` | - |
+| `ClearCoatRoughness` | `FScalarMaterialInput` | - |
+| `AmbientOcclusion` | `FScalarMaterialInput` | output ambient occlusion to the GBuffer |
+| `Refraction` | `FScalarMaterialInput` | output refraction index for translucent rendering<br>	  Air:1.0 Water:1.333 Ice:1.3 Glass:~1.6 Diamond:2.42 |
+| `CustomizedUVs` | `FVector2MaterialInput` | These inputs are evaluated in the vertex shader and allow artists to do arbitrary vertex shader operations and access them in the pixel shader.<br>	  When unconnected or hidden they default to passing through the vertex UVs. |
+| `MaterialAttributes` | `FMaterialAttributesInput` | - |
+| `PixelDepthOffset` | `FScalarMaterialInput` | - |
+| `CustomizedVertexColor` | `FVector4MaterialInput` | - |
+| `PlanarReflectionOffsetScale` | `FVector4MaterialInput` | - |
+| `VertexDepthOffset` | `FScalarMaterialInput` | - |
+| `PixelDepthOffsetNegative` | `FScalarMaterialInput` | - |
+| `bAllowGCCluster` | `uint32` | - |
+| `bEnableSeparateTranslucency` | `uint32` | Indicates that the material should be rendered in the SeparateTranslucency Pass (not affected by DOF, requires bAllowSeparateTranslucency to be set in .ini). |
+| `bTranslucencyRenderAfterSS` | `uint32` | Indicates that the material should be rendered after post process and super sampling, dedicate for reticle materials |
+| `bEnableMobileSeparateTranslucency` | `uint32` | Indicates that the translucent material should not be affected by bloom or DOF. (Note: Depth testing is not available) |
+| `bEnableMobileDownsampleSeparateTranslucency` | `uint32` | Indicates that the translucent material can be rendered on an off-screen render target at a low resolution) |
+| `bEnableResponsiveAA` | `uint32` | Indicates that the material should be rendered using responsive anti-aliasing. Improves sharpness of small moving particles such as sparks.<br>	  Only use for small moving features because it will cause aliasing of the background. |
+| `bScreenSpaceReflections` | `uint32` | SSR on translucency |
+| `TwoSided` | `uint32` | Indicates that the material should be rendered without backface culling and the normal should be flipped for backfaces. |
+| `DitheredLODTransition` | `uint32` | Whether meshes rendered with the material should support dithered LOD transitions. |
+| `ForceOpaqueLevelPointIndirectLighting` | `uint32` | - |
+| `DitherOpacityMask` | `uint32` | Dither opacity mask. When combined with Temporal AA this can be used as a form of limited translucency which supports all lighting features. |
+| `bAllowNegativeEmissiveColor` | `uint32` | Whether the material should allow outputting negative emissive color values.  Only allowed on unlit materials. |
+| `NumCustomizedUVs` | `int32` | Number of customized UV inputs to display.  Unconnected customized UV inputs will just pass through the vertex UVs. |
+| `TranslucencyLightingMode` | `TEnumAsByte < enum ETranslucencyLightingMode >` | Sets the lighting mode that will be used on this material if it is translucent. |
+| `TranslucencyDirectionalLightingIntensity` | `float` | Useful for artificially increasing the influence of the normal on the lighting result for translucency.<br>	  A value larger than 1 increases the influence of the normal, a value smaller than 1 makes the lighting more ambient. |
+| `AllowTranslucentCustomDepthWrites` | `uint32` | Allows a translucenct material to be used with custom depth writing by compiling additional shaders. |
+| `TranslucentShadowDensityScale` | `float` | Scale used to make translucent shadows more or less opaque than the material's actual opacity. |
+| `TranslucentSelfShadowDensityScale` | `float` | Scale used to make translucent self-shadowing more or less opaque than the material's shadow on other objects.<br>	  This is only used when the object is casting a volumetric translucent shadow. |
+| `TranslucentSelfShadowSecondDensityScale` | `float` | Used to make a second self shadow gradient, to add interesting shading in the shadow of the first. |
+| `TranslucentSelfShadowSecondOpacity` | `float` | Controls the strength of the second self shadow gradient. |
+| `TranslucentBackscatteringExponent` | `float` | Controls how diffuse the material's backscattering is when using the MSM_Subsurface shading model.<br>	  Larger exponents give a less diffuse look (smaller, brighter backscattering highlight).<br>	  This is only used when the object is casting a volumetric translucent shadow from a directional light. |
+| `TranslucentMultipleScatteringExtinction` | `FLinearColor` | Colored extinction factor used to approximate multiple scattering in dense volumes.<br>	  This is only used when the object is casting a volumetric translucent shadow. |
+| `TranslucentShadowStartOffset` | `float` | Local space distance to bias the translucent shadow.  Positive values move the shadow away from the light. |
+| `bDisableDepthTest` | `uint32` | Whether to draw on top of opaque pixels even if behind them. This only has meaning for translucency. |
+| `bGenerateSphericalParticleNormals` | `uint32` | Whether to generate spherical normals for particles that use this material. |
+| `bTangentSpaceNormal` | `uint32` | Whether the material takes a tangent space normal or a world space normal as input.<br>	  (TangentSpace requires extra instructions but is often more convenient). |
+| `bUseEmissiveForDynamicAreaLighting` | `uint32` | If enabled, the material's emissive colour is injected into the LightPropagationVolume |
+| `bBlockGI` | `uint32` | If enabled, the material's opacity defines how much GI is blocked when using the LightPropagationVolume feature |
+| `bUseSimpleGI` | `uint32` | If enabled, the material uses simplified and inaccurate GI color for efficiency |
+| `bUsedAsSpecialEngineMaterial` | `uint32` | This is a special usage flag that allows a material to be assignable to any primitive type.<br>	  This is useful for materials used by code to implement certain viewmodes, for example the default material or lighting only material.<br>	  The cost is that nearly 20x more shaders will be compiled for the material than the average material, which will greatly increase shader compile time and memory usage.<br>	  This flag should only be enabled when absolutely necessary, and is purposefully not exposed to the UI to prevent abuse. |
+| `bUsedWithSkeletalMesh` | `uint32` | Indicates that the material and its instances can be use with skeletal meshes.<br>	  This will result in the shaders required to support skeletal meshes being compiled which will increase shader compile time and memory usage. |
+| `bUsedWithGFur` | `uint32` | Indicates that the material and its instances can be use with GFur.<br>	 This will result in the shaders required to support skeletal meshes being compiled which will increase shader compile time and memory usage. |
+| `bUsedWithEditorCompositing` | `uint32` | Indicates that the material and its instances can be use with editor compositing<br>	  This will result in the shaders required to support editor compositing being compiled which will increase shader compile time and memory usage. |
+| `bUsedWithParticleSprites` | `uint32` | Indicates that the material and its instances can be use with particle sprites<br>	  This will result in the shaders required to support particle sprites being compiled which will increase shader compile time and memory usage. |
+| `bForceDisableSubUVCalculate` | `uint32` | - |
+| `bUsedWithBeamTrails` | `uint32` | Indicates that the material and its instances can be use with beam trails<br>	  This will result in the shaders required to support beam trails being compiled which will increase shader compile time and memory usage. |
+| `bUsedWithMeshParticles` | `uint32` | Indicates that the material and its instances can be use with mesh particles<br>	  This will result in the shaders required to support mesh particles being compiled which will increase shader compile time and memory usage. |
+| `bUsedWithParticleBigWorldPrecision` | `uint32` | - |
+| `bUsedWithNiagaraSprites` | `uint32` | Indicates that the material and its instances can be use with Niagara sprites (meshes and ribbons, respectively)<br>	 This will result in the shaders required to support Niagara sprites being compiled which will increase shader compile time and memory usage. |
+| `bUsedWithNiagaraRibbons` | `uint32` | - |
+| `bUsedWithNiagaraMeshParticles` | `uint32` | - |
+| `bUsedWithIBL` | `uint32` | Indicates that the material and its instances can be use with reflection cube<br>	  This will result in the shaders required to support IBL being compiled which will increase shader compile time and memory usage. |
+| `bUsedWithStaticLighting` | `uint32` | Indicates that the material and its instances can be use with static lighting<br>	  This will result in the shaders required to support static lighting being compiled which will increase shader compile time and memory usage. |
+| `bUsedWithMorphTargets` | `uint32` | Indicates that the material and its instances can be use with morph targets<br>	  This will result in the shaders required to support morph targets being compiled which will increase shader compile time and memory usage. |
+| `bUsedWithSplineMeshes` | `uint32` | Indicates that the material and its instances can be use with spline meshes<br>	  This will result in the shaders required to support spline meshes being compiled which will increase shader compile time and memory usage. |
+| `bUsedWithQuantizedMeshes` | `uint32` | - |
+| `bUsedWithInstancedStaticMeshes` | `uint32` | Indicates that the material and its instances can be use with instanced static meshes<br>	  This will result in the shaders required to support instanced static meshes being compiled which will increase shader compile time and memory usage. |
+| `bUsedWithCustomInstancedStaticMeshes` | `uint32` | Indicates that the material and its instances can be use with custom instanced static meshes<br>	  This will result in the shaders required to support instanced static meshes being compiled which will increase shader compile time and memory usage. |
+| `bUsedWithInstancedWidget` | `uint32` | - |
+| `bUsedWithInstancedPDSurface` | `uint32` | - |
+| `bUsesDistortion` | `uint32` | Indicates that the material and its instances can be use with distortion<br>	  This will result in the shaders required to support distortion being compiled which will increase shader compile time and memory usage. |
+| `bUsedWithClothing` | `uint32` | Indicates that the material and its instances can be use with clothing<br>	  This will result in the shaders required to support clothing being compiled which will increase shader compile time and memory usage. |
+| `bUsedWithUI_DEPRECATED` | `uint32` | Indicates that the material and its instances can be use with Slate UI and UMG<br>	  This will result in the shaders required to support UI materials being compiled which will increase shader compile time and memory usage. |
+| `bUsedWithPPRBackgroud` | `uint32` | Indicates that the material would use for ppr background in deferred rendering. |
+| `bUsedWithSurfelInjectColor` | `uint32` | Indicates that the material and its instances can be use with SurfelGI inject color<br>	  This will result in the shaders required to support SurfelGI inject color being compiled which will increase shader compile time and memory usage.<br>	  HACK by huiwenjiang. |
+| `bUsedWithTranslucentGI` | `uint32` | [SurfelGI - brainfkli ADD]<br>	  Indicates that the material and its instances can be affected by GI in translucent blend mode. |
+| `bUsedWithAtmosphericSkyBox` | `uint32` | Indicates that the material and its instances can be use with AtmosphericSkyBox<br>	  This will result in the shaders required to support AtmosphericSkyBox being compiled which will increase shader compile time and memory usage. |
+| `bAutomaticallySetUsageInEditor` | `uint32` | Whether to automatically set usage flags based on what the material is applied to in the editor.<br>	  It can be useful to disable this on a base material with many instances, where adding another usage flag accidentally (eg bUsedWithSkeletalMeshes) can add a lot of shader permutations. |
+| `bFullyRough` | `uint32` | Forces the material to be completely rough. Saves a number of instructions and one sampler. Note: Overrided by Lite Rough. |
+| `bUsedWithLandscapeDeform` | `uint32` | Indicates that the material and its instances can be use with Landscape Deform<br>	  This will result in the shaders required to support LandscapeDeform being compiled which will increase shader compile time and memory usage. |
+| `bUseFullPrecision` | `uint32` | Forces this material to use full (highp) precision in the pixel shader.<br>	 	This is slower than the default (mediump) but can be used to work around precision-related rendering errors.<br>	 	This setting has no effect on older mobile devices that do not support high precision.<br>	   Note: Overrided by Lite Rough. |
+| `bForceMaterialFloat` | `uint32` | Forces this material's temporary variables to use full precision float in the pixel shader.<br>	  Keeps uniforms to use default precision. HACK by huiwen. |
+| `bUseLightmapDirectionality` | `uint32` | Use lightmap directionality and per pixel normals. If disabled, lighting from lightmaps will be flat but cheaper. |
+| `bUsedWithDynamicInstancing` | `uint32` | Indicates that the each material instance(of this material) can be dynamic instanced. |
+| `bDynamicInstancingByUBO` | `uint32` | - |
+| `bUsedWithRuntimeStaticBatchMultiParams` | `uint32` | - |
+| `bNeedInstanceTransform` | `uint32` | - |
+| `bUseSimplestShader` | `uint32` | - |
+| `bBypassSystemMaterialQuality` | `uint32` | - |
+| `bBypassMobilePointLight` | `uint32` | - |
+| `bUseAsEarlyZ` | `uint32` | - |
+| `bForceOutputLinearSpace` | `uint32` | - |
+| `bUseAsDrawToRenderTarget` | `uint32` | - |
+| `bRenderInTwoPass` | `uint32` | - |
+| `bShadowUseTentFilter` | `uint32` | - |
+| `bUseLightmap` | `uint32` | - |
+| `bUseGPUVolumetricLightMap` | `uint32` | - |
+| `bUsedGPUVLMVertexLighting` | `uint32` | - |
+| `bUseVolumeProbeGIMobile` | `uint32` | - |
+| `bUseVolumeProbeGIMobileWithAO` | `uint32` | - |
+| `bShouldReceiveGridShadow` | `uint32` | - |
+| `bEnableMicroShadow` | `uint32` | - |
+| `MicroShadowIntensity` | `float` | - |
+| `bUseIndirectLighting` | `uint32` | - |
+| `bShadowOnEmissiveColor` | `uint32` | - |
+| `bUsedGrassInstnaceColor` | `uint32` | - |
+| `bUsedVertexPointLight` | `uint32` | - |
+| `bUsedWithLandscapeShadow` | `uint32` | - |
+| `bUseLandscapeMultiLayer` | `uint32` | - |
+| `bUsedWithPhotonShadow` | `uint32` | #if WITH_PHOTON_SHADOW |
+| `bUsedWithPhotonShadowPCSS` | `uint32` | - |
+| `bUsedDynamicObjectVertexLighting` | `uint32` | - |
+| `bUsedWithDynamicBatching` | `uint32` | Indicates that the material instance shared with same base mat can be batched |
+| `bUsedWithDynamicMergeSkeletalMesh` | `uint32` | - |
+| `bUsedWithDynamicInstancingES2Fixup` | `uint32` | - |
+| `bUsedWithMatIDLandscape` | `uint32` | - |
+| `ShadowOverride` | `TEnumAsByte < enum EMaterialShadowOverride >` | - |
+| `SimpleVertexNormalSituation` | `TEnumAsByte < enum ESimpleVertexNormalSituation >` | - |
+| `bZForceFar` | `uint32` | - |
+| `bWettable` | `uint32` | - |
+| `bUseLegacySpecular` | `uint32` | use Phong instead of GGX |
+| `bCorrectBlendingColorInHDR` | `uint32` | - |
+| `bGPUSkinForceUseBonesUniformBuffer` | `uint32` | - |
+| `bUseAsTranslucentEarlyZ` | `uint32` | - |
+| `bLiteRough` | `uint32` | Override: Fully Rough On、UseFullPrecision Off |
+| `bUseSimpleSkyLight` | `uint32` | - |
+| `bACESOff` | `uint32` | - |
+| `bEmissionOff` | `uint32` | - |
+| `bInstL2WOnlyTranslation` | `uint32` | Instancing only uses translation of LocalToWorld, exclusive of rotation and scale. |
+| `bUseLiteFog` | `uint32` | - |
+| `bUseChromaticAberration` | `uint32` | - |
+| `bUsedWithFirstPerson` | `uint32` | - |
+| `bUsedWithScope` | `uint32` | - |
+| `bUsedWithMaterialDistFade` | `uint32` | - |
+| `bUseHQForwardReflections` | `uint32` | Forward renderer: enables multiple parallax-corrected reflection captures that blend together.<br>	  Mobile renderer: blend between nearest 3 reflection captures, but reduces the number of samplers available to the material as two more samplers will be used for reflection cubemaps. |
+| `bUsePlanarForwardReflections` | `uint32` | Enables planar reflection when using the forward renderer or mobile. Enabling this setting reduces the number of samplers available to the material as one more sampler will be used for the planar reflection. |
+| `bApplyVertexFog` | `uint32` | When false, materials are not fogged in forward shading or mobile. Defaults to true. |
+| `bNormalCurvatureToRoughness` | `uint32` | Reduce roughness based on screen space normal changes. |
+| `D3D11TessellationMode` | `TEnumAsByte < enum EMaterialTessellationMode >` | The type of tessellation to apply to this object.  Note D3D11 required for anything except MTM_NoTessellation. |
+| `bEnableCrackFreeDisplacement` | `uint32` | Prevents cracks in the surface of the mesh when using tessellation. |
+| `bEnableAdaptiveTessellation` | `uint32` | Enables adaptive tessellation, which tries to maintain a uniform number of pixels per triangle. |
+| `bUsedWithTexture2DArrayShaderVariant` | `uint32` | ENABLE_TEXTURE2D_ARRAY_SHADER_VARIANT<br>	 Enable Dynamic MaterialInstance use Texture 2D Array shader variant with Texture 2D material expression graph |
+| `bSkipRSH` | `uint32` | Skip Runtime Static Batching (RSH) |
+| `bSkipDynamicSwitchOp` | `uint32` | - |
+| `bUsesDeviceLevelSwitch` | `uint32` | 缓存标记：材质是否使用了DeviceLevelSwitch节点且High输入已连接，在PostEditChangeProperty中自动更新 |
+| `bForceUsesDeviceLevelSwitch` | `uint32` | 强制开启DeviceLevelSwitch：勾选后bUsesDeviceLevelSwitch将被强制设为true，即使材质中没有DeviceLevelSwitch节点 |
+| `bCanChangeQualitySeparately` | `uint32` | 勾选后，该材质将使用独立的场景材质质量等级（r.SceneMaterialQualityLevel），而非全局 r.MaterialQualityLevel |
+| `bDisableShadowWPO` | `uint32` | - |
+| `bEnableGrassShadowScale` | `uint32` | - |
+| `bForceDisableVertexNormal` | `uint32` | - |
+| `MaxDisplacement` | `float` | - |
+| `Wireframe` | `uint32` | Enables a wireframe view of the mesh the material is applied to. |
+| `bOutputVelocityOnBasePass` | `uint32` | Skips outputting velocity during the base pass. |
+| `bUnlitOutputAllMTOnBasePass` | `uint32` | Force unlit material output all MT during the base pass. |
+| `ShadingRate` | `TEnumAsByte < EMaterialShadingRate >` | Select what shading rate to apply for platforms that have variable rate shading |
+| `EditorX` | `int32` | - |
+| `EditorY` | `int32` | - |
+| `EditorPitch` | `int32` | - |
+| `EditorYaw` | `int32` | - |
+| `Expressions` | `TArray < UMaterialExpression * >` | Array of material expressions, excluding Comments.  Used by the material editor. |
+| `MaterialFunctionInfos` | `TArray < FMaterialFunctionInfo >` | Array of all functions this material depends on. |
+| `MaterialParameterCollectionInfos` | `TArray < FMaterialParameterCollectionInfo >` | Array of all parameter collections this material depends on. |
+| `bCanMaskedBeAssumedOpaque` | `uint32` | true if this Material can be assumed Opaque when set to masked. |
+| `bIsMasked_DEPRECATED` | `uint32` | true if Material is masked and uses custom opacity |
+| `bIsPreviewMaterial` | `uint32` | true if Material is the preview material used in the material editor. |
+| `bUseMaterialAttributes` | `uint32` | when true, the material attributes pin is used instead of the regular pins. |
+| `bComputeFogPerPixel` | `uint32` | When true, translucent materials have fog computed for every pixel, which costs more but fixes artifacts due to low tessellation. |
+| `bDisableDirectionalLighting` | `uint32` | When true, the directional lighting will be disabled |
+| `bAllowDevelopmentShaderCompile` | `uint32` | If true the compilation environment will be changed to remove the global COMPILE_SHADERS_FOR_DEVELOPMENT flag. |
+| `bIsMaterialEditorStatsMaterial` | `uint32` | true if this is a special material used for stats by the material editor. |
+| `bUseLandscapeVertexAO` | `uint32` | - |
+| `bAllowLandscapeVertexMorph` | `uint32` | - |
+| `bUseLandscapeVertexHole` | `uint32` | - |
+| `UsageFlagWarnings` | `uint32` | true if we have printed a warning about material usage for a given usage flag. |
+| `BlendableLocation` | `TEnumAsByte < enum EBlendableLocation >` | Where the node is inserted in the (post processing) graph, only used if domain is PostProcess |
+| `BlendablePriority` | `int32` | If multiple nodes with the same  type are inserted at the same point, this defined order and if they get combined, only used if domain is PostProcess |
+| `BlendableOutputAlpha` | `bool` | If this is enabled, the blendable will output alpha |
+| `RefractionMode` | `TEnumAsByte < enum ERefractionMode >` | Controls how the Refraction input is interpreted and how the refraction offset into scene color is computed for this material. |
+| `RefractionDepthBias` | `float` | This is the refraction depth bias, larger values offset distortion to prevent closer objects from rendering into the distorted surface at acute viewing angles but increases the disconnect between surface and where the refraction starts. |
+| `bOceanFoam` | `uint32` | - |
+| `bEnableMeshClip` | `uint32` | - |
+| `bEnableMeshDiscard` | `uint32` | - |
+| `bEnableMeshArcPlaneClip` | `uint32` | - |
+| `bIsEnhancedUImage` | `uint32` | - |
+| `bSimplePointLight` | `uint32` | Enable this so the material will not calculate spot light shadows |
+| `StateId` | `FGuid` | Guid that uniquely identifies this material.<br>	  Any changes to the state of the material that do not appear separately in the shadermap DDC keys must cause this guid to be regenerated!<br>	  For example, a modification to the Expressions array.<br>	  Code changes that cause the guid to be regenerated on load should be avoided, as that requires a resave of the content to stop recompiling every load. |
+| `ExpressionTextureReferences` | `TArray < UTexture * >` | Cached texture references from all expressions in the material (including nested functions).<br>	  This is used to link uniform texture expressions which were stored in the DDC with the UTextures that they reference. |
+| `EditorComments` | `TArray < UMaterialExpressionComment * >` | Array of comments associated with this material; viewed in the material editor. |
+| `ParameterGroupData` | `TArray < FParameterGroupData >` | Controls where this parameter group is displayed in a material instance parameter list.  The lower the number the higher up in the parameter list. |
+| `ReferencedTextureGuids` | `TArray < FGuid >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialBillboardComponent.json -->
+
+# UMaterialBillboardComponent
+
+A 2d material that will be rendered always facing the camera.
+
+## Inheritance
+
+`UPrimitiveComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Elements` | `TArray < FMaterialSpriteElement >` | Current array of material billboard elements |
+
+## Functions
+
+### `SetElements`
+
+```text
+SetElements(NewElements: TArray < FMaterialSpriteElement > &) -> void
+```
+
+Set all elements of this material billboard component
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewElements` | `TArray < FMaterialSpriteElement > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `AddElement`
+
+```text
+AddElement(Material: UMaterialInterface *, DistanceToOpacityCurve: UCurveFloat *, bSizeIsInScreenSpace: bool, BaseSizeX: float, BaseSizeY: float, DistanceToSizeCurve: UCurveFloat *) -> void
+```
+
+Adds an element to the sprite.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Material` | `UMaterialInterface *` | - |
+| `DistanceToOpacityCurve` | `UCurveFloat *` | - |
+| `bSizeIsInScreenSpace` | `bool` | - |
+| `BaseSizeX` | `float` | - |
+| `BaseSizeY` | `float` | - |
+| `DistanceToSizeCurve` | `UCurveFloat *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpression.json -->
+
+# UMaterialExpression
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Material` | `UMaterial *` | The material that this expression is currently being compiled in.  <br>	  This is not necessarily the object which owns this expression, for example a preview material compiling a material function's expressions. |
+| `Function` | `UMaterialFunction *` | The material function that this expression is being used with, if any.<br>	  This will be NULL if the expression belongs to a function that is currently being edited, |
+| `Desc` | `FString` | A description that level designers can add (shows in the material editor UI). |
+| `BorderColor` | `FColor` | Color of the expression's border outline. |
+| `bRealtimePreview` | `uint32` | Set to true by RecursiveUpdateRealtimePreview() if the expression's preview needs to be updated in realtime in the material editor. |
+| `bNeedToUpdatePreview` | `uint32` | If true, we should update the preview next render. This is set when changing bRealtimePreview. |
+| `bIsParameterExpression` | `uint32` | Indicates that this is a 'parameter' type of expression and should always be loaded (ie not cooked away) because we might want the default parameter. |
+| `bCommentBubbleVisible` | `uint32` | If true, the comment bubble will be visible in the graph editor |
+| `bShowOutputNameOnPin` | `uint32` | If true, use the output name as the label for the pin |
+| `bShowMaskColorsOnPin` | `uint32` | If true, changes the pin color to match the output mask |
+| `bHidePreviewWindow` | `uint32` | If true, do not render the preview window for the expression |
+| `bCollapsed` | `uint32` | If true, show a collapsed version of the node |
+| `bShaderInputData` | `uint32` | Whether the node represents an input to the shader or not.  Used to color the node's background. |
+| `bShowInputs` | `uint32` | Whether to draw the expression's inputs. |
+| `bShowOutputs` | `uint32` | Whether to draw the expression's outputs. |
+| `Outputs` | `TArray < FExpressionOutput >` | The expression's outputs, which are set in default properties by derived classes. |
+| `MaterialExpressionEditorX` | `int32` | - |
+| `MaterialExpressionEditorY` | `int32` | - |
+| `GraphNode` | `UEdGraphNode *` | Expression's Graph representation |
+| `MaterialExpressionGuid` | `FGuid` | GUID to uniquely identify this node, to help the tutorials out |
+| `MenuCategories` | `TArray < FText >` | Localized categories to sort this expression into... |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionAbs.json -->
+
+# UMaterialExpressionAbs
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | Link to the input expression to be evaluated |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionAdd.json -->
+
+# UMaterialExpressionAdd
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `A` | `FExpressionInput` | - |
+| `B` | `FExpressionInput` | - |
+| `ConstA` | `float` | only used if A is not hooked up |
+| `ConstB` | `float` | only used if B is not hooked up |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionAntialiasedTextureMask.json -->
+
+# UMaterialExpressionAntialiasedTextureMask
+
+## Inheritance
+
+`UMaterialExpressionTextureSampleParameter2D`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Threshold` | `float` | - |
+| `Channel` | `TEnumAsByte < enum ETextureColorChannel >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionAppendVector.json -->
+
+# UMaterialExpressionAppendVector
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `A` | `FExpressionInput` | - |
+| `B` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArccosine.json -->
+
+# UMaterialExpressionArccosine
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArccosineFast.json -->
+
+# UMaterialExpressionArccosineFast
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArcsine.json -->
+
+# UMaterialExpressionArcsine
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArcsineFast.json -->
+
+# UMaterialExpressionArcsineFast
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArctangent.json -->
+
+# UMaterialExpressionArctangent
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArctangent2.json -->
+
+# UMaterialExpressionArctangent2
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Y` | `FExpressionInput` | - |
+| `X` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArctangent2Fast.json -->
+
+# UMaterialExpressionArctangent2Fast
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Y` | `FExpressionInput` | - |
+| `X` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArctangentFast.json -->
+
+# UMaterialExpressionArctangentFast
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionAtmosphericFogColor.json -->
+
+# UMaterialExpressionAtmosphericFogColor
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `WorldPosition` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionBentNormalCustomOutput.json -->
+
+# UMaterialExpressionBentNormalCustomOutput
+
+## Inheritance
+
+`UMaterialExpressionCustomOutput`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionBlackBody.json -->
+
+# UMaterialExpressionBlackBody
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Temp` | `FExpressionInput` | Temperature |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionBlendMaterialAttributes.json -->
+
+# UMaterialExpressionBlendMaterialAttributes
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `A` | `FMaterialAttributesInput` | - |
+| `B` | `FMaterialAttributesInput` | - |
+| `Alpha` | `FExpressionInput` | - |
+| `PixelAttributeBlendType` | `TEnumAsByte < EMaterialAttributeBlend :: Type >` | - |
+| `VertexAttributeBlendType` | `TEnumAsByte < EMaterialAttributeBlend :: Type >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionBreakMaterialAttributes.json -->
+
+# UMaterialExpressionBreakMaterialAttributes
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `MaterialAttributes` | `FMaterialAttributesInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionBumpOffset.json -->
+
+# UMaterialExpressionBumpOffset
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Coordinate` | `FExpressionInput` | - |
+| `Height` | `FExpressionInput` | - |
+| `HeightRatioInput` | `FExpressionInput` | - |
+| `HeightRatio` | `float` | - |
+| `ReferencePlane` | `float` | - |
+| `ConstCoordinate` | `uint32` | only used if Coordinate is not hooked up |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionCeil.json -->
+
+# UMaterialExpressionCeil
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionChromaticAberrationCustomOutput.json -->
+
+# UMaterialExpressionChromaticAberrationCustomOutput
+
+## Inheritance
+
+`UMaterialExpressionCustomOutput`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionClamp.json -->
+
+# UMaterialExpressionClamp
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+| `Min` | `FExpressionInput` | - |
+| `Max` | `FExpressionInput` | - |
+| `ClampMode` | `TEnumAsByte < enum EClampMode >` | - |
+| `MinDefault` | `float` | - |
+| `MaxDefault` | `float` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionClearCoatNormalCustomOutput.json -->
+
+# UMaterialExpressionClearCoatNormalCustomOutput
+
+## Inheritance
+
+`UMaterialExpressionCustomOutput`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionClipmapSample.json -->
+
+# UMaterialExpressionClipmapSample
+
+## Inheritance
+
+`UMaterialExpressionTextureSampleParameter2D`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ClipmapTexture` | `UClipmapTexture *` | - |
+| `ParentClipmapTexture` | `UClipmapTexture *` | - |
+| `bLerpWithNextMip` | `bool` | - |
+| `FallBackValue` | `FLinearColor` | - |
+| `bUseCustomUV` | `bool` | - |
+| `bUseCalculateUVInVS` | `bool` | - |
+| `CustomUVIndex` | `int32` | - |
+| `NumParentInputs` | `int32` | Number of inputs from parent class |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionCollectionParameter.json -->
+
+# UMaterialExpressionCollectionParameter
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Collection` | `UMaterialParameterCollection *` | The Parameter Collection to use. |
+| `ParameterName` | `FName` | Name of the parameter being referenced. |
+| `ParameterId` | `FGuid` | Id that is set from the name, and used to handle renaming of collection parameters. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionComment.json -->
+
+# UMaterialExpressionComment
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SizeX` | `int32` | - |
+| `SizeY` | `int32` | - |
+| `Text` | `FString` | - |
+| `CommentColor` | `FLinearColor` | Color to style comment with |
+| `FontSize` | `int32` | Size of the text in the comment box |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionComponentMask.json -->
+
+# UMaterialExpressionComponentMask
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+| `R` | `uint32` | - |
+| `G` | `uint32` | - |
+| `B` | `uint32` | - |
+| `A` | `uint32` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionConstant.json -->
+
+# UMaterialExpressionConstant
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `R` | `float` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionConstant2Vector.json -->
+
+# UMaterialExpressionConstant2Vector
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `R` | `float` | - |
+| `G` | `float` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionConstant3Vector.json -->
+
+# UMaterialExpressionConstant3Vector
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Constant` | `FLinearColor` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionConstant4Vector.json -->
+
+# UMaterialExpressionConstant4Vector
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Constant` | `FLinearColor` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionConstantBiasScale.json -->
+
+# UMaterialExpressionConstantBiasScale
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+| `Bias` | `float` | - |
+| `Scale` | `float` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionCosine.json -->
+
+# UMaterialExpressionCosine
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+| `Period` | `float` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionCrossProduct.json -->
+
+# UMaterialExpressionCrossProduct
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `A` | `FExpressionInput` | - |
+| `B` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionCurveAtlasRowParameter.json -->
+
+# UMaterialExpressionCurveAtlasRowParameter
+
+## Inheritance
+
+`UMaterialExpressionScalarParameter`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Curve` | `UCurveLinearColor *` | - |
+| `Atlas` | `UCurveLinearColorAtlas *` | - |
+| `InputTime` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionCustom.json -->
+
+# UMaterialExpressionCustom
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Code` | `FString` | - |
+| `OutputType` | `TEnumAsByte < enum ECustomMaterialOutputType >` | - |
+| `Description` | `FString` | - |
+| `Inputs` | `TArray < struct FCustomInput >` | - |
+| `AdditionalOutputs` | `TArray < struct FCustomOutput >` | - |
+| `IncludeFilePaths` | `TArray < FString >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDDX.json -->
+
+# UMaterialExpressionDDX
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Value` | `FExpressionInput` | The value we want to compute ddxddy from |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDDY.json -->
+
+# UMaterialExpressionDDY
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Value` | `FExpressionInput` | The value we want to compute ddxddy from |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDecalMipmapLevel.json -->
+
+# UMaterialExpressionDecalMipmapLevel
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `TextureSize` | `FExpressionInput` | The texture's size |
+| `ConstWidth` | `float` | only used if TextureSize is not hooked up |
+| `ConstHeight` | `float` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDepthFade.json -->
+
+# UMaterialExpressionDepthFade
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `InOpacity` | `FExpressionInput` | Input opacity which will be scaled by the result of the fade. |
+| `FadeDistance` | `FExpressionInput` | World space distance over which the fade should take place. |
+| `OpacityDefault` | `float` | Opacity which will be scaled by the result of the fade.  This is used when InOpacity is unconnected. |
+| `FadeDistanceDefault` | `float` | World space distance over which the fade should take place.  This is used when FadeDistance is unconnected. |
+| `bSupportFPR` | `bool` | - |
+| `bClampSceneDepth` | `bool` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDepthOfFieldFunction.json -->
+
+# UMaterialExpressionDepthOfFieldFunction
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `FunctionValue` | `TEnumAsByte < enum EDepthOfFieldFunctionValue >` | Determines the mapping place to use on the terrain. |
+| `Depth` | `FExpressionInput` | usually nothing or PixelDepth |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDeriveNormalZ.json -->
+
+# UMaterialExpressionDeriveNormalZ
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `InXY` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDesaturation.json -->
+
+# UMaterialExpressionDesaturation
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+| `Fraction` | `FExpressionInput` | - |
+| `LuminanceFactors` | `FLinearColor` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDeviceLevelSwitch.json -->
+
+# UMaterialExpressionDeviceLevelSwitch
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Default` | `FExpressionInput` | Default input (must be connected). Same as Low. Used when DEVICE_LEVEL_HIGH is 0. |
+| `Low` | `FExpressionInput` | Low device input (optional). If connected, overrides Default. Used when DEVICE_LEVEL_HIGH is 0. |
+| `High` | `FExpressionInput` | High device input (optional). Used when DEVICE_LEVEL_HIGH is 1. Connecting this enables DeviceLevel shader variants. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDistance.json -->
+
+# UMaterialExpressionDistance
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `A` | `FExpressionInput` | - |
+| `B` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDistanceFieldGradient.json -->
+
+# UMaterialExpressionDistanceFieldGradient
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Position` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDistanceToNearestSurface.json -->
+
+# UMaterialExpressionDistanceToNearestSurface
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Position` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDivide.json -->
+
+# UMaterialExpressionDivide
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `A` | `FExpressionInput` | - |
+| `B` | `FExpressionInput` | - |
+| `ConstA` | `float` | only used if A is not hooked up |
+| `ConstB` | `float` | only used if B is not hooked up |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDotProduct.json -->
+
+# UMaterialExpressionDotProduct
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `A` | `FExpressionInput` | - |
+| `B` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDynamicInstancingParameter.json -->
+
+# UMaterialExpressionDynamicInstancingParameter
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ParameterName` | `FName` | The names of the parameter. |
+| `DefaultValue` | `FLinearColor` | - |
+| `ParameterIndex` | `int32` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDynamicParameter.json -->
+
+# UMaterialExpressionDynamicParameter
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ParamNames` | `TArray < FString >` | The names of the parameters.<br>	 	These will show up in Cascade when editing a particle system<br>	 	that uses the material it is in... |
+| `DefaultValue` | `FLinearColor` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFeatureLevelSwitch.json -->
+
+# UMaterialExpressionFeatureLevelSwitch
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Default` | `FExpressionInput` | Default connection, used when a certain feature level doesn't have an override. |
+| `Inputs` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFloor.json -->
+
+# UMaterialExpressionFloor
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFmod.json -->
+
+# UMaterialExpressionFmod
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `A` | `FExpressionInput` | - |
+| `B` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFontSample.json -->
+
+# UMaterialExpressionFontSample
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Font` | `UFont *` | font resource that will be sampled |
+| `FontTexturePage` | `int32` | allow access to the various font pages |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFontSampleParameter.json -->
+
+# UMaterialExpressionFontSampleParameter
+
+## Inheritance
+
+`UMaterialExpressionFontSample`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ParameterName` | `FName` | name to be referenced when we want to find and set thsi parameter |
+| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
+| `Group` | `FName` | The name of the parameter Group to display in MaterialInstance Editor. Default is None group |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFrac.json -->
+
+# UMaterialExpressionFrac
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Input` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFresnel.json -->
+
+# UMaterialExpressionFresnel
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ExponentIn` | `FExpressionInput` | - |
+| `Exponent` | `float` | The exponent to pass into the pow() function |
+| `BaseReflectFractionIn` | `FExpressionInput` | - |
+| `BaseReflectFraction` | `float` | Specifies the fraction of specular reflection when the surfaces is viewed from straight on.<br>	  A value of 1 effectively disables Fresnel. |
+| `Normal` | `FExpressionInput` | The normal to dot with the camera FVector |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFunctionInput.json -->
+
+# UMaterialExpressionFunctionInput
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Preview` | `FExpressionInput` | Used for previewing when editing the function, or when bUsePreviewValueAsDefault is enabled. |
+| `InputName` | `FString` | The input's name, which will be drawn on the connector in function call expressions that use this function. |
+| `Description` | `FString` | The input's description, which will be used as a tooltip on the connector in function call expressions that use this function. |
+| `Id` | `FGuid` | Id of this input, used to maintain references through name changes. |
+| `InputType` | `TEnumAsByte < enum EFunctionInputType >` | Type of this input.  <br>	  Input code chunks will be cast to this type, and a compiler error will be emitted if the cast fails. |
+| `PreviewValue` | `FVector4` | Value used to preview this input when editing the material function. |
+| `bUsePreviewValueAsDefault` | `uint32` | Whether to use the preview value or texture as the default value for this input. |
+| `SortPriority` | `int32` | Controls where the input is displayed relative to the other inputs. |
+| `bCompilingFunctionPreview` | `uint32` | true when this expression is being compiled in a function preview, <br>	  false when this expression is being compiled into a material that uses the function.<br>	  Only valid in Compile() |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFunctionOutput.json -->
+
+# UMaterialExpressionFunctionOutput
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `OutputName` | `FString` | The output's name, which will be drawn on the connector in function call expressions that use this function. |
+| `Description` | `FString` | The output's description, which will be used as a tooltip on the connector in function call expressions that use this function. |
+| `SortPriority` | `int32` | Controls where the output is displayed relative to the other outputs. |
+| `A` | `FExpressionInput` | Stores the expression in the material function connected to this output. |
+| `bLastPreviewed` | `uint32` | Whether this output was previewed the last time this function was edited. |
+| `Id` | `FGuid` | Id of this input, used to maintain references through name changes. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionGetMaterialAttributes.json -->
+
+# UMaterialExpressionGetMaterialAttributes
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `MaterialAttributes` | `FMaterialAttributesInput` | - |
+| `AttributeGetTypes` | `TArray < FGuid >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionGIReplace.json -->
+
+# UMaterialExpressionGIReplace
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Default` | `FExpressionInput` | Used for direct lighting computations e.g. real-time shaders |
+| `StaticIndirect` | `FExpressionInput` | Used for baked indirect lighting e.g. Lightmass |
+| `DynamicIndirect` | `FExpressionInput` | Used for dynamic indirect lighting e.g. Light Propagation Volumes |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionIBLSwitch.json -->
+
+# UMaterialExpressionIBLSwitch
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `IBLOn` | `FExpressionInput` | - |
+| `IBLOff` | `FExpressionInput` | - |
+| `ConstA` | `float` | only used if A is not hooked up |
+| `ConstB` | `float` | only used if B is not hooked up |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionIf.json -->
+
+# UMaterialExpressionIf
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `A` | `FExpressionInput` | - |
+| `B` | `FExpressionInput` | - |
+| `AGreaterThanB` | `FExpressionInput` | - |
+| `AEqualsB` | `FExpressionInput` | - |
+| `ALessThanB` | `FExpressionInput` | - |
+| `EqualsThreshold` | `float` | - |
+| `ConstB` | `float` | only used if B is not hooked up |
+| `ConstAEqualsB_DEPRECATED` | `float` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeBlendTA.json -->
+
+# UMaterialExpressionLandscapeBlendTA
+
+## Inheritance
+
+`UMaterialExpressionTerrainBlendBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `UV` | `FExpressionInput` | - |
+| `DiffuseTexture` | `FExpressionInput` | - |
+| `NormalTexture` | `FExpressionInput` | - |
+| `HeightTexture` | `FExpressionInput` | - |
+| `RoughnessTexture` | `FExpressionInput` | - |
+| `Layers` | `TArray < FTerrainLayerTA >` | - |
+| `ConstCoordinate` | `uint32` | only used if Coordinates is not hooked up |
+| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeCustomChannelSample.json -->
+
+# UMaterialExpressionLandscapeCustomChannelSample
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ParameterName` | `FName` | - |
+| `bColorChannel` | `bool` | - |
+| `bNonLandscapeSample` | `bool` | - |
+| `TextureIndex` | `int32` | - |
+| `ChannelIndex` | `int32` | - |
+| `WorldPosition` | `FExpressionInput` | Optional world position input to override the default world position. |
+| `PreviewWeight` | `FLinearColor` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeFlattenCoords.json -->
+
+# UMaterialExpressionLandscapeFlattenCoords
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `UVScaleBias` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeFlattenTexture.json -->
+
+# UMaterialExpressionLandscapeFlattenTexture
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Coordinates` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeGrassOutput.json -->
+
+# UMaterialExpressionLandscapeGrassOutput
+
+## Inheritance
+
+`UMaterialExpressionCustomOutput`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `GrassTypes` | `TArray < FGrassInput >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeLayerBlend.json -->
+
+# UMaterialExpressionLandscapeLayerBlend
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Layers` | `TArray < FLayerBlendInput >` | - |
+| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeLayerCoords.json -->
+
+# UMaterialExpressionLandscapeLayerCoords
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `MappingType` | `TEnumAsByte < enum ETerrainCoordMappingType >` | Determines the mapping place to use on the terrain. |
+| `CustomUVType` | `TEnumAsByte < enum ELandscapeCustomizedCoordType >` | Determines the mapping place to use on the terrain. |
+| `MappingScaleOverride` | `FExpressionInput` | - |
+| `MappingScale` | `float` | Uniform scale to apply to the mapping. |
+| `MappingRotation` | `float` | Rotation to apply to the mapping. |
+| `MappingPanU` | `float` | Offset to apply to the mapping along U. |
+| `MappingPanV` | `float` | Offset to apply to the mapping along V. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeLayerSample.json -->
+
+# UMaterialExpressionLandscapeLayerSample
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ParameterName` | `FName` | - |
+| `PreviewWeight` | `float` | - |
+| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeLayerSwitch.json -->
+
+# UMaterialExpressionLandscapeLayerSwitch
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LayerUsed` | `FExpressionInput` | - |
+| `LayerNotUsed` | `FExpressionInput` | - |
+| `ParameterName` | `FName` | - |
+| `PreviewUsed` | `uint32` | - |
+| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeLayerWeight.json -->
+
+# UMaterialExpressionLandscapeLayerWeight
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Base` | `FExpressionInput` | - |
+| `Layer` | `FExpressionInput` | - |
+| `ParameterName` | `FName` | - |
+| `PreviewWeight` | `float` | - |
+| `ConstBase` | `FVector` | only used if Base is not hooked up |
+| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeMaterialIdSample.json -->
+
+# UMaterialExpressionLandscapeMaterialIdSample
+
+## Inheritance
+
+`UMaterialExpressionTextureSample`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `DiffuseSamplerType` | `TEnumAsByte < enum EMaterialSamplerType >` | - |
+| `NormalSamplerType` | `TEnumAsByte < enum EMaterialSamplerType >` | - |
+| `bUseTextureTransform` | `bool` | If apply rotationscaling separately when sample diffusenormal texture array. |
+| `bUseDeltaForceHeightBlend` | `bool` | - |
+| `bUseLargeWeight` | `bool` | - |
+| `LargeWeight` | `float` | - |
+| `bSkipNormalLowQuality` | `bool` | - |
+| `bUseFarUV` | `bool` | - |
+| `DeltaForceHeightBlendFactorInput` | `FExpressionInput` | - |
+| `FarUVFactorInput` | `FExpressionInput` | - |
+| `bUseApplyNoiseLow` | `bool` | - |
+| `bUseApplyNoiseHigh` | `bool` | - |
+| `bUseApplyNoiseMedium` | `bool` | - |
+| `bUseApplyNoiseUltimateHigh` | `bool` | - |
+| `bUseOneTextureInsteadFar` | `bool` | - |
+| `bHasHole` | `bool` | - |
+| `bUseLayerDensity` | `bool` | - |
+| `bDebugES2` | `bool` | - |
+| `bDebugBlend4Pixels` | `bool` | - |
+| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
+| `NumParentInputs` | `int32` | Number of inputs from parent class |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeMaterialIdWeight.json -->
+
+# UMaterialExpressionLandscapeMaterialIdWeight
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `TestMaterialId` | `FExpressionInput` | - |
+| `LayerName` | `FName` | - |
+| `ExpressionGUID` | `FGuid` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeVisibilityMask.json -->
+
+# UMaterialExpressionLandscapeVisibilityMask
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
+| `bUseMaterialIdShading` | `bool` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLightmassReplace.json -->
+
+# UMaterialExpressionLightmassReplace
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Realtime` | `FExpressionInput` | - |
+| `Lightmass` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLinearInterpolate.json -->
+
+# UMaterialExpressionLinearInterpolate
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `A` | `FExpressionInput` | - |
+| `B` | `FExpressionInput` | - |
+| `Alpha` | `FExpressionInput` | - |
+| `ConstA` | `float` | only used if A is not hooked up |
+| `ConstB` | `float` | only used if B is not hooked up |
+| `ConstAlpha` | `float` | only used if Alpha is not hooked up |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLogarithm10.json -->
+
+# UMaterialExpressionLogarithm10
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `X` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLogarithm2.json -->
+
+# UMaterialExpressionLogarithm2
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `X` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionMakeMaterialAttributes.json -->
+
+# UMaterialExpressionMakeMaterialAttributes
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `BaseColor` | `FExpressionInput` | - |
+| `Metallic` | `FExpressionInput` | - |
+| `Specular` | `FExpressionInput` | - |
+| `Roughness` | `FExpressionInput` | - |
+| `EmissiveColor` | `FExpressionInput` | - |
+| `Opacity` | `FExpressionInput` | - |
+| `OpacityMask` | `FExpressionInput` | - |
+| `Normal` | `FExpressionInput` | - |
+| `WorldPositionOffset` | `FExpressionInput` | - |
+| `WorldDisplacement` | `FExpressionInput` | - |
+| `TessellationMultiplier` | `FExpressionInput` | - |
+| `SubsurfaceColor` | `FExpressionInput` | - |
+| `ClearCoat` | `FExpressionInput` | - |
+| `ClearCoatRoughness` | `FExpressionInput` | - |
+| `AmbientOcclusion` | `FExpressionInput` | - |
+| `Refraction` | `FExpressionInput` | - |
+| `CustomizedUVs` | `FExpressionInput` | - |
+| `PixelDepthOffset` | `FExpressionInput` | - |
+| `CustomizedVertexColor` | `FExpressionInput` | - |
+| `PlanarReflectionOffsetScale` | `FExpressionInput` | - |
+| `VertexDepthOffset` | `FExpressionInput` | - |
+| `PixelDepthOffsetNegative` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionMaterialFunctionCall.json -->
+
+# UMaterialExpressionMaterialFunctionCall
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `MaterialFunction` | `UMaterialFunction *` | The function to call. |
+| `FunctionInputs` | `TArray < struct FFunctionExpressionInput >` | Array of all the function inputs that this function exposes. |
+| `FunctionOutputs` | `TArray < struct FFunctionExpressionOutput >` | Array of all the function outputs that this function exposes. |
+
+## Functions
+
+### `SetMaterialFunction`
+
+```text
+SetMaterialFunction(NewMaterialFunction: UMaterialFunction *) -> ENGINE_API bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewMaterialFunction` | `UMaterialFunction *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API bool` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionMaterialProxyReplace.json -->
+
+# UMaterialExpressionMaterialProxyReplace
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Realtime` | `FExpressionInput` | - |
+| `MaterialProxy` | `FExpressionInput` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionMax.json -->
+
+# UMaterialExpressionMax
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `A` | `FExpressionInput` | - |
+| `B` | `FExpressionInput` | - |
+| `ConstA` | `float` | only used if A is not hooked up |
+| `ConstB` | `float` | only used if B is not hooked up |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionMin.json -->
+
+# UMaterialExpressionMin
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `A` | `FExpressionInput` | - |
+| `B` | `FExpressionInput` | - |
+| `ConstA` | `float` | only used if A is not hooked up |
+| `ConstB` | `float` | only used if B is not hooked up |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionMultiply.json -->
+
+# UMaterialExpressionMultiply
+
+## Inheritance
+
+`UMaterialExpression`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `A` | `FExpressionInput` | - |
+| `B` | `FExpressionInput` | - |
+| `ConstA` | `float` | only used if A is not hooked up |
+| `ConstB` | `float` | only used if B is not hooked up |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionNamedRerouteDeclaration.json -->
+
+# UMaterialExpressionNamedRerouteDeclaration
+
+## Inheritance
+
+`UMaterialExpressionRerouteBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Name` | `FName` | 此 Named Reroute 的显示名称 |
+| `NodeColor` | `FLinearColor` | 节点标题颜色，Declaration 和所有 Usage 共享 |
+| `VariableGuid` | `FGuid` | 全局唯一标识，用于 Usage 查找 Declaration，以及复制粘贴后重连 |
+| `Input` | `FExpressionInput` | 输入引脚：接收上游数据 |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionNamedRerouteUsage.json -->
+
+# UMaterialExpressionNamedRerouteUsage
+
+## Inheritance
+
+`UMaterialExpressionRerouteBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Declaration` | `UMaterialExpressionNamedRerouteDeclaration *` | 指向对应的 Declaration 节点（运行时直接引用） |
+| `DeclarationGuid` | `FGuid` | Declaration 的 GUID 副本，用于序列化后重连和复制粘贴修复 |
+
+## Language
+
+`cpp`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionNoise.json -->
 
 # UMaterialExpressionNoise
@@ -1190,6 +3606,7 @@ Material output expression for writing single layer water volume material proper
 | `VTiling` | `float` | Controls how much the texture tiles vertically, by scaling the V component of the vertex UVs by the specified amount. |
 | `UnMirrorU` | `uint32` | Would like to unmirror U or V <br>	   - if the texture is mirrored and if you would like to undo mirroring for this texture sample, use this to unmirror |
 | `UnMirrorV` | `uint32` | - |
+| `bForceFloatHP` | `uint32` | When enabled, forces this TexCoord node to output float precision UV, preventing half-precision artifacts on mobile. |
 
 ## Language
 
@@ -1249,6 +3666,29 @@ Material output expression for writing single layer water volume material proper
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionTextureSampleCondition.json -->
+
+# UMaterialExpressionTextureSampleCondition
+
+## Inheritance
+
+`UMaterialExpressionTextureSample`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SampleCondition` | `FExpressionInput` | Enabled only if MipValueMode == TMVM_Derivative |
+| `bConditional` | `bool` | - |
+| `DefaultValue` | `FLinearColor` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionTextureSampleParameter.json -->
 
 # UMaterialExpressionTextureSampleParameter
@@ -1265,6 +3705,29 @@ Material output expression for writing single layer water volume material proper
 | `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
 | `Group` | `FName` | The name of the parameter Group to display in MaterialInstance Editor. Default is None group |
 | `SortPriority` | `int32` | Controls where the this parameter is displayed in a material instance parameter list.  The lower the number the higher up in the parameter list. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionTextureSampleParameterCondition.json -->
+
+# UMaterialExpressionTextureSampleParameterCondition
+
+## Inheritance
+
+`UMaterialExpressionTextureSampleParameter`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SampleCondition` | `FExpressionInput` | Enabled only if MipValueMode == TMVM_Derivative |
+| `bConditional` | `bool` | - |
+| `DefaultValue` | `FLinearColor` | - |
 
 ## Language
 
@@ -3959,6 +6422,7 @@ MeshComponent is an abstract base for any component that is an instance of a ren
 | `bUseOverlayMaterials` | `bool` | Whether to render overlay materials. (Indexed or not) |
 | `OverlayMaterialMaxDrawDistance` | `float` | The max draw distance for overlay material. A distance of 0 indicates that overlay will be culled using primitive max distance. |
 | `bIsEnableRetrieveDefaultMat` | `bool` | - |
+| `bDisableLODBiasExt` | `uint8` | - |
 
 ## Functions
 
@@ -4371,6 +6835,44 @@ Set all occurrences of Vector Material Parameters with ParameterName in the set 
 |---|---|---|
 | `ParameterName` | `FName` | - |
 | `ParameterValue` | `FVector` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `UpdateLodBiasByDeviceLevel`
+
+```text
+UpdateLodBiasByDeviceLevel() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `UpdateLodBiasManually`
+
+```text
+UpdateLodBiasManually() -> void
+```
+
+绕过 ShouldUpdateLODBiasExt 闸门、用于手动刷新
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ResetLODBias`
+
+```text
+ResetLODBias() -> void
+```
 
 **Returns**
 
@@ -5075,6 +7577,7 @@ Implements a movie scene asset.
 | `OutTime_DEPRECATED` | `float` | - |
 | `StartTime_DEPRECATED` | `float` | - |
 | `EndTime_DEPRECATED` | `float` | - |
+| `bGlobalUseQuaternionInterpolation` | `bool` | 全局四元数插值开关：开启后该 LevelSequence 中所有 Transform Section 的旋转都走四元数 Slerp（默认关闭） |
 | `EmptySections` | `TArray < UMovieSceneSection * >` | - |
 | `bPlaybackRangeLocked` | `bool` | User-defined playback range is locked. |
 | `ObjectsToDisplayNames` | `TMap < FString , FText >` | Maps object GUIDs to user defined display names. |
@@ -13764,6 +16267,7 @@ UCLASS(editinlinenew, hidecategories=Object, meta=(DisplayName = "Mesh Rotation 
 | `BoundingMode` | `TEnumAsByte < enum ESubUVBoundingVertexCount >` | More bounding vertices results in reduced overdraw, but adds more triangle overhead.<br>	 The eight vertex mode is best used when the SubUV texture has a lot of space to cut out that is not captured by the four vertex version,<br>	 and when the particles using the texture will be few and large. |
 | `OpacitySourceMode` | `TEnumAsByte < enum EOpacitySourceMode >` | - |
 | `AlphaThreshold` | `float` | Alpha channel values larger than the threshold are considered occupied and will be contained in the bounding geometry.<br>	 Raising this threshold slightly can reduce overdraw in particles using this animation asset. |
+| `bCutoutUseSingleFrame` | `bool` | Generate Cutout geometry from the complete CutoutTexture instead of its SubUV grid. |
 | `CutoutSubImagesX` | `int32` | - |
 | `CutoutSubImagesY` | `int32` | The number of sub-images vertically in the texture |
 | `bEnableCutOut` | `bool` | - |
@@ -14717,6 +17221,7 @@ A ParticleSystem is a complete particle effect that contains any number of Parti
 | `bAllowGcCluster` | `uint8` | - |
 | `bAllowRenderDataUpdateLag` | `uint8` | - |
 | `bAllowManagedTicking` | `uint8` | - |
+| `bEnableSigTickBudget` | `uint8` | sinyagao : Whether instances of this particle system opt in to SignificanceManager tick-budget and LOD control. |
 | `bAutoDeactivate` | `bool` | - |
 | `MinTimeBetweenTicks` | `uint32` | - |
 | `InsignificantReaction` | `EParticleSystemInsignificanceReaction` | The reaction this system takes when all emitters are insignificant. |
@@ -17324,3744 +19829,6 @@ OnInterrupted_BP(Character: AActor *) -> void
 | Type | Description |
 |---|---|
 | `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPersistEffectBuff.json -->
-
-# UPersistEffectBuff
-
-Buff系统归属与和平精英的技能系统，用于帮助开发者更方便快捷地实现Buff效果
-  通过与Tag、Attribute等系统的配合能够通过配置就实现大部分所需的效果
-  对于更细致的Buff效果也可以通过重写BP结尾的函数来实现定制化效果。
-
-## Inheritance
-
-`UPersistEffectBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `BuffInfo` | `FPEBuffInfo` | 生效范围：服务器&客户端<br>      Buff蓝图的配置信息 |
-
-## Functions
-
-### `AddStackNum`
-
-```text
-AddStackNum(Num: int32) -> void
-```
-
-生效范围：服务器
-	  修改堆叠层数，修改后的层数大于等于0且小于等于最大堆叠层数(MaxStackNum)
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Num` | `int32` | 新增的层数 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetStackNum`
-
-```text
-GetStackNum() -> int32
-```
-
-生效范围：服务器&客户端
-	 获取当前层数
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | 当前层数 |
-
-### `GetCauser`
-
-```text
-GetCauser() -> AActor *
-```
-
-生效范围：服务器&客户端
-      获取Buff的施加者
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `AActor *` | 施加者 |
-
-### `SetCauser`
-
-```text
-SetCauser(Causer: AActor *) -> void
-```
-
-生效范围：服务器
-	 设置Buff的施加者
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Causer` | `AActor *` | 施加者 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `TriggerAllLayer`
-
-```text
-TriggerAllLayer() -> void
-```
-
-生效范围：服务器
-      触发当前所有层的Buff的效果
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `TriggerSingleLayer`
-
-```text
-TriggerSingleLayer() -> void
-```
-
-生效范围：服务器
-	  触发单层的Buff的效果
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `RefreshBuff`
-
-```text
-RefreshBuff() -> void
-```
-
-生效范围：服务器
-	  重置Buff持续时间
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetBuffEnable`
-
-```text
-SetBuffEnable(IsEnable: bool) -> void
-```
-
-生效范围：服务器
-	  设置Buff是否生效
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `IsEnable` | `bool` | 是否生效 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `IsBuffEnable`
-
-```text
-IsBuffEnable() -> bool
-```
-
-生效范围：服务器&客户端
-	  获取Buff当前是否生效
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 是否生效 |
-
-### `Pause`
-
-```text
-Pause() -> void
-```
-
-生效范围：服务器
-	  暂停Buff持续减少剩余时间
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `Resume`
-
-```text
-Resume() -> void
-```
-
-生效范围：服务器
-	  恢复Buff持续减少剩余时间
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OverwriteBuffUIInfo`
-
-```text
-OverwriteBuffUIInfo(BuffName: FName &, BuffDetail: FString &, BuffIconPath: FString &) -> void
-```
-
-生效范围：服务器&客户端
-	  更改UI信息，但双端不同步
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `BuffName` | `FName &` | Buff名字 |
-| `BuffDetail` | `FString &` | Buff描述 |
-| `BuffIconPath` | `FString &` | Buff图标路径 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetBuffName`
-
-```text
-GetBuffName() -> SHADOWTRACKEREXTRA_API FName
-```
-
-生效范围：服务器&客户端
-	  获取Buff名字
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `SHADOWTRACKEREXTRA_API FName` | Buff名字 |
-
-### `GetBuffDetail`
-
-```text
-GetBuffDetail() -> SHADOWTRACKEREXTRA_API FString
-```
-
-生效范围：服务器&客户端
-	  获取Buff描述
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `SHADOWTRACKEREXTRA_API FString` | Buff描述 |
-
-### `GetBuffIconPath`
-
-```text
-GetBuffIconPath() -> FString
-```
-
-生效范围：服务器&客户端
-	  获取Buff图标路径
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FString` | Buff图标路径 |
-
-## Events
-
-### `OnTotalDurationChange_BP`
-
-```text
-OnTotalDurationChange_BP(Pre: float, Current: float) -> void
-```
-
-生效范围：服务器
-	  当Buff持续时间改变时调用，如修改ApplyTime、修改StackNum
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Pre` | `float` | 上一次的持续时间 |
-| `Current` | `float` | 当前的持续时间 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnStackChange_BP`
-
-```text
-OnStackChange_BP(PreNum: int32, CurrentNum: int32) -> void
-```
-
-生效范围：服务器&客户端
-	  当Buff堆叠层数变化时调用，如调用AddStackNum、消耗一层Buff
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PreNum` | `int32` | 上一次的堆叠层数 |
-| `CurrentNum` | `int32` | 当前的堆叠层数 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnRefresh_BP`
-
-```text
-OnRefresh_BP() -> void
-```
-
-生效范围：服务器&客户端
-	  Buff刷新时调用
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `CanTrigger_BP`
-
-```text
-CanTrigger_BP() -> bool
-```
-
-生效范围：服务器
-	  当Buff效果触发前调用，用于改写Buff触发条件，默认实现为直接返回True
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 是否可以触发 |
-
-### `OnTrigger_BP`
-
-```text
-OnTrigger_BP(Reason: EPEBuffTriggerType) -> void
-```
-
-生效范围：服务器&客户端
-	  当Buff效果触发时调用
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Reason` | `EPEBuffTriggerType` | 触发原因 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Delegates
-
-### `OnStackNumChange`
-
-```text
-OnStackNumChange(ChangeNum: int32) -> void
-```
-
-Event
-	  生效范围：服务器&客户端
-	  Buff层数改变事件
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ChangeNum` | `int32` | 改变的层数 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnUIInfoChange`
-
-```text
-OnUIInfoChange() -> void
-```
-
-Event
-	  生效范围：客户端
-	  Buff的UI信息改变事件
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPersistEffectSkill.json -->
-
-# UPersistEffectSkill
-
-技能实体
-
-## Inheritance
-
-`UPersistEffectWithState` -> `ISkillObjectInterface` -> `IPESkillTaskTrackConditionFilterInterface`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PESkillSlot` | `FGameplayTag` | 技能槽位Tag |
-| `ApplyTagGroup` | `FGameplayTagGroups` | Tag的配置组，包含该技能与各个Tag的互斥关系 |
-| `CustomActivateConditions` | `FPESkillConditionContainer` | 技能激活自定义条件 |
-| `ConsumeTime` | `EPESkillConsumeTimeType` | CD能量和消耗扣除时机 |
-| `SkillCD` | `FPESkillCDWapper` | 技能CD |
-| `CostConsume` | `FPESkillConsume` | 技能消耗 |
-| `UIInfo` | `FPESkillUIInfo` | 技能外显信息 |
-| `SkillGroup` | `FGameplayTag` | 技能组，同组互斥，不能同时激活同组的技能，如果填空的话则没有任何互斥关系 |
-| `bDefaultEnable` | `bool` | 默认是否可用，如果配置了false，则需要调用enable才能激活技能 |
-
-## Functions
-
-### `EnableSkill`
-
-```text
-EnableSkill() -> void
-```
-
-生效范围：S
-	  使技能可用
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `DisableSkill`
-
-```text
-DisableSkill() -> void
-```
-
-生效范围：S
-	  使技能不可用
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `IsSkillEnable`
-
-```text
-IsSkillEnable() -> bool
-```
-
-生效范围：SC
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 技能是否可用 |
-
-### `DeActivateSkill`
-
-```text
-DeActivateSkill(Reason: EPESkillDeActivateReason) -> void
-```
-
-生效范围：SC
-	  取消技能释放
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Reason` | `EPESkillDeActivateReason` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `CanActivateSkill`
-
-```text
-CanActivateSkill() -> bool
-```
-
-生效范围：SC
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 技能是否可用 |
-
-### `ActivateSkill`
-
-```text
-ActivateSkill() -> void
-```
-
-生效范围：SC
-	  释放技能
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `IsActivating`
-
-```text
-IsActivating() -> bool
-```
-
-生效范围：SC
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 技能是否正在激活 |
-
-### `CheckCDReady`
-
-```text
-CheckCDReady() -> bool
-```
-
-生效范围：服务器&客户端
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 技能CD是否已准备好 |
-
-### `CheckCostReady`
-
-```text
-CheckCostReady() -> bool
-```
-
-生效范围：服务器
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 技能需要的消耗是否已准备好 |
-
-### `ConsumeCD`
-
-```text
-ConsumeCD() -> bool
-```
-
-生效范围：服务器
-	  消耗CD
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 是否成功消耗 |
-
-### `ConsumeCost`
-
-```text
-ConsumeCost() -> bool
-```
-
-生效范围：服务器
-	  消耗道具
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 是否成功消耗 |
-
-### `GetRemainingCDTime`
-
-```text
-GetRemainingCDTime() -> float
-```
-
-生效范围：服务器&客户端
-	  获取CD剩余时间
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | 剩余时间 |
-
-### `GetCDRecoveryTime`
-
-```text
-GetCDRecoveryTime() -> float
-```
-
-生效范围：服务器&客户端
-	  获取CD恢复时间
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | 剩余时间 |
-
-### `SetCDRecoveryTime`
-
-```text
-SetCDRecoveryTime(CDRecoveryTime: float) -> void
-```
-
-生效范围：服务器
-	  设置CD恢复时间
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `CDRecoveryTime` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetCDRecoverRate`
-
-```text
-GetCDRecoverRate() -> float
-```
-
-生效范围：服务器&客户端
-	  获取CD恢复速率
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | CD恢复速率 |
-
-### `SetCDRecoverRate`
-
-```text
-SetCDRecoverRate(Rate: float) -> void
-```
-
-生效范围：服务器
-	  设置CD恢复速率
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Rate` | `float` | CD恢复速率 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ChargeCDEnergy`
-
-```text
-ChargeCDEnergy(ChargeRate: float) -> void
-```
-
-生效范围：服务器
-	  恢复CD比例，1代表完全恢复一层CD，大于1代表恢复多层，不超过层数上限
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ChargeRate` | `float` | 恢复的层数 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ChargeCDTime`
-
-```text
-ChargeCDTime(ChargeTime: float) -> void
-```
-
-生效范围：服务器
-	  恢复CD固定时间，不超过层数上限
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ChargeTime` | `float` | 恢复的时间，单位秒 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `RefreshCD`
-
-```text
-RefreshCD() -> void
-```
-
-生效范围：服务器
-	  刷新技能CD
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetCDMaxLayer`
-
-```text
-SetCDMaxLayer(InMaxLayer: int) -> void
-```
-
-生效范围：服务器
-	  设置CD最大层数
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InMaxLayer` | `int` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OverwriteSkillUIInfo`
-
-```text
-OverwriteSkillUIInfo(SkillName: FName, SkillDetail: FString, SkillIconPath: FString) -> void
-```
-
-生效范围：服务器&客户端
-	  更改UI信息，但双端不同步
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `SkillName` | `FName` | 技能名字 |
-| `SkillDetail` | `FString` | 技能描述 |
-| `SkillIconPath` | `FString` | 技能图标路径 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetSkillName`
-
-```text
-GetSkillName() -> FName
-```
-
-生效范围：服务器&客户端
-	  获取技能名字
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FName` | 技能名字 |
-
-### `GetSkillDetail`
-
-```text
-GetSkillDetail() -> FString
-```
-
-生效范围：服务器&客户端
-	  获取技能描述
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FString` | 技能描述 |
-
-### `GetSkillIconPath`
-
-```text
-GetSkillIconPath() -> FString
-```
-
-生效范围：服务器&客户端
-	  获取技能图标路径
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FString` | 技能图标路径 |
-
-### `SetShowTipsEnable`
-
-```text
-SetShowTipsEnable(bEnable: bool) -> void
-```
-
-生效范围：服务器
-	  设置是否开启技能激活检查失败显示Tips
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bEnable` | `bool` | 是否开启提示 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetPlayActivateFailedSoundEnable`
-
-```text
-SetPlayActivateFailedSoundEnable(bEnable: bool) -> void
-```
-
-生效范围：服务器
-	  设置是否开启技能激活检查失败播放提示音
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bEnable` | `bool` | 是否开启提示 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetSelectTargetActor`
-
-```text
-GetSelectTargetActor(SelectType: EPESkillSelectTarget) -> TArray < AActor * >
-```
-
-获取技能目标角色
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `SelectType` | `EPESkillSelectTarget` | 选择类型 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `TArray < AActor * >` | 技能目标角色 |
-
-### `SetSelectTargetActor`
-
-```text
-SetSelectTargetActor(Actors: TArray < AActor * > &) -> void
-```
-
-设置技能目标角色
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Actors` | `TArray < AActor * > &` | Actor数组 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetSelectTargetOneActor`
-
-```text
-SetSelectTargetOneActor(pActor: AActor *) -> void
-```
-
-设置技能目标角色
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `pActor` | `AActor *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetSelectDirection`
-
-```text
-SetSelectDirection(Direction: FVector &) -> void
-```
-
-设置技能方向
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Direction` | `FVector &` | 方向 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetSelectDirection`
-
-```text
-GetSelectDirection() -> FVector
-```
-
-获取技能方向
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | 技能方向 |
-
-### `GetSelectTransform`
-
-```text
-GetSelectTransform() -> const FTransform &
-```
-
-获取技能目标位置
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `const FTransform &` | 技能目标位置 |
-
-### `SetSelectTransform`
-
-```text
-SetSelectTransform(Transform: FTransform &) -> void
-```
-
-设置技能目标位置
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Transform` | `FTransform &` | 技能目标位置 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetSelectTransforms`
-
-```text
-SetSelectTransforms(Transforms: TArray < FTransform > &) -> void
-```
-
-设置技能多目标位置
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Transforms` | `TArray < FTransform > &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetSelectTransforms`
-
-```text
-GetSelectTransforms() -> const TArray < FTransform > &
-```
-
-获取技能多目标位置
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `const TArray < FTransform > &` | - |
-
-### `ClearSelectTransforms`
-
-```text
-ClearSelectTransforms() -> void
-```
-
-清除技能目标位置
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Events
-
-### `OnEnableSkill_BP`
-
-```text
-OnEnableSkill_BP() -> bool
-```
-
-生效范围：服务器
-	  技能可用通知
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `OnDisableSkill_BP`
-
-```text
-OnDisableSkill_BP() -> bool
-```
-
-生效范围：服务器
-	  技能不可用通知
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `OnActivateSkill_BP`
-
-```text
-OnActivateSkill_BP() -> bool
-```
-
-生效范围：服务器
-	  技能被触发
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `OnDeActivateSkill_BP`
-
-```text
-OnDeActivateSkill_BP(Reason: EPESkillDeActivateReason) -> void
-```
-
-生效范围：服务器
-	  技能结束
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Reason` | `EPESkillDeActivateReason` | 结束原因 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `CanActivateSkill_BP`
-
-```text
-CanActivateSkill_BP() -> bool
-```
-
-生效范围：服务器&客户端
-	  技能是否可用
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 技能是否可释放 |
-
-### `OnCDStateChange_BP`
-
-```text
-OnCDStateChange_BP(bIsCD: bool) -> void
-```
-
-生效范围：服务器&客户端
-	  技能CD状态改变
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bIsCD` | `bool` | 技能是否CD中 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Delegates
-
-### `OnUIInfoChange`
-
-```text
-OnUIInfoChange() -> void
-```
-
-Event
-	  生效范围：客户端
-	  技能的UI信息改变事件
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `CDStateChangeHandle`
-
-```text
-CDStateChangeHandle(IsTrue: bool) -> void
-```
-
-Event
-	  生效范围：服务器&客户端
-	  客户端同步技能CD状态变化
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `IsTrue` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPersistEffectWithState.json -->
-
-# UPersistEffectWithState
-
-实现了状态机的PersistEffect，是PersistEffectSkill的基类
-
-## Inheritance
-
-`UPersistEffectBase` -> `IActivityStateInterface` -> `IClientConditionInerterface`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bTickStateMachineBeforeSequence` | `bool` | 控制Tick中状态机和Sequence的执行顺序<br>	  true: 先TickStateMachine再SequenceWrapper.Tick（默认，与原有逻辑一致）<br>	  false: 先SequenceWrapper.Tick再TickStateMachine |
-
-## Functions
-
-### `GetCurrentStateName`
-
-```text
-GetCurrentStateName() -> FName
-```
-
-获取当前状态的名字
-	  生效范围: 服务器&客户端
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FName` | - |
-
-### `GetCurrentStateTime`
-
-```text
-GetCurrentStateTime() -> float
-```
-
-获取状态的运行时间
-	  生效范围: 服务器&客户端
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `JumpToState`
-
-```text
-JumpToState(StateName: FName, EnterTime: float, bPause: bool) -> void
-```
-
-获取跳转到指定状态
-	  生效范围: 服务器
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `StateName` | `FName` | 跳转的目标状态名 |
-| `EnterTime` | `float` | 跳转到目标状态的时间 |
-| `bPause` | `bool` | 是否暂停sequence播放 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPESkillPassiveSkill.json -->
-
-# UPESkillPassiveSkill
-
-被动技能实体
-
-## Inheritance
-
-`UPersistEffectSkill`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `MaxActivationCount` | `int32` | 最大激活次数，-1表示无限制 |
-
-## Events
-
-### `OnStackChange_BP`
-
-```text
-OnStackChange_BP(PreNum: int32, CurrentNum: int32) -> void
-```
-
-生效范围：服务器&客户端
-	  当 被动技能 堆叠层数变化时调用，比如技能被合并时
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PreNum` | `int32` | 上一次的堆叠层数 |
-| `CurrentNum` | `int32` | 当前的堆叠层数 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `CanClientRPCActivate_BP`
-
-```text
-CanClientRPCActivate_BP() -> bool
-```
-
-生效范围：服务器
-	  当 pes.BlockPassiveSkillClientRPC 开关关闭时，由蓝图决定是否允许客户端 RPC 激活被动技能
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | true 允许激活，false 拒绝激活 |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPESkillWidget.json -->
-
-# UPESkillWidget
-
-技能UI基类
-
-## Inheritance
-
-`UUAEUserWidget` -> `ILuaInterface`
-
-## Functions
-
-### `BindToSlot`
-
-```text
-BindToSlot(Comp: UPersistBaseComponent *, SlotName: FGameplayTag) -> void
-```
-
-将技能绑定到指定PE组件的指定Slot上
-	  生效范围C
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Comp` | `UPersistBaseComponent *` | 绑定的组件 |
-| `SlotName` | `FGameplayTag` | 绑定的槽位 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetCurrentSkill`
-
-```text
-GetCurrentSkill() -> UPersistEffectSkill *
-```
-
-获取当前绑定的技能
-	  生效范围C
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UPersistEffectSkill *` | 当前绑定的技能 |
-
-### `BindImageAndTextForSkillNameAndIcon`
-
-```text
-BindImageAndTextForSkillNameAndIcon(IconImage: UImage *, NameText: UTextBlock *, DescribeText: UTextBlock *) -> void
-```
-
-绑定用于显示技能图标、名字、描述的控件
-	  生效范围C
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `IconImage` | `UImage *` | 图标控件 |
-| `NameText` | `UTextBlock *` | 名字控件 |
-| `DescribeText` | `UTextBlock *` | 描述控件 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `RefreshSkillUI`
-
-```text
-RefreshSkillUI() -> void
-```
-
-刷新当前UI绑定的控件的内容
-	  生效范围C
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetSkillName`
-
-```text
-GetSkillName() -> FName
-```
-
-获取技能名字
-	  生效范围C
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FName` | 技能名字 |
-
-### `GetSkillDetail`
-
-```text
-GetSkillDetail() -> FString
-```
-
-获取技能描述
-	  生效范围C
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FString` | 技能描述 |
-
-### `GetSkillIcon`
-
-```text
-GetSkillIcon() -> FSoftObjectPath
-```
-
-获取技能图标
-	  生效范围C
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FSoftObjectPath` | 技能图标 |
-
-### `InitButton`
-
-```text
-InitButton(IconImage: UImage *, NameText: UTextBlock *, ClickButton: UButton *) -> void
-```
-
-绑定技能按钮控件
-	  生效范围C
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `IconImage` | `UImage *` | 图标控件 |
-| `NameText` | `UTextBlock *` | 名字控件 |
-| `ClickButton` | `UButton *` | 按钮控件 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `InitLayer`
-
-```text
-InitLayer(LayerText: UTextBlock *, LayerPanel: UPanelWidget *) -> void
-```
-
-绑定技能使用层数控件
-	  生效范围C
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `LayerText` | `UTextBlock *` | 技能层数 |
-| `LayerPanel` | `UPanelWidget *` | 技能层数的Panel控件，控制层数的显隐 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `InitCDProgress`
-
-```text
-InitCDProgress(CDText: UTextBlock *, CDProgressImage: UImage *, CDProgressPanel: UPanelWidget *) -> void
-```
-
-绑定技能CD控件
-	  生效范围C
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `CDText` | `UTextBlock *` | 技能CD时间 |
-| `CDProgressImage` | `UImage *` | @技能CD进度条 |
-| `CDProgressPanel` | `UPanelWidget *` | 整个CD的Panel控件，控制CD的显隐 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `InitEnergyProgress`
-
-```text
-InitEnergyProgress(EnergyProgressImage: UImage *, EnergyCanvasPanel: UPanelWidget *) -> void
-```
-
-绑定技能能量控件
-	  生效范围C
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EnergyProgressImage` | `UImage *` | 技能能量进度条 |
-| `EnergyCanvasPanel` | `UPanelWidget *` | 技能能量Panel控件，控制能量进度条的显隐 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `InitTagDisableState`
-
-```text
-InitTagDisableState(TagDisableCanvasPanel: UPanelWidget *) -> void
-```
-
-绑定技能显示TagDisable状态的控件
-	  生效范围C
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TagDisableCanvasPanel` | `UPanelWidget *` | 技能TagDisable状态的Panel控件，控制TagDisable状态的显隐 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `InitEnableState`
-
-```text
-InitEnableState(EnableCanvasPanel: UPanelWidget *) -> void
-```
-
-绑定技能显示Enable状态的控件
-	  生效范围C
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EnableCanvasPanel` | `UPanelWidget *` | 技能Enable状态的Panel控件，控制Enable状态的显隐 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `InitVirtualJoystick`
-
-```text
-InitVirtualJoystick(VirtualJoystickPanel: UPanelWidget *, VirtualJoystick: UPESkillVirtualJoystick *) -> void
-```
-
-绑定技能摇杆输入控件
-	  生效范围C
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `VirtualJoystickPanel` | `UPanelWidget *` | - |
-| `VirtualJoystick` | `UPESkillVirtualJoystick *` | 技能技能摇杆控件，控制摇杆的生效和失效 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Events
-
-### `OnSkillBound_BP`
-
-```text
-OnSkillBound_BP(InOwnerSkill: UPersistEffectSkill *) -> void
-```
-
-当控件绑定到新的技能时触发
-	  生效范围C
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InOwnerSkill` | `UPersistEffectSkill *` | 当前绑定的技能 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `UpdateCD_BP`
-
-```text
-UpdateCD_BP(Delta: float) -> void
-```
-
-每帧触发，用于更新CD显示
-	  生效范围C
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Delta` | `float` | 每帧的时间 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnCDStateChange_BP`
-
-```text
-OnCDStateChange_BP(bIsCD: bool) -> void
-```
-
-当控件绑定的技能CD状态变化时触发
-	  生效范围C
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bIsCD` | `bool` | 技能是否处在CD状态 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnSkillUIInfoChange_BP`
-
-```text
-OnSkillUIInfoChange_BP() -> void
-```
-
-当控件绑定的技能的UI信息变化时触发
-	  生效范围C
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnEnableChange_BP`
-
-```text
-OnEnableChange_BP(bIsEnable: bool) -> void
-```
-
-当控件绑定的技能Enable状态变化时触发
-	  生效范围C
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bIsEnable` | `bool` | 技能是否Enable |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnTagDisableChange_BP`
-
-```text
-OnTagDisableChange_BP(bIsDisable: bool) -> void
-```
-
-当控件绑定的技能被禁用Tag(PawnState.ActivatingSkill)导致无法激活时触发
-	  生效范围C
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bIsDisable` | `bool` | 技能是否被Tag禁用 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnSkillDirectionInputEnableChange_BP`
-
-```text
-OnSkillDirectionInputEnableChange_BP(bEnable: bool) -> void
-```
-
-当控件绑定的技能的摇杆输入生效或失效时触发
-	  生效范围C
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bEnable` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPESkillWithPredict.json -->
-
-# UPESkillWithPredict
-
-带主端预测的技能实,目前暂未有技能实装，待测试
-
-## Inheritance
-
-`UPersistEffectSkill`
-
-## Functions
-
-### `ActivateSkillWithPredict`
-
-```text
-ActivateSkillWithPredict() -> void
-```
-
-生效范围：SC
-	  释放技能带主端预测
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `JumpToStateWithPredict`
-
-```text
-JumpToStateWithPredict(StateName: FName, EnterTime: float, bPause: bool) -> void
-```
-
-生效范围：SC
-	  跳转状态带主端预测
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `StateName` | `FName` | - |
-| `EnterTime` | `float` | - |
-| `bPause` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicalAnimationComponent.json -->
-
-# UPhysicalAnimationComponent
-
-## Inheritance
-
-`UActorComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `StrengthMultiplyer` | `float` | Multiplies the strength of any active motors. (can blend from 0-1 for example) |
-| `SkeletalMeshComponent` | `USkeletalMeshComponent *` | - |
-
-## Functions
-
-### `SetSkeletalMeshComponent`
-
-```text
-SetSkeletalMeshComponent(InSkeletalMeshComponent: USkeletalMeshComponent *) -> void
-```
-
-Sets the skeletal mesh we are driving through physical animation. Will erase any existing physical animation data.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InSkeletalMeshComponent` | `USkeletalMeshComponent *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ApplyPhysicalAnimationSettings`
-
-```text
-ApplyPhysicalAnimationSettings(BodyName: FName, PhysicalAnimationData: FPhysicalAnimationData &) -> void
-```
-
-Applies the physical animation settings to the body given.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `BodyName` | `FName` | - |
-| `PhysicalAnimationData` | `FPhysicalAnimationData &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ApplyPhysicalAnimationSettingsBelow`
-
-```text
-ApplyPhysicalAnimationSettingsBelow(BodyName: FName, PhysicalAnimationData: FPhysicalAnimationData &, bIncludeSelf: bool) -> void
-```
-
-Applies the physical animation settings to the body given and all bodies below.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `BodyName` | `FName` | - |
-| `PhysicalAnimationData` | `FPhysicalAnimationData &` | - |
-| `bIncludeSelf` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetStrengthMultiplyer`
-
-```text
-SetStrengthMultiplyer(InStrengthMultiplyer: float) -> void
-```
-
-Updates strength multiplyer and any active motors
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InStrengthMultiplyer` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ApplyPhysicalAnimationProfileBelow`
-
-```text
-ApplyPhysicalAnimationProfileBelow(BodyName: FName, ProfileName: FName, bIncludeSelf: bool, bClearNotFound: bool) -> void
-```
-
-Applies the physical animation profile to the body given and all bodies below.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `BodyName` | `FName` | The body from which we'd like to start applying the physical animation profile. Finds all bodies below in the skeleton hierarchy. None implies all bodies |
-| `ProfileName` | `FName` | The physical animation profile we'd like to apply. For each body in the physics asset we search for physical animation settings with this name. |
-| `bIncludeSelf` | `bool` | Whether to include the provided body name in the list of bodies we act on (useful to ignore for cases where a root has multiple children) |
-| `bClearNotFound` | `bool` | If true, bodies without the given profile name will have any existing physical animation settings cleared. If false, bodies without the given profile name are left untouched. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetBodyTargetTransform`
-
-```text
-GetBodyTargetTransform(BodyName: FName) -> FTransform
-```
-
-Returns the target transform for the given body. If physical animation component is not controlling this body, returns its current transform.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `BodyName` | `FName` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FTransform` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicalMaterial.json -->
-
-# UPhysicalMaterial
-
-Physical materials are used to define the response of a physical object when interacting dynamically with the world.
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Friction` | `float` | Friction value of surface, controls how easily things can slide on this surface (0 is frictionless, higher values increase the amount of friction) |
-| `FrictionCombineMode` | `TEnumAsByte < EFrictionCombineMode :: Type >` | Friction combine mode, controls how friction is computed for multiple materials. |
-| `bOverrideFrictionCombineMode` | `bool` | If set we will use the FrictionCombineMode of this material, instead of the FrictionCombineMode found in the project settings. |
-| `Restitution` | `float` | Restitution or 'bounciness' of this surface, between 0 (no bounce) and 1 (outgoing velocity is same as incoming). |
-| `RestitutionCombineMode` | `TEnumAsByte < EFrictionCombineMode :: Type >` | Restitution combine mode, controls how restitution is computed for multiple materials. |
-| `bOverrideRestitutionCombineMode` | `bool` | If set we will use the RestitutionCombineMode of this material, instead of the RestitutionCombineMode found in the project settings. |
-| `Density` | `float` | Used with the shape of the object to calculate its mass properties. The higher the number, the heavier the object. g per cubic cm. |
-| `RaiseMassToPower` | `float` | Used to adjust the way that mass increases as objects get larger. This is applied to the mass as calculated based on a 'solid' object. <br>	 	In actuality, larger objects do not tend to be solid, and become more like 'shells' (e.g. a car is not a solid piece of metal).<br>	 	Values are clamped to 1 or less. |
-| `DestructibleDamageThresholdScale` | `float` | How much to scale the damage threshold by on any destructible we are applied to |
-| `PhysicalMaterialProperty` | `UDEPRECATED_PhysicalMaterialPropertyBase *` | UPROPERTY(deprecated) |
-| `SurfaceType` | `TEnumAsByte < EPhysicalSurface >` | To edit surface type for your project, use ProjectSettingsPhysicsPhysicalSurface section |
-| `TireFrictionScale` | `float` | DEPRECATED - Overall tire friction scalar for every type of tire. This value is multiplied against our parents' values. |
-| `TireFrictionScales` | `TArray < FTireFrictionScalePair >` | DEPRECATED - Tire friction scales for specific types of tires. These values are multiplied against our parents' values. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsAsset.json -->
-
-# UPhysicsAsset
-
-PhysicsAsset contains a set of rigid bodies and constraints that make up a single ragdoll.
-  The asset is not limited to human ragdolls, and can be used for any physical simulation using bodies and constraints.
-  A SkeletalMesh has a single PhysicsAsset, which allows for easily turning ragdoll physics on or off for many SkeletalMeshComponents
-  The asset can be configured inside the Physics Asset Editor.
- 
-  @see USkeletalMesh
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `BoundsBodies` | `TArray < int32 >` | Index of bodies that are marked bConsiderForBounds |
-| `SkeletalBodySetups` | `TArray < USkeletalBodySetup * >` | Array of SkeletalBodySetup objects. Stores information about collision shape etc. for each body.<br>		Does not include body position - those are taken from mesh. |
-| `ConstraintSetup` | `TArray < UPhysicsConstraintTemplate * >` | Array of RB_ConstraintSetup objects. <br>	 	Stores information about a joint between two bodies, such as position relative to each body, joint limits etc. |
-| `bUseAsyncScene` | `uint8` | If true, bodies of the physics asset will be put into the asynchronous physics scene. If false, they will be put into the synchronous physics scene. |
-| `ThumbnailInfo` | `UThumbnailInfo *` | Information for thumbnail rendering |
-| `BodySetup_DEPRECATED` | `TArray < UBodySetup * >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsCollisionHandler.json -->
-
-# UPhysicsCollisionHandler
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ImpactThreshold` | `float` | How hard an impact must be to trigger effectsound |
-| `ImpactReFireDelay` | `float` | Min time between effectsound being triggered |
-| `DefaultImpactSound` | `USoundBase *` | Sound to play |
-| `LastImpactSoundTime` | `float` | Time since last impact sound |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsConstraintComponent.json -->
-
-# UPhysicsConstraintComponent
-
-This is effectively a joint that allows you to connect 2 rigid bodies together. You can create different types of joints using the various parameters of this component.
-
-## Inheritance
-
-`USceneComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ConstraintActor1` | `AActor *` | Pointer to first Actor to constrain. |
-| `ComponentName1` | `FConstrainComponentPropName` | Name of first component property to constrain. If Actor1 is NULL, will look within Owner.<br>	 	If this is NULL, will use RootComponent of Actor1 |
-| `ConstraintActor2` | `AActor *` | Pointer to second Actor to constrain. |
-| `ComponentName2` | `FConstrainComponentPropName` | Name of second component property to constrain. If Actor2 is NULL, will look within Owner. <br>	 	If this is NULL, will use RootComponent of Actor2 |
-| `ConstraintSetup_DEPRECATED` | `UPhysicsConstraintTemplate *` | - |
-| `OnConstraintBroken` | `FConstraintBrokenSignature` | Notification when constraint is broken. |
-| `ConstraintInstance` | `FConstraintInstance` | All constraint settings |
-
-## Functions
-
-### `SetConstrainedComponents`
-
-```text
-SetConstrainedComponents(Component1: UPrimitiveComponent *, BoneName1: FName, Component2: UPrimitiveComponent *, BoneName2: FName) -> void
-```
-
-Directly specify component to connect. Will update frames based on current position.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Component1` | `UPrimitiveComponent *` | - |
-| `BoneName1` | `FName` | - |
-| `Component2` | `UPrimitiveComponent *` | - |
-| `BoneName2` | `FName` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `BreakConstraint`
-
-```text
-BreakConstraint() -> void
-```
-
-Break this constraint
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLinearPositionDrive`
-
-```text
-SetLinearPositionDrive(bEnableDriveX: bool, bEnableDriveY: bool, bEnableDriveZ: bool) -> void
-```
-
-EnablesDisables linear position drive
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bEnableDriveX` | `bool` | Indicates whether the drive for the X-Axis should be enabled |
-| `bEnableDriveY` | `bool` | Indicates whether the drive for the Y-Axis should be enabled |
-| `bEnableDriveZ` | `bool` | Indicates whether the drive for the Z-Axis should be enabled |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLinearVelocityDrive`
-
-```text
-SetLinearVelocityDrive(bEnableDriveX: bool, bEnableDriveY: bool, bEnableDriveZ: bool) -> void
-```
-
-EnablesDisables linear position drive
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bEnableDriveX` | `bool` | Indicates whether the drive for the X-Axis should be enabled |
-| `bEnableDriveY` | `bool` | Indicates whether the drive for the Y-Axis should be enabled |
-| `bEnableDriveZ` | `bool` | Indicates whether the drive for the Z-Axis should be enabled |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAngularOrientationDrive`
-
-```text
-SetAngularOrientationDrive(bEnableSwingDrive: bool, bEnableTwistDrive: bool) -> void
-```
-
-EnablesDisables angular orientation drive. Only relevant if the AngularDriveMode is set to Twist and Swing
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bEnableSwingDrive` | `bool` | Indicates whether the drive for the swing axis should be enabled. Only relevant if the AngularDriveMode is set to Twist and Swing |
-| `bEnableTwistDrive` | `bool` | Indicates whether the drive for the twist axis should be enabled. Only relevant if the AngularDriveMode is set to Twist and Swing |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetOrientationDriveTwistAndSwing`
-
-```text
-SetOrientationDriveTwistAndSwing(bEnableTwistDrive: bool, bEnableSwingDrive: bool) -> void
-```
-
-EnablesDisables angular orientation drive. Only relevant if the AngularDriveMode is set to Twist and Swing
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bEnableTwistDrive` | `bool` | Indicates whether the drive for the twist axis should be enabled. Only relevant if the AngularDriveMode is set to Twist and Swing |
-| `bEnableSwingDrive` | `bool` | Indicates whether the drive for the swing axis should be enabled. Only relevant if the AngularDriveMode is set to Twist and Swing |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetOrientationDriveSLERP`
-
-```text
-SetOrientationDriveSLERP(bEnableSLERP: bool) -> void
-```
-
-EnablesDisables the angular orientation slerp drive. Only relevant if the AngularDriveMode is set to SLERP
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bEnableSLERP` | `bool` | Indicates whether the SLERP drive should be enabled. Only relevant if the AngularDriveMode is set to SLERP |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAngularVelocityDrive`
-
-```text
-SetAngularVelocityDrive(bEnableSwingDrive: bool, bEnableTwistDrive: bool) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bEnableSwingDrive` | `bool` | - |
-| `bEnableTwistDrive` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAngularVelocityDriveTwistAndSwing`
-
-```text
-SetAngularVelocityDriveTwistAndSwing(bEnableTwistDrive: bool, bEnableSwingDrive: bool) -> void
-```
-
-EnablesDisables angular velocity twist and swing drive. Only relevant if the AngularDriveMode is set to Twist and Swing
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bEnableTwistDrive` | `bool` | Indicates whether the drive for the twist axis should be enabled. Only relevant if the AngularDriveMode is set to Twist and Swing |
-| `bEnableSwingDrive` | `bool` | Indicates whether the drive for the swing axis should be enabled. Only relevant if the AngularDriveMode is set to Twist and Swing |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAngularVelocityDriveSLERP`
-
-```text
-SetAngularVelocityDriveSLERP(bEnableSLERP: bool) -> void
-```
-
-EnablesDisables the angular velocity slerp drive. Only relevant if the AngularDriveMode is set to SLERP
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bEnableSLERP` | `bool` | Indicates whether the SLERP drive should be enabled. Only relevant if the AngularDriveMode is set to SLERP |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAngularDriveMode`
-
-```text
-SetAngularDriveMode(DriveMode: EAngularDriveMode :: Type) -> void
-```
-
-Switches the angular drive mode between SLERP and Twist And Swing
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `DriveMode` | `EAngularDriveMode :: Type` | The angular drive mode to use. SLERP uses shortest spherical path, but will not work if any angular constraints are locked. Twist and Swing decomposes the path into the different angular degrees of freedom but may experience gimbal lock |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLinearPositionTarget`
-
-```text
-SetLinearPositionTarget(InPosTarget: FVector &) -> void
-```
-
-Sets the target position for the linear drive.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InPosTarget` | `FVector &` | Target position |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLinearVelocityTarget`
-
-```text
-SetLinearVelocityTarget(InVelTarget: FVector &) -> void
-```
-
-Sets the target velocity for the linear drive.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InVelTarget` | `FVector &` | Target velocity |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLinearDriveParams`
-
-```text
-SetLinearDriveParams(PositionStrength: float, VelocityStrength: float, InForceLimit: float) -> void
-```
-
-Sets the drive params for the linear drive.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PositionStrength` | `float` | Positional strength for the drive (stiffness) |
-| `VelocityStrength` | `float` | Velocity strength of the drive (damping) |
-| `InForceLimit` | `float` | Max force applied by the drive |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAngularOrientationTarget`
-
-```text
-SetAngularOrientationTarget(InPosTarget: FRotator &) -> void
-```
-
-Sets the target orientation for the angular drive.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InPosTarget` | `FRotator &` | Target orientation |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAngularVelocityTarget`
-
-```text
-SetAngularVelocityTarget(InVelTarget: FVector &) -> void
-```
-
-Sets the target velocity for the angular drive.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InVelTarget` | `FVector &` | Target velocity |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAngularDriveParams`
-
-```text
-SetAngularDriveParams(PositionStrength: float, VelocityStrength: float, InForceLimit: float) -> void
-```
-
-Sets the drive params for the angular drive.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PositionStrength` | `float` | Positional strength for the drive (stiffness) |
-| `VelocityStrength` | `float` | Velocity strength of the drive (damping) |
-| `InForceLimit` | `float` | Max force applied by the drive |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLinearXLimit`
-
-```text
-SetLinearXLimit(ConstraintType: ELinearConstraintMotion, LimitSize: float) -> void
-```
-
-Sets the LinearX Motion Type
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ConstraintType` | `ELinearConstraintMotion` | New Constraint Type |
-| `LimitSize` | `float` | Size of limit |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLinearYLimit`
-
-```text
-SetLinearYLimit(ConstraintType: ELinearConstraintMotion, LimitSize: float) -> void
-```
-
-Sets the LinearY Motion Type
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ConstraintType` | `ELinearConstraintMotion` | New Constraint Type |
-| `LimitSize` | `float` | Size of limit |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLinearZLimit`
-
-```text
-SetLinearZLimit(ConstraintType: ELinearConstraintMotion, LimitSize: float) -> void
-```
-
-Sets the LinearZ Motion Type
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ConstraintType` | `ELinearConstraintMotion` | New Constraint Type |
-| `LimitSize` | `float` | Size of limit |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAngularSwing1Limit`
-
-```text
-SetAngularSwing1Limit(MotionType: EAngularConstraintMotion, Swing1LimitAngle: float) -> void
-```
-
-Sets the Angular Swing1 Motion Type
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `MotionType` | `EAngularConstraintMotion` | - |
-| `Swing1LimitAngle` | `float` | Size of limit in degrees |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAngularSwing2Limit`
-
-```text
-SetAngularSwing2Limit(MotionType: EAngularConstraintMotion, Swing2LimitAngle: float) -> void
-```
-
-Sets the Angular Swing2 Motion Type
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `MotionType` | `EAngularConstraintMotion` | - |
-| `Swing2LimitAngle` | `float` | Size of limit in degrees |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAngularTwistLimit`
-
-```text
-SetAngularTwistLimit(ConstraintType: EAngularConstraintMotion, TwistLimitAngle: float) -> void
-```
-
-Sets the Angular Twist Motion Type
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ConstraintType` | `EAngularConstraintMotion` | New Constraint Type |
-| `TwistLimitAngle` | `float` | Size of limit in degrees |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLinearBreakable`
-
-```text
-SetLinearBreakable(bLinearBreakable: bool, LinearBreakThreshold: float) -> void
-```
-
-Sets the Linear Breakable properties
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bLinearBreakable` | `bool` | Whether it is possible to break the joint with linear force |
-| `LinearBreakThreshold` | `float` | Force needed to break the joint |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAngularBreakable`
-
-```text
-SetAngularBreakable(bAngularBreakable: bool, AngularBreakThreshold: float) -> void
-```
-
-Sets the Angular Breakable properties
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bAngularBreakable` | `bool` | Whether it is possible to break the joint with angular force |
-| `AngularBreakThreshold` | `float` | Torque needed to break the joint |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetCurrentTwist`
-
-```text
-GetCurrentTwist() -> float
-```
-
-Gets the current Angular Twist of the constraint
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetCurrentSwing1`
-
-```text
-GetCurrentSwing1() -> float
-```
-
-Gets the current Swing1 of the constraint
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetCurrentSwing2`
-
-```text
-GetCurrentSwing2() -> float
-```
-
-Gets the current Swing2 of the constraint
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `SetConstraintReferenceFrame`
-
-```text
-SetConstraintReferenceFrame(Frame: EConstraintFrame :: Type, RefFrame: FTransform &) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Frame` | `EConstraintFrame :: Type` | - |
-| `RefFrame` | `FTransform &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetConstraintReferencePosition`
-
-```text
-SetConstraintReferencePosition(Frame: EConstraintFrame :: Type, RefPosition: FVector &) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Frame` | `EConstraintFrame :: Type` | - |
-| `RefPosition` | `FVector &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetConstraintReferenceOrientation`
-
-```text
-SetConstraintReferenceOrientation(Frame: EConstraintFrame :: Type, PriAxis: FVector &, SecAxis: FVector &) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Frame` | `EConstraintFrame :: Type` | - |
-| `PriAxis` | `FVector &` | - |
-| `SecAxis` | `FVector &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetDisableCollision`
-
-```text
-SetDisableCollision(bDisableCollision: bool) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bDisableCollision` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetConstraintForce`
-
-```text
-GetConstraintForce(OutLinearForce: FVector &, OutAngularForce: FVector &) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `OutLinearForce` | `FVector &` | - |
-| `OutAngularForce` | `FVector &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `IsBroken`
-
-```text
-IsBroken() -> bool
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsConstraintTemplate.json -->
-
-# UPhysicsConstraintTemplate
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `DefaultInstance` | `FConstraintInstance` | - |
-| `ProfileHandles` | `TArray < FPhysicsConstraintProfileHandle >` | Handles to the constraint profiles applicable to this constraint |
-| `DefaultProfile` | `FConstraintProfileProperties` | When no profile is selected, use these settings. Only needed in editor as we serialize it into DefaultInstance on save |
-| `JointName_DEPRECATED` | `FName` | - |
-| `ConstraintBone1_DEPRECATED` | `FName` | - |
-| `ConstraintBone2_DEPRECATED` | `FName` | - |
-| `Pos1_DEPRECATED` | `FVector` | - |
-| `PriAxis1_DEPRECATED` | `FVector` | - |
-| `SecAxis1_DEPRECATED` | `FVector` | - |
-| `Pos2_DEPRECATED` | `FVector` | - |
-| `PriAxis2_DEPRECATED` | `FVector` | - |
-| `SecAxis2_DEPRECATED` | `FVector` | - |
-| `bEnableProjection_DEPRECATED` | `uint32` | - |
-| `ProjectionLinearTolerance_DEPRECATED` | `float` | - |
-| `ProjectionAngularTolerance_DEPRECATED` | `float` | - |
-| `LinearXMotion_DEPRECATED` | `TEnumAsByte < enum ELinearConstraintMotion >` | - |
-| `LinearYMotion_DEPRECATED` | `TEnumAsByte < enum ELinearConstraintMotion >` | - |
-| `LinearZMotion_DEPRECATED` | `TEnumAsByte < enum ELinearConstraintMotion >` | - |
-| `LinearLimitSize_DEPRECATED` | `float` | - |
-| `bLinearLimitSoft_DEPRECATED` | `uint32` | - |
-| `LinearLimitStiffness_DEPRECATED` | `float` | - |
-| `LinearLimitDamping_DEPRECATED` | `float` | - |
-| `bLinearBreakable_DEPRECATED` | `uint32` | - |
-| `LinearBreakThreshold_DEPRECATED` | `float` | - |
-| `AngularSwing1Motion_DEPRECATED` | `TEnumAsByte < enum EAngularConstraintMotion >` | - |
-| `AngularSwing2Motion_DEPRECATED` | `TEnumAsByte < enum EAngularConstraintMotion >` | - |
-| `AngularTwistMotion_DEPRECATED` | `TEnumAsByte < enum EAngularConstraintMotion >` | - |
-| `bSwingLimitSoft_DEPRECATED` | `uint32` | - |
-| `bTwistLimitSoft_DEPRECATED` | `uint32` | - |
-| `Swing1LimitAngle_DEPRECATED` | `float` | - |
-| `Swing2LimitAngle_DEPRECATED` | `float` | - |
-| `TwistLimitAngle_DEPRECATED` | `float` | - |
-| `SwingLimitStiffness_DEPRECATED` | `float` | - |
-| `SwingLimitDamping_DEPRECATED` | `float` | - |
-| `TwistLimitStiffness_DEPRECATED` | `float` | - |
-| `TwistLimitDamping_DEPRECATED` | `float` | - |
-| `bAngularBreakable_DEPRECATED` | `uint32` | - |
-| `AngularBreakThreshold_DEPRECATED` | `float` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsHandleComponent.json -->
-
-# UPhysicsHandleComponent
-
-Utility object for moving physics objects around.
-
-## Inheritance
-
-`UActorComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `GrabbedComponent` | `UPrimitiveComponent *` | Component we are currently holding |
-| `bSoftAngularConstraint` | `uint32` | - |
-| `bSoftLinearConstraint` | `uint32` | - |
-| `bInterpolateTarget` | `uint32` | - |
-| `LinearDamping` | `float` | Linear damping of the handle spring. |
-| `LinearStiffness` | `float` | Linear stiffness of the handle spring |
-| `AngularDamping` | `float` | Angular stiffness of the handle spring |
-| `AngularStiffness` | `float` | Angular stiffness of the handle spring |
-| `InterpolationSpeed` | `float` | How quickly we interpolate the physics target transform |
-
-## Functions
-
-### `GrabComponent`
-
-```text
-GrabComponent(Component: UPrimitiveComponent *, InBoneName: FName, GrabLocation: FVector, bConstrainRotation: bool) -> ENGINE_API virtual void
-```
-
-Grab the specified component
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Component` | `UPrimitiveComponent *` | - |
-| `InBoneName` | `FName` | - |
-| `GrabLocation` | `FVector` | - |
-| `bConstrainRotation` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API virtual void` | - |
-
-### `GrabComponentAtLocation`
-
-```text
-GrabComponentAtLocation(Component: UPrimitiveComponent *, InBoneName: FName, GrabLocation: FVector) -> ENGINE_API void
-```
-
-Grab the specified component at a given location. Does NOT constraint rotation which means the handle will pivot about GrabLocation.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Component` | `UPrimitiveComponent *` | - |
-| `InBoneName` | `FName` | - |
-| `GrabLocation` | `FVector` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
-
-### `GrabComponentAtLocationWithRotation`
-
-```text
-GrabComponentAtLocationWithRotation(Component: UPrimitiveComponent *, InBoneName: FName, Location: FVector, Rotation: FRotator) -> ENGINE_API void
-```
-
-Grab the specified component at a given location and rotation. Constrains rotation.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Component` | `UPrimitiveComponent *` | - |
-| `InBoneName` | `FName` | - |
-| `Location` | `FVector` | - |
-| `Rotation` | `FRotator` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
-
-### `ReleaseComponent`
-
-```text
-ReleaseComponent() -> ENGINE_API virtual void
-```
-
-Release the currently held component
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API virtual void` | - |
-
-### `GetGrabbedComponent`
-
-```text
-GetGrabbedComponent() -> ENGINE_API class UPrimitiveComponent *
-```
-
-Returns the currently grabbed component, or null if nothing is grabbed.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API class UPrimitiveComponent *` | - |
-
-### `SetTargetLocation`
-
-```text
-SetTargetLocation(NewLocation: FVector) -> ENGINE_API void
-```
-
-Set the target location
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewLocation` | `FVector` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
-
-### `SetTargetRotation`
-
-```text
-SetTargetRotation(NewRotation: FRotator) -> ENGINE_API void
-```
-
-Set the target rotation
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewRotation` | `FRotator` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
-
-### `SetTargetLocationAndRotation`
-
-```text
-SetTargetLocationAndRotation(NewLocation: FVector, NewRotation: FRotator) -> ENGINE_API void
-```
-
-Set target location and rotation
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewLocation` | `FVector` | - |
-| `NewRotation` | `FRotator` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
-
-### `GetTargetLocationAndRotation`
-
-```text
-GetTargetLocationAndRotation(TargetLocation: FVector &, TargetRotation: FRotator &) -> ENGINE_API void
-```
-
-Get the current location and rotation
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetLocation` | `FVector &` | - |
-| `TargetRotation` | `FRotator &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
-
-### `SetLinearDamping`
-
-```text
-SetLinearDamping(NewLinearDamping: float) -> ENGINE_API void
-```
-
-Set linear damping
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewLinearDamping` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
-
-### `SetLinearStiffness`
-
-```text
-SetLinearStiffness(NewLinearStiffness: float) -> ENGINE_API void
-```
-
-Set linear stiffness
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewLinearStiffness` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
-
-### `SetAngularDamping`
-
-```text
-SetAngularDamping(NewAngularDamping: float) -> ENGINE_API void
-```
-
-Set angular damping
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewAngularDamping` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
-
-### `SetAngularStiffness`
-
-```text
-SetAngularStiffness(NewAngularStiffness: float) -> ENGINE_API void
-```
-
-Set angular stiffness
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewAngularStiffness` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
-
-### `SetInterpolationSpeed`
-
-```text
-SetInterpolationSpeed(NewInterpolationSpeed: float) -> ENGINE_API void
-```
-
-Set interpolation speed
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewInterpolationSpeed` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsSettings.json -->
-
-# UPhysicsSettings
-
-Default physics settings.
-
-## Inheritance
-
-`UDeveloperSettings`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ServerPvdThresholdMs` | `float` | Default ServerPvdThresholdMs. |
-| `ClientPvdThresholdMs` | `float` | Default ClientPvdThresholdMs. |
-| `ServerPvdRecordTimeSeconds` | `int32` | Default ServerPvdRecordTimeSeconds. |
-| `ClientPvdRecordTimeSeconds` | `int32` | Default ClientPvdRecordTimeSeconds. |
-| `DefaultGravityZ` | `float` | Default gravity. |
-| `DefaultTerminalVelocity` | `float` | Default terminal velocity for Physics Volumes. |
-| `DefaultFluidFriction` | `float` | Default fluid friction for Physics Volumes. |
-| `SimulateScratchMemorySize` | `int32` | Amount of memory to reserve for PhysX simulate(), this is per pxscene and will be rounded up to the next 16K boundary |
-| `RagdollAggregateThreshold` | `int32` | Threshold for ragdoll bodies above which they will be added to an aggregate before being added to the scene |
-| `TriangleMeshTriangleMinAreaThreshold` | `float` | Triangles from triangle meshes (BSP) with an area less than or equal to this value will be removed from physics collision data. Set to less than 0 to disable. |
-| `bEnableAsyncScene` | `bool` | Enables the use of an async scene |
-| `bEnableShapeSharing` | `bool` | Enables shape sharing between sync and async scene for static rigid actors |
-| `bEnablePCM` | `bool` | Enables persistent contact manifolds. This will generate fewer contact points, but with more accuracy. Reduces stability of stacking, but can help energy conservation. |
-| `bEnableStabilization` | `bool` | Enables stabilization of contacts for slow moving bodies. This will help improve the stability of stacking. |
-| `bWarnMissingLocks` | `bool` | Whether to warn when physics locks are used incorrectly. Turning this off is not recommended and should only be used by very advanced users. |
-| `bEnable2DPhysics` | `bool` | Can 2D physics be used (Box2D)? |
-| `PhysicErrorCorrection` | `FRigidBodyErrorCorrectionNew` | Error correction data for replicating simulated physics (rigid bodies) |
-| `LockedAxis_DEPRECATED` | `TEnumAsByte < ESettingsLockedAxis :: Type >` | - |
-| `DefaultDegreesOfFreedom` | `TEnumAsByte < ESettingsDOF :: Type >` | Useful for constraining all objects in the world, for example if you are making a 2D game using 3D environments. |
-| `BounceThresholdVelocity` | `float` | Minimum relative velocity required for an object to bounce. A typical value for simulation stability is about 0.2  gravity |
-| `FrictionCombineMode` | `TEnumAsByte < EFrictionCombineMode :: Type >` | Friction combine mode, controls how friction is computed for multiple materials. |
-| `RestitutionCombineMode` | `TEnumAsByte < EFrictionCombineMode :: Type >` | Restitution combine mode, controls how restitution is computed for multiple materials. |
-| `MaxAngularVelocity` | `float` | Max angular velocity that a simulated object can achieve. |
-| `MaxDepenetrationVelocity` | `float` | Max velocity which may be used to depenetrate simulated physics objects. 0 means no maximum. |
-| `ContactOffsetMultiplier` | `float` | Contact offset multiplier. When creating a physics shape we look at its bounding volume and multiply its minimum value by this multiplier. A bigger number will generate contact points earlier which results in higher stability at the cost of performance. |
-| `MinContactOffset` | `float` | Min Contact offset. |
-| `MaxContactOffset` | `float` | Max Contact offset. |
-| `bSimulateSkeletalMeshOnDedicatedServer` | `bool` | If true, simulate physics for this component on a dedicated server.<br>	  This should be set if simulating physics and replicating with a dedicated server. |
-| `DefaultShapeComplexity` | `TEnumAsByte < ECollisionTraceFlag >` | Determines the default physics shape complexity. |
-| `bDefaultHasComplexCollision_DEPRECATED` | `bool` | If true, static meshes will use per poly collision as complex collision by default. If false the default behavior is the same as UseSimpleAsComplex. |
-| `bSuppressFaceRemapTable` | `bool` | If true, the internal physx face to UE face mapping will not be generated. This is a memory optimization available if you do not rely on face indices returned by scene queries. |
-| `bSupportUVFromHitResults` | `bool` | If true, store extra information to allow FindCollisionUV to derive UV info from a line trace hit result, using the FindCollisionUV utility |
-| `bDisableActiveActors` | `bool` | If true, physx will not update unreal with any bodies that have moved during the simulation. This should only be used if you have no physx simulation or you are manually updating the unreal data via polling physx. |
-| `bDisableCCD` | `bool` | If true CCD will be ignored. This is an optimization when CCD is never used which removes the need for physx to check it internally. |
-| `bEnableEnhancedDeterminism` | `bool` | If set to true, the scene will use enhanced determinism at the cost of a bit more resources. See eENABLE_ENHANCED_DETERMINISM to learn about the specifics |
-| `MaxPhysicsDeltaTime` | `float` | Max Physics Delta Time to be clamped. |
-| `bSubstepping` | `bool` | Whether to substep the physics simulation. This feature is still experimental. Certain functionality might not work correctly |
-| `bSubsteppingAsync` | `bool` | Whether to substep the async physics simulation. This feature is still experimental. Certain functionality might not work correctly |
-| `MaxSubstepDeltaTime` | `float` | Max delta time (in seconds) for an individual simulation substep. |
-| `MaxSubsteps` | `int32` | Max number of substeps for physics simulation. |
-| `ServerMaxSubstepDeltaTime` | `float` | pixelchen 服务器单独设置MaxSubstepDeltaTime |
-| `ServerMaxSubsteps` | `int32` | pixelchen 服务器单独设置MaxSubsteps |
-| `SyncSceneSmoothingFactor` | `float` | Physics delta time smoothing factor for sync scene. |
-| `AsyncSceneSmoothingFactor` | `float` | Physics delta time smoothing factor for async scene. |
-| `InitialAverageFrameRate` | `float` | Physics delta time initial average. |
-| `PhysXTreeRebuildRate` | `int` | The number of frames it takes to rebuild the PhysX scene query AABB tree. The bigger the number, the smaller fetchResults takes per frame, but the more the tree deteriorates until a new tree is built |
-| `PhysicalSurfaces` | `TArray < FPhysicalSurfaceName >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsSpringComponent.json -->
-
-# UPhysicsSpringComponent
-
-Note: this component is still work in progress. Uses raycast springs for simple vehicle forces
- 	Used with objects that have physics to create a spring down the X direction
- 	ie. point X in the direction you want generate spring.
-
-## Inheritance
-
-`USceneComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SpringStiffness` | `float` | Specifies how much strength the spring has. The higher the SpringStiffness the more force the spring can push on a body with. |
-| `SpringDamping` | `float` | Specifies how quickly the spring can absorb energy of a body. The higher the damping the less oscillation |
-| `SpringLengthAtRest` | `float` | Determines how long the spring will be along the X-axis at rest. The spring will apply 0 force on a body when it's at rest. |
-| `SpringRadius` | `float` | Determines the radius of the spring. |
-| `SpringChannel` | `TEnumAsByte < enum ECollisionChannel >` | Strength of thrust force applied to the base object. |
-| `bIgnoreSelf` | `bool` | If true, the spring will ignore all components in its own actor |
-| `SpringCompression` | `float` | The current compression of the spring. A spring at rest will have SpringCompression 0. |
-
-## Functions
-
-### `GetNormalizedCompressionScalar`
-
-```text
-GetNormalizedCompressionScalar() -> float
-```
-
-Returns the spring compression as a normalized scalar along spring direction.
-	   0 implies spring is at rest
-	   1 implies fully compressed
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetSpringRestingPoint`
-
-```text
-GetSpringRestingPoint() -> FVector
-```
-
-Returns the spring resting point in world space.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetSpringCurrentEndPoint`
-
-```text
-GetSpringCurrentEndPoint() -> FVector
-```
-
-Returns the spring current end point in world space.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetSpringDirection`
-
-```text
-GetSpringDirection() -> FVector
-```
-
-Returns the spring direction from start to resting point
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPhysicsThrusterComponent.json -->
-
-# UPhysicsThrusterComponent
-
-Used with objects that have physics to apply a force down the negative-X direction
- 	ie. point X in the direction you want the thrust in.
-
-## Inheritance
-
-`USceneComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ThrustStrength` | `float` | Strength of thrust force applied to the base object. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPixelProjectedReflectionComponent.json -->
-
-# UPixelProjectedReflectionComponent
-
-UPixelProjectedReflectionComponent
-
-## Inheritance
-
-`USceneCaptureComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PreviewBox` | `UBoxComponent *` | - |
-| `NormalDistortionStrength` | `float` | Controls the strength of normals when distorting the planar reflection. |
-| `SkyDistanceFadeoutStart` | `float` | Receiving pixels at this distance from the reflection plane will begin to fade out the planar reflection. |
-| `SkyDistanceFadeoutEnd` | `float` | Receiving pixels at this distance from the reflection plane will have completely faded out the planar reflection. |
-| `DistanceFromPlaneFadeStart_DEPRECATED` | `float` | - |
-| `DistanceFromPlaneFadeEnd_DEPRECATED` | `float` | - |
-| `DistanceFromPlaneFadeoutStart` | `float` | Receiving pixels at this distance from the reflection plane will begin to fade out the planar reflection. |
-| `DistanceFromPlaneFadeoutEnd` | `float` | Receiving pixels at this distance from the reflection plane will have completely faded out the planar reflection. |
-| `AngleFromPlaneFadeStart` | `float` | Receiving pixels whose normal is at this angle from the reflection plane will begin to fade out the planar reflection. |
-| `AngleFromPlaneFadeEnd` | `float` | Receiving pixels whose normal is at this angle from the reflection plane will have completely faded out the planar reflection. |
-| `HeightAdjustmentVolumes` | `TArray < APixelProjectedReflectionHeightAdjustmentVolume * >` | - |
-| `VisibilityVolumes` | `TArray < APixelProjectedReflectionVisibilityVolume * >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPlanarReflectionComponent.json -->
-
-# UPlanarReflectionComponent
-
-UPlanarReflectionComponent
-
-## Inheritance
-
-`USceneCaptureComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PreviewBox` | `UBoxComponent *` | - |
-| `NormalDistortionStrength` | `float` | Controls the strength of normals when distorting the planar reflection. |
-| `PrefilterRoughnessY` | `float` | The vertical roughness value to prefilter the planar reflection texture with, useful for hiding low resolution.  Larger values have larger GPU cost. |
-| `PrefilterRoughnessDistanceY` | `float` | The vertical distance at which the prefilter roughness value will be achieved. |
-| `ScreenPercentage` | `int32` | Downsample percent, can be used to reduce GPU time rendering the planar reflection. |
-| `ExtraFOV` | `float` | Additional FOV used when rendering to the reflection texture.  <br>	  This is useful when normal distortion is causing reads outside the reflection texture. <br>	  Larger values increase rendering thread and GPU cost, as more objects and triangles have to be rendered into the planar reflection. |
-| `DistanceFromPlaneFadeStart_DEPRECATED` | `float` | - |
-| `DistanceFromPlaneFadeEnd_DEPRECATED` | `float` | - |
-| `DistanceFromPlaneFadeoutStart` | `float` | Receiving pixels at this distance from the reflection plane will begin to fade out the planar reflection. |
-| `DistanceFromPlaneFadeoutEnd` | `float` | Receiving pixels at this distance from the reflection plane will have completely faded out the planar reflection. |
-| `AngleFromPlaneFadeStart` | `float` | Receiving pixels whose normal is at this angle from the reflection plane will begin to fade out the planar reflection. |
-| `AngleFromPlaneFadeEnd` | `float` | Receiving pixels whose normal is at this angle from the reflection plane will have completely faded out the planar reflection. |
-| `bRenderSceneTwoSided` | `bool` | Whether to render the scene as two-sided, which can be useful to hide artifacts where normal distortion would read 'under' an object that has been clipped by the reflection plane. <br>	  With this setting enabled, the backfaces of a mesh would be displayed in the clipped region instead of the background which is potentially a bright sky.<br>	  Be sure to add the water plane to HiddenActors if enabling this, as the water plane will now block the reflection. |
-| `bBlurHorizontal` | `bool` | Whether to blur along horizontal direction |
-| `PrefilterRoughnessX` | `float` | The horizontal roughness value to prefilter the planar reflection texture with, useful for hiding low resolution.  Larger values have larger GPU cost. |
-| `PrefilterRoughnessDistanceX` | `float` | The horizontal distance at which the prefilter roughness value will be achieved. |
-| `PrefilterRoughnessLowerBound` | `float` | The Roughness Threshold For Prefilter |
-| `ScreenSizeCullScale` | `float` | The ScreenSize Cull Scale |
-| `FrustumOptim` | `bool` | Frustum Cull Range Optimization |
-| `NoReflectionShadow` | `bool` | Do Not Render Shadow for PlanarRefelction |
-| `FrameBufferCache` | `bool` | Enable FrameBuffer Cache Or Not |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPlaneReflectionCaptureComponent.json -->
-
-# UPlaneReflectionCaptureComponent
-
-## Inheritance
-
-`UReflectionCaptureComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `InfluenceRadiusScale` | `float` | Radius of the area that can receive reflections from this capture. |
-| `PreviewInfluenceRadius` | `UDrawSphereComponent *` | - |
-| `PreviewCaptureBox` | `UBoxComponent *` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPlatformEventsComponent.json -->
-
-# UPlatformEventsComponent
-
-Component to handle receiving notifications from the OS about platform events.
-
-## Inheritance
-
-`UActorComponent`
-
-## Functions
-
-### `IsInLaptopMode`
-
-```text
-IsInLaptopMode() -> bool
-```
-
-Check whether a convertible laptop is laptop mode.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | true if in laptop mode, false otherwise or if not a convertible laptop. |
-
-### `IsInTabletMode`
-
-```text
-IsInTabletMode() -> bool
-```
-
-Check whether a convertible laptop is laptop mode.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | true if in tablet mode, false otherwise or if not a convertible laptop. |
-
-### `SupportsConvertibleLaptops`
-
-```text
-SupportsConvertibleLaptops() -> bool
-```
-
-Check whether the platform supports convertible laptops.
-	 
-	  Note: This does not necessarily mean that the platform is a convertible laptop.
-	  For example, convertible laptops running Windows 7 or older will return false,
-	  and regular laptops running Windows 8 or newer will return true.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | true for convertible laptop platforms, false otherwise. |
-
-## Delegates
-
-### `PlatformChangedToLaptopModeDelegate`
-
-```text
-PlatformChangedToLaptopModeDelegate() -> void
-```
-
-This is called when a convertible laptop changed into laptop mode.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `PlatformChangedToTabletModeDelegate`
-
-```text
-PlatformChangedToTabletModeDelegate() -> void
-```
-
-This is called when a convertible laptop changed into tablet mode.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPlatformGameInstance.json -->
-
-# UPlatformGameInstance
-
-UObject based class for handling mobile events. Having this object as an option gives the app lifetime access to these global delegates. The component UApplicationLifecycleComponent is destroyed at level loads
-
-## Inheritance
-
-`UGameInstance`
-
-## Delegates
-
-### `ApplicationWillDeactivateDelegate`
-
-```text
-ApplicationWillDeactivateDelegate() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ApplicationHasReactivatedDelegate`
-
-```text
-ApplicationHasReactivatedDelegate() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ApplicationWillEnterBackgroundDelegate`
-
-```text
-ApplicationWillEnterBackgroundDelegate() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ApplicationHasEnteredForegroundDelegate`
-
-```text
-ApplicationHasEnteredForegroundDelegate() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ApplicationWillTerminateDelegate`
-
-```text
-ApplicationWillTerminateDelegate() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ApplicationRegisteredForRemoteNotificationsDelegate`
-
-```text
-ApplicationRegisteredForRemoteNotificationsDelegate(inArray: const TArray<uint8>&) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `inArray` | `const TArray&` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ApplicationRegisteredForUserNotificationsDelegate`
-
-```text
-ApplicationRegisteredForUserNotificationsDelegate(inInt: int32) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `inInt` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ApplicationFailedToRegisterForRemoteNotificationsDelegate`
-
-```text
-ApplicationFailedToRegisterForRemoteNotificationsDelegate(inString: FString) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `inString` | `FString` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ApplicationReceivedRemoteNotificationDelegate`
-
-```text
-ApplicationReceivedRemoteNotificationDelegate(inString: FString, inAppState: EApplicationState::Type) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `inString` | `FString` | - |
-| `inAppState` | `EApplicationState::Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ApplicationReceivedLocalNotificationDelegate`
-
-```text
-ApplicationReceivedLocalNotificationDelegate(inString: FString, inInt: int32, inAppState: EApplicationState::Type) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `inString` | `FString` | - |
-| `inInt` | `int32` | - |
-| `inAppState` | `EApplicationState::Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ApplicationReceivedScreenOrientationChangedNotificationDelegate`
-
-```text
-ApplicationReceivedScreenOrientationChangedNotificationDelegate(inScreenOrientation: EScreenOrientation::Type) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `inScreenOrientation` | `EScreenOrientation::Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPlatformInterfaceBase.json -->
-
-# UPlatformInterfaceBase
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `AllDelegates` | `TArray < struct FDelegateArray >` | Array of delegate arrays. Only add and remove via helper functions, and call via the helper delegate call function |
 
 ## Language
 

@@ -29,8 +29,8 @@ ManagementRule逻辑规则的.ini文件配置版本，减少结构体和容器�
 | `CheckTargetAssetClassTypes` | `TArray < FManagementRuleFNameCheck >` | - |
 | `CheckSourcePackagesSwitch` | `FManagementRuleSwitch` | - |
 | `CheckSourcePackages` | `TArray < FManagementRuleFNameCheck >` | - |
-| `CheckSourcePackageClassSwitch` | `FManagementRuleSwitch` | - |
 | `CheckSourcePackageClassTypes` | `TArray < FManagementRuleFNameCheck >` | - |
+| `CheckSourcePackageClassSwitch` | `FManagementRuleSwitch` | - |
 | `CheckTargetAssetTagSwitch` | `FManagementRuleSwitch` | - |
 | `CheckTargetAssetTags` | `TArray < FManagementRuleFNameCheck >` | - |
 | `bOnlySoftReferences` | `bool` | - |

@@ -19,3 +19,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `NotAllowCheck` | `3` | - |
 | `KeyOwnerCheck` | `4` | - |
 | `OwnerAndTeammatesCheck` | `5` | - |
+| `AllowedTeamsCheck` | `6` | - |

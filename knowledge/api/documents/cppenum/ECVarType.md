@@ -16,3 +16,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `Group` | `0` | - |
 | `BigWorld` | `1` | - |
 | `Permanent` | `2` | - |
+| `AntiCheatPermanent` | `3` | - |

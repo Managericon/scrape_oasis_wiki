@@ -16,3 +16,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `SequencePawn` | `0` | - |
 | `MonsterPawn` | `1` | - |
 | `MagicField` | `2` | - |
+| `Vehicle` | `3` | - |

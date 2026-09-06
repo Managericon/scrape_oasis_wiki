@@ -17,3 +17,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `Remove` | `1` | - |
 | `Setting` | `2` | - |
 | `Expand` | `3` | - |
+| `Optional` | `4` | - |

@@ -1,12 +1,12 @@
 {
   "api_root": "https://developer.gp.qq.com/api/",
-  "total": 6029,
-  "succeeded": 6029,
+  "total": 6196,
+  "succeeded": 6196,
   "failed": 0,
   "chunks": 15,
   "by_kind": {
-    "class": 1388,
-    "cppenum": 3538,
+    "class": 1401,
+    "cppenum": 3692,
     "cppstruct": 1100,
     "globalfunc": 3
   }

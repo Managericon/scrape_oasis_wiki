@@ -6,6 +6,369 @@ category: "API Wiki/class"
 kind: "api_chunk"
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E5%B7%A5%E5%85%B7%E5%BA%93/UGCGameplayTagSystem.json -->
+
+# UGCGameplayTagSystem
+
+GameplayTag接口库
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `UGCGameplayTagSystem.Tags.PawnState` | `-` | - |
+
+## Functions
+
+### `RequestGameplayTag`
+
+```text
+RequestGameplayTag(TagString: string) -> FGameplayTag
+```
+
+根据字符串获取FGameplayTag
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TagString` | `string` | Tag的字符串 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FGameplayTag` | 是否为合法的Tag |
+
+### `IsValidTag`
+
+```text
+IsValidTag(Tag: UGCGameplayTag|string|FGameplayTag) -> boolean
+```
+
+检查一个Tag是否合法
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Tag` | `UGCGameplayTag\|string\|FGameplayTag` | Tag |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否为合法的Tag |
+
+### `IsUGCGameplayTag`
+
+```text
+IsUGCGameplayTag(Tag: UGCGameplayTag) -> boolean
+```
+
+检查一个Tag是否是UGCGameplayTag
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Tag` | `UGCGameplayTag` | UGCGameplayTag的lua对象 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否为UGCGameplayTag |
+
+### `MatchesTag`
+
+```text
+MatchesTag(TagA: UGCGameplayTag|string|FGameplayTag, TagB: UGCGameplayTag|string|FGameplayTag, bExactMatch: boolean) -> boolean
+```
+
+检查TagA是否与TagB匹配
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TagA` | `UGCGameplayTag\|string\|FGameplayTag` | Tag |
+| `TagB` | `UGCGameplayTag\|string\|FGameplayTag` | Tag |
+| `bExactMatch` | `boolean` | 是否精确匹配 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否匹配 |
+
+### `EqualsTag`
+
+```text
+EqualsTag(TagA: UGCGameplayTag|string|FGameplayTag, TagB: UGCGameplayTag|string|FGameplayTag) -> boolean
+```
+
+检查TagA是否与TagB相等
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TagA` | `UGCGameplayTag\|string\|FGameplayTag` | Tag |
+| `TagB` | `UGCGameplayTag\|string\|FGameplayTag` | Tag |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否相等 |
+
+### `CreateGameplayTagContainer`
+
+```text
+CreateGameplayTagContainer() -> FGameplayTagContainer
+```
+
+创建一个空的FFGameplayTagContainer
+生效范围：服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FGameplayTagContainer` | 空的FGameplayTagContainer |
+
+### `CreateGameplayTagContainerFromTag`
+
+```text
+CreateGameplayTagContainerFromTag(SingleTag: UGCGameplayTag|string|FGameplayTag) -> FGameplayTagContainer
+```
+
+创建一个包含指定FGameplayTag的FGameplayTagContainer
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SingleTag` | `UGCGameplayTag\|string\|FGameplayTag` | 传入FGameplayTagContainer中的FGameplayTag |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FGameplayTagContainer` | 包含传入FGameplayTag的GameplayTagContainer |
+
+### `CreateGameplayTagContainerFromArray`
+
+```text
+CreateGameplayTagContainerFromArray(GameplayTags: FGameplayTag[]) -> FGameplayTagContainer
+```
+
+创建一个包含一组FGameplayTag的FGameplayTagContainer
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `GameplayTags` | `FGameplayTag[]` | 传入FGameplayTagContainer中的FGameplayTags |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FGameplayTagContainer` | 包含传入FGameplayTags的GameplayTagContainer |
+
+### `AddGameplayTagToContainer`
+
+```text
+AddGameplayTagToContainer(TagContainer: FGameplayTagContainer, Tag: FGameplayTag)
+```
+
+将单个FGameplayTag添加到传入的FGameplayTagContainer中
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TagContainer` | `FGameplayTagContainer` | 要追加到的FGameplayTagContainer |
+| `Tag` | `FGameplayTag` | 要添加到FGameplayTagContainer中的FGameplayTag |
+
+### `RemoveGameplayTagFromContainer`
+
+```text
+RemoveGameplayTagFromContainer(TagContainer: FGameplayTagContainer, Tag: FGameplayTag) -> boolean
+```
+
+从传入的FGameplayTagContainer中移除单个FGameplayTag，若找到并移除则返回 true ，否则返回 false
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TagContainer` | `FGameplayTagContainer` | 要从中移除的FGameplayTagContainer |
+| `Tag` | `FGameplayTag` | 要从FGameplayTagContainer中移除的FGameplayTag |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否成功移除 |
+
+### `HasTag`
+
+```text
+HasTag(TagContainer: FGameplayTagContainer, Tag: FGameplayTag, bExactMatch: boolean) -> boolean
+```
+
+检查FGameplayTagContainer是否包含特定的FGameplayTag
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TagContainer` | `FGameplayTagContainer` | 要从中查找指定FGameplayTag的FGameplayTagContainer |
+| `Tag` | `FGameplayTag` | 要从FGameplayTagContainer中检查的FGameplayTag |
+| `bExactMatch` | `boolean` | 是否精确匹配 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否包含Tag |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E5%B7%A5%E5%85%B7%E5%BA%93/UGCGameplayTaskSystem.json -->
+
+# UGCGameplayTaskSystem
+
+异步任务接口库
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `UGCGameplayTaskSystem.General` | `-` | class General @通用异步任务 |
+| `UGCGameplayTaskSystem.General.SpawnActor` | `-` | class SpawnActor @通用异步任务：SpawnActor |
+| `UGCGameplayTaskSystem.Player` | `-` | class Player @玩家异步任务 |
+| `UGCGameplayTaskSystem.Player.AddCustomCameraData` | `-` | class AddCustomCameraData @玩家异步任务：添加自定义相机数据 |
+| `UGCGameplayTaskSystem.Player.SetEyeRotationMode` | `-` | class SetEyeRotationMode @玩家异步任务：添加自定义相机数据 |
+| `UGCGameplayTaskSystem.Player.RegisterDynamicState` | `-` | class RegisterDynamicState @玩家异步任务：注册一组状态互斥 |
+| `UGCGameplayTaskSystem.General.SelectLocationFromMap` | `-` | class SelectLocationFromMap @通用异步任务：从小地图上获得一个选点 |
+| `UGCGameplayTaskSystem.Player.SwitchWeapon` | `-` | class SwitchWeapon @玩家异步任务：切换武器 |
+| `UGCGameplayTaskSystem.PlayerPawn` | `-` | class PlayerPawn @角色异步任务 |
+| `UGCGameplayTaskSystem.PlayerPawn.TeleportPawn` | `-` | class TeleportPawn @角色异步任务：传送角色 |
+| `UGCGameplayTaskSystem.PlayerPawn.Sprint` | `-` | class TeleportPawn @角色异步任务：角色冲刺 |
+| `UGCGameplayTaskSystem.PlayerPawn.SetMaterial` | `-` | class SetMaterial @角色异步任务：角色换材质 |
+| `UGCGameplayTaskSystem.PlayerPawn.HitBack` | `-` | class SetMaterial @角色异步任务：击退 |
+| `UGCGameplayTaskSystem.PlayerPawn.AttachToCharacterScoket` | `-` | class Character @角色异步任务 |
+| `UGCGameplayTaskSystem.PlayerPawn.ReplaceAnim` | `-` | class Character @角色异步任务: 替换动画 |
+| `UGCGameplayTaskSystem.GenericCharacter` | `-` | class GenericCharacter @GenericCharacter异步任务 |
+| `UGCGameplayTaskSystem.GenericCharacter.ReplaceAnim` | `-` | class ReplaceAnim @GenericCharacter异步任务：替换动画 |
+| `UGCGameplayTaskSystem.GenericCharacter.SetMaterial` | `-` | class SetMaterial @GenericCharacter异步任务：换材质 |
+| `UGCGameplayTaskSystem.Weapon` | `-` | class Weapon @武器异步任务 |
+| `UGCGameplayTaskSystem.Weapon.AutoAim` | `-` | class AutoAim @武器异步任务：自动瞄准 |
+| `UGCGameplayTaskSystem.Weapon.LaunchProjectile` | `-` | class LaunchProjectile @武器异步任务：发射抛体 |
+| `UGCGameplayTaskSystem.PersistEffect` | `-` | class PersistEffect @技能/Buff 相关异步任务 |
+| `UGCGameplayTaskSystem.PersistEffect.ApplyTempPEGroup` | `-` | class ApplyTempPEGroup @PersistEffect异步任务：临时替换一组挂在Slot上的PE |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD/UGCGameSettingSystem.json -->
+
+# UGCGameSettingSystem
+
+游戏配置通用接口库
+
+## Functions
+
+### `GetDeviceLevel`
+
+```text
+GetDeviceLevel() -> number
+```
+
+获取设备水平（0=低端机，1=中端机，2=高端机）
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 设备水平级别 |
+
+### `GetRenderQualitySetting`
+
+```text
+GetRenderQualitySetting() -> ERenderQuality
+```
+
+获取渲染水平设置（画面品质）
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ERenderQuality` | 渲染水平枚举值 |
+
+### `GetRenderStyleSetting`
+
+```text
+GetRenderStyleSetting() -> ERenderStyle
+```
+
+获取渲染风格设置（画面风格）
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ERenderStyle` | 渲染风格枚举值 |
+
+### `AllowSoftwareOcclusion`
+
+```text
+AllowSoftwareOcclusion(bEnabled: boolean)
+```
+
+是否开启软件遮挡剔除（默认开启）。2D 类游戏建议关闭，否则在手机上层次相近（接近重叠）的物体处，可能会出现（黑屏）闪烁
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnabled` | `boolean` | 是否开启 |
+
+## Language
+
+`lua`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD/UGCGameSystem.json -->
 
 # UGCGameSystem
@@ -17,6 +380,8 @@ kind: "api_chunk"
 | Name | Type/Value | Description |
 |---|---|---|
 | `UGCGameSystemImplementation.PlayerAntiAFKData` | `-` | - |
+| `UGCGameSystemImplementation.NationalArenaCachedData` | `-` | - |
+| `UGCGameSystemImplementation.CampDataBuffer` | `-` | - |
 | `UGCGameSystem._RateLimiters` | `-` | - |
 | `UGCGameSystem.GameMode` | `-` | GameMode变量<br>生效范围：服务器 |
 | `UGCGameSystem.GameState` | `-` | GameState变量<br>生效范围：服务器&客户端 |
@@ -1178,7 +1543,7 @@ SetTimer(Object: UObject, CallbackFunction: LuaFunction, Time: number, IsLooping
 ### `ClearTimer`
 
 ```text
-ClearTimer(Object: UObject, TimerHandle: ULuaSingleDelegate)
+ClearTimer(Object: UObject, TimerHandle: FTimerHandle)
 ```
 
 移除定时器
@@ -1189,7 +1554,7 @@ ClearTimer(Object: UObject, TimerHandle: ULuaSingleDelegate)
 | Name | Type | Description |
 |---|---|---|
 | `Object` | `UObject` | 上下文对象 |
-| `TimerHandle` | `ULuaSingleDelegate` | 定时器句柄，定时器回调 |
+| `TimerHandle` | `FTimerHandle` | 定时器句柄 |
 
 ### `SendTLog`
 
@@ -1274,6 +1639,55 @@ SendLiveStreamingTLog(LogType: number, Id: number, Value: table)
 | `LogType` | `number` | 类型 1-赛事，2-人生 |
 | `Id` | `number` | 事件ID(自定义) |
 | `Value` | `table` | 事件内容(自定义) |
+
+### `UploadOfficialModuleData`
+
+```text
+UploadOfficialModuleData(playerUid: string, moduleName: string, data: table)
+```
+
+上传玩家维度的官方模块自定义数据
+ moduleName = "national_arena"（全民赛场）:
+   用于团竞类赛事结算数据上报。内核强制只允许 4 个字段，全部 number，不多不少。
+   调用后仅缓存，不立即发送。等 ugc_result 发送时自动取用并合并到 UGCPlayerBattleResult，取后即清。
+   data 结构：
+     {
+       player_kill_num = 5,      -- number, 击杀数，只有团竞类才有
+       enemy_damage = 1280,      -- number, 对敌人伤害，团竞上报 / 造成伤害
+       team_win = 1,             -- number, 队伍胜负：1=胜 2=负 3=平
+       round_time = 632,         -- number, 对局时长（秒）
+     }
+
+ moduleName = "camp"（营地）:
+   用于玩家档案、最近游玩、玩法详情等自定义数据展示。字段不强制限制，推荐以下结构。
+   缓冲队列 + 防抖，同一 UID 10 秒内多次上传直接覆盖（不 deep merge），不发送。
+   后台协议未定，实际发送逻辑暂留空。
+   data 推荐结构：
+     {
+       profile = {               -- 数据档案
+         history_play = "128",   -- 历史游玩次数
+         max_power = "98000",    -- 最高战力
+         realm = "化神",         -- 境界
+       },
+       recent = {                -- 最近游玩
+         rank = "钻石",          -- 段位
+         score = "2600",         -- 积分
+         power = "87000",        -- 当前战力
+       },
+       detail = {                -- 玩法详情
+         title = "宗门长老",     -- 称号
+         career = "剑修",        -- 职业
+       },
+     }
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `playerUid` | `string` | 玩家账号 UID，用于标识数据归属 |
+| `moduleName` | `string` | 目标官方模块名，可选值：camp(营地)、national_arena(全民赛场) |
+| `data` | `table` | 自定义数据表，结构根据 moduleName 不同而不同 |
 
 ### `SetTournamentInfo`
 
@@ -1583,6 +1997,21 @@ AddFriend(UID: number)
 | Name | Type | Description |
 |---|---|---|
 | `UID` | `number` | 玩家 UID |
+
+### `OpenComplaintUI`
+
+```text
+OpenComplaintUI(UID: number)
+```
+
+打开举报界面
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `UID` | `number` | 目标玩家 UID |
 
 ### `GetUGCResourcesFullPath`
 
@@ -2224,10 +2653,10 @@ MakeCustomDamageNumberParams() -> FUGCDamageNumberParams
 ### `AddUGCCustomDamageNumber`
 
 ```text
-AddUGCCustomDamageNumber(WorldContext: UObject, TargetActor: Actor, Params: FUGCDamageNumberParams) -> boolean
+AddUGCCustomDamageNumber(WorldContext: UObject, TargetActor: Actor, Params: FUGCDamageNumberParams)
 ```
 
-显示自定义伤害数字
+在目标对象位置显示自定义伤害数字
 生效范围：客户端
 
 **Parameters**
@@ -2238,11 +2667,39 @@ AddUGCCustomDamageNumber(WorldContext: UObject, TargetActor: Actor, Params: FUGC
 | `TargetActor` | `Actor` | 伤害数字显示目标 |
 | `Params` | `FUGCDamageNumberParams` | 自定义伤害数字参数 |
 
-**Returns**
+### `AddUGCCustomDamageNumberByScreenOffset`
 
-| Type | Description |
-|---|---|
-| `boolean` | 是否为观战玩家 |
+```text
+AddUGCCustomDamageNumberByScreenOffset(WorldContext: UObject, ScreenOffset: Vector2D, Params: FUGCDamageNumberParams)
+```
+
+在屏幕特定位置显示自定义伤害数字
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContext` | `UObject` | 世界上下文对象 |
+| `ScreenOffset` | `Vector2D` | 伤害数字显示位置相对于屏幕中心点的偏移 |
+| `Params` | `FUGCDamageNumberParams` | 自定义伤害数字参数 |
+
+### `AddUGCCustomDamageNumberByNormalizedScreenPosition`
+
+```text
+AddUGCCustomDamageNumberByNormalizedScreenPosition(WorldContext: UObject, Pos: Vector2D, Params: FUGCDamageNumberParams)
+```
+
+在屏幕特定位置显示自定义伤害数字
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContext` | `UObject` | 世界上下文对象 |
+| `Pos` | `Vector2D` | 伤害数字在屏幕上的相对显示位置 如{X=0.5, Y=0.5} 为屏幕中心 |
+| `Params` | `FUGCDamageNumberParams` | 自定义伤害数字参数 |
 
 ### `IsOuterlineDEV`
 
@@ -3039,6 +3496,8 @@ GetBlackboard(Actor: AActor) -> UBlackboardComponent
 | `UGCGenericMessageSystem.Messages.UGC.PlayerPawn.PostRecoverHealth` | `-` | 玩家角色受到治疗后（最终治疗计算后)<br>生效范围：服务器<br>ListenedObject：指定被伤害角色<br>@param RecoverValue float @实际治疗值<br>@param RecoveryInstigator AActor @治疗来源的玩家控制器<br>@param RecoveryCauser Controller @治疗来源<br>@param RecoverTags FGameplayTag[] @治疗附带的Tags |
 | `UGCGenericMessageSystem.Messages.UGC.PlayerPawn.PawnDefeat` | `-` | 玩家角色被击败<br>生效范围：服务器<br>ListenedObject：无，全局事件<br>@param VictimPlayerKey number @被击败玩家的 PlayerKey<br>@param InstigatorPlayerKey number @击败玩家的 PlayerKey<br>@param DamageType EDamageType @伤害类型 |
 | `UGCGenericMessageSystem.Messages.UGC.PlayerPawn.PawnRespawn` | `-` | 玩家角色重生<br>生效范围：服务器<br>ListenedObject：无，全局事件<br>@param PlayerKey number @玩家的 PlayerKey |
+| `UGCGenericMessageSystem.Messages.UGC.FakePlayer` | `-` | 假人玩家相关消息 |
+| `UGCGenericMessageSystem.Messages.UGC.FakePlayer.FakePlayerEnter` | `-` | 假人玩家进入游戏<br>生效范围：服务器<br>ListenedObject：无，全局事件<br>@param PlayerKey number @假人玩家的 PlayerKey<br>@param AIController number @假人玩家的 控制器 |
 | `UGCGenericMessageSystem.Messages.UGC.MobPawn` | `-` | - |
 | `UGCGenericMessageSystem.Messages.UGC.MobPawn.Spawn` | `-` | 怪物角色首次出生<br>生效范围：服务器&客户端<br>ListenedObject：指定生成的怪物，不指定则接收所有怪物角色消息<br>@param MobPawn AUGCMobCharacter @怪物 |
 | `UGCGenericMessageSystem.Messages.UGC.MobPawn.PreTakeDamage` | `-` | 怪物角色受到伤害前（最终伤害计算前)<br>生效范围：服务器<br>ListenedObject：指定被伤害怪物角色，不指定则接收所有怪物角色消息<br>@param MobPawn AUGCMobCharacter @怪物<br>@param DamageCauserActor AActor @伤害来源<br>@param EventInstigator Controller @伤害来源的玩家控制器<br>@param Damage number @伤害值<br>@param DamageContext FGameMagnitudeContext @伤害事件上下文 |
@@ -3218,6 +3677,110 @@ UnListenMessage(Listener: UObject|number, Message: string)
 | `Listener` | `UObject\|number` | 监听对象/监听ID |
 | `Message` | `string` | 广播信息的索引，后续的广播和监听都通过索引进行操作 |
 
+### `GetRemoteMessageHandle`
+
+```text
+GetRemoteMessageHandle(Message: string) -> UGCRemoteMessageHandle
+```
+
+获取远程消息句柄
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Message` | `string` | 消息名称 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCRemoteMessageHandle` | 消息句柄，Message非string或为""时返回nil |
+
+### `SendServerMessage`
+
+```text
+SendServerMessage(Message: string, ...: any)
+```
+
+从客户端发送消息到服务器
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Message` | `string` | 消息名称 |
+| `...` | `any` | 消息参数 |
+
+### `SendAllClientMessage`
+
+```text
+SendAllClientMessage(Message: string, ...: any)
+```
+
+从服务器广播消息到客户端
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Message` | `string` | 消息名称 |
+| `...` | `any` | 消息参数 |
+
+### `SendClientMessage`
+
+```text
+SendClientMessage(Message: string, PlayerKey: number, ...: any)
+```
+
+从服务器发送消息到客户端
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Message` | `string` | 消息名称 |
+| `PlayerKey` | `number` | 玩家的 PlayerKey |
+| `...` | `any` | 消息参数 |
+
+### `ListenRemoteMessage`
+
+```text
+ListenRemoteMessage(Message: string, Callback: function|UGCCommonDelegate, CallbackOwner: table|UObject|nil)
+```
+
+监听远程消息
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Message` | `string` | 消息名称 |
+| `Callback` | `function\|UGCCommonDelegate` | 回调函数或委托 |
+| `CallbackOwner` | `table\|UObject\|nil` | 回调函数的所有者 |
+
+### `UnListenRemoteMessage`
+
+```text
+UnListenRemoteMessage(Message: string, Callback: function|UGCCommonDelegate, CallbackOwner: table|UObject|nil)
+```
+
+取消监听远程消息
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Message` | `string` | 消息名称 |
+| `Callback` | `function\|UGCCommonDelegate` | 回调函数或委托 |
+| `CallbackOwner` | `table\|UObject\|nil` | 回调函数的所有者 |
+
 ### `RegisterUserDefinedMessage`
 
 ```text
@@ -3238,6 +3801,18 @@ RegisterUserDefinedMessage(Message: string) -> string
 | Type | Description |
 |---|---|
 | `string` | 返回注册后的Message，与输入的Message相同 |
+
+### `ClearAllListeners`
+
+```text
+ClearAllListeners()
+```
+
+清理所有用户自定义消息监听器(全局 + 对象)。
+保护用途:对局退出 / 重新进入 LoadMap 前主动清空监听表,
+使其中持有的 WeakObjectPtr 弱引用随 Lua GC 释放,
+避免上一局残留监听器引用已销毁的 UObject / ULevel。
+生效范围:服务器&客户端
 
 ## Language
 
@@ -4507,7 +5082,7 @@ V2道具系统接口库
 ### `RegisterItemPropertyGetOverride`
 
 ```text
-RegisterItemPropertyGetOverride(Key: EItemOverrideKey) -> boolean
+RegisterItemPropertyGetOverride(Key: EItemOverrideKey, Func: fun(FItemDefineID): any @重写函数，参数和返回值与对应属性接口保持一致) -> boolean
 ```
 
 注册物品属性读取函数
@@ -4518,6 +5093,7 @@ RegisterItemPropertyGetOverride(Key: EItemOverrideKey) -> boolean
 | Name | Type | Description |
 |---|---|---|
 | `Key` | `EItemOverrideKey` | 属性枚举值，使用 EItemOverrideKey.XXX |
+| `Func` | `fun(FItemDefineID): any @重写函数，参数和返回值与对应属性接口保持一致` | 重写函数，参数和返回值与对应属性接口保持一致 |
 
 **Returns**
 
@@ -4552,8 +5128,8 @@ UnregisterItemPropertyGetOverride(Key: EItemOverrideKey|nil) -> boolean
 GetConfigItemHandle(ItemID: number) -> UBattleItemHandleBase
 ```
 
-获取物品 ItemHandle 配置
-可以通过它取得所有物品中配置的数据（只读）
+获取物品ItemHandle配置
+可以通过它取得所有物品中配置的静态数据（只读）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -4624,6 +5200,69 @@ IsShouldPersist(ItemID: number) -> boolean
 | Type | Description |
 |---|---|
 | `boolean` | 是否持久化 |
+
+### `IsItemEquipTarget`
+
+```text
+IsItemEquipTarget(ItemID: number) -> boolean
+```
+
+判断物品是否为装备目标
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemID` | `number` | 物品 ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否为装备目标 |
+
+### `IsItemEquipAttach`
+
+```text
+IsItemEquipAttach(ItemID: number) -> boolean
+```
+
+判断物品是否为装备配件
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemID` | `number` | 物品 ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否为装备配件 |
+
+### `IsItemThrowWeapon`
+
+```text
+IsItemThrowWeapon(ItemID: number) -> boolean
+```
+
+判断物品是否由投掷物模板创建
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemID` | `number` | 物品 ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否由投掷物模板创建 |
 
 ### `IsObjEditorItemV2`
 
@@ -4778,7 +5417,7 @@ GetOwnBackpackComponent(ItemHandle: UBattleItemHandleBase) -> BackpackComponentV
 GetItemIconWithPlayerSkinV2(ItemID: number, PlayerController: PlayerController) -> FSoftObjectPath
 ```
 
-返回物品图标路径(带玩家皮肤)
+返回物品图标路径(带玩家皮肤)，优先返回开发者自定义图标
 生效范围：服务器&客户端
 
 **Parameters**
@@ -4906,7 +5545,7 @@ GetBigIconTextureV2ByDefineID(ItemDefineID: FItemDefineID) -> FSoftObjectPath
 GetBigIconTextureWithPlayerSkinV2(ItemID: number, PlayerController: PlayerController) -> FSoftObjectPath
 ```
 
-返回物品装备栏图标路径(带玩家皮肤)
+返回物品装备栏图标路径(带玩家皮肤)，优先返回开发者自定义图标
 生效范围：服务器&客户端
 
 **Parameters**
@@ -5265,6 +5904,28 @@ UGCItemSystemV2.SaveItemCustomData(ItemDefineID, CustomData)
 |---|---|
 | `boolean` | 保存成功or失败 |
 
+### `GetItemCustomDataSize`
+
+```text
+GetItemCustomDataSize(ItemDefineID: FItemDefineID) -> number
+```
+
+获取物品自定义实例化数据大小（单位字节）
+用于Debug实例化数据的性能占用，主要影响存档大小，以及数据从DS同步到客户端的消耗
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemDefineID` | `FItemDefineID` | 物品 DefineID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 自定义数据大小 |
+
 ### `GetItemDefineID`
 
 ```text
@@ -5279,6 +5940,28 @@ GetItemDefineID(ItemID: number) -> FItemDefineID
 | Name | Type | Description |
 |---|---|---|
 | `ItemID` | `number` | 物品 ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FItemDefineID` | 物品 DefineID |
+
+### `GetItemDefineIDByPreset`
+
+```text
+GetItemDefineIDByPreset(ItemID: number, PresetIdx: number) -> FItemDefineID
+```
+
+指定实例化数据预设，创建一个全新的物品实例，并返回 DefineID
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemID` | `number` | 物品 ID |
+| `PresetIdx` | `number` | 实例化数据预设索引 |
 
 **Returns**
 
@@ -5497,6 +6180,27 @@ GetQualityTexturePath(QualityRank: number) -> string
 | Type | Description |
 |---|---|
 | `string` | 品质纹理路径 |
+
+### `GetQualityTextColor`
+
+```text
+GetQualityTextColor(QualityRank: number) -> FLinearColor
+```
+
+获取品质文字颜色
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `QualityRank` | `number` | 品质等级 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FLinearColor` | 品质文字颜色 |
 
 ### `GetBackpackSimpleNameV2`
 
@@ -6031,7 +6735,7 @@ GetItemLevelV2ByDefineID(ItemDefineID: FItemDefineID) -> number
 GetBackpackCellV2(ItemID: number) -> number
 ```
 
-返回物品背包格子数（仅支持ItemID，如需FItemDefineID请使用GetBackpackCellV2ByDefineID）
+返回物品扩容的背包格子数（仅支持ItemID，如需FItemDefineID请使用GetBackpackCellV2ByDefineID）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -6044,7 +6748,7 @@ GetBackpackCellV2(ItemID: number) -> number
 
 | Type | Description |
 |---|---|
-| `number` | 背包格子数 |
+| `number` | 扩容格子数 |
 
 ### `GetBackpackCellV2ByDefineID`
 
@@ -6052,7 +6756,7 @@ GetBackpackCellV2(ItemID: number) -> number
 GetBackpackCellV2ByDefineID(ItemDefineID: FItemDefineID) -> number
 ```
 
-返回物品背包格子数（支持FItemDefineID，优先读取重写委托，其次读取非实例接口）
+返回物品扩容的背包格子数（支持FItemDefineID，优先读取重写委托，其次读取非实例接口）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -6065,7 +6769,7 @@ GetBackpackCellV2ByDefineID(ItemDefineID: FItemDefineID) -> number
 
 | Type | Description |
 |---|---|
-| `number` | 背包格子数 |
+| `number` | 扩容格子数 |
 
 ### `GetNewDurabilityV2ByDefineID`
 
@@ -6073,7 +6777,7 @@ GetBackpackCellV2ByDefineID(ItemDefineID: FItemDefineID) -> number
 GetNewDurabilityV2ByDefineID(ItemDefineID: FItemDefineID) -> number
 ```
 
-返回物品当前耐久度（支持FItemDefineID，优先读取重写委托，其次读取非实例接口）
+返回物品最大耐久度（支持FItemDefineID，优先读取重写委托，其次读取非实例接口）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -9479,6 +10183,21 @@ SendSystemMessageToAll(MessageTag: string, MessageContent: string, Level: number
 |---|---|
 | `boolean` | 是否发送成功 |
 
+### `OpenPrivateChat`
+
+```text
+OpenPrivateChat(UID: number)
+```
+
+打开与指定玩家的私聊界面
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `UID` | `number` | 目标玩家 UID |
+
 ## Language
 
 `lua`
@@ -12772,6 +13491,51 @@ IsLocalController(InController: AController) -> boolean
 |---|---|
 | `boolean` | 当前端是否为主控端 |
 
+### `MountCharacterPreset`
+
+```text
+MountCharacterPreset(PlayerController: PlayerController, DataAsset: UCharacterPresetDataAsset, PriorityOverride: number) -> number
+```
+
+挂载角色预设 DataAsset 到 PlayerController 的 UGCCharacterManager
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `DataAsset` | `UCharacterPresetDataAsset` | 角色预设数据 |
+| `PriorityOverride` | `number` | 优先级覆盖，可为 nil |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 挂载成功返回 Handle，失败返回 -1 |
+
+### `UnmountCharacterPreset`
+
+```text
+UnmountCharacterPreset(PlayerController: PlayerController, Handle: number) -> boolean
+```
+
+卸载 PlayerController 上的角色预设
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `Handle` | `number` | MountCharacterPreset 返回的 Handle |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | - |
+
 ## Language
 
 `lua`
@@ -13111,7 +13875,7 @@ SetAvatarVisibility(PlayerPawn: PlayerPawn, bHide: boolean, ExcludingAvatarSlot:
 ### `ChangeAvatarMesh`
 
 ```text
-ChangeAvatarMesh(PlayerPawn: PlayerPawn, SkeletalMesh: UClass|string)
+ChangeAvatarMesh(PlayerPawn: PlayerPawn, SkeletalMesh: UClass|string, bIsUseBoneRetarget: boolean)
 ```
 
 切换玩家角色使用的全身骨骼体
@@ -13123,6 +13887,7 @@ ChangeAvatarMesh(PlayerPawn: PlayerPawn, SkeletalMesh: UClass|string)
 |---|---|---|
 | `PlayerPawn` | `PlayerPawn` | 玩家角色 |
 | `SkeletalMesh` | `UClass\|string` | 全身骨骼体蓝图类或路径 |
+| `bIsUseBoneRetarget` | `boolean` | 是否使用骨骼重定向,默认false,外部导入的骨骼体需要设置为true |
 
 ### `RecoverAvatarMesh`
 
@@ -13341,6 +14106,560 @@ SetIsDirectlyDie(InPawn: PlayerPawn, bIsDirectlyDie: boolean)
 | `InPawn` | `PlayerPawn` | 角色 |
 | `bIsDirectlyDie` | `boolean` | 是否倒地后立即死亡 |
 
+### `ConfirmCarryOther`
+
+```text
+ConfirmCarryOther(InPawn: PlayerPawn, InTargetPawn: PlayerPawn) -> boolean
+```
+
+确认背负倒地队友
+生效范围：服务器
+前置条件：
+   1. 被背负者处于倒地状态（IsHaveLastBreathStatus）
+   2. 背负者未在背负他人（CarryWho == nil）
+   3. 双方都允许背负/被背负（bEnableCarryOther / bEnableCarriedByOther）
+   4. 不在脱离CD中
+   5. 背负者与被背负者距离在检测范围内
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 背负者 |
+| `InTargetPawn` | `PlayerPawn` | 被背负的倒地队友 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否调用了 RPC（不代表背负成功，需用 GetCarryState 验证） |
+
+### `ConfirmPutDownCarried`
+
+```text
+ConfirmPutDownCarried(InPawn: PlayerPawn) -> boolean
+```
+
+确认放下被背负的队友
+生效范围：服务器
+前置条件：
+   1. 正在背负他人（CarryWho != nil）
+   2. 当前状态为 Carring
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 背负者 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否调用了 RPC |
+
+### `InterruptCarry`
+
+```text
+InterruptCarry(InPawn: PlayerPawn, bIsCarrier: boolean) -> boolean
+```
+
+中断背负（单方面中断）
+生效范围：服务器
+前置条件：
+   bIsCarrier=true  时：正在背负他人（CarryWho != nil）
+   bIsCarrier=false 时：正在被他人背负（BeCarriedByWho != nil）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+| `bIsCarrier` | `boolean` | 是否是背负方 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否调用了函数 |
+
+### `BreakAwayFromCarrier`
+
+```text
+BreakAwayFromCarrier(InPawn: PlayerPawn) -> boolean
+```
+
+被背负者主动脱离
+生效范围：服务器
+前置条件：
+   1. 正在被他人背负（BeCarriedByWho != nil）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 被背负的角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否调用了 RPC |
+
+### `SetCarryOtherEnabled`
+
+```text
+SetCarryOtherEnabled(InPawn: PlayerPawn, bEnable: boolean)
+```
+
+设置是否允许背负倒地队友
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+| `bEnable` | `boolean` | 是否允许 |
+
+### `SetBeCarriedEnabled`
+
+```text
+SetBeCarriedEnabled(InPawn: PlayerPawn, bEnable: boolean)
+```
+
+设置是否允许被他人背负
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+| `bEnable` | `boolean` | 是否允许 |
+
+### `SetCarryDetectRange`
+
+```text
+SetCarryDetectRange(InPawn: PlayerPawn, Radius: number, Angle: number, Offset: number)
+```
+
+设置背负检测范围
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+| `Radius` | `number` | 检测半径 |
+| `Angle` | `number` | 扇形角度 |
+| `Offset` | `number` | 检测中心前向偏移 |
+
+### `SetBreakAwayCooldown`
+
+```text
+SetBreakAwayCooldown(InPawn: PlayerPawn, Cooldown: number)
+```
+
+设置脱离冷却时间
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+| `Cooldown` | `number` | 冷却时间（秒，0=无CD） |
+
+### `GetCarryState`
+
+```text
+GetCarryState(InPawn: PlayerPawn) -> ECarringState
+```
+
+获取背负状态
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ECarringState` | 背负状态枚举 |
+
+### `GetCarryTarget`
+
+```text
+GetCarryTarget(InPawn: PlayerPawn) -> PlayerPawn
+```
+
+获取正在背负的目标
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `PlayerPawn` | 被背负的角色，无则返回nil |
+
+### `GetCarriedByWho`
+
+```text
+GetCarriedByWho(InPawn: PlayerPawn) -> PlayerPawn
+```
+
+获取谁在背我
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `PlayerPawn` | 背负者，无则返回nil |
+
+### `IsBeingCarried`
+
+```text
+IsBeingCarried(InPawn: PlayerPawn) -> boolean
+```
+
+是否正在被背负
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否正在被背负 |
+
+### `IsCarryingOther`
+
+```text
+IsCarryingOther(InPawn: PlayerPawn) -> boolean
+```
+
+是否正在背负他人
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否正在背负他人 |
+
+### `IsCarriedByAI`
+
+```text
+IsCarriedByAI(InPawn: PlayerPawn) -> boolean
+```
+
+是否被AI背负
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否被AI背负 |
+
+### `AddOnCarryStateChanged`
+
+```text
+AddOnCarryStateChanged(InPawn: PlayerPawn, Callback: function, Context: table)
+```
+
+监听背负状态变化事件
+生效范围：服务器
+ bIsCarrier=true=Character是背负方，false=Character是被背负方
+ LastState/NewState 为 ECarringState 枚举: None(0)=无 Waitting(1)=等待 PuttingUp(2)=搬起中 Carring(3)=背负中 PuttingDown(4)=放下中
+ 背负开始: LastState~=Carring → NewState=Carring
+ 背负结束: LastState=Carring → NewState=None (放下/脱离/自杀/中断都是这个转换)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 要监听的玩家角色 |
+| `Callback` | `function` | 回调函数 function(Character, bIsCarrier, LastState, NewState) |
+| `Context` | `table` | 回调绑定的 self 对象（用于 Remove 时精确匹配，回调时作为 self 参数） |
+
+### `RemoveOnCarryStateChanged`
+
+```text
+RemoveOnCarryStateChanged(InPawn: PlayerPawn, Callback: function, Context: table)
+```
+
+取消监听背负状态变化事件
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 要取消监听的玩家角色 |
+| `Callback` | `function` | 注册时传入的回调函数 |
+| `Context` | `table` | 注册时传入的 self 对象 |
+
+### `ConfirmCarryDeadBox`
+
+```text
+ConfirmCarryDeadBox(InPawn: PlayerPawn, InTargetDeadBox: PlayerTombBox) -> boolean
+```
+
+确认搬起死亡盒子
+生效范围：服务器
+前置条件：
+   1. 目标死亡盒子有效且未被搬运
+   2. 当前未在搬运其他盒子（状态为 None）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 搬运者 |
+| `InTargetDeadBox` | `PlayerTombBox` | 目标死亡盒子 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否调用了 RPC（不代表搬起成功，需用 GetCarryDeadBoxState 验证） |
+
+### `ConfirmPutDownDeadBox`
+
+```text
+ConfirmPutDownDeadBox(InPawn: PlayerPawn) -> boolean
+```
+
+确认放下正在搬运的死亡盒子
+生效范围：服务器
+前置条件：
+   1. 正在搬运死亡盒子（状态非 None）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 搬运者 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否调用了 RPC |
+
+### `InterruptCarryDeadBox`
+
+```text
+InterruptCarryDeadBox(InPawn: PlayerPawn) -> boolean
+```
+
+中断搬运死亡盒子
+生效范围：服务器
+前置条件：
+   1. 正在搬运死亡盒子（状态非 None）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否调用了函数 |
+
+### `SetCarryDeadBoxEnabled`
+
+```text
+SetCarryDeadBoxEnabled(InPawn: PlayerPawn, bEnable: boolean)
+```
+
+设置搬运死亡盒子功能开关（全局）
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色（作为 WorldContext） |
+| `bEnable` | `boolean` | 是否允许 |
+
+### `SetCarryDeadBoxDetectRange`
+
+```text
+SetCarryDeadBoxDetectRange(InPawn: PlayerPawn, Radius: number, Angle: number, Offset: number)
+```
+
+设置搬运检测范围
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+| `Radius` | `number` | 检测半径 |
+| `Angle` | `number` | 扇形角度 |
+| `Offset` | `number` | 检测中心前向偏移 |
+
+### `SetCarryDeadBoxPutDownParams`
+
+```text
+SetCarryDeadBoxPutDownParams(InPawn: PlayerPawn, HalfExtent: FVector, ForwardDist: number, DownwardDist: number)
+```
+
+设置放下检测参数
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+| `HalfExtent` | `FVector` | 检测盒半边长 |
+| `ForwardDist` | `number` | 前向检测距离 |
+| `DownwardDist` | `number` | 向下检测距离 |
+
+### `GetCarryDeadBoxState`
+
+```text
+GetCarryDeadBoxState(InPawn: PlayerPawn) -> ECarringState
+```
+
+获取搬运死亡盒子状态
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ECarringState` | 搬运状态枚举 |
+
+### `GetCarriedDeadBox`
+
+```text
+GetCarriedDeadBox(InPawn: PlayerPawn) -> PlayerTombBox
+```
+
+获取正在搬运的死亡盒子
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `PlayerTombBox` | 死亡盒子对象，无则返回nil |
+
+### `IsCarryingDeadBox`
+
+```text
+IsCarryingDeadBox(InPawn: PlayerPawn) -> boolean
+```
+
+是否正在搬运死亡盒子
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否正在搬运死亡盒子 |
+
+### `AddOnCarryDeadBoxStateChanged`
+
+```text
+AddOnCarryDeadBoxStateChanged(InPawn: PlayerPawn, Callback: function, Context: table)
+```
+
+监听搬运死亡盒子状态变化事件
+生效范围：服务器
+ Character=角色自身（仅有搬运方，无被搬运方概念）
+ LastState/NewState 为 ECarringState 枚举: None(0)=无 Waitting(1)=等待 PuttingUp(2)=搬起中 Carring(3)=搬运中 PuttingDown(4)=放下中
+ 搬运开始: LastState~=Carring → NewState=Carring
+ 搬运结束: LastState=Carring → NewState=None (放下/中断)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 要监听的玩家角色（搬运者） |
+| `Callback` | `function` | 回调函数 function(Character, LastState, NewState) |
+| `Context` | `table` | 回调绑定的 self 对象（用于 Remove 时精确匹配，回调时作为 self 参数） |
+
+### `RemoveOnCarryDeadBoxStateChanged`
+
+```text
+RemoveOnCarryDeadBoxStateChanged(InPawn: PlayerPawn, Callback: function, Context: table)
+```
+
+取消监听搬运死亡盒子状态变化事件
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPawn` | `PlayerPawn` | 要取消监听的玩家角色 |
+| `Callback` | `function` | 注册时传入的回调函数 |
+| `Context` | `table` | 注册时传入的 self 对象 |
+
 ### `DrawOutline`
 
 ```text
@@ -13448,6 +14767,24 @@ SetUpSubViewTargetServer(InPawn: PlayerPawn, bSetUp: boolean, TargetActor: AActo
 | `bSetUp` | `boolean` | 是否启用 |
 | `TargetActor` | `AActor` | 是否启用 |
 | `BlendTime` | `number` | 缓动时间 |
+
+### `PickUpWrapperActor`
+
+```text
+PickUpWrapperActor(PlayerPawn: PlayerPawn, TargetWrapper: AActor, ItemData: FPickUpItemData, PickupCount: number)
+```
+
+拾取地面物品
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `TargetWrapper` | `AActor` | 目标地面拾取物 |
+| `ItemData` | `FPickUpItemData` | 拾取物品数据（可通过 WrapperActor:GetDataList() 获取） |
+| `PickupCount` | `number` | 拾取数量 |
 
 ## Language
 
@@ -15487,6 +16824,21 @@ PlaySoundWith2D(AKEvent: UAkAudioEvent, AttachedActor: Actor)
 | `AKEvent` | `UAkAudioEvent` | 音效资源（通过 UE.LoadObject(SoundPath) 获取） |
 | `AttachedActor` | `Actor` | 依附的 Actor |
 
+### `SetSoundListener`
+
+```text
+SetSoundListener(ListenerType: EUGCSoundListenerEnum)
+```
+
+切换收音的 Actor(收音监听器)
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ListenerType` | `EUGCSoundListenerEnum` | 收音监听器类型 |
+
 ## Language
 
 `lua`
@@ -15808,6 +17160,11 @@ LogTree(Desc: string, Var: any)
 
 | Name | Type/Value | Description |
 |---|---|---|
+| `UGCTeamSystem.OnTeamMemberJoinDelegate` | `-` | 有玩家加入当前局内玩法队伍时触发<br>生效范围：客户端<br>@param UID number @加入者的 UID |
+| `UGCTeamSystem.OnTeamMemberLeaveDelegate` | `-` | 有玩家离开当前局内玩法队伍时触发<br>生效范围：客户端<br>@param UID number @离开者的 UID |
+| `UGCTeamSystem.OnTeamIDChangedDelegate` | `-` | 自己的局内玩法队伍变更时触发<br>生效范围：客户端<br>@param TeamID number @变更后的队伍 ID |
+| `UGCTeamSystem.OnTeamMemberChangedDelegate` | `-` | 局内玩法队伍成员变更时触发<br>生效范围：服务器<br>@param PlayerKey number @发生变更的玩家 PlayerKey<br>@param OldTeamID number\|nil @变更前的队伍 ID，首次入队为 nil<br>@param NewTeamID number\|nil @变更后的队伍 ID，玩家退出 DS 时为 nil |
+| `UGCTeamSystem.OnInviteReceivedDelegate` | `-` | 收到他人发来的局内玩法组队邀请时触发<br>生效范围：客户端<br>@param InviterUID number @邀请者 UID<br>@param NickName string @邀请者昵称<br>@param IconUrl string @邀请者头像 URL<br>@param Gender number @邀请者性别，0=隐藏/未知，1=男，2=女 |
 | `UGCTeamSystem.NotifyInviteToJoinLobbyTeamDelegate` | `-` | 通知被邀请加入大厅队伍<br>生效范围：客户端<br>@param InviteToJoinLobbyTeamToken table @邀请到大厅队伍的 Token。InviteToJoinLobbyTeamToken.InviterUID int @邀请者 UID |
 | `UGCTeamSystem.NotifyRequestToJoinLobbyTeamDelegate` | `-` | 通知请求加入大厅队伍<br>生效范围：客户端<br>@param RequestToJoinLobbyTeamToken table @请求加入大厅队伍的 Token。RequestToJoinLobbyTeamToken.TeamID int @队伍 ID |
 
@@ -15828,6 +17185,21 @@ GetTeamComponent() -> TeamModeComponent
 |---|---|
 | `TeamModeComponent` | 队伍组件 |
 
+### `GetTeamPlayersNumber`
+
+```text
+GetTeamPlayersNumber() -> number
+```
+
+获取局内玩法队伍人数设置
+生效范围：服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 队伍人数，获取失败返回 0 |
+
 ### `ChangePlayerTeamID`
 
 ```text
@@ -15843,6 +17215,91 @@ ChangePlayerTeamID(PlayerKey: number, TeamID: number)
 |---|---|---|
 | `PlayerKey` | `number` | 玩家 PlayerKey |
 | `TeamID` | `number` | 队伍 ID |
+
+### `LeaveTeam`
+
+```text
+LeaveTeam()
+```
+
+主动退出当前局内玩法队伍
+生效范围：客户端
+
+### `KickMember`
+
+```text
+KickMember(TargetPlayerKey: number)
+```
+
+将指定玩家踢出局内玩法队伍，仅队长可用
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetPlayerKey` | `number` | 被踢玩家 PlayerKey |
+
+### `InviteInGamePlayer`
+
+```text
+InviteInGamePlayer(TargetUID: number)
+```
+
+邀请同 DS 玩家加入当前局内玩法组队
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetUID` | `number` | 被邀请玩家 UID |
+
+### `InviteLobbyFriend`
+
+```text
+InviteLobbyFriend(FriendUID: number)
+```
+
+邀请大厅好友加入当前 DS 局内玩法组队
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `FriendUID` | `number` | 被邀请好友 UID |
+
+### `RespondInvite`
+
+```text
+RespondInvite(InviterUID: number, Accept: boolean)
+```
+
+响应局内玩法组队邀请，接受时自动完成入队
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InviterUID` | `number` | 邀请者 UID |
+| `Accept` | `boolean` | true=接受 / false=拒绝 |
+
+### `GetTeamLeaderPlayerKeyInGame`
+
+```text
+GetTeamLeaderPlayerKeyInGame() -> number|nil
+```
+
+获取当前所在局内玩法队伍的队长 PlayerKey
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number\|nil` | 队长 PlayerKey，获取失败返回 nil |
 
 ### `GetUIDsByTeamID`
 
@@ -15890,7 +17347,7 @@ GetPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> @PlayerKey
 ### `GetAIPlayerKeysByTeamID`
 
 ```text
-GetAIPlayerKeysByTeamID(TeamID: number) -> @PlayerKey
+GetAIPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> @PlayerKey
 ```
 
 根据 TeamID 获取对应队伍里所有的假人玩家 AIPlayerKey，PlayerKey需要客户端连上DS后，才会被初始化，若在客户端连上DS前调用该接口，返回的PlayerKey列表不准确
@@ -15901,6 +17358,7 @@ GetAIPlayerKeysByTeamID(TeamID: number) -> @PlayerKey
 | Name | Type | Description |
 |---|---|---|
 | `TeamID` | `number` | 队伍 ID |
+| `bReturnAsLuaTable` | `boolean` | 是否以LuaTable返回 |
 
 **Returns**
 
@@ -15974,7 +17432,7 @@ GetPlayerStatesByTeamID(TeamID: number) -> @PlayerState
 ### `GetLobbyTeamUIDsByUID`
 
 ```text
-GetLobbyTeamUIDsByUID(UID: number) -> number[]
+GetLobbyTeamUIDsByUID(UID: number, bReturnAsLuaTable: boolean) -> number[]
 ```
 
 【废弃】请使用 UGCTeamSystem.GetLobbyTeammateUIDsByUID
@@ -15986,6 +17444,7 @@ GetLobbyTeamUIDsByUID(UID: number) -> number[]
 | Name | Type | Description |
 |---|---|---|
 | `UID` | `number` | 玩家 UID |
+| `bReturnAsLuaTable` | `boolean` | 是否以LuaTable返回 |
 
 **Returns**
 
@@ -15996,7 +17455,7 @@ GetLobbyTeamUIDsByUID(UID: number) -> number[]
 ### `GetLobbyTeammateUIDsByUID`
 
 ```text
-GetLobbyTeammateUIDsByUID(UID: number) -> number[]
+GetLobbyTeammateUIDsByUID(UID: number, bReturnAsLuaTable: boolean) -> number[]
 ```
 
 根据玩家的UID获取其大厅里组队的成员 UID 列表
@@ -16007,6 +17466,7 @@ GetLobbyTeammateUIDsByUID(UID: number) -> number[]
 | Name | Type | Description |
 |---|---|---|
 | `UID` | `number` | 玩家 UID |
+| `bReturnAsLuaTable` | `boolean` | 是否以LuaTable返回 |
 
 **Returns**
 
@@ -16182,11 +17642,17 @@ TransferLobbyTeamLeader(NewLeaderUID: number)
 ### `GetTeamIDs`
 
 ```text
-GetTeamIDs() -> @TeamID
+GetTeamIDs(bReturnAsLuaTable: boolean) -> @TeamID
 ```
 
 获取所有队伍的 ID
 生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bReturnAsLuaTable` | `boolean` | 是否以LuaTable返回 |
 
 **Returns**
 
@@ -16303,7 +17769,7 @@ GetIsLeaderOrNotByPlayerKey(PlayerKey: number) -> boolean
 ### `GetAllTeammatePlayerState`
 
 ```text
-GetAllTeammatePlayerState(bExcludeSelf: boolean) -> ASTExtraPlayerState[]
+GetAllTeammatePlayerState(bExcludeSelf: boolean, bReturnAsLuaTable: boolean) -> ASTExtraPlayerState[]
 ```
 
 获取所有队友的的PlayerState
@@ -16314,6 +17780,7 @@ GetAllTeammatePlayerState(bExcludeSelf: boolean) -> ASTExtraPlayerState[]
 | Name | Type | Description |
 |---|---|---|
 | `bExcludeSelf` | `boolean` | 是否排除玩家自身 |
+| `bReturnAsLuaTable` | `boolean` | 是否以LuaTable返回 |
 
 **Returns**
 
@@ -16910,6 +18377,128 @@ BindCompletedDelegate(Handle: FTweenHandle, Callback: function)
 |---|---|---|
 | `Handle` | `FTweenHandle` | 动画句柄 |
 | `Callback` | `function` | 完成回调，签名 function(Obj, Handle)，Obj 为 WorldContext，Handle 为动画句柄 |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UGCUIManagerSystem.json -->
+
+# UGCUIManagerSystem
+
+UI管理器（客户端）
+
+## Functions
+
+### `RegisterViewModel`
+
+```text
+RegisterViewModel(VMKey: string, ViewModel: UGCViewModel)
+```
+
+会在依赖它的View创建时实例化
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `VMKey` | `string` | ViewModel的Key，与UI的Key相互独立 |
+| `ViewModel` | `UGCViewModel` | ViewModel原型 |
+
+### `NewViewModel`
+
+```text
+NewViewModel() -> UGCViewModel
+```
+
+创建新的ViewModel
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCViewModel` | ViewModel实例，在OnInitialize中声明属性 |
+
+### `NewView`
+
+```text
+NewView() -> UGCView
+```
+
+创建新的View，绑定到指定的ViewModel
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCView` | View实例 |
+
+### `NewItemView`
+
+```text
+NewItemView() -> UGCItemView
+```
+
+创建新的ItemView（列表项View），用于Collection绑定场景
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCItemView` | ItemView实例，在OnSetup中通过self.VMProperties/self.VMCommands设置绑定 |
+
+### `NewCollectionBinder`
+
+```text
+NewCollectionBinder() -> UGCMVVMCollectionBinder
+```
+
+创建新的UGCMVVMCollectionBinder，用于派生自定义集合绑定器
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCMVVMCollectionBinder` | CollectionBinder原型，通过View:BindCollection的BinderClass参数使用 |
+
+### `RegisterWidgetUpdater`
+
+```text
+RegisterWidgetUpdater(BindType: string, UpdaterFunc: fun(Widget:userdata, Value:any) @更新函数)
+```
+
+注册自定义的Widget更新函数
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `BindType` | `string` | 自定义的绑定类型名 |
+| `UpdaterFunc` | `fun(Widget:userdata, Value:any) @更新函数` | 更新函数 |
+
+### `RegisterConverter`
+
+```text
+RegisterConverter(Name: string, ConverterFunc: fun(Value:any, ...:any):any @转换函数)
+```
+
+注册自定义值转换器
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Name` | `string` | 转换器名称 |
+| `ConverterFunc` | `fun(Value:any, ...:any):any @转换函数` | 转换函数 |
 
 ## Language
 
@@ -19127,6 +20716,23 @@ CloseCivilVoiceDetect()
 关闭文明语音检测和 lbs 小号限制
 生效范围：客户端
 
+### `GetNormalizedMicVolume`
+
+```text
+GetNormalizedMicVolume() -> integer
+```
+
+获取归一化麦克风音量（0-100）
+通过 GetMicLevelDB 获取 dB 值，映射到 0-100 的归一化范围
+映射公式: normalized = clamp(round((db + 96) / 96 * 100), 0, 100)
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `integer` | 归一化音量值 0-100 |
+
 ## Language
 
 `lua`
@@ -19541,6 +21147,7 @@ UI控件管理器系统接口库
 CreateWidgetAsync(WidgetClassPath: string|FSoftObjectPath, OnCreatedCallback: fun(Widget:UUserWidget))
 ```
 
+【废弃】请使用 UGCWidgetUtility.CreateWidgetAsync
 异步创建一个控件，返回控件实例
 
 **Parameters**
@@ -19556,6 +21163,7 @@ CreateWidgetAsync(WidgetClassPath: string|FSoftObjectPath, OnCreatedCallback: fu
 CreateWidget(WidgetClass: UClass) -> UUserWidget
 ```
 
+【废弃】请使用 UGCWidgetUtility.CreateWidget
 创建一个控件，返回控件实例
 
 **Parameters**
@@ -19576,6 +21184,7 @@ CreateWidget(WidgetClass: UClass) -> UUserWidget
 DestroyWidget(Widget: UUserWidget)
 ```
 
+【废弃】请使用 UGCWidgetUtility.DestroyWidget
 销毁一个控件
 
 **Parameters**
@@ -19590,6 +21199,7 @@ DestroyWidget(Widget: UUserWidget)
 AddToSlot(Widget: UUserWidget, SlotName: string, ZOrder: number, AnchorData: FAnchorData)
 ```
 
+【废弃】请使用 UGCWidgetUtility.AddToSlot
 添加一个控件到指定 UI 挂点槽位
 
 **Parameters**
@@ -19607,6 +21217,7 @@ AddToSlot(Widget: UUserWidget, SlotName: string, ZOrder: number, AnchorData: FAn
 RemoveFromSlot(Widget: UUserWidget)
 ```
 
+【废弃】请使用 UGCWidgetUtility.RemoveFromSlot
 从 UI 挂点槽位移除控件
 
 **Parameters**
@@ -19621,7 +21232,8 @@ RemoveFromSlot(Widget: UUserWidget)
 SetWidgetLayout(LayoutPath: string)
 ```
 
-异步加载并设置当前的 WidgetLayout，同时只能设置一个，旧的 WidgetLayout 会被卸载。传入 “Default” 可卸载 WidgetLayout 回到默认状态。（主要用于可视化屏蔽玩法中不需要的和平 UI，UI 会强制隐藏）
+【废弃】请使用 UGCWidgetUtility.SetWidgetLayout
+异步加载并设置当前的 WidgetLayout，同时只能设置一个，旧的 WidgetLayout 会被卸载。传入 "Default" 可卸载 WidgetLayout 回到默认状态。（主要用于可视化屏蔽玩法中不需要的和平 UI，UI 会强制隐藏）
 
 **Parameters**
 
@@ -19635,6 +21247,7 @@ SetWidgetLayout(LayoutPath: string)
 ShowWidget(Widget: UUserWidget)
 ```
 
+【废弃】请使用 UGCWidgetUtility.ShowWidget
 显示一个控件，需要控件已经挂载到挂点槽上
 
 **Parameters**
@@ -19649,6 +21262,7 @@ ShowWidget(Widget: UUserWidget)
 HideWidget(Widget: UUserWidget)
 ```
 
+【废弃】请使用 UGCWidgetUtility.HideWidget
 隐藏一个控件
 
 **Parameters**
@@ -19663,6 +21277,7 @@ HideWidget(Widget: UUserWidget)
 IsWidgetAddedToSlot(Widget: UUserWidget) -> boolean
 ```
 
+【废弃】请使用 UGCWidgetUtility.IsWidgetAddedToSlot
 判断一个控件是否已经挂载在 UI 挂点上
 
 **Parameters**
@@ -19683,6 +21298,7 @@ IsWidgetAddedToSlot(Widget: UUserWidget) -> boolean
 IsWidgetVisible(Widget: UUserWidget) -> boolean
 ```
 
+【废弃】请使用 UGCWidgetUtility.IsWidgetVisible
 判断一个控件是否可见
 
 **Parameters**
@@ -19703,6 +21319,7 @@ IsWidgetVisible(Widget: UUserWidget) -> boolean
 GetSubWidget(Widget: UUserWidget, SubWidgetName: string) -> UWidget
 ```
 
+【废弃】请使用 UGCWidgetUtility.GetSubWidget
 获取子控件，可用于获取 UMG 蓝图里的子控件
 
 **Parameters**
@@ -19724,6 +21341,7 @@ GetSubWidget(Widget: UUserWidget, SubWidgetName: string) -> UWidget
 GetAllWidgetsOfClass(WidgetClass: UClass, bAddedToSlotOnly: boolean) -> UUserWidget[]
 ```
 
+【废弃】请使用 UGCWidgetUtility.GetAllWidgetsOfClass
 获取指定类别的所有控件，可筛选只获取已被添加到挂点的控件
 生效范围：客户端
 
@@ -19806,6 +21424,7 @@ GetSkillRootPanel() -> UserWidget
 GetUserWidgetByWidgetLayout(WidgetLayoutPath: string, UserWidgetName: string) -> UserWidget
 ```
 
+【废弃】请使用 UGCWidgetUtility.GetUserWidgetByWidgetLayout
 获取通过WidgetLayout加载的自定义UserWidget
 生效范围：客户端
 
@@ -19828,7 +21447,7 @@ GetUserWidgetByWidgetLayout(WidgetLayoutPath: string, UserWidgetName: string) ->
 SubWidgetHiddenLayer(Widget: UserWidget)
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.ShowWidget
+【废弃】请使用 UGCWidgetUtility.ShowWidget
 SubWidgetHiddenLayer为控件减少隐藏层数（主要用于屏蔽玩法中不需要的和平 UI，HiddenLayer>=1，UI 会强制隐藏）
 生效范围：客户端
 
@@ -19895,6 +21514,7 @@ Share(CloseCallBack: function) -> bool
 AddChildToTochButton(Widget: UserWidget)
 ```
 
+【废弃】请使用 UGCWidgetUtility.AddChildToTochButton
 把自定义 UI 挂到和平 UI 上并应用自定义布局
 生效范围：客户端
 
@@ -20053,6 +21673,43 @@ ShowTipsUIByServer(TipsContent: string, PlayerController: PlayerController)
 | `TipsContent` | `string` | Tips 文字内容 |
 | `PlayerController` | `PlayerController` | 玩家控制器 |
 
+### `ShowCustomTipsByIDWithPC`
+
+```text
+ShowCustomTipsByIDWithPC(ID: number, TipsContent: string, PlayerController: PlayerController)
+```
+
+在屏幕中间上方用用户配置的UI显示 Tips 内容，从DS发起，在传入的PC所属的客户端显示
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ID` | `number` | Tips Tips表里的ID |
+| `TipsContent` | `string` | Tips 文字内容 |
+| `PlayerController` | `PlayerController` | 玩家控制器 |
+
+### `ShowCustomTipsByID`
+
+```text
+ShowCustomTipsByID(ID: number, TipsContent: string|nil, ExtraParam: UUAEBlackboard|table|nil)
+```
+
+在屏幕中间上方显示用户配置的 Tips 内容
+生效范围：客户端
+  1. UUAEBlackboard 对象 — 直接使用
+  2. table 数组（推荐）— 如 {{SelectedKeyName="Point",Type=EUAEBlackboardType.EBT_Int,Value=20}, ...}，内部自动构造 Blackboard 并按 Type 设置值
+  3. nil/省略 — 不传额外参数
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ID` | `number` | Tips Tips表里的ID |
+| `TipsContent` | `string\|nil` | Tips 文字内容 |
+| `ExtraParam` | `UUAEBlackboard\|table\|nil` | Tips 额外参数，支持三种传入方式： |
+
 ### `GetGlobalOBUI`
 
 ```text
@@ -20100,6 +21757,704 @@ ChangeMapByMapID(MapID: number)
 | Name | Type | Description |
 |---|---|---|
 | `MapID` | `number` | 地图ID |
+
+### `ProjectWorldLocationToWidgetPosition`
+
+```text
+ProjectWorldLocationToWidgetPosition(WorldLocation: FVector) -> FVector2D
+```
+
+【废弃】请使用 UGCWidgetUtility.ProjectWorldLocationToWidgetPosition
+将世界坐标转换为控件坐标
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldLocation` | `FVector` | 世界坐标 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | 控件坐标 |
+
+### `SlotAsCanvasSlot`
+
+```text
+SlotAsCanvasSlot(Widget: UUserWidget) -> UCanvasPanelSlot
+```
+
+【废弃】请使用 UGCWidgetUtility.SlotAsCanvasSlot
+获取 Canvas 插槽
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UCanvasPanelSlot` | Canvas 插槽实例 |
+
+### `SlotAsOverlaySlot`
+
+```text
+SlotAsOverlaySlot(Widget: UUserWidget) -> @Overlay
+```
+
+【废弃】请使用 UGCWidgetUtility.SlotAsOverlaySlot
+获取 Overlay 插槽
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `@Overlay` | 插槽实例 |
+
+### `SlotAsVerticalBoxSlot`
+
+```text
+SlotAsVerticalBoxSlot(Widget: UUserWidget) -> @HorizontalBox
+```
+
+【废弃】请使用 UGCWidgetUtility.SlotAsVerticalBoxSlot
+获取 HorizontalBox 插槽
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `@HorizontalBox` | 插槽实例 |
+
+### `GetViewportScale`
+
+```text
+GetViewportScale() -> number
+```
+
+【废弃】请使用 UGCWidgetUtility.GetViewportScale
+获取视口缩放比例
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 缩放比例 |
+
+### `GetViewportSize`
+
+```text
+GetViewportSize() -> FVector2D
+```
+
+【废弃】请使用 UGCWidgetUtility.GetViewportSize
+获取视口尺寸
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | 视口尺寸 |
+
+### `GetViewportWidgetGeometry`
+
+```text
+GetViewportWidgetGeometry() -> FGeometry
+```
+
+【废弃】请使用 UGCWidgetUtility.GetViewportWidgetGeometry
+获取视口 Widget 几何信息
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FGeometry` | 几何信息 |
+
+### `AbsoluteToLocal`
+
+```text
+AbsoluteToLocal(Geometry: FGeometry, AbsoluteCoordinate: FVector2D) -> FVector2D
+```
+
+【废弃】请使用 UGCWidgetUtility.AbsoluteToLocal
+绝对坐标转本地坐标
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Geometry` | `FGeometry` | 控件几何信息 |
+| `AbsoluteCoordinate` | `FVector2D` | 绝对坐标 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | 本地坐标 |
+
+### `LocalToAbsolute`
+
+```text
+LocalToAbsolute(Geometry: FGeometry, LocalCoordinate: FVector2D) -> FVector2D
+```
+
+【废弃】请使用 UGCWidgetUtility.LocalToAbsolute
+本地坐标转绝对坐标
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Geometry` | `FGeometry` | 控件几何信息 |
+| `LocalCoordinate` | `FVector2D` | 本地坐标 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | 绝对坐标 |
+
+### `GetLocalSize`
+
+```text
+GetLocalSize(Geometry: FGeometry) -> FVector2D
+```
+
+【废弃】请使用 UGCWidgetUtility.GetLocalSize
+获取控件的本地尺寸
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Geometry` | `FGeometry` | 控件几何信息 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | 本地尺寸 |
+
+### `GetAbsoluteSize`
+
+```text
+GetAbsoluteSize(Geometry: FGeometry) -> FVector2D
+```
+
+【废弃】请使用 UGCWidgetUtility.GetAbsoluteSize
+获取控件的绝对尺寸
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Geometry` | `FGeometry` | 控件几何信息 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | 绝对尺寸 |
+
+### `GetAbsolutePosition`
+
+```text
+GetAbsolutePosition(Geometry: FGeometry) -> FVector2D
+```
+
+【废弃】请使用 UGCWidgetUtility.GetAbsolutePosition
+获取控件的绝对位置
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Geometry` | `FGeometry` | 控件几何信息 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | 绝对位置 |
+
+### `GetWidgetFromName`
+
+```text
+GetWidgetFromName(Widget: UserWidget, UserWidgetName: string) -> UserWidget
+```
+
+【废弃】请使用 UGCWidgetUtility.GetSubWidget
+通过控件名获取某一控件的子控件
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UserWidget` | - |
+| `UserWidgetName` | `string` | 控件 Name |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UserWidget` | - |
+
+### `LoadMainUIWidgetLayoutByPath`
+
+```text
+LoadMainUIWidgetLayoutByPath(WidgetLayoutPath: string)
+```
+
+【废弃】请使用 UGCWidgetUtility.SetWidgetLayout
+可视化设置主 UI 控件是否可见（主要用于可视化屏蔽玩法中不需要的和平 UI，UI 会强制隐藏）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WidgetLayoutPath` | `string` | 控件 ClassPath, 控件需继承自 UUserWidgetLayout |
+
+### `UnloadMainUIWidgetLayoutByPath`
+
+```text
+UnloadMainUIWidgetLayoutByPath(WidgetLayoutPath: string)
+```
+
+【废弃】请使用 UGCWidgetUtility.SetWidgetLayout
+可视化设置主 UI 控件是否可见（主要用于可视化屏蔽玩法中不需要的和平 UI，UI 会强制隐藏）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WidgetLayoutPath` | `string` | 控件 ClassPath, 控件需继承自 UUserWidgetLayout |
+
+### `AddChildToUISlotByPath`
+
+```text
+AddChildToUISlotByPath(WidgetPath: string, UISlotName: string, ZOrder: number, AnchorData: FAnchorData) -> PromiseFuture
+```
+
+【废弃】请使用 UGCWidgetUtility.CreateWidgetAsync + UGCWidgetUtility.AddToSlot
+把自定义 UI 挂到和平 UI 挂点上
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WidgetPath` | `string` | 控件 ClassPath |
+| `UISlotName` | `string` | 挂点标识 |
+| `ZOrder` | `number` | 层级 |
+| `AnchorData` | `FAnchorData` | 控件布局信息 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `PromiseFuture` | PromiseFuture对象 |
+
+### `AddChildToUISlotByWidget`
+
+```text
+AddChildToUISlotByWidget(Widget: UserWidget, UISlotName: string, ZOrder: number, AnchorData: FAnchorData)
+```
+
+【废弃】请使用 UGCWidgetUtility.AddToSlot
+把自定义 UI 挂到和平 UI 挂点上
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UserWidget` | UI |
+| `UISlotName` | `string` | 挂点标识 |
+| `ZOrder` | `number` | 层级 |
+| `AnchorData` | `FAnchorData` | 控件布局信息 |
+
+### `AddWidgetHiddenLayer`
+
+```text
+AddWidgetHiddenLayer(Widget: UserWidget)
+```
+
+【废弃】请使用 UGCWidgetUtility.HideWidget
+为控件添加隐藏层数（主要用于屏蔽玩法中不需要的和平 UI，HiddenLayer>=1，UI 会强制隐藏）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UserWidget` | - |
+
+### `AddNewUI`
+
+```text
+AddNewUI(WidgetClassPath: string, IsAdaptation: boolean) -> UserWidget
+```
+
+【废弃】请使用 UGCWidgetUtility.CreateWidgetAsync + UGCWidgetUtility.AddToSlot
+添加新 UI，将会自动完成 AddViewport 显示
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WidgetClassPath` | `string` | Widget 路径 |
+| `IsAdaptation` | `boolean` | 是否屏幕适配 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UserWidget` | - |
+
+### `CreateNewWidget`
+
+```text
+CreateNewWidget(WidgetClassPath: string) -> UserWidget
+```
+
+【废弃】请使用 UGCWidgetUtility.CreateWidgetAsync
+创建新控件
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WidgetClassPath` | `string` | Widget 路径 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UserWidget` | - |
+
+### `CreateNewWidgetAsync`
+
+```text
+CreateNewWidgetAsync(WidgetClassPath: string, InCreatedDelegate: ULuaSingleDelegate)
+```
+
+【废弃】请使用 UGCWidgetUtility.CreateWidgetAsync
+异步创建新控件，并绑定回调
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WidgetClassPath` | `string` | Widget 路径 |
+| `InCreatedDelegate` | `ULuaSingleDelegate` | 回调 |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UGCWidgetUtility.json -->
+
+# UGCWidgetUtility
+
+UI控件工具接口库
+
+## Functions
+
+### `CreateWidgetAsync`
+
+```text
+CreateWidgetAsync(WidgetClassPath: string|FSoftObjectPath, OnCreatedCallback: fun(Widget:UUserWidget))
+```
+
+异步创建一个控件，返回控件实例
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WidgetClassPath` | `string\|FSoftObjectPath` | 控件类路径 |
+| `OnCreatedCallback` | `fun(Widget:UUserWidget)` | 创建完成回调 |
+
+### `CreateWidget`
+
+```text
+CreateWidget(WidgetClass: UClass) -> UUserWidget
+```
+
+创建一个控件，返回控件实例
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WidgetClass` | `UClass` | 控件蓝图类 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UUserWidget` | 控件实例 |
+
+### `DestroyWidget`
+
+```text
+DestroyWidget(Widget: UUserWidget)
+```
+
+销毁一个控件
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+
+### `SetWidgetLayout`
+
+```text
+SetWidgetLayout(LayoutPath: string)
+```
+
+异步加载并设置当前的 WidgetLayout，同时只能设置一个，旧的 WidgetLayout 会被卸载。传入 “Default” 可卸载 WidgetLayout 回到默认状态。（主要用于可视化屏蔽玩法中不需要的和平 UI，UI 会强制隐藏）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `LayoutPath` | `string` | WidgetLayout 引用路径 |
+
+### `GetUserWidgetByWidgetLayout`
+
+```text
+GetUserWidgetByWidgetLayout(WidgetLayoutPath: string, UserWidgetName: string) -> UserWidget
+```
+
+获取通过WidgetLayout加载的自定义UserWidget
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WidgetLayoutPath` | `string` | 控件 ClassPath, 控件需继承自 UUserWidgetLayout |
+| `UserWidgetName` | `string` | 控件 Name |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UserWidget` | - |
+
+### `AddToSlot`
+
+```text
+AddToSlot(Widget: UUserWidget, SlotName: string, ZOrder: number, AnchorData: FAnchorData)
+```
+
+添加一个控件到指定 UI 挂点槽位
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+| `SlotName` | `string` | 控件槽位名称，默认为 UI.UISlot.MainUISlot_Low |
+| `ZOrder` | `number` | 控件层级，默认为 0 |
+| `AnchorData` | `FAnchorData` | 控件锚点，默认为 { Anchors = { Minimum = Vector2D.New(0, 0), Maximum = Vector2D.New(1, 1) } } |
+
+### `RemoveFromSlot`
+
+```text
+RemoveFromSlot(Widget: UUserWidget)
+```
+
+从 UI 挂点槽位移除控件
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+
+### `IsWidgetAddedToSlot`
+
+```text
+IsWidgetAddedToSlot(Widget: UUserWidget) -> boolean
+```
+
+判断一个控件是否已经挂载在 UI 挂点上
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否已经挂载 |
+
+### `ShowWidget`
+
+```text
+ShowWidget(Widget: UUserWidget)
+```
+
+显示一个控件，需要控件已经挂载到挂点槽上
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+
+### `HideWidget`
+
+```text
+HideWidget(Widget: UUserWidget)
+```
+
+隐藏一个控件
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+
+### `SetWidgetVisible`
+
+```text
+SetWidgetVisible(Widget: UUserWidget, bVisible: boolean)
+```
+
+设置控件的显示或隐藏状态
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+| `bVisible` | `boolean` | 是否可见 |
+
+### `IsWidgetVisible`
+
+```text
+IsWidgetVisible(Widget: UUserWidget) -> boolean
+```
+
+判断一个控件是否可见
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否可见 |
+
+### `GetSubWidget`
+
+```text
+GetSubWidget(Widget: UUserWidget, SubWidgetName: string) -> UWidget
+```
+
+获取子控件，可用于获取 UMG 蓝图里的子控件
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+| `SubWidgetName` | `string` | 子控件名称 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UWidget` | 子控件实例 |
+
+### `GetAllWidgetsOfClass`
+
+```text
+GetAllWidgetsOfClass(WidgetClass: UClass, bAddedToSlotOnly: boolean) -> UUserWidget[]
+```
+
+获取指定类别的所有控件，可筛选只获取已被添加到挂点的控件
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WidgetClass` | `UClass` | 控件类（UUserWidget） |
+| `bAddedToSlotOnly` | `boolean` | 是否只获取已添加到挂点的控件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UUserWidget[]` | 控件实例列表 |
+
+### `AddChildToTochButton`
+
+```text
+AddChildToTochButton(Widget: UserWidget)
+```
+
+把自定义 UI 挂到和平 UI 上并应用自定义布局
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UserWidget` | - |
 
 ### `ProjectWorldLocationToWidgetPosition`
 
@@ -20230,6 +22585,27 @@ GetViewportWidgetGeometry() -> FGeometry
 |---|---|
 | `FGeometry` | 几何信息 |
 
+### `GetWidgetGeometry`
+
+```text
+GetWidgetGeometry(Widget: UUserWidget) -> FGeometry
+```
+
+获取控件的几何信息（可用于坐标转换等）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FGeometry` | 几何信息 |
+
 ### `AbsoluteToLocal`
 
 ```text
@@ -20337,182 +22713,426 @@ GetAbsolutePosition(Geometry: FGeometry) -> FVector2D
 |---|---|
 | `FVector2D` | 绝对位置 |
 
-### `GetWidgetFromName`
+### `SetWidgetOpacity`
 
 ```text
-GetWidgetFromName(Widget: UserWidget, UserWidgetName: string) -> UserWidget
+SetWidgetOpacity(Widget: UUserWidget, Opacity: number)
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.GetSubWidget
-通过控件名获取某一控件的子控件
+设置控件的不透明度
 生效范围：客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `Widget` | `UserWidget` | - |
-| `UserWidgetName` | `string` | 控件 Name |
+| `Widget` | `UUserWidget` | 控件实例 |
+| `Opacity` | `number` | 不透明度(0全透明~1不透明) |
+
+### `GetWidgetOpacity`
+
+```text
+GetWidgetOpacity(Widget: UUserWidget) -> number
+```
+
+获取控件当前不透明度
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `UserWidget` | - |
+| `number` | 不透明度值 |
 
-### `LoadMainUIWidgetLayoutByPath`
+### `SetWidgetColor`
 
 ```text
-LoadMainUIWidgetLayoutByPath(WidgetLayoutPath: string)
+SetWidgetColor(Widget: UUserWidget, HexString: string)
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.SetWidgetLayout
-可视化设置主 UI 控件是否可见（主要用于可视化屏蔽玩法中不需要的和平 UI，UI 会强制隐藏）
+设置控件的颜色和透明度（颜色与不透明度组合设置）
 生效范围：客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `WidgetLayoutPath` | `string` | 控件 ClassPath, 控件需继承自 UUserWidgetLayout |
+| `Widget` | `UUserWidget` | 控件实例 |
+| `HexString` | `string` | 设置字符串色值sRGB（含Alpha通道控制透明度），例：FB5AF9FF |
 
-### `UnloadMainUIWidgetLayoutByPath`
+### `AddChildWidget`
 
 ```text
-UnloadMainUIWidgetLayoutByPath(WidgetLayoutPath: string)
+AddChildWidget(ParentWidget: UPanelWidget, ChildWidget: UUserWidget)
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.SetWidgetLayout
-可视化设置主 UI 控件是否可见（主要用于可视化屏蔽玩法中不需要的和平 UI，UI 会强制隐藏）
+添加子控件到指定Panel父控件上（非Panel控件无效）
 生效范围：客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `WidgetLayoutPath` | `string` | 控件 ClassPath, 控件需继承自 UUserWidgetLayout |
+| `ParentWidget` | `UPanelWidget` | Panel父控件 |
+| `ChildWidget` | `UUserWidget` | 要添加的子控件 |
 
-### `AddChildToUISlotByPath`
+### `RemoveChildWidget`
 
 ```text
-AddChildToUISlotByPath(WidgetPath: string, UISlotName: string, ZOrder: number, AnchorData: FAnchorData) -> PromiseFuture
+RemoveChildWidget(ParentWidget: UPanelWidget, ChildWidget: UUserWidget)
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.CreateWidgetAsync() + UGCWidgetManagerSystem.AddToSlot()
-把自定义 UI 挂到和平 UI 挂点上
+从Panel父控件移除指定子控件（非Panel控件无效）
 生效范围：客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `WidgetPath` | `string` | 控件 ClassPath |
-| `UISlotName` | `string` | 挂点标识 |
-| `ZOrder` | `number` | 层级 |
-| `AnchorData` | `FAnchorData` | 控件布局信息 |
+| `ParentWidget` | `UPanelWidget` | Panel父控件 |
+| `ChildWidget` | `UUserWidget` | 需要移除的子控件 |
+
+### `RemoveAllChildWidgets`
+
+```text
+RemoveAllChildWidgets(ParentWidget: UPanelWidget)
+```
+
+清空Panel父控件下所有子控件（非Panel控件无效）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ParentWidget` | `UPanelWidget` | Panel父控件 |
+
+### `SetWidgetSlotPosition`
+
+```text
+SetWidgetSlotPosition(Widget: UUserWidget, Position: FVector2D)
+```
+
+设置控件在slot上的位置（相对于父控件）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+| `Position` | `FVector2D` | slot坐标位置 |
+
+### `GetWidgetSlotPosition`
+
+```text
+GetWidgetSlotPosition(Widget: UUserWidget) -> FVector2D
+```
+
+获取控件当前slot位置（相对于父控件）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `PromiseFuture` | PromiseFuture对象 |
+| `FVector2D` | slot位置 |
 
-### `AddChildToUISlotByWidget`
+### `SetWidgetSlotSize`
 
 ```text
-AddChildToUISlotByWidget(Widget: UserWidget, UISlotName: string, ZOrder: number, AnchorData: FAnchorData)
+SetWidgetSlotSize(Widget: UUserWidget, Size: Vector2D)
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.AddToSlot
-把自定义 UI 挂到和平 UI 挂点上
+设置控件的slot尺寸
 生效范围：客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `Widget` | `UserWidget` | UI |
-| `UISlotName` | `string` | 挂点标识 |
-| `ZOrder` | `number` | 层级 |
-| `AnchorData` | `FAnchorData` | 控件布局信息 |
+| `Widget` | `UUserWidget` | 控件实例 |
+| `Size` | `Vector2D` | 尺寸（宽度，高度） |
 
-### `AddWidgetHiddenLayer`
+### `GetWidgetSlotSize`
 
 ```text
-AddWidgetHiddenLayer(Widget: UserWidget)
+GetWidgetSlotSize(Widget: UUserWidget) -> Vector2D
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.HideWidget
-为控件添加隐藏层数（主要用于屏蔽玩法中不需要的和平 UI，HiddenLayer>=1，UI 会强制隐藏）
+获取控件slot尺寸
 生效范围：客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `Widget` | `UserWidget` | - |
-
-### `AddNewUI`
-
-```text
-AddNewUI(WidgetClassPath: string, IsAdaptation: boolean) -> UserWidget
-```
-
-【废弃】请使用 UGCWidgetManagerSystem.CreateWidgetAsync() + UGCWidgetManagerSystem.AddToSlot()
-添加新 UI，将会自动完成 AddViewport 显示
-生效范围：客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WidgetClassPath` | `string` | Widget 路径 |
-| `IsAdaptation` | `boolean` | 是否屏幕适配 |
+| `Widget` | `UUserWidget` | - |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `UserWidget` | - |
+| `Vector2D` | 尺寸 |
 
-### `CreateNewWidget`
+### `SetActiveWidgetIndex`
 
 ```text
-CreateNewWidget(WidgetClassPath: string) -> UserWidget
+SetActiveWidgetIndex(Container: UUserWidget, Index: integer)
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.CreateWidgetAsync
-创建新控件
+设置容器控件（如 WidgetSwitcher）当前显示的页面索引
 生效范围：客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `WidgetClassPath` | `string` | Widget 路径 |
+| `Container` | `UUserWidget` | 容器控件（需为WidgetSwitcher或类似） |
+| `Index` | `integer` | 页面索引（从1开始） |
+
+### `GetActiveWidgetIndex`
+
+```text
+GetActiveWidgetIndex(Container: UUserWidget) -> integer
+```
+
+获取容器当前显示的页面索引（从1开始）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Container` | `UUserWidget` | - |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `UserWidget` | - |
+| `integer` | 当前显示的页面索引，失败或无效时返回 -1 |
 
-### `CreateNewWidgetAsync`
+### `GetActiveWidget`
 
 ```text
-CreateNewWidgetAsync(WidgetClassPath: string, InCreatedDelegate: ULuaSingleDelegate)
+GetActiveWidget() -> UUserWidget
 ```
 
-【废弃】请使用 UGCWidgetManagerSystem.CreateWidgetAsync
-异步创建新控件，并绑定回调
+获取容器当前显示的页面控件
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UUserWidget` | 当前的页面控件实例 |
+
+### `SetWidgetEnabled`
+
+```text
+SetWidgetEnabled(Widget: UUserWidget, bEnabled: boolean)
+```
+
+设置控件是否可交互（启用/禁用输入）
 生效范围：客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `WidgetClassPath` | `string` | Widget 路径 |
-| `InCreatedDelegate` | `ULuaSingleDelegate` | 回调 |
+| `Widget` | `UUserWidget` | 控件实例 |
+| `bEnabled` | `boolean` | 是否启用 |
+
+### `SetCheckBoxChecked`
+
+```text
+SetCheckBoxChecked(bChecked: boolean)
+```
+
+设置复选框的勾选状态
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bChecked` | `boolean` | 是否勾选 |
+
+### `IsCheckBoxChecked`
+
+```text
+IsCheckBoxChecked(CheckBoxWidget: UUserWidget) -> boolean
+```
+
+查询复选框是否勾选
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `CheckBoxWidget` | `UUserWidget` | 复选框控件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否勾选 |
+
+### `SetComboBoxSelectedOption`
+
+```text
+SetComboBoxSelectedOption(ComboBoxWidget: UUserWidget, Option: string)
+```
+
+设置下拉菜单当前选中的选项
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ComboBoxWidget` | `UUserWidget` | 下拉菜单控件实例 |
+| `Option` | `string` | 选项文本 |
+
+### `GetComboBoxSelectedOption`
+
+```text
+GetComboBoxSelectedOption(ComboBoxWidget: UUserWidget) -> string
+```
+
+获取下拉菜单当前选中的选项文本
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ComboBoxWidget` | `UUserWidget` | 下拉菜单控件实例 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `string` | 选项文本，若获取失败返回空字符串 |
+
+### `GetComboBoxOptionAtIndex`
+
+```text
+GetComboBoxOptionAtIndex(ComboBoxWidget: UUserWidget, Index: integer) -> string
+```
+
+获取下拉菜单指定索引的选项文本
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ComboBoxWidget` | `UUserWidget` | 下拉菜单控件实例 |
+| `Index` | `integer` | 选项索引 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `string` | 选项文本 |
+
+### `SetWidgetProgress`
+
+```text
+SetWidgetProgress(ProgressWidget: UUserWidget, Percent: number) -> nil
+```
+
+设置进度条控件的当前进度值
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ProgressWidget` | `UUserWidget` | - |
+| `Percent` | `number` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `nil` | - |
+
+### `SetImageTexture`
+
+```text
+SetImageTexture(Image: UImage, TexturePath: string)
+```
+
+设置Image控件的图像/纹理（通过资源路径）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Image` | `UImage` | 图像控件 |
+| `TexturePath` | `string` | 纹理资源引用路径 |
+
+### `ScrollBoxToEnd`
+
+```text
+ScrollBoxToEnd()
+```
+
+滚动容器内容到底部
+生效范围：客户端
+
+### `SetWidgetText`
+
+```text
+SetWidgetText(Widget: UWidget, Text: string)
+```
+
+设置控件（文本控件）的显示文本
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UWidget` | 控件实例 |
+| `Text` | `string` | 文本内容 |
+
+### `GetWidgetText`
+
+```text
+GetWidgetText(Widget: UWidget) -> string
+```
+
+获取控件（文本控件）的显示文本
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UWidget` | 文本控件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `string` | 文本内容 |
 
 ## Language
 
@@ -23378,6 +25998,29 @@ Add an instance to this component. Transform is given in world space.
 |---|---|
 | `int32` | - |
 
+### `SetInstanceDIP`
+
+```text
+SetInstanceDIP(InstanceIndex: int32, MaterialIndex: int32, Name: FString &, Value: FVector4 &) -> bool
+```
+
+Set a DIP value on one instance for the given material slot.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InstanceIndex` | `int32` | - |
+| `MaterialIndex` | `int32` | - |
+| `Name` | `FString &` | - |
+| `Value` | `FVector4 &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
 ### `GetInstanceTransform`
 
 ```text
@@ -24619,2217 +27262,6 @@ Called when InterpTo reached the end and reset back to start .
 |---|---|---|
 | `LastUpdatePosition` | `float` | - |
 | `PlayAudioComp` | `UAudioComponent *` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstToggle.json -->
-
-# UInterpTrackInstToggle
-
-## Inheritance
-
-`UInterpTrackInst`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Action` | `TEnumAsByte < enum ETrackToggleAction >` | - |
-| `LastUpdatePosition` | `float` | Position we were in last time we evaluated.<br>	 	During UpdateTrack, toggles between this time and the current time will be processed. |
-| `bSavedActiveState` | `uint32` | Cached 'active' state for the toggleable actor before we possessed it; restored when Matinee exits |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstVectorMaterialParam.json -->
-
-# UInterpTrackInstVectorMaterialParam
-
-## Inheritance
-
-`UInterpTrackInst`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `MaterialInstances` | `TArray < UMaterialInstanceDynamic * >` | MIDs we're using to set the desired parameter. |
-| `ResetVectors` | `TArray < FVector >` | Saved values for restoring state when exiting Matinee. |
-| `PrimitiveMaterialRefs` | `TArray < struct FPrimitiveMaterialRef >` | Primitive components on which materials have been overridden. |
-| `InstancedTrack` | `UInterpTrackVectorMaterialParam *` | Track we are an instance of - used in the editor to propagate changes to the track's Materials array immediately. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstVectorProp.json -->
-
-# UInterpTrackInstVectorProp
-
-## Inheritance
-
-`UInterpTrackInstProperty`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ResetVector` | `FVector` | Saved value for restoring state when exiting Matinee. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstVisibility.json -->
-
-# UInterpTrackInstVisibility
-
-## Inheritance
-
-`UInterpTrackInst`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Action` | `TEnumAsByte < enum EVisibilityTrackAction >` | - |
-| `LastUpdatePosition` | `float` | Position we were in last time we evaluated.<br>	 	During UpdateTrack, events between this time and the current time will be processed. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackLinearColorBase.json -->
-
-# UInterpTrackLinearColorBase
-
-## Inheritance
-
-`UInterpTrack`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `LinearColorTrack` | `FInterpCurveLinearColor` | Actually track data containing keyframes of a FVector as it varies over time. |
-| `CurveTension` | `float` | Tension of curve, used for keypoints using automatic tangents. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackLinearColorProp.json -->
-
-# UInterpTrackLinearColorProp
-
-## Inheritance
-
-`UInterpTrackLinearColorBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PropertyName` | `FName` | Name of property in Group  AActor  which this track mill modify over time. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackMove.json -->
-
-# UInterpTrackMove
-
-Track containing data for moving an actor around over time.
-
-## Inheritance
-
-`UInterpTrack`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PosTrack` | `FInterpCurveVector` | Actual position keyframe data. |
-| `EulerTrack` | `FInterpCurveVector` | Actual rotation keyframe data, stored as Euler angles in degrees, for easy editing on curve. |
-| `LookupTrack` | `FInterpLookupTrack` | - |
-| `LookAtGroupName` | `FName` | When using IMR_LookAtGroup, specifies the Group which this track should always point its actor at. |
-| `LinCurveTension` | `float` | Controls the tightness of the curve for the translation path. |
-| `AngCurveTension` | `float` | Controls the tightness of the curve for the rotation path. |
-| `bUseQuatInterpolation` | `uint32` | Use a Quaternion linear interpolation between keys.<br>	 	This is robust and will find the 'shortest' distance between keys, but does not support ease inout. |
-| `bShowArrowAtKeys` | `uint32` | In the editor, show a small arrow at each keyframe indicating the rotation at that key. |
-| `bDisableMovement` | `uint32` | Disable previewing of this track - will always position  AActor  at Time=0.0. Useful when keyframing an object relative to this group. |
-| `bShowTranslationOnCurveEd` | `uint32` | If false, when this track is displayed on the Curve Editor in Matinee, do not show the Translation tracks. |
-| `bShowRotationOnCurveEd` | `uint32` | If false, when this track is displayed on the Curve Editor in Matinee, do not show the Rotation tracks. |
-| `bHide3DTrack` | `uint32` | If true, 3D representation of this track in the 3D viewport is disabled. |
-| `RotMode` | `TEnumAsByte < enum EInterpTrackMoveRotMode >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackMoveAxis.json -->
-
-# UInterpTrackMoveAxis
-
-## Inheritance
-
-`UInterpTrackFloatBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `MoveAxis` | `TEnumAsByte < enum EInterpMoveAxis >` | The axis which this track will use when transforming an actor |
-| `LookupTrack` | `FInterpLookupTrack` | Lookup track to use when looking at different groups for transform information |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackParticleReplay.json -->
-
-# UInterpTrackParticleReplay
-
-## Inheritance
-
-`UInterpTrack`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `TrackKeys` | `TArray < struct FParticleReplayTrackKey >` | Array of keys |
-| `bIsCapturingReplay` | `uint32` | True in the editor if track should be used to capture replay frames instead of play them back |
-| `FixedTimeStep` | `float` | Current replay fixed time quantum between frames (one over frame rate) |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackSound.json -->
-
-# UInterpTrackSound
-
-## Inheritance
-
-`UInterpTrackVectorBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Sounds` | `TArray < struct FSoundTrackKey >` | Array of sounds to play at specific times. |
-| `bPlayOnReverse` | `uint32` | if set, sound plays only when playing the matinee in reverse instead of when the matinee plays forward |
-| `bContinueSoundOnMatineeEnd` | `uint32` | If true, sounds on this track will not be forced to finish when the matinee sequence finishes. |
-| `bSuppressSubtitles` | `uint32` | If true, don't show subtitles for sounds played by this track. |
-| `bTreatAsDialogue` | `uint32` | If true and track is controlling a pawn, makes the pawn "speak" the given audio. |
-| `bAttach` | `uint32` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackToggle.json -->
-
-# UInterpTrackToggle
-
-## Inheritance
-
-`UInterpTrack`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ToggleTrack` | `TArray < struct FToggleTrackKey >` | Array of events to fire off. |
-| `bActivateSystemEachUpdate` | `uint32` | If true, the track will call ActivateSystem on the emitter each update (the old 'incorrect' behavior).<br>	 	If false (the default), the System will only be activated if it was previously inactive. |
-| `bActivateWithJustAttachedFlag` | `uint32` | If true, the track will activate the system w the 'Just Attached' flag. |
-| `bFireEventsWhenForwards` | `uint32` | If events should be fired when passed playing the sequence forwards. |
-| `bFireEventsWhenBackwards` | `uint32` | If events should be fired when passed playing the sequence backwards. |
-| `bFireEventsWhenJumpingForwards` | `uint32` | If true, events on this track are fired even when jumping forwads through a sequence - for example, skipping a cinematic. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackVectorBase.json -->
-
-# UInterpTrackVectorBase
-
-## Inheritance
-
-`UInterpTrack`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `VectorTrack` | `FInterpCurveVector` | Actually track data containing keyframes of a FVector as it varies over time. |
-| `CurveTension` | `float` | Tension of curve, used for keypoints using automatic tangents. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackVectorMaterialParam.json -->
-
-# UInterpTrackVectorMaterialParam
-
-## Inheritance
-
-`UInterpTrackVectorBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `TargetMaterials` | `TArray < UMaterialInterface * >` | Materials whose parameters we want to change and the references to those materials. |
-| `ParamName` | `FName` | Name of parameter in the MaterialInstance which this track will modify over time. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackVectorProp.json -->
-
-# UInterpTrackVectorProp
-
-## Inheritance
-
-`UInterpTrackVectorBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PropertyName` | `FName` | Name of property in Group  AActor  which this track mill modify over time. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackVisibility.json -->
-
-# UInterpTrackVisibility
-
-## Inheritance
-
-`UInterpTrack`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `VisibilityTrack` | `TArray < struct FVisibilityTrackKey >` | Array of events to fire off. |
-| `bFireEventsWhenForwards` | `uint32` | If events should be fired when passed playing the sequence forwards. |
-| `bFireEventsWhenBackwards` | `uint32` | If events should be fired when passed playing the sequence backwards. |
-| `bFireEventsWhenJumpingForwards` | `uint32` | If true, events on this track are fired even when jumping forwads through a sequence - for example, skipping a cinematic. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UIntSerialization.json -->
-
-# UIntSerialization
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `UnsignedInt16Variable` | `uint16` | - |
-| `UnsignedInt32Variable` | `uint32` | - |
-| `UnsignedInt64Variable` | `uint64` | - |
-| `SignedInt8Variable` | `int8` | - |
-| `SignedInt16Variable` | `int16` | - |
-| `SignedInt64Variable` | `int64` | - |
-| `UnsignedInt8Variable` | `uint8` | - |
-| `SignedInt32Variable` | `int32` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInvalidationBox.json -->
-
-# UInvalidationBox
-
-Invalidate
-   Single Child
-   Caching  Performance
-
-## Inheritance
-
-`UContentWidget`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bCanCache` | `bool` | Should the invalidation panel cache the widgets?  Making this false makes it so the invalidation<br>	  panel stops acting like an invalidation panel, just becomes a simple container widget. |
-| `CacheRelativeTransforms` | `bool` | Caches the locations for child draw elements relative to the invalidation box,<br>	  this adds extra overhead to drawing them every frame.  However, in cases where<br>	  the position of the invalidation boxes changes every frame this can be a big savings. |
-
-## Functions
-
-### `InvalidateCache`
-
-```text
-InvalidateCache() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetCanCache`
-
-```text
-GetCanCache() -> bool
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `SetCanCache`
-
-```text
-SetCanCache(CanCache: bool) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `CanCache` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UKismetAnimationLibrary.json -->
-
-# UKismetAnimationLibrary
-
-## Inheritance
-
-`UBlueprintFunctionLibrary`
-
-## Functions
-
-### `K2_TwoBoneIK`
-
-```text
-K2_TwoBoneIK(RootPos: FVector &, JointPos: FVector &, EndPos: FVector &, JointTarget: FVector &, Effector: FVector &, OutJointPos: FVector &, OutEndPos: FVector &, bAllowStretching: bool, StartStretchRatio: float, MaxStretchScale: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `RootPos` | `FVector &` | - |
-| `JointPos` | `FVector &` | - |
-| `EndPos` | `FVector &` | - |
-| `JointTarget` | `FVector &` | - |
-| `Effector` | `FVector &` | - |
-| `OutJointPos` | `FVector &` | - |
-| `OutEndPos` | `FVector &` | - |
-| `bAllowStretching` | `bool` | - |
-| `StartStretchRatio` | `float` | - |
-| `MaxStretchScale` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `K2_LookAt`
-
-```text
-K2_LookAt(CurrentTransform: FTransform &, TargetPosition: FVector &, LookAtVector: FVector, bUseUpVector: bool, UpVector: FVector, ClampConeInDegree: float) -> FTransform
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `CurrentTransform` | `FTransform &` | - |
-| `TargetPosition` | `FVector &` | - |
-| `LookAtVector` | `FVector` | - |
-| `bUseUpVector` | `bool` | - |
-| `UpVector` | `FVector` | - |
-| `ClampConeInDegree` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FTransform` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UKismetArrayLibrary.json -->
-
-# UKismetArrayLibrary
-
-## Inheritance
-
-`UBlueprintFunctionLibrary`
-
-## Functions
-
-### `Array_Add`
-
-```text
-Array_Add(TargetArray: TArray < int32 > &, NewItem: int32 &) -> int32
-```
-
-Add item to array
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to add item to |
-| `NewItem` | `int32 &` | The item to add to the array |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | The index of the newly added item |
-
-### `Array_AddUnique`
-
-```text
-Array_AddUnique(TargetArray: TArray < int32 > &, NewItem: int32 &) -> int32
-```
-
-Add item to array (unique)
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to add item to |
-| `NewItem` | `int32 &` | The item to add to the array |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | The index of the newly added item, or INDEX_NONE if the item is already present in the array |
-
-### `Array_Shuffle`
-
-```text
-Array_Shuffle(TargetArray: TArray < int32 > &) -> void
-```
-
-Shuffle (randomize) the elements of an array
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to shuffle |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `Array_Append`
-
-```text
-Array_Append(TargetArray: TArray < int32 > &, SourceArray: TArray < int32 > &) -> void
-```
-
-Append an array to another array
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to add the source array to |
-| `SourceArray` | `TArray < int32 > &` | The array to add to the target array |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `Array_Insert`
-
-```text
-Array_Insert(TargetArray: TArray < int32 > &, NewItem: int32 &, Index: int32) -> void
-```
-
-Insert item at the given index into the array.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to insert into |
-| `NewItem` | `int32 &` | The item to insert into the array |
-| `Index` | `int32` | The index at which to insert the item into the array |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `Array_Remove`
-
-```text
-Array_Remove(TargetArray: TArray < int32 > &, IndexToRemove: int32) -> void
-```
-
-Remove item at the given index from the array.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to remove from |
-| `IndexToRemove` | `int32` | The index into the array to remove from |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `Array_RemoveItem`
-
-```text
-Array_RemoveItem(TargetArray: TArray < int32 > &, Item: int32 &) -> bool
-```
-
-Remove all instances of item from array.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to remove from |
-| `Item` | `int32 &` | The item to remove from the array |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if one or more items were removed |
-
-### `Array_Clear`
-
-```text
-Array_Clear(TargetArray: TArray < int32 > &) -> void
-```
-
-Clear an array, removes all content
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to clear |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `Array_Resize`
-
-```text
-Array_Resize(TargetArray: TArray < int32 > &, Size: int32) -> void
-```
-
-Resize Array to specified size.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to resize |
-| `Size` | `int32` | The new size of the array |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `Array_Length`
-
-```text
-Array_Length(TargetArray: TArray < int32 > &) -> int32
-```
-
-Get the number of items in an array
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to get the length of |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | The length of the array |
-
-### `Array_LastIndex`
-
-```text
-Array_LastIndex(TargetArray: TArray < int32 > &) -> int32
-```
-
-Get the last valid index into an array
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to perform the operation on |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | The last valid index of the array |
-
-### `Array_Get`
-
-```text
-Array_Get(TargetArray: TArray < int32 > &, Index: int32, Item: int32 &) -> void
-```
-
-Given an array and an index, returns a copy of the item found at that index
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to get an item from |
-| `Index` | `int32` | The index in the array to get an item from |
-| `Item` | `int32 &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | A copy of the item stored at the index |
-
-### `Array_Set`
-
-```text
-Array_Set(TargetArray: TArray < int32 > &, Index: int32, Item: int32 &, bSizeToFit: bool) -> void
-```
-
-Given an array and an index, assigns the item to that array element
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to perform the operation on |
-| `Index` | `int32` | The index to assign the item to |
-| `Item` | `int32 &` | The item to assign to the index of the array |
-| `bSizeToFit` | `bool` | If true, the array will expand if Index is greater than the current size of the array |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `Array_Swap`
-
-```text
-Array_Swap(TargetArray: TArray < int32 > &, FirstIndex: int32, SecondIndex: int32) -> void
-```
-
-Swaps the elements at the specified positions in the specified array
-	 If the specified positions are equal, invoking this method leaves the array unchanged
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to perform the operation on |
-| `FirstIndex` | `int32` | - |
-| `SecondIndex` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `Array_Find`
-
-```text
-Array_Find(TargetArray: TArray < int32 > &, ItemToFind: int32 &) -> int32
-```
-
-Finds the index of the first instance of the item within the array
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to search for the item |
-| `ItemToFind` | `int32 &` | The item to look for |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | The index the item was found at, or -1 if not found |
-
-### `Array_Contains`
-
-```text
-Array_Contains(TargetArray: TArray < int32 > &, ItemToFind: int32 &) -> bool
-```
-
-Returns true if the array contains the given item
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | The array to search for the item |
-| `ItemToFind` | `int32 &` | The item to look for |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the item was found within the array |
-
-### `FilterArray`
-
-```text
-FilterArray(TargetArray: TArray < AActor * > &, FilterClass: TSubclassOf < AActor >, FilteredArray: TArray < AActor * > &) -> void
-```
-
-Filter an array based on a Class derived from Actor.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < AActor * > &` | The array to filter from |
-| `FilterClass` | `TSubclassOf < AActor >` | The Actor sub-class type that acts as the filter, only objects derived from it will be returned. |
-| `FilteredArray` | `TArray < AActor * > &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | An array containing only those objects which are derived from the class specified. |
-
-### `SetArrayPropertyByName`
-
-```text
-SetArrayPropertyByName(Object: UObject *, PropertyName: FName, Value: TArray < int32 > &) -> void
-```
-
-Not exposed to users. Supports setting an array property on an object by name.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Object` | `UObject *` | - |
-| `PropertyName` | `FName` | - |
-| `Value` | `TArray < int32 > &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `Array_IsValidIndex`
-
-```text
-Array_IsValidIndex(TargetArray: TArray < int32 > &, IndexToTest: int32) -> bool
-```
-
-Tests if IndexToTest is valid, i.e. greater than or equal to zero, and less than the number of elements in TargetArray.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `TargetArray` | `TArray < int32 > &` | Array to use for the IsValidIndex test |
-| `IndexToTest` | `int32` | The Index, that we want to test for being valid |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the Index is Valid, i.e. greater than or equal to zero, and less than the number of elements in TargetArray. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UKismetGuidLibrary.json -->
-
-# UKismetGuidLibrary
-
-## Inheritance
-
-`UBlueprintFunctionLibrary`
-
-## Functions
-
-### `EqualEqual_GuidGuid`
-
-```text
-EqualEqual_GuidGuid(A: FGuid &, B: FGuid &) -> bool
-```
-
-Returns true if the values are equal (A == B)
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `A` | `FGuid &` | - |
-| `B` | `FGuid &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `NotEqual_GuidGuid`
-
-```text
-NotEqual_GuidGuid(A: FGuid &, B: FGuid &) -> bool
-```
-
-Returns true if the values are not equal (A != B)
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `A` | `FGuid &` | - |
-| `B` | `FGuid &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `IsValid_Guid`
-
-```text
-IsValid_Guid(InGuid: FGuid &) -> bool
-```
-
-Checks whether the given GUID is valid
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InGuid` | `FGuid &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `Invalidate_Guid`
-
-```text
-Invalidate_Guid(InGuid: FGuid &) -> void
-```
-
-Invalidates the given GUID
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InGuid` | `FGuid &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `NewGuid`
-
-```text
-NewGuid() -> FGuid
-```
-
-Returns a new unique GUID
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FGuid` | - |
-
-### `Conv_GuidToString`
-
-```text
-Conv_GuidToString(InGuid: FGuid &) -> FString
-```
-
-Converts a GUID value to a string, in the form 'A-B-C-D'
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InGuid` | `FGuid &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FString` | - |
-
-### `Parse_StringToGuid`
-
-```text
-Parse_StringToGuid(GuidString: FString &, OutGuid: FGuid &, Success: bool &) -> void
-```
-
-Converts a String of format EGuidFormats to a Guid. Returns Guid OutGuid, Returns bool Success
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `GuidString` | `FString &` | - |
-| `OutGuid` | `FGuid &` | - |
-| `Success` | `bool &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UKismetInputLibrary.json -->
-
-# UKismetInputLibrary
-
-## Inheritance
-
-`UBlueprintFunctionLibrary`
-
-## Functions
-
-### `CalibrateTilt`
-
-```text
-CalibrateTilt() -> void
-```
-
-Calibrate the tilt for the input device
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `EqualEqual_KeyKey`
-
-```text
-EqualEqual_KeyKey(A: FKey, B: FKey) -> bool
-```
-
-Test if the input key are equal (A == B)
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `A` | `FKey` | - The key to compare against |
-| `B` | `FKey` | - The key to compare |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the key are equal, false otherwise |
-
-### `EqualEqual_InputChordInputChord`
-
-```text
-EqualEqual_InputChordInputChord(A: FInputChord, B: FInputChord) -> bool
-```
-
-Test if the input chords are equal (A == B)
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `A` | `FInputChord` | - The chord to compare against |
-| `B` | `FInputChord` | - The chord to compare |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the chords are equal, false otherwise |
-
-### `Key_IsModifierKey`
-
-```text
-Key_IsModifierKey(Key: FKey &) -> bool
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `FKey &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the key is a modifier key: Ctrl, Command, Alt, Shift |
-
-### `Key_IsGamepadKey`
-
-```text
-Key_IsGamepadKey(Key: FKey &) -> bool
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `FKey &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the key is a gamepad button |
-
-### `Key_IsMouseButton`
-
-```text
-Key_IsMouseButton(Key: FKey &) -> bool
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `FKey &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the key is a mouse button |
-
-### `Key_IsKeyboardKey`
-
-```text
-Key_IsKeyboardKey(Key: FKey &) -> bool
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `FKey &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the key is a keyboard button |
-
-### `Key_IsFloatAxis`
-
-```text
-Key_IsFloatAxis(Key: FKey &) -> bool
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `FKey &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the key is a float axis |
-
-### `Key_IsVectorAxis`
-
-```text
-Key_IsVectorAxis(Key: FKey &) -> bool
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `FKey &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the key is a vector axis |
-
-### `Key_GetDisplayName`
-
-```text
-Key_GetDisplayName(Key: FKey &) -> FText
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `FKey &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FText` | The display name of the key. |
-
-### `InputEvent_IsRepeat`
-
-```text
-InputEvent_IsRepeat(Input: FInputEvent &) -> bool
-```
-
-Returns whether or not this character is an auto-repeated keystroke
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FInputEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if this character is a repeat |
-
-### `InputEvent_IsShiftDown`
-
-```text
-InputEvent_IsShiftDown(Input: FInputEvent &) -> bool
-```
-
-Returns true if either shift key was down when this event occurred
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FInputEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if shift is pressed |
-
-### `InputEvent_IsLeftShiftDown`
-
-```text
-InputEvent_IsLeftShiftDown(Input: FInputEvent &) -> bool
-```
-
-Returns true if left shift key was down when this event occurred
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FInputEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if left shift is pressed. |
-
-### `InputEvent_IsRightShiftDown`
-
-```text
-InputEvent_IsRightShiftDown(Input: FInputEvent &) -> bool
-```
-
-Returns true if right shift key was down when this event occurred
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FInputEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if right shift is pressed. |
-
-### `InputEvent_IsControlDown`
-
-```text
-InputEvent_IsControlDown(Input: FInputEvent &) -> bool
-```
-
-Returns true if either control key was down when this event occurred
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FInputEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if control is pressed |
-
-### `InputEvent_IsLeftControlDown`
-
-```text
-InputEvent_IsLeftControlDown(Input: FInputEvent &) -> bool
-```
-
-Returns true if left control key was down when this event occurred
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FInputEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if left control is pressed |
-
-### `InputEvent_IsRightControlDown`
-
-```text
-InputEvent_IsRightControlDown(Input: FInputEvent &) -> bool
-```
-
-Returns true if left control key was down when this event occurred
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FInputEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if left control is pressed |
-
-### `InputEvent_IsAltDown`
-
-```text
-InputEvent_IsAltDown(Input: FInputEvent &) -> bool
-```
-
-Returns true if either alt key was down when this event occurred
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FInputEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if alt is pressed |
-
-### `InputEvent_IsLeftAltDown`
-
-```text
-InputEvent_IsLeftAltDown(Input: FInputEvent &) -> bool
-```
-
-Returns true if left alt key was down when this event occurred
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FInputEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if left alt is pressed |
-
-### `InputEvent_IsRightAltDown`
-
-```text
-InputEvent_IsRightAltDown(Input: FInputEvent &) -> bool
-```
-
-Returns true if right alt key was down when this event occurred
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FInputEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if right alt is pressed |
-
-### `InputEvent_IsCommandDown`
-
-```text
-InputEvent_IsCommandDown(Input: FInputEvent &) -> bool
-```
-
-Returns true if either command key was down when this event occurred
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FInputEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if command is pressed |
-
-### `InputEvent_IsLeftCommandDown`
-
-```text
-InputEvent_IsLeftCommandDown(Input: FInputEvent &) -> bool
-```
-
-Returns true if left command key was down when this event occurred
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FInputEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if left command is pressed |
-
-### `InputEvent_IsRightCommandDown`
-
-```text
-InputEvent_IsRightCommandDown(Input: FInputEvent &) -> bool
-```
-
-Returns true if right command key was down when this event occurred
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FInputEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if right command is pressed |
-
-### `GetKeyByName`
-
-```text
-GetKeyByName(KeyName: FName &) -> FKey
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `KeyName` | `FName &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FKey` | - |
-
-### `GetKey`
-
-```text
-GetKey(Input: FKeyEvent &) -> FKey
-```
-
-Returns the key for this event.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FKeyEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FKey` | Key name |
-
-### `GetUserIndex`
-
-```text
-GetUserIndex(Input: FKeyEvent &) -> int32
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FKeyEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | - |
-
-### `GetAnalogValue`
-
-```text
-GetAnalogValue(Input: FAnalogInputEvent &) -> float
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FAnalogInputEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `PointerEvent_GetScreenSpacePosition`
-
-```text
-PointerEvent_GetScreenSpacePosition(Input: FPointerEvent &) -> FVector2D
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FPointerEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector2D` | The position of the cursor in screen space |
-
-### `PointerEvent_GetLastScreenSpacePosition`
-
-```text
-PointerEvent_GetLastScreenSpacePosition(Input: FPointerEvent &) -> FVector2D
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FPointerEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector2D` | The position of the cursor in screen space last time we handled an input event |
-
-### `PointerEvent_GetCursorDelta`
-
-```text
-PointerEvent_GetCursorDelta(Input: FPointerEvent &) -> FVector2D
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FPointerEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector2D` | the distance the mouse traveled since the last event was handled. |
-
-### `PointerEvent_IsMouseButtonDown`
-
-```text
-PointerEvent_IsMouseButtonDown(Input: FPointerEvent &, MouseButton: FKey) -> bool
-```
-
-Mouse buttons that are currently pressed
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FPointerEvent &` | - |
-| `MouseButton` | `FKey` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `PointerEvent_GetEffectingButton`
-
-```text
-PointerEvent_GetEffectingButton(Input: FPointerEvent &) -> FKey
-```
-
-Mouse button that caused this event to be raised (possibly EB_None)
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FPointerEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FKey` | - |
-
-### `PointerEvent_GetWheelDelta`
-
-```text
-PointerEvent_GetWheelDelta(Input: FPointerEvent &) -> float
-```
-
-How much did the mouse wheel turn since the last mouse event
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FPointerEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `PointerEvent_GetUserIndex`
-
-```text
-PointerEvent_GetUserIndex(Input: FPointerEvent &) -> int32
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FPointerEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | The index of the user that caused the event |
-
-### `PointerEvent_GetPointerIndex`
-
-```text
-PointerEvent_GetPointerIndex(Input: FPointerEvent &) -> int32
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FPointerEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | The unique identifier of the pointer (e.g., finger index) |
-
-### `PointerEvent_GetTouchpadIndex`
-
-```text
-PointerEvent_GetTouchpadIndex(Input: FPointerEvent &) -> int32
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FPointerEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | The index of the touch pad that generated this event (for platforms with multiple touch pads per user) |
-
-### `PointerEvent_IsTouchEvent`
-
-```text
-PointerEvent_IsTouchEvent(Input: FPointerEvent &) -> bool
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FPointerEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | Is this event a result from a touch (as opposed to a mouse) |
-
-### `PointerEvent_TouchForce`
-
-```text
-PointerEvent_TouchForce(Input: FPointerEvent &) -> float
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FPointerEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `PointerEvent_GetGestureType`
-
-```text
-PointerEvent_GetGestureType(Input: FPointerEvent &) -> ESlateGesture
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FPointerEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ESlateGesture` | The type of touch gesture |
-
-### `PointerEvent_GetGestureDelta`
-
-```text
-PointerEvent_GetGestureDelta(Input: FPointerEvent &) -> FVector2D
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Input` | `FPointerEvent &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector2D` | The change in gesture value since the last gesture event of the same type. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UKismetInternationalizationLibrary.json -->
-
-# UKismetInternationalizationLibrary
-
-## Inheritance
-
-`UBlueprintFunctionLibrary`
-
-## Functions
-
-### `SetCurrentCulture`
-
-```text
-SetCurrentCulture(Culture: FString &, SaveToConfig: bool) -> bool
-```
-
-Set the current culture.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Culture` | `FString &` | The culture to set, as an IETF language tag (eg, "zh-Hans-CN"). |
-| `SaveToConfig` | `bool` | If true, save the new setting to the users' "GameUserSettings" config so that it persists after a reload. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the culture was set, false otherwise. |
-
-### `GetCurrentCulture`
-
-```text
-GetCurrentCulture() -> FString
-```
-
-Get the current culture as an IETF language tag:
-	   - A two-letter ISO 639-1 language code (eg, "zh").
-	   - An optional four-letter ISO 15924 script code (eg, "Hans").
-	   - An optional two-letter ISO 3166-1 country code (eg, "CN").
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FString` | The culture as an IETF language tag (eg, "zh-Hans-CN"). |
-
-### `SetCurrentLanguage`
-
-```text
-SetCurrentLanguage(Culture: FString &, SaveToConfig: bool) -> bool
-```
-
-Set only the current language (for localization).
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Culture` | `FString &` | The language to set, as an IETF language tag (eg, "zh-Hans-CN"). |
-| `SaveToConfig` | `bool` | If true, save the new setting to the users' "GameUserSettings" config so that it persists after a reload. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the language was set, false otherwise. |
-
-### `GetCurrentLanguage`
-
-```text
-GetCurrentLanguage() -> FString
-```
-
-Get the current language (for localization) as an IETF language tag:
-	   - A two-letter ISO 639-1 language code (eg, "zh").
-	   - An optional four-letter ISO 15924 script code (eg, "Hans").
-	   - An optional two-letter ISO 3166-1 country code (eg, "CN").
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FString` | The language as an IETF language tag (eg, "zh-Hans-CN"). |
-
-### `SetCurrentLocale`
-
-```text
-SetCurrentLocale(Culture: FString &, SaveToConfig: bool) -> bool
-```
-
-Set only the current locale (for internationalization).
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Culture` | `FString &` | The locale to set, as an IETF language tag (eg, "zh-Hans-CN"). |
-| `SaveToConfig` | `bool` | If true, save the new setting to the users' "GameUserSettings" config so that it persists after a reload. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the locale was set, false otherwise. |
-
-### `GetCurrentLocale`
-
-```text
-GetCurrentLocale() -> FString
-```
-
-Get the current locale (for internationalization) as an IETF language tag:
-	   - A two-letter ISO 639-1 language code (eg, "zh").
-	   - An optional four-letter ISO 15924 script code (eg, "Hans").
-	   - An optional two-letter ISO 3166-1 country code (eg, "CN").
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FString` | The locale as an IETF language tag (eg, "zh-Hans-CN"). |
-
-### `SetCurrentLanguageAndLocale`
-
-```text
-SetCurrentLanguageAndLocale(Culture: FString &, SaveToConfig: bool) -> bool
-```
-
-Set the current language (for localization) and locale (for internationalization).
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Culture` | `FString &` | The language and locale to set, as an IETF language tag (eg, "zh-Hans-CN"). |
-| `SaveToConfig` | `bool` | If true, save the new setting to the users' "GameUserSettings" config so that it persists after a reload. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the language and locale were set, false otherwise. |
-
-### `SetCurrentAssetGroupCulture`
-
-```text
-SetCurrentAssetGroupCulture(AssetGroup: FName, Culture: FString &, SaveToConfig: bool) -> bool
-```
-
-Set the given asset group category culture from an IETF language tag (eg, "zh-Hans-CN").
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `AssetGroup` | `FName` | The asset group to set the culture for. |
-| `Culture` | `FString &` | The culture to set, as an IETF language tag (eg, "zh-Hans-CN"). |
-| `SaveToConfig` | `bool` | If true, save the new setting to the users' "GameUserSettings" config so that it persists after a reload. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the culture was set, false otherwise. |
-
-### `GetCurrentAssetGroupCulture`
-
-```text
-GetCurrentAssetGroupCulture(AssetGroup: FName) -> FString
-```
-
-Get the given asset group category culture.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `AssetGroup` | `FName` | The asset group to get the culture for. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FString` | The culture as an IETF language tag (eg, "zh-Hans-CN"). |
-
-### `ClearCurrentAssetGroupCulture`
-
-```text
-ClearCurrentAssetGroupCulture(AssetGroup: FName, SaveToConfig: bool) -> void
-```
-
-Clear the given asset group category culture.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `AssetGroup` | `FName` | The asset group to clear the culture for. |
-| `SaveToConfig` | `bool` | If true, save the new setting to the users' "GameUserSettings" config so that it persists after a reload. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UKismetMaterialLibrary.json -->
-
-# UKismetMaterialLibrary
-
-## Inheritance
-
-`UBlueprintFunctionLibrary`
-
-## Functions
-
-### `SetScalarParameterValue`
-
-```text
-SetScalarParameterValue(WorldContextObject: UObject *, Collection: UMaterialParameterCollection *, ParameterName: FName, ParameterValue: float) -> ENGINE_API void
-```
-
-Sets a scalar parameter value on the material collection instance. Logs if ParameterName is invalid.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContextObject` | `UObject *` | - |
-| `Collection` | `UMaterialParameterCollection *` | - |
-| `ParameterName` | `FName` | - |
-| `ParameterValue` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
-
-### `SetVectorParameterValue`
-
-```text
-SetVectorParameterValue(WorldContextObject: UObject *, Collection: UMaterialParameterCollection *, ParameterName: FName, ParameterValue: FLinearColor &) -> ENGINE_API void
-```
-
-Sets a vector parameter value on the material collection instance. Logs if ParameterName is invalid.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContextObject` | `UObject *` | - |
-| `Collection` | `UMaterialParameterCollection *` | - |
-| `ParameterName` | `FName` | - |
-| `ParameterValue` | `FLinearColor &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
-
-### `GetScalarParameterValue`
-
-```text
-GetScalarParameterValue(WorldContextObject: UObject *, Collection: UMaterialParameterCollection *, ParameterName: FName) -> ENGINE_API float
-```
-
-Gets a scalar parameter value from the material collection instance. Logs if ParameterName is invalid.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContextObject` | `UObject *` | - |
-| `Collection` | `UMaterialParameterCollection *` | - |
-| `ParameterName` | `FName` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API float` | - |
-
-### `GetVectorParameterValue`
-
-```text
-GetVectorParameterValue(WorldContextObject: UObject *, Collection: UMaterialParameterCollection *, ParameterName: FName) -> ENGINE_API FLinearColor
-```
-
-Gets a vector parameter value from the material collection instance. Logs if ParameterName is invalid.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContextObject` | `UObject *` | - |
-| `Collection` | `UMaterialParameterCollection *` | - |
-| `ParameterName` | `FName` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API FLinearColor` | - |
-
-### `CreateDynamicMaterialInstance`
-
-```text
-CreateDynamicMaterialInstance(WorldContextObject: UObject *, Parent: UMaterialInterface *) -> ENGINE_API class UMaterialInstanceDynamic *
-```
-
-Creates a Dynamic Material Instance which you can modify during gameplay.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContextObject` | `UObject *` | - |
-| `Parent` | `UMaterialInterface *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API class UMaterialInstanceDynamic *` | - |
 
 ## Language
 

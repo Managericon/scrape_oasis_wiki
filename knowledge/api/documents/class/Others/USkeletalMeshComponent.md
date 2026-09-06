@@ -43,6 +43,7 @@ SkeletalMeshComponent is used to create an instance of an animated SkeletalMesh 
 | `bBlendPhysics` | `uint32` | Enables blending in of physics bodies whether Simulate or not |
 | `bEnablePhysicsOnDedicatedServer` | `uint32` | If true, simulate physics for this component on a dedicated server.<br>	   This should be set if simulating physics and replicating with a dedicated server.<br>	 	Note: This property cannot be changed at runtime. |
 | `bEnableCreatePhysicsOnDedicatedServer` | `uint32` | - |
+| `bForceBoneTransformUpdateWithPhysics` | `uint32` | 当物理模拟激活时，强制在 EndPhysicsTick 中将物理结果写回骨骼 Transform。<br>	  用于 DS 上没有渲染但需要物理驱动骨骼位置更新的场景（如 Active Ragdoll）。<br>	  设置为 true 后，即使 ShouldBlendPhysicsBones() 返回 false，也会调用 FinalizeBoneTransform()。 |
 | `bNeedUpdatePhysicsTickRegisteredState` | `bool` | - |
 | `bUpdateJointsFromAnimation` | `uint32` | If we should pass joint position to joints each frame, so that they can be used by motorized joints to drive the<br>	 	ragdoll based on the animation. |
 | `bDisableClothSimulation` | `uint32` | Disable cloth simulation and play original animation without simulation |
@@ -79,7 +80,6 @@ SkeletalMeshComponent is used to create an instance of an animated SkeletalMesh 
 | `TeleportDistanceThreshold` | `float` | Conduct teleportation if the character's movement is greater than this threshold in 1 frame.<br>	 Zero or negative values will skip the check.<br>	 You can also do force teleport manually using ForceNextUpdateTeleport()  ForceNextUpdateTeleportAndReset(). |
 | `TeleportRotationThreshold` | `float` | Rotation threshold in degrees, ranging from 0 to 180.<br>	 Conduct teleportation if the character's rotation is greater than this threshold in 1 frame.<br>	 Zero or negative values will skip the check. |
 | `bEnableUpdateOverlapsEvent` | `uint8` | - |
-| `bEnableAsyncAnimUpdate` | `bool` | ImmediatePhysics Evaluation End<br>	 <br>	 Whether to enable async anim update for this component |
 | `SequenceToPlay_DEPRECATED` | `UAnimSequence *` | - |
 | `AnimToPlay_DEPRECATED` | `UAnimationAsset *` | - |
 | `bDefaultLooping_DEPRECATED` | `uint32` | - |
@@ -107,6 +107,8 @@ SkeletalMeshComponent is used to create an instance of an animated SkeletalMesh 
 | `bIsEnableBatchSection` | `bool` | For Dynamic Bone Scale Feature End |
 | `BatchSectionList` | `TArray < FDynamicBatchSectionInfo >` | - |
 | `OriginalMaterials` | `TArray < UMaterialInterface * >` | - |
+| `bCrossFrameAnimForceSync` | `bool` | When true, ShouldUseCrossFrameAnimUpdate() returns false regardless of<br>	    so external modifications during the force-sync period are preserved. |
+| `bEnableCrossFrameAnimUpdate` | `bool` | Whether to enable async anim update for this component |
 | `AnimationBlueprint_DEPRECATED` | `UAnimBlueprint *` | The blueprint for creating an AnimationScript. |
 | `bUpdateAnimationInEditor` | `uint32` | If true, this will Tick until disabled |
 | `BoneRetargetBaseRefMesh` | `USkeletalMesh *` | For Bone Retarget Feature Start |
@@ -1629,7 +1631,7 @@ Gets the current Angular state for a named bone constraint
 ### `HandleExistingParallelEvaluationTask`
 
 ```text
-HandleExistingParallelEvaluationTask(bBlockOnTask: bool, bPerformPostAnimEvaluation: bool, bBlockOnAsyncAnimUpdateTasks: bool) -> bool
+HandleExistingParallelEvaluationTask(bBlockOnTask: bool, bPerformPostAnimEvaluation: bool, bBlockOnCrossFrameAnimUpdateTasks: bool) -> bool
 ```
 
 **Parameters**
@@ -1638,7 +1640,7 @@ HandleExistingParallelEvaluationTask(bBlockOnTask: bool, bPerformPostAnimEvaluat
 |---|---|---|
 | `bBlockOnTask` | `bool` | - |
 | `bPerformPostAnimEvaluation` | `bool` | - |
-| `bBlockOnAsyncAnimUpdateTasks` | `bool` | - |
+| `bBlockOnCrossFrameAnimUpdateTasks` | `bool` | - |
 
 **Returns**
 
@@ -2041,6 +2043,24 @@ ClearInterpolateBoneCache(DurationTime: float) -> void
 | Name | Type | Description |
 |---|---|---|
 | `DurationTime` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetCrossFrameAnimUpdateEnabled`
+
+```text
+SetCrossFrameAnimUpdateEnabled(bEnable: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnable` | `bool` | - |
 
 **Returns**
 

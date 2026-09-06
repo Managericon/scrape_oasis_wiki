@@ -37,3 +37,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `DeathTrainPickup` | `21` | - |
 | `GeekerPocket` | `22` | - |
 | `EscapeTask` | `23` | - |
+| `BirdBackpack` | `24` | - |

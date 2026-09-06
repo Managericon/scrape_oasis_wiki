@@ -6,6 +6,3454 @@ category: "API Wiki/class"
 kind: "api_chunk"
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USplineMeshComponent.json -->
+
+# USplineMeshComponent
+
+A Spline Mesh Component is a derivation of a Static Mesh Component which can be deformed using a spline. Only a start and end position (and tangent) can be specified.
+
+## Inheritance
+
+`UStaticMeshComponent` -> `IInterface_CollisionDataProvider`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SplineParams` | `FSplineMeshParams` | Spline that is used to deform mesh |
+| `SplineUpDir` | `FVector` | Axis (in component space) that is used to determine X axis for co-ordinates along spline |
+| `bAllowSplineEditingPerInstance` | `uint32` | If true, spline keys may be edited per instance in the level viewport. Otherwise, the spline should be initialized in the construction script. |
+| `bSmoothInterpRollScale` | `uint32` | If true, will use smooth interpolation (ease inout) for Scale, Roll, and Offset along this section of spline. If false, uses linear |
+| `ForwardAxis` | `TEnumAsByte < ESplineMeshAxis :: Type >` | Chooses the forward axis for the spline mesh orientation |
+| `SplineBoundaryMin` | `float` | Minimum coordinate along the spline forward axis which corresponds to start of spline. If set to 0.0, will use bounding box to determine bounds |
+| `SplineBoundaryMax` | `float` | Maximum coordinate along the spline forward axis which corresponds to end of spline. If set to 0.0, will use bounding box to determine bounds |
+| `BodySetup` | `UBodySetup *` | - |
+| `CachedMeshBodySetupGuid` | `FGuid` | - |
+| `bMeshDirty` | `uint32` | - |
+| `bHasBeenBakedWithLandcape` | `uint32` | - |
+
+## Functions
+
+### `UpdateMesh`
+
+```text
+UpdateMesh() -> void
+```
+
+Update the collision and render state on the spline mesh following changes to its geometry
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetStartPosition`
+
+```text
+GetStartPosition() -> FVector
+```
+
+Get the start position of spline in local space
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `SetStartPosition`
+
+```text
+SetStartPosition(StartPos: FVector, bUpdateMesh: bool) -> void
+```
+
+Set the start position of spline in local space
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `StartPos` | `FVector` | - |
+| `bUpdateMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetStartTangent`
+
+```text
+GetStartTangent() -> FVector
+```
+
+Get the start tangent vector of spline in local space
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `SetStartTangent`
+
+```text
+SetStartTangent(StartTangent: FVector, bUpdateMesh: bool) -> void
+```
+
+Set the start tangent vector of spline in local space
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `StartTangent` | `FVector` | - |
+| `bUpdateMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetEndPosition`
+
+```text
+GetEndPosition() -> FVector
+```
+
+Get the end position of spline in local space
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `SetEndPosition`
+
+```text
+SetEndPosition(EndPos: FVector, bUpdateMesh: bool) -> void
+```
+
+Set the end position of spline in local space
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EndPos` | `FVector` | - |
+| `bUpdateMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetEndTangent`
+
+```text
+GetEndTangent() -> FVector
+```
+
+Get the end tangent vector of spline in local space
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `SetEndTangent`
+
+```text
+SetEndTangent(EndTangent: FVector, bUpdateMesh: bool) -> void
+```
+
+Set the end tangent vector of spline in local space
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EndTangent` | `FVector` | - |
+| `bUpdateMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetStartAndEnd`
+
+```text
+SetStartAndEnd(StartPos: FVector, StartTangent: FVector, EndPos: FVector, EndTangent: FVector, bUpdateMesh: bool) -> void
+```
+
+Set the start and end, position and tangent, all in local space
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `StartPos` | `FVector` | - |
+| `StartTangent` | `FVector` | - |
+| `EndPos` | `FVector` | - |
+| `EndTangent` | `FVector` | - |
+| `bUpdateMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetStartScale`
+
+```text
+GetStartScale() -> FVector2D
+```
+
+Get the start scaling
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | - |
+
+### `SetStartScale`
+
+```text
+SetStartScale(StartScale: FVector2D, bUpdateMesh: bool) -> void
+```
+
+Set the start scaling
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `StartScale` | `FVector2D` | - |
+| `bUpdateMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetStartRoll`
+
+```text
+GetStartRoll() -> float
+```
+
+Get the start roll
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `SetStartRoll`
+
+```text
+SetStartRoll(StartRoll: float, bUpdateMesh: bool) -> void
+```
+
+Set the start roll
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `StartRoll` | `float` | - |
+| `bUpdateMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetStartOffset`
+
+```text
+GetStartOffset() -> FVector2D
+```
+
+Get the start offset
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | - |
+
+### `SetStartOffset`
+
+```text
+SetStartOffset(StartOffset: FVector2D, bUpdateMesh: bool) -> void
+```
+
+Set the start offset
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `StartOffset` | `FVector2D` | - |
+| `bUpdateMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetEndScale`
+
+```text
+GetEndScale() -> FVector2D
+```
+
+Get the end scaling
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | - |
+
+### `SetEndScale`
+
+```text
+SetEndScale(EndScale: FVector2D, bUpdateMesh: bool) -> void
+```
+
+Set the end scaling
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EndScale` | `FVector2D` | - |
+| `bUpdateMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetEndRoll`
+
+```text
+GetEndRoll() -> float
+```
+
+Get the end roll
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `SetEndRoll`
+
+```text
+SetEndRoll(EndRoll: float, bUpdateMesh: bool) -> void
+```
+
+Set the end roll
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EndRoll` | `float` | - |
+| `bUpdateMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetEndOffset`
+
+```text
+GetEndOffset() -> FVector2D
+```
+
+Get the end offset
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | - |
+
+### `SetEndOffset`
+
+```text
+SetEndOffset(EndOffset: FVector2D, bUpdateMesh: bool) -> void
+```
+
+Set the end offset
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EndOffset` | `FVector2D` | - |
+| `bUpdateMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetForwardAxis`
+
+```text
+GetForwardAxis() -> ESplineMeshAxis :: Type
+```
+
+Get the forward axis
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ESplineMeshAxis :: Type` | - |
+
+### `SetForwardAxis`
+
+```text
+SetForwardAxis(InForwardAxis: ESplineMeshAxis :: Type, bUpdateMesh: bool) -> void
+```
+
+Set the forward axis
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InForwardAxis` | `ESplineMeshAxis :: Type` | - |
+| `bUpdateMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetSplineUpDir`
+
+```text
+GetSplineUpDir() -> FVector
+```
+
+Get the spline up direction
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `SetSplineUpDir`
+
+```text
+SetSplineUpDir(InSplineUpDir: FVector &, bUpdateMesh: bool) -> void
+```
+
+Set the spline up direction
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InSplineUpDir` | `FVector &` | - |
+| `bUpdateMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetBoundaryMin`
+
+```text
+GetBoundaryMin() -> float
+```
+
+Get the boundary min
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `SetBoundaryMin`
+
+```text
+SetBoundaryMin(InBoundaryMin: float, bUpdateMesh: bool) -> void
+```
+
+Set the boundary min
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InBoundaryMin` | `float` | - |
+| `bUpdateMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetBoundaryMax`
+
+```text
+GetBoundaryMax() -> float
+```
+
+Get the boundary max
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `SetBoundaryMax`
+
+```text
+SetBoundaryMax(InBoundaryMax: float, bUpdateMesh: bool) -> void
+```
+
+Set the boundary max
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InBoundaryMax` | `float` | - |
+| `bUpdateMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USpotLightComponent.json -->
+
+# USpotLightComponent
+
+A spot light component emits a directional cone shaped light (Eg a Torch).
+
+## Inheritance
+
+`UPointLightComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `InnerConeAngle` | `float` | Degrees. |
+| `OuterConeAngle` | `float` | Degrees. |
+| `bCastPhotonShadow` | `uint32` | #if WITH_PHOTON_SHADOW<br>	 Whether the light should cast photon shadow for character<br>	 #endif |
+| `NearPlaneOffset` | `float` | - |
+| `FarPlaneOffset` | `float` | - |
+| `LightShaftConeAngle` | `float` | Degrees. <br>	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=LightShaft, meta=(UIMin = "1.0", UIMax = "180.0")) |
+
+## Functions
+
+### `SetInnerConeAngle`
+
+```text
+SetInnerConeAngle(NewInnerConeAngle: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewInnerConeAngle` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetOuterConeAngle`
+
+```text
+SetOuterConeAngle(NewOuterConeAngle: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewOuterConeAngle` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USpringArmComponent.json -->
+
+# USpringArmComponent
+
+This component tries to maintain its children at a fixed distance from the parent,
+  but will retract the children if there is a collision, and spring back when there is no collision.
+ 
+  Example: Use as a 'camera boom' to keep the follow camera for a player from colliding into the world.
+
+## Inheritance
+
+`USceneComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `TargetArmLength` | `float` | Natural length of the spring arm when there are no collisions |
+| `SocketOffset` | `FVector` | offset at end of spring arm; use this instead of the relative offset of the attached component to ensure the line trace works as desired |
+| `TargetOffset` | `FVector` | Offset at start of spring, applied in world space. Use this if you want a world-space offset from the parent component instead of the usual relative-space offset. |
+| `ProbeSize` | `float` | How big should the query probe sphere be (in unreal units) |
+| `ProbeChannel` | `TEnumAsByte < ECollisionChannel >` | Collision channel of the query probe (defaults to ECC_Camera) |
+| `bDoCollisionTest` | `uint32` | If true, do a collision test using ProbeChannel and ProbeSize to prevent camera clipping into level. |
+| `bUsePawnControlRotation` | `uint32` | If this component is placed on a pawn, should it use the viewcontrol rotation of the pawn where possible?<br>	  When disabled, the component will revert to using the stored RelativeRotation of the component.<br>	  Note that this component itself does not rotate, but instead maintains its relative rotation to its parent as normal,<br>	  and just repositions and rotates its children as desired by the inherited rotation settings. Use GetTargetRotation()<br>	  if you want the rotation target based on all the settings (UsePawnControlRotation, InheritPitch, etc).<br>	 <br>	  @see GetTargetRotation(), APawn::GetViewRotation() |
+| `bInheritPitch` | `uint32` | Should we inherit pitch from parent component. Does nothing if using Absolute Rotation. |
+| `bInheritYaw` | `uint32` | Should we inherit yaw from parent component. Does nothing if using Absolute Rotation. |
+| `bInheritRoll` | `uint32` | Should we inherit roll from parent component. Does nothing if using Absolute Rotation. |
+| `bEnableCameraLag` | `uint32` | If true, camera lags behind target position to smooth its movement.<br>	  @see CameraLagSpeed |
+| `bEnableCameraRotationLag` | `uint32` | If true, camera lags behind target rotation to smooth its movement.<br>	  @see CameraRotationLagSpeed |
+| `bUseCameraLagSubstepping` | `uint32` | If bUseCameraLagSubstepping is true, sub-step camera damping so that it handles fluctuating frame rates well (though this comes at a cost).<br>	  @see CameraLagMaxTimeStep |
+| `bDrawDebugLagMarkers` | `uint32` | If true and camera location lag is enabled, draws markers at the camera target (in green) and the lagged position (in yellow).<br>	  A line is drawn between the two locations, in green normally but in red if the distance to the lag target has been clamped (by CameraLagMaxDistance). |
+| `CameraLagSpeed` | `float` | If bEnableCameraLag is true, controls how quickly camera reaches target position. Low values are slower (more lag), high values are faster (less lag), while zero is instant (no lag). |
+| `CameraRotationLagSpeed` | `float` | If bEnableCameraRotationLag is true, controls how quickly camera reaches target position. Low values are slower (more lag), high values are faster (less lag), while zero is instant (no lag). |
+| `CameraLagMaxTimeStep` | `float` | Max time step used when sub-stepping camera lag. |
+| `CameraLagMaxDistance` | `float` | Max distance the camera target may lag behind the current location. If set to zero, no max distance is enforced. |
+| `IgnoredActors` | `TArray < AActor * >` | - |
+| `CacheHit` | `FHitResult` | - |
+
+## Functions
+
+### `GetTargetRotation`
+
+```text
+GetTargetRotation() -> FRotator
+```
+
+Get the target rotation we inherit, used as the base target for the boom rotation.
+	  This is derived from attachment to our parent and considering the UsePawnControlRotation and absolute rotation flags.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FRotator` | - |
+
+### `SetActive`
+
+```text
+SetActive(bNewActive: bool, bReset: bool) -> void
+```
+
+Sets whether the component is active or not
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bNewActive` | `bool` | - The new active state of the component |
+| `bReset` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `UpdateDesiredArmLocationCustom`
+
+```text
+UpdateDesiredArmLocationCustom(bDoTrace: bool, bDoLocationLag: bool, bDoRotationLag: bool, DeltaTime: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bDoTrace` | `bool` | - |
+| `bDoLocationLag` | `bool` | - |
+| `bDoRotationLag` | `bool` | - |
+| `DeltaTime` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetExtraIgnoreActors`
+
+```text
+GetExtraIgnoreActors() -> TArray < AActor * >
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TArray < AActor * >` | - |
+
+### `GetExtraIgnoreCompoents`
+
+```text
+GetExtraIgnoreCompoents() -> TArray < UPrimitiveComponent * >
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TArray < UPrimitiveComponent * >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStackBox.json -->
+
+# UStackBox
+
+A stack box widget is a layout panel allowing child widgets to be automatically laid out
+  vertically or horizontally.
+ 
+   Many Children
+   Flows Vertical or Horizontal
+
+## Inheritance
+
+`UPanelWidget`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Orientation` | `TEnumAsByte < EOrientation >` | The orientation of the stack box. |
+
+## Functions
+
+### `GetOrientation`
+
+```text
+GetOrientation() -> UMG_API EOrientation
+```
+
+Get the orientation of the stack box.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API EOrientation` | - |
+
+### `SetOrientation`
+
+```text
+SetOrientation(InType: EOrientation) -> UMG_API void
+```
+
+Set the orientation of the stack box. The existing elements will be rearranged.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InType` | `EOrientation` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `AddChildToStackBox`
+
+```text
+AddChildToStackBox(Content: UWidget *) -> UMG_API UStackBoxSlot *
+```
+
+Adds a new child widget to the container.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Content` | `UWidget *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API UStackBoxSlot *` | - |
+
+### `ReplaceStackBoxChildAt`
+
+```text
+ReplaceStackBoxChildAt(Index: int32, Content: UWidget *) -> UMG_API bool
+```
+
+Replace the widget at the given index it with a different widget.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `int32` | - |
+| `Content` | `UWidget *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API bool` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStackBoxSlot.json -->
+
+# UStackBoxSlot
+
+The Slot for the UStackBox, contains the widget that is flowed vertically or horizontally.
+
+## Inheritance
+
+`UPanelSlot`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Padding` | `FMargin` | The padding area between the slot and the content it contains. |
+| `Size` | `FSlateChildSize` | How much space this slot should occupy in the direction of the panel. |
+| `HorizontalAlignment` | `TEnumAsByte < EHorizontalAlignment >` | The alignment of the object horizontally. |
+| `VerticalAlignment` | `TEnumAsByte < EVerticalAlignment >` | The alignment of the object vertically. |
+
+## Functions
+
+### `GetPadding`
+
+```text
+GetPadding() -> UMG_API FMargin
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API FMargin` | - |
+
+### `SetPadding`
+
+```text
+SetPadding(InPadding: FMargin) -> UMG_API void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPadding` | `FMargin` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `GetSize`
+
+```text
+GetSize() -> UMG_API FSlateChildSize
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API FSlateChildSize` | - |
+
+### `SetSize`
+
+```text
+SetSize(InSize: FSlateChildSize) -> UMG_API void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InSize` | `FSlateChildSize` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `GetHorizontalAlignment`
+
+```text
+GetHorizontalAlignment() -> UMG_API EHorizontalAlignment
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API EHorizontalAlignment` | - |
+
+### `SetHorizontalAlignment`
+
+```text
+SetHorizontalAlignment(InHorizontalAlignment: EHorizontalAlignment) -> UMG_API void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InHorizontalAlignment` | `EHorizontalAlignment` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `GetVerticalAlignment`
+
+```text
+GetVerticalAlignment() -> UMG_API EVerticalAlignment
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API EVerticalAlignment` | - |
+
+### `SetVerticalAlignment`
+
+```text
+SetVerticalAlignment(InVerticalAlignment: EVerticalAlignment) -> UMG_API void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InVerticalAlignment` | `EVerticalAlignment` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStaticMesh.json -->
+
+# UStaticMesh
+
+A StaticMesh is a piece of geometry that consists of a static set of polygons.
+  Static Meshes can be translated, rotated, and scaled, but they cannot have their vertices animated in any way. As such, they are more efficient
+  to render than other types of geometry such as USkeletalMesh, and they are often the basic building block of levels created in the engine.
+ 
+  @see AStaticMeshActor, UStaticMeshComponent
+
+## Inheritance
+
+`UObject` -> `IInterface_CollisionDataProvider` -> `IInterface_AssetUserData`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bSkipHISMBoundCheck` | `bool` | - |
+| `bHasROCData` | `bool` | - |
+| `FSOCOccluder` | `UFlakeOccluder *` | - |
+| `ReplaceMaterial` | `UMaterialInterface *` | - |
+| `ShadowProxyMesh` | `UStaticMesh *` | Proxy mesh used by TA tools to generate hidden shadow caster components for components using this StaticMesh. |
+| `PerLODBiasTypeInfo` | `TArray < FMeshPerLODBiasArray >` | When autonomous or simulated pawn needs special LOD bias |
+| `bUseLODBiasExt` | `bool` | - |
+| `bAutoUpdateLODBiasExt` | `bool` | - |
+| `PerLODBiasTypeInfoExt` | `TArray < FMeshLODBiasCondition >` | - |
+| `MinLOD` | `int32` | Minimum LOD to use for rendering.  This is the default setting for the mesh and can be overridden by component settings. |
+| `Materials_DEPRECATED` | `TArray < UMaterialInterface * >` | Materials used by this static mesh. Individual sections index in to this array. |
+| `StaticMaterials` | `TArray < FStaticMaterial >` | - |
+| `LightmapUVDensity` | `float` | - |
+| `LightMapResolution` | `int32` | - |
+| `LightMapCoordinateIndex` | `int32` | The light map coordinate index |
+| `DistanceFieldSelfShadowBias` | `float` | Useful for reducing self shadowing from distance field methods when using world position offset to animate the mesh's vertices. |
+| `ExpectedQualityLimit` | `FExpectedQuality` | - |
+| `bGenerateMeshDistanceField` | `uint32` | Whether to generate a distance field for this mesh, which can be used by DistanceField Indirect Shadows.<br>	  This is ignored if the project's 'Generate Mesh Distance Fields' setting is enabled. |
+| `bLazyLoadBulkData` | `uint32` | Lazy load bulk data for reduce memory used |
+| `bAllowMinLodBiasCfg` | `uint32` | allow MinLodBias for global config (r.StaticMeshMinLodBias) |
+| `bDisableGenerateHLOD` | `uint32` | - |
+| `bHasHLODTag` | `uint32` | Runtime flag: whether this StaticMesh participates in HLOD (computed from ReorganizationTags at PreSave) |
+| `MinLodBiasDeviceGrade` | `uint8` | allow min lod bias if device grade < this |
+| `bUseFSOCOccluderIgnoreBlend` | `uint8` | - |
+| `BodySetup` | `UBodySetup *` | - |
+| `LODForCollision` | `int32` | Specifies which mesh LOD to use for complex (per-poly) collision.<br>	 	Sometimes it can be desirable to use a lower poly representation for collision to reduce memory usage, improve performance and behaviour.<br>	 	Collision representation does not change based on distance to camera. |
+| `CullingScreenSize` | `float` | Culling screen size |
+| `bUseScreenSizeModifier` | `bool` | - |
+| `ScreenSizeCullingRoughDistance` | `float` | Rough Distance of Screen size Culling |
+| `bSupportCustomLODDistanceScale` | `bool` | - |
+| `bIsGrass` | `bool` | grass flag, we need this special flag since grasses are so important in pubg game |
+| `bIsTree` | `bool` | - |
+| `bStripComplexCollisionForConsole_DEPRECATED` | `uint32` | If true, strips unwanted complex collision data aka kDOP tree when cooking for consoles.<br>		On the Playstation 3 data of this mesh will be stored in video memory. |
+| `bHasNavigationData` | `uint32` | If true, mesh will have NavCollision property with additional data for navmesh generation and usage.<br>	    Set to false for distant meshes (always outside navigation bounds) to save memory on collision data. |
+| `bIsStreamable` | `bool` | Streamable flag, determine whether to split the lod serialization, WITH_STREAMING_SM_LOD |
+| `HiddenStreamFactor` | `uint8` | - |
+| `bCompressData` | `bool` | - |
+| `bUseCoarseGIMip` | `bool` | - |
+| `NotInlineLODCount` | `uint8` | - |
+| `bSupportUniformlyDistributedSampling` | `uint32` | - |
+| `LpvBiasMultiplier` | `float` | Bias multiplier for Light Propagation Volume lighting |
+| `bAllowCPUAccess` | `bool` | If true, will keep geometry data CPU-accessible in cooked builds, rather than uploading to GPU memory and releasing it from CPU memory.<br>	 	This is required if you wish to access StaticMesh geometry data on the CPU at runtime in cooked builds (e.g. to convert StaticMesh to ProceduralMeshComponent) |
+| `bCustomWaterBeOccludeed` | `bool` | - |
+| `EncodeBits_Position` | `int32` | - |
+| `EncodeBits_TexCoord` | `int32` | - |
+| `EncodeBits_Normal` | `int32` | - |
+| `EncodeBits_Generic` | `int32` | - |
+| `EncodeBits_VertexColor` | `int32` | - |
+| `EncodeSpeed` | `int32` | - |
+| `DecodeSpeed` | `int32` | - |
+| `Sockets` | `TArray < UStaticMeshSocket * >` | Array of named socket locations, set up in editor and used as a shortcut instead of specifying<br>	 	everything explicitly to AttachComponent in the StaticMeshComponent. |
+| `PositiveBoundsExtension` | `FVector` | Bound extension values in the positive direction of XYZ, positive value increases bound size |
+| `NegativeBoundsExtension` | `FVector` | Bound extension values in the negative direction of XYZ, positive value increases bound size |
+| `ExtendedBounds` | `FBoxSphereBounds` | Original mesh bounds extended with PositiveNegativeBoundsExtension |
+| `SubLocalBounds` | `TArray < FBoxSphereBounds >` | - |
+| `OcclusionCullingVertex` | `TArray < FVector4 >` | - |
+| `IndirectLightingCachePositionOffset` | `FVector` | - |
+| `bUseQuantization` | `bool` | - |
+| `ElementToIgnoreForTexFactor` | `int32` | Index of an element to ignore while gathering streaming texture factors.<br>	  This is useful to disregard automatically generated vertex data which breaks texture factor heuristics. |
+| `AssetUserData` | `TArray < UAssetUserData * >` | Array of user data stored with the asset |
+| `NavCollision` | `UNavCollision *` | Pre-build navigation collision |
+| `SimpleMaterials` | `TArray < FStaticSimpleMaterial >` | Simple material setting |
+| `bCloseMeshOpt` | `bool` | - |
+| `UVDensityMultiplier` | `float` | - |
+| `SourceModels` | `TArray < FStaticMeshSourceModel >` | Imported raw mesh bulk data. |
+| `MeshDescriptions` | `UStaticMeshDescriptions *` | Container holding mesh descriptions for each LOD |
+| `SectionInfoMap` | `FMeshSectionInfoMap` | Map of LOD+Section index to per-section info. |
+| `OriginalSectionInfoMap` | `FMeshSectionInfoMap` | We need the OriginalSectionInfoMap to be able to build mesh in a non destructive way. Reduce has to play with SectionInfoMap in case some sections disappear.<br>	  This member will be update in the following situation<br>	  1. After a static mesh importreimport<br>	  2. Postload, if the OriginalSectionInfoMap is empty, we will fill it with the current SectionInfoMap<br>	 <br>	  We do not update it when the user shuffle section in the staticmesh editor because the OriginalSectionInfoMap must always be in sync with the saved rawMesh bulk data. |
+| `LODGroup` | `FName` | The LOD group to which this mesh belongs. |
+| `bAutoComputeLODScreenSize` | `uint32` | If true, the screen sizees at which LODs swap are computed automatically. |
+| `ImportVersion` | `int32` | The last import version |
+| `MaterialRemapIndexPerImportVersion` | `TArray < FMaterialRemapIndex >` | - |
+| `LightmapUVVersion` | `int32` | The lightmap UV generation version used during the last derived data build |
+| `Id_DEPRECATED` | `FGuid` | The following is unique identifier for UStaticMesh. for generating cache key. |
+| `bIsUsedInLandscapeFlaten` | `bool` | Whether to Flaten Landscape |
+| `FlattenXHalfLength` | `float` | Default to Bound.X0.5 + 100 |
+| `FlattenYHalfLength` | `float` | Default to Bound.Y0.5 + 100 |
+| `FlattenZHeight` | `float` | Default to 0 |
+| `FlattenFallOffDistance` | `float` | Default to 1000 |
+| `AssetImportData` | `UAssetImportData *` | Importing data and options used for this mesh |
+| `SourceFilePath_DEPRECATED` | `FString` | Path to the resource used to construct this static mesh |
+| `SourceFileTimestamp_DEPRECATED` | `FString` | DateTime-stamp of the file from the last import |
+| `ThumbnailInfo` | `UThumbnailInfo *` | Information for thumbnail rendering |
+| `EditorCameraPosition` | `FAssetEditorOrbitCameraPosition` | The stored camera position to use as a default for the static mesh editor |
+| `bCustomizedCollision` | `bool` | If the user has modified collision in any way or has custom collision imported. Used for determining if to auto generate collision on import |
+| `bUseFSOCOccluder` | `bool` | 是否使用FSOC遮挡体。当为true时，在运行时使用FSOCOccluder进行遮挡剔除。 |
+| `OccluderMesh` | `UStaticMesh *` | Specifies the custom occluder mesh for software occlusion |
+| `OccluderBadFaceMesh` | `UStaticMesh *` | - |
+| `OccluderAvgValidRate` | `float` | - |
+| `OccluderAvgErrorRate` | `float` | - |
+| `bUseAsCustomOccluder` | `bool` | 标记该Mesh是否作为其他Mesh的自定义Occluder使用。<br>	  当此属性为true时，在编辑器保存资产时会自动构建FSOCOccluder数据，<br>	  供其他Mesh作为OccluderMesh引用使用。<br>	  注意：设置OccluderMesh的Mesh会在Cook时复用OccluderMesh的FSOCOccluder数据。 |
+| `bPreviewDraco` | `bool` | - |
+| `bUseHighPrecision` | `bool` | - |
+| `bUseUVAverage` | `bool` | - |
+| `bOptimizeNormal` | `bool` | - |
+| `SubBoundsIncludedVertices` | `TArray < FSubBoundsIncludedVertices >` | - |
+| `ReorganizationTags` | `FReorganizationTagsContainer` | Reorganization tags for Level Partition system |
+| `LightmapType` | `ELightmapType` | Controls the Lightmap type used by the Component when creating an Actor from this StaticMesh |
+| `bGenerateSurfaceSample` | `uint8` | Controls whether the Component generates surface samples (VolumeProbeGI) when creating an Actor from this StaticMesh |
+
+## Functions
+
+### `GetAllSectionTexelDensities`
+
+```text
+GetAllSectionTexelDensities() -> ENGINE_API TArray < FSectionTexelDensity >
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API TArray < FSectionTexelDensity >` | - |
+
+### `RefreshBulkNotExistsLODCount`
+
+```text
+RefreshBulkNotExistsLODCount() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetNumLODs`
+
+```text
+GetNumLODs() -> ENGINE_API int32
+```
+
+Returns the number of LODs used by the mesh.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API int32` | - |
+
+### `GetBounds`
+
+```text
+GetBounds() -> ENGINE_API FBoxSphereBounds
+```
+
+Returns the number of bounds of the mesh.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API FBoxSphereBounds` | The bounding box represented as box origin with extents and also a sphere that encapsulates that box |
+
+### `GetBoundingBox`
+
+```text
+GetBoundingBox() -> ENGINE_API FBox
+```
+
+Returns the bounding box, in local space including bounds extension(s), of the StaticMesh asset
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API FBox` | - |
+
+### `GetNumSections`
+
+```text
+GetNumSections(InLOD: int32) -> ENGINE_API int32
+```
+
+Returns number of Sections that this StaticMesh has, in the supplied LOD (LOD 0 is the highest)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InLOD` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API int32` | - |
+
+### `GetMaterial`
+
+```text
+GetMaterial(MaterialIndex: int32) -> ENGINE_API UMaterialInterface *
+```
+
+Gets a Material given a Material Index and an LOD number
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `MaterialIndex` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API UMaterialInterface *` | Requested material |
+
+### `GetMaterialIndex`
+
+```text
+GetMaterialIndex(MaterialSlotName: FName) -> ENGINE_API int32
+```
+
+Gets a Material index given a slot name
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `MaterialSlotName` | `FName` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API int32` | Requested material |
+
+### `GenerateLODForHLODMesh`
+
+```text
+GenerateLODForHLODMesh(Flags: int) -> ENGINE_API void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Flags` | `int` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStaticMeshComponent.json -->
+
+# UStaticMeshComponent
+
+StaticMeshComponent is used to create an instance of a UStaticMesh.
+  A static mesh is a piece of geometry that consists of a static set of polygons.
+ 
+  @see UStaticMesh
+
+## Inheritance
+
+`UMeshComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ForcedLodModel` | `int32` | If 0, auto-select LOD level. if >0, force to (ForcedLodModel-1). |
+| `PreviousLODLevel` | `int32` | LOD that was desired for rendering this StaticMeshComponent last frame. |
+| `MinLOD` | `int32` | Specifies the smallest LOD that will be used for this component.<br>	  This is ignored if ForcedLodModel is enabled. |
+| `MaxLOD` | `int32` | - |
+| `StaticMesh` | `UStaticMesh *` | The static mesh that this component uses to render |
+| `TightBoundsOrigin` | `FVector` | - |
+| `TightBoundsBoxExtent` | `FVector` | - |
+| `TightBoundsSphereRadius` | `float` | - |
+| `CanUseTightBound` | `bool` | - |
+| `VisibilityCollisionColor` | `FColor` | Whether you want to turn on the collision display preview |
+| `bEnableSimpleMaterial` | `bool` | If true, WireframeColorOverride will be used. If false, color is determined based on mobility and physics simulation settings |
+| `bOverrideWireframeColor` | `uint8` | If true, WireframeColorOverride will be used. If false, color is determined based on mobility and physics simulation settings |
+| `bOverrideMinLOD` | `uint8` | Whether to override the MinLOD setting of the static mesh asset with the MinLOD of this component. |
+| `bOverrideNavigationExport` | `uint8` | If true, bForceNavigationObstacle flag will take priority over navigation data stored in StaticMesh |
+| `bForceNavigationObstacle` | `uint8` | Allows overriding navigation export behavior per component: full collisions or dynamic obstacle |
+| `bDisallowMeshPaintPerInstance` | `uint8` | If true, mesh painting is disallowed on this instance. Set if vertex colors are overridden in a construction script. |
+| `bHasHLODTag` | `uint8` | Whether this component participates in HLOD (computed from ReorganizationTags) |
+| `bIgnoreInstanceForTextureStreaming` | `uint8` | Ignore this instance of this static mesh when calculating streaming information.<br>	 	This can be useful when doing things like applying character textures to static geometry,<br>	 	to avoid them using distance-based streaming. |
+| `bOverrideLightMapRes` | `uint8` | Whether to override the lightmap resolution defined in the static mesh. |
+| `bOverrideCullingScreenSize` | `uint8` | - |
+| `bCastDistanceFieldIndirectShadow` | `uint8` | Whether to use the mesh distance field representation (when present) for shadowing indirect lighting (from lightmaps or skylight) on Movable components.<br>	  This works like capsule shadows on skeletal meshes, except using the mesh distance field so no physics asset is required.<br>	  The StaticMesh must have 'Generate Mesh Distance Field' enabled, or the project must have 'Generate Mesh Distance Fields' enabled for this feature to work. |
+| `bOverrideDistanceFieldSelfShadowBias` | `uint8` | Whether to override the DistanceFieldSelfShadowBias setting of the static mesh asset with the DistanceFieldSelfShadowBias of this component. |
+| `bUseSubDivisions` | `uint8` | Whether to use subdivisions or just the triangle's vertices. |
+| `bUseDefaultCollision` | `uint8` | Use the collision profile specified in the StaticMesh asset. |
+| `bForceNotHzbOccluder` | `uint8` | not a hzb Occluder |
+| `bUseAsOccluderIgnoreMobility` | `uint8` | - |
+| `bCanBeOccludeed` | `uint8` | - |
+| `bCustomWaterBeOccludeed` | `uint8` | - |
+| `bAllowCopyExpectedQualityFromMesh` | `uint8` | - |
+| `OverriddenLightMapRes` | `int32` | Light map resolution to use on this component, used if bOverrideLightMapRes is true and there is a valid StaticMesh. |
+| `StreamingDistanceMultiplier` | `float` | Allows adjusting the desired streaming distance of streaming textures that uses UV 0.<br>	  1.0 is the default, whereas a higher value makes the textures stream in sooner from far away.<br>	  A lower value (0.0-1.0) makes the textures stream in later (you have to be closer).<br>	  Value can be < 0 (from legcay content, or code changes) |
+| `LODData` | `TArray < FStaticMeshComponentLODInfo >` | Static mesh LOD data.  Contains static lighting data along with instanced mesh vertex colors. |
+| `StreamingTextureData` | `TArray < FStreamingTextureBuildInfo >` | The list of texture, bounds and scales. As computed in the texture streaming build process. |
+| `IsDynamicInstancingParametersEnabled` | `bool` | Is dynamic instancing parameters enabled |
+| `DynamicInstancingParameters` | `TMap < FString , FVector4 >` | Dynamic instancing parameters |
+| `LightmassSettings` | `FLightmassPrimitiveSettings` | The Lightmass settings for this object. |
+| `IdeaBakingSettings` | `FIdeaBakingPrimitiveSettings` | Add by luciuszhang: The IdeaBaking settings for this object. |
+| `AffectPointLightBPActors` | `TArray < TWeakObjectPtr < AActor > >` | - |
+| `PointLightStaticMeshLODResources` | `TArray < FStaticMeshPointLightVertexDataBuffer >` | - |
+| `bEnableISMbatching` | `uint8` | - |
+| `bForceUseDynamicElement` | `uint8` | - |
+| `LODSectionHiddenFlags` | `TArray < uint8 >` | Hidden Flags for Rendering Section (8 bits = flags, Support 8 Sections), add by connerxiong 2022.6.16. |
+| `OutlineStaticMesh` | `UStaticMesh *` | Outline Static Mesh |
+| `SubDivisionStepSize` | `int32` | Subdivision step size for static vertex lighting. |
+| `WireframeColorOverride` | `FColor` | Wireframe color to use if bOverrideWireframeColor is true |
+| `SelectedEditorSection` | `int32` | The section currently selected in the Editor. Used for highlighting |
+| `SelectedEditorMaterial` | `int32` | The material currently selected in the Editor. Used for highlighting |
+| `SectionIndexPreview` | `int32` | Index of the section to preview. If set to INDEX_NONE, all section will be rendered. Used for isolating in Static Mesh Tool |
+| `MaterialIndexPreview` | `int32` | Index of the material to preview. If set to INDEX_NONE, all section will be rendered. Used for isolating in Static Mesh Tool |
+| `ReorganizationTags` | `FReorganizationTagsContainer` | Reorganization tags for Level Partition system (inherits from StaticMesh by default) |
+| `bOverrideReorganizationTags` | `bool` | Legacy serialized switch. New editorruntime logic uses per-group override flags on ReorganizationTags entries. |
+| `StaticMeshImportVersion` | `int32` | The import version of the static mesh when it was assign this is update when:<br>	  - The user assign a new staticmesh to the component<br>	  - The component is serialize (IsSaving)<br>	  - Default value is BeforeImportStaticMeshVersionWasAdded<br>	 <br>	  If when the component get load (PostLoad) the version of the attach staticmesh is newer<br>	  then this value, we will remap the material override because the order of the materials list<br>	  in the staticmesh can be changed. Hopefully there is a remap table save in the staticmesh. |
+| `bCustomOverrideVertexColorPerLOD` | `uint8` | The component has some custom painting on LODs or not. |
+| `bDisplayVertexColors` | `uint8` | - |
+| `DistanceFieldIndirectShadowMinVisibility` | `float` | Controls how dark the dynamic indirect shadow can be. |
+| `DistanceFieldSelfShadowBias` | `float` | Useful for reducing self shadowing from distance field methods when using world position offset to animate the mesh's vertices. |
+| `IrrelevantLights_DEPRECATED` | `TArray < FGuid >` | - |
+| `StaticMeshDerivedDataKey` | `FString` | Derived data key of the static mesh, used to determine if an update from the source static mesh is required. |
+| `MaterialStreamingRelativeBoxes` | `TArray < uint32 >` | Material Bounds used for texture streaming. |
+
+## Functions
+
+### `OnRep_StaticMesh`
+
+```text
+OnRep_StaticMesh(OldStaticMesh: UStaticMesh *) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `OldStaticMesh` | `UStaticMesh *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetStaticMesh`
+
+```text
+SetStaticMesh(NewMesh: UStaticMesh *) -> bool
+```
+
+Change the StaticMesh used by this instance.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewMesh` | `UStaticMesh *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `SetDirty`
+
+```text
+SetDirty() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetVisibilityCollisionColor`
+
+```text
+SetVisibilityCollisionColor(CollisionColor: FColor) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `CollisionColor` | `FColor` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetVisibilityCollisionColor`
+
+```text
+GetVisibilityCollisionColor() -> FColor
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FColor` | - |
+
+### `K2_GetStaticMesh`
+
+```text
+K2_GetStaticMesh() -> UStaticMesh *
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UStaticMesh *` | - |
+
+### `SetOutlineMesh`
+
+```text
+SetOutlineMesh(InStaticMesh: UStaticMesh *) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InStaticMesh` | `UStaticMesh *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetForcedLodModel`
+
+```text
+SetForcedLodModel(NewForcedLodModel: int32) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewForcedLodModel` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetDistanceFieldSelfShadowBias`
+
+```text
+SetDistanceFieldSelfShadowBias(NewValue: float) -> void
+```
+
+Sets the component's DistanceFieldSelfShadowBias.  bOverrideDistanceFieldSelfShadowBias must be enabled for this to have an effect.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewValue` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetLocalBounds`
+
+```text
+GetLocalBounds(Min: FVector &, Max: FVector &) -> void
+```
+
+Get Local bounds
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Min` | `FVector &` | - |
+| `Max` | `FVector &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetDynamicInstancingParameter`
+
+```text
+SetDynamicInstancingParameter(MaterialIndex: int, Name: FString &, Value: FVector4 &) -> int32
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `MaterialIndex` | `int` | - |
+| `Name` | `FString &` | - |
+| `Value` | `FVector4 &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | - |
+
+### `EnableMeshClipPlane`
+
+```text
+EnableMeshClipPlane(ClipPlane: FPlane &, PlaneIndex: int32) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ClipPlane` | `FPlane &` | - |
+| `PlaneIndex` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `DisableMeshClipPlane`
+
+```text
+DisableMeshClipPlane(PlaneIndex: int32) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PlaneIndex` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `EnableMeshClipArc`
+
+```text
+EnableMeshClipArc(ClipPlane: FPlane &, ClipSphere: FVector4 &) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ClipPlane` | `FPlane &` | - |
+| `ClipSphere` | `FVector4 &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `DisableMeshClipArc`
+
+```text
+DisableMeshClipArc() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `EnableMeshClip4Planes`
+
+```text
+EnableMeshClip4Planes(ClipPlanes: TArray < FPlane > &, bBox: bool) -> void
+```
+
+Num of ClipPlanes is 4
+	  0: Top Plane
+	  1: Down Plane
+	  2: Left Plane
+	  3: Right Plane
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ClipPlanes` | `TArray < FPlane > &` | - |
+| `bBox` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `DisableMeshClip4Planes`
+
+```text
+DisableMeshClip4Planes() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `CheckSwitchSimpleMaterial`
+
+```text
+CheckSwitchSimpleMaterial() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStaticMeshIndoorVolumeComponent.json -->
+
+# UStaticMeshIndoorVolumeComponent
+
+## Inheritance
+
+`USceneComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `StaticMesh` | `UStaticMesh *` | - |
+| `SplitSizeScale` | `float` | - |
+| `SplitFadeSizeScale` | `float` | - |
+| `bLockGenerateSplit` | `bool` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStaticMeshIndoorVolumeContainerComponent.json -->
+
+# UStaticMeshIndoorVolumeContainerComponent
+
+## Inheritance
+
+`USceneComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `StaticMeshes` | `TArray < UStaticMesh * >` | - |
+| `InstanceRuns` | `TArray < FInstanceRun >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStaticMeshSocket.json -->
+
+# UStaticMeshSocket
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SocketName` | `FName` | Defines a named attachment location on the UStaticMesh. <br>	 	These are set up in editor and used as a shortcut instead of specifying <br>	 	everything explicitly to AttachComponent in the StaticMeshComponent.<br>	 	The Outer of a StaticMeshSocket should always be the UStaticMesh. |
+| `RelativeLocation` | `FVector` | - |
+| `RelativeRotation` | `FRotator` | - |
+| `RelativeScale` | `FVector` | - |
+| `Tag` | `FString` | - |
+| `bDynamicCreate` | `bool` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStaticMeshWidget.json -->
+
+# UStaticMeshWidget
+
+## Inheritance
+
+`UWidget`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `StaticMeshAsset` | `USlateVectorArtData *` | - |
+| `MeshScale` | `FVector2D` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E7%B1%BB%E4%BA%8B%E4%BB%B6/Buff/USTBaseBuffSystemComponent.json -->
+
+# USTBaseBuffSystemComponent
+
+Buff管理组件
+
+## Inheritance
+
+`UActorComponent` -> `IUTSkillInstanceNodeContainerInterface` -> `IObjectPoolInterface`
+
+## Delegates
+
+### `UGC_BuffAttachedDelegate`
+
+```text
+UGC_BuffAttachedDelegate(BuffName: const FName&) -> void
+```
+
+Buff添加委托
+	  生效范围：SC
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `BuffName` | `const FName&` | Buff名字 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `UGC_BuffDetachedDelegate`
+
+```text
+UGC_BuffDetachedDelegate(BuffName: const FName&) -> void
+```
+
+Buff移除委托
+	  生效范围：SC
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `BuffName` | `const FName&` | Buff名字 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStereoLayerComponent.json -->
+
+# UStereoLayerComponent
+
+A geometry layer within the stereo rendered viewport.
+
+## Inheritance
+
+`USceneComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bLiveTexture` | `uint32` | True if the stereo layer texture needs to update itself every frame(scene capture, video, etc.) |
+| `bSupportsDepth` | `uint32` | True if the stereo layer needs to support depth intersections with the scene geometry, if available on the platform |
+| `bNoAlphaChannel` | `uint32` | True if the texture should not use its own alpha channel (1.0 will be substituted) |
+| `Texture` | `UTexture *` | Texture displayed on the stereo layer (is stereocopic textures are supported on the platfrom and more than one texture is provided, this will be the right eye) |
+| `LeftTexture` | `UTexture *` | Texture displayed on the stereo layer for left eye, if stereoscopic textures are supported on the platform |
+| `bQuadPreserveTextureRatio` | `uint32` | True if the quad should internally set it's Y value based on the set texture's dimensions |
+| `QuadSize` | `FVector2D` | Size of the rendered stereo layer quad |
+| `UVRect` | `FBox2D` | UV coordinates mapped to the quad face |
+| `CylinderRadius` | `float` | Radial size of the rendered stereo layer cylinder |
+| `CylinderOverlayArc` | `float` | Arc angle for the stereo layer cylinder |
+| `CylinderHeight` | `int` | Height of the stereo layer cylinder |
+| `StereoLayerType` | `TEnumAsByte < enum EStereoLayerType >` | Specifies how and where the quad is rendered to the screen |
+| `StereoLayerShape` | `TEnumAsByte < enum EStereoLayerShape >` | Specifies which type of layer it is.  Note that some shapes will be supported only on certain platforms! |
+| `Priority` | `int32` | Render priority among all stereo layers, higher priority render on top of lower priority |
+
+## Functions
+
+### `SetTexture`
+
+```text
+SetTexture(InTexture: UTexture *) -> void
+```
+
+Change the texture displayed on the stereo layer quad
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InTexture` | `UTexture *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetTexture`
+
+```text
+GetTexture() -> UTexture *
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UTexture *` | - |
+
+### `SetQuadSize`
+
+```text
+SetQuadSize(InQuadSize: FVector2D) -> void
+```
+
+Change the quad size. This is the unscaled height and width, before component scale is applied.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InQuadSize` | `FVector2D` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetQuadSize`
+
+```text
+GetQuadSize() -> FVector2D
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | - |
+
+### `SetUVRect`
+
+```text
+SetUVRect(InUVRect: FBox2D) -> void
+```
+
+Change the UV coordinates mapped to the quad face
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InUVRect` | `FBox2D` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetUVRect`
+
+```text
+GetUVRect() -> FBox2D
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FBox2D` | - |
+
+### `SetPriority`
+
+```text
+SetPriority(InPriority: int32) -> void
+```
+
+Change the layer's render priority, higher priorities render on top of lower priorities
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPriority` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetPriority`
+
+```text
+GetPriority() -> int32
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | - |
+
+### `MarkTextureForUpdate`
+
+```text
+MarkTextureForUpdate() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStereoLayerFunctionLibrary.json -->
+
+# UStereoLayerFunctionLibrary
+
+StereoLayer Extensions Function Library
+
+## Inheritance
+
+`UBlueprintFunctionLibrary`
+
+## Functions
+
+### `SetSplashScreen`
+
+```text
+SetSplashScreen(Texture: UTexture *, Scale: FVector2D, Offset: FVector2D, bShowLoadingMovie: bool, bShowOnSet: bool) -> void
+```
+
+Set splash screen attributes
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Texture` | `UTexture *` | (in) A texture to be used for the splash. B8R8G8A8 format. |
+| `Scale` | `FVector2D` | (in) Scale of the texture. |
+| `Offset` | `FVector2D` | (in) Position from which to start rendering the texture. |
+| `bShowLoadingMovie` | `bool` | - |
+| `bShowOnSet` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ShowSplashScreen`
+
+```text
+ShowSplashScreen() -> void
+```
+
+Show the splash screen and override the VR display
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `HideSplashScreen`
+
+```text
+HideSplashScreen() -> void
+```
+
+Hide the splash screen and return to normal display.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `EnableAutoLoadingSplashScreen`
+
+```text
+EnableAutoLoadingSplashScreen(InAutoShowEnabled: bool) -> void
+```
+
+Enablesdisables splash screen to be automatically shown when LoadMap is called.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InAutoShowEnabled` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USTExtraGameMagnitudeCalculation.json -->
+
+# USTExtraGameMagnitudeCalculation
+
+伤害公式
+
+## Inheritance
+
+`UGameMagnitudeCalculationBase` -> `ILocalCalculationVariableSupportInterface`
+
+## Functions
+
+### `IsHeadDamage`
+
+```text
+IsHeadDamage(Context: FGameMagnitudeContext &) -> bool
+```
+
+获取是否是爆头伤害
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Context` | `FGameMagnitudeContext &` | 公式的上下文对象 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否是爆头伤害 |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStreamingSettings.json -->
+
+# UStreamingSettings
+
+Streaming settings.
+
+## Inheritance
+
+`UDeveloperSettings`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `AsyncLoadingThreadEnabled` | `uint32` | - |
+| `WarnIfTimeLimitExceeded` | `uint32` | - |
+| `TimeLimitExceededMultiplier` | `float` | - |
+| `TimeLimitExceededMinTime` | `float` | - |
+| `MinBulkDataSizeForAsyncLoading` | `int32` | - |
+| `UseBackgroundLevelStreaming` | `uint32` | - |
+| `AsyncLoadingUseFullTimeLimit` | `uint32` | Whether to use the entire time limit even if blocked on IO |
+| `AsyncLoadingTimeLimit` | `float` | - |
+| `PriorityAsyncLoadingExtraTime` | `float` | - |
+| `LevelStreamingActorsUpdateTimeLimit` | `float` | Maximum allowed time to spend for actor registration steps during level streaming (ms per frame) |
+| `LevelStreamingComponentsRegistrationGranularity` | `int32` | Batching granularity used to register actor components during level streaming |
+| `LevelStreamingUnregisterComponentsTimeLimit` | `float` | Maximum allowed time to spend while unregistering components during level streaming (ms per frame) |
+| `LevelStreamingComponentsUnregistrationGranularity` | `int32` | Batching granularity used to unregister actor components during level streaming |
+| `EventDrivenLoaderEnabled` | `uint32` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UStreamMediaSource.json -->
+
+# UStreamMediaSource
+
+## Inheritance
+
+`UBaseMediaSource`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `StreamUrl` | `FString` | The URL to the media stream to be played. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USubmixEffectDynamicsProcessorPreset.json -->
+
+# USubmixEffectDynamicsProcessorPreset
+
+## Inheritance
+
+`USoundEffectSubmixPreset`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Settings` | `FSubmixEffectDynamicsProcessorSettings` | - |
+
+## Functions
+
+### `SetSettings`
+
+```text
+SetSettings(InSettings: FSubmixEffectDynamicsProcessorSettings &) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InSettings` | `FSubmixEffectDynamicsProcessorSettings &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USubmixEffectReverbPreset.json -->
+
+# USubmixEffectReverbPreset
+
+## Inheritance
+
+`USoundEffectSubmixPreset`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Settings` | `FSubmixEffectReverbSettings` | - |
+
+## Functions
+
+### `SetSettings`
+
+```text
+SetSettings(InSettings: FSubmixEffectReverbSettings &) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InSettings` | `FSubmixEffectReverbSettings &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetSettingsWithReverbEffect`
+
+```text
+SetSettingsWithReverbEffect(InReverbEffect: UReverbEffect *, WetLevel: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InReverbEffect` | `UReverbEffect *` | - |
+| `WetLevel` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USubmixEffectSubmixEQPreset.json -->
+
+# USubmixEffectSubmixEQPreset
+
+## Inheritance
+
+`USoundEffectSubmixPreset`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Settings` | `FSubmixEffectSubmixEQSettings` | - |
+
+## Functions
+
+### `SetSettings`
+
+```text
+SetSettings(InSettings: FSubmixEffectSubmixEQSettings &) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InSettings` | `FSubmixEffectSubmixEQSettings &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USubsurfaceProfile.json -->
+
+# USubsurfaceProfile
+
+Subsurface Scattering profile asset, can be specified at the material. Only for "Subsurface Profile" materials, is use during Screenspace Subsurface Scattering
+  Don't change at runtime. All properties in here are per material - texture like variations need to come from properties that are in the GBuffer.
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Settings` | `FSubsurfaceProfileStruct` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USubUVAnimation.json -->
+
+# USubUVAnimation
+
+SubUV animation asset, which caches bounding geometry for regions in the SubUVTexture with non-zero opacity.
+  Particle emitters with a SubUV module which use this asset leverage the optimal bounding geometry to reduce overdraw.
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SubUVTexture` | `UTexture2D *` | Texture to generate bounding geometry from. |
+| `SubImages_Horizontal` | `int32` | The number of sub-images horizontally in the texture |
+| `SubImages_Vertical` | `int32` | The number of sub-images vertically in the texture |
+| `BoundingMode` | `TEnumAsByte < enum ESubUVBoundingVertexCount >` | More bounding vertices results in reduced overdraw, but adds more triangle overhead.<br>	  The eight vertex mode is best used when the SubUV texture has a lot of space to cut out that is not captured by the four vertex version,<br>	  and when the particles using the texture will be few and large. |
+| `OpacitySourceMode` | `TEnumAsByte < enum EOpacitySourceMode >` | - |
+| `AlphaThreshold` | `float` | Alpha channel values larger than the threshold are considered occupied and will be contained in the bounding geometry.<br>	  Raising this threshold slightly can reduce overdraw in particles using this animation asset. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USynthComponent.json -->
+
+# USynthComponent
+
+## Inheritance
+
+`USceneComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bAutoDestroy` | `uint8` | Auto destroy this component on completion |
+| `bStopWhenOwnerDestroyed` | `uint8` | Stop sound when owner is destroyed |
+| `bAllowSpatialization` | `uint8` | Is this audio component allowed to be spatialized? |
+| `bOverrideAttenuation` | `uint8` | Should the Attenuation Settings asset be used (false) or should the properties set directly on the component be used for attenuation properties |
+| `AttenuationSettings` | `USoundAttenuation *` | If bOverrideSettings is false, the asset to use to determine attenuation properties for sounds generated by this component |
+| `AttenuationOverrides` | `FSoundAttenuationSettings` | If bOverrideSettings is true, the attenuation properties to use for sounds generated by this component |
+| `ConcurrencySettings` | `USoundConcurrency *` | What sound concurrency to use for sounds generated by this audio component |
+| `SoundClass` | `USoundClass *` | Sound class this sound belongs to |
+| `SourceEffectChain` | `USoundEffectSourcePresetChain *` | The source effect chain to use for this sound. |
+| `SoundSubmix` | `USoundSubmix *` | Submix this sound belongs to |
+| `SoundSubmixSends` | `TArray < FSoundSubmixSendInfo >` | An array of submix sends. Audio from this sound will send a portion of its audio to these effects. |
+| `bIsUISound` | `uint8` | Whether or not this sound plays when the game is paused in the UI |
+| `Synth` | `USynthSound *` | - |
+| `AudioComponent` | `UAudioComponent *` | - |
+
+## Functions
+
+### `Start`
+
+```text
+Start() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `Stop`
+
+```text
+Stop() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `IsPlaying`
+
+```text
+IsPlaying() -> bool
+```
+
+Returns true if this component is currently playing.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `SetSubmixSend`
+
+```text
+SetSubmixSend(Submix: USoundSubmix *, SendLevel: float) -> void
+```
+
+Sets how much audio the sound should send to the given submix.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Submix` | `USoundSubmix *` | - |
+| `SendLevel` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTextBinding.json -->
+
+# UTextBinding
+
+## Inheritance
+
+`UPropertyBinding`
+
+## Functions
+
+### `GetTextValue`
+
+```text
+GetTextValue() -> FText
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FText` | - |
+
+### `GetStringValue`
+
+```text
+GetStringValue() -> FString
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FString` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTextBlock.json -->
+
+# UTextBlock
+
+A simple static text widget.
+ 
+   No Children
+   Text
+
+## Inheritance
+
+`UTextLayoutWidget`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Text` | `FText` | The text to display |
+| `TextDelegate` | `FGetText` | A bindable delegate to allow logic to drive the text of the widget |
+| `ColorAndOpacity` | `FSlateColor` | The color of the text |
+| `ColorAndOpacityDelegate` | `FGetSlateColor` | A bindable delegate for the ColorAndOpacity. |
+| `Font` | `FSlateFontInfo` | The font to render the text with |
+| `ShadowOffset` | `FVector2D` | The direction the shadow is cast |
+| `ShadowColorAndOpacity` | `FLinearColor` | The color of the shadow |
+| `ShadowColorAndOpacityDelegate` | `FGetLinearColor` | A bindable delegate for the ShadowColorAndOpacity. |
+| `MinDesiredWidth` | `float` | The minimum desired size for the text |
+| `AutoEllipsisText` | `bool` | - |
+| `MutiEllipsisText` | `bool` | - |
+| `MutiEllipsisLine` | `int32` | - |
+| `bWrapWithInvalidationPanel` | `bool` | If true, it will automatically wrap this text widget with an invalidation panel |
+
+## Functions
+
+### `SetColorAndOpacity`
+
+```text
+SetColorAndOpacity(InColorAndOpacity: FSlateColor) -> void
+```
+
+Sets the color and opacity of the text in this text block
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InColorAndOpacity` | `FSlateColor` | The new text color and opacity |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetColorRGBStr`
+
+```text
+SetColorRGBStr(HexString: FString &) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `HexString` | `FString &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetOpacity`
+
+```text
+SetOpacity(InOpacity: float) -> void
+```
+
+Sets the opacity of the text in this text block
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InOpacity` | `float` | The new text opacity |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetShadowColorAndOpacity`
+
+```text
+SetShadowColorAndOpacity(InShadowColorAndOpacity: FLinearColor) -> void
+```
+
+Sets the color and opacity of the text drop shadow
+	  Note: if opacity is zero no shadow will be drawn
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InShadowColorAndOpacity` | `FLinearColor` | The new drop shadow color and opacity |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetShadowOffset`
+
+```text
+SetShadowOffset(InShadowOffset: FVector2D) -> void
+```
+
+Sets the offset that the text drop shadow should be drawn at
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InShadowOffset` | `FVector2D` | The new offset |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetFont`
+
+```text
+SetFont(InFontInfo: FSlateFontInfo) -> void
+```
+
+Dynamically set the font info for this text block
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InFontInfo` | `FSlateFontInfo` | THe new font info |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetJustification`
+
+```text
+SetJustification(InJustification: ETextJustify :: Type) -> void
+```
+
+Set the text justification for this text block
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InJustification` | `ETextJustify :: Type` | new justification |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetVerticalJustification`
+
+```text
+SetVerticalJustification(InJustification: ETextVerticalJustify :: Type) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InJustification` | `ETextVerticalJustify :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetNeedVerticalJustificationWhenOverflow`
+
+```text
+SetNeedVerticalJustificationWhenOverflow(InEnable: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InEnable` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetMinDesiredWidth`
+
+```text
+SetMinDesiredWidth(InMinDesiredWidth: float) -> void
+```
+
+Set the minimum desired width for this text block
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InMinDesiredWidth` | `float` | new minimum desired width |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAutoEllipsisText`
+
+```text
+SetAutoEllipsisText(InAutoEllipsisText: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InAutoEllipsisText` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetWrapTextAt`
+
+```text
+SetWrapTextAt(InWrapTextAt: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InWrapTextAt` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetMutiEllipsisText`
+
+```text
+SetMutiEllipsisText(InMutiEllipsisText: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InMutiEllipsisText` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetText`
+
+```text
+GetText() -> FText
+```
+
+Gets the widget text
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FText` | The widget text |
+
+### `GetLocalText`
+
+```text
+GetLocalText() -> FText
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FText` | - |
+
+### `SetText`
+
+```text
+SetText(InText: FText) -> void
+```
+
+Directly sets the widget text.
+	  Warning: This will wipe any binding created for the Text property!
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InText` | `FText` | The text to assign to the widget |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Delegates
+
+### `OnTextBlockTextChangeDelegate`
+
+```text
+OnTextBlockTextChangeDelegate(TextChanged: FText) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TextChanged` | `FText` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTextBlockWidgetStyle.json -->
+
+# UTextBlockWidgetStyle
+
+## Inheritance
+
+`USlateWidgetStyleContainerBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `TextBlockStyle` | `FTextBlockStyle` | The actual data describing the button's appearance. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTextLayoutWidget.json -->
+
+# UTextLayoutWidget
+
+Base class for all widgets that use a text layout.
+  Contains the common options that should be exposed for the underlying Slate widget.
+
+## Inheritance
+
+`UWidget`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ShapedTextOptions` | `FShapedTextOptions` | Controls how the text within this widget should be shaped. |
+| `Justification` | `TEnumAsByte < ETextJustify :: Type >` | How the text should be aligned with the margin. |
+| `VerticalJustification` | `TEnumAsByte < ETextVerticalJustify :: Type >` | - |
+| `bNeedVerticalJustificationWhenOverflow` | `bool` | Should the text still be justified vertically when it overflow its block. |
+| `AutoWrapText` | `bool` | True if we're wrapping text automatically based on the computed horizontal space for this widget. |
+| `WrapTextAt` | `float` | Whether text wraps onto a new line when it's length exceeds this width; if this value is zero or negative, no wrapping occurs. |
+| `WrappingPolicy` | `ETextWrappingPolicy` | The wrapping policy to use. |
+| `Margin` | `FMargin` | The amount of blank space left around the edges of text area. |
+| `LineHeightPercentage` | `float` | The amount to scale each lines height by. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTextPropertyTestObject.json -->
+
+# UTextPropertyTestObject
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `DefaultedText` | `FText` | - |
+| `UndefaultedText` | `FText` | - |
+| `TransientText` | `FText` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTextRenderComponent.json -->
+
+# UTextRenderComponent
+
+Renders text in the world with given font. Contains usual font related attributes such as Scale, Alignment, Color etc.
+
+## Inheritance
+
+`UPrimitiveComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Text` | `FText` | Text content, can be multi line using   <br>as line separator |
+| `TextMaterial` | `UMaterialInterface *` | Text material |
+| `Font` | `UFont *` | Text font |
+| `HorizontalAlignment` | `TEnumAsByte < enum EHorizTextAligment >` | Horizontal text alignment |
+| `VerticalAlignment` | `TEnumAsByte < enum EVerticalTextAligment >` | Vertical text alignment |
+| `TextRenderColor` | `FColor` | Color of the text, can be accessed as vertex color |
+| `XScale` | `float` | Horizontal scale, default is 1.0 |
+| `YScale` | `float` | Vertical scale, default is 1.0 |
+| `WorldSize` | `float` | Vertical size of the fonts largest character in world units. Transform, XScale and YScale will affect final size. |
+| `InvDefaultSize` | `float` | The inverse of the Font's character height. |
+| `HorizSpacingAdjust` | `float` | Horizontal adjustment per character, default is 0.0 |
+| `VertSpacingAdjust` | `float` | Vertical adjustment per character, default is 0.0 |
+| `bAlwaysRenderAsText` | `uint32` | Allows text to draw unmodified when using debug visualization modes. |
+
+## Functions
+
+### `SetText`
+
+```text
+SetText(Value: FString &) -> void
+```
+
+Change the text value and signal the primitives to be rebuilt 
+	  The FString variant is deprecated in favor of the FText variant
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Value` | `FString &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `K2_SetText`
+
+```text
+K2_SetText(Value: FText &) -> void
+```
+
+Change the text value and signal the primitives to be rebuilt
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Value` | `FText &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetTextMaterial`
+
+```text
+SetTextMaterial(Material: UMaterialInterface *) -> void
+```
+
+Change the text material and signal the primitives to be rebuilt
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Material` | `UMaterialInterface *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetFont`
+
+```text
+SetFont(Value: UFont *) -> void
+```
+
+Change the font and signal the primitives to be rebuilt
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Value` | `UFont *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetHorizontalAlignment`
+
+```text
+SetHorizontalAlignment(Value: EHorizTextAligment) -> void
+```
+
+Change the horizontal alignment and signal the primitives to be rebuilt
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Value` | `EHorizTextAligment` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetVerticalAlignment`
+
+```text
+SetVerticalAlignment(Value: EVerticalTextAligment) -> void
+```
+
+Change the vertical alignment and signal the primitives to be rebuilt
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Value` | `EVerticalTextAligment` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetTextRenderColor`
+
+```text
+SetTextRenderColor(Value: FColor) -> void
+```
+
+Change the text render color and signal the primitives to be rebuilt
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Value` | `FColor` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetXScale`
+
+```text
+SetXScale(Value: float) -> void
+```
+
+Change the text X scale and signal the primitives to be rebuilt
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Value` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetYScale`
+
+```text
+SetYScale(Value: float) -> void
+```
+
+Change the text Y scale and signal the primitives to be rebuilt
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Value` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetHorizSpacingAdjust`
+
+```text
+SetHorizSpacingAdjust(Value: float) -> void
+```
+
+Change the text horizontal spacing adjustment and signal the primitives to be rebuilt
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Value` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetVertSpacingAdjust`
+
+```text
+SetVertSpacingAdjust(Value: float) -> void
+```
+
+Change the text vertical spacing adjustment and signal the primitives to be rebuilt
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Value` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetWorldSize`
+
+```text
+SetWorldSize(Value: float) -> void
+```
+
+Change the world size of the text and signal the primitives to be rebuilt
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Value` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetTextLocalSize`
+
+```text
+GetTextLocalSize() -> FVector
+```
+
+Get local size of text
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetTextWorldSize`
+
+```text
+GetTextWorldSize() -> FVector
+```
+
+Get world space size of text
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTextTextureAtlas.json -->
+
+# UTextTextureAtlas
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `TextAtlases` | `TArray < UTexture2D * >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTexture.json -->
+
+# UTexture
+
+## Inheritance
+
+`UObject` -> `IInterface_AssetUserData`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LightingGuid` | `FGuid` | Unique ID for this material, used for caching during distributed lighting |
+| `LODBias` | `int32` | --------------------------------------------------------------------------<br>	--------------------------------------------------------------------------<br>	 A bias to the index of the top mip level to use. |
+| `ExpectedQualityLimit` | `FExpectedQuality` | - |
+| `NumCinematicMipLevels` | `int32` | Number of mip-levels to use for cinematic quality. |
+| `SRGB` | `uint32` | This should be unchecked if using alpha channels individually as masks. |
+| `bNotUsedInUltimateHighQuality` | `uint32` | - |
+| `bNotUsedInHighQuality` | `uint32` | - |
+| `bNotUsedInMediumQuality` | `uint32` | - |
+| `bNotUsedInLowQuality` | `uint32` | - |
+| `NeverStream` | `uint32` | - |
+| `bNoTiling` | `uint32` | If true, the RHI texture will be created using TexCreate_NoTiling |
+| `bUseCinematicMipLevels` | `uint32` | Whether to use the extra cinematic quality mip-levels, when we're forcing mip-levels to be resident. |
+| `AssetUserData` | `TArray < UAssetUserData * >` | Array of user data stored with the asset |
+| `CachedCombinedLODBias` | `int32` | Cached combined group and texture LOD bias to use. |
+| `bAsyncResourceReleaseHasBeenStarted` | `uint32` | Whether the async resource release process has already been kicked off or not |
+| `CompressionSettings` | `TEnumAsByte < enum TextureCompressionSettings >` | Compression settings to use when building the texture. |
+| `Filter` | `TEnumAsByte < enum TextureFilter >` | The texture filtering mode to use when sampling this texture. |
+| `LODGroup` | `TEnumAsByte < enum TextureGroup >` | Texture group this texture belongs to |
+| `CrunchSetting` | `TEnumAsByte < enum ETextureCrunchSetting >` | - |
+| `bOverrideCrunchCompressionAmount` | `uint32` | - |
+| `CrunchCompressionAmount` | `float` | - |
+| `bOverrideBasisCompressionAmount` | `uint32` | - |
+| `BasisSetting` | `TEnumAsByte < enum ETextureBasisSetting >` | - |
+| `BasisCompressionAmount` | `float` | - |
+| `Source` | `FTextureSource` | --------------------------------------------------------------------------<br>	-------------------------------------------------------------------------- |
+| `SourceFilePath_DEPRECATED` | `FString` | - |
+| `AssetImportData` | `UAssetImportData *` | - |
+| `AdjustBrightness` | `float` | Static texture brightness adjustment (scales HSV value.)  (Non-destructive; Requires texture source art to be available.) |
+| `AdjustBrightnessCurve` | `float` | Static texture curve adjustment (raises HSV value to the specified power.)  (Non-destructive; Requires texture source art to be available.) |
+| `AdjustVibrance` | `float` | Static texture "vibrance" adjustment (0 - 1) (HSV saturation algorithm adjustment.)  (Non-destructive; Requires texture source art to be available.) |
+| `AdjustSaturation` | `float` | Static texture saturation adjustment (scales HSV saturation.)  (Non-destructive; Requires texture source art to be available.) |
+| `AdjustRGBCurve` | `float` | Static texture RGB curve adjustment (raises linear-space RGB color to the specified power.)  (Non-destructive; Requires texture source art to be available.) |
+| `AdjustHue` | `float` | Static texture hue adjustment (0 - 360) (offsets HSV hue by value in degrees.)  (Non-destructive; Requires texture source art to be available.) |
+| `AdjustMinAlpha` | `float` | Remaps the alpha to the specified minmax range, defines the new value of 0 (Non-destructive; Requires texture source art to be available.) |
+| `AdjustMaxAlpha` | `float` | Remaps the alpha to the specified minmax range, defines the new value of 1 (Non-destructive; Requires texture source art to be available.) |
+| `CompressionNoAlpha` | `uint32` | If enabled, the texture's alpha channel will be discarded during compression |
+| `CompressionNone` | `uint32` | - |
+| `DeferCompression` | `uint32` | If enabled, defer compression of the texture until save. |
+| `MaxTextureSize` | `int32` | The maximum resolution for generated textures. A value of 0 means the maximum size for the format on each platform, except HDR longlat cubemaps, which default to a resolution of 512. |
+| `MaxTextureSizeHD` | `int32` | - |
+| `MaxTextureSizeWinOB` | `int32` | - |
+| `MaxTextureSizePC` | `int32` | - |
+| `CompressionQuality` | `TEnumAsByte < enum ETextureCompressionQuality >` | The compression quality for generated textures. |
+| `bDitherMipMapAlpha` | `uint32` | When true, the alpha channel of mip-maps and the base image are dithered for smooth LOD transitions. |
+| `AlphaCoverageThresholds` | `FVector4` | Alpha values per channel to compare to when preserving alpha coverage. |
+| `bPreserveBorder` | `uint32` | When true the texture's border will be preserved during mipmap generation. |
+| `bFlipGreenChannel` | `uint32` | When true the texture's green channel will be inverted. This is useful for some normal maps. |
+| `bForcePVRTC4` | `uint32` | For DXT1 textures, setting this will cause the texture to be twice the size, but better looking, on iPhone |
+| `bUseASTCForCookTargetPlatform` | `uint32` | Whether to use astc for cook target platform . |
+| `PowerOfTwoMode` | `TEnumAsByte < enum ETexturePowerOfTwoSetting :: Type >` | How to pad the texture to a power of 2 size (if necessary) |
+| `PaddingColor` | `FColor` | The color used to pad the texture out if it is resized due to PowerOfTwoMode |
+| `bChromaKeyTexture` | `bool` | Whether to chroma key the image, replacing any pixels that match ChromaKeyColor with transparent black |
+| `ChromaKeyThreshold` | `float` | The threshold that components have to match for the texel to be considered equal to the ChromaKeyColor when chroma keying (<=, set to 0 to require a perfect exact match) |
+| `ChromaKeyColor` | `FColor` | The color that will be replaced with transparent black if chroma keying is enabled |
+| `MipGenSettings` | `TEnumAsByte < enum TextureMipGenSettings >` | Per asset specific setting to define the mip-map generation properties like sharpening and kernel size. |
+| `bUseNewFilter_UE4` | `bool` | New Tex Mip Filter  Tex MaxSize Filter from UE5 |
+| `FloodFillByNearestThreshold` | `float` | For masked texture which using alpha channel as the clip value, flood fill background zone RGB values with nearest valid pixels.<br>	  Mask texture should setup this to actual clip value to avoid polluting color in high mip level.<br>	  All pixels has lower alpha value than this threshold will be filled by nearest valid pixel(which has higher value than threshold). Value of 0.0 means no flood fill process at all. |
+| `CompositeTexture` | `UTexture *` | Can be defined to modify the roughness based on the normal map variation (mostly from mip maps).<br>	  MaxAlpha comes in handy to define a base roughness if no source alpha was there.<br>	  Make sure the normal map has at least as many mips as this texture. |
+| `CompositeTextureMode` | `TEnumAsByte < enum ECompositeTextureMode >` | defines how the CompositeTexture is applied, e.g. CTM_RoughnessFromNormalAlpha |
+| `CompositePower` | `float` | default 1, high values result in a stronger effect e.g 1, 2, 4, 8<br>	  this is no slider because the texture update would not be fast enough |
+| `bIsCookingHDTexture` | `bool` | - |
+| `bIsCookingPCTexture` | `bool` | - |
+| `bUseLegacyGamma` | `uint32` | A flag for using the simplified legacy gamma space e.g pow(color,12.2) for converting from FColor to FLinearColor, if we're doing sRGB. |
+| `bKeepSourceDataWhenCookingUGCEditor` | `uint32` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTexture2D.json -->
+
+# UTexture2D
+
+## Inheritance
+
+`UTexture`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `StreamingIndex` | `int32` | FStreamingTexture index used by the texture streaming system. |
+| `LevelIndex` | `int32` | Level scope index of this texture. It is used to reduce the amount of lookup to map a texture to its level index.<br>	  Useful when building texture streaming data, as well as when filling the texture streamer with precomputed data.<br>      It relates to FStreamingTextureBuildInfo::TextureLevelIndex and also the index in ULevel::StreamingTextureGuids. <br>	  Default value of -1, indicates that the texture has an unknown index (not yet processed). At level load time, <br>	  -2 is also used to indicate that the texture has been processed but no entry were found in the level table.<br>	  After any of these processes, the LevelIndex is reset to INDEX_NONE. Making it ready for the next level task. |
+| `FirstResourceMemMip` | `int32` | keep track of first mip level used for ResourceMem creation |
+| `bSuperSamplingMipBiasResponsive` | `uint32` | - |
+| `PerTextureMipBias` | `int32` | - |
+| `bUseForTerrainRVT` | `uint32` | - |
+| `ImportedSize` | `FIntPoint` | The imported size of the texture. Only valid on cooked builds when texture source is not<br>	  available. Access ONLY via the GetImportedSize() accessor! |
+| `ForceMipLevelsToBeResidentTimestamp` | `double` | WorldSettings timestamp that tells the streamer to force all miplevels to be resident up until that time. |
+| `bTemporarilyDisableStreaming` | `bool` | True if streaming is temporarily disabled so we can update subregions of this texture's resource <br>	without streaming clobbering it. Automatically cleared before saving. |
+| `bIsStreamable` | `bool` | Whether the texture is currently streamable or not. |
+| `bHasStreamingUpdatePending` | `uint32` | Whether some mips might be streamed soon. If false, the texture is not planned resolution will be stable. |
+| `bForceMiplevelsToBeResident` | `uint32` | Override whether to fully stream even if texture hasn't been rendered. |
+| `bIgnoreStreamingMipBias` | `uint32` | Ignores the streaming mip bias used to accommodate memory constraints. |
+| `bGlobalForceMipLevelsToBeResident` | `uint32` | Global and serialized version of ForceMiplevelsToBeResident. |
+| `bIsTransient` | `uint32` | - |
+| `AddressX` | `TEnumAsByte < enum TextureAddress >` | The addressing mode to use for the X axis. |
+| `AddressY` | `TEnumAsByte < enum TextureAddress >` | The addressing mode to use for the Y axis. |
+| `NotInlineMipCountOverride` | `uint8` | - |
+| `bTryDownloadWhenSplit` | `bool` | - |
+| `bHasBeenPaintedInEditor` | `uint32` | Whether the texture has been painted in the editor. |
+
+## Functions
+
+### `Blueprint_GetSizeX`
+
+```text
+Blueprint_GetSizeX() -> int32
+```
+
+Gets the X size of the texture, in pixels
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | - |
+
+### `Blueprint_GetSizeY`
+
+```text
+Blueprint_GetSizeY() -> int32
+```
+
+Gets the Y size of the texture, in pixels
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | - |
+
+### `RefreshBulkNotExistsMipCount`
+
+```text
+RefreshBulkNotExistsMipCount() -> ENGINE_API void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UTexture2DArray.json -->
 
 # UTexture2DArray
@@ -2070,8 +5518,8 @@ The user widget is extensible by users through the WidgetBlueprint.
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `ColorAndOpacity` | `FLinearColor` | The color and opacity of this widget.  Tints all child widgets. |
 | `ColorAndOpacityDelegate` | `FGetLinearColor` | - |
+| `ColorAndOpacity` | `FLinearColor` | The color and opacity of this widget.  Tints all child widgets. |
 | `ForegroundColor` | `FSlateColor` | The foreground color of the widget, this is inherited by sub widgets.  Any color property<br>	  that is marked as inherit will use this color. |
 | `ForegroundColorDelegate` | `FGetSlateColor` | - |
 | `Padding` | `FMargin` | The padding area around the content. |
@@ -2222,24 +5670,6 @@ SetOffsetsInViewport(Margin: FMargin) -> void
 |---|---|
 | `void` | - |
 
-### `SetAnchorsInViewport`
-
-```text
-SetAnchorsInViewport(Anchors: FAnchors) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Anchors` | `FAnchors` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
 ### `SetAlignmentInViewport`
 
 ```text
@@ -2251,6 +5681,24 @@ SetAlignmentInViewport(Alignment: FVector2D) -> void
 | Name | Type | Description |
 |---|---|---|
 | `Alignment` | `FVector2D` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAnchorsInViewport`
+
+```text
+SetAnchorsInViewport(Anchors: FAnchors) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Anchors` | `FAnchors` | - |
 
 **Returns**
 
@@ -4128,6 +7576,8 @@ GetMountedWidgetByIndex(MountInfoIndex: int32) -> UWidget *
 | `UnloadDurationTime` | `float` | - |
 | `IsPCUIStyle` | `bool` | - |
 | `UnloadTimerHandle` | `FTimerHandle` | - |
+| `NotUnloadedReportTime` | `float` | - |
+| `NotUnloadedReportTimerHandle` | `FTimerHandle` | - |
 
 ## Language
 
@@ -4151,8 +7601,8 @@ The user widget UI
 | Name | Type/Value | Description |
 |---|---|---|
 | `LayoutDataList` | `TMap < int32 , FMainUILayoutData >` | Widget Main UI. |
-| `WidgetType` | `int32` | - |
 | `WidgetUIBlueprintType` | `TEnumAsByte < EWidgetUIBlueprintType >` | - |
+| `WidgetType` | `int32` | - |
 
 ## Functions
 
@@ -4168,10 +7618,10 @@ ReceiveApply() -> void
 |---|---|
 | `void` | - |
 
-### `ReceiveRevert`
+### `ReceiveCleanup`
 
 ```text
-ReceiveRevert() -> void
+ReceiveCleanup() -> void
 ```
 
 **Returns**
@@ -4180,10 +7630,10 @@ ReceiveRevert() -> void
 |---|---|
 | `void` | - |
 
-### `ReceiveCleanup`
+### `ReceiveRevert`
 
 ```text
-ReceiveCleanup() -> void
+ReceiveRevert() -> void
 ```
 
 **Returns**
@@ -5355,6 +8805,7 @@ This is the base class for all wrapped Slate controls that are exposed to UObjec
 | `bOverride_Cursor` | `uint8` | - |
 | `bIsVolatile` | `uint8` | Engine modify End<br>	<br>	<br>	  If true prevents the widget or its child's geometry or layout information from being cached.  If this widget<br>	  changes every frame, but you want it to still be in an invalidation panel you should make it as volatile<br>	  instead of invalidating it every frame, which would prevent the invalidation panel from actually<br>	  ever caching anything. |
 | `bWriteSceneZBuffer` | `uint8` | - |
+| `bUseAsSOCOccluder` | `uint8` | - |
 | `UsedLayerPolicy` | `uint8` | DrawLayer's policy, 0: default, 1: prevent increasing layer to force batch |
 | `PreservedLayerNum` | `uint8` | - |
 | `FixedLayerPolicy` | `uint8` | DrawLayer's policy, 0: default, 1: Fixed layer to force batch |
@@ -5862,6 +9313,24 @@ SetWriteSceneZBuffer(bInWriteSceneZBuffer: bool) -> void
 | Name | Type | Description |
 |---|---|---|
 | `bInWriteSceneZBuffer` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetUseAsSOCOccluder`
+
+```text
+SetUseAsSOCOccluder(bInUseAsSOCOccluder: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bInUseAsSOCOccluder` | `bool` | - |
 
 **Returns**
 

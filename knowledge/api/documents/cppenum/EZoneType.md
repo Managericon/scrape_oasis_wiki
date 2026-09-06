@@ -26,3 +26,11 @@ api_root: "https://developer.gp.qq.com/api/"
 | `ZoneType_11` | `10` | - |
 | `ZoneType_12` | `11` | - |
 | `ZoneType_13` | `12` | - |
+| `ZoneType_14` | `13` | - |
+| `ZoneType_15` | `14` | - |
+| `ZoneType_16` | `15` | - |
+| `ZoneType_17` | `16` | - |
+| `ZoneType_18` | `17` | - |
+| `ZoneType_19` | `18` | - |
+| `ZoneType_20` | `19` | - |
+| `ZoneType_21` | `20` | - |

@@ -32,9 +32,12 @@ api_root: "https://developer.gp.qq.com/api/"
 | `UGCGameplayTaskSystem.PlayerPawn.ReplaceAnim` | `-` | class Character @角色异步任务: 替换动画 |
 | `UGCGameplayTaskSystem.GenericCharacter` | `-` | class GenericCharacter @GenericCharacter异步任务 |
 | `UGCGameplayTaskSystem.GenericCharacter.ReplaceAnim` | `-` | class ReplaceAnim @GenericCharacter异步任务：替换动画 |
+| `UGCGameplayTaskSystem.GenericCharacter.SetMaterial` | `-` | class SetMaterial @GenericCharacter异步任务：换材质 |
 | `UGCGameplayTaskSystem.Weapon` | `-` | class Weapon @武器异步任务 |
 | `UGCGameplayTaskSystem.Weapon.AutoAim` | `-` | class AutoAim @武器异步任务：自动瞄准 |
 | `UGCGameplayTaskSystem.Weapon.LaunchProjectile` | `-` | class LaunchProjectile @武器异步任务：发射抛体 |
+| `UGCGameplayTaskSystem.PersistEffect` | `-` | class PersistEffect @技能/Buff 相关异步任务 |
+| `UGCGameplayTaskSystem.PersistEffect.ApplyTempPEGroup` | `-` | class ApplyTempPEGroup @PersistEffect异步任务：临时替换一组挂在Slot上的PE |
 
 ## Language
 

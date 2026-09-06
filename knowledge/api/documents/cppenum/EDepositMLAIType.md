@@ -23,4 +23,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `DEPOSIT_WHEN_INFIGHTING` | `7` | - |
 | `DEPOSIT_WHEN_SPAWN_AI` | `8` | - |
 | `DEPOSIT_WHEN_TEAM_AI_SPAWN` | `9` | - |
-| `DEPOSIT_WHEN_NOVICE_AI_SPAWN` | `10` | - |
+| `DEPOSIT_NOVICE_AI` | `10` | - |

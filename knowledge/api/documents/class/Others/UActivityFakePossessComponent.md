@@ -28,7 +28,7 @@ api_root: "https://developer.gp.qq.com/api/"
 ### `FakePossess`
 
 ```text
-FakePossess(PC: AController *) -> bool
+FakePossess(PC: AController *) -> SHADOWTRACKEREXTRA_API bool
 ```
 
 生效范围：S
@@ -44,12 +44,12 @@ FakePossess(PC: AController *) -> bool
 
 | Type | Description |
 |---|---|
-| `bool` | - |
+| `SHADOWTRACKEREXTRA_API bool` | - |
 
 ### `FakeUnPossess`
 
 ```text
-FakeUnPossess(Reason: EUnPossessReason) -> void
+FakeUnPossess(Reason: EUnPossessReason) -> SHADOWTRACKEREXTRA_API void
 ```
 
 生效范围：S
@@ -65,7 +65,7 @@ FakeUnPossess(Reason: EUnPossessReason) -> void
 
 | Type | Description |
 |---|---|
-| `void` | - |
+| `SHADOWTRACKEREXTRA_API void` | - |
 
 ### `FakePossessWithAttach`
 

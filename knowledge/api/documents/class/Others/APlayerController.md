@@ -2634,6 +2634,18 @@ FlushPressedMouseKeys() -> void
 |---|---|
 | `void` | - |
 
+### `FlushPressedMouseKeysImmediate`
+
+```text
+FlushPressedMouseKeysImmediate() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ### `SetAudioListenerOverride`
 
 ```text

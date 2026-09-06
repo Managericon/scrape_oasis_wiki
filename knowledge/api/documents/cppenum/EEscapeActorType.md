@@ -18,4 +18,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `Minecart` | `2` | - |
 | `HardPoint` | `3` | - |
 | `Backup` | `4` | - |
-| `Special` | `5` | - |
+| `WorldBoss` | `5` | - |
+| `MouseBall` | `6` | - |

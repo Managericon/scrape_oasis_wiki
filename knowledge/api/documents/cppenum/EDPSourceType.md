@@ -29,9 +29,11 @@ api_root: "https://developer.gp.qq.com/api/"
 | `DP_ScreenPhysicSize` | `13` | - |
 | `DP_MainBroadInfo` | `14` | - |
 | `DP_GamePlayFlag` | `15` | - |
-| `DP_HDRSupport` | `16` | - |
-| `DP_MapName` | `17` | - |
-| `DP_FrameInterpolation` | `18` | - |
-| `DP_HighFPS` | `19` | - |
-| `DP_PCQualityGrade` | `20` | - |
-| `DP_SRC_MAX` | `21` | - |
+| `DP_GamePlayIsPad` | `16` | - |
+| `DP_HDRSupport` | `17` | - |
+| `DP_MapName` | `18` | - |
+| `DP_FrameInterpolation` | `19` | - |
+| `DP_HighFPS` | `20` | - |
+| `DP_PCQualityGrade` | `21` | - |
+| `DP_RHIName` | `22` | - |
+| `DP_SRC_MAX` | `23` | - |

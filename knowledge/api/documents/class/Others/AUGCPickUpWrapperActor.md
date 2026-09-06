@@ -15,6 +15,15 @@ api_root: "https://developer.gp.qq.com/api/"
 
 `APickUpWrapperActor`
 
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bPickUpWidgetEnable` | `bool` | 是否启用拾取物控件 |
+| `PickUpWidgetClass` | `TSoftClassPtr < UUGCWrapperPositionWidget >` | 拾取物控件蓝图路径 |
+| `PickUpWidgetLocOffset` | `FVector` | 拾取物控件位置偏移 |
+| `PickUpWidgetMaxShowNum` | `int32` | 拾取物控件最大显示个数 |
+
 ## Functions
 
 ### `OnRep_DefineID_BP`
@@ -61,6 +70,64 @@ GetItemCount() -> int32
 | Type | Description |
 |---|---|
 | `int32` | 物品数量 |
+
+### `TryGetBatchedMeshes`
+
+```text
+TryGetBatchedMeshes(InItemID: int32) -> bool
+```
+
+尝试用合批缓存创建并附加组件到拾取物
+	  只在客户端有效（IS_CLIENT）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InItemID` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true=合批命中，已创建组件；false=未命中或关闭，走原逻辑 |
+
+### `SubmitForCaching`
+
+```text
+SubmitForCaching(InItemID: int32, SourceActors: TArray < AActor * > &) -> bool
+```
+
+提交源 Actor 给合批缓存；请求被受理后注册替换回调。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InItemID` | `int32` | - |
+| `SourceActors` | `TArray < AActor * > &` | 当前已附加到拾取物的显示用子Actor |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true=已提交、已去重或等待材质；false=数量不足、请求拒绝或已同步命中缓存并替换 |
+
+### `CanShowPickUpWidget`
+
+```text
+CanShowPickUpWidget() -> bool
+```
+
+拾取物控件是否可见
+	  可重载并自定义
+	  客户端 被调用
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
 
 ## Events
 
@@ -145,6 +212,21 @@ OnUnInitPickupWrapper() -> void
 	  DS & 客户端 被调用
 	 
 	  能通过此事件，实现自定义的反初始化逻辑
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnBatchedMeshesReplaced`
+
+```text
+OnBatchedMeshesReplaced() -> void
+```
+
+合批结果已替换原始子Actor后回调（用于清空 Lua MeshActorList 等）
+	  客户端 被调用
 
 **Returns**
 

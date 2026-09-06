@@ -107,6 +107,7 @@ Actor containing all script accessible world properties.
 | `OriginOfTheRegion` | `FVector` | - |
 | `bEnableObjectPool` | `bool` | - |
 | `LevelReorganizationData` | `UDataAsset *` | - |
+| `bEnableParticleSignificance` | `bool` | - |
 | `bEnableHierarchicalLODSystem` | `uint32` | if set to true, hierarchical LODs will be built, which will create hierarchical LODActors |
 | `HLODSetupAsset` | `TSoftClassPtr < UHierarchicalLODSetup >` | If set overrides the level settings and global project settings |
 | `OverrideBaseMaterial` | `TSoftObjectPtr < UMaterialInterface >` | If set overrides the project-wide base material used for Proxy Materials |

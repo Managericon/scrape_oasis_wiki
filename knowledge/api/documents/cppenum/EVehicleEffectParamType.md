@@ -25,3 +25,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `EVEPT_LocalYawAngularVelocity` | `9` | - |
 | `EVEPT_LocalRollAngularVelocity` | `10` | - |
 | `EVEPT_LocalPitchAngularVelocity` | `11` | - |
+| `EVEPT_LinearSpeedConsiderWheelie` | `12` | - |
+| `EVEPT_LinearSpeedKMHConsiderWheelie` | `13` | - |

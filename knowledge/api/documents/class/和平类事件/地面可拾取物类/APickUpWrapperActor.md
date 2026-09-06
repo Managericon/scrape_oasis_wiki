@@ -15,6 +15,22 @@ api_root: "https://developer.gp.qq.com/api/"
 
 `AUAENetActor` -> `IGeneratorActorInterface` -> `IPickupInterface` -> `IPickupCustomInterface` -> `IObjectPoolInterface` -> `IManagedActorInterface` -> `IDropActorCurveInterface` -> `IDropItemPerformanceInterface` -> `ILuaInterface` -> `IInteractorInterface` -> `IScopeInteractionInterface`
 
+## Functions
+
+### `GetDataList`
+
+```text
+GetDataList() -> TArray < FPickUpItemData >
+```
+
+获取拾取物数据列表
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TArray < FPickUpItemData >` | - |
+
 ## Delegates
 
 ### `UGC_PickUpWrapperHideDelegate`

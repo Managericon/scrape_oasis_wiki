@@ -20,5 +20,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `SimulateCloseType_CarriedValue` | `8` | - |
 | `SimulateCloseType_OutRange` | `16` | - |
 | `SimulateCloseType_Other1` | `32` | - |
-| `SimulateCloseType_Other2` | `48` | - |
-| `SimulateCloseType_Other3` | `64` | - |
+| `SimulateCloseType_Other2` | `64` | - |
+| `SimulateCloseType_Other3` | `128` | - |

@@ -20,8 +20,8 @@ The user widget UI
 | Name | Type/Value | Description |
 |---|---|---|
 | `LayoutDataList` | `TMap < int32 , FMainUILayoutData >` | Widget Main UI. |
-| `WidgetType` | `int32` | - |
 | `WidgetUIBlueprintType` | `TEnumAsByte < EWidgetUIBlueprintType >` | - |
+| `WidgetType` | `int32` | - |
 
 ## Functions
 
@@ -37,10 +37,10 @@ ReceiveApply() -> void
 |---|---|
 | `void` | - |
 
-### `ReceiveRevert`
+### `ReceiveCleanup`
 
 ```text
-ReceiveRevert() -> void
+ReceiveCleanup() -> void
 ```
 
 **Returns**
@@ -49,10 +49,10 @@ ReceiveRevert() -> void
 |---|---|
 | `void` | - |
 
-### `ReceiveCleanup`
+### `ReceiveRevert`
 
 ```text
-ReceiveCleanup() -> void
+ReceiveRevert() -> void
 ```
 
 **Returns**

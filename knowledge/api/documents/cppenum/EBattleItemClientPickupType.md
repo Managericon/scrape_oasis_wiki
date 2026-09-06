@@ -24,3 +24,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `PickupIntoAdditionalBackpack` | `8` | - |
 | `PickupAutoSafetyBox` | `9` | - |
 | `PickupIntoGeekerPocket` | `10` | - |
+| `PickupIntoLTSpecialSafetyBox` | `11` | - |

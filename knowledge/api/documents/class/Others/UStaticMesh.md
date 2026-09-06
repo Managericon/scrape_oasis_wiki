@@ -52,6 +52,7 @@ A StaticMesh is a piece of geometry that consists of a static set of polygons.
 | `CullingScreenSize` | `float` | Culling screen size |
 | `bUseScreenSizeModifier` | `bool` | - |
 | `ScreenSizeCullingRoughDistance` | `float` | Rough Distance of Screen size Culling |
+| `bSupportCustomLODDistanceScale` | `bool` | - |
 | `bIsGrass` | `bool` | grass flag, we need this special flag since grasses are so important in pubg game |
 | `bIsTree` | `bool` | - |
 | `bStripComplexCollisionForConsole_DEPRECATED` | `uint32` | If true, strips unwanted complex collision data aka kDOP tree when cooking for consoles.<br>		On the Playstation 3 data of this mesh will be stored in video memory. |
@@ -135,6 +136,18 @@ GetAllSectionTexelDensities() -> ENGINE_API TArray < FSectionTexelDensity >
 | Type | Description |
 |---|---|
 | `ENGINE_API TArray < FSectionTexelDensity >` | - |
+
+### `RefreshBulkNotExistsLODCount`
+
+```text
+RefreshBulkNotExistsLODCount() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
 
 ### `GetNumLODs`
 

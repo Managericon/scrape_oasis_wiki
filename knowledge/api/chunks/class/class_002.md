@@ -6,6 +6,669 @@ category: "API Wiki/class"
 kind: "api_chunk"
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E5%95%86%E4%B8%9A%E5%8C%96%E4%B8%8E%E5%8A%9F%E8%83%BD%E6%A8%A1%E6%9D%BF/TaskPlayerComponent.json -->
+
+# TaskPlayerComponent
+
+UGC任务系统玩家组件
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `TaskPlayerComponent.OnTaskLineAwardInfoChangeDelegate` | `-` | 生效范围：客户端<br>任务线奖励状态变更回调<br>@param TaskLineName string @任务线名称<br>@param Index number @奖励索引 |
+| `TaskPlayerComponent.OnTaskInfoChangeDelegate` | `-` | 生效范围：客户端<br>任务数据变更回调<br>@param Index UGCTaskIndex @榜单周期 |
+| `TaskPlayerComponent.OnTaskLineProgressChangeDelegate` | `-` | 生效范围：客户端&服务端<br>任务线进度变更回调<br>@param TaskLineName string @任务线名称 |
+
+## Functions
+
+### `ResetPercentTaskLine`
+
+```text
+ResetPercentTaskLine(TaskLineName: string)
+```
+
+重置活跃任务线
+生效范围：服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+
+### `ClaimLevelTaskAward`
+
+```text
+ClaimLevelTaskAward(TaskLineName: string, LevelIndex: number, TaskIndex: number)
+```
+
+领取成长任务奖励
+生效范围：客户端&&服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+| `LevelIndex` | `number` | - |
+| `TaskIndex` | `number` | - |
+
+### `ClaimPercentTaskAward`
+
+```text
+ClaimPercentTaskAward(TaskLineName: string, TaskIndex: number)
+```
+
+领取活跃任务奖励
+生效范围：客户端&&服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+| `TaskIndex` | `number` | - |
+
+### `GetTaskLineProgress`
+
+```text
+GetTaskLineProgress(TaskLineName: string) -> number
+```
+
+获取任务线进度
+生效范围：客户端&&服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | - |
+
+### `GetLevelTaskInfoList`
+
+```text
+GetLevelTaskInfoList(TaskLineName: string) -> FUGCLevelTaskPlayerData[]
+```
+
+获取成长任务线的任务信息列表
+生效范围：客户端&&服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FUGCLevelTaskPlayerData[]` | - |
+
+### `GetPercentTaskInfoList`
+
+```text
+GetPercentTaskInfoList(TaskLineName: string) -> FUGCTaskInfo[]
+```
+
+获取活跃任务线的任务信息列表
+生效范围：客户端&&服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FUGCTaskInfo[]` | - |
+
+### `GetPercentTaskLineAwardStateList`
+
+```text
+GetPercentTaskLineAwardStateList(TaskLineName: string) -> table
+```
+
+获取活跃任务线的奖励状态列表
+生效范围：客户端&&服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `table` | - |
+
+### `GetTaskLineAwardState`
+
+```text
+GetTaskLineAwardState(TaskLineName: string, Index: number) -> EUGCTaskLineAwardState
+```
+
+获取任务线奖励状态
+生效范围：客户端&&服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+| `Index` | `number` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EUGCTaskLineAwardState` | - |
+
+### `ClaimAllAward`
+
+```text
+ClaimAllAward(TaskLineName: string)
+```
+
+领取任务线的全部奖励
+生效范围：客户端&&服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+
+### `ClaimTaskLineAward`
+
+```text
+ClaimTaskLineAward(TaskLineName: string, Index: number)
+```
+
+领取任务线奖励
+生效范围：客户端&&服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+| `Index` | `number` | - |
+
+### `SetTaskLineProgress`
+
+```text
+SetTaskLineProgress(TaskLineName: string, Progress: number)
+```
+
+设置任务线进度
+生效范围：服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+| `Progress` | `number` | - |
+
+### `GetPercentTaskProgress`
+
+```text
+GetPercentTaskProgress(TaskLineName: string, Index: number) -> number
+```
+
+获取活跃任务进度
+生效范围：客户端&&服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+| `Index` | `number` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | - |
+
+### `GetPercentTaskState`
+
+```text
+GetPercentTaskState(TaskLineName: string, Index: number) -> EUGCTaskState
+```
+
+获取活跃任务状态
+生效范围：客户端&&服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+| `Index` | `number` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EUGCTaskState` | - |
+
+### `GetLevelTaskProgress`
+
+```text
+GetLevelTaskProgress(TaskLineName: string, LevelIndex: number, TaskIndex: number) -> number
+```
+
+获取成长任务进度
+生效范围：客户端&&服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+| `LevelIndex` | `number` | - |
+| `TaskIndex` | `number` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | - |
+
+### `GetLevelTaskState`
+
+```text
+GetLevelTaskState(TaskLineName: string, LevelIndex: number, TaskIndex: number) -> EUGCTaskState
+```
+
+获取成长任务状态
+生效范围：客户端&&服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+| `LevelIndex` | `number` | - |
+| `TaskIndex` | `number` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EUGCTaskState` | - |
+
+### `GetTaskManager`
+
+```text
+GetTaskManager() -> TaskManager
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TaskManager` | - |
+
+### `SetTaskLineTime`
+
+```text
+SetTaskLineTime(TaskLineName: string, BeginTime: number, EndTime: number)
+```
+
+设置任务线和任务线下所有任务的开始/结束时间
+生效范围：客户端&&服务端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TaskLineName` | `string` | - |
+| `BeginTime` | `number` | - |
+| `EndTime` | `number` | - |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/TeamRecruitGlobalActor.json -->
+
+# TeamRecruitGlobalActor
+
+组队招募全局管理器
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/TeamRecruitPlayerComponent.json -->
+
+# TeamRecruitPlayerComponent
+
+组队招募玩家组件
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `TeamRecruitPlayerComponent.OnPublishRecruitSuccessDelegate` | `-` | 招募发布成功通知<br>生效范围：客户端 |
+| `TeamRecruitPlayerComponent.OnRecruitWithdrawnOrExpiredDelegate` | `-` | 招募被撤回或过期通知<br>生效范围：客户端 |
+| `TeamRecruitPlayerComponent.OnQueryRecruitListResultDelegate` | `-` | 招募列表查询结果通知<br>生效范围：客户端<br>@param Recruits FRecruitInfo[]\|nil @招募信息数组，查询失败时为 nil |
+
+## Functions
+
+### `PublishRecruit`
+
+```text
+PublishRecruit(DeclarationIndex: number, TargetIndex: number, IsGlobalScope: boolean)
+```
+
+发布招募，30 秒冷却
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `DeclarationIndex` | `number` | 宣言文案序号（1~6） |
+| `TargetIndex` | `number` | 队伍目标文案序号（1~6） |
+| `IsGlobalScope` | `boolean` | 招募范围，false=本局，true=全局 |
+
+### `WithdrawRecruit`
+
+```text
+WithdrawRecruit()
+```
+
+撤回招募
+生效范围：客户端
+
+### `QueryRecruitList`
+
+```text
+QueryRecruitList(IsGlobalScope: boolean, TargetIndex: number)
+```
+
+请求刷新招募列表，5 秒冷却
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `IsGlobalScope` | `boolean` | 招募范围筛选，false=本局，true=全局 |
+| `TargetIndex` | `number` | 队伍目标文案序号（1~6） |
+
+### `JoinRecruitedTeam`
+
+```text
+JoinRecruitedTeam(RecruitID: string)
+```
+
+申请加入招募队伍，5 秒冷却
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `RecruitID` | `string` | 目标招募 ID |
+
+### `CanPublishRecruit`
+
+```text
+CanPublishRecruit() -> boolean, number
+```
+
+查询是否可发布招募（用于按钮灰显与倒计时显示）
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否可立即操作 |
+| `number` | 剩余冷却秒数 |
+
+### `CanRefreshList`
+
+```text
+CanRefreshList() -> boolean, number
+```
+
+查询是否可刷新招募列表（用于按钮灰显与倒计时显示）
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否可立即操作 |
+| `number` | 剩余冷却秒数 |
+
+### `CanJoinTeam`
+
+```text
+CanJoinTeam() -> boolean, number
+```
+
+查询是否可申请入队（用于按钮灰显与倒计时显示）
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否可立即操作 |
+| `number` | 剩余冷却秒数 |
+
+### `IsRecruiting`
+
+```text
+IsRecruiting() -> boolean
+```
+
+查询当前所在局内玩法队伍是否正处于招募状态
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否处于招募状态 |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UActivityFakePossessComponent.json -->
+
+# UActivityFakePossessComponent
+
+能够将这个Actor的控制权传递给玩家的组件
+
+## Inheritance
+
+`UActorComponent` -> `IFakePossessInterface`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `OnPossess` | `FFakePossesserChangeDelegate` | 获取控制权事件事件委托<br>	 @param PC 获取到这个Actor控制权的PC |
+| `OnUnPossess` | `FFakePossesserChangeDelegate` | 解除控制权事件委托<br>	 @param PC 解除这个Actor控制权的PC |
+| `OnUnPossessWithReason` | `FFakeUnPossessDelegate` | 解除控制权事件委托<br>	 @param PC 解除这个Actor控制权的PC<br>	 @param Reason 解除控制权的原因 |
+
+## Functions
+
+### `FakePossess`
+
+```text
+FakePossess(PC: AController *) -> SHADOWTRACKEREXTRA_API bool
+```
+
+生效范围：S
+	  让一个PlayerController控制这个Actor
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PC` | `AController *` | 获得控制权的PlayerController |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `SHADOWTRACKEREXTRA_API bool` | - |
+
+### `FakeUnPossess`
+
+```text
+FakeUnPossess(Reason: EUnPossessReason) -> SHADOWTRACKEREXTRA_API void
+```
+
+生效范围：S
+	  解除这个Actor上的PC的控制权
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Reason` | `EUnPossessReason` | 解除控制权的原因 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `SHADOWTRACKEREXTRA_API void` | - |
+
+### `FakePossessWithAttach`
+
+```text
+FakePossessWithAttach(PC: AController *, AttachScene: USceneComponent *, SocketName: FName, bMulticastToClient: bool) -> bool
+```
+
+生效范围：S
+	  让一个PlayerController控制这个Actor，并将当前控制的角色Attach到这个Actor上
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PC` | `AController *` | 获得控制权的PlayerController |
+| `AttachScene` | `USceneComponent *` | Attach到的组件 |
+| `SocketName` | `FName` | Attach到的Socket |
+| `bMulticastToClient` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `FakeUnPossessWithDettach`
+
+```text
+FakeUnPossessWithDettach(Reason: EUnPossessReason) -> void
+```
+
+生效范围：S
+	  解除这个Actor上的PC的控制权，并将角色从这个Actor上Detach
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Reason` | `EUnPossessReason` | 解除控制权的原因 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `CanBePossess`
+
+```text
+CanBePossess(Character: ASTExtraBaseCharacter *) -> bool
+```
+
+生效范围：S
+	  获取是否可以由这个Character控制当前Actor
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Character` | `ASTExtraBaseCharacter *` | 要检查的Character |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UActorChannel.json -->
+
+# UActorChannel
+
+A channel for exchanging actor and its subobject's properties and RPCs. ActorChannel manages the creation and lifetime of a replicated actor. Actual replication of properties and RPCs actually happens in FObjectReplicator now (see DataReplication.h). An ActorChannel bunch looks like this: |----------------------|---------------------------------------------------------------------------| | SpawnInfo | (Spawn Info) Initial bunch only | | -Actor Class | -Created by ActorChannel | | -Spawn LocRot | | | NetGUID assigns | | | -Actor NetGUID | | | -Component NetGUIDs | | |----------------------|---------------------------------------------------------------------------| | | | |----------------------|---------------------------------------------------------------------------| | NetGUID ObjRef | (Content chunks) x number of replicating objects (Actor + any components) | | | -Each chunk created by its own FObjectReplicator instance. | |----------------------|---------------------------------------------------------------------------| | | | | Properties... | | | | | | RPCs... | | | | | |----------------------|---------------------------------------------------------------------------| |  | | |----------------------|---------------------------------------------------------------------------|
+
+## Inheritance
+
+`UChannel`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Actor` | `AActor *` | - |
+| `ActorName` | `FName` | - |
+| `ActorStaticTag` | `uint64` | - |
+| `bPausedUntilSubObjectReliableACK` | `bool` | - |
+| `ServerScondsSinceWhenPauseReplicateForSubObjectAddOrRemove` | `float` | - |
+| `ServerScondsFirstReplicateSinceWhenPauseReplicateForSubObjectAddOrRemove` | `float` | - |
+| `LastWarningTimeForPauseTooLong_SinceWhenPauseReplicateForSubObjectAddOrRemove` | `float` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UActorComponent.json -->
 
 # UActorComponent
@@ -2463,6 +3126,7 @@ An Anim Blueprint is essentially a specialized Blueprint whose graphs control th
 | `SyncGroupNames` | `TArray < FName >` | - |
 | `bFMPrecomputeDone` | `bool` | 预计算标记：编辑器编译蓝图时（PostCompile）扫描并写入，打包后序列化到.uasset，<br>	   运行时加载后直接读取正确值，无需再次扫描。<br>	   编辑器未编译时为false，懒初始化逻辑会在首次CollectFunctionModule时兜底扫描。 |
 | `bHasAnyFunctionModule` | `bool` | 预计算缓存：该动画蓝图类（含父类继承链）是否含有任何FunctionModule属性。<br>	   仅在bFMPrecomputeDone为true时有效。打包后序列化到.uasset，运行时直接使用。 |
+| `AnimBlueprintP4Revision` | `int32` | 打包构建时（Cook 阶段）写入的 P4 文件修订版本号。<br>	   由 Cook 钩子通过 ISourceControlModule 查询并写入，打包客户端可直接读取。<br>	   -1 表示未写入（编辑器本地编译或旧版本资产）。<br>	   用于回放加载时检测录制时的蓝图版本与当前编辑器版本是否一致。 |
 
 ## Language
 
@@ -2593,8 +3257,8 @@ An Anim Blueprint is essentially a specialized Blueprint whose graphs control th
 | `MaxScaleDiffBitwise` | `float` | Maximum position difference to use when testing if an animation key may be removed. Lower values retain more keys, but yield less compression. |
 | `AllowedRotationFormats` | `TArray < TEnumAsByte < enum AnimationCompressionFormat > >` | Which encoding formats is the per-track compressor allowed to try on rotation keys |
 | `AllowedTranslationFormats` | `TArray < TEnumAsByte < enum AnimationCompressionFormat > >` | Which encoding formats is the per-track compressor allowed to try on translation keys |
-| `bResampleAnimation` | `uint32` | If true, resample the animation to ResampleFramerate frames per second |
 | `AllowedScaleFormats` | `TArray < TEnumAsByte < enum AnimationCompressionFormat > >` | Which encoding formats is the per-track compressor allowed to try on scale keys |
+| `bResampleAnimation` | `uint32` | If true, resample the animation to ResampleFramerate frames per second |
 | `ResampledFramerate` | `float` | When bResampleAnimation is true, this defines the desired framerate |
 | `MinKeysForResampling` | `int32` | Animations with fewer keys than MinKeysForResampling will not be resampled. |
 | `bUseAdaptiveError` | `uint32` | If true, adjust the error thresholds based on the 'height' within the skeleton |
@@ -5637,6 +6301,7 @@ Called when all Montage instances have ended.
 | Name | Type/Value | Description |
 |---|---|---|
 | `Enable` | `bool` | - |
+| `StopDelay` | `float` | - |
 
 ## Functions
 
@@ -5677,29 +6342,46 @@ CheckCondition(AnimInstance: UAnimInstance *, DeltaTime: float) -> bool
 |---|---|
 | `bool` | - |
 
-### `NeedUpdate`
+### `OnInit`
 
 ```text
-NeedUpdate(AnimInstance: UAnimInstance *, DeltaTime: float) -> bool
+OnInit(OwnerInstance: UAnimInstance *) -> void
 ```
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `AnimInstance` | `UAnimInstance *` | - |
-| `DeltaTime` | `float` | - |
+| `OwnerInstance` | `UAnimInstance *` | - |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `bool` | - |
+| `void` | - |
 
-### `NeedUpdate_Internal`
+### `OnUninit`
 
 ```text
-NeedUpdate_Internal(AnimInstance: UAnimInstance *, DeltaTime: float) -> bool
+OnUninit(OwnerInstance: UAnimInstance *) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `OwnerInstance` | `UAnimInstance *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `NeedUpdate`
+
+```text
+NeedUpdate(AnimInstance: UAnimInstance *, DeltaTime: float) -> bool
 ```
 
 **Parameters**
@@ -5904,6 +6586,7 @@ Received_Notify(MeshComp: USkeletalMeshComponent *, Animation: UAnimSequenceBase
 | `Scale` | `FVector` | - |
 | `bPlayOnce` | `bool` | - |
 | `bDestroyAtEnd` | `bool` | - |
+| `DestroyAtEndTag` | `FName` | - |
 | `SimulatedActivationOfQualityLevel` | `int32` | - |
 | `PSCInstace` | `TWeakObjectPtr < UParticleSystemComponent >` | - |
 | `Attached` | `uint32` | - |
@@ -9202,6 +9885,54 @@ CheckInitPersistCompleted() -> bool
 |---|---|
 | `bool` | - |
 
+### `DisplayBackpackTipsV2`
+
+```text
+DisplayBackpackTipsV2(TipKey: FString &, ItemDefineID: FItemDefineID &, Count: int32, Reason: EUGCCommonItemReason) -> void
+```
+
+弹出背包Tips，不保证触发时实例数据一致，如需数据请手动传入
+	  Server、Client
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TipKey` | `FString &` | 用于匹配 BackpackTipsConfig 中配置的 Tips Key |
+| `ItemDefineID` | `FItemDefineID &` | 要展示 Tips 的物品 DefineID |
+| `Count` | `int32` | 物品数量，默认为 0 |
+| `Reason` | `EUGCCommonItemReason` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ShouldDisplayBackpackTipsV2`
+
+```text
+ShouldDisplayBackpackTipsV2(TipKey: FString &, ItemDefineID: FItemDefineID &, Count: int32, Reason: EUGCCommonItemReason) -> bool
+```
+
+是否应弹出该 Tips
+	  Server、Client
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TipKey` | `FString &` | 用于匹配 BackpackTipsConfig 中配置的 Tips Key |
+| `ItemDefineID` | `FItemDefineID &` | 要判断的物品 DefineID |
+| `Count` | `int32` | 物品数量，默认为 0 |
+| `Reason` | `EUGCCommonItemReason` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true				应弹 Tips；false 不应弹 |
+
 ## Events
 
 ### `CanAddItemV2`
@@ -9222,7 +9953,7 @@ CanAddItemV2(ItemID: int32, Count: int32) -> int32
 
 | Name | Type | Description |
 |---|---|---|
-| `ItemID` | `int32` | 物品ID |
+| `ItemID` | `int32` | - |
 | `Count` | `int32` | 需要添加的物品数量 |
 
 **Returns**
@@ -21511,819 +22242,6 @@ Represents a secondary split screen connection that reroutes calls to the parent
 | `ManagerRuleNames` | `TArray < FString >` | - |
 | `bUpdateManagerRulesWhenSaved` | `bool` | - |
 | `bForceReloadManagerRule` | `bool` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCineCameraComponent.json -->
-
-# UCineCameraComponent
-
-A specialized version of a camera component, geared toward cinematic usage.
-
-## Inheritance
-
-`UCameraComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `FilmbackSettings` | `FCameraFilmbackSettings` | Controls the filmback of the camera. |
-| `LensSettings` | `FCameraLensSettings` | Controls the camera's lens. |
-| `FocusSettings` | `FCameraFocusSettings` | Controls the camera's focus. |
-| `CurrentFocalLength` | `float` | Current focal length of the camera (i.e. controls FoV, zoom) |
-| `CurrentAperture` | `float` | Current aperture, in terms of f-stop (e.g. 2.8 for f2.8) |
-| `CurrentFocusDistance` | `float` | Read-only. Control this value via FocusSettings. |
-| `FilmbackPresets` | `TArray < FNamedFilmbackPreset >` | List of available filmback presets |
-| `LensPresets` | `TArray < FNamedLensPreset >` | List of available lens presets |
-| `DefaultFilmbackPresetName` | `FString` | Name of the default filmback preset |
-| `DefaultLensPresetName` | `FString` | Name of the default lens preset |
-| `DefaultLensFocalLength` | `float` | Default focal length (will be constrained by default lens) |
-| `DefaultLensFStop` | `float` | Default aperture (will be constrained by default lens) |
-
-## Functions
-
-### `GetHorizontalFieldOfView`
-
-```text
-GetHorizontalFieldOfView() -> float
-```
-
-Returns the horizonal FOV of the camera with current settings.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetVerticalFieldOfView`
-
-```text
-GetVerticalFieldOfView() -> float
-```
-
-Returns the vertical FOV of the camera with current settings.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetFilmbackPresetName`
-
-```text
-GetFilmbackPresetName() -> FString
-```
-
-Returns the filmback name of the camera with the current settings.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FString` | - |
-
-### `SetFilmbackPresetByName`
-
-```text
-SetFilmbackPresetByName(InPresetName: FString &) -> void
-```
-
-Set the current preset settings by preset name.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InPresetName` | `FString &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetLensPresetName`
-
-```text
-GetLensPresetName() -> FString
-```
-
-Returns the lens name of the camera with the current settings.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FString` | - |
-
-### `SetLensPresetByName`
-
-```text
-SetLensPresetByName(InPresetName: FString &) -> void
-```
-
-Set the current lens settings by preset name.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InPresetName` | `FString &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCircularThrobber.json -->
-
-# UCircularThrobber
-
-A throbber widget that orients images in a spinning circle.
-  
-   No Children
-   Spinner Progress
-
-## Inheritance
-
-`UWidget`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `NumberOfPieces` | `int32` | How many pieces there are |
-| `Period` | `float` | The amount of time for a full circle (in seconds) |
-| `Radius` | `float` | The radius of the circle. If the throbber is a child of Canvas Panel, the 'Size to Content' option must be enabled in order to set Radius. |
-| `PieceImage_DEPRECATED` | `USlateBrushAsset *` | Image to use for each segment of the throbber |
-| `Image` | `FSlateBrush` | - |
-| `bEnableRadius` | `bool` | - |
-
-## Functions
-
-### `SetNumberOfPieces`
-
-```text
-SetNumberOfPieces(InNumberOfPieces: int32) -> void
-```
-
-Sets how many pieces there are.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InNumberOfPieces` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetPeriod`
-
-```text
-SetPeriod(InPeriod: float) -> void
-```
-
-Sets the amount of time for a full circle (in seconds).
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InPeriod` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetRadius`
-
-```text
-SetRadius(InRadius: float) -> void
-```
-
-Sets the radius of the circle.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InRadius` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UClickActorComponentBase.json -->
-
-# UClickActorComponentBase
-
-一个提供给按钮使用的组件，用于实现靠近显示按钮的逻辑
-
-## Inheritance
-
-`UActorComponent` -> `IRegionObjectInterface` -> `IObjectPoolInterface` -> `IInteractorInterface`
-
-## Functions
-
-### `HandleEnable`
-
-```text
-HandleEnable() -> void
-```
-
-生效范围：S
-	  激活组件功能
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `HandleDisable`
-
-```text
-HandleDisable() -> void
-```
-
-生效范围：S
-	  停止组件功能
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UClipmapGenerateConfig.json -->
-
-# UClipmapGenerateConfig
-
-## Inheritance
-
-`UDataAsset`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `TargetTexture` | `UTexture2D *` | - |
-| `TargetClipmapTexture` | `UClipmapTexture *` | - |
-| `ClipmapWetnessConfig` | `FClipmapWetness` | - |
-| `FoliageHealthAndAbsorptionConfig` | `FClipmapFoliageHealthAndAbsorption` | - |
-| `LandscapeTintConfig` | `FClipmapLandscapeTint` | - |
-| `BurshTintNum` | `int32` | - |
-| `WeightBitsNum` | `int32` | - |
-| `WeightMax` | `int32` | - |
-
-## Functions
-
-### `GenerateGChannel`
-
-```text
-GenerateGChannel() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GenerateBAChannel`
-
-```text
-GenerateBAChannel() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GenerateCustomMips`
-
-```text
-GenerateCustomMips() -> void
-```
-
-统一的Mip后处理入口：先让引擎生成标准Mip，再后处理R通道(Max降采样)，可选BA通道(众数)
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UClipmapTexture.json -->
-
-# UClipmapTexture
-
-Runtime virtual texture UObject
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bSkipOneMip` | `bool` | - |
-| `DisFirstMip` | `float` | - |
-| `bUsePointSample` | `bool` | - |
-| `bUseBorder` | `bool` | - |
-| `TileSize` | `int32` | - |
-| `FirstMipImageSize` | `int32` | - |
-| `NumTile` | `int32` | - |
-| `bUseCompressType` | `bool` | - |
-| `NormalSetting` | `FClipmapSetting` | - |
-| `CompressSetting` | `TMap < FString , FClipmapSetting >` | - |
-| `bsRGB` | `bool` | - |
-| `FileDDCPath` | `FString` | - |
-| `ClipmapInfos` | `FClipmapInfos` | - |
-| `CompressInfos` | `TMap < FString , FClipmapInfos >` | - |
-| `DebugName` | `FString` | - |
-| `HashNum` | `uint32` | - |
-| `Owner` | `UClipmapTextureComponent *` | - |
-| `OriginTexture` | `UTexture2D *` | - |
-| `TargetTexture` | `TSoftObjectPtr < UTexture2D >` | - |
-
-## Functions
-
-### `CreateClipmapTargetTexture`
-
-```text
-CreateClipmapTargetTexture() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UClipmapTextureComponent.json -->
-
-# UClipmapTextureComponent
-
-Component used to place a URuntimeVirtualTexture in the world.
-
-## Inheritance
-
-`USceneComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ClipmapTexture` | `UClipmapTexture *` | - |
-| `bUseForCDLODMatID` | `bool` | - |
-| `BoundsSourceActor` | `AActor *` | Actor to copy the bounds from to set up the transform. |
-| `MipToDis` | `TMap < int32 , float >` | - |
-| `ClipmapInfo` | `FVector4` | - |
-
-## Functions
-
-### `SetTransformToBounds`
-
-```text
-SetTransformToBounds() -> void
-```
-
-Set this component transform to include the BoundsSourceActor bounds. Called by our UI details customization.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `RefreshClipmapInfo`
-
-```text
-RefreshClipmapInfo() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UClothingAsset.json -->
-
-# UClothingAsset
-
-## Inheritance
-
-`UClothingAssetBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PhysicsAsset` | `UPhysicsAsset *` | - |
-| `ClothConfig` | `FClothConfig` | - |
-| `LodData` | `TArray < FClothLODData >` | - |
-| `LodMap` | `TArray < int32 >` | - |
-| `UsedBoneNames` | `TArray < FName >` | - |
-| `UsedBoneIndices` | `TArray < int32 >` | - |
-| `ReferenceBoneIndex` | `int32` | - |
-| `CustomData` | `UClothingAssetCustomData *` | Custom data applied by the importer depending on where the asset was imported from |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UClothingAssetBase.json -->
-
-# UClothingAssetBase
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ImportedFilePath` | `FString` | - |
-| `AssetGuid` | `FGuid` | Guid to identify this asset. Will be embedded into chunks that are created using this asset |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCloudStorageBase.json -->
-
-# UCloudStorageBase
-
-Base class for the various platform interface classes.
-
-## Inheritance
-
-`UPlatformInterfaceBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `LocalCloudFiles` | `TArray < FString >` | When using local storage (aka "cloud emulation"), this maintains a list of the file paths. |
-| `bSuppressDelegateCalls` | `uint32` | If true, delegate callbacks should be skipped. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCollisionProfile.json -->
-
-# UCollisionProfile
-
-Set up and modify collision settings.
-
-## Inheritance
-
-`UDeveloperSettings`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Profiles` | `TArray < FCollisionResponseTemplate >` | - |
-| `DefaultChannelResponses` | `TArray < FCustomChannelSetup >` | - |
-| `EditProfiles` | `TArray < FCustomProfile >` | - |
-| `ProfileRedirects` | `TArray < FRedirector >` | - |
-| `CollisionChannelRedirects` | `TArray < FRedirector >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UColorBinding.json -->
-
-# UColorBinding
-
-## Inheritance
-
-`UPropertyBinding`
-
-## Functions
-
-### `GetSlateValue`
-
-```text
-GetSlateValue() -> FSlateColor
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FSlateColor` | - |
-
-### `GetLinearValue`
-
-```text
-GetLinearValue() -> FLinearColor
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FLinearColor` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UColorGradient.json -->
-
-# UColorGradient
-
-## Inheritance
-
-`UWidget`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ColorRGBs` | `TArray < FColorGradientCellInfo >` | - |
-
-## Functions
-
-### `GetNum`
-
-```text
-GetNum() -> int32
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | - |
-
-### `GetCellByIndex`
-
-```text
-GetCellByIndex(Idx: int, OutPercent: float &, OutColorRGB: FLinearColor &) -> bool
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Idx` | `int` | - |
-| `OutPercent` | `float &` | - |
-| `OutColorRGB` | `FLinearColor &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `FindIndexByPercent`
-
-```text
-FindIndexByPercent(InPercent: float) -> int32
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InPercent` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | - |
-
-### `SetDatas`
-
-```text
-SetDatas(datas: TArray < FColorGradientCellInfo > &) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `datas` | `TArray < FColorGradientCellInfo > &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Delegates
-
-### `ColorRGBsDelegate`
-
-```text
-ColorRGBsDelegate() -> TArray<FColorGradientCellInfo>
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `TArray` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UColorGradientSlider.json -->
-
-# UColorGradientSlider
-
-## Inheritance
-
-`UColorGradient`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SliderStyle` | `FSliderStyle` | - |
-| `BarFrameNormal` | `FSlateBrush` | - |
-| `BarFrameSelect` | `FSlateBrush` | - |
-| `DefaultSelectIndex` | `int32` | - |
-| `CurSelectIndex` | `int32` | - |
-
-## Functions
-
-### `GetCurSelectIndex`
-
-```text
-GetCurSelectIndex() -> int32
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | - |
-
-### `SetCurSelectIndex`
-
-```text
-SetCurSelectIndex(Idx: int32) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Idx` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetDatas`
-
-```text
-SetDatas(datas: TArray < FColorGradientCellInfo > &) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `datas` | `TArray < FColorGradientCellInfo > &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Delegates
-
-### `OnPercentChanged`
-
-```text
-OnPercentChanged(Idx: int32, InPercent: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Idx` | `int32` | - |
-| `InPercent` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnChildSelected`
-
-```text
-OnChildSelected(Idx: int32) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Idx` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
 
 ## Language
 

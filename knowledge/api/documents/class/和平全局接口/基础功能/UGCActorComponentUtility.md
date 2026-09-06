@@ -502,6 +502,199 @@ GetActorByActorInstancePath(InstancePath: string) -> AActor
 |---|---|
 | `AActor` | Actor实例 |
 
+### `SetActorTickEnabled`
+
+```text
+SetActorTickEnabled(Actor: AActor, bEnabled: boolean)
+```
+
+启用或禁用 Actor 的 Tick
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+| `bEnabled` | `boolean` | 是否启用 Tick |
+
+### `IsActorTickEnabled`
+
+```text
+IsActorTickEnabled(Actor: AActor) -> @Tick
+```
+
+查询 Actor 的 Tick 是否启用
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `@Tick` | 是否启用 |
+
+### `SetActorLocation`
+
+```text
+SetActorLocation(Actor: AActor, Location: Vector)
+```
+
+设置 Actor 的世界坐标位置
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+| `Location` | `Vector` | 新坐标位置 |
+
+### `GetActorLocation`
+
+```text
+GetActorLocation(Actor: AActor) -> Vector
+```
+
+获取 Actor 的世界坐标位置
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Vector` | 当前位置 |
+
+### `SetActorRotation`
+
+```text
+SetActorRotation(Rotation: Rotator)
+```
+
+设置 Actor 的世界旋转
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Rotation` | `Rotator` | 新旋转角度 |
+
+### `GetActorRotation`
+
+```text
+GetActorRotation() -> Rotator
+```
+
+获取 Actor 的世界旋转
+生效范围：服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Rotator` | 当前旋转 |
+
+### `SetActorScale`
+
+```text
+SetActorScale(Actor: AActor, Scale: Vector)
+```
+
+设置 Actor 的缩放
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+| `Scale` | `Vector` | 新的缩放值 |
+
+### `GetActorScale`
+
+```text
+GetActorScale() -> Vector
+```
+
+获取 Actor 的缩放
+生效范围：服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Vector` | 当前缩放 |
+
+### `SetActorVisible`
+
+```text
+SetActorVisible(Actor: AActor, bVisible: boolean)
+```
+
+设置 Actor 的可见性
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+| `bVisible` | `boolean` | 是否可见 |
+
+### `IsActorVisible`
+
+```text
+IsActorVisible(Actor: AActor) -> boolean
+```
+
+查询 Actor 当前是否可见
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否可见 |
+
+### `GetComponentOwner`
+
+```text
+GetComponentOwner(Component: UComponent) -> AActor
+```
+
+获取组件所属的 Actor
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UComponent` | 任意组件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor` | 所属 Actor |
+
 ## Language
 
 `lua`

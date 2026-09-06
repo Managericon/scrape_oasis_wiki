@@ -214,7 +214,7 @@ Resume() -> void
 OverwriteBuffUIInfo(BuffName: FName &, BuffDetail: FString &, BuffIconPath: FString &) -> void
 ```
 
-生效范围：服务器&客户端
+生效范围：客户端
 	  更改UI信息，但双端不同步
 
 **Parameters**

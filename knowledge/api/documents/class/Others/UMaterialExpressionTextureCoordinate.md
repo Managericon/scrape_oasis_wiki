@@ -22,6 +22,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `VTiling` | `float` | Controls how much the texture tiles vertically, by scaling the V component of the vertex UVs by the specified amount. |
 | `UnMirrorU` | `uint32` | Would like to unmirror U or V <br>	   - if the texture is mirrored and if you would like to undo mirroring for this texture sample, use this to unmirror |
 | `UnMirrorV` | `uint32` | - |
+| `bForceFloatHP` | `uint32` | When enabled, forces this TexCoord node to output float precision UV, preventing half-precision artifacts on mobile. |
 
 ## Language
 

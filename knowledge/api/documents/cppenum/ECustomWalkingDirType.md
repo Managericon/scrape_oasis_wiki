@@ -18,3 +18,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `ECustomWalkingDirType_AccelerationDir` | `3` | - |
 | `ECustomWalkingDirType_SpecifyDirection` | `4` | - |
 | `ECustomWalkingDirType_AccelerationModifyDir` | `5` | - |
+| `ECustomWalkingDirType_Custom` | `6` | - |

@@ -43,3 +43,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `PUBGDeviceFPSUltimateHighTA` | `int32` | - |
 | `IsSupportTagCulling` | `bool` | - |
 | `UserVulkanSetting` | `int32` | - |
+| `UserForceCloseVulkan` | `int32` | - |

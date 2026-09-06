@@ -16,3 +16,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `Common` | `0` | - |
 | `RoomMatch` | `1` | - |
 | `Popular` | `2` | - |
+| `WorryFree` | `3` | - |
+| `TmnProf` | `4` | - |

@@ -17,6 +17,6 @@ Describes the physical state of a rigid body.
 |---|---|---|
 | `Position` | `FVector_NetQuantize100` | - |
 | `Quaternion` | `FQuat` | - |
+| `LinVel` | `FVector_NetQuantize100` | - |
 | `AngVel` | `FVector_NetQuantize100` | - |
 | `Flags` | `uint8` | - |
-| `LinVel` | `FVector_NetQuantize100` | - |

@@ -22,3 +22,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `MaxLayer` | `int` | 最大充能次数 |
 | `CDEnergyConsume` | `float` | 持续消耗型每秒扣除速率 |
 | `AllowConsumeMinEnergy` | `float` | 能开始消耗能量的最小百分比 |
+| `ConsumeTimeType` | `EPESkillConsumeTimeType` | CD能量和消耗扣除时机 |

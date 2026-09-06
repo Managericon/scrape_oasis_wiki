@@ -174,3 +174,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `VT_ElkCarriage` | `158` | - |
 | `VT_Loong` | `159` | - |
 | `VT_DogSled` | `159` | - |
+| `VT_LionDanceNew` | `160` | - |

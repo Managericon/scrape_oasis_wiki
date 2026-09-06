@@ -58,6 +58,7 @@ A ParticleSystem is a complete particle effect that contains any number of Parti
 | `bAllowGcCluster` | `uint8` | - |
 | `bAllowRenderDataUpdateLag` | `uint8` | - |
 | `bAllowManagedTicking` | `uint8` | - |
+| `bEnableSigTickBudget` | `uint8` | sinyagao : Whether instances of this particle system opt in to SignificanceManager tick-budget and LOD control. |
 | `bAutoDeactivate` | `bool` | - |
 | `MinTimeBetweenTicks` | `uint32` | - |
 | `InsignificantReaction` | `EParticleSystemInsignificanceReaction` | The reaction this system takes when all emitters are insignificant. |

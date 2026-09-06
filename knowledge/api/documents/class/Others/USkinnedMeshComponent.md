@@ -1106,6 +1106,36 @@ Set whether this skinned mesh should be rendered as static mesh in a reference p
 |---|---|
 | `void` | - |
 
+### `MarkAsAvatarMesh`
+
+```text
+MarkAsAvatarMesh(bAvatarMesh: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bAvatarMesh` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `IsAvatarMesh`
+
+```text
+IsAvatarMesh() -> bool
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
 ### `IsSectionBatched`
 
 ```text

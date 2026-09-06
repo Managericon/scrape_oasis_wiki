@@ -1806,13 +1806,95 @@ GetDetailsWidgetCustomPathByItemID(PlayerController: PlayerController, ItemID: n
 |---|---|
 | `string[]` | 自定义控件蓝图路径列表，未配置时返回空表 |
 
-### `FindItemInTable`
+### `GetBackpackPersistData`
 
 ```text
-FindItemInTable()
+GetBackpackPersistData(Player: PlayerPawn | PlayerController @玩家角色或者玩家控制器, ContainsNoPersist: boolean) -> table
 ```
 
+获取背包完整持久化数据（只读）
+在背包数据持久化时，会以此数据执行
+可以通过这个接口，分析并优化持久化数据大小和物品实例化数据大小
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Player` | `PlayerPawn \| PlayerController @玩家角色或者玩家控制器` | 玩家角色或者玩家控制器 |
+| `ContainsNoPersist` | `boolean` | true:包含不持久化物品数据, false:仅包含持久化物品数据. 默认false |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `table` | 背包完整持久化数据 |
+
+### `GetBackpackUIComponentConfig`
+
+```text
+GetBackpackUIComponentConfig(ConfigKey: EBackpackUIComponentConfigKey) -> table|nil
+```
+
+获取 BackpackUIComponent 上的配置属性
+通过枚举键值统一读取，替代各处直接访问 BackpackUIComponent.XXX 的方式
+直接通过 GetBackpackUIComponentV2 获取组件并访问属性，无需经手 BackpackManager
+新增配置属性只需扩展枚举，调用方无需改动
 生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ConfigKey` | `EBackpackUIComponentConfigKey` | 配置属性的枚举键值 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `table\|nil` | 对应属性的值（已转 Lua table），未注册或属性不存在时返回 nil |
+
+### `GetBackpackTipsConfig`
+
+```text
+GetBackpackTipsConfig(Player: PlayerPawn | PlayerController @玩家角色或者玩家控制器, Key: string) -> number|nil
+```
+
+获取背包Tips配置值
+通过Key查询BackpackTipsConfig TMap中对应的整型配置值
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Player` | `PlayerPawn \| PlayerController @玩家角色或者玩家控制器` | 玩家角色或者玩家控制器 |
+| `Key` | `string` | Tips配置Key |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number\|nil` | 对应TipsID，未找到返回nil |
+
+### `DisplayBackpackTipsV2`
+
+```text
+DisplayBackpackTipsV2(Player: PlayerPawn | PlayerController @玩家角色或者玩家控制器, TipKey: string, ItemDefineID: FItemDefineID, Count: number, Reason: number)
+```
+
+弹出背包Tips
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Player` | `PlayerPawn \| PlayerController @玩家角色或者玩家控制器` | 玩家角色或者玩家控制器 |
+| `TipKey` | `string` | Tips配置Key（对应BackpackTipsConfig中的键） |
+| `ItemDefineID` | `FItemDefineID` | 关联的物品DefineID |
+| `Count` | `number` | 物品数量，默认0 |
+| `Reason` | `number` | 物品操作原因（EUGCCommonItemReason），默认0（Default） |
 
 ## Language
 

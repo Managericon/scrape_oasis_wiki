@@ -23,8 +23,8 @@ api_root: "https://developer.gp.qq.com/api/"
 | `MaxScaleDiffBitwise` | `float` | Maximum position difference to use when testing if an animation key may be removed. Lower values retain more keys, but yield less compression. |
 | `AllowedRotationFormats` | `TArray < TEnumAsByte < enum AnimationCompressionFormat > >` | Which encoding formats is the per-track compressor allowed to try on rotation keys |
 | `AllowedTranslationFormats` | `TArray < TEnumAsByte < enum AnimationCompressionFormat > >` | Which encoding formats is the per-track compressor allowed to try on translation keys |
-| `bResampleAnimation` | `uint32` | If true, resample the animation to ResampleFramerate frames per second |
 | `AllowedScaleFormats` | `TArray < TEnumAsByte < enum AnimationCompressionFormat > >` | Which encoding formats is the per-track compressor allowed to try on scale keys |
+| `bResampleAnimation` | `uint32` | If true, resample the animation to ResampleFramerate frames per second |
 | `ResampledFramerate` | `float` | When bResampleAnimation is true, this defines the desired framerate |
 | `MinKeysForResampling` | `int32` | Animations with fewer keys than MinKeysForResampling will not be resampled. |
 | `bUseAdaptiveError` | `uint32` | If true, adjust the error thresholds based on the 'height' within the skeleton |

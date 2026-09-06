@@ -289,6 +289,23 @@ CloseCivilVoiceDetect()
 关闭文明语音检测和 lbs 小号限制
 生效范围：客户端
 
+### `GetNormalizedMicVolume`
+
+```text
+GetNormalizedMicVolume() -> integer
+```
+
+获取归一化麦克风音量（0-100）
+通过 GetMicLevelDB 获取 dB 值，映射到 0-100 的归一化范围
+映射公式: normalized = clamp(round((db + 96) / 96 * 100), 0, 100)
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `integer` | 归一化音量值 0-100 |
+
 ## Language
 
 `lua`

@@ -161,6 +161,155 @@ GetShowRankData() -> table
 |---|---|
 | `table` | - |
 
+### `GetFriendRankData`
+
+```text
+GetFriendRankData(RankID: number)
+```
+
+获取好友榜数据（好友榜只有当期）
+生效范围：客户端
+调用后触发客户端直连大厅请求刷新好友分数，当次调用直接从本地缓存取数并排序后返回（可能为空）
+大厅数据到来后会写入FriendScoreData并广播ShowRankDataChangeDelegate
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `RankID` | `number` | 排行榜ID |
+
+### `RequestFriendUGCLevel`
+
+```text
+RequestFriendUGCLevel(FriendUIDList: table<number, number> @好友UID列表, OnComplete: fun(FilteredUIDList:table<number, number>) @全部profile获取完成后的回调，返回过滤后的UID列表)
+```
+
+异步获取好友绿洲等级(ugc_level)，profile数据存入ProfileDataList与排行榜数据复用
+通过ProfileMgr.GetProfileList批量获取（每批50个），profile返回数据中包含ugc_level字段
+全部批次回调完成后，剔除ugc_level<=1的好友，将剩余UID通过OnComplete回调返回
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `FriendUIDList` | `table @好友UID列表` | 好友UID列表 |
+| `OnComplete` | `fun(FilteredUIDList:table) @全部profile获取完成后的回调，返回过滤后的UID列表` | 全部profile获取完成后的回调，返回过滤后的UID列表 |
+
+### `IsFriendRankEnabled`
+
+```text
+IsFriendRankEnabled(RankID: number) -> boolean
+```
+
+判断指定榜单的好友榜是否开启
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `RankID` | `number` | 榜单ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 好友榜是否开启 |
+
+### `GetFriendScore`
+
+```text
+GetFriendScore(RankID: number, UID: number) -> number|nil
+```
+
+从本地数据中获取指定UID在指定榜单的分数
+优先从FriendScoreData.ScoreMap取，其次从ShowPlayerRankData取，最后从ShowRankData取
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `RankID` | `number` | 排行榜ID |
+| `UID` | `number` | 玩家UID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number\|nil` | 分数，nil表示未获取到 |
+
+### `BuildFriendRankList`
+
+```text
+BuildFriendRankList(RankID: number) -> {UID:number,
+```
+
+从本地FriendScoreData中，按好友列表过滤并排序，返回好友榜列表
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `RankID` | `number` | 排行榜ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `{UID:number,` | Score:number}> |
+
+### `GetSelfFriendRankData`
+
+```text
+GetSelfFriendRankData(RankID: number) -> Score:number}
+```
+
+获取当前客户端玩家在好友榜中的排名和分数
+从BuildFriendRankList的排序结果中查找当前客户端玩家的排名
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `RankID` | `number` | 排行榜ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Score:number}` | 排名(从1开始)，分数(无数据时为0) |
+
+### `RequestFriendRankScores`
+
+```text
+RequestFriendRankScores(FriendUIDList: table<number, number> @好友UID列表, RankID: number)
+```
+
+客户端直接向大厅发送好友分数查询协议（分批，每批最多100个）
+使用cbdata透传{TotalBatch=, BatchIdx=}标记批次，响应中据此判断是否全部请求完毕
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `FriendUIDList` | `table @好友UID列表` | 好友UID列表 |
+| `RankID` | `number` | 子榜ID |
+
+### `OnFriendRankScoresRsp`
+
+```text
+OnFriendRankScoresRsp()
+```
+
+客户端收到大厅返回的好友分数查询响应
+rsp参数：res, uids, sub_rank, rank_scores, cbdata
+cbdata透传{TotalBatch=, BatchIdx=}，用于判断是否全部批次请求完毕
+生效范围：客户端
+
 ### `OpenReportUI`
 
 ```text

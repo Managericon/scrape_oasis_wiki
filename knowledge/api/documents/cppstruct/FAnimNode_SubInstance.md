@@ -36,6 +36,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `bKeepUpdateOldSubInstanes` | `bool` | - |
 | `bUpdateWhenNotRelevant` | `bool` | - |
 | `NotRelevantUpdateConditions` | `TArray < UAnimInstanceUpdateCondition * >` | - |
+| `UpdateConditions` | `TArray < UAnimInstanceUpdateCondition * >` | - |
 | `bAlwaysUpdateInputNode` | `bool` | - |
 | `bResetInertializationWhenReactive` | `bool` | - |
 | `bUpdateAllInputNodeWhenNoInstanceRun` | `bool` | - |

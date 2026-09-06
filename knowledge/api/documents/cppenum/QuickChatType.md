@@ -17,3 +17,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `AvatarChat` | `1` | - |
 | `CustomChat` | `2` | - |
 | `SpecialMsgChat` | `3` | - |
+| `NotShowHistoryChat` | `4` | - |

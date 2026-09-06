@@ -29,8 +29,8 @@ api_root: "https://developer.gp.qq.com/api/"
 | `bRecalculateNormals` | `bool` | Whether Simplygon should recalculate normals, otherwise the normals channel will be sampled from the original mesh |
 | `bBakeVertexData_DEPRECATED` | `bool` | - |
 | `bUseLandscapeCulling` | `bool` | Whether or not to use available landscape geometry to cull away invisible triangles |
-| `LandscapeCullingPrecision` | `TEnumAsByte < ELandscapeCullingPrecision :: Type >` | Level of detail of the landscape that should be used for the culling |
 | `bAssignLODGroup` | `bool` | Choose whether you want to apply LODs to the generated mesh or not. |
+| `LandscapeCullingPrecision` | `TEnumAsByte < ELandscapeCullingPrecision :: Type >` | Level of detail of the landscape that should be used for the culling |
 | `LODGroupIndex` | `int32` | - |
 | `bAggregateMeshes` | `bool` | - |
 | `AggregatorMode` | `EChartAggregationMode` | - |

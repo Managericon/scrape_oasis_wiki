@@ -6,6 +6,2217 @@ category: "API Wiki/class"
 kind: "api_chunk"
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstToggle.json -->
+
+# UInterpTrackInstToggle
+
+## Inheritance
+
+`UInterpTrackInst`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Action` | `TEnumAsByte < enum ETrackToggleAction >` | - |
+| `LastUpdatePosition` | `float` | Position we were in last time we evaluated.<br>	 	During UpdateTrack, toggles between this time and the current time will be processed. |
+| `bSavedActiveState` | `uint32` | Cached 'active' state for the toggleable actor before we possessed it; restored when Matinee exits |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstVectorMaterialParam.json -->
+
+# UInterpTrackInstVectorMaterialParam
+
+## Inheritance
+
+`UInterpTrackInst`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `MaterialInstances` | `TArray < UMaterialInstanceDynamic * >` | MIDs we're using to set the desired parameter. |
+| `ResetVectors` | `TArray < FVector >` | Saved values for restoring state when exiting Matinee. |
+| `PrimitiveMaterialRefs` | `TArray < struct FPrimitiveMaterialRef >` | Primitive components on which materials have been overridden. |
+| `InstancedTrack` | `UInterpTrackVectorMaterialParam *` | Track we are an instance of - used in the editor to propagate changes to the track's Materials array immediately. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstVectorProp.json -->
+
+# UInterpTrackInstVectorProp
+
+## Inheritance
+
+`UInterpTrackInstProperty`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ResetVector` | `FVector` | Saved value for restoring state when exiting Matinee. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstVisibility.json -->
+
+# UInterpTrackInstVisibility
+
+## Inheritance
+
+`UInterpTrackInst`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Action` | `TEnumAsByte < enum EVisibilityTrackAction >` | - |
+| `LastUpdatePosition` | `float` | Position we were in last time we evaluated.<br>	 	During UpdateTrack, events between this time and the current time will be processed. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackLinearColorBase.json -->
+
+# UInterpTrackLinearColorBase
+
+## Inheritance
+
+`UInterpTrack`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LinearColorTrack` | `FInterpCurveLinearColor` | Actually track data containing keyframes of a FVector as it varies over time. |
+| `CurveTension` | `float` | Tension of curve, used for keypoints using automatic tangents. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackLinearColorProp.json -->
+
+# UInterpTrackLinearColorProp
+
+## Inheritance
+
+`UInterpTrackLinearColorBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PropertyName` | `FName` | Name of property in Group  AActor  which this track mill modify over time. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackMove.json -->
+
+# UInterpTrackMove
+
+Track containing data for moving an actor around over time.
+
+## Inheritance
+
+`UInterpTrack`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PosTrack` | `FInterpCurveVector` | Actual position keyframe data. |
+| `EulerTrack` | `FInterpCurveVector` | Actual rotation keyframe data, stored as Euler angles in degrees, for easy editing on curve. |
+| `LookupTrack` | `FInterpLookupTrack` | - |
+| `LookAtGroupName` | `FName` | When using IMR_LookAtGroup, specifies the Group which this track should always point its actor at. |
+| `LinCurveTension` | `float` | Controls the tightness of the curve for the translation path. |
+| `AngCurveTension` | `float` | Controls the tightness of the curve for the rotation path. |
+| `bUseQuatInterpolation` | `uint32` | Use a Quaternion linear interpolation between keys.<br>	 	This is robust and will find the 'shortest' distance between keys, but does not support ease inout. |
+| `bShowArrowAtKeys` | `uint32` | In the editor, show a small arrow at each keyframe indicating the rotation at that key. |
+| `bDisableMovement` | `uint32` | Disable previewing of this track - will always position  AActor  at Time=0.0. Useful when keyframing an object relative to this group. |
+| `bShowTranslationOnCurveEd` | `uint32` | If false, when this track is displayed on the Curve Editor in Matinee, do not show the Translation tracks. |
+| `bShowRotationOnCurveEd` | `uint32` | If false, when this track is displayed on the Curve Editor in Matinee, do not show the Rotation tracks. |
+| `bHide3DTrack` | `uint32` | If true, 3D representation of this track in the 3D viewport is disabled. |
+| `RotMode` | `TEnumAsByte < enum EInterpTrackMoveRotMode >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackMoveAxis.json -->
+
+# UInterpTrackMoveAxis
+
+## Inheritance
+
+`UInterpTrackFloatBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `MoveAxis` | `TEnumAsByte < enum EInterpMoveAxis >` | The axis which this track will use when transforming an actor |
+| `LookupTrack` | `FInterpLookupTrack` | Lookup track to use when looking at different groups for transform information |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackParticleReplay.json -->
+
+# UInterpTrackParticleReplay
+
+## Inheritance
+
+`UInterpTrack`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `TrackKeys` | `TArray < struct FParticleReplayTrackKey >` | Array of keys |
+| `bIsCapturingReplay` | `uint32` | True in the editor if track should be used to capture replay frames instead of play them back |
+| `FixedTimeStep` | `float` | Current replay fixed time quantum between frames (one over frame rate) |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackSound.json -->
+
+# UInterpTrackSound
+
+## Inheritance
+
+`UInterpTrackVectorBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Sounds` | `TArray < struct FSoundTrackKey >` | Array of sounds to play at specific times. |
+| `bPlayOnReverse` | `uint32` | if set, sound plays only when playing the matinee in reverse instead of when the matinee plays forward |
+| `bContinueSoundOnMatineeEnd` | `uint32` | If true, sounds on this track will not be forced to finish when the matinee sequence finishes. |
+| `bSuppressSubtitles` | `uint32` | If true, don't show subtitles for sounds played by this track. |
+| `bTreatAsDialogue` | `uint32` | If true and track is controlling a pawn, makes the pawn "speak" the given audio. |
+| `bAttach` | `uint32` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackToggle.json -->
+
+# UInterpTrackToggle
+
+## Inheritance
+
+`UInterpTrack`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ToggleTrack` | `TArray < struct FToggleTrackKey >` | Array of events to fire off. |
+| `bActivateSystemEachUpdate` | `uint32` | If true, the track will call ActivateSystem on the emitter each update (the old 'incorrect' behavior).<br>	 	If false (the default), the System will only be activated if it was previously inactive. |
+| `bActivateWithJustAttachedFlag` | `uint32` | If true, the track will activate the system w the 'Just Attached' flag. |
+| `bFireEventsWhenForwards` | `uint32` | If events should be fired when passed playing the sequence forwards. |
+| `bFireEventsWhenBackwards` | `uint32` | If events should be fired when passed playing the sequence backwards. |
+| `bFireEventsWhenJumpingForwards` | `uint32` | If true, events on this track are fired even when jumping forwads through a sequence - for example, skipping a cinematic. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackVectorBase.json -->
+
+# UInterpTrackVectorBase
+
+## Inheritance
+
+`UInterpTrack`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `VectorTrack` | `FInterpCurveVector` | Actually track data containing keyframes of a FVector as it varies over time. |
+| `CurveTension` | `float` | Tension of curve, used for keypoints using automatic tangents. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackVectorMaterialParam.json -->
+
+# UInterpTrackVectorMaterialParam
+
+## Inheritance
+
+`UInterpTrackVectorBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `TargetMaterials` | `TArray < UMaterialInterface * >` | Materials whose parameters we want to change and the references to those materials. |
+| `ParamName` | `FName` | Name of parameter in the MaterialInstance which this track will modify over time. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackVectorProp.json -->
+
+# UInterpTrackVectorProp
+
+## Inheritance
+
+`UInterpTrackVectorBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PropertyName` | `FName` | Name of property in Group  AActor  which this track mill modify over time. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackVisibility.json -->
+
+# UInterpTrackVisibility
+
+## Inheritance
+
+`UInterpTrack`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `VisibilityTrack` | `TArray < struct FVisibilityTrackKey >` | Array of events to fire off. |
+| `bFireEventsWhenForwards` | `uint32` | If events should be fired when passed playing the sequence forwards. |
+| `bFireEventsWhenBackwards` | `uint32` | If events should be fired when passed playing the sequence backwards. |
+| `bFireEventsWhenJumpingForwards` | `uint32` | If true, events on this track are fired even when jumping forwads through a sequence - for example, skipping a cinematic. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UIntSerialization.json -->
+
+# UIntSerialization
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `UnsignedInt16Variable` | `uint16` | - |
+| `UnsignedInt32Variable` | `uint32` | - |
+| `UnsignedInt64Variable` | `uint64` | - |
+| `SignedInt8Variable` | `int8` | - |
+| `SignedInt16Variable` | `int16` | - |
+| `SignedInt64Variable` | `int64` | - |
+| `UnsignedInt8Variable` | `uint8` | - |
+| `SignedInt32Variable` | `int32` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInvalidationBox.json -->
+
+# UInvalidationBox
+
+Invalidate
+   Single Child
+   Caching  Performance
+
+## Inheritance
+
+`UContentWidget`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bCanCache` | `bool` | Should the invalidation panel cache the widgets?  Making this false makes it so the invalidation<br>	  panel stops acting like an invalidation panel, just becomes a simple container widget. |
+| `CacheRelativeTransforms` | `bool` | Caches the locations for child draw elements relative to the invalidation box,<br>	  this adds extra overhead to drawing them every frame.  However, in cases where<br>	  the position of the invalidation boxes changes every frame this can be a big savings. |
+
+## Functions
+
+### `InvalidateCache`
+
+```text
+InvalidateCache() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetCanCache`
+
+```text
+GetCanCache() -> bool
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `SetCanCache`
+
+```text
+SetCanCache(CanCache: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `CanCache` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UKismetAnimationLibrary.json -->
+
+# UKismetAnimationLibrary
+
+## Inheritance
+
+`UBlueprintFunctionLibrary`
+
+## Functions
+
+### `K2_TwoBoneIK`
+
+```text
+K2_TwoBoneIK(RootPos: FVector &, JointPos: FVector &, EndPos: FVector &, JointTarget: FVector &, Effector: FVector &, OutJointPos: FVector &, OutEndPos: FVector &, bAllowStretching: bool, StartStretchRatio: float, MaxStretchScale: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `RootPos` | `FVector &` | - |
+| `JointPos` | `FVector &` | - |
+| `EndPos` | `FVector &` | - |
+| `JointTarget` | `FVector &` | - |
+| `Effector` | `FVector &` | - |
+| `OutJointPos` | `FVector &` | - |
+| `OutEndPos` | `FVector &` | - |
+| `bAllowStretching` | `bool` | - |
+| `StartStretchRatio` | `float` | - |
+| `MaxStretchScale` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `K2_LookAt`
+
+```text
+K2_LookAt(CurrentTransform: FTransform &, TargetPosition: FVector &, LookAtVector: FVector, bUseUpVector: bool, UpVector: FVector, ClampConeInDegree: float) -> FTransform
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `CurrentTransform` | `FTransform &` | - |
+| `TargetPosition` | `FVector &` | - |
+| `LookAtVector` | `FVector` | - |
+| `bUseUpVector` | `bool` | - |
+| `UpVector` | `FVector` | - |
+| `ClampConeInDegree` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FTransform` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UKismetArrayLibrary.json -->
+
+# UKismetArrayLibrary
+
+## Inheritance
+
+`UBlueprintFunctionLibrary`
+
+## Functions
+
+### `Array_Add`
+
+```text
+Array_Add(TargetArray: TArray < int32 > &, NewItem: int32 &) -> int32
+```
+
+Add item to array
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to add item to |
+| `NewItem` | `int32 &` | The item to add to the array |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | The index of the newly added item |
+
+### `Array_AddUnique`
+
+```text
+Array_AddUnique(TargetArray: TArray < int32 > &, NewItem: int32 &) -> int32
+```
+
+Add item to array (unique)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to add item to |
+| `NewItem` | `int32 &` | The item to add to the array |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | The index of the newly added item, or INDEX_NONE if the item is already present in the array |
+
+### `Array_Shuffle`
+
+```text
+Array_Shuffle(TargetArray: TArray < int32 > &) -> void
+```
+
+Shuffle (randomize) the elements of an array
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to shuffle |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `Array_Append`
+
+```text
+Array_Append(TargetArray: TArray < int32 > &, SourceArray: TArray < int32 > &) -> void
+```
+
+Append an array to another array
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to add the source array to |
+| `SourceArray` | `TArray < int32 > &` | The array to add to the target array |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `Array_Insert`
+
+```text
+Array_Insert(TargetArray: TArray < int32 > &, NewItem: int32 &, Index: int32) -> void
+```
+
+Insert item at the given index into the array.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to insert into |
+| `NewItem` | `int32 &` | The item to insert into the array |
+| `Index` | `int32` | The index at which to insert the item into the array |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `Array_Remove`
+
+```text
+Array_Remove(TargetArray: TArray < int32 > &, IndexToRemove: int32) -> void
+```
+
+Remove item at the given index from the array.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to remove from |
+| `IndexToRemove` | `int32` | The index into the array to remove from |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `Array_RemoveItem`
+
+```text
+Array_RemoveItem(TargetArray: TArray < int32 > &, Item: int32 &) -> bool
+```
+
+Remove all instances of item from array.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to remove from |
+| `Item` | `int32 &` | The item to remove from the array |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if one or more items were removed |
+
+### `Array_Clear`
+
+```text
+Array_Clear(TargetArray: TArray < int32 > &) -> void
+```
+
+Clear an array, removes all content
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to clear |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `Array_Resize`
+
+```text
+Array_Resize(TargetArray: TArray < int32 > &, Size: int32) -> void
+```
+
+Resize Array to specified size.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to resize |
+| `Size` | `int32` | The new size of the array |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `Array_Length`
+
+```text
+Array_Length(TargetArray: TArray < int32 > &) -> int32
+```
+
+Get the number of items in an array
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to get the length of |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | The length of the array |
+
+### `Array_LastIndex`
+
+```text
+Array_LastIndex(TargetArray: TArray < int32 > &) -> int32
+```
+
+Get the last valid index into an array
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to perform the operation on |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | The last valid index of the array |
+
+### `Array_Get`
+
+```text
+Array_Get(TargetArray: TArray < int32 > &, Index: int32, Item: int32 &) -> void
+```
+
+Given an array and an index, returns a copy of the item found at that index
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to get an item from |
+| `Index` | `int32` | The index in the array to get an item from |
+| `Item` | `int32 &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | A copy of the item stored at the index |
+
+### `Array_Set`
+
+```text
+Array_Set(TargetArray: TArray < int32 > &, Index: int32, Item: int32 &, bSizeToFit: bool) -> void
+```
+
+Given an array and an index, assigns the item to that array element
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to perform the operation on |
+| `Index` | `int32` | The index to assign the item to |
+| `Item` | `int32 &` | The item to assign to the index of the array |
+| `bSizeToFit` | `bool` | If true, the array will expand if Index is greater than the current size of the array |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `Array_Swap`
+
+```text
+Array_Swap(TargetArray: TArray < int32 > &, FirstIndex: int32, SecondIndex: int32) -> void
+```
+
+Swaps the elements at the specified positions in the specified array
+	 If the specified positions are equal, invoking this method leaves the array unchanged
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to perform the operation on |
+| `FirstIndex` | `int32` | - |
+| `SecondIndex` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `Array_Find`
+
+```text
+Array_Find(TargetArray: TArray < int32 > &, ItemToFind: int32 &) -> int32
+```
+
+Finds the index of the first instance of the item within the array
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to search for the item |
+| `ItemToFind` | `int32 &` | The item to look for |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | The index the item was found at, or -1 if not found |
+
+### `Array_Contains`
+
+```text
+Array_Contains(TargetArray: TArray < int32 > &, ItemToFind: int32 &) -> bool
+```
+
+Returns true if the array contains the given item
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | The array to search for the item |
+| `ItemToFind` | `int32 &` | The item to look for |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the item was found within the array |
+
+### `FilterArray`
+
+```text
+FilterArray(TargetArray: TArray < AActor * > &, FilterClass: TSubclassOf < AActor >, FilteredArray: TArray < AActor * > &) -> void
+```
+
+Filter an array based on a Class derived from Actor.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < AActor * > &` | The array to filter from |
+| `FilterClass` | `TSubclassOf < AActor >` | The Actor sub-class type that acts as the filter, only objects derived from it will be returned. |
+| `FilteredArray` | `TArray < AActor * > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | An array containing only those objects which are derived from the class specified. |
+
+### `SetArrayPropertyByName`
+
+```text
+SetArrayPropertyByName(Object: UObject *, PropertyName: FName, Value: TArray < int32 > &) -> void
+```
+
+Not exposed to users. Supports setting an array property on an object by name.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Object` | `UObject *` | - |
+| `PropertyName` | `FName` | - |
+| `Value` | `TArray < int32 > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `Array_IsValidIndex`
+
+```text
+Array_IsValidIndex(TargetArray: TArray < int32 > &, IndexToTest: int32) -> bool
+```
+
+Tests if IndexToTest is valid, i.e. greater than or equal to zero, and less than the number of elements in TargetArray.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TargetArray` | `TArray < int32 > &` | Array to use for the IsValidIndex test |
+| `IndexToTest` | `int32` | The Index, that we want to test for being valid |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the Index is Valid, i.e. greater than or equal to zero, and less than the number of elements in TargetArray. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UKismetGuidLibrary.json -->
+
+# UKismetGuidLibrary
+
+## Inheritance
+
+`UBlueprintFunctionLibrary`
+
+## Functions
+
+### `EqualEqual_GuidGuid`
+
+```text
+EqualEqual_GuidGuid(A: FGuid &, B: FGuid &) -> bool
+```
+
+Returns true if the values are equal (A == B)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `A` | `FGuid &` | - |
+| `B` | `FGuid &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `NotEqual_GuidGuid`
+
+```text
+NotEqual_GuidGuid(A: FGuid &, B: FGuid &) -> bool
+```
+
+Returns true if the values are not equal (A != B)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `A` | `FGuid &` | - |
+| `B` | `FGuid &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `IsValid_Guid`
+
+```text
+IsValid_Guid(InGuid: FGuid &) -> bool
+```
+
+Checks whether the given GUID is valid
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InGuid` | `FGuid &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `Invalidate_Guid`
+
+```text
+Invalidate_Guid(InGuid: FGuid &) -> void
+```
+
+Invalidates the given GUID
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InGuid` | `FGuid &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `NewGuid`
+
+```text
+NewGuid() -> FGuid
+```
+
+Returns a new unique GUID
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FGuid` | - |
+
+### `Conv_GuidToString`
+
+```text
+Conv_GuidToString(InGuid: FGuid &) -> FString
+```
+
+Converts a GUID value to a string, in the form 'A-B-C-D'
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InGuid` | `FGuid &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FString` | - |
+
+### `Parse_StringToGuid`
+
+```text
+Parse_StringToGuid(GuidString: FString &, OutGuid: FGuid &, Success: bool &) -> void
+```
+
+Converts a String of format EGuidFormats to a Guid. Returns Guid OutGuid, Returns bool Success
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `GuidString` | `FString &` | - |
+| `OutGuid` | `FGuid &` | - |
+| `Success` | `bool &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UKismetInputLibrary.json -->
+
+# UKismetInputLibrary
+
+## Inheritance
+
+`UBlueprintFunctionLibrary`
+
+## Functions
+
+### `CalibrateTilt`
+
+```text
+CalibrateTilt() -> void
+```
+
+Calibrate the tilt for the input device
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `EqualEqual_KeyKey`
+
+```text
+EqualEqual_KeyKey(A: FKey, B: FKey) -> bool
+```
+
+Test if the input key are equal (A == B)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `A` | `FKey` | - The key to compare against |
+| `B` | `FKey` | - The key to compare |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the key are equal, false otherwise |
+
+### `EqualEqual_InputChordInputChord`
+
+```text
+EqualEqual_InputChordInputChord(A: FInputChord, B: FInputChord) -> bool
+```
+
+Test if the input chords are equal (A == B)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `A` | `FInputChord` | - The chord to compare against |
+| `B` | `FInputChord` | - The chord to compare |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the chords are equal, false otherwise |
+
+### `Key_IsModifierKey`
+
+```text
+Key_IsModifierKey(Key: FKey &) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `FKey &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the key is a modifier key: Ctrl, Command, Alt, Shift |
+
+### `Key_IsGamepadKey`
+
+```text
+Key_IsGamepadKey(Key: FKey &) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `FKey &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the key is a gamepad button |
+
+### `Key_IsMouseButton`
+
+```text
+Key_IsMouseButton(Key: FKey &) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `FKey &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the key is a mouse button |
+
+### `Key_IsKeyboardKey`
+
+```text
+Key_IsKeyboardKey(Key: FKey &) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `FKey &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the key is a keyboard button |
+
+### `Key_IsFloatAxis`
+
+```text
+Key_IsFloatAxis(Key: FKey &) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `FKey &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the key is a float axis |
+
+### `Key_IsVectorAxis`
+
+```text
+Key_IsVectorAxis(Key: FKey &) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `FKey &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the key is a vector axis |
+
+### `Key_GetDisplayName`
+
+```text
+Key_GetDisplayName(Key: FKey &) -> FText
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `FKey &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FText` | The display name of the key. |
+
+### `InputEvent_IsRepeat`
+
+```text
+InputEvent_IsRepeat(Input: FInputEvent &) -> bool
+```
+
+Returns whether or not this character is an auto-repeated keystroke
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FInputEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if this character is a repeat |
+
+### `InputEvent_IsShiftDown`
+
+```text
+InputEvent_IsShiftDown(Input: FInputEvent &) -> bool
+```
+
+Returns true if either shift key was down when this event occurred
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FInputEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if shift is pressed |
+
+### `InputEvent_IsLeftShiftDown`
+
+```text
+InputEvent_IsLeftShiftDown(Input: FInputEvent &) -> bool
+```
+
+Returns true if left shift key was down when this event occurred
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FInputEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if left shift is pressed. |
+
+### `InputEvent_IsRightShiftDown`
+
+```text
+InputEvent_IsRightShiftDown(Input: FInputEvent &) -> bool
+```
+
+Returns true if right shift key was down when this event occurred
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FInputEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if right shift is pressed. |
+
+### `InputEvent_IsControlDown`
+
+```text
+InputEvent_IsControlDown(Input: FInputEvent &) -> bool
+```
+
+Returns true if either control key was down when this event occurred
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FInputEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if control is pressed |
+
+### `InputEvent_IsLeftControlDown`
+
+```text
+InputEvent_IsLeftControlDown(Input: FInputEvent &) -> bool
+```
+
+Returns true if left control key was down when this event occurred
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FInputEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if left control is pressed |
+
+### `InputEvent_IsRightControlDown`
+
+```text
+InputEvent_IsRightControlDown(Input: FInputEvent &) -> bool
+```
+
+Returns true if left control key was down when this event occurred
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FInputEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if left control is pressed |
+
+### `InputEvent_IsAltDown`
+
+```text
+InputEvent_IsAltDown(Input: FInputEvent &) -> bool
+```
+
+Returns true if either alt key was down when this event occurred
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FInputEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if alt is pressed |
+
+### `InputEvent_IsLeftAltDown`
+
+```text
+InputEvent_IsLeftAltDown(Input: FInputEvent &) -> bool
+```
+
+Returns true if left alt key was down when this event occurred
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FInputEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if left alt is pressed |
+
+### `InputEvent_IsRightAltDown`
+
+```text
+InputEvent_IsRightAltDown(Input: FInputEvent &) -> bool
+```
+
+Returns true if right alt key was down when this event occurred
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FInputEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if right alt is pressed |
+
+### `InputEvent_IsCommandDown`
+
+```text
+InputEvent_IsCommandDown(Input: FInputEvent &) -> bool
+```
+
+Returns true if either command key was down when this event occurred
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FInputEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if command is pressed |
+
+### `InputEvent_IsLeftCommandDown`
+
+```text
+InputEvent_IsLeftCommandDown(Input: FInputEvent &) -> bool
+```
+
+Returns true if left command key was down when this event occurred
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FInputEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if left command is pressed |
+
+### `InputEvent_IsRightCommandDown`
+
+```text
+InputEvent_IsRightCommandDown(Input: FInputEvent &) -> bool
+```
+
+Returns true if right command key was down when this event occurred
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FInputEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if right command is pressed |
+
+### `GetKeyByName`
+
+```text
+GetKeyByName(KeyName: FName &) -> FKey
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `KeyName` | `FName &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FKey` | - |
+
+### `GetKey`
+
+```text
+GetKey(Input: FKeyEvent &) -> FKey
+```
+
+Returns the key for this event.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FKeyEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FKey` | Key name |
+
+### `GetUserIndex`
+
+```text
+GetUserIndex(Input: FKeyEvent &) -> int32
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FKeyEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | - |
+
+### `GetAnalogValue`
+
+```text
+GetAnalogValue(Input: FAnalogInputEvent &) -> float
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FAnalogInputEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `PointerEvent_GetScreenSpacePosition`
+
+```text
+PointerEvent_GetScreenSpacePosition(Input: FPointerEvent &) -> FVector2D
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FPointerEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | The position of the cursor in screen space |
+
+### `PointerEvent_GetLastScreenSpacePosition`
+
+```text
+PointerEvent_GetLastScreenSpacePosition(Input: FPointerEvent &) -> FVector2D
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FPointerEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | The position of the cursor in screen space last time we handled an input event |
+
+### `PointerEvent_GetCursorDelta`
+
+```text
+PointerEvent_GetCursorDelta(Input: FPointerEvent &) -> FVector2D
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FPointerEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | the distance the mouse traveled since the last event was handled. |
+
+### `PointerEvent_IsMouseButtonDown`
+
+```text
+PointerEvent_IsMouseButtonDown(Input: FPointerEvent &, MouseButton: FKey) -> bool
+```
+
+Mouse buttons that are currently pressed
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FPointerEvent &` | - |
+| `MouseButton` | `FKey` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `PointerEvent_GetEffectingButton`
+
+```text
+PointerEvent_GetEffectingButton(Input: FPointerEvent &) -> FKey
+```
+
+Mouse button that caused this event to be raised (possibly EB_None)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FPointerEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FKey` | - |
+
+### `PointerEvent_GetWheelDelta`
+
+```text
+PointerEvent_GetWheelDelta(Input: FPointerEvent &) -> float
+```
+
+How much did the mouse wheel turn since the last mouse event
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FPointerEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `PointerEvent_GetUserIndex`
+
+```text
+PointerEvent_GetUserIndex(Input: FPointerEvent &) -> int32
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FPointerEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | The index of the user that caused the event |
+
+### `PointerEvent_GetPointerIndex`
+
+```text
+PointerEvent_GetPointerIndex(Input: FPointerEvent &) -> int32
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FPointerEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | The unique identifier of the pointer (e.g., finger index) |
+
+### `PointerEvent_GetTouchpadIndex`
+
+```text
+PointerEvent_GetTouchpadIndex(Input: FPointerEvent &) -> int32
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FPointerEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | The index of the touch pad that generated this event (for platforms with multiple touch pads per user) |
+
+### `PointerEvent_IsTouchEvent`
+
+```text
+PointerEvent_IsTouchEvent(Input: FPointerEvent &) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FPointerEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | Is this event a result from a touch (as opposed to a mouse) |
+
+### `PointerEvent_TouchForce`
+
+```text
+PointerEvent_TouchForce(Input: FPointerEvent &) -> float
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FPointerEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `PointerEvent_GetGestureType`
+
+```text
+PointerEvent_GetGestureType(Input: FPointerEvent &) -> ESlateGesture
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FPointerEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ESlateGesture` | The type of touch gesture |
+
+### `PointerEvent_GetGestureDelta`
+
+```text
+PointerEvent_GetGestureDelta(Input: FPointerEvent &) -> FVector2D
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Input` | `FPointerEvent &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector2D` | The change in gesture value since the last gesture event of the same type. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UKismetInternationalizationLibrary.json -->
+
+# UKismetInternationalizationLibrary
+
+## Inheritance
+
+`UBlueprintFunctionLibrary`
+
+## Functions
+
+### `SetCurrentCulture`
+
+```text
+SetCurrentCulture(Culture: FString &, SaveToConfig: bool) -> bool
+```
+
+Set the current culture.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Culture` | `FString &` | The culture to set, as an IETF language tag (eg, "zh-Hans-CN"). |
+| `SaveToConfig` | `bool` | If true, save the new setting to the users' "GameUserSettings" config so that it persists after a reload. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the culture was set, false otherwise. |
+
+### `GetCurrentCulture`
+
+```text
+GetCurrentCulture() -> FString
+```
+
+Get the current culture as an IETF language tag:
+	   - A two-letter ISO 639-1 language code (eg, "zh").
+	   - An optional four-letter ISO 15924 script code (eg, "Hans").
+	   - An optional two-letter ISO 3166-1 country code (eg, "CN").
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FString` | The culture as an IETF language tag (eg, "zh-Hans-CN"). |
+
+### `SetCurrentLanguage`
+
+```text
+SetCurrentLanguage(Culture: FString &, SaveToConfig: bool) -> bool
+```
+
+Set only the current language (for localization).
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Culture` | `FString &` | The language to set, as an IETF language tag (eg, "zh-Hans-CN"). |
+| `SaveToConfig` | `bool` | If true, save the new setting to the users' "GameUserSettings" config so that it persists after a reload. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the language was set, false otherwise. |
+
+### `GetCurrentLanguage`
+
+```text
+GetCurrentLanguage() -> FString
+```
+
+Get the current language (for localization) as an IETF language tag:
+	   - A two-letter ISO 639-1 language code (eg, "zh").
+	   - An optional four-letter ISO 15924 script code (eg, "Hans").
+	   - An optional two-letter ISO 3166-1 country code (eg, "CN").
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FString` | The language as an IETF language tag (eg, "zh-Hans-CN"). |
+
+### `SetCurrentLocale`
+
+```text
+SetCurrentLocale(Culture: FString &, SaveToConfig: bool) -> bool
+```
+
+Set only the current locale (for internationalization).
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Culture` | `FString &` | The locale to set, as an IETF language tag (eg, "zh-Hans-CN"). |
+| `SaveToConfig` | `bool` | If true, save the new setting to the users' "GameUserSettings" config so that it persists after a reload. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the locale was set, false otherwise. |
+
+### `GetCurrentLocale`
+
+```text
+GetCurrentLocale() -> FString
+```
+
+Get the current locale (for internationalization) as an IETF language tag:
+	   - A two-letter ISO 639-1 language code (eg, "zh").
+	   - An optional four-letter ISO 15924 script code (eg, "Hans").
+	   - An optional two-letter ISO 3166-1 country code (eg, "CN").
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FString` | The locale as an IETF language tag (eg, "zh-Hans-CN"). |
+
+### `SetCurrentLanguageAndLocale`
+
+```text
+SetCurrentLanguageAndLocale(Culture: FString &, SaveToConfig: bool) -> bool
+```
+
+Set the current language (for localization) and locale (for internationalization).
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Culture` | `FString &` | The language and locale to set, as an IETF language tag (eg, "zh-Hans-CN"). |
+| `SaveToConfig` | `bool` | If true, save the new setting to the users' "GameUserSettings" config so that it persists after a reload. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the language and locale were set, false otherwise. |
+
+### `SetCurrentAssetGroupCulture`
+
+```text
+SetCurrentAssetGroupCulture(AssetGroup: FName, Culture: FString &, SaveToConfig: bool) -> bool
+```
+
+Set the given asset group category culture from an IETF language tag (eg, "zh-Hans-CN").
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `AssetGroup` | `FName` | The asset group to set the culture for. |
+| `Culture` | `FString &` | The culture to set, as an IETF language tag (eg, "zh-Hans-CN"). |
+| `SaveToConfig` | `bool` | If true, save the new setting to the users' "GameUserSettings" config so that it persists after a reload. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the culture was set, false otherwise. |
+
+### `GetCurrentAssetGroupCulture`
+
+```text
+GetCurrentAssetGroupCulture(AssetGroup: FName) -> FString
+```
+
+Get the given asset group category culture.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `AssetGroup` | `FName` | The asset group to get the culture for. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FString` | The culture as an IETF language tag (eg, "zh-Hans-CN"). |
+
+### `ClearCurrentAssetGroupCulture`
+
+```text
+ClearCurrentAssetGroupCulture(AssetGroup: FName, SaveToConfig: bool) -> void
+```
+
+Clear the given asset group category culture.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `AssetGroup` | `FName` | The asset group to clear the culture for. |
+| `SaveToConfig` | `bool` | If true, save the new setting to the users' "GameUserSettings" config so that it persists after a reload. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UKismetMaterialLibrary.json -->
+
+# UKismetMaterialLibrary
+
+## Inheritance
+
+`UBlueprintFunctionLibrary`
+
+## Functions
+
+### `SetScalarParameterValue`
+
+```text
+SetScalarParameterValue(WorldContextObject: UObject *, Collection: UMaterialParameterCollection *, ParameterName: FName, ParameterValue: float) -> ENGINE_API void
+```
+
+Sets a scalar parameter value on the material collection instance. Logs if ParameterName is invalid.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContextObject` | `UObject *` | - |
+| `Collection` | `UMaterialParameterCollection *` | - |
+| `ParameterName` | `FName` | - |
+| `ParameterValue` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+### `SetVectorParameterValue`
+
+```text
+SetVectorParameterValue(WorldContextObject: UObject *, Collection: UMaterialParameterCollection *, ParameterName: FName, ParameterValue: FLinearColor &) -> ENGINE_API void
+```
+
+Sets a vector parameter value on the material collection instance. Logs if ParameterName is invalid.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContextObject` | `UObject *` | - |
+| `Collection` | `UMaterialParameterCollection *` | - |
+| `ParameterName` | `FName` | - |
+| `ParameterValue` | `FLinearColor &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+### `GetScalarParameterValue`
+
+```text
+GetScalarParameterValue(WorldContextObject: UObject *, Collection: UMaterialParameterCollection *, ParameterName: FName) -> ENGINE_API float
+```
+
+Gets a scalar parameter value from the material collection instance. Logs if ParameterName is invalid.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContextObject` | `UObject *` | - |
+| `Collection` | `UMaterialParameterCollection *` | - |
+| `ParameterName` | `FName` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API float` | - |
+
+### `GetVectorParameterValue`
+
+```text
+GetVectorParameterValue(WorldContextObject: UObject *, Collection: UMaterialParameterCollection *, ParameterName: FName) -> ENGINE_API FLinearColor
+```
+
+Gets a vector parameter value from the material collection instance. Logs if ParameterName is invalid.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContextObject` | `UObject *` | - |
+| `Collection` | `UMaterialParameterCollection *` | - |
+| `ParameterName` | `FName` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API FLinearColor` | - |
+
+### `CreateDynamicMaterialInstance`
+
+```text
+CreateDynamicMaterialInstance(WorldContextObject: UObject *, Parent: UMaterialInterface *) -> ENGINE_API class UMaterialInstanceDynamic *
+```
+
+Creates a Dynamic Material Instance which you can modify during gameplay.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContextObject` | `UObject *` | - |
+| `Parent` | `UMaterialInterface *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API class UMaterialInstanceDynamic *` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UKismetMathLibrary.json -->
 
 # UKismetMathLibrary
@@ -12823,6 +15034,27 @@ Conv_ClassToSoftClassReference(Class: TSubclassOf < UObject > &) -> TSoftClassPt
 |---|---|
 | `TSoftClassPtr < UObject >` | - |
 
+### `LoadAsset`
+
+```text
+LoadAsset(WorldContextObject: UObject *, Asset: TSoftObjectPtr < UObject >, OnLoaded: FOnAssetLoaded, LatentInfo: FLatentActionInfo) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContextObject` | `UObject *` | - |
+| `Asset` | `TSoftObjectPtr < UObject >` | - |
+| `OnLoaded` | `FOnAssetLoaded` | - |
+| `LatentInfo` | `FLatentActionInfo` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ### `LoadAssetClass`
 
 ```text
@@ -12863,27 +15095,6 @@ Creates a literal integer
 | Type | Description |
 |---|---|
 | `int32` | The literal integer |
-
-### `LoadAsset`
-
-```text
-LoadAsset(WorldContextObject: UObject *, Asset: TSoftObjectPtr < UObject >, OnLoaded: FOnAssetLoaded, LatentInfo: FLatentActionInfo) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContextObject` | `UObject *` | - |
-| `Asset` | `TSoftObjectPtr < UObject >` | - |
-| `OnLoaded` | `FOnAssetLoaded` | - |
-| `LatentInfo` | `FLatentActionInfo` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
 
 ### `MakeLiteralInt64`
 
@@ -13964,27 +16175,6 @@ Returns true if a timer exists and is active for the given delegate, false other
 |---|---|
 | `bool` | True if the timer exists and is active. |
 
-### `K2_TimerExists`
-
-```text
-K2_TimerExists(Object: UObject *, FunctionName: FString) -> bool
-```
-
-Returns true is a timer for the given delegate exists, false otherwise.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Object` | `UObject *` | Object that implements the delegate function. Defaults to self (this blueprint) |
-| `FunctionName` | `FString` | Delegate function name. Can be a K2 function or a Custom Event. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True if the timer exists. |
-
 ### `K2_IsTimerPaused`
 
 ```text
@@ -14005,6 +16195,27 @@ Returns true if a timer exists and is paused for the given delegate, false other
 | Type | Description |
 |---|---|
 | `bool` | True if the timer exists and is paused. |
+
+### `K2_TimerExists`
+
+```text
+K2_TimerExists(Object: UObject *, FunctionName: FString) -> bool
+```
+
+Returns true is a timer for the given delegate exists, false otherwise.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Object` | `UObject *` | Object that implements the delegate function. Defaults to self (this blueprint) |
+| `FunctionName` | `FString` | Delegate function name. Can be a K2 function or a Custom Event. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True if the timer exists. |
 
 ### `K2_GetTimerElapsedTime`
 
@@ -14593,33 +16804,6 @@ BoxOverlapActors(WorldContextObject: UObject *, BoxPos: FVector, BoxRotation: FR
 |---|---|
 | `bool` | true if there was an overlap that passed the filters, false otherwise. |
 
-### `BoxOverlapOBBActors`
-
-```text
-BoxOverlapOBBActors(WorldContextObject: UObject *, BoxPos: FVector &, BoxRot: FRotator &, BoxExtent: FVector &, ObjectTypes: TArray < TEnumAsByte < EObjectTypeQuery > > &, ActorClassFilter: UClass *, ActorsToIgnore: TArray < AActor * > &, OutActors: TArray < AActor * > &) -> bool
-```
-
-Returns an array of actors that overlap the given axis-aligned box.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContextObject` | `UObject *` | - |
-| `BoxPos` | `FVector &` | Center of box. |
-| `BoxRot` | `FRotator &` | Rotator of box. |
-| `BoxExtent` | `FVector &` | Extents of box. |
-| `ObjectTypes` | `TArray < TEnumAsByte < EObjectTypeQuery > > &` | - |
-| `ActorClassFilter` | `UClass *` | - |
-| `ActorsToIgnore` | `TArray < AActor * > &` | Ignore these actors in the list |
-| `OutActors` | `TArray < AActor * > &` | Returned array of actors. Unsorted. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | true if there was an overlap that passed the filters, false otherwise. |
-
 ### `BoxOverlapComponents`
 
 ```text
@@ -14640,6 +16824,33 @@ BoxOverlapComponents(WorldContextObject: UObject *, BoxPos: FVector, BoxRotation
 | `ComponentClassFilter` | `UClass *` | - |
 | `ActorsToIgnore` | `TArray < AActor * > &` | 需要忽略的Actor列表 |
 | `OutComponents` | `TArray < UPrimitiveComponent * > &` | 输出的产生碰撞的组件列表 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true if there was an overlap that passed the filters, false otherwise. |
+
+### `BoxOverlapOBBActors`
+
+```text
+BoxOverlapOBBActors(WorldContextObject: UObject *, BoxPos: FVector &, BoxRot: FRotator &, BoxExtent: FVector &, ObjectTypes: TArray < TEnumAsByte < EObjectTypeQuery > > &, ActorClassFilter: UClass *, ActorsToIgnore: TArray < AActor * > &, OutActors: TArray < AActor * > &) -> bool
+```
+
+Returns an array of actors that overlap the given axis-aligned box.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContextObject` | `UObject *` | - |
+| `BoxPos` | `FVector &` | Center of box. |
+| `BoxRot` | `FRotator &` | Rotator of box. |
+| `BoxExtent` | `FVector &` | Extents of box. |
+| `ObjectTypes` | `TArray < TEnumAsByte < EObjectTypeQuery > > &` | - |
+| `ActorClassFilter` | `UClass *` | - |
+| `ActorsToIgnore` | `TArray < AActor * > &` | Ignore these actors in the list |
+| `OutActors` | `TArray < AActor * > &` | Returned array of actors. Unsorted. |
 
 **Returns**
 
@@ -15985,6 +18196,26 @@ Draw a debug string at a 3d world location.
 |---|---|
 | `void` | - |
 
+### `FlushDebugStrings`
+
+```text
+FlushDebugStrings(WorldContextObject: UObject *) -> void
+```
+
+Removes all debug strings.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContextObject` | `UObject *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ### `DrawDebugPlane`
 
 ```text
@@ -16017,26 +18248,6 @@ FlushPersistentDebugLines(WorldContextObject: UObject *) -> void
 ```
 
 Flush all persistent debug lines and shapes.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContextObject` | `UObject *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `FlushDebugStrings`
-
-```text
-FlushDebugStrings(WorldContextObject: UObject *) -> void
-```
-
-Removes all debug strings.
 
 **Parameters**
 
@@ -20479,6 +22690,752 @@ Each player that is active on the current client has a LocalPlayer. It stays act
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULuaArrayHelper.json -->
+
+# ULuaArrayHelper
+
+数组帮助类
+
+## Functions
+
+### `Add`
+
+```text
+Add(Item: any)
+```
+
+添加元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 需要添加的元素 |
+
+### `AddUnique`
+
+```text
+AddUnique(Item: any)
+```
+
+往数组里添加一个元素，如果已存在则不压入
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 需要添加的元素 |
+
+### `Push`
+
+```text
+Push(Item: any)
+```
+
+往数组里压入一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 需要添加的元素 |
+
+### `Insert`
+
+```text
+Insert(Index: number, Item: any)
+```
+
+在指定位置插入一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 需要插入的元素索引 |
+| `Item` | `any` | 需要添加的元素 |
+
+### `Remove`
+
+```text
+Remove(Item: any)
+```
+
+移除一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 需要移除的元素 |
+
+### `RemoveAt`
+
+```text
+RemoveAt(Index: number)
+```
+
+根据索引移除一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 索引 |
+
+### `Pop`
+
+```text
+Pop() -> any
+```
+
+弹出最后一个元素
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `any` | 移除的元素 |
+
+### `Get`
+
+```text
+Get(Index: number)
+```
+
+跟据索引获取一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 索引 |
+
+### `Set`
+
+```text
+Set(Index: number, Item: any)
+```
+
+设置一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 索引 |
+| `Item` | `any` | 元素 |
+
+### `Find`
+
+```text
+Find(Item: any)
+```
+
+查找一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 元素 |
+
+### `Contains`
+
+```text
+Contains(Item: any)
+```
+
+判断数组是否包含某个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 元素 |
+
+### `Empty`
+
+```text
+Empty()
+```
+
+清空数组
+
+### `Reset`
+
+```text
+Reset(ExpectedSize: number)
+```
+
+重置数组
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ExpectedSize` | `number` | 数组容量（可选） |
+
+### `Num`
+
+```text
+Num() -> number
+```
+
+获取数组长度
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 数组长度 |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULuaMapHelper.json -->
+
+# ULuaMapHelper
+
+映射帮助类
+
+## Functions
+
+### `Add`
+
+```text
+Add(Key: any, Value: any) -> boolean
+```
+
+添加一个键值对
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `any` | 键 |
+| `Value` | `any` | 值 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否更新成功 |
+
+### `Remove`
+
+```text
+Remove(Key: any) -> number
+```
+
+根据键移除一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `any` | 键 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 移除的元素数量 |
+
+### `Get`
+
+```text
+Get(Key: any) -> any
+```
+
+根据键获取值
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `any` | 键 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `any` | 值 |
+
+### `Set`
+
+```text
+Set(Key: any, Value: any) -> boolean
+```
+
+更新键值对
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `any` | 键 |
+| `Value` | `any` | 值 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否更新成功 |
+
+### `Find`
+
+```text
+Find(Key: any) -> any
+```
+
+根据键获取值
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `any` | 键 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `any` | 值 |
+
+### `Empty`
+
+```text
+Empty()
+```
+
+清空哈希表
+
+### `Reset`
+
+```text
+Reset(ExpectedSize: number)
+```
+
+重置哈希表
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ExpectedSize` | `number` | 期望的哈希表长度（可选） |
+
+### `Num`
+
+```text
+Num() -> number
+```
+
+获取哈希表长度
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 长度 |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULuaMulticastDelegate.json -->
+
+# ULuaMulticastDelegate
+
+UE 多播委托基类，用于绑定多个回调函数
+
+## Functions
+
+### `Add`
+
+```text
+Add(Callback: function, Obj: any) -> number
+```
+
+添加回调，Func 作为 Key 去重，同 Func 不同 Obj 会覆盖
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Callback` | `function` | 回调函数，如果绑定了 Obj，则 Obj 作为回调第一个参数传入 |
+| `Obj` | `any` | 可选的绑定对象，作为回调第一个参数传入 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 回调引用 |
+
+### `AddInstance`
+
+```text
+AddInstance(Callback: function, Obj: any) -> number
+```
+
+添加回调，Func && Obj 共同作为 Key 去重，同 Func 不同 Obj 会共存
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Callback` | `function` | 回调函数，Obj 作为回调第一个参数传入 |
+| `Obj` | `any` | 绑定对象，作为回调第一个参数传入 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 回调引用 |
+
+### `Remove`
+
+```text
+Remove(Callback: function, Obj: any)
+```
+
+移除指定回调
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Callback` | `function` | 要移除的回调函数 |
+| `Obj` | `any` | 可选的绑定对象 |
+
+### `RemoveAll`
+
+```text
+RemoveAll()
+```
+
+移除所有 Lua 绑定
+
+### `Clear`
+
+```text
+Clear(bDonotKeepThis: boolean)
+```
+
+移除所有绑定（C++/BP/Lua）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bDonotKeepThis` | `boolean` | 是否不保留当前对象的回调 |
+
+### `Broadcast`
+
+```text
+Broadcast(...: any)
+```
+
+触发 Lua 广播
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `...` | `any` | 委托参数 |
+
+### `BroadcastAll`
+
+```text
+BroadcastAll(...: any)
+```
+
+触发所有广播（C++/BP/Lua）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `...` | `any` | 委托参数 |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULuaSetHelper.json -->
+
+# ULuaSetHelper
+
+集合帮助类
+
+## Functions
+
+### `Add`
+
+```text
+Add(Item: any) -> number
+```
+
+添加一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 需要添加的元素 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 索引 |
+
+### `Remove`
+
+```text
+Remove(Item: any) -> number
+```
+
+移除一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 需要移除的元素 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 移除的元素数量 |
+
+### `RemoveAt`
+
+```text
+RemoveAt(Index: number)
+```
+
+根据索引移除一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 索引 |
+
+### `Get`
+
+```text
+Get(Index: number) -> any
+```
+
+根据索引获取一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 索引 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `any` | 元素 |
+
+### `Set`
+
+```text
+Set(Index: number, Item: any) -> number
+```
+
+设置一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 索引 |
+| `Item` | `any` | 元素 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 索引 |
+
+### `Find`
+
+```text
+Find(Item: any) -> number
+```
+
+查找一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 元素 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 索引 |
+
+### `Contains`
+
+```text
+Contains(Item: any) -> number
+```
+
+判断集合是否包含某个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 元素 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 是否包含 |
+
+### `IsValidIndex`
+
+```text
+IsValidIndex(Index: number) -> number
+```
+
+判断指定索引是否合法
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 索引 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 是否合法 |
+
+### `Empty`
+
+```text
+Empty()
+```
+
+清空集合
+
+### `Reset`
+
+```text
+Reset(ExpectedSize: number)
+```
+
+重置集合
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ExpectedSize` | `number` | 期望的集合长度（可选） |
+
+### `Num`
+
+```text
+Num() -> number
+```
+
+获取集合长度
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 集合长度 |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULuaSingleDelegate.json -->
+
+# ULuaSingleDelegate
+
+UE 单播委托基类，用于绑定单个回调函数，后绑定会覆盖先绑定
+
+## Functions
+
+### `Bind`
+
+```text
+Bind(Callback: function, Obj?: any) -> number
+```
+
+绑定回调函数
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Callback` | `function` | 回调函数，如果绑定了 Obj，则 Obj 作为回调第一个参数传入 |
+| `Obj?` | `any` | 可选的绑定对象，作为回调第一个参数传入 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 回调引用 |
+
+### `UnBind`
+
+```text
+UnBind()
+```
+
+解绑回调函数
+
+### `Execute`
+
+```text
+Execute(...: any)
+```
+
+执行委托，触发已绑定的回调
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `...` | `any` | 委托参数 |
+
+## Language
+
+`lua`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UManagementRuleSetting.json -->
 
 # UManagementRuleSetting
@@ -20503,8 +23460,8 @@ ManagementRule逻辑规则的.ini文件配置版本，减少结构体和容器�
 | `CheckTargetAssetClassTypes` | `TArray < FManagementRuleFNameCheck >` | - |
 | `CheckSourcePackagesSwitch` | `FManagementRuleSwitch` | - |
 | `CheckSourcePackages` | `TArray < FManagementRuleFNameCheck >` | - |
-| `CheckSourcePackageClassSwitch` | `FManagementRuleSwitch` | - |
 | `CheckSourcePackageClassTypes` | `TArray < FManagementRuleFNameCheck >` | - |
+| `CheckSourcePackageClassSwitch` | `FManagementRuleSwitch` | - |
 | `CheckTargetAssetTagSwitch` | `FManagementRuleSwitch` | - |
 | `CheckTargetAssetTags` | `TArray < FManagementRuleFNameCheck >` | - |
 | `bOnlySoftReferences` | `bool` | - |
@@ -20531,2421 +23488,6 @@ ManagementRule逻辑规则的.ini文件配置版本，减少结构体和容器�
 |---|---|---|
 | `LevelLightingQuality` | `TEnumAsByte < enum ELightingBuildQuality >` | The lighting quality the level was last built with |
 | `LevelVolumeProbeGIBakedStreamingData` | `ULevelVolumeProbeGIBakedStreamingData *` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterial.json -->
-
-# UMaterial
-
-A Material is an asset which can be applied to a mesh to control the visual look of the scene.
-  When light from the scene hits the surface, the shading model of the material is used to calculate how that light interacts with the surface.
- 
-  Warning: Creating new materials directly increases shader compile times!  Consider creating a Material Instance off of an existing material instead.
-
-## Inheritance
-
-`UMaterialInterface`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PhysMaterial` | `UPhysicalMaterial *` | Physical material to use for this graphics material. Used for sounds, effects etc. |
-| `DiffuseColor_DEPRECATED` | `FColorMaterialInput` | - |
-| `SpecularColor_DEPRECATED` | `FColorMaterialInput` | - |
-| `BaseColor` | `FColorMaterialInput` | - |
-| `Metallic` | `FScalarMaterialInput` | - |
-| `Specular` | `FScalarMaterialInput` | - |
-| `Roughness` | `FScalarMaterialInput` | - |
-| `Normal` | `FVectorMaterialInput` | - |
-| `EmissiveColor` | `FColorMaterialInput` | - |
-| `Opacity` | `FScalarMaterialInput` | - |
-| `OpacityMask` | `FScalarMaterialInput` | - |
-| `ReplaceMaterial` | `UMaterialInterface *` | - |
-| `MaterialDomain` | `TEnumAsByte < enum EMaterialDomain >` | The domain that the material's attributes will be evaluated in.<br>	  Certain pieces of material functionality are only valid in certain domains, for example vertex normal is only valid on a surface. |
-| `BlendMode` | `TEnumAsByte < enum EBlendMode >` | Determines how the material's color is blended with background colors. |
-| `DecalBlendMode` | `TEnumAsByte < enum EDecalBlendMode >` | Defines how the GBuffer chanels are getting manipulated by a decal material pass. (only with MaterialDomain == MD_DeferredDecal) |
-| `MaterialDecalResponse` | `TEnumAsByte < enum EMaterialDecalResponse >` | Defines how the material reacts on DBuffer decals (Affects look, performance and texturesample usage).<br>	  Non DBuffer Decals can be disabled on the primitive (e.g. static mesh) |
-| `ShadingModel` | `TEnumAsByte < enum EMaterialShadingModel >` | Determines how inputs are combined to create the material's final color. |
-| `bIncludeShaderCode` | `uint32` | - |
-| `OpacityMaskClipValue` | `float` | If BlendMode is BLEND_Masked, the surface is not rendered where OpacityMask < OpacityMaskClipValue. |
-| `bTranslucentVelocityRendering` | `uint32` | - |
-| `TranslucentVelocityClipValue` | `float` | - |
-| `VertexOffsetAlongNormal` | `float` | pixels offset along vertex normal, for outline drawing. |
-| `bCastDynamicShadowAsMasked` | `uint32` | If true, translucent materials will cast dynamic shadows according to their opacity.<br>	 OpacityMaskClipValue is used as the threshold value. |
-| `bCastDynamicShadowAsUnlit` | `uint32` | - |
-| `OITBlendMode` | `TEnumAsByte < enum EOITBlendMode >` | - |
-| `WorldPositionOffset` | `FVectorMaterialInput` | Adds to world position in the vertex shader. |
-| `WorldDisplacement` | `FVectorMaterialInput` | Offset in world space applied to tessellated vertices. |
-| `TessellationMultiplier` | `FScalarMaterialInput` | Multiplies the tessellation factors applied when a tessellation mode is set. |
-| `SubsurfaceColor` | `FColorMaterialInput` | Inner material color, only used for ShadingModel=Subsurface |
-| `ClearCoat` | `FScalarMaterialInput` | - |
-| `ClearCoatRoughness` | `FScalarMaterialInput` | - |
-| `AmbientOcclusion` | `FScalarMaterialInput` | output ambient occlusion to the GBuffer |
-| `Refraction` | `FScalarMaterialInput` | output refraction index for translucent rendering<br>	  Air:1.0 Water:1.333 Ice:1.3 Glass:~1.6 Diamond:2.42 |
-| `CustomizedUVs` | `FVector2MaterialInput` | These inputs are evaluated in the vertex shader and allow artists to do arbitrary vertex shader operations and access them in the pixel shader.<br>	  When unconnected or hidden they default to passing through the vertex UVs. |
-| `MaterialAttributes` | `FMaterialAttributesInput` | - |
-| `PixelDepthOffset` | `FScalarMaterialInput` | - |
-| `CustomizedVertexColor` | `FVector4MaterialInput` | - |
-| `PlanarReflectionOffsetScale` | `FVector4MaterialInput` | - |
-| `VertexDepthOffset` | `FScalarMaterialInput` | - |
-| `PixelDepthOffsetNegative` | `FScalarMaterialInput` | - |
-| `bAllowGCCluster` | `uint32` | - |
-| `bEnableSeparateTranslucency` | `uint32` | Indicates that the material should be rendered in the SeparateTranslucency Pass (not affected by DOF, requires bAllowSeparateTranslucency to be set in .ini). |
-| `bTranslucencyRenderAfterSS` | `uint32` | Indicates that the material should be rendered after post process and super sampling, dedicate for reticle materials |
-| `bEnableMobileSeparateTranslucency` | `uint32` | Indicates that the translucent material should not be affected by bloom or DOF. (Note: Depth testing is not available) |
-| `bEnableMobileDownsampleSeparateTranslucency` | `uint32` | Indicates that the translucent material can be rendered on an off-screen render target at a low resolution) |
-| `bEnableResponsiveAA` | `uint32` | Indicates that the material should be rendered using responsive anti-aliasing. Improves sharpness of small moving particles such as sparks.<br>	  Only use for small moving features because it will cause aliasing of the background. |
-| `bScreenSpaceReflections` | `uint32` | SSR on translucency |
-| `TwoSided` | `uint32` | Indicates that the material should be rendered without backface culling and the normal should be flipped for backfaces. |
-| `DitheredLODTransition` | `uint32` | Whether meshes rendered with the material should support dithered LOD transitions. |
-| `ForceOpaqueLevelPointIndirectLighting` | `uint32` | - |
-| `DitherOpacityMask` | `uint32` | Dither opacity mask. When combined with Temporal AA this can be used as a form of limited translucency which supports all lighting features. |
-| `bAllowNegativeEmissiveColor` | `uint32` | Whether the material should allow outputting negative emissive color values.  Only allowed on unlit materials. |
-| `NumCustomizedUVs` | `int32` | Number of customized UV inputs to display.  Unconnected customized UV inputs will just pass through the vertex UVs. |
-| `TranslucencyLightingMode` | `TEnumAsByte < enum ETranslucencyLightingMode >` | Sets the lighting mode that will be used on this material if it is translucent. |
-| `TranslucencyDirectionalLightingIntensity` | `float` | Useful for artificially increasing the influence of the normal on the lighting result for translucency.<br>	  A value larger than 1 increases the influence of the normal, a value smaller than 1 makes the lighting more ambient. |
-| `AllowTranslucentCustomDepthWrites` | `uint32` | Allows a translucenct material to be used with custom depth writing by compiling additional shaders. |
-| `TranslucentShadowDensityScale` | `float` | Scale used to make translucent shadows more or less opaque than the material's actual opacity. |
-| `TranslucentSelfShadowDensityScale` | `float` | Scale used to make translucent self-shadowing more or less opaque than the material's shadow on other objects.<br>	  This is only used when the object is casting a volumetric translucent shadow. |
-| `TranslucentSelfShadowSecondDensityScale` | `float` | Used to make a second self shadow gradient, to add interesting shading in the shadow of the first. |
-| `TranslucentSelfShadowSecondOpacity` | `float` | Controls the strength of the second self shadow gradient. |
-| `TranslucentBackscatteringExponent` | `float` | Controls how diffuse the material's backscattering is when using the MSM_Subsurface shading model.<br>	  Larger exponents give a less diffuse look (smaller, brighter backscattering highlight).<br>	  This is only used when the object is casting a volumetric translucent shadow from a directional light. |
-| `TranslucentMultipleScatteringExtinction` | `FLinearColor` | Colored extinction factor used to approximate multiple scattering in dense volumes.<br>	  This is only used when the object is casting a volumetric translucent shadow. |
-| `TranslucentShadowStartOffset` | `float` | Local space distance to bias the translucent shadow.  Positive values move the shadow away from the light. |
-| `bDisableDepthTest` | `uint32` | Whether to draw on top of opaque pixels even if behind them. This only has meaning for translucency. |
-| `bGenerateSphericalParticleNormals` | `uint32` | Whether to generate spherical normals for particles that use this material. |
-| `bTangentSpaceNormal` | `uint32` | Whether the material takes a tangent space normal or a world space normal as input.<br>	  (TangentSpace requires extra instructions but is often more convenient). |
-| `bUseEmissiveForDynamicAreaLighting` | `uint32` | If enabled, the material's emissive colour is injected into the LightPropagationVolume |
-| `bBlockGI` | `uint32` | If enabled, the material's opacity defines how much GI is blocked when using the LightPropagationVolume feature |
-| `bUseSimpleGI` | `uint32` | If enabled, the material uses simplified and inaccurate GI color for efficiency |
-| `bUsedAsSpecialEngineMaterial` | `uint32` | This is a special usage flag that allows a material to be assignable to any primitive type.<br>	  This is useful for materials used by code to implement certain viewmodes, for example the default material or lighting only material.<br>	  The cost is that nearly 20x more shaders will be compiled for the material than the average material, which will greatly increase shader compile time and memory usage.<br>	  This flag should only be enabled when absolutely necessary, and is purposefully not exposed to the UI to prevent abuse. |
-| `bUsedWithSkeletalMesh` | `uint32` | Indicates that the material and its instances can be use with skeletal meshes.<br>	  This will result in the shaders required to support skeletal meshes being compiled which will increase shader compile time and memory usage. |
-| `bUsedWithGFur` | `uint32` | Indicates that the material and its instances can be use with GFur.<br>	 This will result in the shaders required to support skeletal meshes being compiled which will increase shader compile time and memory usage. |
-| `bUsedWithEditorCompositing` | `uint32` | Indicates that the material and its instances can be use with editor compositing<br>	  This will result in the shaders required to support editor compositing being compiled which will increase shader compile time and memory usage. |
-| `bUsedWithParticleSprites` | `uint32` | Indicates that the material and its instances can be use with particle sprites<br>	  This will result in the shaders required to support particle sprites being compiled which will increase shader compile time and memory usage. |
-| `bForceDisableSubUVCalculate` | `uint32` | - |
-| `bUsedWithBeamTrails` | `uint32` | Indicates that the material and its instances can be use with beam trails<br>	  This will result in the shaders required to support beam trails being compiled which will increase shader compile time and memory usage. |
-| `bUsedWithMeshParticles` | `uint32` | Indicates that the material and its instances can be use with mesh particles<br>	  This will result in the shaders required to support mesh particles being compiled which will increase shader compile time and memory usage. |
-| `bUsedWithParticleBigWorldPrecision` | `uint32` | - |
-| `bUsedWithNiagaraSprites` | `uint32` | Indicates that the material and its instances can be use with Niagara sprites (meshes and ribbons, respectively)<br>	 This will result in the shaders required to support Niagara sprites being compiled which will increase shader compile time and memory usage. |
-| `bUsedWithNiagaraRibbons` | `uint32` | - |
-| `bUsedWithNiagaraMeshParticles` | `uint32` | - |
-| `bUsedWithIBL` | `uint32` | Indicates that the material and its instances can be use with reflection cube<br>	  This will result in the shaders required to support IBL being compiled which will increase shader compile time and memory usage. |
-| `bUsedWithStaticLighting` | `uint32` | Indicates that the material and its instances can be use with static lighting<br>	  This will result in the shaders required to support static lighting being compiled which will increase shader compile time and memory usage. |
-| `bUsedWithMorphTargets` | `uint32` | Indicates that the material and its instances can be use with morph targets<br>	  This will result in the shaders required to support morph targets being compiled which will increase shader compile time and memory usage. |
-| `bUsedWithSplineMeshes` | `uint32` | Indicates that the material and its instances can be use with spline meshes<br>	  This will result in the shaders required to support spline meshes being compiled which will increase shader compile time and memory usage. |
-| `bUsedWithQuantizedMeshes` | `uint32` | - |
-| `bUsedWithInstancedStaticMeshes` | `uint32` | Indicates that the material and its instances can be use with instanced static meshes<br>	  This will result in the shaders required to support instanced static meshes being compiled which will increase shader compile time and memory usage. |
-| `bUsedWithCustomInstancedStaticMeshes` | `uint32` | Indicates that the material and its instances can be use with custom instanced static meshes<br>	  This will result in the shaders required to support instanced static meshes being compiled which will increase shader compile time and memory usage. |
-| `bUsedWithInstancedWidget` | `uint32` | - |
-| `bUsedWithInstancedPDSurface` | `uint32` | - |
-| `bUsesDistortion` | `uint32` | Indicates that the material and its instances can be use with distortion<br>	  This will result in the shaders required to support distortion being compiled which will increase shader compile time and memory usage. |
-| `bUsedWithClothing` | `uint32` | Indicates that the material and its instances can be use with clothing<br>	  This will result in the shaders required to support clothing being compiled which will increase shader compile time and memory usage. |
-| `bUsedWithUI_DEPRECATED` | `uint32` | Indicates that the material and its instances can be use with Slate UI and UMG<br>	  This will result in the shaders required to support UI materials being compiled which will increase shader compile time and memory usage. |
-| `bUsedWithPPRBackgroud` | `uint32` | Indicates that the material would use for ppr background in deferred rendering. |
-| `bUsedWithSurfelInjectColor` | `uint32` | Indicates that the material and its instances can be use with SurfelGI inject color<br>	  This will result in the shaders required to support SurfelGI inject color being compiled which will increase shader compile time and memory usage.<br>	  HACK by huiwenjiang. |
-| `bUsedWithTranslucentGI` | `uint32` | [SurfelGI - brainfkli ADD]<br>	  Indicates that the material and its instances can be affected by GI in translucent blend mode. |
-| `bUsedWithAtmosphericSkyBox` | `uint32` | Indicates that the material and its instances can be use with AtmosphericSkyBox<br>	  This will result in the shaders required to support AtmosphericSkyBox being compiled which will increase shader compile time and memory usage. |
-| `bAutomaticallySetUsageInEditor` | `uint32` | Whether to automatically set usage flags based on what the material is applied to in the editor.<br>	  It can be useful to disable this on a base material with many instances, where adding another usage flag accidentally (eg bUsedWithSkeletalMeshes) can add a lot of shader permutations. |
-| `bFullyRough` | `uint32` | Forces the material to be completely rough. Saves a number of instructions and one sampler. Note: Overrided by Lite Rough. |
-| `bUsedWithLandscapeDeform` | `uint32` | Indicates that the material and its instances can be use with Landscape Deform<br>	  This will result in the shaders required to support LandscapeDeform being compiled which will increase shader compile time and memory usage. |
-| `bUseFullPrecision` | `uint32` | Forces this material to use full (highp) precision in the pixel shader.<br>	 	This is slower than the default (mediump) but can be used to work around precision-related rendering errors.<br>	 	This setting has no effect on older mobile devices that do not support high precision.<br>	   Note: Overrided by Lite Rough. |
-| `bForceMaterialFloat` | `uint32` | Forces this material's temporary variables to use full precision float in the pixel shader.<br>	  Keeps uniforms to use default precision. HACK by huiwen. |
-| `bUseLightmapDirectionality` | `uint32` | Use lightmap directionality and per pixel normals. If disabled, lighting from lightmaps will be flat but cheaper. |
-| `bUsedWithDynamicInstancing` | `uint32` | Indicates that the each material instance(of this material) can be dynamic instanced. |
-| `bDynamicInstancingByUBO` | `uint32` | - |
-| `bUsedWithRuntimeStaticBatchMultiParams` | `uint32` | - |
-| `bNeedInstanceTransform` | `uint32` | - |
-| `bUseSimplestShader` | `uint32` | - |
-| `bBypassSystemMaterialQuality` | `uint32` | - |
-| `bBypassMobilePointLight` | `uint32` | - |
-| `bUseAsEarlyZ` | `uint32` | - |
-| `bForceOutputLinearSpace` | `uint32` | - |
-| `bUseAsDrawToRenderTarget` | `uint32` | - |
-| `bRenderInTwoPass` | `uint32` | - |
-| `bShadowUseTentFilter` | `uint32` | - |
-| `bUseLightmap` | `uint32` | - |
-| `bUseGPUVolumetricLightMap` | `uint32` | - |
-| `bUsedGPUVLMVertexLighting` | `uint32` | - |
-| `bUseVolumeProbeGIMobile` | `uint32` | - |
-| `bUseVolumeProbeGIMobileWithAO` | `uint32` | - |
-| `bShouldReceiveGridShadow` | `uint32` | - |
-| `bEnableMicroShadow` | `uint32` | - |
-| `MicroShadowIntensity` | `float` | - |
-| `bUseIndirectLighting` | `uint32` | - |
-| `bShadowOnEmissiveColor` | `uint32` | - |
-| `bUsedGrassInstnaceColor` | `uint32` | - |
-| `bUsedVertexPointLight` | `uint32` | - |
-| `bUsedWithLandscapeShadow` | `uint32` | - |
-| `bUseLandscapeMultiLayer` | `uint32` | - |
-| `bUsedWithPhotonShadow` | `uint32` | #if WITH_PHOTON_SHADOW |
-| `bUsedWithPhotonShadowPCSS` | `uint32` | - |
-| `bUsedDynamicObjectVertexLighting` | `uint32` | - |
-| `bUsedWithDynamicBatching` | `uint32` | Indicates that the material instance shared with same base mat can be batched |
-| `bUsedWithDynamicMergeSkeletalMesh` | `uint32` | - |
-| `bUsedWithDynamicInstancingES2Fixup` | `uint32` | - |
-| `bUsedWithMatIDLandscape` | `uint32` | - |
-| `ShadowOverride` | `TEnumAsByte < enum EMaterialShadowOverride >` | - |
-| `SimpleVertexNormalSituation` | `TEnumAsByte < enum ESimpleVertexNormalSituation >` | - |
-| `bZForceFar` | `uint32` | - |
-| `bWettable` | `uint32` | - |
-| `bUseLegacySpecular` | `uint32` | use Phong instead of GGX |
-| `bCorrectBlendingColorInHDR` | `uint32` | - |
-| `bGPUSkinForceUseBonesUniformBuffer` | `uint32` | - |
-| `bUseAsTranslucentEarlyZ` | `uint32` | - |
-| `bLiteRough` | `uint32` | Override: Fully Rough On、UseFullPrecision Off |
-| `bUseSimpleSkyLight` | `uint32` | - |
-| `bACESOff` | `uint32` | - |
-| `bEmissionOff` | `uint32` | - |
-| `bInstL2WOnlyTranslation` | `uint32` | Instancing only uses translation of LocalToWorld, exclusive of rotation and scale. |
-| `bUseLiteFog` | `uint32` | - |
-| `bUseChromaticAberration` | `uint32` | - |
-| `bUsedWithFirstPerson` | `uint32` | - |
-| `bUsedWithScope` | `uint32` | - |
-| `bUsedWithMaterialDistFade` | `uint32` | - |
-| `bUseHQForwardReflections` | `uint32` | Forward renderer: enables multiple parallax-corrected reflection captures that blend together.<br>	  Mobile renderer: blend between nearest 3 reflection captures, but reduces the number of samplers available to the material as two more samplers will be used for reflection cubemaps. |
-| `bUsePlanarForwardReflections` | `uint32` | Enables planar reflection when using the forward renderer or mobile. Enabling this setting reduces the number of samplers available to the material as one more sampler will be used for the planar reflection. |
-| `bApplyVertexFog` | `uint32` | When false, materials are not fogged in forward shading or mobile. Defaults to true. |
-| `bNormalCurvatureToRoughness` | `uint32` | Reduce roughness based on screen space normal changes. |
-| `D3D11TessellationMode` | `TEnumAsByte < enum EMaterialTessellationMode >` | The type of tessellation to apply to this object.  Note D3D11 required for anything except MTM_NoTessellation. |
-| `bEnableCrackFreeDisplacement` | `uint32` | Prevents cracks in the surface of the mesh when using tessellation. |
-| `bEnableAdaptiveTessellation` | `uint32` | Enables adaptive tessellation, which tries to maintain a uniform number of pixels per triangle. |
-| `bUsedWithTexture2DArrayShaderVariant` | `uint32` | ENABLE_TEXTURE2D_ARRAY_SHADER_VARIANT<br>	 Enable Dynamic MaterialInstance use Texture 2D Array shader variant with Texture 2D material expression graph |
-| `bSkipRSH` | `uint32` | Skip Runtime Static Batching (RSH) |
-| `bSkipDynamicSwitchOp` | `uint32` | - |
-| `bUsesDeviceLevelSwitch` | `uint32` | 缓存标记：材质是否使用了DeviceLevelSwitch节点且High输入已连接，在PostEditChangeProperty中自动更新 |
-| `bForceUsesDeviceLevelSwitch` | `uint32` | 强制开启DeviceLevelSwitch：勾选后bUsesDeviceLevelSwitch将被强制设为true，即使材质中没有DeviceLevelSwitch节点 |
-| `bDisableShadowWPO` | `uint32` | - |
-| `bEnableGrassShadowScale` | `uint32` | - |
-| `bForceDisableVertexNormal` | `uint32` | - |
-| `MaxDisplacement` | `float` | - |
-| `Wireframe` | `uint32` | Enables a wireframe view of the mesh the material is applied to. |
-| `bOutputVelocityOnBasePass` | `uint32` | Skips outputting velocity during the base pass. |
-| `bUnlitOutputAllMTOnBasePass` | `uint32` | Force unlit material output all MT during the base pass. |
-| `ShadingRate` | `TEnumAsByte < EMaterialShadingRate >` | Select what shading rate to apply for platforms that have variable rate shading |
-| `EditorX` | `int32` | - |
-| `EditorY` | `int32` | - |
-| `EditorPitch` | `int32` | - |
-| `EditorYaw` | `int32` | - |
-| `Expressions` | `TArray < UMaterialExpression * >` | Array of material expressions, excluding Comments.  Used by the material editor. |
-| `MaterialFunctionInfos` | `TArray < FMaterialFunctionInfo >` | Array of all functions this material depends on. |
-| `MaterialParameterCollectionInfos` | `TArray < FMaterialParameterCollectionInfo >` | Array of all parameter collections this material depends on. |
-| `bCanMaskedBeAssumedOpaque` | `uint32` | true if this Material can be assumed Opaque when set to masked. |
-| `bIsMasked_DEPRECATED` | `uint32` | true if Material is masked and uses custom opacity |
-| `bIsPreviewMaterial` | `uint32` | true if Material is the preview material used in the material editor. |
-| `bUseMaterialAttributes` | `uint32` | when true, the material attributes pin is used instead of the regular pins. |
-| `bComputeFogPerPixel` | `uint32` | When true, translucent materials have fog computed for every pixel, which costs more but fixes artifacts due to low tessellation. |
-| `bDisableDirectionalLighting` | `uint32` | When true, the directional lighting will be disabled |
-| `bAllowDevelopmentShaderCompile` | `uint32` | If true the compilation environment will be changed to remove the global COMPILE_SHADERS_FOR_DEVELOPMENT flag. |
-| `bIsMaterialEditorStatsMaterial` | `uint32` | true if this is a special material used for stats by the material editor. |
-| `bUseLandscapeVertexAO` | `uint32` | - |
-| `bAllowLandscapeVertexMorph` | `uint32` | - |
-| `bUseLandscapeVertexHole` | `uint32` | - |
-| `UsageFlagWarnings` | `uint32` | true if we have printed a warning about material usage for a given usage flag. |
-| `BlendableLocation` | `TEnumAsByte < enum EBlendableLocation >` | Where the node is inserted in the (post processing) graph, only used if domain is PostProcess |
-| `BlendablePriority` | `int32` | If multiple nodes with the same  type are inserted at the same point, this defined order and if they get combined, only used if domain is PostProcess |
-| `BlendableOutputAlpha` | `bool` | If this is enabled, the blendable will output alpha |
-| `RefractionMode` | `TEnumAsByte < enum ERefractionMode >` | Controls how the Refraction input is interpreted and how the refraction offset into scene color is computed for this material. |
-| `RefractionDepthBias` | `float` | This is the refraction depth bias, larger values offset distortion to prevent closer objects from rendering into the distorted surface at acute viewing angles but increases the disconnect between surface and where the refraction starts. |
-| `bOceanFoam` | `uint32` | - |
-| `bEnableMeshClip` | `uint32` | - |
-| `bEnableMeshDiscard` | `uint32` | - |
-| `bEnableMeshArcPlaneClip` | `uint32` | - |
-| `bIsEnhancedUImage` | `uint32` | - |
-| `bSimplePointLight` | `uint32` | Enable this so the material will not calculate spot light shadows |
-| `StateId` | `FGuid` | Guid that uniquely identifies this material.<br>	  Any changes to the state of the material that do not appear separately in the shadermap DDC keys must cause this guid to be regenerated!<br>	  For example, a modification to the Expressions array.<br>	  Code changes that cause the guid to be regenerated on load should be avoided, as that requires a resave of the content to stop recompiling every load. |
-| `ExpressionTextureReferences` | `TArray < UTexture * >` | Cached texture references from all expressions in the material (including nested functions).<br>	  This is used to link uniform texture expressions which were stored in the DDC with the UTextures that they reference. |
-| `EditorComments` | `TArray < UMaterialExpressionComment * >` | Array of comments associated with this material; viewed in the material editor. |
-| `ParameterGroupData` | `TArray < FParameterGroupData >` | Controls where this parameter group is displayed in a material instance parameter list.  The lower the number the higher up in the parameter list. |
-| `ReferencedTextureGuids` | `TArray < FGuid >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialBillboardComponent.json -->
-
-# UMaterialBillboardComponent
-
-A 2d material that will be rendered always facing the camera.
-
-## Inheritance
-
-`UPrimitiveComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Elements` | `TArray < FMaterialSpriteElement >` | Current array of material billboard elements |
-
-## Functions
-
-### `SetElements`
-
-```text
-SetElements(NewElements: TArray < FMaterialSpriteElement > &) -> void
-```
-
-Set all elements of this material billboard component
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewElements` | `TArray < FMaterialSpriteElement > &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `AddElement`
-
-```text
-AddElement(Material: UMaterialInterface *, DistanceToOpacityCurve: UCurveFloat *, bSizeIsInScreenSpace: bool, BaseSizeX: float, BaseSizeY: float, DistanceToSizeCurve: UCurveFloat *) -> void
-```
-
-Adds an element to the sprite.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Material` | `UMaterialInterface *` | - |
-| `DistanceToOpacityCurve` | `UCurveFloat *` | - |
-| `bSizeIsInScreenSpace` | `bool` | - |
-| `BaseSizeX` | `float` | - |
-| `BaseSizeY` | `float` | - |
-| `DistanceToSizeCurve` | `UCurveFloat *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpression.json -->
-
-# UMaterialExpression
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Material` | `UMaterial *` | The material that this expression is currently being compiled in.  <br>	  This is not necessarily the object which owns this expression, for example a preview material compiling a material function's expressions. |
-| `Function` | `UMaterialFunction *` | The material function that this expression is being used with, if any.<br>	  This will be NULL if the expression belongs to a function that is currently being edited, |
-| `Desc` | `FString` | A description that level designers can add (shows in the material editor UI). |
-| `BorderColor` | `FColor` | Color of the expression's border outline. |
-| `bRealtimePreview` | `uint32` | Set to true by RecursiveUpdateRealtimePreview() if the expression's preview needs to be updated in realtime in the material editor. |
-| `bNeedToUpdatePreview` | `uint32` | If true, we should update the preview next render. This is set when changing bRealtimePreview. |
-| `bIsParameterExpression` | `uint32` | Indicates that this is a 'parameter' type of expression and should always be loaded (ie not cooked away) because we might want the default parameter. |
-| `bCommentBubbleVisible` | `uint32` | If true, the comment bubble will be visible in the graph editor |
-| `bShowOutputNameOnPin` | `uint32` | If true, use the output name as the label for the pin |
-| `bShowMaskColorsOnPin` | `uint32` | If true, changes the pin color to match the output mask |
-| `bHidePreviewWindow` | `uint32` | If true, do not render the preview window for the expression |
-| `bCollapsed` | `uint32` | If true, show a collapsed version of the node |
-| `bShaderInputData` | `uint32` | Whether the node represents an input to the shader or not.  Used to color the node's background. |
-| `bShowInputs` | `uint32` | Whether to draw the expression's inputs. |
-| `bShowOutputs` | `uint32` | Whether to draw the expression's outputs. |
-| `Outputs` | `TArray < FExpressionOutput >` | The expression's outputs, which are set in default properties by derived classes. |
-| `MaterialExpressionEditorX` | `int32` | - |
-| `MaterialExpressionEditorY` | `int32` | - |
-| `GraphNode` | `UEdGraphNode *` | Expression's Graph representation |
-| `MaterialExpressionGuid` | `FGuid` | GUID to uniquely identify this node, to help the tutorials out |
-| `MenuCategories` | `TArray < FText >` | Localized categories to sort this expression into... |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionAbs.json -->
-
-# UMaterialExpressionAbs
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | Link to the input expression to be evaluated |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionAdd.json -->
-
-# UMaterialExpressionAdd
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `A` | `FExpressionInput` | - |
-| `B` | `FExpressionInput` | - |
-| `ConstA` | `float` | only used if A is not hooked up |
-| `ConstB` | `float` | only used if B is not hooked up |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionAntialiasedTextureMask.json -->
-
-# UMaterialExpressionAntialiasedTextureMask
-
-## Inheritance
-
-`UMaterialExpressionTextureSampleParameter2D`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Threshold` | `float` | - |
-| `Channel` | `TEnumAsByte < enum ETextureColorChannel >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionAppendVector.json -->
-
-# UMaterialExpressionAppendVector
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `A` | `FExpressionInput` | - |
-| `B` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArccosine.json -->
-
-# UMaterialExpressionArccosine
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArccosineFast.json -->
-
-# UMaterialExpressionArccosineFast
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArcsine.json -->
-
-# UMaterialExpressionArcsine
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArcsineFast.json -->
-
-# UMaterialExpressionArcsineFast
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArctangent.json -->
-
-# UMaterialExpressionArctangent
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArctangent2.json -->
-
-# UMaterialExpressionArctangent2
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Y` | `FExpressionInput` | - |
-| `X` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArctangent2Fast.json -->
-
-# UMaterialExpressionArctangent2Fast
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Y` | `FExpressionInput` | - |
-| `X` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionArctangentFast.json -->
-
-# UMaterialExpressionArctangentFast
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionAtmosphericFogColor.json -->
-
-# UMaterialExpressionAtmosphericFogColor
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `WorldPosition` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionBentNormalCustomOutput.json -->
-
-# UMaterialExpressionBentNormalCustomOutput
-
-## Inheritance
-
-`UMaterialExpressionCustomOutput`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionBlackBody.json -->
-
-# UMaterialExpressionBlackBody
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Temp` | `FExpressionInput` | Temperature |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionBlendMaterialAttributes.json -->
-
-# UMaterialExpressionBlendMaterialAttributes
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `A` | `FMaterialAttributesInput` | - |
-| `B` | `FMaterialAttributesInput` | - |
-| `Alpha` | `FExpressionInput` | - |
-| `PixelAttributeBlendType` | `TEnumAsByte < EMaterialAttributeBlend :: Type >` | - |
-| `VertexAttributeBlendType` | `TEnumAsByte < EMaterialAttributeBlend :: Type >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionBreakMaterialAttributes.json -->
-
-# UMaterialExpressionBreakMaterialAttributes
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `MaterialAttributes` | `FMaterialAttributesInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionBumpOffset.json -->
-
-# UMaterialExpressionBumpOffset
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Coordinate` | `FExpressionInput` | - |
-| `Height` | `FExpressionInput` | - |
-| `HeightRatioInput` | `FExpressionInput` | - |
-| `HeightRatio` | `float` | - |
-| `ReferencePlane` | `float` | - |
-| `ConstCoordinate` | `uint32` | only used if Coordinate is not hooked up |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionCeil.json -->
-
-# UMaterialExpressionCeil
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionChromaticAberrationCustomOutput.json -->
-
-# UMaterialExpressionChromaticAberrationCustomOutput
-
-## Inheritance
-
-`UMaterialExpressionCustomOutput`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionClamp.json -->
-
-# UMaterialExpressionClamp
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-| `Min` | `FExpressionInput` | - |
-| `Max` | `FExpressionInput` | - |
-| `ClampMode` | `TEnumAsByte < enum EClampMode >` | - |
-| `MinDefault` | `float` | - |
-| `MaxDefault` | `float` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionClearCoatNormalCustomOutput.json -->
-
-# UMaterialExpressionClearCoatNormalCustomOutput
-
-## Inheritance
-
-`UMaterialExpressionCustomOutput`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionClipmapSample.json -->
-
-# UMaterialExpressionClipmapSample
-
-## Inheritance
-
-`UMaterialExpressionTextureSampleParameter2D`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ClipmapTexture` | `UClipmapTexture *` | - |
-| `ParentClipmapTexture` | `UClipmapTexture *` | - |
-| `bLerpWithNextMip` | `bool` | - |
-| `FallBackValue` | `FLinearColor` | - |
-| `bUseCustomUV` | `bool` | - |
-| `bUseCalculateUVInVS` | `bool` | - |
-| `CustomUVIndex` | `int32` | - |
-| `NumParentInputs` | `int32` | Number of inputs from parent class |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionCollectionParameter.json -->
-
-# UMaterialExpressionCollectionParameter
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Collection` | `UMaterialParameterCollection *` | The Parameter Collection to use. |
-| `ParameterName` | `FName` | Name of the parameter being referenced. |
-| `ParameterId` | `FGuid` | Id that is set from the name, and used to handle renaming of collection parameters. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionComment.json -->
-
-# UMaterialExpressionComment
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SizeX` | `int32` | - |
-| `SizeY` | `int32` | - |
-| `Text` | `FString` | - |
-| `CommentColor` | `FLinearColor` | Color to style comment with |
-| `FontSize` | `int32` | Size of the text in the comment box |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionComponentMask.json -->
-
-# UMaterialExpressionComponentMask
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-| `R` | `uint32` | - |
-| `G` | `uint32` | - |
-| `B` | `uint32` | - |
-| `A` | `uint32` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionConstant.json -->
-
-# UMaterialExpressionConstant
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `R` | `float` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionConstant2Vector.json -->
-
-# UMaterialExpressionConstant2Vector
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `R` | `float` | - |
-| `G` | `float` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionConstant3Vector.json -->
-
-# UMaterialExpressionConstant3Vector
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Constant` | `FLinearColor` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionConstant4Vector.json -->
-
-# UMaterialExpressionConstant4Vector
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Constant` | `FLinearColor` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionConstantBiasScale.json -->
-
-# UMaterialExpressionConstantBiasScale
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-| `Bias` | `float` | - |
-| `Scale` | `float` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionCosine.json -->
-
-# UMaterialExpressionCosine
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-| `Period` | `float` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionCrossProduct.json -->
-
-# UMaterialExpressionCrossProduct
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `A` | `FExpressionInput` | - |
-| `B` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionCurveAtlasRowParameter.json -->
-
-# UMaterialExpressionCurveAtlasRowParameter
-
-## Inheritance
-
-`UMaterialExpressionScalarParameter`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Curve` | `UCurveLinearColor *` | - |
-| `Atlas` | `UCurveLinearColorAtlas *` | - |
-| `InputTime` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionCustom.json -->
-
-# UMaterialExpressionCustom
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Code` | `FString` | - |
-| `OutputType` | `TEnumAsByte < enum ECustomMaterialOutputType >` | - |
-| `Description` | `FString` | - |
-| `Inputs` | `TArray < struct FCustomInput >` | - |
-| `AdditionalOutputs` | `TArray < struct FCustomOutput >` | - |
-| `IncludeFilePaths` | `TArray < FString >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDDX.json -->
-
-# UMaterialExpressionDDX
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Value` | `FExpressionInput` | The value we want to compute ddxddy from |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDDY.json -->
-
-# UMaterialExpressionDDY
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Value` | `FExpressionInput` | The value we want to compute ddxddy from |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDecalMipmapLevel.json -->
-
-# UMaterialExpressionDecalMipmapLevel
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `TextureSize` | `FExpressionInput` | The texture's size |
-| `ConstWidth` | `float` | only used if TextureSize is not hooked up |
-| `ConstHeight` | `float` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDepthFade.json -->
-
-# UMaterialExpressionDepthFade
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `InOpacity` | `FExpressionInput` | Input opacity which will be scaled by the result of the fade. |
-| `FadeDistance` | `FExpressionInput` | World space distance over which the fade should take place. |
-| `OpacityDefault` | `float` | Opacity which will be scaled by the result of the fade.  This is used when InOpacity is unconnected. |
-| `FadeDistanceDefault` | `float` | World space distance over which the fade should take place.  This is used when FadeDistance is unconnected. |
-| `bSupportFPR` | `bool` | - |
-| `bClampSceneDepth` | `bool` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDepthOfFieldFunction.json -->
-
-# UMaterialExpressionDepthOfFieldFunction
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `FunctionValue` | `TEnumAsByte < enum EDepthOfFieldFunctionValue >` | Determines the mapping place to use on the terrain. |
-| `Depth` | `FExpressionInput` | usually nothing or PixelDepth |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDeriveNormalZ.json -->
-
-# UMaterialExpressionDeriveNormalZ
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `InXY` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDesaturation.json -->
-
-# UMaterialExpressionDesaturation
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-| `Fraction` | `FExpressionInput` | - |
-| `LuminanceFactors` | `FLinearColor` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDeviceLevelSwitch.json -->
-
-# UMaterialExpressionDeviceLevelSwitch
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Default` | `FExpressionInput` | Default input (must be connected). Same as Low. Used when DEVICE_LEVEL_HIGH is 0. |
-| `Low` | `FExpressionInput` | Low device input (optional). If connected, overrides Default. Used when DEVICE_LEVEL_HIGH is 0. |
-| `High` | `FExpressionInput` | High device input (optional). Used when DEVICE_LEVEL_HIGH is 1. Connecting this enables DeviceLevel shader variants. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDistance.json -->
-
-# UMaterialExpressionDistance
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `A` | `FExpressionInput` | - |
-| `B` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDistanceFieldGradient.json -->
-
-# UMaterialExpressionDistanceFieldGradient
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Position` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDistanceToNearestSurface.json -->
-
-# UMaterialExpressionDistanceToNearestSurface
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Position` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDivide.json -->
-
-# UMaterialExpressionDivide
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `A` | `FExpressionInput` | - |
-| `B` | `FExpressionInput` | - |
-| `ConstA` | `float` | only used if A is not hooked up |
-| `ConstB` | `float` | only used if B is not hooked up |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDotProduct.json -->
-
-# UMaterialExpressionDotProduct
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `A` | `FExpressionInput` | - |
-| `B` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDynamicInstancingParameter.json -->
-
-# UMaterialExpressionDynamicInstancingParameter
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ParameterName` | `FName` | The names of the parameter. |
-| `DefaultValue` | `FLinearColor` | - |
-| `ParameterIndex` | `int32` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionDynamicParameter.json -->
-
-# UMaterialExpressionDynamicParameter
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ParamNames` | `TArray < FString >` | The names of the parameters.<br>	 	These will show up in Cascade when editing a particle system<br>	 	that uses the material it is in... |
-| `DefaultValue` | `FLinearColor` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFeatureLevelSwitch.json -->
-
-# UMaterialExpressionFeatureLevelSwitch
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Default` | `FExpressionInput` | Default connection, used when a certain feature level doesn't have an override. |
-| `Inputs` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFloor.json -->
-
-# UMaterialExpressionFloor
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFmod.json -->
-
-# UMaterialExpressionFmod
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `A` | `FExpressionInput` | - |
-| `B` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFontSample.json -->
-
-# UMaterialExpressionFontSample
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Font` | `UFont *` | font resource that will be sampled |
-| `FontTexturePage` | `int32` | allow access to the various font pages |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFontSampleParameter.json -->
-
-# UMaterialExpressionFontSampleParameter
-
-## Inheritance
-
-`UMaterialExpressionFontSample`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ParameterName` | `FName` | name to be referenced when we want to find and set thsi parameter |
-| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
-| `Group` | `FName` | The name of the parameter Group to display in MaterialInstance Editor. Default is None group |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFrac.json -->
-
-# UMaterialExpressionFrac
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Input` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFresnel.json -->
-
-# UMaterialExpressionFresnel
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ExponentIn` | `FExpressionInput` | - |
-| `Exponent` | `float` | The exponent to pass into the pow() function |
-| `BaseReflectFractionIn` | `FExpressionInput` | - |
-| `BaseReflectFraction` | `float` | Specifies the fraction of specular reflection when the surfaces is viewed from straight on.<br>	  A value of 1 effectively disables Fresnel. |
-| `Normal` | `FExpressionInput` | The normal to dot with the camera FVector |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFunctionInput.json -->
-
-# UMaterialExpressionFunctionInput
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Preview` | `FExpressionInput` | Used for previewing when editing the function, or when bUsePreviewValueAsDefault is enabled. |
-| `InputName` | `FString` | The input's name, which will be drawn on the connector in function call expressions that use this function. |
-| `Description` | `FString` | The input's description, which will be used as a tooltip on the connector in function call expressions that use this function. |
-| `Id` | `FGuid` | Id of this input, used to maintain references through name changes. |
-| `InputType` | `TEnumAsByte < enum EFunctionInputType >` | Type of this input.  <br>	  Input code chunks will be cast to this type, and a compiler error will be emitted if the cast fails. |
-| `PreviewValue` | `FVector4` | Value used to preview this input when editing the material function. |
-| `bUsePreviewValueAsDefault` | `uint32` | Whether to use the preview value or texture as the default value for this input. |
-| `SortPriority` | `int32` | Controls where the input is displayed relative to the other inputs. |
-| `bCompilingFunctionPreview` | `uint32` | true when this expression is being compiled in a function preview, <br>	  false when this expression is being compiled into a material that uses the function.<br>	  Only valid in Compile() |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionFunctionOutput.json -->
-
-# UMaterialExpressionFunctionOutput
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `OutputName` | `FString` | The output's name, which will be drawn on the connector in function call expressions that use this function. |
-| `Description` | `FString` | The output's description, which will be used as a tooltip on the connector in function call expressions that use this function. |
-| `SortPriority` | `int32` | Controls where the output is displayed relative to the other outputs. |
-| `A` | `FExpressionInput` | Stores the expression in the material function connected to this output. |
-| `bLastPreviewed` | `uint32` | Whether this output was previewed the last time this function was edited. |
-| `Id` | `FGuid` | Id of this input, used to maintain references through name changes. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionGetMaterialAttributes.json -->
-
-# UMaterialExpressionGetMaterialAttributes
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `MaterialAttributes` | `FMaterialAttributesInput` | - |
-| `AttributeGetTypes` | `TArray < FGuid >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionGIReplace.json -->
-
-# UMaterialExpressionGIReplace
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Default` | `FExpressionInput` | Used for direct lighting computations e.g. real-time shaders |
-| `StaticIndirect` | `FExpressionInput` | Used for baked indirect lighting e.g. Lightmass |
-| `DynamicIndirect` | `FExpressionInput` | Used for dynamic indirect lighting e.g. Light Propagation Volumes |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionIBLSwitch.json -->
-
-# UMaterialExpressionIBLSwitch
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `IBLOn` | `FExpressionInput` | - |
-| `IBLOff` | `FExpressionInput` | - |
-| `ConstA` | `float` | only used if A is not hooked up |
-| `ConstB` | `float` | only used if B is not hooked up |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionIf.json -->
-
-# UMaterialExpressionIf
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `A` | `FExpressionInput` | - |
-| `B` | `FExpressionInput` | - |
-| `AGreaterThanB` | `FExpressionInput` | - |
-| `AEqualsB` | `FExpressionInput` | - |
-| `ALessThanB` | `FExpressionInput` | - |
-| `EqualsThreshold` | `float` | - |
-| `ConstB` | `float` | only used if B is not hooked up |
-| `ConstAEqualsB_DEPRECATED` | `float` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeBlendTA.json -->
-
-# UMaterialExpressionLandscapeBlendTA
-
-## Inheritance
-
-`UMaterialExpressionTerrainBlendBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `UV` | `FExpressionInput` | - |
-| `DiffuseTexture` | `FExpressionInput` | - |
-| `NormalTexture` | `FExpressionInput` | - |
-| `HeightTexture` | `FExpressionInput` | - |
-| `RoughnessTexture` | `FExpressionInput` | - |
-| `Layers` | `TArray < FTerrainLayerTA >` | - |
-| `ConstCoordinate` | `uint32` | only used if Coordinates is not hooked up |
-| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeCustomChannelSample.json -->
-
-# UMaterialExpressionLandscapeCustomChannelSample
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ParameterName` | `FName` | - |
-| `bColorChannel` | `bool` | - |
-| `bNonLandscapeSample` | `bool` | - |
-| `TextureIndex` | `int32` | - |
-| `ChannelIndex` | `int32` | - |
-| `WorldPosition` | `FExpressionInput` | Optional world position input to override the default world position. |
-| `PreviewWeight` | `FLinearColor` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeFlattenCoords.json -->
-
-# UMaterialExpressionLandscapeFlattenCoords
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `UVScaleBias` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeFlattenTexture.json -->
-
-# UMaterialExpressionLandscapeFlattenTexture
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Coordinates` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeGrassOutput.json -->
-
-# UMaterialExpressionLandscapeGrassOutput
-
-## Inheritance
-
-`UMaterialExpressionCustomOutput`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `GrassTypes` | `TArray < FGrassInput >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeLayerBlend.json -->
-
-# UMaterialExpressionLandscapeLayerBlend
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Layers` | `TArray < FLayerBlendInput >` | - |
-| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeLayerCoords.json -->
-
-# UMaterialExpressionLandscapeLayerCoords
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `MappingType` | `TEnumAsByte < enum ETerrainCoordMappingType >` | Determines the mapping place to use on the terrain. |
-| `CustomUVType` | `TEnumAsByte < enum ELandscapeCustomizedCoordType >` | Determines the mapping place to use on the terrain. |
-| `MappingScaleOverride` | `FExpressionInput` | - |
-| `MappingScale` | `float` | Uniform scale to apply to the mapping. |
-| `MappingRotation` | `float` | Rotation to apply to the mapping. |
-| `MappingPanU` | `float` | Offset to apply to the mapping along U. |
-| `MappingPanV` | `float` | Offset to apply to the mapping along V. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeLayerSample.json -->
-
-# UMaterialExpressionLandscapeLayerSample
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ParameterName` | `FName` | - |
-| `PreviewWeight` | `float` | - |
-| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeLayerSwitch.json -->
-
-# UMaterialExpressionLandscapeLayerSwitch
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `LayerUsed` | `FExpressionInput` | - |
-| `LayerNotUsed` | `FExpressionInput` | - |
-| `ParameterName` | `FName` | - |
-| `PreviewUsed` | `uint32` | - |
-| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeLayerWeight.json -->
-
-# UMaterialExpressionLandscapeLayerWeight
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Base` | `FExpressionInput` | - |
-| `Layer` | `FExpressionInput` | - |
-| `ParameterName` | `FName` | - |
-| `PreviewWeight` | `float` | - |
-| `ConstBase` | `FVector` | only used if Base is not hooked up |
-| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeMaterialIdSample.json -->
-
-# UMaterialExpressionLandscapeMaterialIdSample
-
-## Inheritance
-
-`UMaterialExpressionTextureSample`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `DiffuseSamplerType` | `TEnumAsByte < enum EMaterialSamplerType >` | - |
-| `NormalSamplerType` | `TEnumAsByte < enum EMaterialSamplerType >` | - |
-| `bUseTextureTransform` | `bool` | If apply rotationscaling separately when sample diffusenormal texture array. |
-| `bUseDeltaForceHeightBlend` | `bool` | - |
-| `bUseLargeWeight` | `bool` | - |
-| `LargeWeight` | `float` | - |
-| `bSkipNormalLowQuality` | `bool` | - |
-| `bUseFarUV` | `bool` | - |
-| `DeltaForceHeightBlendFactorInput` | `FExpressionInput` | - |
-| `FarUVFactorInput` | `FExpressionInput` | - |
-| `bUseApplyNoiseLow` | `bool` | - |
-| `bUseApplyNoiseHigh` | `bool` | - |
-| `bUseApplyNoiseMedium` | `bool` | - |
-| `bUseApplyNoiseUltimateHigh` | `bool` | - |
-| `bUseOneTextureInsteadFar` | `bool` | - |
-| `bHasHole` | `bool` | - |
-| `bUseLayerDensity` | `bool` | - |
-| `bDebugES2` | `bool` | - |
-| `bDebugBlend4Pixels` | `bool` | - |
-| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
-| `NumParentInputs` | `int32` | Number of inputs from parent class |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeMaterialIdWeight.json -->
-
-# UMaterialExpressionLandscapeMaterialIdWeight
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `TestMaterialId` | `FExpressionInput` | - |
-| `LayerName` | `FName` | - |
-| `ExpressionGUID` | `FGuid` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLandscapeVisibilityMask.json -->
-
-# UMaterialExpressionLandscapeVisibilityMask
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ExpressionGUID` | `FGuid` | GUID that should be unique within the material, this is used for parameter renaming. |
-| `bUseMaterialIdShading` | `bool` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLightmassReplace.json -->
-
-# UMaterialExpressionLightmassReplace
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Realtime` | `FExpressionInput` | - |
-| `Lightmass` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLinearInterpolate.json -->
-
-# UMaterialExpressionLinearInterpolate
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `A` | `FExpressionInput` | - |
-| `B` | `FExpressionInput` | - |
-| `Alpha` | `FExpressionInput` | - |
-| `ConstA` | `float` | only used if A is not hooked up |
-| `ConstB` | `float` | only used if B is not hooked up |
-| `ConstAlpha` | `float` | only used if Alpha is not hooked up |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLogarithm10.json -->
-
-# UMaterialExpressionLogarithm10
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `X` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionLogarithm2.json -->
-
-# UMaterialExpressionLogarithm2
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `X` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionMakeMaterialAttributes.json -->
-
-# UMaterialExpressionMakeMaterialAttributes
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `BaseColor` | `FExpressionInput` | - |
-| `Metallic` | `FExpressionInput` | - |
-| `Specular` | `FExpressionInput` | - |
-| `Roughness` | `FExpressionInput` | - |
-| `EmissiveColor` | `FExpressionInput` | - |
-| `Opacity` | `FExpressionInput` | - |
-| `OpacityMask` | `FExpressionInput` | - |
-| `Normal` | `FExpressionInput` | - |
-| `WorldPositionOffset` | `FExpressionInput` | - |
-| `WorldDisplacement` | `FExpressionInput` | - |
-| `TessellationMultiplier` | `FExpressionInput` | - |
-| `SubsurfaceColor` | `FExpressionInput` | - |
-| `ClearCoat` | `FExpressionInput` | - |
-| `ClearCoatRoughness` | `FExpressionInput` | - |
-| `AmbientOcclusion` | `FExpressionInput` | - |
-| `Refraction` | `FExpressionInput` | - |
-| `CustomizedUVs` | `FExpressionInput` | - |
-| `PixelDepthOffset` | `FExpressionInput` | - |
-| `CustomizedVertexColor` | `FExpressionInput` | - |
-| `PlanarReflectionOffsetScale` | `FExpressionInput` | - |
-| `VertexDepthOffset` | `FExpressionInput` | - |
-| `PixelDepthOffsetNegative` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionMaterialFunctionCall.json -->
-
-# UMaterialExpressionMaterialFunctionCall
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `MaterialFunction` | `UMaterialFunction *` | The function to call. |
-| `FunctionInputs` | `TArray < struct FFunctionExpressionInput >` | Array of all the function inputs that this function exposes. |
-| `FunctionOutputs` | `TArray < struct FFunctionExpressionOutput >` | Array of all the function outputs that this function exposes. |
-
-## Functions
-
-### `SetMaterialFunction`
-
-```text
-SetMaterialFunction(NewMaterialFunction: UMaterialFunction *) -> ENGINE_API bool
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewMaterialFunction` | `UMaterialFunction *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API bool` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionMaterialProxyReplace.json -->
-
-# UMaterialExpressionMaterialProxyReplace
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Realtime` | `FExpressionInput` | - |
-| `MaterialProxy` | `FExpressionInput` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionMax.json -->
-
-# UMaterialExpressionMax
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `A` | `FExpressionInput` | - |
-| `B` | `FExpressionInput` | - |
-| `ConstA` | `float` | only used if A is not hooked up |
-| `ConstB` | `float` | only used if B is not hooked up |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionMin.json -->
-
-# UMaterialExpressionMin
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `A` | `FExpressionInput` | - |
-| `B` | `FExpressionInput` | - |
-| `ConstA` | `float` | only used if A is not hooked up |
-| `ConstB` | `float` | only used if B is not hooked up |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionMultiply.json -->
-
-# UMaterialExpressionMultiply
-
-## Inheritance
-
-`UMaterialExpression`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `A` | `FExpressionInput` | - |
-| `B` | `FExpressionInput` | - |
-| `ConstA` | `float` | only used if A is not hooked up |
-| `ConstB` | `float` | only used if B is not hooked up |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionNamedRerouteDeclaration.json -->
-
-# UMaterialExpressionNamedRerouteDeclaration
-
-## Inheritance
-
-`UMaterialExpressionRerouteBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Name` | `FName` | 此 Named Reroute 的显示名称 |
-| `NodeColor` | `FLinearColor` | 节点标题颜色，Declaration 和所有 Usage 共享 |
-| `VariableGuid` | `FGuid` | 全局唯一标识，用于 Usage 查找 Declaration，以及复制粘贴后重连 |
-| `Input` | `FExpressionInput` | 输入引脚：接收上游数据 |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterialExpressionNamedRerouteUsage.json -->
-
-# UMaterialExpressionNamedRerouteUsage
-
-## Inheritance
-
-`UMaterialExpressionRerouteBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Declaration` | `UMaterialExpressionNamedRerouteDeclaration *` | 指向对应的 Declaration 节点（运行时直接引用） |
-| `DeclarationGuid` | `FGuid` | Declaration 的 GUID 副本，用于序列化后重连和复制粘贴修复 |
 
 ## Language
 

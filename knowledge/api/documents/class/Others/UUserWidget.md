@@ -19,8 +19,8 @@ The user widget is extensible by users through the WidgetBlueprint.
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `ColorAndOpacity` | `FLinearColor` | The color and opacity of this widget.  Tints all child widgets. |
 | `ColorAndOpacityDelegate` | `FGetLinearColor` | - |
+| `ColorAndOpacity` | `FLinearColor` | The color and opacity of this widget.  Tints all child widgets. |
 | `ForegroundColor` | `FSlateColor` | The foreground color of the widget, this is inherited by sub widgets.  Any color property<br>	  that is marked as inherit will use this color. |
 | `ForegroundColorDelegate` | `FGetSlateColor` | - |
 | `Padding` | `FMargin` | The padding area around the content. |
@@ -171,24 +171,6 @@ SetOffsetsInViewport(Margin: FMargin) -> void
 |---|---|
 | `void` | - |
 
-### `SetAnchorsInViewport`
-
-```text
-SetAnchorsInViewport(Anchors: FAnchors) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Anchors` | `FAnchors` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
 ### `SetAlignmentInViewport`
 
 ```text
@@ -200,6 +182,24 @@ SetAlignmentInViewport(Alignment: FVector2D) -> void
 | Name | Type | Description |
 |---|---|---|
 | `Alignment` | `FVector2D` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAnchorsInViewport`
+
+```text
+SetAnchorsInViewport(Anchors: FAnchors) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Anchors` | `FAnchors` | - |
 
 **Returns**
 

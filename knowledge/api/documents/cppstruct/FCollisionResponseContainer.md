@@ -15,8 +15,8 @@ Container for indicating a set of collision channels that this object will colli
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `WorldDynamic` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `WorldStatic` | `TEnumAsByte < enum ECollisionResponse >` | - |
+| `WorldDynamic` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `Pawn` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `Visibility` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `Camera` | `TEnumAsByte < enum ECollisionResponse >` | - |
@@ -39,8 +39,8 @@ Container for indicating a set of collision channels that this object will colli
 | `GameTraceChannel8` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel9` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel10` | `TEnumAsByte < enum ECollisionResponse >` | - |
-| `GameTraceChannel11` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel12` | `TEnumAsByte < enum ECollisionResponse >` | - |
+| `GameTraceChannel11` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel13` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel14` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel15` | `TEnumAsByte < enum ECollisionResponse >` | - |

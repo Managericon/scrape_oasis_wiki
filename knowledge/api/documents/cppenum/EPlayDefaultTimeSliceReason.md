@@ -16,4 +16,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `Display` | `0` | - |
 | `PawnState` | `1` | - |
 | `DynamicState` | `2` | - |
-| `None` | `3` | - |
+| `SpecialIdle` | `3` | - |
+| `None` | `4` | - |

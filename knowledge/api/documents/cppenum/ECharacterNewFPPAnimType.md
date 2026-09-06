@@ -83,6 +83,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `ECharNewFPPAnim_Turn_R` | `56` | - |
 | `ECharNewFPPAnim_PullingPlug` | `57` | - |
 | `ECharNewFPPAnim_PutDownWeapon` | `58` | - |
+| `ECharNewFPPAnim_PutDownWeaponEnter` | `129` | - |
 | `ECharNewFPPAnim_Peek` | `64` | - |
 | `ECharNewFPPAnim_PeekScope` | `65` | - |
 | `ECharNewFPPAnim_PeekLeftAim` | `66` | - |

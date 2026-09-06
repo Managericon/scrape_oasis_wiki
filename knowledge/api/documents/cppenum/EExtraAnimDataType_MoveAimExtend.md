@@ -26,3 +26,11 @@ api_root: "https://developer.gp.qq.com/api/"
 | `MoveAimExtend_SprintToIdle_Left` | `10` | - |
 | `MoveAimExtend_SprintToIdle_Right` | `11` | - |
 | `MoveAimExtend_SprintCrushDoor` | `12` | - |
+| `MoveAimExtend_ForWardJump` | `101` | - |
+| `MoveAimExtend_InPlaceJump` | `102` | - |
+| `MoveAimExtend_Falling_Forward` | `103` | - |
+| `MoveAimExtend_Falling_InPlace` | `104` | - |
+| `MoveAimExtend_LandLight_Forward` | `105` | - |
+| `MoveAimExtend_LandLight_InPlace` | `106` | - |
+| `MoveAimExtend_LandHeavy_Forward` | `107` | - |
+| `MoveAimExtend_LandHeavy_InPlace` | `108` | - |

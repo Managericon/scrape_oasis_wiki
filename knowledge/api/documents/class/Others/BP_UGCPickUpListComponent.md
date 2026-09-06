@@ -25,6 +25,8 @@ UGC物品拾取组件
 | `BP_UGCPickUpListComponent.ItemUsefulCache` | `-` | - |
 | `BP_UGCPickUpListComponent.PickupItemListCache` | `-` | - |
 | `BP_UGCPickUpListComponent.TomBoxItemListCache` | `-` | - |
+| `BP_UGCPickUpListComponent.PickUpFailCooldownMap` | `-` | - |
+| `BP_UGCPickUpListComponent.PendingPickUpUID` | `-` | - |
 | `BP_UGCPickUpListComponent.PickupItemListCacheChange` | `-` | - |
 | `BP_UGCPickUpListComponent.TomBoxItemListCacheChange` | `-` | - |
 | `BP_UGCPickUpListComponent.bUpDateListDataChange` | `-` | - |

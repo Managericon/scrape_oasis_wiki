@@ -22,7 +22,7 @@ api_root: "https://developer.gp.qq.com/api/"
 |---|---|---|
 | `Method` | `FPESkillAttributeModifyMethod` | 修改方式 |
 | `GameAttribute` | `FString` | 要修改的属性名 |
-| `ModifierOp` | `EAttrOperator` | 属性修改操作类型（非永久修改） |
-| `ModifierOp_DoChange` | `EAttrOperator_DoChange` | 属性修改操作类型（永久修改） |
+| `ModifierOp` | `FDataDrivenEAttrOperator` | 属性修改操作类型（非永久修改） |
+| `ModifierOp_DoChange` | `FDataDrivenEAttrOperator_DoChange` | 属性修改操作类型（永久修改） |
 | `ModifierValue` | `float` | 操作数值 |
 | `bRepAttrModify` | `bool` | 是否同步客户端 |

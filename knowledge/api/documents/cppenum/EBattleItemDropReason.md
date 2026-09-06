@@ -27,3 +27,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `EscapeForbidTeammatePickup` | `11` | - |
 | `DeathTrackBackpack` | `12` | - |
 | `GeekPockets` | `13` | - |
+| `BirdBackpack` | `14` | - |

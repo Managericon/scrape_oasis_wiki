@@ -16,3 +16,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `Player` | `0` | - |
 | `Vehicle` | `1` | - |
 | `Primitive` | `2` | - |
+| `Monster` | `3` | - |

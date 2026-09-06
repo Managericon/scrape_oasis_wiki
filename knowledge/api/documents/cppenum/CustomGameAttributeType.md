@@ -18,6 +18,8 @@ api_root: "https://developer.gp.qq.com/api/"
 | `CG030_GameAttributeGroup_Player_CG30InvincibleShield` | `CG30InvincibleShield` | --CG030属性集 [无敌盾层数-CG30InvincibleShield], |
 | `CG032_Nezha_GameAttributeGroup_Player_NezhaInvincibleShield` | `NezhaInvincibleShield` | --CG032哪吒联动玩法属性集 [无敌盾层数-NezhaInvincibleShield], |
 | `CG036_GameAttributeGroup_Player_QTEShield` | `QTEShield` | --CG036属性集 [电吉他QTE护盾-QTEShield], |
+| `CG038_GameAttributeGroup_Player_PumpkinInvincibleShield` | `PumpkinInvincibleShield` | --CG038属性集 [南瓜头套盾-PumpkinInvincibleShield], |
+| `CG038_GameAttributeGroup_Player_BlossomPileShield` | `BlossomPileShield` | --CG038属性集 [梅花桩跳跃护盾-BlossomPileShield], |
 | `AttrGroupSuperPeople_Editor_LevelUpDamageScale` | `LevelUpDamageScale` | --超体-Editor [LevelUpDamageScale-LevelUpDamageScale], |
 | `AttrGroupSuperPeople_Editor_LevelUpShootDamageScale` | `LevelUpShootDamageScale` | --超体-Editor [LevelUpShootDamageScale-LevelUpShootDamageScale], |
 | `AttrGroupSuperPeople_Editor_LevelUpGrenadeDamageScale` | `LevelUpGrenadeDamageScale` | --超体-Editor [LevelUpGrenadeDamageScale-LevelUpGrenadeDamageScale], |
@@ -98,6 +100,12 @@ api_root: "https://developer.gp.qq.com/api/"
 | `SP_FlashAttrGroup_FlashDashCDDecrease` | `FlashDashCDDecrease` | --超体-闪电属性集 [闪电主动减CD-FlashDashCDDecrease], |
 | `SP_FlashAttrGroup_FlashTransportRangeScale` | `FlashTransportRangeScale` | --超体-闪电属性集 [闪电大招传送范围系数-FlashTransportRangeScale], |
 | `SP_FlashAttrGroup_FlashTransportCDDecrease` | `FlashTransportCDDecrease` | --超体-闪电属性集 [闪电大招减CD-FlashTransportCDDecrease], |
+| `SP_GeekerAtrrGroup_GeekerActiveDamageScale` | `GeekerActiveDamageScale` | --超体-次元极客属性集 [次元极客小技能增伤系数-GeekerActiveDamageScale], |
+| `SP_GeekerAtrrGroup_GeekerActiveDurationScale` | `GeekerActiveDurationScale` | --超体-次元极客属性集 [次元极客小技能时长系数(废弃)-GeekerActiveDurationScale], |
+| `SP_GeekerAtrrGroup_GeekerActiveCDDecrease` | `GeekerActiveCDDecrease` | --超体-次元极客属性集 [次元极客小技能减CD-GeekerActiveCDDecrease], |
+| `SP_GeekerAtrrGroup_GeekerUltimateDamgeScale` | `GeekerUltimateDamgeScale` | --超体-次元极客属性集 [次元极客大招伤害系数-GeekerUltimateDamgeScale], |
+| `SP_GeekerAtrrGroup_GeekerUltimateRangeScale` | `GeekerUltimateRangeScale` | --超体-次元极客属性集 [次元极客大招范围系数-GeekerUltimateRangeScale], |
+| `SP_GeekerAtrrGroup_GeekerUltimateCDDecrease` | `GeekerUltimateCDDecrease` | --超体-次元极客属性集 [次元极客大招减CD-GeekerUltimateCDDecrease], |
 | `SP_GhostAttrGroup_PreparingDamageScale` | `PreparingDamageScale` | --超体-幻影猎手属性集 [被动伤害倍率百分比系数-PreparingDamageScale], |
 | `SP_GhostAttrGroup_ConsumePassiveToggle` | `ConsumePassiveToggle` | --超体-幻影猎手属性集 [空枪是否消耗被动开关-ConsumePassiveToggle], |
 | `SP_GhostAttrGroup_PassiveCDScale` | `PassiveCDScale` | --超体-幻影猎手属性集 [被动恢复速度百分比系数-PassiveCDScale], |
@@ -107,6 +115,13 @@ api_root: "https://developer.gp.qq.com/api/"
 | `SP_GhostAttrGroup_SonarBeaconDurationScale` | `SonarBeaconDurationScale` | --超体-幻影猎手属性集 [大招持续时间百分比系数-SonarBeaconDurationScale], |
 | `SP_GhostAttrGroup_SkillCamouflageCD` | `SkillCamouflageCD` | --超体-幻影猎手属性集 [幻影主动技能减CD-SkillCamouflageCD], |
 | `SP_GhostAttrGroup_SkillSonarBeaconCD` | `SkillSonarBeaconCD` | --超体-幻影猎手属性集 [幻影大招减CD-SkillSonarBeaconCD], |
+| `SP_HorseManAtrrGroup_HorseManActiveCDDecrease` | `HorseManActiveCDDecrease` | --超体-驰风飞将属性集 [驰风飞将小技能减CD-HorseManActiveCDDecrease], |
+| `SP_HorseManAtrrGroup_HorseManUltimateDurationScale` | `HorseManUltimateDurationScale` | --超体-驰风飞将属性集 [驰风飞将大招持续时间系数-HorseManUltimateDurationScale], |
+| `SP_HorseManAtrrGroup_HorseManUltimateCDDecrease` | `HorseManUltimateCDDecrease` | --超体-驰风飞将属性集 [驰风飞将大招减CD-HorseManUltimateCDDecrease], |
+| `SP_IceAtrrGroup_IceActiveDamageScale` | `IceActiveDamageScale` | --超体-绝对零度属性集 [绝对零度小技能增伤系数-IceActiveDamageScale], |
+| `SP_IceAtrrGroup_IceActiveCDDecrease` | `IceActiveCDDecrease` | --超体-绝对零度属性集 [绝对零度小技能减CD-IceActiveCDDecrease], |
+| `SP_IceAtrrGroup_IceUltimateDamgeScale` | `IceUltimateDamgeScale` | --超体-绝对零度属性集 [绝对零度大招伤害系数-IceUltimateDamgeScale], |
+| `SP_IceAtrrGroup_IceUltimateCDDecrease` | `IceUltimateCDDecrease` | --超体-绝对零度属性集 [绝对零度大招减CD-IceUltimateCDDecrease], |
 | `SP_MusicGirlAttrGroup_MusicGirlPassiveHealthRecoverScale` | `MusicGirlPassiveHealthRecoverScale` | --超体-天籁之音属性集 [天籁之音被动回血系数-MusicGirlPassiveHealthRecoverScale], |
 | `SP_MusicGirlAttrGroup_MusicGirlListenTogetherRangeScale` | `MusicGirlListenTogetherRangeScale` | --超体-天籁之音属性集 [天籁之音主动范围系数-MusicGirlListenTogetherRangeScale], |
 | `SP_MusicGirlAttrGroup_MusicGirlListenTogetherSkillScale` | `MusicGirlListenTogetherSkillScale` | --超体-天籁之音属性集 [天籁之音主动回复值/移速增量系数-MusicGirlListenTogetherSkillScale], |
@@ -144,6 +159,10 @@ api_root: "https://developer.gp.qq.com/api/"
 | `ChargeableUltimateSkillAttributeGroup_ChargeScale_CauseDamagePercent` | `ChargeScale_CauseDamagePercent` | --充能大招属性集 [造成伤害百分比充能系数-ChargeScale_CauseDamagePercent], |
 | `GameAttributeGroup_AngelDemon_Player_CurseValue` | `CurseValue` | --帕拉莫玩法角色属性集 [诅咒值-CurseValue], |
 | `GameAttributeGroup_AngelDemon_Player_SlateEnergy` | `SlateEnergy` | --帕拉莫玩法角色属性集 [石板能量值-SlateEnergy], |
+| `GameAttributeGroup_PlayerOnly_DiamondArena_DiamondArena_GlobalDamageScale` | `DiamondArena_GlobalDamageScale` | --钻石猎场玩家特有属性集 [【攻】全局伤害加成系数-DiamondArena_GlobalDamageScale], |
+| `GameAttributeGroup_PlayerOnly_DiamondArena_DiamondArena_GlobalDamageReduceVal` | `DiamondArena_GlobalDamageReduceVal` | --钻石猎场玩家特有属性集 [【防】全局减伤数值-DiamondArena_GlobalDamageReduceVal], |
+| `GameAttributeGroup_PlayerOnly_DiamondArena_DiamondArena_Shield_TitanSword` | `DiamondArena_Shield_TitanSword` | --钻石猎场玩家特有属性集 [钻石猎场-机甲大剑超载护盾-DiamondArena_Shield_TitanSword], |
+| `GameAttributeGroup_PlayerOnly_DiamondArena_DiamondArena_Shield_TitanSwordScale` | `DiamondArena_Shield_TitanSwordScale` | --钻石猎场玩家特有属性集 [钻石猎场-机甲大剑超载护盾缩放值-DiamondArena_Shield_TitanSwordScale], |
 | `GameAttributeGroup_EscapeMonster_MonsterShield` | `MonsterShield` | --地铁怪物属性集 [怪物护盾-MonsterShield], |
 | `GameAttributeGroup_EscapeMonster_MaxMonsterShield` | `MaxMonsterShield` | --地铁怪物属性集 [最大怪物护盾-MaxMonsterShield], |
 | `GameAttributeGroup_AlreadyExist_EscapeSkin_Escape_DexterousSpeedScale` | `Escape_DexterousSpeedScale` | --地铁皮肤修改属性集(仅作editor属性暴露用) [地铁皮肤修改开箱速度-Escape_DexterousSpeedScale], |
@@ -189,7 +208,8 @@ api_root: "https://developer.gp.qq.com/api/"
 | `GameAttributeGroup_Escape_Escape_MeleeDamageScale` | `Escape_MeleeDamageScale` | --地铁属性集 [近战武器伤害加成系数-Escape_MeleeDamageScale], |
 | `GameAttributeGroup_Escape_Escape_GrenadeExplosionRangeScale` | `Escape_GrenadeExplosionRangeScale` | --地铁属性集 [投掷物伤害范围加成系数-Escape_GrenadeExplosionRangeScale], |
 | `GameAttributeGroup_Kader_Kader_SkillValueScale` | `Kader_SkillValueScale` | --卡德尔属性集 [卡德尔技能数值倍率-Kader_SkillValueScale], |
-| `GameAttributeGroup_Howitzer_Howitzer_CD` | `Howitzer_CD` | --肩炮榴弹技能属性 [肩炮充能时间-Howitzer_CD], |
+| `GameAttributeGroup_MechaSkill_Howitzer_CD` | `Howitzer_CD` | --机甲技能属性 [榴弹肩炮充能时间-Howitzer_CD], |
+| `GameAttributeGroup_MechaSkill_LaserBeam_EnergyScale` | `LaserBeam_EnergyScale` | --机甲技能属性 [激光肩炮能量缩放-LaserBeam_EnergyScale], |
 | `GameAttributeGroup_TitanSword_BlockEnergy` | `BlockEnergy` | --机甲大剑属性 [大剑 格挡能量-BlockEnergy], |
 | `GameAttributeGroup_TitanSword_BlockEnergyRecoverRate` | `BlockEnergyRecoverRate` | --机甲大剑属性 [大剑 格挡能量回复倍率-BlockEnergyRecoverRate], |
 | `GameAttributeGroup_Escape_DeadTrack_Escape_DeakTrack_CurrentTemperatureValue` | `Escape_DeakTrack_CurrentTemperatureValue` | --死轨属性集 [角色当前寒冷值-Escape_DeakTrack_CurrentTemperatureValue], |
@@ -226,6 +246,9 @@ api_root: "https://developer.gp.qq.com/api/"
 | `BP_GAttributeGroup_Common_LostTomb_LT_SkEffectScale` | `LT_SkEffectScale` | --LostTomb通用属性集 [技能效果倍率-LT_SkEffectScale], |
 | `BP_GAttributeGroup_Common_LostTomb_LT_TakeFallDmgRedPct` | `LT_TakeFallDmgRedPct` | --LostTomb通用属性集 [受到坠落伤害减免百分比-LT_TakeFallDmgRedPct], |
 | `BP_GAttributeGroup_Common_LostTomb_LT_TakeTrapDmgRedPct` | `LT_TakeTrapDmgRedPct` | --LostTomb通用属性集 [受到陷阱机关伤害减免百分比-LT_TakeTrapDmgRedPct], |
+| `BP_GAttributeGroup_Common_LostTomb_LT_GunPenRPct` | `LT_GunPenRPct` | --LostTomb通用属性集 [枪械抗性百分比(特殊抗性乘区，非缩小乘算)-LT_GunPenRPct], |
+| `BP_GAttributeGroup_Common_LostTomb_LT_MeleePenRPct` | `LT_MeleePenRPct` | --LostTomb通用属性集 [近战抗性百分比(特殊抗性乘区，非缩小乘算)-LT_MeleePenRPct], |
+| `BP_GAttributeGroup_Common_LostTomb_LT_TakeSkillDmgPct` | `LT_TakeSkillDmgPct` | --LostTomb通用属性集 [受到技能伤害加成百分比-LT_TakeSkillDmgPct], |
 | `BP_GAttributeGroup_Hero_LostTomb_LT_BeSensedDistanceScale` | `LT_BeSensedDistanceScale` | --LostTomb玩家专属属性集 [被索敌距离倍率-LT_BeSensedDistanceScale], |
 | `BP_GAttributeGroup_Hero_LostTomb_LT_InteractionSpeedScale` | `LT_InteractionSpeedScale` | --LostTomb玩家专属属性集 [交互速度倍率-LT_InteractionSpeedScale], |
 | `BP_GAttributeGroup_Hero_LostTomb_LT_HumanDmgAddPct` | `LT_HumanDmgAddPct` | --LostTomb玩家专属属性集 [人类物种伤害加成百分比-LT_HumanDmgAddPct], |
@@ -273,6 +296,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `BP_GAttributeGroup_Monster_LostTomb_LT_AttackFakePlayerDamageScale` | `LT_AttackFakePlayerDamageScale` | --LostTomb怪物专属属性集 [攻击AI玩家增伤系数-LT_AttackFakePlayerDamageScale], |
 | `BP_GAttributeGroup_Monster_LostTomb_LT_MonsterBaseHP` | `LT_MonsterBaseHP` | --LostTomb怪物专属属性集 [基础生命值-LT_MonsterBaseHP], |
 | `BP_GAttributeGroup_Monster_LostTomb_LT_MonsterHPAddPct` | `LT_MonsterHPAddPct` | --LostTomb怪物专属属性集 [生命值加成百分比-LT_MonsterHPAddPct], |
+| `BP_GAttributeGroup_Monster_LostTomb_LT_MonsterShield` | `LT_MonsterShield` | --LostTomb怪物专属属性集 [怪物护盾值-LT_MonsterShield], |
 | `MBRGameAttributeGroup_Player_MBRPlayerAttack` | `MBRPlayerAttack` | --大乱斗玩家属性集 [攻击力-MBRPlayerAttack], |
 | `MBRGameAttributeGroup_Player_MBRPlayerSpeedup_Value` | `MBRPlayerSpeedup_Value` | --大乱斗玩家属性集 [疾驰固定值-MBRPlayerSpeedup_Value], |
 | `MBRGameAttributeGroup_Player_MBRPlayerSpeedup_Radio` | `MBRPlayerSpeedup_Radio` | --大乱斗玩家属性集 [疾驰系数-MBRPlayerSpeedup_Radio], |

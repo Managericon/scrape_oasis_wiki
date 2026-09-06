@@ -22,7 +22,7 @@ V2道具系统接口库
 ### `RegisterItemPropertyGetOverride`
 
 ```text
-RegisterItemPropertyGetOverride(Key: EItemOverrideKey) -> boolean
+RegisterItemPropertyGetOverride(Key: EItemOverrideKey, Func: fun(FItemDefineID): any @重写函数，参数和返回值与对应属性接口保持一致) -> boolean
 ```
 
 注册物品属性读取函数
@@ -33,6 +33,7 @@ RegisterItemPropertyGetOverride(Key: EItemOverrideKey) -> boolean
 | Name | Type | Description |
 |---|---|---|
 | `Key` | `EItemOverrideKey` | 属性枚举值，使用 EItemOverrideKey.XXX |
+| `Func` | `fun(FItemDefineID): any @重写函数，参数和返回值与对应属性接口保持一致` | 重写函数，参数和返回值与对应属性接口保持一致 |
 
 **Returns**
 
@@ -67,8 +68,8 @@ UnregisterItemPropertyGetOverride(Key: EItemOverrideKey|nil) -> boolean
 GetConfigItemHandle(ItemID: number) -> UBattleItemHandleBase
 ```
 
-获取物品 ItemHandle 配置
-可以通过它取得所有物品中配置的数据（只读）
+获取物品ItemHandle配置
+可以通过它取得所有物品中配置的静态数据（只读）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -139,6 +140,69 @@ IsShouldPersist(ItemID: number) -> boolean
 | Type | Description |
 |---|---|
 | `boolean` | 是否持久化 |
+
+### `IsItemEquipTarget`
+
+```text
+IsItemEquipTarget(ItemID: number) -> boolean
+```
+
+判断物品是否为装备目标
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemID` | `number` | 物品 ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否为装备目标 |
+
+### `IsItemEquipAttach`
+
+```text
+IsItemEquipAttach(ItemID: number) -> boolean
+```
+
+判断物品是否为装备配件
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemID` | `number` | 物品 ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否为装备配件 |
+
+### `IsItemThrowWeapon`
+
+```text
+IsItemThrowWeapon(ItemID: number) -> boolean
+```
+
+判断物品是否由投掷物模板创建
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemID` | `number` | 物品 ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否由投掷物模板创建 |
 
 ### `IsObjEditorItemV2`
 
@@ -293,7 +357,7 @@ GetOwnBackpackComponent(ItemHandle: UBattleItemHandleBase) -> BackpackComponentV
 GetItemIconWithPlayerSkinV2(ItemID: number, PlayerController: PlayerController) -> FSoftObjectPath
 ```
 
-返回物品图标路径(带玩家皮肤)
+返回物品图标路径(带玩家皮肤)，优先返回开发者自定义图标
 生效范围：服务器&客户端
 
 **Parameters**
@@ -421,7 +485,7 @@ GetBigIconTextureV2ByDefineID(ItemDefineID: FItemDefineID) -> FSoftObjectPath
 GetBigIconTextureWithPlayerSkinV2(ItemID: number, PlayerController: PlayerController) -> FSoftObjectPath
 ```
 
-返回物品装备栏图标路径(带玩家皮肤)
+返回物品装备栏图标路径(带玩家皮肤)，优先返回开发者自定义图标
 生效范围：服务器&客户端
 
 **Parameters**
@@ -780,6 +844,28 @@ UGCItemSystemV2.SaveItemCustomData(ItemDefineID, CustomData)
 |---|---|
 | `boolean` | 保存成功or失败 |
 
+### `GetItemCustomDataSize`
+
+```text
+GetItemCustomDataSize(ItemDefineID: FItemDefineID) -> number
+```
+
+获取物品自定义实例化数据大小（单位字节）
+用于Debug实例化数据的性能占用，主要影响存档大小，以及数据从DS同步到客户端的消耗
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemDefineID` | `FItemDefineID` | 物品 DefineID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 自定义数据大小 |
+
 ### `GetItemDefineID`
 
 ```text
@@ -794,6 +880,28 @@ GetItemDefineID(ItemID: number) -> FItemDefineID
 | Name | Type | Description |
 |---|---|---|
 | `ItemID` | `number` | 物品 ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FItemDefineID` | 物品 DefineID |
+
+### `GetItemDefineIDByPreset`
+
+```text
+GetItemDefineIDByPreset(ItemID: number, PresetIdx: number) -> FItemDefineID
+```
+
+指定实例化数据预设，创建一个全新的物品实例，并返回 DefineID
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemID` | `number` | 物品 ID |
+| `PresetIdx` | `number` | 实例化数据预设索引 |
 
 **Returns**
 
@@ -1012,6 +1120,27 @@ GetQualityTexturePath(QualityRank: number) -> string
 | Type | Description |
 |---|---|
 | `string` | 品质纹理路径 |
+
+### `GetQualityTextColor`
+
+```text
+GetQualityTextColor(QualityRank: number) -> FLinearColor
+```
+
+获取品质文字颜色
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `QualityRank` | `number` | 品质等级 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FLinearColor` | 品质文字颜色 |
 
 ### `GetBackpackSimpleNameV2`
 
@@ -1546,7 +1675,7 @@ GetItemLevelV2ByDefineID(ItemDefineID: FItemDefineID) -> number
 GetBackpackCellV2(ItemID: number) -> number
 ```
 
-返回物品背包格子数（仅支持ItemID，如需FItemDefineID请使用GetBackpackCellV2ByDefineID）
+返回物品扩容的背包格子数（仅支持ItemID，如需FItemDefineID请使用GetBackpackCellV2ByDefineID）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -1559,7 +1688,7 @@ GetBackpackCellV2(ItemID: number) -> number
 
 | Type | Description |
 |---|---|
-| `number` | 背包格子数 |
+| `number` | 扩容格子数 |
 
 ### `GetBackpackCellV2ByDefineID`
 
@@ -1567,7 +1696,7 @@ GetBackpackCellV2(ItemID: number) -> number
 GetBackpackCellV2ByDefineID(ItemDefineID: FItemDefineID) -> number
 ```
 
-返回物品背包格子数（支持FItemDefineID，优先读取重写委托，其次读取非实例接口）
+返回物品扩容的背包格子数（支持FItemDefineID，优先读取重写委托，其次读取非实例接口）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -1580,7 +1709,7 @@ GetBackpackCellV2ByDefineID(ItemDefineID: FItemDefineID) -> number
 
 | Type | Description |
 |---|---|
-| `number` | 背包格子数 |
+| `number` | 扩容格子数 |
 
 ### `GetNewDurabilityV2ByDefineID`
 
@@ -1588,7 +1717,7 @@ GetBackpackCellV2ByDefineID(ItemDefineID: FItemDefineID) -> number
 GetNewDurabilityV2ByDefineID(ItemDefineID: FItemDefineID) -> number
 ```
 
-返回物品当前耐久度（支持FItemDefineID，优先读取重写委托，其次读取非实例接口）
+返回物品最大耐久度（支持FItemDefineID，优先读取重写委托，其次读取非实例接口）
 生效范围：服务器&客户端
 
 **Parameters**

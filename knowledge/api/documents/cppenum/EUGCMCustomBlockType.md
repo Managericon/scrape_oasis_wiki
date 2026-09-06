@@ -18,3 +18,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `Frustum` | `2` | - |
 | `Ring` | `3` | - |
 | `Slope` | `4` | - |
+| `Surface` | `5` | - |

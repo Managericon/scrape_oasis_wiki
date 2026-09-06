@@ -538,8 +538,8 @@ Used to manage different animation event bindings that users want callbacks on.
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `Delegate` | `FWidgetAnimationDynamicEvent` | The callback. |
 | `Animation` | `UWidgetAnimation *` | The animation to look for. |
+| `Delegate` | `FWidgetAnimationDynamicEvent` | The callback. |
 | `AnimationEvent` | `EWidgetAnimationEvent` | The type of animation event. |
 | `UserTag` | `FName` | A user tag used to only get callbacks for specific runs of the animation. |
 
@@ -1339,10 +1339,10 @@ Controller which implements the CCDIK IK approximation algorithm
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `bActiveNode` | `bool` | Engine Modify<br>	 Enable Node to be ignored at runtime but keep alpha value no change<br>	 false will ignore (do no or skip) evaluate, but no affect on update |
 | `Alpha` | `float` | - |
 | `AlphaScaleBias` | `FInputScaleBias` | - |
 | `LODThreshold` | `int32` | Max LOD that this node is allowed to run<br>	 For example if you have LODThreadhold to be 2, it will run until LOD 2 (based on 0 index)<br>	 when the component LOD becomes 3, it will stop updateevaluate<br>	 currently transition would be issue and that has to be re-visited |
+| `bActiveNode` | `bool` | Engine Modify<br>	 Enable Node to be ignored at runtime but keep alpha value no change<br>	 false will ignore (do no or skip) evaluate, but no affect on update |
 | `ActualAlpha` | `float` | - |
 
 
@@ -1699,12 +1699,12 @@ Node to handle re-targeting of Hand IK bone chain.
 | `LayerSetup` | `TArray < FInputBlendPose >` | Configuration for the parts of the skeleton to blend for each layer. Allows<br>	  certain parts of the tree to be blended out or omitted from the pose. |
 | `BlendWeights` | `TArray < float >` | The weights of each layer |
 | `bMeshSpaceRotationBlend` | `bool` | Whether to blend bone rotations in mesh space or in local space |
-| `CurveBlendOption` | `TEnumAsByte < enum ECurveBlendOption :: Type >` | How to blend the layers together |
 | `bBlendRootMotionBasedOnRootBone` | `bool` | Whether to incorporate the per-bone blend weight of the root bone when lending root motion |
+| `CurveBlendOption` | `TEnumAsByte < enum ECurveBlendOption :: Type >` | How to blend the layers together |
 | `bHasRelevantPoses` | `bool` | - |
-| `PerBoneBlendWeights` | `TArray < FPerBoneBlendWeight >` | - |
 | `SkeletonGuid` | `FGuid` | - |
 | `VirtualBoneGuid` | `FGuid` | - |
+| `PerBoneBlendWeights` | `TArray < FPerBoneBlendWeight >` | - |
 | `DesiredBoneBlendWeightsInitMesh` | `TWeakObjectPtr < USkeletalMesh >` | - |
 
 
@@ -2396,9 +2396,9 @@ Scale the length of a chain of bones.
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `Alpha` | `float` | - |
 | `ComponentPose` | `FComponentSpacePoseLink` | - |
 | `AlphaScaleBias` | `FInputScaleBias` | - |
+| `Alpha` | `float` | - |
 | `LODThreshold` | `int32` | Max LOD that this node is allowed to run<br>	 For example if you have LODThreadhold to be 2, it will run until LOD 2 (based on 0 index)<br>	 when the component LOD becomes 3, it will stop updateevaluate<br>	 currently transition would be issue and that has to be re-visited |
 | `bActiveNode` | `bool` | Engine Modify<br>	 Enable Node to be ignored at runtime but keep alpha value no change<br>	 false will ignore (do no or skip) evaluate, but no affect on update |
 | `ActualAlpha` | `float` | - |
@@ -2544,6 +2544,7 @@ Simple controller that replaces or adds to the translationrotation of a single b
 | `bKeepUpdateOldSubInstanes` | `bool` | - |
 | `bUpdateWhenNotRelevant` | `bool` | - |
 | `NotRelevantUpdateConditions` | `TArray < UAnimInstanceUpdateCondition * >` | - |
+| `UpdateConditions` | `TArray < UAnimInstanceUpdateCondition * >` | - |
 | `bAlwaysUpdateInputNode` | `bool` | - |
 | `bResetInertializationWhenReactive` | `bool` | - |
 | `bUpdateAllInputNodeWhenNoInstanceRun` | `bool` | - |
@@ -3047,10 +3048,10 @@ Container for Animation Update Rate parameters.
 | `MaxDistFromMainChar` | `float` | - |
 | `BaseVisibleDistanceFactorThesholds` | `TArray < float >` | Array of MaxDistanceFactor to use for AnimUpdateRate when mesh is visible (rendered).<br>	  MaxDistanceFactor is size on screen, as used by LODs<br>	  Example:<br>	 		BaseVisibleDistanceFactorThesholds.Add(0.4f)<br>	 		BaseVisibleDistanceFactorThesholds.Add(0.2f)<br>	  means:<br>	 		0 frame skip, MaxDistanceFactor > 0.4f<br>	 		1 frame skip, MaxDistanceFactor > 0.2f<br>	 		2 frame skip, MaxDistanceFactor > 0.0f |
 | `BaseVisibleDistanceFactorSkipNum` | `int32` | - |
-| `LODToFrameSkipMap` | `TMap < int32 , int32 >` | Map of LOD levels to frame skip amounts. if bShouldUseLodMap is set these values will be used for<br>	  the frameskip amounts and the distance factor thresholds will be ignored. The flag and these values<br>	  should be configured using the customization callback when parameters are created for a component.<br>	 <br>	  Note that this is # of frames to skip, so if you have 20, that means every 21th frame, it will update, and evaluate. |
 | `MinEvaluationRate` | `int32` | - |
 | `LockAnimUpdateRate` | `int32` | - |
 | `EnableUROInterpolation` | `bool` | - |
+| `LODToFrameSkipMap` | `TMap < int32 , int32 >` | Map of LOD levels to frame skip amounts. if bShouldUseLodMap is set these values will be used for<br>	  the frameskip amounts and the distance factor thresholds will be ignored. The flag and these values<br>	  should be configured using the customization callback when parameters are created for a component.<br>	 <br>	  Note that this is # of frames to skip, so if you have 20, that means every 21th frame, it will update, and evaluate. |
 | `MaxEvalRateForInterpolation` | `int32` | Max Evaluation Rate allowed for interpolation to be enabled. Beyond, interpolation will be turned off. |
 | `ShiftBucket` | `EUpdateRateShiftBucket` | The bucket to use when deciding which counter to use to calculate shift values |
 
@@ -5518,8 +5519,8 @@ Container for indicating a set of collision channels that this object will colli
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `WorldDynamic` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `WorldStatic` | `TEnumAsByte < enum ECollisionResponse >` | - |
+| `WorldDynamic` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `Pawn` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `Visibility` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `Camera` | `TEnumAsByte < enum ECollisionResponse >` | - |
@@ -5542,8 +5543,8 @@ Container for indicating a set of collision channels that this object will colli
 | `GameTraceChannel8` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel9` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel10` | `TEnumAsByte < enum ECollisionResponse >` | - |
-| `GameTraceChannel11` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel12` | `TEnumAsByte < enum ECollisionResponse >` | - |
+| `GameTraceChannel11` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel13` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel14` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel15` | `TEnumAsByte < enum ECollisionResponse >` | - |
@@ -6525,8 +6526,8 @@ Structure for custom profiles.
 |---|---|---|
 | `Method` | `FPESkillAttributeModifyMethod` | 修改方式 |
 | `GameAttribute` | `FString` | 要修改的属性名 |
-| `ModifierOp` | `EAttrOperator` | 属性修改操作类型（非永久修改） |
-| `ModifierOp_DoChange` | `EAttrOperator_DoChange` | 属性修改操作类型（永久修改） |
+| `ModifierOp` | `FDataDrivenEAttrOperator` | 属性修改操作类型（非永久修改） |
+| `ModifierOp_DoChange` | `FDataDrivenEAttrOperator_DoChange` | 属性修改操作类型（永久修改） |
 | `ModifierValue` | `float` | 操作数值 |
 | `bRepAttrModify` | `bool` | 是否同步客户端 |
 
@@ -6550,6 +6551,7 @@ Structure for custom profiles.
 | `MaxLayer` | `int` | 最大充能次数 |
 | `CDEnergyConsume` | `float` | 持续消耗型每秒扣除速率 |
 | `AllowConsumeMinEnergy` | `float` | 能开始消耗能量的最小百分比 |
+| `ConsumeTimeType` | `EPESkillConsumeTimeType` | CD能量和消耗扣除时机 |
 
 
 ---
@@ -8893,12 +8895,12 @@ Structure containing information about one hit of a trace, such as point of impa
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `Time` | `float` | 'Time' of impact along trace direction (ranging from 0.0 to 1.0) if there is a hit, indicating time between TraceStart and TraceEnd.<br>	  For swept movement (but not queries) this may be pulled back slightly from the actual time of impact, to prevent precision problems with adjacent geometry. |
-| `bBlockingHit` | `uint32` | Indicates if this hit was a result of blocking collision. If false, there was no hit or it was an overlaptouch instead. |
 | `bStartPenetrating` | `uint32` | Whether the trace started in penetration, i.e. with an initial blocking overlap.<br>	  In the case of penetration, if PenetrationDepth > 0.f, then it will represent the distance along the Normal vector that will result in<br>	  minimal contact between the swept shape and the object that was hit. In this case, ImpactNormal will be the normal opposed to movement at that location<br>	  (ie, Normal may not equal ImpactNormal). ImpactPoint will be the same as Location, since there is no single impact point to report. |
+| `bBlockingHit` | `uint32` | Indicates if this hit was a result of blocking collision. If false, there was no hit or it was an overlaptouch instead. |
+| `ImpactPoint` | `FVector_NetQuantize` | Location in world space of the actual contact of the trace shape (box, sphere, ray, etc) with the impacted object.<br>	  Example: for a sphere trace test, this is the point where the surface of the sphere touches the other object.<br>	  @note: In the case of initial overlap (bStartPenetrating=true), ImpactPoint will be the same as Location because there is no meaningful single impact point to report. |
+| `Time` | `float` | 'Time' of impact along trace direction (ranging from 0.0 to 1.0) if there is a hit, indicating time between TraceStart and TraceEnd.<br>	  For swept movement (but not queries) this may be pulled back slightly from the actual time of impact, to prevent precision problems with adjacent geometry. |
 | `Distance` | `float` | The distance from the TraceStart to the Location in world space. This value is 0 if there was an initial overlap (trace started inside another colliding object). |
 | `Location` | `FVector_NetQuantize` | The location in world space where the moving shape would end up against the impacted object, if there is a hit. Equal to the point of impact for line tests.<br>	  Example: for a sphere trace test, this is the point where the center of the sphere would be located when it touched the other object.<br>	  For swept movement (but not queries) this may not equal the final location of the shape since hits are pulled back slightly to prevent precision issues from overlapping another surface. |
-| `ImpactPoint` | `FVector_NetQuantize` | Location in world space of the actual contact of the trace shape (box, sphere, ray, etc) with the impacted object.<br>	  Example: for a sphere trace test, this is the point where the surface of the sphere touches the other object.<br>	  @note: In the case of initial overlap (bStartPenetrating=true), ImpactPoint will be the same as Location because there is no meaningful single impact point to report. |
 | `Normal` | `FVector_NetQuantizeNormal` | Normal of the hit in world space, for the object that was swept. Equal to ImpactNormal for line tests.<br>	  This is computed for capsules and spheres, otherwise it will be the same as ImpactNormal.<br>	  Example: for a sphere trace test, this is a normalized vector pointing in towards the center of the sphere at the point of impact. |
 | `ImpactNormal` | `FVector_NetQuantizeNormal` | Normal of the hit in world space, for the object that was hit by the sweep, if any.<br>	  For example if a box hits a flat plane, this is a normalized vector pointing out from the plane.<br>	  In the case of impact with a corner or edge of a surface, usually the "most opposing" normal (opposed to the query direction) is chosen. |
 | `TraceStart` | `FVector_NetQuantize` | Start location of the trace.<br>	  For example if a sphere is swept against the world, this is the starting location of the center of the sphere. |
@@ -9312,11 +9314,11 @@ An Input Chord is a key and the modifier keys that are to be held with it.
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `bShift` | `uint32` | Whether the shift key is part of the chord. |
 | `Key` | `FKey` | The Key is the core of the chord. |
-| `bCtrl` | `uint32` | Whether the control key is part of the chord. |
+| `bShift` | `uint32` | Whether the shift key is part of the chord. |
 | `bAlt` | `uint32` | Whether the alt key is part of the chord. |
 | `bCmd` | `uint32` | Whether the command key is part of the chord. |
+| `bCtrl` | `uint32` | Whether the control key is part of the chord. |
 
 
 ---
@@ -10673,8 +10675,8 @@ Saved editor viewport state information
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `bChannel1` | `uint8` | - |
 | `bChannel0` | `uint8` | Default channel for all primitives and lights. |
+| `bChannel1` | `uint8` | - |
 | `bChannel2` | `uint8` | - |
 
 
@@ -10691,9 +10693,9 @@ Debug options for Lightmass
 | Name | Type/Value | Description |
 |---|---|---|
 | `bStatsEnabled` | `uint32` | If true, all participating Lightmass agents will report back detailed stats to the log. |
-| `bDebugMode` | `uint32` | If false, UnrealLightmass.exe is launched automatically (default)<br>	 	If true, it must be launched manually (e.g. through a debugger) with the -debug command line parameter. |
 | `bGatherBSPSurfacesAcrossComponents` | `uint32` | If true, BSP surfaces split across model components are joined into 1 mapping |
 | `CoplanarTolerance` | `float` | The tolerance level used when gathering BSP surfaces. |
+| `bDebugMode` | `uint32` | If false, UnrealLightmass.exe is launched automatically (default)<br>	 	If true, it must be launched manually (e.g. through a debugger) with the -debug command line parameter. |
 | `bUseImmediateImport` | `uint32` | If true, Lightmass will import mappings immediately as they complete.<br>	 	It will not process them, however. |
 | `bImmediateProcessMappings` | `uint32` | If true, Lightmass will process appropriate mappings as they are imported.<br>	 	NOTE: Requires ImmediateMode be enabled to actually work. |
 | `bSortMappings` | `uint32` | If true, Lightmass will sort mappings by texel cost. |
@@ -10794,10 +10796,10 @@ Per-object settings for Lightmass
 |---|---|---|
 | `bUseTwoSidedLighting` | `uint32` | If true, this object will be lit as if it receives light from both sides of its polygons. |
 | `bShadowIndirectOnly` | `uint32` | If true, this object will only shadow indirect lighting. |
-| `EmissiveLightExplicitInfluenceRadius` | `float` | Direct lighting influence radius.<br>	  The default is 0, which means the influence radius should be automatically generated based on the emissive light brightness.<br>	  Values greater than 0 override the automatic method. |
+| `bUseEmissiveForStaticLighting` | `uint32` | If true, allow using the emissive for static lighting. |
 | `bUseVertexNormalForHemisphereGather` | `uint32` | Typically the triangle normal is used for hemisphere gathering which prevents incorrect self-shadowing from artist-tweaked vertex normals.<br>	  However in the case of foliage whose vertex normal has been setup to match the underlying terrain, gathering in the direction of the vertex normal is desired. |
 | `EmissiveLightFalloffExponent` | `float` | Direct lighting falloff exponent for mesh area lights created from emissive areas on this primitive. |
-| `bUseEmissiveForStaticLighting` | `uint32` | If true, allow using the emissive for static lighting. |
+| `EmissiveLightExplicitInfluenceRadius` | `float` | Direct lighting influence radius.<br>	  The default is 0, which means the influence radius should be automatically generated based on the emissive light brightness.<br>	  Values greater than 0 override the automatic method. |
 | `EmissiveBoost` | `float` | Scales the emissive contribution of all materials applied to this object. |
 | `DiffuseBoost` | `float` | Scales the diffuse contribution of all materials applied to this object. |
 | `FullyOccludedSamplesFraction` | `float` | Fraction of samples taken that must be occluded in order to reach full occlusion. |
@@ -10916,9 +10918,9 @@ A subtitle localized to a specific language.
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `bMature` | `uint32` | true if this sound is considered to contain mature content. |
 | `LanguageExt` | `FString` | The 3-letter language for this subtitle |
 | `Subtitles` | `TArray < FSubtitleCue >` | Subtitle cues.  If empty, use SoundNodeWave's SpokenText as the subtitle.  Will often be empty,<br>	  as the contents of the subtitle is commonly identical to what is spoken. |
+| `bMature` | `uint32` | true if this sound is considered to contain mature content. |
 | `bManualWordWrap` | `uint32` | true if the subtitles have been split manually. |
 | `bSingleLine` | `uint32` | true if the subtitles should be displayed one line at a time. |
 
@@ -11610,8 +11612,8 @@ Mesh merging settings
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `TargetLightMapResolution` | `int32` | Target lightmap resolution |
 | `bGenerateLightMapUV` | `bool` | Whether to generate lightmap UVs for a merged mesh |
+| `TargetLightMapResolution` | `int32` | Target lightmap resolution |
 | `bComputedLightMapResolution` | `bool` | Whether or not the lightmap resolution should be computed by summing the lightmap resolutions for the input Mesh Components |
 | `bImportVertexColors_DEPRECATED` | `bool` | Whether we should import vertex colors into merged mesh |
 | `bPivotPointAtZero` | `bool` | Whether merged mesh should have pivot at world origin, or at first merged component otherwise |
@@ -11684,8 +11686,8 @@ Mesh merging settings
 | `bRecalculateNormals` | `bool` | Whether Simplygon should recalculate normals, otherwise the normals channel will be sampled from the original mesh |
 | `bBakeVertexData_DEPRECATED` | `bool` | - |
 | `bUseLandscapeCulling` | `bool` | Whether or not to use available landscape geometry to cull away invisible triangles |
-| `LandscapeCullingPrecision` | `TEnumAsByte < ELandscapeCullingPrecision :: Type >` | Level of detail of the landscape that should be used for the culling |
 | `bAssignLODGroup` | `bool` | Choose whether you want to apply LODs to the generated mesh or not. |
+| `LandscapeCullingPrecision` | `TEnumAsByte < ELandscapeCullingPrecision :: Type >` | Level of detail of the landscape that should be used for the culling |
 | `LODGroupIndex` | `int32` | - |
 | `bAggregateMeshes` | `bool` | - |
 | `AggregatorMode` | `EChartAggregationMode` | - |
@@ -12003,6 +12005,7 @@ Proxy structure for 3D transform section key data.
 | `ManualWeight` | `FRichCurve` | - |
 | `BlendType` | `EMovieSceneBlendType` | - |
 | `Mask` | `FMovieSceneTransformMask` | - |
+| `bUseQuaternionInterp` | `bool` | - |
 
 
 ---
@@ -12744,6 +12747,7 @@ For MovieSceneSkeletalAnimation MultipleDeviceGrade Feature End
 | `bApplySubAnim` | `uint32` | Apply Anim To SubAnim |
 | `ApplyAvatarSlot` | `TArray < int32 >` | Apply Anim To Avatar |
 | `DisableBoneResolve` | `TArray < int32 >` | Apply Anim To SubAnim |
+| `bShouldUseWeight` | `uint32` | If true, pass the Weight curve value through to SetMatineeAnimPositionInner to control animation blend |
 
 
 ---
@@ -13834,8 +13838,8 @@ Holds the packet simulation settings in one place
 |---|---|---|
 | `PktLoss` | `int32` | When set, will cause calls to FlushNet to drop packets.<br>	  Value is treated as % of packets dropped (i.e. 0 = None, 100 = All).<br>	  No general pattern  ordering is guaranteed.<br>	  Clamped between 0 and 100.<br>	 <br>	  Works with all other settings. |
 | `PktOrder` | `int32` | When set, will cause calls to FlushNet to change ordering of packets at random.<br>	  Value is treated as a bool (i.e. 0 = False, anything else = True).<br>	  This works by randomly selecting packets to be delayed until a subsequent call to FlushNet.<br>	 <br>	  Takes precedence over PktDup and PktLag. |
-| `PktDup` | `int32` | When set, will cause calls to FlushNet to duplicate packets.<br>	  Value is treated as % of packets duplicated (i.e. 0 = None, 100 = All).<br>	  No general pattern  ordering is guaranteed.<br>	  Clamped between 0 and 100.<br>	 <br>	  Cannot be used with PktOrder or PktLag. |
 | `PktLag` | `int32` | When set, will cause calls to FlushNet to delay packets.<br>	  Value is treated as millisecond lag.<br>	 <br>	  Cannot be used with PktOrder. |
+| `PktDup` | `int32` | When set, will cause calls to FlushNet to duplicate packets.<br>	  Value is treated as % of packets duplicated (i.e. 0 = None, 100 = All).<br>	  No general pattern  ordering is guaranteed.<br>	  Clamped between 0 and 100.<br>	 <br>	  Cannot be used with PktOrder or PktLag. |
 | `PktLagVariance` | `int32` | When set, will cause PktLag to use variable lag instead of constant.<br>	  Value is treated as millisecond lag range (e.g. -GivenVariance <= 0 <= GivenVariance).<br>	  Clamped between 0 and 100.<br>	 <br>	  Can only be used when PktLag is enabled. |
 | `PktIncomingLoss` | `int32` | The ratio of incoming packets that will be dropped<br>	  to simulate packet loss |
 

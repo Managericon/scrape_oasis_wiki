@@ -34,6 +34,7 @@ This is the base class for all wrapped Slate controls that are exposed to UObjec
 | `bOverride_Cursor` | `uint8` | - |
 | `bIsVolatile` | `uint8` | Engine modify End<br>	<br>	<br>	  If true prevents the widget or its child's geometry or layout information from being cached.  If this widget<br>	  changes every frame, but you want it to still be in an invalidation panel you should make it as volatile<br>	  instead of invalidating it every frame, which would prevent the invalidation panel from actually<br>	  ever caching anything. |
 | `bWriteSceneZBuffer` | `uint8` | - |
+| `bUseAsSOCOccluder` | `uint8` | - |
 | `UsedLayerPolicy` | `uint8` | DrawLayer's policy, 0: default, 1: prevent increasing layer to force batch |
 | `PreservedLayerNum` | `uint8` | - |
 | `FixedLayerPolicy` | `uint8` | DrawLayer's policy, 0: default, 1: Fixed layer to force batch |
@@ -541,6 +542,24 @@ SetWriteSceneZBuffer(bInWriteSceneZBuffer: bool) -> void
 | Name | Type | Description |
 |---|---|---|
 | `bInWriteSceneZBuffer` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetUseAsSOCOccluder`
+
+```text
+SetUseAsSOCOccluder(bInUseAsSOCOccluder: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bInUseAsSOCOccluder` | `bool` | - |
 
 **Returns**
 

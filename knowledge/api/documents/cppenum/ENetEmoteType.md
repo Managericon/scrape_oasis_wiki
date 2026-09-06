@@ -19,3 +19,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `FollowEmote` | `3` | - |
 | `PairEmote` | `4` | - |
 | `SetEmoteRate` | `5` | - |
+| `ActivityEmote` | `6` | - |

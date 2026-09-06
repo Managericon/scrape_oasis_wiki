@@ -18,6 +18,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | Name | Type/Value | Description |
 |---|---|---|
 | `Enable` | `bool` | - |
+| `StopDelay` | `float` | - |
 
 ## Functions
 
@@ -58,29 +59,46 @@ CheckCondition(AnimInstance: UAnimInstance *, DeltaTime: float) -> bool
 |---|---|
 | `bool` | - |
 
-### `NeedUpdate`
+### `OnInit`
 
 ```text
-NeedUpdate(AnimInstance: UAnimInstance *, DeltaTime: float) -> bool
+OnInit(OwnerInstance: UAnimInstance *) -> void
 ```
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `AnimInstance` | `UAnimInstance *` | - |
-| `DeltaTime` | `float` | - |
+| `OwnerInstance` | `UAnimInstance *` | - |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `bool` | - |
+| `void` | - |
 
-### `NeedUpdate_Internal`
+### `OnUninit`
 
 ```text
-NeedUpdate_Internal(AnimInstance: UAnimInstance *, DeltaTime: float) -> bool
+OnUninit(OwnerInstance: UAnimInstance *) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `OwnerInstance` | `UAnimInstance *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `NeedUpdate`
+
+```text
+NeedUpdate(AnimInstance: UAnimInstance *, DeltaTime: float) -> bool
 ```
 
 **Parameters**

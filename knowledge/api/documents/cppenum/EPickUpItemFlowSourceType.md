@@ -35,3 +35,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `EPickUpItemFlowSourceType_ActivityCommonBox` | `19` | - |
 | `EPickUpItemFlowSourceType_LostTombUnderworldSoldiers` | `20` | - |
 | `EPickUpItemFlowSourceType_SeasonThemedGameplayBoxTwo` | `21` | - |
+| `EPickUpItemFlowSourceType_EscapeSupplyBox` | `22` | - |

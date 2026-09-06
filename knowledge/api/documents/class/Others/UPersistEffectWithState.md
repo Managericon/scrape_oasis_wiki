@@ -76,6 +76,31 @@ JumpToState(StateName: FName, EnterTime: float, bPause: bool) -> void
 |---|---|
 | `void` | - |
 
+### `AddBindingByStateAndName`
+
+```text
+AddBindingByStateAndName(StateName: FName, BindingName: FName, Object: UObject *) -> void
+```
+
+按 State 名 + Binding 名一步绑定：将指定 State 的 SkillSequence 中
+	  名为 BindingName 的 Actor 轨道操控实例，绑定到 Object 指向的运行时目标。
+	  与编辑器 "Get 绑定" + "Add Binding" 节点等价，供  Lua 使用。
+	  生效范围: 服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `StateName` | `FName` | 技能状态名（需 SequenceType == GenerateSkillSequence 且配置了 SkillSequence） |
+| `BindingName` | `FName` | 该 SkillSequence 中目标轨道的名称（对应编辑器绑定下拉中的显示名） |
+| `Object` | `UObject *` | 要绑定的运行时目标 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ## Language
 
 `cpp`

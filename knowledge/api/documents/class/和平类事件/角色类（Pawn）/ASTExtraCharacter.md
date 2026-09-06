@@ -13,7 +13,7 @@ api_root: "https://developer.gp.qq.com/api/"
 
 ## Inheritance
 
-`AUAECharacter` -> `IUAESkillInterface` -> `ISTBaseBuffCarrierInterface` -> `IDamageableInterface` -> `IWeaponOwnerInterface` -> `IWeaponOwnerProxyFactory` -> `IAttrModifyInterface` -> `IItemGenerateInterface` -> `IObjectPoolInterface` -> `IActorHiddenInterface` -> `ILaserSeekAndLockOwnerInterface` -> `IBulletHitInterface` -> `IGameAttributeCarrierInterface` -> `IPickerEffectInterface` -> `ICustomMovementInterface` -> `IGenericCharacterInterface` -> `ITargetFilterInfoProviderInterface` -> `IStateAbilityInterface` -> `IOwnershipChainInterface` -> `IFieldApplyInterface` -> `ICharacterTypeInterface`
+`AUAECharacter` -> `IUAESkillInterface` -> `ISTBaseBuffCarrierInterface` -> `IDamageableInterface` -> `IWeaponOwnerInterface` -> `IWeaponOwnerProxyFactory` -> `IAttrModifyInterface` -> `IItemGenerateInterface` -> `IObjectPoolInterface` -> `IActorHiddenInterface` -> `ILaserSeekAndLockOwnerInterface` -> `IBulletHitInterface` -> `IGameAttributeCarrierInterface` -> `IPickerEffectInterface` -> `ICustomMovementInterface` -> `IGenericCharacterInterface` -> `ITargetFilterInfoProviderInterface` -> `IStateAbilityInterface` -> `IOwnershipChainInterface` -> `IFieldApplyInterface` -> `ICharacterTypeInterface` -> `ISkillAbilityInterface`
 
 ## Events
 

@@ -16,7 +16,7 @@ api_root: "https://developer.gp.qq.com/api/"
 ### `SpawnFakePlayer`
 
 ```text
-SpawnFakePlayer(AIPlayerKey: number, TeamID: number)
+SpawnFakePlayer(AIPlayerKey: number, TeamID: number, InFakePlayerClass: UClass)
 ```
 
 生成假人玩家， GameMode 中 DataManager，AIProbe 数据中配置 AIController
@@ -28,6 +28,7 @@ SpawnFakePlayer(AIPlayerKey: number, TeamID: number)
 |---|---|---|
 | `AIPlayerKey` | `number` | AIPlayerKey，建议使用 UGCFakePlayerSystem.GetRandomAIPlayerKey 生成 |
 | `TeamID` | `number` | 队伍 ID |
+| `InFakePlayerClass` | `UClass` | 假人玩家的控制器类 |
 
 ### `GetRandomAIPlayerKey`
 

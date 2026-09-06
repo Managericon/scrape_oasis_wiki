@@ -17,4 +17,3 @@ api_root: "https://developer.gp.qq.com/api/"
 | `GameplayAdd` | `1` | - |
 | `ReviveReAdd` | `2` | - |
 | `RespawnReAdd` | `3` | - |
-| `GMAdd` | `4` | - |

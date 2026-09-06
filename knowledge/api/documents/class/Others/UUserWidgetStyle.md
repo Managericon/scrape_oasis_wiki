@@ -27,6 +27,8 @@ api_root: "https://developer.gp.qq.com/api/"
 | `UnloadDurationTime` | `float` | - |
 | `IsPCUIStyle` | `bool` | - |
 | `UnloadTimerHandle` | `FTimerHandle` | - |
+| `NotUnloadedReportTime` | `float` | - |
+| `NotUnloadedReportTimerHandle` | `FTimerHandle` | - |
 
 ## Language
 

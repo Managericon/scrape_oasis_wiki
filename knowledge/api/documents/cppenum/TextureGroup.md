@@ -58,4 +58,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `TEXTUREGROUP_LobbyLightMap` | `42` | - |
 | `TEXTUREGROUP_LobbyUI` | `43` | - |
 | `TEXTUREGROUP_Terrain_Splatmap` | `44` | - |
-| `TEXTUREGROUP_MAX` | `45` | - |
+| `TEXTUREGROUP_Weapon_3G` | `45` | - |
+| `TEXTUREGROUP_WeaponNormalMap_3G` | `46` | - |
+| `TEXTUREGROUP_WeaponSpecular_3G` | `47` | - |
+| `TEXTUREGROUP_MAX` | `48` | - |

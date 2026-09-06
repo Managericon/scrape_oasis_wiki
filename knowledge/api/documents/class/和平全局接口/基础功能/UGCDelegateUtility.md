@@ -87,6 +87,26 @@ DestroyUEDelegate(UEDelegate: ULuaSingleDelegate)
 |---|---|---|
 | `UEDelegate` | `ULuaSingleDelegate` | 虚幻兼容单播委托 |
 
+### `CreateCommonDelegate`
+
+```text
+CreateCommonDelegate(Type: EUGCCommonDelegateType) -> UGCCommonDelegate
+```
+
+创建通用委托
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Type` | `EUGCCommonDelegateType` | 委托类型，不传则默认为普通委托 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCCommonDelegate` | - |
+
 ## Language
 
 `lua`

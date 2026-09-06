@@ -26,8 +26,8 @@ api_root: "https://developer.gp.qq.com/api/"
 | `bIsClusterBasedHLOD` | `bool` | - |
 | `HLODGroupName` | `FName` | 该 LODActor 所属的 HLOD Group 名称（来自 WorldSettings HLODSetup[L].HLODGroups[i].GroupName）。<br>	  NAME_None  = Default 重组通道产物，使用关卡默认 BaseMaterial 与默认 DrawDistanceScale。<br>	  非空       = 由 Group 通道产物，烘焙时按此名反查 ProxyBaseMaterial，运行时反查 LODDrawDistanceScale。 |
 | `DebugHighlightDuration` | `float` | 调试包围盒持续时间（秒） |
-| `DebugHighlightThickness` | `float` | 调试包围盒线宽 |
 | `DebugHighlightColor` | `FColor` | 调试包围盒颜色 |
+| `DebugHighlightThickness` | `float` | 调试包围盒线宽 |
 | `bDebugPrintNodeIndex` | `bool` | 是否在 Cluster 节点中心打印 RefNode 索引文本（用于诊断哪个 Node 跑偏） |
 | `DebugHighlightRefIndices` | `TArray < int32 >` | 仅高亮指定索引的 ClusterRef（针对 ClusterRefs 数组下标）。<br>	  留空 = 高亮全部 ClusterRefs；填了任意值 = 只高亮命中数组中的 RefIndex。<br>	  例：[0, 2] 表示仅高亮 ClusterRefs[0] 与 ClusterRefs[2]。 |
 | `LODLevel` | `int32` | The hierarchy level of this actor; the first tier of HLOD is level 1, the second tier is level 2 and so on. |

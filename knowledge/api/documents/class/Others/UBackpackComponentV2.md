@@ -115,6 +115,54 @@ CheckInitPersistCompleted() -> bool
 |---|---|
 | `bool` | - |
 
+### `DisplayBackpackTipsV2`
+
+```text
+DisplayBackpackTipsV2(TipKey: FString &, ItemDefineID: FItemDefineID &, Count: int32, Reason: EUGCCommonItemReason) -> void
+```
+
+弹出背包Tips，不保证触发时实例数据一致，如需数据请手动传入
+	  Server、Client
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TipKey` | `FString &` | 用于匹配 BackpackTipsConfig 中配置的 Tips Key |
+| `ItemDefineID` | `FItemDefineID &` | 要展示 Tips 的物品 DefineID |
+| `Count` | `int32` | 物品数量，默认为 0 |
+| `Reason` | `EUGCCommonItemReason` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ShouldDisplayBackpackTipsV2`
+
+```text
+ShouldDisplayBackpackTipsV2(TipKey: FString &, ItemDefineID: FItemDefineID &, Count: int32, Reason: EUGCCommonItemReason) -> bool
+```
+
+是否应弹出该 Tips
+	  Server、Client
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TipKey` | `FString &` | 用于匹配 BackpackTipsConfig 中配置的 Tips Key |
+| `ItemDefineID` | `FItemDefineID &` | 要判断的物品 DefineID |
+| `Count` | `int32` | 物品数量，默认为 0 |
+| `Reason` | `EUGCCommonItemReason` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true				应弹 Tips；false 不应弹 |
+
 ## Events
 
 ### `CanAddItemV2`
@@ -135,7 +183,7 @@ CanAddItemV2(ItemID: int32, Count: int32) -> int32
 
 | Name | Type | Description |
 |---|---|---|
-| `ItemID` | `int32` | 物品ID |
+| `ItemID` | `int32` | - |
 | `Count` | `int32` | 需要添加的物品数量 |
 
 **Returns**

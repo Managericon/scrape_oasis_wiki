@@ -3,8 +3,8 @@
   "name": "Tencent Oasis Wiki",
   "files": {
     "chunks/class/class_001.md": {
-      "sha256": "def5b2aa10f8af4ae25523934c255fa78623527da7950b60f19c4fab967ceefd",
-      "file_id": "file-BB8vzmFpjYxukUQ1K39AmZ",
+      "sha256": "e505cacc8b1db83dfd391ca0aa6e13fd6145a4e4110c1da2f384db43b7ad1fdb",
+      "file_id": "file-4zJaiNsM4L7m5hHTURmJ63",
       "attributes": {
         "id": "api-chunk:class:1",
         "title": "Oasis API class chunk 1",
@@ -13,8 +13,8 @@
       }
     },
     "chunks/class/class_002.md": {
-      "sha256": "97545ec9565bc9130d7562edf2d875daed06f8f1cd960e7726c114c9ebdd8845",
-      "file_id": "file-XHVDoay5evBzhZjoU3ZQwQ",
+      "sha256": "ddfc077f7355a5c18d42a1f81fb36a4694cf50b4e33ec561446eae1a619e93ea",
+      "file_id": "file-X9qwLDyRiXEzHEXdf2wqgo",
       "attributes": {
         "id": "api-chunk:class:2",
         "title": "Oasis API class chunk 2",
@@ -23,8 +23,8 @@
       }
     },
     "chunks/class/class_003.md": {
-      "sha256": "8b3159a3d3cdff68ab8718ea56635d803f56f5fa0bc2063458081c42df0bdac6",
-      "file_id": "file-4C4297FYSzpqvQWeWU4RVF",
+      "sha256": "ea25cfef6ecd44503cd7f1a5768762ede26e5a28f182b53604a3e44ec2cf7fbd",
+      "file_id": "file-H6BnorRarqnP2sQKRFDhQn",
       "attributes": {
         "id": "api-chunk:class:3",
         "title": "Oasis API class chunk 3",
@@ -33,8 +33,8 @@
       }
     },
     "chunks/class/class_004.md": {
-      "sha256": "f2bb41aad4e3c3fdac0b87ad26db11b39a5504fe493c11e4c402c5bf5733de5e",
-      "file_id": "file-2LvjhcVFUjA22242qtFjoy",
+      "sha256": "25ea7f2dc8a2e04ba3564685be98ebaa0d910eb789208762e43af35c0253ce4e",
+      "file_id": "file-Q6L7hyNbCMSXbpsDFAVa7h",
       "attributes": {
         "id": "api-chunk:class:4",
         "title": "Oasis API class chunk 4",
@@ -43,8 +43,8 @@
       }
     },
     "chunks/class/class_005.md": {
-      "sha256": "b924253d95ddce5a17b1c6d0e23ee0d935c6740126b661048a87afdfafbdafd5",
-      "file_id": "file-V9an26m4fsDwsfAMn5Jevv",
+      "sha256": "0a21aca79a7d79e4f4696e42d122ab7e6b73cf2758a12d1400b72e46ed47ec8d",
+      "file_id": "file-CR3xxfZqexEhn1ZZMuDf4B",
       "attributes": {
         "id": "api-chunk:class:5",
         "title": "Oasis API class chunk 5",
@@ -53,8 +53,8 @@
       }
     },
     "chunks/class/class_006.md": {
-      "sha256": "bcf6f1a83c7248f3424b4e8cbb8f99db3dd768f8b36b4ec96440cda0eb939c6a",
-      "file_id": "file-6pF7o7W9eJ1M1cARBRfyAJ",
+      "sha256": "54817d22c5983f52f56350ab8a35f0f32fb595f84601e916a1139b98374e41a7",
+      "file_id": "file-YGYfLwaurXah8KmFxCY9rt",
       "attributes": {
         "id": "api-chunk:class:6",
         "title": "Oasis API class chunk 6",
@@ -63,8 +63,8 @@
       }
     },
     "chunks/class/class_007.md": {
-      "sha256": "6718e51c428a9020a584a5c90d91ace979d3132d297ebea622a1da6d258b572f",
-      "file_id": "file-XhzuF4Wivds9C5BQAPZmVG",
+      "sha256": "e8e8056509fb5ed50be5b74965d1da6265416f2194b3a1bf06c5d8399e7d8dd7",
+      "file_id": "file-Dc3Y9RoiHcy9aAJB4e6KoM",
       "attributes": {
         "id": "api-chunk:class:7",
         "title": "Oasis API class chunk 7",
@@ -73,8 +73,8 @@
       }
     },
     "chunks/class/class_008.md": {
-      "sha256": "25b3d0123327c6f800653607d84473832d354f4bd8c0d6a786d0903230710711",
-      "file_id": "file-R1TMPzzhZjfYqNhgWr66wN",
+      "sha256": "0fb626e684c78bce13e59451cc99999dd3c365645bd9d01a229ea16d056a8257",
+      "file_id": "file-T4eRR2zJBLmTUSKDLPsqCo",
       "attributes": {
         "id": "api-chunk:class:8",
         "title": "Oasis API class chunk 8",
@@ -83,8 +83,8 @@
       }
     },
     "chunks/cppenum/cppenum_001.md": {
-      "sha256": "887b2eeb4ad688b29f56dec85cbd84822d0b95498c0b47a23ac96f3f9141c220",
-      "file_id": "file-VCZdxd5JwMTSuEefDxsjsb",
+      "sha256": "c8e4e086f5e659de03a8aa9a5a5fe35aa1ec88a6a0b064c66f575b0f1a5a9d67",
+      "file_id": "file-BXpBSQhmHfCjUqgAfeD4iL",
       "attributes": {
         "id": "api-chunk:cppenum:1",
         "title": "Oasis API cppenum chunk 1",
@@ -93,8 +93,8 @@
       }
     },
     "chunks/cppenum/cppenum_002.md": {
-      "sha256": "17647bc34288b8cad1259bd7712a41f693286207a87e7442767d0e0c8c9a552a",
-      "file_id": "file-Mpoqt4NVQstGR7iJpXPonx",
+      "sha256": "e224732fb6c4c5edc5dc23317313e8505e1217cba0be8e23b44be08a7a67e601",
+      "file_id": "file-75rTb9wdxKa4NkSNmFmLCZ",
       "attributes": {
         "id": "api-chunk:cppenum:2",
         "title": "Oasis API cppenum chunk 2",
@@ -103,8 +103,8 @@
       }
     },
     "chunks/cppenum/cppenum_003.md": {
-      "sha256": "23a6dcb8fae90512ea65b0e6c756df95ec31ba212b8a9d1338479b5723fb876b",
-      "file_id": "file-YThVY6kh6FTGnywbnDouRF",
+      "sha256": "9da366c80d4dd55669fa3a08ebee1279289d28155da1be6091dfd57c16d9d4ed",
+      "file_id": "file-BiQkVKTWEurcFQFwt2G2JP",
       "attributes": {
         "id": "api-chunk:cppenum:3",
         "title": "Oasis API cppenum chunk 3",
@@ -113,8 +113,8 @@
       }
     },
     "chunks/cppenum/cppenum_004.md": {
-      "sha256": "1f25c286dd656e9509146601bf05bba9bd1aef6e5a83b82f0db4e7f892bd584b",
-      "file_id": "file-JMLRrKaPY32TnMbXuYCU6Y",
+      "sha256": "c9d7055855591167bd2dd3a0769b61d0aa508e438f30f48cc8689eb2e3808282",
+      "file_id": "file-TBkbRvP4X1Ze6cskEYFbFP",
       "attributes": {
         "id": "api-chunk:cppenum:4",
         "title": "Oasis API cppenum chunk 4",
@@ -123,8 +123,8 @@
       }
     },
     "chunks/cppstruct/cppstruct_001.md": {
-      "sha256": "3c44dc71a785073e19fe89e789b2e15fac08d395d526ad5912c2d2cdc0a2f735",
-      "file_id": "file-1Zig45Zbzydqbaq4SmLUeA",
+      "sha256": "b88476be7086acc1b03b7b68513d63414ff43bf9502eb240030611de0f0151ba",
+      "file_id": "file-3aQx6etys2WbvByVGP7YsZ",
       "attributes": {
         "id": "api-chunk:cppstruct:1",
         "title": "Oasis API cppstruct chunk 1",
@@ -133,8 +133,8 @@
       }
     },
     "chunks/cppstruct/cppstruct_002.md": {
-      "sha256": "d00ad45d50003733f06de6ad3725b4dce6f443ec09e16cbd7b4d53c226a586eb",
-      "file_id": "file-VcLAce2JAcsLtaKin6FFr1",
+      "sha256": "1e90310ae990d994457043af3c84c3d63d59b5b4ac7d0648218770f8b790dd98",
+      "file_id": "file-3cv5qREgLNEjNFhGz33S2c",
       "attributes": {
         "id": "api-chunk:cppstruct:2",
         "title": "Oasis API cppstruct chunk 2",
@@ -681,8 +681,8 @@
       }
     },
     "性能优化及异常处理/20401_性能报告与内存记录.md": {
-      "sha256": "142578f91f7cc8551ca7599f6d903d6a62dd4058c16423b70266e2e498ef3b9a",
-      "file_id": "file-NxWvUvR1iHFkGWQBidr8wz",
+      "sha256": "1967ee95fb3ebcc0997ba2a5e93b17acbb4eb026904d8eb0cea761a30107ad4b",
+      "file_id": "file-1CqGk7zrg9hACdd5FXQU15",
       "attributes": {
         "id": "20401",
         "title": "性能报告与内存记录",
@@ -1167,6 +1167,16 @@
         "id": "20418",
         "title": "1.37 Release Notes",
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20418",
+        "category": "版本日志"
+      }
+    },
+    "版本日志/20472_1.38 Release Notes.md": {
+      "sha256": "9b82b6ade69112dcf7976893f47a3b14ef6686cc1fd3cbaf67b3b39bbe026802",
+      "file_id": "file-HZxajbYa8RD2Z74Jmu2RQJ",
+      "attributes": {
+        "id": "20472",
+        "title": "1.38 Release Notes",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20472",
         "category": "版本日志"
       }
     },
@@ -1971,8 +1981,8 @@
       }
     },
     "进阶内容/GamePlay系统/怪物系统/20179_任务节点查询手册.md": {
-      "sha256": "9256595eb1fac9b94f7085a8bad05b444e176031dc7115d80887cac64f177b9b",
-      "file_id": "file-19nbufsQWxbuVoKNuEo1uZ",
+      "sha256": "dac0445b46a4d9aa457f9b2f77fb7450e7e07c08e5090f3b2784f455db55cb2a",
+      "file_id": "file-3cdgscSygzp276gk5coyNZ",
       "attributes": {
         "id": "20179",
         "title": "任务节点查询手册",
@@ -2421,8 +2431,8 @@
       }
     },
     "进阶内容/GamePlay系统/技能系统/技能编辑器2.0/20091_技能编辑器.md": {
-      "sha256": "b224c7e1e74f08f046403c1eee4eb84e068a6878d07b7e518f9f7e488e2429a3",
-      "file_id": "file-BBWFNPanPhY89C7R94uqxd",
+      "sha256": "f79eb8e87373c8ba17c08b5118ab882e270f830e2b098bac7ac3227cd5765c35",
+      "file_id": "file-U1RFSJ2YiqXdLynxoMPEaA",
       "attributes": {
         "id": "20091",
         "title": "技能编辑器",
@@ -2431,8 +2441,8 @@
       }
     },
     "进阶内容/GamePlay系统/技能系统/技能编辑器2.0/20094_技能Task查询手册.md": {
-      "sha256": "5c1e34490dfaaceb2f63aabde9c3b276361b9a940689964cb60857f2a3924396",
-      "file_id": "file-C19ZVjpCz4gTZXvbTK8PuV",
+      "sha256": "5cf0ad694e477a10ba978fc5d210a77d6ddfe189938e711800144442fcdcb4bc",
+      "file_id": "file-Wsj1rBeVtEXBYvNk8BD7L7",
       "attributes": {
         "id": "20094",
         "title": "技能Task查询手册",
@@ -2461,8 +2471,8 @@
       }
     },
     "进阶内容/GamePlay系统/技能系统/技能编辑器2.0/20112_技能Event查询手册.md": {
-      "sha256": "2b860f2b4d5881933468cc00826d6740333d247c03f448741ede2e6de927e775",
-      "file_id": "file-GTCrHbrn1pPD6eqznZ5A85",
+      "sha256": "c9b42ff3cb745bba6296dbae6cc6fd80117e66db32b2a9ce005c0cd52c4cdfa5",
+      "file_id": "file-RuEXvpdx5vFZtNNskssP3x",
       "attributes": {
         "id": "20112",
         "title": "技能Event查询手册",
@@ -2670,6 +2680,26 @@
         "category": "进阶内容/GamePlay系统/物资系统/物资编辑器2.0"
       }
     },
+    "进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20470_背包 _ 物品 功能边界.md": {
+      "sha256": "2d0951b141518454346923262a60f9c22c79ab4c4666d140053bd1c6877593f1",
+      "file_id": "file-1i7JuBNPmQpynt8tkWqUhC",
+      "attributes": {
+        "id": "20470",
+        "title": "背包 / 物品 功能边界",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20470",
+        "category": "进阶内容/GamePlay系统/物资系统/物资编辑器2.0"
+      }
+    },
+    "进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20471_背包流程概览.md": {
+      "sha256": "812cc1ae3854c22d154d5a5cdf6bced25c2c833df9cf70bd97823b8e524ef6ce",
+      "file_id": "file-S6kUx1ZWMA5eUKMryFnq5D",
+      "attributes": {
+        "id": "20471",
+        "title": "背包流程概览",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20471",
+        "category": "进阶内容/GamePlay系统/物资系统/物资编辑器2.0"
+      }
+    },
     "进阶内容/GamePlay系统/角色系统/153_修改主角属性.md": {
       "sha256": "0ed06c96ef4d67a235ce48420cd449fbae3434805f8aeebdb44c15157e48b4d6",
       "file_id": "file-GrocuuGm2F849oV6BuFV5k",
@@ -2867,6 +2897,16 @@
         "id": "20392",
         "title": "通用进度条UI",
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20392",
+        "category": "进阶内容/UI系统"
+      }
+    },
+    "进阶内容/UI系统/20445_Tips系统.md": {
+      "sha256": "318156839481c1c39e53c7a8dae5176e8af86ec148bbafedb9872335b2c746d1",
+      "file_id": "file-5gp2C4G7koqduyvtxnzM3J",
+      "attributes": {
+        "id": "20445",
+        "title": "Tips系统",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20445",
         "category": "进阶内容/UI系统"
       }
     },
@@ -3110,6 +3150,16 @@
         "category": "进阶内容/存档"
       }
     },
+    "进阶内容/存档/20460_PIE 本地存档.md": {
+      "sha256": "85a42b4a8cbcce1342e9d154443987944b758e4598c29ad0545e6b2b4affbc77",
+      "file_id": "file-MnfTXvLL1o2o4bm8AdXVqU",
+      "attributes": {
+        "id": "20460",
+        "title": "PIE 本地存档",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20460",
+        "category": "进阶内容/存档"
+      }
+    },
     "进阶内容/模式编辑器/155_通过模式编辑器创建游戏规则.md": {
       "sha256": "df27ba4f4d01ee0cd661a18bbb210a2a083daa2d344ef231d01d2358ddb92734",
       "file_id": "file-Jj7uxSWq9emtoaQxLsLrt1",
@@ -3292,8 +3342,8 @@
     }
   },
   "summary": {
-    "uploaded": 2,
-    "skipped": 327,
+    "uploaded": 24,
+    "skipped": 310,
     "failed": 0
   }
 }

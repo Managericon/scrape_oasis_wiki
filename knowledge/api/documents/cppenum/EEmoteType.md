@@ -16,3 +16,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `AnimationEmote` | `0` | - |
 | `SkillEmote` | `1` | - |
 | `PairEmote` | `2` | - |
+| `ActivityEmote` | `3` | - |

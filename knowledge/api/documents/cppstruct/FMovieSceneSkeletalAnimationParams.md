@@ -30,3 +30,4 @@ For MovieSceneSkeletalAnimation MultipleDeviceGrade Feature End
 | `bApplySubAnim` | `uint32` | Apply Anim To SubAnim |
 | `ApplyAvatarSlot` | `TArray < int32 >` | Apply Anim To Avatar |
 | `DisableBoneResolve` | `TArray < int32 >` | Apply Anim To SubAnim |
+| `bShouldUseWeight` | `uint32` | If true, pass the Weight curve value through to SetMatineeAnimPositionInner to control animation blend |

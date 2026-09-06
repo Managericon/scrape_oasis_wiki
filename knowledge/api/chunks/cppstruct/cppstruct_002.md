@@ -1289,8 +1289,8 @@ Rigid body error correction data
 | `LinearRecipFixTime` | `float` | inverted duration after which linear velocity adjustment will fix error |
 | `AngularDeltaThreshold` | `float` | max squared angle difference (in radians) to perform velocity adjustment |
 | `AngularInterpAlpha` | `float` | strength of snapping to desired angular velocity |
-| `BodySpeedThresholdSq` | `float` | min squared body speed to perform velocity adjustment |
 | `AngularRecipFixTime` | `float` | inverted duration after which angular velocity adjustment will fix error |
+| `BodySpeedThresholdSq` | `float` | min squared body speed to perform velocity adjustment |
 
 
 ---
@@ -1334,9 +1334,9 @@ Describes the physical state of a rigid body.
 |---|---|---|
 | `Position` | `FVector_NetQuantize100` | - |
 | `Quaternion` | `FQuat` | - |
+| `LinVel` | `FVector_NetQuantize100` | - |
 | `AngVel` | `FVector_NetQuantize100` | - |
 | `Flags` | `uint8` | - |
-| `LinVel` | `FVector_NetQuantize100` | - |
 
 
 ---
@@ -2176,8 +2176,8 @@ Desc : The following class stores settings for the simplygon caster.
 | `bReuseExistingCharts` | `bool` | - |
 | `ChannelsToCast` | `TArray < struct FSimplygonChannelCastingSettings >` | - |
 | `bBakeVertexData` | `bool` | - |
-| `bAllowMultiMaterial` | `bool` | - |
 | `bBakeActorData` | `bool` | - |
+| `bAllowMultiMaterial` | `bool` | - |
 | `bPreferTwoSideMaterials` | `bool` | - |
 | `bUseVertexWeights` | `bool` | - |
 | `OutputMaterialInfo` | `FOutputMaterialInfo` | - |
@@ -4939,6 +4939,7 @@ PlayerComponent配置
 | Name | Type/Value | Description |
 |---|---|---|
 | `ItemID` | `int32` | 掉落物ItemID |
+| `ItemPresetIdx` | `int32` | 掉落物ItemID |
 | `Count` | `int32` | 掉落物数量 |
 
 
@@ -5187,6 +5188,7 @@ PlayerComponent配置
 | `ShowInDetails` | `ERankListDisplayType` | 是否在玩法详情页展示 |
 | `Desc` | `FString` | 排行榜说明 |
 | `ScoreFormatType` | `ERankListScoreFormatType` | 分数显示格式 |
+| `EnableFriendRank` | `EFriendRankListEnableType` | 是否启用好友榜 |
 
 
 ---
@@ -5307,6 +5309,7 @@ The description of a user activity
 | `PUBGDeviceFPSUltimateHighTA` | `int32` | - |
 | `IsSupportTagCulling` | `bool` | - |
 | `UserVulkanSetting` | `int32` | - |
+| `UserForceCloseVulkan` | `int32` | - |
 
 
 ---
@@ -5342,6 +5345,9 @@ The user widget is extensible by users through the WidgetBlueprint.
 | `bAdvanceHide` | `bool` | - |
 | `bAdvanceRemove` | `bool` | - |
 | `bNeedInsertInvBox` | `bool` | - |
+| `bInvBoxRenderOnPhase` | `bool` | - |
+| `InvMaxRendersPerSecond` | `int32` | - |
+| `bVolatileForROPInv` | `bool` | - |
 | `bNeedInsertRetainerBox` | `bool` | - |
 | `bRetainerRenderOnInvalidation` | `bool` | - |
 | `RetainerMaxRendersPerSecond` | `int32` | - |
@@ -5954,8 +5960,8 @@ FWorldContext
 | `ObjectToRegionID_NonStatic` | `TMap < UObject * , FRegionID >` | - |
 | `CacheNonStaticObjectOldRegion` | `TMap < UObject * , FRegionID >` | - |
 | `OverlapObjectToRegionID_Dynamic` | `TMap < UObject * , FRegionID >` | - |
-| `OverlapObjectToRegionID_Player` | `TMap < UObject * , FRegionID >` | - |
 | `OverlapObjectToRegionID_Vehicle` | `TMap < UObject * , FRegionID >` | - |
+| `OverlapObjectToRegionID_Player` | `TMap < UObject * , FRegionID >` | - |
 
 
 ---

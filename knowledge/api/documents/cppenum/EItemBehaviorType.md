@@ -28,6 +28,8 @@ api_root: "https://developer.gp.qq.com/api/"
 | `VehiclePrticleAudioShow` | `12` | - |
 | `VehicleDiversionShow` | `13` | - |
 | `VehicleChangeModeShow` | `14` | - |
+| `VehicleFakeManShow` | `15` | - |
+| `VehicleMontageShow` | `16` | - |
 | `ADSDestroyShow` | `20` | - |
 | `ADSSurroundingParticleShow` | `21` | - |
 | `ADSExplosionParticleShow` | `22` | - |

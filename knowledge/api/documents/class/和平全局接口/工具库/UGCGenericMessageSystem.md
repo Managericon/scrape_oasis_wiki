@@ -31,6 +31,8 @@ api_root: "https://developer.gp.qq.com/api/"
 | `UGCGenericMessageSystem.Messages.UGC.PlayerPawn.PostRecoverHealth` | `-` | 玩家角色受到治疗后（最终治疗计算后)<br>生效范围：服务器<br>ListenedObject：指定被伤害角色<br>@param RecoverValue float @实际治疗值<br>@param RecoveryInstigator AActor @治疗来源的玩家控制器<br>@param RecoveryCauser Controller @治疗来源<br>@param RecoverTags FGameplayTag[] @治疗附带的Tags |
 | `UGCGenericMessageSystem.Messages.UGC.PlayerPawn.PawnDefeat` | `-` | 玩家角色被击败<br>生效范围：服务器<br>ListenedObject：无，全局事件<br>@param VictimPlayerKey number @被击败玩家的 PlayerKey<br>@param InstigatorPlayerKey number @击败玩家的 PlayerKey<br>@param DamageType EDamageType @伤害类型 |
 | `UGCGenericMessageSystem.Messages.UGC.PlayerPawn.PawnRespawn` | `-` | 玩家角色重生<br>生效范围：服务器<br>ListenedObject：无，全局事件<br>@param PlayerKey number @玩家的 PlayerKey |
+| `UGCGenericMessageSystem.Messages.UGC.FakePlayer` | `-` | 假人玩家相关消息 |
+| `UGCGenericMessageSystem.Messages.UGC.FakePlayer.FakePlayerEnter` | `-` | 假人玩家进入游戏<br>生效范围：服务器<br>ListenedObject：无，全局事件<br>@param PlayerKey number @假人玩家的 PlayerKey<br>@param AIController number @假人玩家的 控制器 |
 | `UGCGenericMessageSystem.Messages.UGC.MobPawn` | `-` | - |
 | `UGCGenericMessageSystem.Messages.UGC.MobPawn.Spawn` | `-` | 怪物角色首次出生<br>生效范围：服务器&客户端<br>ListenedObject：指定生成的怪物，不指定则接收所有怪物角色消息<br>@param MobPawn AUGCMobCharacter @怪物 |
 | `UGCGenericMessageSystem.Messages.UGC.MobPawn.PreTakeDamage` | `-` | 怪物角色受到伤害前（最终伤害计算前)<br>生效范围：服务器<br>ListenedObject：指定被伤害怪物角色，不指定则接收所有怪物角色消息<br>@param MobPawn AUGCMobCharacter @怪物<br>@param DamageCauserActor AActor @伤害来源<br>@param EventInstigator Controller @伤害来源的玩家控制器<br>@param Damage number @伤害值<br>@param DamageContext FGameMagnitudeContext @伤害事件上下文 |
@@ -210,6 +212,110 @@ UnListenMessage(Listener: UObject|number, Message: string)
 | `Listener` | `UObject\|number` | 监听对象/监听ID |
 | `Message` | `string` | 广播信息的索引，后续的广播和监听都通过索引进行操作 |
 
+### `GetRemoteMessageHandle`
+
+```text
+GetRemoteMessageHandle(Message: string) -> UGCRemoteMessageHandle
+```
+
+获取远程消息句柄
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Message` | `string` | 消息名称 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCRemoteMessageHandle` | 消息句柄，Message非string或为""时返回nil |
+
+### `SendServerMessage`
+
+```text
+SendServerMessage(Message: string, ...: any)
+```
+
+从客户端发送消息到服务器
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Message` | `string` | 消息名称 |
+| `...` | `any` | 消息参数 |
+
+### `SendAllClientMessage`
+
+```text
+SendAllClientMessage(Message: string, ...: any)
+```
+
+从服务器广播消息到客户端
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Message` | `string` | 消息名称 |
+| `...` | `any` | 消息参数 |
+
+### `SendClientMessage`
+
+```text
+SendClientMessage(Message: string, PlayerKey: number, ...: any)
+```
+
+从服务器发送消息到客户端
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Message` | `string` | 消息名称 |
+| `PlayerKey` | `number` | 玩家的 PlayerKey |
+| `...` | `any` | 消息参数 |
+
+### `ListenRemoteMessage`
+
+```text
+ListenRemoteMessage(Message: string, Callback: function|UGCCommonDelegate, CallbackOwner: table|UObject|nil)
+```
+
+监听远程消息
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Message` | `string` | 消息名称 |
+| `Callback` | `function\|UGCCommonDelegate` | 回调函数或委托 |
+| `CallbackOwner` | `table\|UObject\|nil` | 回调函数的所有者 |
+
+### `UnListenRemoteMessage`
+
+```text
+UnListenRemoteMessage(Message: string, Callback: function|UGCCommonDelegate, CallbackOwner: table|UObject|nil)
+```
+
+取消监听远程消息
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Message` | `string` | 消息名称 |
+| `Callback` | `function\|UGCCommonDelegate` | 回调函数或委托 |
+| `CallbackOwner` | `table\|UObject\|nil` | 回调函数的所有者 |
+
 ### `RegisterUserDefinedMessage`
 
 ```text
@@ -230,6 +336,18 @@ RegisterUserDefinedMessage(Message: string) -> string
 | Type | Description |
 |---|---|
 | `string` | 返回注册后的Message，与输入的Message相同 |
+
+### `ClearAllListeners`
+
+```text
+ClearAllListeners()
+```
+
+清理所有用户自定义消息监听器(全局 + 对象)。
+保护用途:对局退出 / 重新进入 LoadMap 前主动清空监听表,
+使其中持有的 WeakObjectPtr 弱引用随 Lua GC 释放,
+避免上一局残留监听器引用已销毁的 UObject / ULevel。
+生效范围:服务器&客户端
 
 ## Language
 

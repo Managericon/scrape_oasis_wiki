@@ -76,6 +76,21 @@ SendSystemMessageToAll(MessageTag: string, MessageContent: string, Level: number
 |---|---|
 | `boolean` | 是否发送成功 |
 
+### `OpenPrivateChat`
+
+```text
+OpenPrivateChat(UID: number)
+```
+
+打开与指定玩家的私聊界面
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `UID` | `number` | 目标玩家 UID |
+
 ## Language
 
 `lua`

@@ -19,3 +19,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `ManualWeight` | `FRichCurve` | - |
 | `BlendType` | `EMovieSceneBlendType` | - |
 | `Mask` | `FMovieSceneTransformMask` | - |
+| `bUseQuaternionInterp` | `bool` | - |
