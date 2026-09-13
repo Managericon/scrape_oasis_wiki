@@ -200,6 +200,16 @@
         "category": "AI工具"
       }
     },
+    "AI工具/20453_AI生成角色.md": {
+      "sha256": "9223057b7a65a600aa6307774ee85ac2d9eed3b2684431663d1427ee61f20d21",
+      "file_id": "file-TCzGTjXiNJAq4t9RCMhk4h",
+      "attributes": {
+        "id": "20453",
+        "title": "AI生成角色",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20453",
+        "category": "AI工具"
+      }
+    },
     "交互物/20427_交互相关功能组件.md": {
       "sha256": "062ee0d8dcba27a887b0807063a91bb541dc30a18b7e28c5fd8af8aa101c1267",
       "file_id": "file-1LiurxysfHaiHYMrRFECHE",
@@ -311,8 +321,8 @@
       }
     },
     "商业化及功能模板/20347_补偿接入指引.md": {
-      "sha256": "0b4bd2466519a73da24e025e7d658aff242966b363f5432527d1e5f47ba50c2c",
-      "file_id": "file-BEi1VNnW1KZTdkatEtkpeR",
+      "sha256": "df8a18048c13141d4f6c9fdf5714d77b321c5ed6458e2e1b8d31f5223218cfb3",
+      "file_id": "file-UaLerovry2dwuUmMGCFEvq",
       "attributes": {
         "id": "20347",
         "title": "补偿接入指引",
@@ -331,8 +341,8 @@
       }
     },
     "商业化及功能模板/20393_邮件模板.md": {
-      "sha256": "463a9188a239b939d79ac22c6c458cb21ddbf1161dba1925333f5a4d3b416b93",
-      "file_id": "file-WVkh6QuEixtDvHRXoeZC24",
+      "sha256": "e39bda7d0cb56fec0200af60b945c6a766d0ebeb837fe529ac5282c2277dd2ca",
+      "file_id": "file-VRSJ5RSyTk4xnDrX3YsJdA",
       "attributes": {
         "id": "20393",
         "title": "邮件模板",
@@ -417,6 +427,16 @@
         "id": "20442",
         "title": "在UI上渲染一个场景Actor",
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20442",
+        "category": "常用实战教学"
+      }
+    },
+    "常用实战教学/20451_开启_关闭角色背负功能.md": {
+      "sha256": "c4d7843ade3122c8c4b429e03f381c94e53dbcdf37ec2ce961e58521d32fc39f",
+      "file_id": "file-FyhVNBVPF9Pc7uvjvpb8hk",
+      "attributes": {
+        "id": "20451",
+        "title": "开启/关闭角色背负功能",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20451",
         "category": "常用实战教学"
       }
     },
@@ -671,8 +691,8 @@
       }
     },
     "性能优化及异常处理/20353_PIE日志面板.md": {
-      "sha256": "a36b23407335041b69efbea75b08537a61b4e53254aba407a8e03fa811f0aee5",
-      "file_id": "file-9CjBX3jqgB8Dt3ZPMSuHnd",
+      "sha256": "97cd0721f684783f1b85af5c7b738e4f6c6415b13557f44c88542d029b86f490",
+      "file_id": "file-YTcsi4XSTeZ2dKjxEczumz",
       "attributes": {
         "id": "20353",
         "title": "PIE日志面板",
@@ -991,8 +1011,8 @@
       }
     },
     "新手入门/资源管理与编辑/277_资源导入.md": {
-      "sha256": "9f7dd5ffab8ac878428eb9bf24bea01f0f30237817e0456c7dd5440d864ffd71",
-      "file_id": "file-U77KnKYjunZH4pXxxri83N",
+      "sha256": "7212c6b4df8306cfe1887d3236a37eba4299dbf5fb91321822817ac07942cde1",
+      "file_id": "file-SSNfGGML6AKQajwzh1Yzgv",
       "attributes": {
         "id": "277",
         "title": "资源导入",
@@ -1171,8 +1191,8 @@
       }
     },
     "版本日志/20472_1.38 Release Notes.md": {
-      "sha256": "9b82b6ade69112dcf7976893f47a3b14ef6686cc1fd3cbaf67b3b39bbe026802",
-      "file_id": "file-HZxajbYa8RD2Z74Jmu2RQJ",
+      "sha256": "bc7e1f718e48ffce4b59a0a7badd6b810846604208a936627edbdab637e75d4e",
+      "file_id": "file-WzcHqgcHyxMTbFRMxf9voL",
       "attributes": {
         "id": "20472",
         "title": "1.38 Release Notes",
@@ -1551,8 +1571,8 @@
       }
     },
     "绿洲编辑器基础内容/上传和发布玩法/372_上传工程与真机测试.md": {
-      "sha256": "f834f6cb12ea7e0cb7f05a8b60c48e0fdfebdaab22cd387ec308a03ea5ad41ae",
-      "file_id": "file-Jf9FUS7bdvE2Wb7M537uYF",
+      "sha256": "ada61de5d8e89f9a346b9f4ebf727a652c50e03a4f141751a9576984412e6f16",
+      "file_id": "file-5gZrZw47gtUZiykMVyJ9PR",
       "attributes": {
         "id": "372",
         "title": "上传工程与真机测试",
@@ -1720,6 +1740,16 @@
         "category": "绿洲编辑器基础内容/调试游戏"
       }
     },
+    "绿洲编辑器基础内容/调试游戏/20458_前置工程检查.md": {
+      "sha256": "f283080e0cba1d522f58d50b449fc3165de3a8997851591f9bdbd609492bb2fd",
+      "file_id": "file-JqdHXxmShQJMp8C7pX97rj",
+      "attributes": {
+        "id": "20458",
+        "title": "前置工程检查",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20458",
+        "category": "绿洲编辑器基础内容/调试游戏"
+      }
+    },
     "绿洲编辑器基础内容/调试游戏/224_Lua控制台.md": {
       "sha256": "4c65cc39be13b9600959fccf543b37d2569372cb24781e8df06494f3b69c866e",
       "file_id": "file-8hK563qJjtnc4buydeygwR",
@@ -1751,8 +1781,8 @@
       }
     },
     "进阶内容/20023_自定义行为统计.md": {
-      "sha256": "2dc1325f7bde3ffb836c4a765d0369737200c07f603c6765515610389bc5ad88",
-      "file_id": "file-2hQRikqbY8aq8EdXXmKCdh",
+      "sha256": "8a31485f512d97704f865f9eccec49d4eb44afe03c5e882ffa1936489e104700",
+      "file_id": "file-WhpSSTejEsK2DNYtdH7nAC",
       "attributes": {
         "id": "20023",
         "title": "自定义行为统计",
@@ -2021,8 +2051,8 @@
       }
     },
     "进阶内容/GamePlay系统/怪物系统/20254_路点移动.md": {
-      "sha256": "3193f7b065b8d4f5d601c29a4d58119f32c1f81a80f749ebf6261b35da652b26",
-      "file_id": "file-4hifWUaB3Cq5jBrDyHySwD",
+      "sha256": "574abf8940605300f5575262f6d4a938a1f96639f501af4a2a1a7303ece19879",
+      "file_id": "file-FvckPTakBgPx2fVSZkpdnF",
       "attributes": {
         "id": "20254",
         "title": "路点移动",
@@ -2097,6 +2127,16 @@
         "id": "20412",
         "title": "怪物血条",
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20412",
+        "category": "进阶内容/GamePlay系统/怪物系统"
+      }
+    },
+    "进阶内容/GamePlay系统/怪物系统/20454_宠物模板.md": {
+      "sha256": "92e38ca065474b2a3a9a98fbdd975ea5c83351dd6b75570bf015cbbd7d3114e5",
+      "file_id": "file-GRxKuJNJWTDtJKsYyAeePP",
+      "attributes": {
+        "id": "20454",
+        "title": "宠物模板",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20454",
         "category": "进阶内容/GamePlay系统/怪物系统"
       }
     },
@@ -2351,8 +2391,8 @@
       }
     },
     "进阶内容/GamePlay系统/技能系统/Buff编辑器2.0/20253_变参Buff模板.md": {
-      "sha256": "fce3476557341e428bb1eacbd6f3d56fc2d6c4a4b89f57fd537c4dd1a15fa8b4",
-      "file_id": "file-73aCnwBVaBBSDwQmEthDRi",
+      "sha256": "e4c8026a2c93c9074fee024dd5ee6bddec924982bfc59d241b595cc952a66c13",
+      "file_id": "file-MR7r28QuxEhHBfPfKQQX3J",
       "attributes": {
         "id": "20253",
         "title": "变参Buff模板",
@@ -2651,8 +2691,8 @@
       }
     },
     "进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20420_自定义拾取组件.md": {
-      "sha256": "b86a85a75ca5d17a6e93cd468356b4fb4e13f9945521737572ed657dec1e55ec",
-      "file_id": "file-QUWXAPVwjgdzbjeZBtjAfD",
+      "sha256": "b4d40c0fc64918eeb694ccdf874ed5b4ca76d25630c0f3d376b035f2b98a4dec",
+      "file_id": "file-Wu1wcSV6cZ8ynqmyWA5YRR",
       "attributes": {
         "id": "20420",
         "title": "自定义拾取组件",
@@ -2751,8 +2791,8 @@
       }
     },
     "进阶内容/GamePlay系统/载具系统/20245_载具编辑器.md": {
-      "sha256": "bc4fd88f9515af848e201da4307cc79403467ad0e30888108176b171e42f6050",
-      "file_id": "file-ShuB7YYCW5ajrDGsEG138g",
+      "sha256": "8ae8dbf8cf025333fc5906d5d1736be7604f35c9ef139fc8945f4e6455ee8124",
+      "file_id": "file-An8QUJriJB3U6eefvqBKxa",
       "attributes": {
         "id": "20245",
         "title": "载具编辑器",
@@ -2791,8 +2831,8 @@
       }
     },
     "进阶内容/UI系统/20019_和平主界面控件布局.md": {
-      "sha256": "bb4760d5a9c0f0ce1845eae95282a925ad7c1edd2a44e26446e5fa9fcfc116b1",
-      "file_id": "file-8EjKE8WCbCBCMp2e9j2GMb",
+      "sha256": "d928ed6dbd02d080661e458509e28bccd68408a40f6af5c025a72c87c72f3fe9",
+      "file_id": "file-LGYtLUrwexzJKUwrPP5JsG",
       "attributes": {
         "id": "20019",
         "title": "和平主界面控件布局",
@@ -2907,6 +2947,16 @@
         "id": "20445",
         "title": "Tips系统",
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20445",
+        "category": "进阶内容/UI系统"
+      }
+    },
+    "进阶内容/UI系统/20463_背包Tips系统.md": {
+      "sha256": "99ec1f2c01cef0622f73e3dc677c65153e14a3ebfd457dfc455c3088522e2fb8",
+      "file_id": "file-WMYJisYJzpCMF7AtLS1G9m",
+      "attributes": {
+        "id": "20463",
+        "title": "背包Tips系统",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20463",
         "category": "进阶内容/UI系统"
       }
     },
@@ -3190,16 +3240,6 @@
         "category": "进阶内容/模式编辑器"
       }
     },
-    "进阶内容/输入系统/20211_绿洲玩法适配和平精英模拟器.md": {
-      "sha256": "af826317dece66e6d82ea381bab681d13bbdd43bee159711b9a8b7e8072c5d9d",
-      "file_id": "file-W5Kr1S8AWmCgLmZ2CBNEWP",
-      "attributes": {
-        "id": "20211",
-        "title": "绿洲玩法适配和平精英模拟器",
-        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20211",
-        "category": "进阶内容/输入系统"
-      }
-    },
     "进阶内容/输入系统/20290_输入映射.md": {
       "sha256": "e06258d39ab42e005641457ee758267a5c2917495d735eaf206b27fad904f260",
       "file_id": "file-WtYX2dFWNBPDD4DfJqo7Gy",
@@ -3251,8 +3291,8 @@
       }
     },
     "通用功能/20160_通用伤害飘字.md": {
-      "sha256": "be100821aa2edf2cffc4049dc11ac75030d9564290bdc6a02f7964f9d80ba975",
-      "file_id": "file-4XyzyW15uJb9XyaewdoZED",
+      "sha256": "641d1224ed220448654bdfe870fc1da4d483dc5666fda1b53471f793bfc69a84",
+      "file_id": "file-CySwKqSanp7RHx4FaVjS9B",
       "attributes": {
         "id": "20160",
         "title": "通用伤害飘字",
@@ -3339,11 +3379,21 @@
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20409",
         "category": "通用功能"
       }
+    },
+    "通用功能/20456_假人系统.md": {
+      "sha256": "8696a3124f7c10fdc6feeaf2721ea1f5b8564f4f37951903cd909b49e90b2e7e",
+      "file_id": "file-Suq9HSxSnUtm8hyWz7RHQt",
+      "attributes": {
+        "id": "20456",
+        "title": "假人系统",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20456",
+        "category": "通用功能"
+      }
     }
   },
   "summary": {
-    "uploaded": 24,
-    "skipped": 310,
+    "uploaded": 19,
+    "skipped": 320,
     "failed": 0
   }
 }

@@ -11,7 +11,7 @@
     "selector": ".github-markdown-body",
     "images": 0,
     "code_blocks": 0,
-    "sha256": "9b82b6ade69112dcf7976893f47a3b14ef6686cc1fd3cbaf67b3b39bbe026802"
+    "sha256": "bc7e1f718e48ffce4b59a0a7badd6b810846604208a936627edbdab637e75d4e"
   },
   {
     "id": "20418",
@@ -406,6 +406,21 @@
     "sha256": "21e99d3d2bcf1b3f5af54d79bbe02c8f7eaf581e895d19276a5cb70de1645a74"
   },
   {
+    "id": "20458",
+    "title": "前置工程检查",
+    "categories": [
+      "绿洲编辑器基础内容",
+      "调试游戏"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20458",
+    "status": "ok",
+    "file": "articles/绿洲编辑器基础内容/调试游戏/20458_前置工程检查.md",
+    "selector": ".github-markdown-body",
+    "images": 5,
+    "code_blocks": 4,
+    "sha256": "f283080e0cba1d522f58d50b449fc3165de3a8997851591f9bdbd609492bb2fd"
+  },
+  {
     "id": "127",
     "title": "匹配设置",
     "categories": [
@@ -492,8 +507,8 @@
     "file": "articles/绿洲编辑器基础内容/上传和发布玩法/372_上传工程与真机测试.md",
     "selector": ".github-markdown-body",
     "images": 25,
-    "code_blocks": 0,
-    "sha256": "f834f6cb12ea7e0cb7f05a8b60c48e0fdfebdaab22cd387ec308a03ea5ad41ae"
+    "code_blocks": 1,
+    "sha256": "ada61de5d8e89f9a346b9f4ebf727a652c50e03a4f141751a9576984412e6f16"
   },
   {
     "id": "378",
@@ -594,9 +609,9 @@
     "status": "ok",
     "file": "articles/新手入门/资源管理与编辑/277_资源导入.md",
     "selector": ".github-markdown-body",
-    "images": 17,
-    "code_blocks": 0,
-    "sha256": "9f7dd5ffab8ac878428eb9bf24bea01f0f30237817e0456c7dd5440d864ffd71"
+    "images": 16,
+    "code_blocks": 1,
+    "sha256": "7212c6b4df8306cfe1887d3236a37eba4299dbf5fb91321822817ac07942cde1"
   },
   {
     "id": "314",
@@ -1412,9 +1427,9 @@
     "status": "ok",
     "file": "articles/进阶内容/GamePlay系统/技能系统/Buff编辑器2.0/20253_变参Buff模板.md",
     "selector": ".github-markdown-body",
-    "images": 6,
+    "images": 10,
     "code_blocks": 0,
-    "sha256": "fce3476557341e428bb1eacbd6f3d56fc2d6c4a4b89f57fd537c4dd1a15fa8b4"
+    "sha256": "e4c8026a2c93c9074fee024dd5ee6bddec924982bfc59d241b595cc952a66c13"
   },
   {
     "id": "20444",
@@ -1732,9 +1747,9 @@
     "status": "ok",
     "file": "articles/进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20420_自定义拾取组件.md",
     "selector": ".github-markdown-body",
-    "images": 11,
-    "code_blocks": 0,
-    "sha256": "b86a85a75ca5d17a6e93cd468356b4fb4e13f9945521737572ed657dec1e55ec"
+    "images": 19,
+    "code_blocks": 3,
+    "sha256": "b4d40c0fc64918eeb694ccdf874ed5b4ca76d25630c0f3d376b035f2b98a4dec"
   },
   {
     "id": "20429",
@@ -1992,9 +2007,9 @@
     "status": "ok",
     "file": "articles/进阶内容/GamePlay系统/怪物系统/20254_路点移动.md",
     "selector": ".github-markdown-body",
-    "images": 16,
+    "images": 17,
     "code_blocks": 0,
-    "sha256": "3193f7b065b8d4f5d601c29a4d58119f32c1f81a80f749ebf6261b35da652b26"
+    "sha256": "574abf8940605300f5575262f6d4a938a1f96639f501af4a2a1a7303ece19879"
   },
   {
     "id": "20156",
@@ -2452,6 +2467,22 @@
     "sha256": "c5258c67e2e1e74c4bd37e4268f96d578cf7bbae55e007feef2c6a0505cd695c"
   },
   {
+    "id": "20454",
+    "title": "宠物模板",
+    "categories": [
+      "进阶内容",
+      "GamePlay系统",
+      "怪物系统"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20454",
+    "status": "ok",
+    "file": "articles/进阶内容/GamePlay系统/怪物系统/20454_宠物模板.md",
+    "selector": ".github-markdown-body",
+    "images": 6,
+    "code_blocks": 6,
+    "sha256": "92e38ca065474b2a3a9a98fbdd975ea5c83351dd6b75570bf015cbbd7d3114e5"
+  },
+  {
     "id": "379",
     "title": "普通载具",
     "categories": [
@@ -2479,9 +2510,9 @@
     "status": "ok",
     "file": "articles/进阶内容/GamePlay系统/载具系统/20245_载具编辑器.md",
     "selector": ".github-markdown-body",
-    "images": 33,
+    "images": 34,
     "code_blocks": 0,
-    "sha256": "bc4fd88f9515af848e201da4307cc79403467ad0e30888108176b171e42f6050"
+    "sha256": "8ae8dbf8cf025333fc5906d5d1736be7604f35c9ef139fc8945f4e6455ee8124"
   },
   {
     "id": "20291",
@@ -2745,7 +2776,7 @@
     "selector": ".github-markdown-body",
     "images": 9,
     "code_blocks": 1,
-    "sha256": "bb4760d5a9c0f0ce1845eae95282a925ad7c1edd2a44e26446e5fa9fcfc116b1"
+    "sha256": "d928ed6dbd02d080661e458509e28bccd68408a40f6af5c025a72c87c72f3fe9"
   },
   {
     "id": "250",
@@ -2900,6 +2931,21 @@
     "sha256": "318156839481c1c39e53c7a8dae5176e8af86ec148bbafedb9872335b2c746d1"
   },
   {
+    "id": "20463",
+    "title": "背包Tips系统",
+    "categories": [
+      "进阶内容",
+      "UI系统"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20463",
+    "status": "ok",
+    "file": "articles/进阶内容/UI系统/20463_背包Tips系统.md",
+    "selector": ".github-markdown-body",
+    "images": 7,
+    "code_blocks": 2,
+    "sha256": "99ec1f2c01cef0622f73e3dc677c65153e14a3ebfd457dfc455c3088522e2fb8"
+  },
+  {
     "id": "20223",
     "title": "特效编辑器",
     "categories": [
@@ -2927,21 +2973,6 @@
     "images": 16,
     "code_blocks": 2,
     "sha256": "e06258d39ab42e005641457ee758267a5c2917495d735eaf206b27fad904f260"
-  },
-  {
-    "id": "20211",
-    "title": "绿洲玩法适配和平精英模拟器",
-    "categories": [
-      "进阶内容",
-      "输入系统"
-    ],
-    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20211",
-    "status": "ok",
-    "file": "articles/进阶内容/输入系统/20211_绿洲玩法适配和平精英模拟器.md",
-    "selector": ".github-markdown-body",
-    "images": 28,
-    "code_blocks": 1,
-    "sha256": "af826317dece66e6d82ea381bab681d13bbdd43bee159711b9a8b7e8072c5d9d"
   },
   {
     "id": "204",
@@ -3260,8 +3291,8 @@
     "file": "articles/进阶内容/20023_自定义行为统计.md",
     "selector": ".github-markdown-body",
     "images": 3,
-    "code_blocks": 3,
-    "sha256": "2dc1325f7bde3ffb836c4a765d0369737200c07f603c6765515610389bc5ad88"
+    "code_blocks": 4,
+    "sha256": "8a31485f512d97704f865f9eccec49d4eb44afe03c5e882ffa1936489e104700"
   },
   {
     "id": "20437",
@@ -3345,9 +3376,9 @@
     "status": "ok",
     "file": "articles/通用功能/20160_通用伤害飘字.md",
     "selector": ".github-markdown-body",
-    "images": 19,
+    "images": 21,
     "code_blocks": 1,
-    "sha256": "be100821aa2edf2cffc4049dc11ac75030d9564290bdc6a02f7964f9d80ba975"
+    "sha256": "641d1224ed220448654bdfe870fc1da4d483dc5666fda1b53471f793bfc69a84"
   },
   {
     "id": "20058",
@@ -3488,6 +3519,20 @@
     "images": 0,
     "code_blocks": 2,
     "sha256": "b8e32aa697bdecbd33552349030f9ad4e3db62d28a564a248c798c3535e11d2a"
+  },
+  {
+    "id": "20456",
+    "title": "假人系统",
+    "categories": [
+      "通用功能"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20456",
+    "status": "ok",
+    "file": "articles/通用功能/20456_假人系统.md",
+    "selector": ".github-markdown-body",
+    "images": 18,
+    "code_blocks": 12,
+    "sha256": "8696a3124f7c10fdc6feeaf2721ea1f5b8564f4f37951903cd909b49e90b2e7e"
   },
   {
     "id": "20008",
@@ -3683,9 +3728,9 @@
     "status": "ok",
     "file": "articles/商业化及功能模板/20347_补偿接入指引.md",
     "selector": ".github-markdown-body",
-    "images": 1,
-    "code_blocks": 8,
-    "sha256": "0b4bd2466519a73da24e025e7d658aff242966b363f5432527d1e5f47ba50c2c"
+    "images": 3,
+    "code_blocks": 9,
+    "sha256": "df8a18048c13141d4f6c9fdf5714d77b321c5ed6458e2e1b8d31f5223218cfb3"
   },
   {
     "id": "20393",
@@ -3697,9 +3742,9 @@
     "status": "ok",
     "file": "articles/商业化及功能模板/20393_邮件模板.md",
     "selector": ".github-markdown-body",
-    "images": 12,
+    "images": 14,
     "code_blocks": 27,
-    "sha256": "463a9188a239b939d79ac22c6c458cb21ddbf1161dba1925333f5a4d3b416b93"
+    "sha256": "e39bda7d0cb56fec0200af60b945c6a766d0ebeb837fe529ac5282c2277dd2ca"
   },
   {
     "id": "20396",
@@ -3784,6 +3829,20 @@
     "images": 3,
     "code_blocks": 0,
     "sha256": "953281916e35fecf04cab2f1e825dbfd5ce0dccbccf45e93396bafd53fdb1876"
+  },
+  {
+    "id": "20453",
+    "title": "AI生成角色",
+    "categories": [
+      "AI工具"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20453",
+    "status": "ok",
+    "file": "articles/AI工具/20453_AI生成角色.md",
+    "selector": ".github-markdown-body",
+    "images": 11,
+    "code_blocks": 1,
+    "sha256": "9223057b7a65a600aa6307774ee85ac2d9eed3b2684431663d1427ee61f20d21"
   },
   {
     "id": "20190",
@@ -4450,6 +4509,20 @@
     "sha256": "c6a527e6dc866c6a8fae6b9f282751eb906fa7cf98c5aa1be14e989f8fcb9c88"
   },
   {
+    "id": "20451",
+    "title": "开启/关闭角色背负功能",
+    "categories": [
+      "常用实战教学"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20451",
+    "status": "ok",
+    "file": "articles/常用实战教学/20451_开启_关闭角色背负功能.md",
+    "selector": ".github-markdown-body",
+    "images": 4,
+    "code_blocks": 0,
+    "sha256": "c4d7843ade3122c8c4b429e03f381c94e53dbcdf37ec2ce961e58521d32fc39f"
+  },
+  {
     "id": "336",
     "title": "资源商店",
     "categories": [],
@@ -4672,7 +4745,7 @@
     "selector": ".github-markdown-body",
     "images": 9,
     "code_blocks": 0,
-    "sha256": "a36b23407335041b69efbea75b08537a61b4e53254aba407a8e03fa811f0aee5"
+    "sha256": "97cd0721f684783f1b85af5c7b738e4f6c6415b13557f44c88542d029b86f490"
   },
   {
     "id": "20348",

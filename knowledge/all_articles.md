@@ -7,9 +7,44 @@ category: "版本日志"
 
 # 1.38 Release Notes
 
-创建于 2026-08-31 02:06 最后修改于 2026-08-31 02:29
+创建于 2026-08-31 02:06 最后修改于 2026-09-07 07:08
 
 关于版本功能使用中发现及反馈的bug修复安排，可前往 [bug修复计划公示表](<https://docs.qq.com/sheet/DSUFnT1BQWGpHYWNN?tab=b5fzcz>) 中查看了解。
+
+## 1.38.12.15914 版本说明
+
+### 编辑器
+
+**bug Fixes**
+
+  * 修复了将表格导出为CSV后重新导入编辑器时，特定字段数据变为默认值的问题
+  * 修复了部分表格打开时崩溃的问题
+  * 修复了ServerRPC方法名带有“C2S”时会被过滤掉导致无法RPC调用的问题
+  * 修复了将包含特惠礼包的工程上传并开启内购权限后，未显示特惠礼包勾选入口的问题
+
+* * *
+
+## 1.38.12.15912 版本说明
+
+### 编辑器
+
+**bug Fixes**
+
+  * 修复添加宠物调试时报错的问题
+  * 修复主武器1槽位锁定时，背包物品详情显示错误的问题
+  * 优化背包物品过多时加载卡顿的问题
+  * 修复了将UGCRankingList表格导出为CSV后重新导入编辑器时，奖励组数据丢失的问题
+  * 修复了外部资产浏览器可将资产导入目标工程Script目录子目录的问题
+  * 修复二次匹配进入新战斗后，不会生成对应服务端日志的问题
+  * 修复短管榴弹发射器模型显示异常的问题
+  * 修复了枪械无配件时，点击空槽位仍会弹出详情窗口的问题
+  * 修复了首次打开背包点击枪械时，主武器槽位异常闪烁的问题
+  * 修复了拾取实例物品时，概率不显示Tips的问题
+  * 修复了驾驶载具“希克斯飞翼”后，角色模型异常的问题
+  * 修复了驾驶载具“飞马”飞天时，角色动画异常的问题
+  * 修复了载具“锤头鲨”尾部特效资源缺失的问题
+
+* * *
 
 ## 1.38.12.15910 版本说明
 
@@ -158,7 +193,7 @@ Task名称 | 更新说明
   * 优化编辑器消息面板的显示外观
   * 优化模型导入流程
   * 优化关键流程日志与异常埋点
-  * 构建时新增shader资源以兼容更多渲染模式，根据包体大小约有5~30MB增量影响
+  * 构建时新增shader资源以兼容更多渲染模式，对包体大小约有10%增量影响
 
 **bug Fixes**
 
@@ -4955,6 +4990,219 @@ ugcprint("click trigger", "SkillSlot")
 ---
 
 ---
+id: "20458"
+title: "前置工程检查"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20458"
+category: "绿洲编辑器基础内容/调试游戏"
+---
+
+# 前置工程检查
+
+创建于 2026-09-08 10:58
+
+## 一、是什么：规则与触发时机
+
+`UGCEditor`（绿洲启元编辑器）在打开 UGC 工程后，会自动在后台运行一套**实时静态检查** 。
+
+它**不** 执行玩法逻辑，只读取代码与已加载的资产，对照规则逐条核对，把语法错误、资源引用失效、API 用错上下文等问题在保存或加载阶段就暴露出来，避免留到 Cook、上传或进入 PIE 才被发现，从而降低定位与返工成本。
+
+### 1.1 这是一套什么规则
+
+检查覆盖两类对象：
+
+类别 | 扫描范围 | 检查内容
+---|---|---
+`Lua` 代码规则 | `Script/` 目录下的 `.lua` 文件 | 语法、全局变量、API 用法、路径写法、资源引用
+资产规则 | 已加载的 `DataTable` 等资源 | 行内引用的资源是否真实存在
+
+这套检查把「变量要用 `local`、路径不要写死、API 要区分服务器/客户端、资源要真实存在」等常见踩坑点固化为工程级统一规则，减少因人、因工程而异的隐藏问题。
+
+> 检查结果是**提示** 而非**拦截** ：不会阻断保存、PIE 或上传。确有合理例外时，可用忽略区间放行（见 四、主动绕过：忽略区间）。
+
+### 1.2 什么时机会触发检查
+
+触发时机 | 检查动作
+---|---
+打开工程时 | 全量扫描工程内所有 `Lua` 文件
+修改并保存 `Lua` 文件后 | 约 0.1 秒去抖后，自动增量复查改动的文件
+加载或改动 `DataTable` 等资源时 | 自动复查资源引用
+
+检查运行在后台低优先级线程，**不** 执行玩法逻辑，**不会影响** 编辑器的正常操作。
+
+### 1.3 检查哪些内容
+
+打开工程后，以下内容默认全部开启：
+
+规则项 | 检查内容
+---|---
+`Lua` 语法 | `Lua` 文件是否能正常编译
+文件位置 | `Lua` 脚本是否误放在 `Asset/` 目录（应放在 `Script/` 目录）
+全局变量 | 变量是否漏写 `local`、是否污染全局环境
+API 上下文 | 服务器/客户端专用接口是否用错上下文
+API 参数个数 | 调用参数个数是否与声明一致
+废弃 API | 是否调用了已废弃的接口
+网络与复制 | `CallUnrealRPC` 是否未显式指定 `Reliable/Unreliable`；是否使用了 `RepLazyProperty` 复制；有 `Replicated` 属性但缺少 `OnRep_` 回调
+Tick 日志 | 是否在 `Tick` 函数里打日志
+路径写法 | 是否硬编码本机绝对路径或网络路径；`require` 是否使用反斜杠或绝对路径
+资源引用 | `Lua` 或 `DataTable` 中引用的资源在当前工程里是否存在
+
+> 若静态检查因内部原因未能跑完，会提示「静态检查未能完成，请保存文件后重试」。这仅代表本次检查未完成，**并非** 代码问题，保存后通常会自动重查，无需为消除这条提示去修改业务代码。
+
+## 二、去哪看：检查结果的出口与格式
+
+### 2.1 三个出口
+
+出口 | 内容 | 说明
+---|---|---
+错误弹窗 | 较严重的问题汇总 | 弹出 `UGC 实时检查发现错误` 对话框，不强制阻断开发
+消息日志页签 | 各类提示与问题 | `Output Log` 面板 `Messages` 中名为 `UGC Resource Daemon` 的页签
+`UGCLogViewer` → `DaemonLog` 页签 | 全部结果（含流程提示） | 在 `UGCLogViewer` 中以 `DaemonLog` 通道采集
+
+![](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/9zJERimage.png)
+
+> 错误弹窗
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/brskVimage.png)
+
+> 消息日志页签
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Folm2image.png)
+
+> UGCLogViewer
+
+### 2.2 结果格式
+
+每条检查结果都包含三部分：
+
+  1. **描述** ：问题是什么。
+  2. **位置** ：`(文件名:行号)`；`DataTable` 问题附带行/列定位。
+  3. **修复建议** ：以 `=>` 开头的具体改法。
+
+> 直接按照 `=>` 后的修复建议修改，是最快的自查路径。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/WdMECimage.png)
+
+## 三、怎么解决：逐规则处理指南与提示文案
+
+### 3.1 逐规则处理指南
+
+规则项 | 结果位置 | 解决方法
+---|---|---
+`Lua` 语法 | 消息日志 / `DaemonLog`，带行号 | 按行号修复语法（如缺少 `end`、括号或拼写不匹配），保存后自动复查
+文件位置（`Lua` 在 `Asset` 目录） | 消息日志 | 将 `.lua` 文件移到 `Script/` 目录，并修正入口引用路径
+全局变量（漏写 `local`） | 消息日志，带文件名、行号及作用域（顶层/函数内） | 私有变量补写 `local`；覆盖了系统对象的则改名；确需保留非常规写法的，用忽略区间包裹（见 四、主动绕过：忽略区间）
+API 上下文（服务器/客户端用错） | 消息日志，带 `IsServer` 分支信息和行号 | 服务器专用接口移入 `IsServer()` 的 `then` 分支；客户端专用接口移入 `else` / `not IsServer()` 分支
+API 参数个数 | 消息日志，带行号 | 对照接口签名修正实参个数
+废弃 API | 消息日志，附替代方案 | 按提示改用替代接口
+RPC / 复制 | 消息日志，带行号 | 需要 `Unreliable` 的 `CallUnrealRPC` 改用 `CallUnrealRPC_Unreliable`；确认 `RepLazyProperty` 的复制条件和频率是否合理；有 `Replicated` 属性的补写同名 `OnRep_` 回调，不需要则移除声明
+Tick 日志 | 消息日志，带行号 | 从 `Tick` 中移除日志；调试日志应加开关并限频，发布前移除
+路径写法 | 消息日志，带行号 | 本机盘符 / UNC 路径改为工程内可解析的资源路径；`require` 使用相对 `Script` 根目录的路径，以 `/` 分隔且不以 `/` 开头
+资源引用 | 消息日志（`Lua` 提示「该资源找不到：<路径>」；`DataTable` 带行/列） | `Lua` 侧确认资源是否存在、路径是否正确；`DataTable` 侧在提示的行/列修改或清空引用
+
+> 【示例代码 E1 - 全局变量（漏写 local）的正误对比】
+>
+> ```
+-- 错误：counter 漏写 local，污染全局环境，会被全局变量检查规则命中
+counter = 0
+function on_tick()
+    counter = counter + 1
+end
+
+-- 正确：用 local 限定在模块作用域内
+local counter = 0
+local function on_tick()
+    counter = counter + 1
+end
+```
+
+> 【示例代码 E2 - API 上下文（服务器/客户端用错）的正误对比】
+>
+> ```
+-- 错误：在客户端上下文直接调用服务器专用 API
+function ClientOnInteract()
+    ServerOnlyAPI_SpawnNPC()  -- 会触发：服务器专用 API 在客户端上下文被调用
+end
+
+-- 正确：移入 IsServer() 分支
+function ClientOnInteract()
+    if IsServer() then
+        ServerOnlyAPI_SpawnNPC()
+    end
+end
+```
+
+> 【示例代码 E3 - require 路径写法的正误对比】
+>
+> ```
+-- 错误：反斜杠 / 本机绝对路径
+require("D:\MyProj\Script\Lib\utils.lua")
+require("Lib\\utils")
+
+-- 正确：相对 Script 根目录、以 / 分隔、不以 / 开头
+require("Lib/utils")
+```
+
+### 3.2 提示文案与级别
+
+检查结果分为两个级别：
+
+  * **Error** ：会弹出 `UGC 实时检查发现错误` 对话框，不强制阻断开发。
+  * **Warning** ：不弹窗，只进入消息日志 / `DaemonLog` 页签。
+
+**Error 弹窗格式** （目前仅 `Lua` 语法错误会触发）：
+
+![](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/9zJERimage.png)
+
+**Error 级（会弹窗）** ：
+
+检查项 | 实际提示文案
+---|---
+`Lua` 语法错误 | `Lua 语法错误：{具体语法错误}`
+
+**点击`忽略`按钮将在本次编辑器运行过程中不再校验，重启编辑器后将正常校验检查**
+
+**Warning 级（不弹窗，修改方法见 [3.1]）** ：
+
+检查项 | 实际提示文案
+---|---
+静态检查未完成 | 静态检查未能完成，请保存文件后重试。
+`Lua` 误放 `Asset` 目录 | 检测到 `Asset` 目录下存在 `Lua` 脚本，请删除或移动到 `Script` 目录。
+服务器 API 用错上下文 | 服务器专用 API `{API名称}` 在客户端上下文被调用（`if not IsServer` 分支内）
+客户端 API 用错上下文 | 客户端专用 API `{API名称}` 在服务器上下文被调用（`if IsServer` 分支内）
+API 参数个数不一致 | API 实参数量与接口签名不一致
+调用废弃 API | 使用了废弃 API `{API名称}`，替代方案：`{替代接口}`（无替代接口时仅提示前半句）
+`RepLazyProperty` 复制 | 调用了 `RepLazyProperty` 属性复制，请确认复制条件和频率是否合理
+缺少 `OnRep_` 回调 | 文件包含 `Replicated` 属性但缺少 `OnRep_` 回调，可能需要同步回调处理
+定义全局变量 | 文件存在定义全局变量的行为，请注意
+`Tick` 函数打日志 | `Tick` 函数中输出日志可能影响性能
+本机绝对路径 / UNC 路径 | 禁止硬编码本机绝对路径，请改用工程内资源路径。或 禁止在 UGC 中使用 UNC 网络路径。
+`require` 路径写法 | `require` 路径使用了反斜杠：`{require路径}` 或 `require` 使用了绝对路径：`{require路径}`
+资源引用不存在 | 该资源找不到：`{资源路径}`；`DataTable` 引用另附定位：`DataTable {表路径}，行 {行名}，列 {列名}`
+
+## 四、主动绕过：忽略区间
+
+如果确认某段代码就是要用非常规写法、希望检查器放行，可用成对的独占行注释把这段代码包起来：
+
+```
+--- UGC-CHECK-DISABLE-BEGIN
+... 此区间内的代码不参与任何实时检查（语法、全局变量、API、路径等均跳过） ...
+--- UGC-CHECK-DISABLE-END
+```
+
+**要点** ：
+
+  * 标记以三个横线 `---` 加空格开头；写成两个横线 `--` 不会被识别，那段代码仍会被检查。
+  * 两行标记必须独占一行且成对出现，支持嵌套。
+  * 区间内的问题**不会** 进入消息日志，也**不会** 触发错误弹窗。
+  * 忽略区间只跳过内容检查，**保留原始行号** ，不影响其他结果的定位。
+  * 只写 `BEGIN` 没写 `END`：检查器会产生一条 Warning，且**不会** 静默屏蔽文件余下的内容。
+
+> 单个检查规则**不** 支持开发者自行关闭；确有例外，请使用忽略区间包裹。
+
+
+---
+
+---
 id: "127"
 title: "匹配设置"
 source: "https://developer.gp.qq.com/wikieditor/#/catalog/127"
@@ -5358,15 +5606,19 @@ category: "绿洲编辑器基础内容/上传和发布玩法"
 
 # 上传工程与真机测试
 
-最后修改于 2026-05-29 02:25
+创建于 2026-09-10 11:41
 
 在玩法开发过程中，开发者需要在本地环境和真机环境下对玩法进行测试，以验证玩法的质量。其中本地环境可以通过 [启动调试游戏](<https://developer.gp.qq.com/wikieditor/#/catalog/307>) 基于PIE的运行环境进行测试；而对于真机环境，绿洲启元编辑器提供了一套便捷的调试工具来予以支持，下面将介绍如何在真机上测试玩法。
 
 ## 流程图
 
-![企业微信截图_16865774209481.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_16865774209481.png)
+![性能测试面板](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/vm6Rfimage.png)
 
 ## 设置白名单
+
+```
+注意：如开发者需要添加额外测试人员，可联系官方运营提供QQ号/微信号、所属团队，进行资格开通。
+```
 
 在进行真机测试前，需要设置测试玩法可见人员白名单。打开测试上传，在上传面板中，可以填写“白名单”。点击“+”按钮可以为白名单数组添加元素，白名单最大个数为30。
 
@@ -6463,7 +6715,7 @@ category: "新手入门/资源管理与编辑"
 
 # 资源导入
 
-最后修改于 2026-01-23 03:08
+创建于 2026-09-10 08:37
 
 绿洲启元编辑器的资源编辑、导入及导出权限如下：
 
@@ -6536,10 +6788,13 @@ category: "新手入门/资源管理与编辑"
 
 ## 骨骼与动画导入
 
-编辑器目前提供了6种骨骼，开放给开发者使用。开发者可下载骨骼内容进行动画创作，再导入到编辑器匹配骨骼使用
-下载地址： https://share.weiyun.com/M48iClxH 密码： 89zehc
+编辑器目前提供了一个通用人形骨架,可用于动画制作，再导入到编辑器内使用
 
-![企业微信截图_16866414131930.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_16866414131930.png)
+地址：<https://drive.weixin.qq.com/s?k=AJEAIQdfAAotXDHrkA>
+
+```
+如游戏内使用替换模型后遇到蒙皮异常，可在对应API启用重定向功能
+```
 
 ### 资源格式
 
@@ -16571,7 +16826,7 @@ category: "进阶内容/GamePlay系统/技能系统/Buff编辑器2.0"
 
 # 变参Buff模板
 
-创建于 2026-04-20 08:22
+创建于 2026-04-20 08:22 最后修改于 2026-09-08 10:58
 
 Buff编辑器提供了部分特化制作的功能型Buff模板，通过参数的形式提供效果设置，方便开发者直接配置应用。
 
@@ -16661,8 +16916,6 @@ Additive Offset Fov | 相机FOV修改量
 
 角色变身为非主角骨骼类型的怪物模型，具备角色完整的动画功能，可正常移动、攻击等。
 
-> 目前仅支持变身为光子鸡模型，其他怪物模型存在动画与模型不匹配的问题
-
 ![QQ2026120-15433-HD-ezgif.com-video-to-gif-converter.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/rvPd9QQ2026120-15433-HD-ezgif.com-video-to-gif-converter.gif)
 
 属性名 | 属性说明
@@ -16680,12 +16933,49 @@ Collision Type | 骨骼模型的碰撞体类型，支持碰撞盒（Box）和胶
 Preset Box Extend | 骨骼模型碰撞盒的大小，针对 `Collision Type` 为“Box”时生效
 Preset Capsule Radius | 胶囊体的半径，针对 `Collision Type` 为“Capsule”时生效
 Preset Capsule Height | 胶囊体的半高，针对 `Collision Type` 为“Capsule”时生效
-Preset Transform Anim | 怪物模型对应的动画蓝图，目前仅光子鸡的动画蓝图 `ABP_TransformPreset_Chicken` 可生效
+Preset Transform Anim | 怪物模型对应的动画蓝图，参考设置光子鸡 `ABP_TransformPreset_Chicken`
 Fade in Speed | 变身过程中相机变化淡入淡出的速度
 Offset | 相机跟随目标点的偏移
 Spring Arm Length Additive | 角色弹簧臂的变化量
 Sprint Arm Rotation | 角色弹簧臂的旋转
 Additive Offset Fov | 相机FOV修改量
+
+### 动画蓝图ABP使用说明
+
+对上述Preset Transform Anim动画蓝图进行说明
+
+首先创建动画蓝图
+
+![](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/YuDKtimage.png)
+
+动画蓝图创建时，选择
+
+![](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/O7SVKimage.png)
+
+创建后动画蓝图后，需配置动画蓝图的默认参数进行动画列表的替换——即控制变身的模型在执行对应行为时播放什么动画。
+
+![](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/v7GgSimage.png)
+
+（注意，建议只修改动画蓝图这里的动画列表相关参数，不用轻易修改其余配置项，否则可能出现配置项不正确的情况。）
+
+MoveBlendSpace：代表变身模型移动时使用的移动动画资产。是一个BlendSpace资产。
+
+![](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/tD0ylimage.png)
+
+该移动BlendSpace的创建需要遵守一定的规范
+
+参数名 | 参数说明
+---|---
+水平坐标名称 | 需要配置为WalkRight，且取值范围需要配置为真实速度的取值范围，运行时，实际会将真实速度在角色右朝向的分量传进来（比如此时角色朝左运动，则此时传进来的值为-[移动速度]，朝右运动，则此时传进来的值为[移动速度]）
+垂直坐标名称 | 需要配置为WalkForward，且取值范围需要配置为真实速度的取值范围，运行时，实际会将真实速度在角色前朝向的分量传进来（比如此时角色朝前运动，则此时传进来的值为[移动速度]，朝后运动，则此时传进来的值为-[移动速度]）
+Blend Samples | 根据实际的需要，将左走、右走、前走、后走等不同动画配置到不同的位置即可
+InPlaceJumpAnim | 原地起跳使用的动作
+ForwardJumpAnim | 向前起跳使用的动作
+FallingAnim | 在空中滞空的Loop动作
+LandingLightAnim | 轻落地动作
+LandingHardAnim | 重落地动作
+HurtAnim | 被攻击时播放的动画。该动作需要是一个叠加类型的动作资产
+DeathMontage | 死亡时播放的蒙太奇。该资产需要为一个蒙太奇。且该蒙太奇的最后一个阶段需要为循环且卡在死亡动画的最后一帧（这是为了保证死亡过程中死亡动画播完且目标还未销毁时，目标最后可以保留在一个静止的死亡Pose）
 
 ## 怪物变身
 
@@ -20490,9 +20780,9 @@ category: "进阶内容/GamePlay系统/物资系统/物资编辑器2.0"
 
 # 自定义拾取组件
 
-创建于 2026-07-27 11:03
+创建于 2026-07-27 11:03 最后修改于 2026-09-08 10:58
 
-物品编辑器提供了自定义拾取权重和自动拾取数量的配置，开发者能够通过开启自定义拾取组件使其生效，让自定义物品可以按照权重在拾取列表中排序和自动拾取。
+物品编辑器提供了自定义拾取权重和自动拾取数量的配置，开发者能够通过开启自定义拾取组件使其生效，让自定义物品可以按照权重在拾取列表中排序和自动拾取，且支持关闭原有拾取列表UI，启用自定义的拾取物控件交互UI。
 
 ## 启用自定义拾取组件
 
@@ -20500,7 +20790,7 @@ category: "进阶内容/GamePlay系统/物资系统/物资编辑器2.0"
 
 点击编辑器菜单栏的【玩法通用设置】按钮，在【GamePart】中添加【GP_BackpackV2】模块和【GP_PickUpV2List】。
 
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/SBrvgimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/hqFetimage.png)
 
 ## 配置物品拾取权重和自动拾取数量
 
@@ -20521,7 +20811,8 @@ category: "进阶内容/GamePlay系统/物资系统/物资编辑器2.0"
 
 开启UGC拾取组件后，可以创建一个UGC拾取列表组件用于自定义，进入【Lua】即可自定义拾取物物品排序逻辑。
 
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Kplrximage.png)![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/J8tXTimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/XSgkXimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/GBaOsimage.png)
 
 每种物品都会有一套默认的排序规则和拾取规则，下面分类说明。
 
@@ -20570,6 +20861,99 @@ category: "进阶内容/GamePlay系统/物资系统/物资编辑器2.0"
 ### 防具背包拾取规则
 
 ![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/82B1ximage.png)
+
+## 自定义拾取物控件交互UI
+
+UGCPickUpWrapperActor（UGC 地面拾取物）新增三项能力：
+
+  * 控件配置：在 Actor 上新增 `bPickUpWidgetEnable` 、`PickUpWidgetClass` 等交互控件配置属性
+  * 控件模板：提供标准控件模板 UGC_WrapperNameWidget_UIBP（Lua），展示名称/数量/品质，支持点击拾取
+  * 事件开放：新增 `Event_PickUpWrapperInfoChange` 事件，DefineID 或 Count 变化时通知控件刷新 UI
+
+> 如果希望通过点击控件来拾取物品，建议关闭自动拾取(在【Gamepart】上挂载【GP_PickUpV2List】中，找到并勾选关闭拾取列表)，避免走近就自动拾取导致控件交互失效。
+
+### 配置流程
+
+  1. 在【GP_PickUpV2List】中创建一个新的V2拾取组件，在组件中找到并勾选 `是否禁用UGC拾取列表UI`：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/0V22Kimage.png)
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Xc4yuimage.png)
+
+  2. 自定义拾取物UI交互控件，在【UI编辑器】中以拾取物名称UI模板创建一个蓝图控件
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/BAAviimage.png)
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/1L90mimage.png)
+
+  3. 在内容管理器中选择拾取物蓝图父类，创建自定义的 UGCPickupWrapper_BP 拾取物蓝图，进入蓝图配置，勾选 `启用拾取物控件`，并替换自定义的拾取物UI交互控件蓝图：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/W1CBtimage.png)
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/57I9Uimage.png)
+
+  4. 在 UGCGameState 蓝图中替换拾取物蓝图，点击【编译】、【保存】
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/tHKfnimage.png)
+
+  5. 进入调试，添加掉落物查看效果：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/B9JZHimage.png)
+
+### 拾取物UI交互控件功能
+
+**Event_PickUpWrapperInfoChange 实现**
+
+拾取物信息变化通知，Lua 层重写收到事件后更新名称/数量/品质背景刷新名称/数量/品质
+
+```
+function UGC_WrapperNameWidget_UIBP:Event_PickUpWrapperInfoChange(ItemDefineID, Count)
+    local ItemName = UGCItemSystemV2.GetItemNameV2ByDefineID(ItemDefineID)
+    self.RichTextBlock:SetText(ItemName .. " +" .. tostring(Count))
+
+    local Quality = UGCItemSystemV2.GetItemQualityV2ByDefineID(ItemDefineID)
+    local QualityBgPath = UGCItemSystemV2.GetQualityBarTexturePath(Quality)
+    UGCObjectUtility.AsyncLoadObject(QualityBgPath, function(LoadedTexture)
+        if UE.IsValid(self.Image_Bg) and UE.IsValid(LoadedTexture) then
+            self.Image_Bg:SetBrushFromTexture(LoadedTexture)
+        end
+    end)
+end
+```
+
+**LuaOnWrapperClick 实现**
+
+点击拾取物UI交互控件事件
+
+```
+function UGC_WrapperNameWidget_UIBP:LuaOnWrapperClick()
+    -- 0.1s 冷却防重复点击
+    local CurrentTime = os.clock()
+    if self.ClickLastTime and (CurrentTime - self.ClickLastTime) < 0.1 then return end
+    self.ClickLastTime = CurrentTime
+
+    local PlayerPawn = UGCGameSystem.GetLocalPlayerPawn()
+    if not UE.IsValid(PlayerPawn) or not UE.IsValid(self.WrapperActor) then return end
+
+    local DataList = self.WrapperActor:GetDataList()
+    if DataList == nil or #DataList <= 0 then return end
+
+    UGCPlayerPawnSystem.PickUpWrapperActor(PlayerPawn, self.WrapperActor, DataList[1] or {}, self.WrapperActor:GetItemCount())
+end
+```
+
+**自定义控件显示**
+
+自定义控件显示规则（如过滤低品质物品），返回 `true` 显示控件
+
+```
+function UGC_WrapperNameWidget_UIBP:CanShowPickUpWidget()
+    if not UE.IsValid(self.WrapperActor) then return false end
+    -- 仅显示831开头的UGC物品
+    local DefineID = self.WrapperActor:GetDefineID()
+    return tostring(DefineID.TypeID):sub(1, 3) == "831"
+end
+```
 
 
 ---
@@ -23553,7 +23937,7 @@ category: "进阶内容/GamePlay系统/怪物系统"
 
 # 路点移动
 
-最后修改于 2025-11-17 13:45
+创建于 2026-09-08 10:57
 
 本文档介绍了怪物基于路点的寻路功能逻辑与操作方法，可以实现类似MOBA游戏中怪物沿指定路径寻路到达目标点的功能。
 
@@ -23561,9 +23945,19 @@ category: "进阶内容/GamePlay系统/怪物系统"
 
 ## 创建路点对象
 
-编辑器菜单栏点击 `窗口 -> 模式` 打开模式编辑窗口，搜索 “AIWayPointActor” 找到路点对象Actor，将该Actor拖放到关卡场景中，可以看到其胶囊体。
+编辑器菜单栏点击 `窗口 -> 模式` 打开模式编辑窗口，搜索 “Way Point” 找到路点对象Actor，将该Actor拖放到关卡场景中，可以看到其胶囊体。
 
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/JHcvkimage.png) ![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/oF9R0image.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/eCf2Kimage.png) ![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/oF9R0image.png)
+
+## 路点配置
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Fv5kwimage.png)
+
+每个路点都有三个配置内容
+
+  * 忽略Z轴：默认勾选，表示计算到达距离时候只会计算平面距离
+  * 计算胶囊体半径：默认勾选，表示计算到达时候会一并计算使用路点的怪物的胶囊体半径
+  * 到达距离：单位为厘米
 
 ## 配置怪物寻路路线
 
@@ -23573,14 +23967,14 @@ category: "进阶内容/GamePlay系统/怪物系统"
 
 将创建的路点对象都拖放到怪物刷新点下，选中刷怪点对象中的 `STSpawnerWayPoint` 组件，属性 `WayPointArr` 数组 表示此路线的所有路点，将创建的所有路点配置到这个数组中（注意：数组的元素顺序就是路点的顺序）。
 
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Y4dhVimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/e4vSximage.png)
 ![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/QTU4Uimage.png)
 
 ## 怪物刷新点配置
 
 完成路线配置之后，选中怪物刷新点根组件，在细节面板中，有下图几个关键的配置项：
 
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/gBjZDimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/1fMlJimage.png)
 
   * 刷出的怪物阵营：若填写大于-1的值，其会覆盖怪物原本的阵营设置
   * 使用路点寻路：勾选之后，此刷怪点出生的怪物才会使用配置的路点进行寻路
@@ -23604,7 +23998,7 @@ category: "进阶内容/GamePlay系统/怪物系统"
 
 ## 逻辑管理组件配置
 
-若想让怪物拥有沿路点移动的能力，找到怪物的 `LogicPartManagerComp` 组件，添加加 `FollowWaypointPart` 组件（此组件表示实体拥有了沿路点移动的能力，实体编辑器中的怪物模板都已经默认增加了这个组件）。
+若想让怪物拥有沿路点移动的能力，找到怪物的 `LogicPartManagerComp` 组件，添加 `FollowWaypointPart` 组件（此组件表示实体拥有了沿路点移动的能力，实体编辑器中的怪物模板都已经默认增加了这个组件）。
 
 ![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/2BHFhimage.png)
 
@@ -26786,6 +27180,232 @@ Preconstruct 时绑定两个消息：
 ---
 
 ---
+id: "20454"
+title: "宠物模板"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20454"
+category: "进阶内容/GamePlay系统/怪物系统"
+---
+
+# 宠物模板
+
+创建于 2026-09-10 09:24
+
+本文档将介绍如何配置宠物模板、行为参数，以及血条样式与主人变动通知的接入方式。
+
+## 概述
+
+宠物是UGC编辑器中的一种特殊实体，普通怪物没有显式主人，血条样式按阵营显示；宠物有了显式主人，阵营关系会随主人变化而变化，进而触发血条样式自动切换。宠物本质上是继承了怪物能力的对象，但额外提供了两层能力：
+
+  * 跟随与陪伴：默认具备「自动跟随主人」「超出范围传送回主人身边」的行为。
+
+  * 主人归属（MobOwner）：宠物在引擎底层继承了通用怪物的 MobOwner 机制，但将其作为显式概念开放给开发者，行为树与血条样式都会基于此关系联动。
+
+## 创建宠物蓝图
+
+编辑器菜单栏点击【实体编辑器】按钮，打开实体编辑器操作界面。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/BHdOFimage.png)
+
+实体编辑器内预置了两个宠物模板，开发者可以根据需求创建或改造，在实体编辑器左侧 **宠物** 页签目录下即可找到这两个模板：
+
+模板 | 类型 | 核心行为
+---|---|---
+装饰宠物 | 装饰陪伴型 | 跟随主人 → 超范围传送 → 玩家靠近显示交互按钮 → 点击播放 Montage
+战斗宠物 | 攻击型 | 跟随主人 → 仇恨列表中存在敌人则攻击 → 攻击时若远离主人则传回
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/xX2PPimage.png)
+
+## 配置怪物
+
+### 交互Montage配置
+
+装饰型宠物默认绑定了一个交互 Montage，开发者可在细节面板的默认配置的 **交互蒙太奇** 中替换：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Sp00wimage.png)
+
+### 行为树配置
+
+所有宠物默认共享同一棵行为树 **宠物通用基础行为树(BT_UGC_Pet_Follow)** ，参数配置在宠物蓝图的细节面板「行为树 → 行为树属性配置」中：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/cT7vTimage.png)
+
+其中各个参数的含义如下：
+
+参数 | 含义
+---|---
+行走范围 | 距主人小于此值时用行走速度移动
+奔跑范围 | 距主人介于「行走范围」与「传送范围」之间时用奔跑速度移动
+传送范围 | 距主人大于此值时直接传送回主人身边
+行走速度 | 宠物行走时的速度
+奔跑速度 | 宠物奔跑时的速度
+停止距离 | 距主人小于此值时停止移动
+是否可攻击 | 勾选后宠物会选择仇恨列表中的敌人攻击
+攻击距离 | 有攻击目标时需移动到的释放距离
+
+### 血条样式配置
+
+血条样式在蓝图侧配置，在运行时按玩家与宠物的阵营关系自动切换。首先创建[怪物血条](<https://developer.gp.qq.com/wikieditor/#/catalog/20412?autoJump=%E5%88%9B%E5%BB%BA%E6%80%AA%E7%89%A9%E8%A1%80%E6%9D%A1>)，细节面板中可以找到两个样式字典：Progress Bar HP Style — 主血条样式；Progress Bar Less Blood VFX Style — 虚条（预扣除伤害）样式。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/OrKhzimage.png)
+
+每个字典以玩家与宠物的阵营关系为 Key，分为三档：
+
+阵营关系 | 典型场景
+---|---
+Enemy（敌对） | 敌方阵营玩家的宠物、敌人怪物
+Neutral（中立） | 中立怪物、双方可攻击的野怪
+Same（同阵营） | 我方宠物、友方 NPC
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/kjAvnimage.png)
+
+**运行时切换逻辑**
+
+切换由 WBP_UGC_MonsterHealthBar（WBP_UGC_BossHealthBar 结构相同）中的两个函数完成：
+
+  * 触发时机一：阵营 ID 变化时
+
+```
+function MonsterHealthBar:BP_OnGeneralCampIDChanged()
+   	self:RefreshProgressBarStyle()
+end
+```
+
+  * 触发时机二：血条初始化时
+
+```
+function MonsterHealthBar:Event_InitParam()
+	self:SetStateWidgetPanel(...)
+	self:RefreshProgressBarStyle()  -- 首次出现按当前阵营关系选样式
+end
+```
+
+  * 切换核心实现
+
+```
+function MonsterHealthBar:RefreshProgressBarStyle()
+		local LocalPlayerPawn = UGCGameSystem.GetLocalPlayerPawn()
+		if not UE.IsValid(LocalPlayerPawn) then return end
+
+		-- 取玩家与宠物的阵营关系（Enemy / Neutral / Same）
+		local CampRelation = LocalPlayerPawn:GetGeneralCampRelationWithActor(self.OwnerCharacter)
+
+		-- 查字典，取对应样式
+		local HPStyle = self.ProgressBar_HP_Style:Find(CampRelation)
+		if HPStyle then
+				self.ProgressBar_HP.WidgetStyle = HPStyle
+		end
+
+		local LessBloodVFXStyle = self.ProgressBar_LessBloodVFX_Style:Find(CampRelation)
+		if LessBloodVFXStyle then
+				self.ProgressBar_LessBloodVFX.WidgetStyle = LessBloodVFXStyle
+		end
+end
+```
+
+> 血条样式不直接监听 MobOwner，而是监听阵营关系（GetGeneralCampRelationWithActor）
+>  阵营关系变化时（如主人切换、魅惑、归属变更），BP_OnGeneralCampIDChanged 自动触发 → 样式自动更新
+>  同一血条控件两套字典都要配（主血条 + 虚条），否则会留空
+
+### 主人变动通知
+
+宠物对开发者暴露了 `MobOwner` 接口，可以在脚本中监听主人变更、主人死亡、主人下线等事件。
+
+**核心 API**
+
+API | 说明
+---|---
+GetMobOwner() | 获取当前主人引用，无主人返回 nil
+SetMobOwner(Character) | 设置主人，传 nil 表示清空；仅服务端可调用
+OnGenericMobOwnerChanged | 主人引用变化时触发的委托（含设置新主人、清空、主人销毁）
+
+**监听主人变更**
+
+```
+-- 服务端 + 客户端
+function MyPet:BeginPlay()
+    self.OnGenericMobOwnerChanged:Add(self.OnOwnerChanged, self)
+end
+
+function MyPet:OnOwnerChanged()
+    local owner = self:GetMobOwner()
+    if owner then
+        print("主人变为:", owner.CharacterName or "Unknown")
+        -- 切换 UI / 重置 AI 行为 / 切换阵营逻辑
+    else
+        print("主人被清空")
+        -- 变回中立、停止跟随、停止攻击
+    end
+end
+
+function MyPet:EndPlay()
+    self.OnGenericMobOwnerChanged:Remove(self.OnOwnerChanged, self)
+end
+```
+
+**设置与清空主人**
+
+```
+-- 服务端：玩家召唤宠物时绑定主人
+local pet = World.SpawnActor(BP_UGC_Pet_Fight, spawnPos)
+pet:SetMobOwner(playerPawn)
+
+-- 解除召唤 / 主人下线后会自动清空（系统已处理，无需手动 SetMobOwner(nil)）
+```
+
+**监听主人状态事件（GMP 消息）**
+
+如果需要按原因做不同响应（死亡 复活 退出 / 掉线），可通过 GMP 全局消息精确监听：
+
+GMP 消息 | 触发场景 | 回调参数
+---|---|---
+UGC.PlayerPawn.PawnDefeat | 主人死亡 | VictimPlayerKey, InstigatorPlayerKey, DamageType
+UGC.PlayerPawn.PawnRespawn | 主人复活 | PlayerKey
+UGC.Player.Exit | 主人主动下线 | PlayerKey
+UGC.Player.PlayerLost | 主人掉线 | PlayerKey
+UGC.Player.PlayerReconnect | 主人重连 | PlayerKey
+
+  * 示例：宠物跟随主人时按主人状态调整行为
+
+```
+function MyPet:RegisterOwnerListeners()
+    local ctx = self
+    self.OwnerPlayerKey = self:GetMobOwner().PlayerKey or 0
+    if self.OwnerPlayerKey == 0 then return end
+
+    -- 主人死亡：暂停 AI
+    UGCGenericMessageSystem.ListenGlobalMessage(
+        ctx,
+        UGCGenericMessageSystem.Messages.UGC.PlayerPawn.PawnDefeat,
+        self, function(VictimPK, _, _)  -- 修正回调签名以匹配 GMP
+            if VictimPK == self.OwnerPlayerKey then
+                self.AI_SetEnabled(false)
+                self.PlayAnimation("pet_mourn")
+            end
+        end
+    )
+
+    -- 主人复活：恢复 AI 并传送回身边
+    UGCGenericMessageSystem.ListenGlobalMessage(
+        ctx,
+        UGCGenericMessageSystem.Messages.UGC.PlayerPawn.PawnRespawn,
+        self, function(PlayerKey)
+            if PlayerKey == self.OwnerPlayerKey then
+                self.AI_SetEnabled(true)
+                self.PlayAnimation("pet_idle")
+            end
+        end
+    )
+end
+```
+
+> 注意：GMP 是全局广播，必须用 PlayerKey == self.OwnerPlayerKey 过滤，否则会响应到所有玩家的事件
+
+主人销毁时系统会自动清空 MobOwner 并触发委托，开发者无需手动监听 EndPlay。
+
+
+---
+
+---
 id: "379"
 title: "普通载具"
 source: "https://developer.gp.qq.com/wikieditor/#/catalog/379"
@@ -26870,7 +27490,7 @@ category: "进阶内容/GamePlay系统/载具系统"
 
 # 载具编辑器
 
-最后修改于 2026-03-12 02:26
+创建于 2026-09-08 10:57
 
 载具编辑器将和平精英常用的包含陆地载具、水上载具和武装载具模板化，简化了载具繁杂的属性配置方式，开发者可基于模板创建载具实体，修改载具的各项属性以调整载具的性能，也支持为载具添加武器构建具备战斗能力的攻击型载具。
 
@@ -27264,6 +27884,16 @@ VehicleTireConfig_Speed | 竞赛轮胎
 目前驾驶位的座椅模板支持同时激活多个武器，但共享同一个开火按键，即开火时触发所有武器的攻击行为。
 
 ![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/NFkyuimage.png)
+
+* * *
+
+### 载具阵营配置
+
+在载具编辑器中找到载具蓝图，在细节面板搜索 `camp` 就是其阵营ID，用法和怪物相同。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/CH7loimage.png)
+
+> 载具自身较大，可能需要调整行为树或者攻击范围，避免无法达到指定的范围内而一直卡住。
 
 ## 生成载具
 
@@ -28752,7 +29382,7 @@ category: "进阶内容/UI系统"
 
 # 和平主界面控件布局
 
-最后修改于 2026-03-06 08:59
+创建于 2026-09-10 09:24 最后修改于 2026-09-11 06:41
 
 和平精英基于经典“大逃杀”与不断衍生的玩法模式，构建了一系列丰富的 [控件库](<https://developer.gp.qq.com/wikieditor/#/catalog/250>)，方便玩家根据操作习惯与喜好进行个性化设置；而绿洲启元因游戏特性与规则的多样化，开发者常常需要定制UI界面，以适配玩法的操作交互，为了方便开发者对和平控件的控制与布局设置，使用WidgetLayout中间件的方案来提供支持。
 
@@ -28803,14 +29433,15 @@ MainUI_Voice_Btn_C_0 | 声音
 MainUI_Microphone_Btn_C_0 | 麦克风
 MainUI_SurviveInfo_Btn_C_0 | 局内存活状态
 MainUI_PlayerInfo_Btn_C_0 | 人物状态栏
+MainUI_Navigator_C_0 | 指南针罗盘
 
 ## 使用WidgetLayout
 
 ### 创建WidgetLayout
 
-在项目的内容浏览器中，右键 `用户界面 -> WidgetLayout`，点击创建并命名，双击打开蓝图可看到内置的和平主界面控件。
+在项目的内容浏览器中，右键 `用户界面 -> 控件布局`，点击创建并命名，双击打开蓝图可看到内置的和平主界面控件。
 
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/xJvoTimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/jopSaimage.png)
 ![企业微信截图_17420144956100.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/S3q0Q%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17420144956100.png)
 
 * * *
@@ -30296,6 +30927,103 @@ end
 ---
 
 ---
+id: "20463"
+title: "背包Tips系统"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20463"
+category: "进阶内容/UI系统"
+---
+
+# 背包Tips系统
+
+创建于 2026-09-08 10:58
+
+可以基于该系统，配置与背包系统相关的弹框信息提示。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/QuZkfimage.png)
+
+## Tips表
+
+点击【表格管理器】->【功能表格】->【Tips表】创建TIps表进行Tips的相关配置。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/evmMpimage.png)
+
+参数说明：
+
+  * TipsID：Tips的ID，在代码里用接口显示对应Tips时，依赖ID进行查询。
+  * 优先级：当下一条Tips进行显示，而前一条Tips还未完全隐藏时，依赖该优先级确定是否顶替。若优先级更大，则会进行顶替。优先级最大支持到3。即该优先级配置只能配置为0，1，2，3。
+  * 是否可以被同等级顶替：如果两条Tips优先级一样，勾选该选项时，可以被优先级一致的Tips顶替。
+  * 持续时间：tips的持续时间，优先级低于Tips调用接口。
+  * 默认文本：该Tips的默认文本，可以使用富文本。
+  * TipsUI蓝图：显示Tips的UI蓝图。支持在工程内使用[TipsUI模板](<https://developer.gp.qq.com/wikieditor/#/catalog/20463?autoJump=TipsUI%E6%A8%A1%E7%89%88>)创建自定义的Tips覆盖默认Tips蓝图。
+
+## TipsUI模版
+
+点击【UI编辑器】->【元件】->【TipsUI模版】创建背包Tips系统蓝图。可基于该蓝图进行自定义扩展。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/yajcTimage.png)
+
+## 背包Tips系统的配置
+
+点击【玩法通用设置】按钮，[启用背包系统](<https://developer.gp.qq.com/wikieditor/#/catalog/20104?autoJump=%E5%90%AF%E7%94%A8%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F>)，添加“GP_BackpackV2”模块，创建并打开`背包组件（BP_BackpackComponentV2）`。
+
+![ScreenShot_2026-08-17_151147_588.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/IZEqtScreenShot_2026-08-17_151147_588.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/zfXknimage.png)
+
+在【细节】->【Backpack Tips】->【背包Tips配置】中将默认TipsID更改为Tips表中的TipsID。
+
+背包映射key | 默认TipsID | 默认文本 | 触发场景
+---|---|---|---
+BackpackSpaceNotEnough | 81001 | 背包空间不足! | 背包容量满，添加物品失败时
+CannotAddToBackpack | 81002 | 无法加入背包! | 背包容量满，拾取物品失败时
+CannotEquip | 81003 | 无法装备! | 装备不符合装备条件的装备时
+AddToBackpackFailed | 81004 | 加入背包失败! | 添加物品失败时
+EquipFailed | 81005 | 装备失败! | 装备物品失败时
+EquipSuccess | 81006 | 成功装备%s! | 装备物品成功时
+ItemPickedUp | 81011 | 已拾取%s | 拾取物品时
+BackpackFullDropItem | 81013 | 背包容量不足，自动丢弃%s | 背包容量不足，自动丢弃物品时
+CannotUseItemInCurren | 81014 | 当前状态无法使用%s | 使用当前状态无法使用的物品时
+ItemCannotBeDropped | 81016 | 该物品无法被丢弃 | 丢弃无法丢弃物品时
+ItemDestroyed | 81017 | 已销毁%s | 物品被销毁时
+
+> %s 会被替换为对应的物品名称
+
+  * 物品名称的文本颜色将以【玩法通用设置】->【物品品质配置】中的【品质文本颜色】显示。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/AbCzHimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/UP4khimage.png)
+
+* * *
+
+### Tips相关接口
+
+获取背包Tips配置值
+
+```
+---通过Key查询BackpackTipsConfig TMap中对应的整型配置值
+---生效范围：服务器&客户端
+---@param Player PlayerPawn | PlayerController @玩家角色或者玩家控制器
+---@param Key string @Tips配置Key
+---@return number|nil @对应TipsID，未找到返回nil
+function UGCBackpackSystemV2.GetBackpackTipsConfig(Player, Key) end
+```
+
+弹出背包Tips
+
+```
+---func 服务端/客户端调用
+---@param TipKey string Tips配置Key（对应BackpackTipsConfig中的键）
+---@param ItemDefineID userdata 物品DefineID
+---@param Count number 物品数量，默认0
+---@param Reason number EUGCCommonItemReason 通用操作原因，默认Default
+ function BP_BackpackComponentV2_Custom:DisplayBackpackTipsV2(TipKey, ItemDefineID, Count, Reason)
+    BP_BackpackComponentV2_Custom.SuperClass.DisplayBackpackTipsV2(self, TipKey, ItemDefineID, Count, Reason);
+ end
+```
+
+
+---
+
+---
 id: "20223"
 title: "特效编辑器"
 source: "https://developer.gp.qq.com/wikieditor/#/catalog/20223"
@@ -30976,264 +31704,6 @@ UGCInputSystem.InjectInputMapping(self, ActionTag, 1)
 轴映射通常应用在摇杆的输入场景，包括角色移动、旋转等，因此使用上需要配合摇杆类UI，UI编辑器中提供的 `技能按钮模板` 元件具有绑定输入事件的属性，绑定后轴映射的输入值将传递给输入事件Tag，从而进入下游的业务逻辑处理。
 
 ![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/eLFC5image.png)
-
-
----
-
----
-id: "20211"
-title: "绿洲玩法适配和平精英模拟器"
-source: "https://developer.gp.qq.com/wikieditor/#/catalog/20211"
-category: "进阶内容/输入系统"
----
-
-# 绿洲玩法适配和平精英模拟器
-
-# 玩法适配和平精英模拟器
-
-最后修改于 2026-03-19 04:03
-
-绿洲启元已支持和平精英模拟器端的适配，目前提供了按键映射、ESC显隐控制、输入屏蔽及鼠标管理等核心功能，满足开发者的适配需求和玩家的个性化需求。
-
-## 按键映射
-
-绿洲玩法中常有为当前玩法服务的特殊操作，配置按键映射十分必要，以确保特殊操作在和平精英模拟器正常使用。
-
-### 配置InputAction显示名
-
-> InputAction显示名只改变设置界面中键位名的显示，后续配置其他功能时【Action Name】部分依然填写“UGCReservedAction_01”至“UGCReservedAction_08”。
-
-点击进入【编辑】的【工程设置】，然后在【Input】部分编辑每一个InputAction显示名。目前共开放八个InputAction，InputAction的默认显示名为“UGCReservedAction_01”至“UGCReservedAction_08”。
-
-![pc适配wiki绘图.drawio.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/NvXjxpc%E9%80%82%E9%85%8Dwiki%E7%BB%98%E5%9B%BE.drawio.png)
-
-修改InputAction名称会改变设置界面中显示的键位名。
-
-![pc适配wiki绘图-第 10 页 的副本.drawio.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/IHQOEpc%E9%80%82%E9%85%8Dwiki%E7%BB%98%E5%9B%BE-%E7%AC%AC%2010%20%E9%A1%B5%20%E7%9A%84%E5%89%AF%E6%9C%AC.drawio.png)
-
-* * *
-
-### 绑定InputAction与按键
-
-创建或打开控件蓝图，选择或创建按键，在目标按键【详细信息】中找到配置类别【Input Binding】，进行InputAction的绑定。
-
-![pc适配wiki绘图-第 2 页 的副本.drawio.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/TyLy3pc%E9%80%82%E9%85%8Dwiki%E7%BB%98%E5%9B%BE-%E7%AC%AC%202%20%E9%A1%B5%20%E7%9A%84%E5%89%AF%E6%9C%AC.drawio.png)
-
-当前版本仅部分参数支持配置，图示与配置说明如下：
-
-![wechat_2025-09-17_144554_360.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/apFr6wechat_2025-09-17_144554_360.png)
-
-属性类别 | 说明
----|---
-Input Action Bindings | 设置动作输入绑定。支持绑定一个或多个InputAction
-Action Name | 绑定InputAction的名称，即“UGCReservedAction_01”至“UGCReservedAction_08”。执行对应InputAction即触发按键
-Action Mappings | 配置操作映射。支持绑定多个操作映射
-Input Event | 选择触发事件类型。例如选择IE Pressed用于触发OnClicker和OnPressed事件，选择IE Released用于触发OnReleased事件
-其他选项 | 暂不支持
-
-* * *
-
-### 配置按键提示图标
-
-首先在【内容浏览器】搜索“UGC按键悬浮提示”，然后将“UGC按键悬浮提示”控件拖入控件蓝图中，并调整控件大小/位置与目标按键重合。最后在【PCVer Key Display UGC UIBP C】的【Action Name】中输入对应InputAction名称，即“UGCReservedAction_01”至“UGCReservedAction_08”，完成按键提示图标的配置。
-
-![pc适配wiki绘图-按键提示 的副本.drawio.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/lcYKFpc%E9%80%82%E9%85%8Dwiki%E7%BB%98%E5%9B%BE-%E6%8C%89%E9%94%AE%E6%8F%90%E7%A4%BA%20%E7%9A%84%E5%89%AF%E6%9C%AC.drawio.png)
-
-* * *
-
-### 调试内绑定按键
-
-> 和平精英模拟器调试步骤详见[和平精英模拟器调试](<https://developer.gp.qq.com/wikieditor/#/catalog/20211?autoJump=%E5%92%8C%E5%B9%B3%E7%B2%BE%E8%8B%B1%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%B0%83%E8%AF%95>)
-
-在编辑器进行和平精英模拟器调试期间，按下ESC呼出菜单，点击进入【设置】。
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/5J6mSimage.png)
-
-在设置界面内，点击进入【键位】，然后进入【玩法自定义】，鼠标左键点击对应InputAction的配置框，按下需要绑定的键盘键或鼠标键，完成按键绑定。
-
-![pc适配wiki绘图-第 10 页.drawio.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/OF3Hmpc%E9%80%82%E9%85%8Dwiki%E7%BB%98%E5%9B%BE-%E7%AC%AC%2010%20%E9%A1%B5.drawio.png)
-
-* * *
-
-### 游戏内绑定按键
-
-在和平精英模拟器绑定绿洲玩法的按键，需要进入绿洲玩法的对局。在对局中，按下ESC呼出菜单，点击进入【设置】。
-
-![wechat_2025-09-09_175305_453.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/H9yrmwechat_2025-09-09_175305_453.png)
-
-在设置界面内，点击进入【键位】，然后进入【玩法自定义】，最后鼠标左键点击对应InputAction的配置框，按下需要绑定的键盘键或鼠标键，完成按键绑定。
-
-![pc适配wiki绘图-第 10 页.drawio.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/OF3Hmpc%E9%80%82%E9%85%8Dwiki%E7%BB%98%E5%9B%BE-%E7%AC%AC%2010%20%E9%A1%B5.drawio.png)
-
-## 按键控制UI控件交互
-
-### ESC键控制UI隐藏
-
-> 使用此功能的前提是用户控件蓝图继承自UAEUserWidget。
-
-该功能可实现按下ESC键隐藏当前显示的UI控件，达到快捷隐藏控件的操作效果。
-
-![隐藏控件.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/utQ1h%E9%9A%90%E8%97%8F%E6%8E%A7%E4%BB%B6.gif)
-
-打开用户控件蓝图，选择根层级，在【详细信息】面板找到【战斗内UI可见性相关配置】，点击加号，设置作用到的控件/整个控件蓝图，最后展开【ESC关闭界面功能配置】进行设置。
-
-![pc适配wiki绘图-ESC 按键逻辑控制.drawio.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/CZzvqpc%E9%80%82%E9%85%8Dwiki%E7%BB%98%E5%9B%BE-ESC%20%E6%8C%89%E9%94%AE%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6.drawio.png)
-
-属性类别 | 说明
----|---
-该配置是否控制整个控件蓝图 | 决定配置作用范围。勾选后作用于所有子控件，未勾选时作用于“Widget Name”对应的控件
-Widget Name | 指定控制的控件名。仅未勾选"控制整个控件蓝图"时需填写
-是否响应ESC | 启用/禁用功能开关
-Priority | 隐藏优先级。优先级数值越高越优先隐藏。数值相同时按控件的加载顺序进行隐藏
-执行自定义函数名 | 暂不支持，保持留空
-
-* * *
-
-### UI可见性控制按键响应
-
-> 使用此功能的前提是用户控件蓝图继承自UAEUserWidget。
-
-该功能是指根据UI控件可见性状态，动态屏蔽/允许指定按键输入。
-
-![按键屏蔽.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/wvrWR%E6%8C%89%E9%94%AE%E5%B1%8F%E8%94%BD.gif)
-
-打开用户控件蓝图，选择根层级，在【详细信息】面板找到【战斗内UI可见性相关配置】，点击加号，设置作用到的控件/整个控件蓝图，最后展开【输入黑白名单配置】进行配置。
-
-![pc适配wiki绘图-按键屏蔽.drawio.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/R0b03pc%E9%80%82%E9%85%8Dwiki%E7%BB%98%E5%9B%BE-%E6%8C%89%E9%94%AE%E5%B1%8F%E8%94%BD.drawio.png)
-
-属性类别 | 说明
----|---
-该配置是否控制整个控件蓝图 | 决定配置作用范围。勾选后作用于所有子控件，未勾选时作用于“Widget Name”对应的控件
-Widget Name | 指定控制的控件名。仅未勾选"控制整个控件蓝图"时需填写
-显示时屏蔽输入 | 启用/禁用功能开关。勾选时，默认屏蔽除ESC键外的所有InputAction；未勾选时，默认允许所有InputAction
-Custom Action White List | 输入白名单。勾选“显示时屏蔽输入”时可填写，用于设置部分允许的InputAction
-Action Black List on Show | 输入黑名单。未勾选“显示时屏蔽输入”时填写，用于设置部分屏蔽的InputAction
-
-## 鼠标显隐
-
-### 随 UI 显隐自动呼出/隐藏鼠标
-
-> 使用此功能的前提是用户控件蓝图继承自UAEUserWidget。
-
-该功能使鼠标指针跟随控件/控件蓝图的可见性变化而显示或隐藏。
-
-![鼠标跟随ui显隐.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Rp1or%E9%BC%A0%E6%A0%87%E8%B7%9F%E9%9A%8Fui%E6%98%BE%E9%9A%90.gif)
-
-打开用户控件蓝图，选择根层级，在【详细信息】面板找到【战斗内UI可见性相关配置】，点击加号，设置作用到的控件/整个控件蓝图，最后展开【鼠标功能配置】进行配置。
-
-![pc适配wiki绘图-鼠标跟随UI显隐.drawio.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/LQ3hApc%E9%80%82%E9%85%8Dwiki%E7%BB%98%E5%9B%BE-%E9%BC%A0%E6%A0%87%E8%B7%9F%E9%9A%8FUI%E6%98%BE%E9%9A%90.drawio.png)
-
-属性类别 | 说明
----|---
-该配置是否控制整个控件蓝图 | 决定配置作用范围。勾选后作用于所有子控件，未勾选时作用于“Widget Name”对应的控件
-Widget Name | 指定控制的控件名。仅未勾选"控制整个控件蓝图"时需填写
-是否支持鼠标呼出 | 启用/禁用功能开关。勾选后，鼠标随控件/控件蓝图的显隐同步变化
-是否延迟隐藏鼠标 | 隐藏延迟功能。勾选后，鼠标会根据“延迟隐藏鼠标自定义时间”，跟随控件进行延迟隐藏；未勾选时会跟随控件立刻隐藏
-延迟隐藏鼠标自定义时间 | 隐藏延迟时长。仅勾选"是否延迟隐藏鼠标"时需填写，最低数值为0，单位：秒
-
-* * *
-
-### 动态设置鼠标显隐
-
-在玩法进程中，可以调用 [SetMouseCursorShowState](<https://developer.gp.qq.com/api/#/searchContent/UGCGameSystem?classDetailShow=true&path=class%2Fdetail%2F%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3%2F%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD%2FUGCGameSystem.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UGCGameSystem&autoJump=SetMouseCursorShowState>) 动态设置鼠标显示状态，调用 [SwitchMouseCursorShowState](<https://developer.gp.qq.com/api/#/searchContent/UGCGameSystem?classDetailShow=true&path=class%2Fdetail%2F%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3%2F%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD%2FUGCGameSystem.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UGCGameSystem&autoJump=SwitchMouseCursorShowState>) 动态切换鼠标显隐，调用 [GetShowMouseCursor](<https://developer.gp.qq.com/api/#/searchContent/UGCGameSystem?classDetailShow=true&path=class%2Fdetail%2F%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3%2F%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD%2FUGCGameSystem.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UGCGameSystem&autoJump=GetShowMouseCursor>) 获取鼠标显示状态。
-
-示例的界面设计如下：
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/libJjimage.png)
-
-为按钮添加对应功能逻辑，部分代码如下:
-
-```
---UI控件的初始化函数
-function MainUI:Construct()
-	--给按键绑定点击事件回调
-  self.ButtonHideMouse.OnClicked:Add(self.ButtonHideMouseOnClicked, self);
-	self.ButtonSwitchMouseState.OnClicked:Add(self.ButtonSwitchMouseStateOnClicked, self);
-	self.ButtonGetMouseState.OnClicked:Add(self.ButtonGetMouseStateOnClicked, self);
-end
-
-function MainUI:ButtonHideMouseOnClicked()
-	--设置鼠标隐藏
-  ugcprint("隐藏鼠标");
-  UGCGameSystem.SetMouseCursorShowState(false);
-	return nil;
-end
-
-function MainUI:ButtonSwitchMouseStateOnClicked()
-  --切换鼠标显示状态
-  ugcprint("切换鼠标显示状态");
-  UGCGameSystem.SwitchMouseCursorShowState();
-	return nil;
-end
-
-function MainUI:ButtonGetMouseStateOnClicked()
-	--获取鼠标显示状态
-  ugcprint("获取鼠标显示状态");
-  local IsShow = UGCGameSystem.GetShowMouseCursor()
-  if IsShow then
-		ugcprint("鼠标显示");
-  else
-    ugcprint("鼠标隐藏");
-  end
-	return nil;
-end
-```
-
-进入游戏后，点击第一个按键，鼠标会隐藏。
-
-![鼠标隐藏.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/tTCey%E9%BC%A0%E6%A0%87%E9%9A%90%E8%97%8F.gif)
-
-点击第二个按键时，因为当时鼠标处于显示状态，所以之后鼠标会从显示状态变成隐藏状态。
-
-![鼠标状态切换.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/0hb8f%E9%BC%A0%E6%A0%87%E7%8A%B6%E6%80%81%E5%88%87%E6%8D%A2.gif)
-
-点击第三个按键，会输出鼠标当前的显隐状态。
-
-![鼠标状态.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/uppUS%E9%BC%A0%E6%A0%87%E7%8A%B6%E6%80%81.gif)
-
-## 和平精英模拟器调试
-
-展开调试选项菜单，在【模拟平台】选择【和平精英模拟器】，点击【调试】，开始进行和平精英模拟器调试。
-
-![pc适配wiki绘图-PC模拟器调试.drawio.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/gMcC0pc%E9%80%82%E9%85%8Dwiki%E7%BB%98%E5%9B%BE-PC%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%B0%83%E8%AF%95.drawio.png)
-
-## 和平精英模拟器客户端测试
-
-目前已提供“和平精英模拟器：绿洲启元工坊测试专用版”用于和平精英模拟器客户端的测试体验，从WeGame搜索“和平精英模拟器：绿洲启元工坊测试专用版”并下载。
-
-> 下载和安装前必须获得“和平精英模拟器：绿洲启元工坊测试专用版”的资格，可联系相关人员申请资格
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/X8ktvimage.png)
-
-上传玩法工程后，启动“和平精英模拟器：绿洲启元工坊测试专用版”。
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/awkf4image.png)
-
-在大厅选择绿洲启元模式，根据项目名称，从【我的上传】选择并进入需要测试的玩法工程。
-
-![pc适配wiki绘图-寻找测试工程1.drawio.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/SsQORpc%E9%80%82%E9%85%8Dwiki%E7%BB%98%E5%9B%BE-%E5%AF%BB%E6%89%BE%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B1.drawio.png)
-![pc适配wiki绘图-寻找测试工程2.drawio.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/D6gTVpc%E9%80%82%E9%85%8Dwiki%E7%BB%98%E5%9B%BE-%E5%AF%BB%E6%89%BE%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B2.drawio.png)
-
-> 关于上传工程、设置白名单等操作的完整流程，请参阅 [上传工程与真机测试](<https://developer.gp.qq.com/wikieditor/#/catalog/372>)
-
-## 注意事项
-
-  1. 进行发布上传时需勾选【桌面平台】选项，否则无法上架和平精英模拟器
-
-![wechat_2025-09-10_141254_350.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Crrc9wechat_2025-09-10_141254_350.png)
-
-  2. 和平精英模拟器端与移动端中的同一种绿洲玩法基于同一份工程包，开发者需进行完整的双端调试与测试，确保双端功能的一致性与完整性
-
-  3. 上架和平精英模拟器后，不建议在未来更新版本时执行下架操作
-
-  4. 若调试期间出现调试窗口不在当前、鼠标指针不停回归中心的情况，可按下win+Tab键，使用方向键选择调试窗口，最后按下回车键返回调试窗口，然后按ESC键可呼出菜单并释放鼠标指针
-
-![回到窗口.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/7zfIW%E5%9B%9E%E5%88%B0%E7%AA%97%E5%8F%A3.gif)
-![显示鼠标.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/uDsAW%E6%98%BE%E7%A4%BA%E9%BC%A0%E6%A0%87.gif)
-
-  5. 进行多玩家调试期间，需要重复第四点的步骤，将所有调试窗口的菜单呼出后方可释放鼠标指针
-
-![企业微信截图_175755916893671.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/QrQJk%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_175755916893671.png)
 
 
 ---
@@ -33103,7 +33573,7 @@ category: "进阶内容"
 
 # 自定义行为统计
 
-创建于 2026-08-26 10:59
+创建于 2026-08-26 10:59 最后修改于 2026-09-11 03:59
 
 开发者可以制定具体的数据指标来跟踪玩家的行为模式与偏好，玩法上线后通过分析这些数据，针对性优化游戏的设计与体验，包含但不限于：
 
@@ -33120,6 +33590,7 @@ category: "进阶内容"
 `SendGameTlog` 是目前**唯一支持正式服的日志上报接口** ，适用于所有UGC玩法，不区分测试环境、灰度环境或正式服环境。
 
 > `SendGameTlog`不支持管理平台查询数据，需提供埋点相关信息至官方运营团队做进一步拉取
+>  `SendGameTlog`38版本暂不支持拉取数据，如当前版本有埋点拉取需求请优先同步使用`SendPgcGameTlog`和`SendGreyTLog`
 
 ```
 -- 生效范围：服务器
@@ -33179,7 +33650,28 @@ end
 
 * * *
 
-### SendGreyTLog
+### **SendPgcGameTlog**
+
+**后续版本将迁移至SendGameTlog** ，当前版本如需拉取埋点仍需上报该接口
+
+```
+-- 生效范围：服务器
+function UGCGameSystem.SendPgcGameTlog(Index, UID, CustomData)
+end
+```
+
+  * Index ：日志索引，数据类型为整型，且范围限定在 `[800800, 801800]` ，非整型和不合法Index都会导致上报失败
+  * UID：玩家UID，整型或留空，若非整型或UID无效/错误会导致上报失败
+  * CustomData：自定义数据，类型为表，超过512字节会进行自动截断，按照表格里的键值对进行截断
+
+**使用规则**
+
+  1. 该接口仅在服务器端生效，客户端调用无效
+  2. 仅在正式服中有效
+
+* * *
+
+### **SendGreyTLog**
 
 ```
 -- 生效范围：服务器
@@ -34630,7 +35122,7 @@ category: "通用功能"
 
 # 通用伤害飘字
 
-创建于 2026-08-10 09:16
+创建于 2026-08-10 09:16 最后修改于 2026-09-07 04:39
 
 当游戏对象受到攻击时，通常以动态飘字的形式展示伤害数值，增强战斗视觉效果和反馈，伤害飘字功能提供对字体样式外观、飞行行为的自定义设置能力，同时支持特定伤害源的飘字效果定制，可应用于玩家角色与怪物。
 
@@ -34726,6 +35218,7 @@ category: "通用功能"
 配置优先级 | 该配置的优先级，数值越大优先级越高，伤害有tag且存在对应tag的飘字配置时，使用对应tag的配置效果；否则使用默认飘字配置
 触发大数字缩写的最小数字 | 大于该值则飘字数字会进行缩写，缩写单位支持K,M,B（默认值-1为关闭状态）
 ![ScreenShot_2025-12-12_152127_678.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/183xSScreenShot_2025-12-12_152127_678.png)
+跟随目标 | 勾选后飘字会跟随目标，目标移动时飘字也会随之移动
 
 > 飘字的字体大小和飞行距离的缩放倍率应合理设置，不合理的数值会导致飘字离开或超出屏幕范围
 
@@ -34756,7 +35249,15 @@ category: "通用功能"
 
 **伤害公式标签**
 
-[伤害公式](<https://developer.gp.qq.com/wikieditor/#/catalog/20099?>) 中为伤害返回结果添加额外的Tag信息也能触发特殊飘字效果，以“暴击伤害”为例，将暴击飘字的Tag添加到 `ExtraResult.ResultTags`。
+[伤害公式](<https://developer.gp.qq.com/wikieditor/#/catalog/20099?>) 中为伤害返回结果添加额外的Tag信息也能触发特殊飘字效果，以“功能演示工程”中为“暴击伤害”添加特殊飘字效果为例。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/DRoLximage.png)
+
+在【玩法通用设置】->【特殊伤害数字配置】中创建新的贴图元素，并将对应的键（Gameplay Tag）更改为`UGC.DamageNumber.Crit`
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/ooy0cimage.png)
+
+将暴击飘字的Tag添加到 `ExtraResult.ResultTags`，并进行相应的配置。
 
 ![伤害公式.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/fNigQ%E4%BC%A4%E5%AE%B3%E5%85%AC%E5%BC%8F.gif)
 
@@ -34776,7 +35277,7 @@ category: "通用功能"
     end
 ```
 
-再次启动调试，普通攻击的飘字效果为默认飘字属性配置，当触发暴击伤害时，飘字效果是“DamageNumber.Crit”标签对应的属性配置。
+再次启动调试，普通攻击的飘字效果为默认飘字属性配置，当触发暴击伤害时，飘字效果是`UGC.DamageNumber.Crit`标签对应的属性配置。
 
 ![暴击 .gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/FW1Kc%E6%9A%B4%E5%87%BB%20.gif)
 
@@ -37900,6 +38401,460 @@ return AnnouncementManager
   2. **防重复请求** ：如果上一次请求还没有完成，再次调用会返回上一次的 `PromiseFuture`，不会重复发送网络请求
   3. **异步回调** ：`PromiseFuture:Get()` 只能在 `Then` 回调函数中使用，不能在回调外直接调用
   4. **失败处理** ：建议始终通过 `Else` 设置失败回调，避免请求超时后无任何提示
+
+
+---
+
+---
+id: "20456"
+title: "假人系统"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20456"
+category: "通用功能"
+---
+
+# 假人系统
+
+创建于 2026-09-08 10:57
+
+本文档将介绍绿洲启元 UGC 编辑器 “假人（人机）” 如何配置实现以及使用说明。
+
+* * *
+
+## 概述
+
+假人/人机（FakePlayer）是绿洲启元 UGC 编辑器 “”提供的一种 AI 控制的角色，外观和行为类似真人玩家，可用于：
+
+  * 填充对局人数：在玩家不足时补充队伍成员
+  * PvE 对手：作为敌人供玩家对抗
+  * 靶场训练：作为射击训练的标靶
+  * 剧情 NPC：在场景中扮演特定角色
+  * 陪玩/引导：辅助新手玩家上手
+
+### 假人支持的功能
+
+能力 | 说明
+---|---
+移动（走/跑/蹲/趴） | 通过行为树控制
+射击/换弹/切武器 | 需配置武器和弹药
+近战攻击 | 需在蓝图中开启近战组件
+投掷物（手雷等） | 需背包中有投掷物
+使用药品/饮料 | 需背包中有对应物品
+阵营敌我识别 | 通过队伍和阵营系统配置
+转身朝向目标 | UGC 专属能力
+自定义行为树 | 可配置自定义行为树，配置方式见下文
+
+## 配置假人
+
+### 创建假人模板
+
+在 **实体编辑器** 中的 **假人** 页签下可以看到预制的 通用控制器模板 与 通用角色模板，分别为这两个模板创建蓝图。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/3pkbEimage.png)
+
+对创建好的 假人控制器 配置 假人角色
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/BiYYkimage.png)
+
+### 假人 Controller 配置
+
+#### AI 类型配置
+
+在细节面板找到 **AI** 配置项下找到 `AI类型` 。有三种可选配置：
+
+值 | 说明 | 应用场景
+---|---|---
+DefaultFakePlayer | 默认假人 | UGC 玩法通用
+EscapeFakePlayer | 逃脱模式假人 | 仅逃脱子模式使用
+LostTombFakePlayer | 失落古墓模式假人 | 仅古墓子模式使用
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/eKBTIimage.png)
+
+* * *
+
+#### 默认伤害系数配置
+
+在细节面板找到 **AI** 配置项下打开 `攻击玩家采取默认伤害系数（bUseDefaultDamageScale）`开关,并按照需求修改 `攻击玩家默认伤害系数` :
+
+难度 | 推荐值 | 说明
+---|---|---
+新手友好 | 0.3~0.5 | 给玩家充分容错
+普通难度 | 0.7~1.0 | 接近真人对抗
+硬核难度 | 1.2~1.5 | 高压迫感
+靶场练习 | 0.0 | 假人只展示不伤害
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/rSKjFimage.png)
+
+> 必须配合 UGC 工程的全局伤害公式正确配置，确保伤害公式兼容 AIController，否则假人攻击会无效
+
+* * *
+
+#### 初始随机装备
+
+在细节面板找到 **Config** 配置项下添加 `初始随机装备`，从配置的多个组中随机选一组发放。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/BLR3mimage.png)
+
+字段 | 说明
+---|---
+物品类型 | 武器选"枪"（Shoot_Weap）；背包选"背包"（Backpack）；弹药/配件/药品/投掷物选"其他物品"（other）。只有选"枪"才会触发黑板武器变量更新，其余两种运行时无差异
+物品ID | 填写物品表中的 TypeSpecificID（如 831101001）。填 0 会被拦截报错
+数量 | 武器填 1，弹药/药品填实际数量
+是否使用 | true = 拾取后自动装备/使用；false = 仅入背包不自动装备。武器/防具/背包填 true，弹药/配件可填 false
+额外配置属性值 | 已废弃，填默认值 (2000, 4000) 即可，不影响任何逻辑
+
+### 配置GameMode
+
+打开 `UGCGameMode` 蓝图，该蓝图默认位于工程的 `Asset/Blueprint` 目录下。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/gKHA2image.png)
+
+在细节面板找到 `UGCGame Mode Base` 分类,将 `UGCAIController` 字段设置为刚才创建的模板蓝图
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/iR0Xzimage.png)
+
+### 队伍与阵营配置
+
+假人的敌我识别通过两层体系实现：队伍（TeamID） → 阵营（CampID） → 阵营关系（友好/中立/敌对）
+
+  * 队伍：假人属于哪个队伍，通过 TeamID 标识
+  * 阵营：队伍属于哪个阵营，通过 CampID 标识
+  * 阵营关系：不同阵营之间的关系（友好/中立/敌对），决定假人是否能攻击对方
+
+假人的阵营不能直接在细节面板配置，必须通过 UGCCampSystem 设置队伍与阵营的映射关系。
+
+**创建阵营**
+
+```
+-- 创建名为"红方"的阵营，返回 CampID
+local RedCampID = UGCCampSystem.AddCamp("红方")
+
+-- 创建名为"蓝方"的阵营
+local BlueCampID = UGCCampSystem.AddCamp("蓝方")
+```
+
+**设置队伍所属阵营**
+
+```
+-- 队伍 1 属于红方阵营
+UGCCampSystem.SetCampForTeam(1, RedCampID)
+
+-- 队伍 2 属于蓝方阵营
+UGCCampSystem.SetCampForTeam(2, BlueCampID)
+```
+
+**设置阵营关系**
+
+```
+-- 红方和蓝方为敌对关系（3=敌对）
+UGCCampSystem.SetCampRelation(RedCampID, BlueCampID, 3)
+
+-- 设置默认阵营关系为中立（2=中立）
+UGCCampSystem.SetDefaultCampRelation(2)
+```
+
+阵营关系值 | 含义
+---|---
+1 | 友好
+2 | 中立
+3 | 敌对
+
+**生成时设置假人队伍**
+
+在 `SpawnFakePlayer` 时传入 TeamID：
+
+```
+-- 生成队伍 1 的假人
+UGCFakePlayerSystem.SpawnFakePlayer(AIPlayerKey, 1)
+
+-- 生成队伍 2 的假人
+UGCFakePlayerSystem.SpawnFakePlayer(AIPlayerKey2, 2)
+```
+
+**运行时修改队伍**
+
+```
+-- 将假人切换到队伍 2
+UGCTeamSystem.ChangePlayerTeamID(FakePlayerKey, 2)
+```
+
+> 假人的阵营通过 TeamID → CampID 映射表动态查询，必须使用 UGCCampSystem.SetCampForTeam 注册映射关系，否则假人的 GeneralCampID 会返回 -1，导致阵营关系与伤害结算失效
+
+### 背包与道具管理
+
+本版本人机不接入 V2 背包，只保留经典背包 `UGCBackPackSystem`。
+
+**添加道具**
+
+```
+-- 给假人添加 1 个物品
+UGCBackPackSystem.AddItem(FakePlayerPawn, ItemID, 1)
+
+-- 给假人添加 10 个弹药
+UGCBackPackSystem.AddItem(FakePlayerPawn, AmmoItemID, 10)
+```
+
+**使用道具**
+
+```
+-- 假人使用药品
+UGCBackPackSystem.UseItem(FakePlayerPawn, MedicineItemID)
+```
+
+**停止使用道具**
+
+```
+-- 假人停止使用药品
+UGCBackPackSystem.DisuseItem(FakePlayerPawn, MedicineItemID)
+```
+
+**掉落道具**
+
+```
+-- 假人掉落 1 个物品到地面
+UGCBackPackSystem.DropItem(FakePlayerPawn, ItemID, 1, false)
+
+-- 假人直接销毁 1 个物品（不掉落地面）
+UGCBackPackSystem.DropItem(FakePlayerPawn, ItemID, 1, true)
+```
+
+**查询物品数量**
+
+```
+-- 查询假人背包中有多少个指定物品
+local Count = UGCBackPackSystem.GetItemCount(FakePlayerPawn, ItemID)
+```
+
+**获取背包组件**
+
+```
+-- 获取假人的背包组件
+local BackpackComp = UGCBackPackSystem.GetBackpackComponent(FakePlayerPawn)
+```
+
+**按子类型/类别查询（经典背包扩展能力）**
+
+```
+-- 获取所有武器
+local Weapons = UGCBackPackSystem.GetWeaponListInBackpack(FakePlayerPawn)
+
+-- 获取所有消耗品
+local Consumables = UGCBackPackSystem.GetAllConsumableDataInBackpack(FakePlayerPawn)
+
+-- 判断物品是否为枪械
+local IsGun = UGCBackPackSystem.IsGun(FakePlayerPawn, ItemID)
+```
+
+### 行为树配置
+
+在 **实体编辑器** 打开之前创建好的 `通用控制器` 蓝图，在细节面板中找到 `Behavior` 配置可以发现，绿洲编辑器默认预制了一个可使用的假人行为树 `BT_UGCFakePlayer`
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/ltXyhimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/YCKRmimage.png)
+
+**自定义行为树**
+
+若需使用自定义行为树：
+
+  * 确保行为树使用的黑板包含 `TargetEnemyActor` / `IsCanNotSeeTarget` 两个键
+  * 在行为树中添加 `FakeCharacter` → `寻敌服务` 节点
+  * 将该行为树资产赋值到 `BP_UGCFakePlayerController` 的 `Behavior Tree Path[0]`
+
+**假人行为树节点**
+
+假人共 9 个专用行为树节点，全部位于 FakeCharacter 编辑器分类下。所有参数详解、行为机制请参考下文 `行为树节点说明`
+
+节点类型 | 外显名称 | 用途
+---|---|---
+Service | 寻敌 | 搜索敌人并写入黑板
+Decorator | 弹药是否充足 | 判断当前武器弹药是否足够
+Decorator | 当前姿势 | 判断假人当前是否为指定姿势
+Task | 收枪 | 装备或收枪
+Task | 移动 | 移动到黑板值定目标
+Task | 换单 | 执行换弹动作
+Task | 设置姿势 | 切换站/蹲/趴/跳
+Task | 开火 | 朝目标开火（含自动换弹）
+Task | 切换武器 | 切换到指定武器槽
+
+## API说明
+
+  * 假人相关所有接口仅在服务器（DS）端生效，客户端调用无效
+  * 假人生成后不要立即操作，可能有几秒延迟，建议通过定时器延迟操作
+  * 假人生成后会自动出现在队伍列表中（PC 模拟器中可见），如需隐藏需自行处理 UI
+
+### 生成随机 AIPlayerKey
+
+[GetRandomAIPlayerKey](<https://developer.gp.qq.com/api/#/searchContent/UGCFakePlayerSystem?classDetailShow=true&path=class%2Fdetail%2F%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3%2F%E6%80%AA%E7%89%A9%E7%B3%BB%E7%BB%9F%2FUGCFakePlayerSystem.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UGCFakePlayerSystem&autoJump=GetRandomAIPlayerKey>) ：生成随机AIPlayerKey，用于UGCFakePlayerSystem.SpawnFakePlayer接口参数
+
+### 生成假人 SpawnFakePlayer
+
+参数 | 说明
+---|---
+AIPlayerKey | 假人唯一标识，建议用 `GetRandomAIPlayerKey` 生成
+TeamID | 队伍 ID，必须大于 0
+
+### 销毁假人 DestroyFakePlayer
+
+参数 | 说明
+---|---
+AIPlayerKey | 要销毁的假人的 AIPlayerKey
+
+## 假人行为树节点说明
+
+### Service 节点
+
+**寻敌服务**
+
+每帧（Tick）自动运行，搜索场景中的潜在敌人并写入黑板变量。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/zRqcwimage.png)
+
+参数说明：
+
+参数（显示名） | 类型 / 可选值 | 说明
+---|---|---
+寻敌类型 ChooseEnemyType | 枚举：人 怪物 人和怪物 / 怪物和人 | 决定搜索哪类目标。只能选「人」
+寻敌策略 ChooseEnemyStrategy | 枚举：就近原则 / 范围内随机原则 | 多个候选时如何选
+寻敌距离 SenseRadius | 浮点（厘米） | 候选目标的最大距离（40 米）
+是否开启可见性检测 bCheckVisibility | 布尔 | 开启后，遮挡的目标不会被选中
+可见性测试通道 TraceTestChannel | 碰撞通道 | 做视线射线检测时使用的碰撞通道
+目标消失后保留记忆时间 MemoryTime | 浮点（秒） | 看不见目标后最多记忆多久
+目标敌人最小锁定时间 MinTimeLockTarget | 浮点（秒） | 锁定后最少保持多久不切换
+目标可见性黑板变量 OutIsCanNotSeeTarget | 黑板键（Bool） | 写入「是否看不见」
+寻敌目标黑板变量 OutTargetEnemyActor | 黑板键（Object/Actor） | 写入「找到的敌人 Actor」
+
+> 寻敌类型只能选「人」：怪物 人和怪物 怪物和人 等选项当前不适用——编辑器中的怪物仍为老版怪物。如需假人攻击新版怪物，请自行实现自定义服务节点
+
+### Decorator 节点
+
+**弹药是否充足**
+
+判断当前武器的弹药是否达到指定百分比，常用于「无弹时换弹」「弹药低时撤退」等分支条件。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/kcgErimage.png)
+
+参数说明：
+
+参数 | 类型 / 可选值 | 说明
+---|---|---
+判断类型 AmmoEnoughType | 枚举：弹夹子弹/弹夹容量 / 背包子弹/弹夹容量 | 用弹夹内子弹数还是背包内总弹药数对比
+充足判定百分比 EnoughPercent | 浮点（0-100） | 当前弹药百分比 ≥ 此值视为充足
+是否指定武器槽 bSpecifyWeaponSlot | 布尔 | 是否只判断某个特定槽位的武器弹药
+武器槽位 WeaponSlot | 枚举（仅射击武器槽） | 要判断的武器槽位（仅当勾选指定武器槽时生效）
+
+* * *
+
+**当前姿势**
+
+判断假人 Pawn 当前的姿势状态。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/GQRX1image.png)
+
+参数说明：
+
+参数 | 类型 / 可选值 | 说明
+---|---|---
+目标姿势 Pose | 枚举：站/蹲/趴/跳/左侧身/右侧身 | 要判断的姿势
+
+### Task 节点
+
+**收枪**
+
+装备主武器槽 1 → 2 → 副武器，或收枪。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/RvZOtimage.png)
+
+参数说明：
+
+参数 | 说明
+---|---
+装备或收起 Equip | true=装备武器；false=收枪
+是否使用动画 | 装备武器/收枪时是否使用动画
+
+* * *
+
+**移动**
+
+将假人移动到黑板指定的目标位置（Actor 或 Vector）。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/tTe9Wimage.png)
+
+参数说明：
+
+参数 | 类型/可选值 | 说明
+---|---|---
+移动目标 TargetBlackboardKey | 黑板键（Object/Actor 或 Vector） | 要移动到的目标
+移动姿势 MovePose | 枚举：小跑/疾跑/蹲疾跑/保持当前姿势 | 移动时使用的姿势
+移动完成时恢复姿势 bRestorePoseAfterFinished | 布尔 | 任务结束后是否恢复到执行前的姿势
+停止半径 AcceptableRadius | 浮点（厘米） | 视为到达目标的半径
+寻路filter FilterClass | NavigationFilter类 | 寻路时使用的过滤器（仅 bUsePathFinding=true 时生效）
+启用寻路 bUsePathFinding | 布尔 | 是否使用 NavMesh 寻路
+允许部分路径 bAllowPartialPath | 布尔 | 找不到完整路径时是否接受部分路径（仅 bUsePathFinding=true 时生效）
+跟踪移动目标 bTrackMovingGoal | 布尔 | 目标为 Actor 时，是否持续跟踪其移动（否则锁定到目标当前坐标）
+最大卡住时间 MaxBlockTime | 浮点（秒） | 速度持续为 0 超过此值则任务失败
+
+* * *
+
+**换弹**
+
+让假人执行换弹动作。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/rZuzEimage.png)
+
+参数说明：
+
+参数 | 说明
+---|---
+是否执行换弹前检查 bJudgeBeforeReload | 是否仅在「必须换弹」时才执行
+
+* * *
+
+**设置姿势**
+
+将假人切换到指定姿势（站/蹲/趴/跳）。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/7Gvu9image.png)
+
+参数说明：
+
+参数 | 类型/可选值 | 说明
+---|---|---
+姿势 Pose | 枚举：站/蹲/趴/跳/左侧身/右侧身/结束侧身 | 目标姿势
+
+* * *
+
+**开火**
+
+朝目标开火，支持精准度调节和自动换弹。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/71gy0image.png)
+
+参数说明：
+
+参数 | 类型 / 可选值 | 说明
+---|---|---
+是否有射击目标 bHasShootingTarget | 布尔 | 是否指定目标 Actor（不勾选则朝正前方开火）
+射击目标 TargetBlackboardKey | 黑板键（Object/Actor） | 目标 Actor（仅 bHasShootingTarget=true 时生效）
+精确度(0-1)越高越准 Precision | 浮点（0-1） | 命中的概率。1=全部命中；0.3=仅 30% 概率命中（其余落点在目标周围矩形）
+开火间隔随机范围（秒） RandomShootFreqRange | Vector2D（X,Y） | 两次开火之间的随机间隔区间
+节点执行总时长(大于0有效) Duration | 浮点（秒） | 设置后任务在该时长后自动完成（≤0 表示无限时长）
+
+* * *
+
+**切换武器**
+
+将假人切换到指定武器槽位的武器。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/1f8UNimage.png)
+
+参数说明：
+
+参数 | 类型 / 可选值 | 说明
+---|---|---
+目标武器槽位 WeaponSlot | 枚举（武器槽位） | 要切换到的武器槽位
+是否使用动画 bUseAnimation | 布尔 | 是否播放切枪动画
+是否强制结束先前的切换 bForceFinishPreviousSwitch | 布尔 | 强制打断上一次正在进行的切枪动作
+切换超时时间 SwitchTimeout | 浮点（秒） | 切枪动作总超时时间（Advanced）
+状态结束延迟时间 StateEndDelayTime | 浮点（秒） | 切枪状态结束后延迟多久完成任务（Advanced）
 
 
 ---
@@ -43761,16 +44716,7 @@ category: "商业化及功能模板"
 
 # UGCCommoditySystem 补偿系统 API 文档
 
-创建于 2026-05-06 08:09 最后修改于 2026-06-18 06:18
-
-## 目录
-
-  1. [概述](<https://developer.gp.qq.com/wikieditor/#1-%E6%A6%82%E8%BF%B0>)
-  2. [补偿机制流程图](<https://developer.gp.qq.com/wikieditor/#2-%E8%A1%A5%E5%81%BF%E6%9C%BA%E5%88%B6%E6%B5%81%E7%A8%8B%E5%9B%BE>)
-  3. [委托声明](<https://developer.gp.qq.com/wikieditor/#3-%E5%A7%94%E6%89%98%E5%A3%B0%E6%98%8E>)
-  4. [API 详细说明](<https://developer.gp.qq.com/wikieditor/#4-api-%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E>)
-  5. [使用示例](<https://developer.gp.qq.com/wikieditor/#5-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B>)
-  6. [常见问题](<https://developer.gp.qq.com/wikieditor/#6-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98>)
+创建于 2026-05-06 08:09 最后修改于 2026-09-07 04:37
 
 * * *
 
@@ -43844,6 +44790,7 @@ UGCCommoditySystem.BuyUGCCommodityResultBetweenGamesDelegate = Delegate.New()
 **广播时机** ：
 
   * 系统对玩家进行**单笔商品补偿** 后
+  * 系统对玩家进行**批量商品补偿** 时，会对 `CommodityList` 中的**每一件商品逐个触发** 单笔委托（与批量委托并存触发）
   * 补偿操作已完成且数据已更新
 
 **参数说明** ：
@@ -43863,6 +44810,7 @@ UGCCommoditySystem.BuyUGCCommodityResultBetweenGamesDelegate = Delegate.New()
   * 单个商品异常补发
   * 单笔退款补偿
   * 单个活动奖励补发
+  * 批量补偿场景下的逐项通知（**与批量委托并存触发** ）
 
 * * *
 
@@ -43872,7 +44820,8 @@ UGCCommoditySystem.BuyUGCCommodityResultBetweenGamesDelegate = Delegate.New()
 
 **广播时机** ：
 
-  * 系统对玩家进行**批量商品补偿** 后
+  * 系统对玩家进行**批量商品补偿** 后触发
+  * 同一笔批量补偿**会同时触发单笔委托** ：批量委托一次性广播整个 `CommodityList`，单笔委托对列表中的每件商品逐个广播
   * 所有补偿项处理完成后一次性触发
 
 **参数说明** ：
@@ -43951,15 +44900,23 @@ CommodityList = {
 **补偿方式** | 单个商品补偿 | 批量商品补偿 | 跨局商品差异逐个通知
 **参数结构** | 单个商品详细信息（5个独立参数） | 商品列表（`CommodityList` 数组） | 单个差异商品信息（4个独立参数）
 **生效范围** | 服务器 & 客户端 | 仅服务器 | 仅服务器
-**触发频率** | 每补偿一个商品触发一次 | 批量补偿完成后触发一次 | 每个差异商品触发一次
-**触发时机** | 补偿操作完成后 | 批量补偿完成后 | 对局初始化、商品数据就绪前
-**典型用途** | 单笔异常恢复 | 活动/运营批量补发 | 跨局新增商品检测
+**触发频率** | 每补偿一个商品触发一次（**含批量场景下逐个触发** ） | 批量补偿完成后触发一次（**与单笔委托并存触发** ） | 每个差异商品触发一次
+**触发时机** | 补偿操作完成后（**单笔或批量补偿均会触发** ） | 批量补偿完成后 | 对局初始化、商品数据就绪前
+**典型用途** | 单笔异常恢复 | 活动/运营批量补发（**常与单笔委托同时使用** ） | 跨局新增商品检测
 
 * * *
 
 ## 5\. 使用示例
 
-### 5.1 监听单笔补偿
+### 5.1 补偿商品配置
+
+![企业微信截图_17824443396344.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/aWG00%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17824443396344.png)
+
+![企业微信截图_1782444369802.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/zTNe5%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1782444369802.png)
+
+* * *
+
+### 5.2 监听单笔补偿
 
 ```
 -- 在 Server 或 Client 端注册监听（建议在玩家初始化时注册）
@@ -43988,7 +44945,7 @@ function MySystem:OnCompensateUGCCommodity(PlayerKey, UID, CommodityID, Count, P
 end
 ```
 
-### 5.2 监听批量补偿（仅 Server）
+### 5.3 监听批量补偿（仅 Server）
 
 ```
 -- 仅在服务器端注册
@@ -44023,7 +44980,7 @@ function MySystem:OnCompensateUGCCommodityBatch(PlayerKey, UID, CommodityList)
 end
 ```
 
-### 5.3 监听跨局商品变化（仅 Server）
+### 5.4 监听跨局商品变化（仅 Server）
 
 ```
 -- 在 PlayerController:ReceiveBeginPlay() 中注册监听
@@ -44047,7 +45004,7 @@ function MyPlayerController:OnBuyUGCCommodityResultBetweenGames(PlayerKey, UID, 
 end
 ```
 
-### 5.4 注销监听
+### 5.5 注销监听
 
 ```
 function MySystem:FinalizeCompensateListener()
@@ -44115,6 +45072,275 @@ end
 
 * * *
 
+## 附录 A：接入补偿系统的成功样例（经验证可用的基准范式）
+
+> 本节为对真实接入中验证可靠、无明显问题的实现做脱敏抽象后的通用范式，可直接作为新工程接入的基准。
+
+### A.1 接入五要素（缺一不可）
+
+# | 要素 | 关键动作 | 漏掉的典型后果
+---|---|---|---
+1 | **UID / PlayerKey 首行过滤** | 每个回调第一行必须校验 `UID` 与当前玩家一致，不一致直接 `return`。防止多玩家共享委托时串号（A 玩家的补偿触发 B 玩家的逻辑）。 | 串号发放、跨玩家数据污染
+2 | **商品 → 物品映射** | 回调参数里的 `CommodityID`（虚拟物品 ID，对应 `UGCObject` 表）**不能直接当背包道具使用** ，必须经项目自定义映射表（如 `VirtualToRealIDConfig[CommodityID].RealID`）转成真实道具 ID；**映射不到要打错误日志并安全跳过，不能静默吞掉** 。 | 发错道具 / 静默漏发 / 后续数据对不上
+3 | **统一发放入口 + 显式落盘 + 商业化存档同步** | 确认项目方案后再分发：**① 手动方案** ——先用 API 站标准接口 `UGCCommoditySystem.UseUGCCommodity2`（项目内部如另有 `VirtualItemManager:Remove` 自定义扩展亦可）扣除商业化存档数量，再 `UGCBackpackSystemV2.AddItemV2` 入背包；**② 自动方案** ——若项目已配置"商业化→背包自动转移"，则**不手动入包** ，改监听"补发 / 增加物品通知"与"自动转移结果"事件感知异常（如背包满、转移失败）。无论哪种方案，补偿完成后都要显式调用存档保存接口（推荐 `UGCPlayerStateSystem.SavePlayerArchiveData`），不依赖定时器 / 退出流程兜底。 | ① **商业化存档与背包双账不一致** ——玩家实际拿双份；② 退出重进丢失、强杀 / 闪退后补发不生效
+4 | **双缓存兜底** | ① 跨局补偿到达早于背包 / 虚拟物品初始化 → 先缓存到待处理队列，等初始化完成后统一兑现；② 虚拟物品管理器未实例化 → 缓存，监听 `GamePart` 加载完成事件后补发。**未就绪的补偿绝不能直接丢弃** 。 | 局内刚进图、刚开背包时的补偿丢失
+5 | **按生效范围注册 + 对称注销** | 单笔委托双端注册；批量、跨局委托仅服务器注册；`PlayerController:ReceiveEndPlay()` 时对称 `Remove`。 | 重连后漏注册、进程退出后残留监听句柄
+
+### A.2 代码骨架（脱敏通用版）
+
+> 以下为脱敏后的通用范式，已在多个接入工程中验证稳定。开发者复制时需把 `GetMappedRealItemID`、`ApplyCompensateCommodity`、`ShowCompensationTip` 等项目自定义函数替换为自身实现。
+
+```
+-- ===== 注册（PlayerController:ReceiveBeginPlay，同步执行，勿延迟）=====
+-- ⚠️ 真实行为提醒：发起一次批量补偿时，Batch 委托一次性广播整个 CommodityList，
+--     同时单笔委托对列表中每件商品逐个广播 N 次（两个委托并存触发）。
+--     推荐按需只监听其中之一，可彻底规避并存触发的防重复杂度。
+function UGCPlayerController:ReceiveBeginPlay()
+    -- ① 单笔委托：双端注册（客户端用于展示提示，服务端用于发奖）
+    UGCCommoditySystem.CompensateUGCCommodityDelegate:Add(self.OnCompensateUGCCommodity, self)
+
+    if UGCGameSystem.IsServer() then
+        -- ② 批量委托：仅服务器注册；如同时监听单笔委托，须自己做精确防重（见 §B.2）
+        -- UGCCommoditySystem.CompensateUGCCommodityBatchDelegate:Add(self.OnCompensateUGCCommodityBatch, self)
+        -- ③ 跨局委托：仅服务器注册
+        UGCCommoditySystem.BuyUGCCommodityResultBetweenGamesDelegate:Add(self.OnBuyUGCCommodityResultBetweenGames, self)
+    end
+end
+
+-- ===== 单笔补偿回调（服务端发奖 + 落盘；客户端弹提示）=====
+---@param PlayerKey number
+---@param UID number
+---@param CommodityID number
+---@param Count number
+---@param ProductID number
+function UGCPlayerController:OnCompensateUGCCommodity(PlayerKey, UID, CommodityID, Count, ProductID)
+    -- ① UID 首行过滤
+    if UID ~= UGCGameSystem.GetUIDByPlayerController(self) then
+        return
+    end
+
+    if UGCGameSystem.IsServer() then
+        -- ② 商品→物品映射，映射不到打错误日志并安全跳过
+        local ItemId = self:GetMappedRealItemID(CommodityID)
+        if ItemId == nil or ItemId <= 0 then
+            -- 记录错误日志（含 CommodityID/Count），便于定位
+            return
+        end
+
+        -- ③ 按项目方案分支：手动方案 vs 自动方案（见 §A.1 要素 3 与上命名差异表）
+        if self:IsAutoTransferEnabled() then
+            -- ──────── 自动方案 ────────
+            -- 项目已配置"商业化→背包自动转移"：不手动入包，改监听"补发/增加物品通知"
+            -- 与"自动转移结果"事件，由系统自动把商业化存档物品转入背包。
+            -- 此分支仅做打点 + 边界处理（监听补发通知用于背包满等异常场景感知）。
+            self:WatchAutoTransferResult(CommodityID, Count)
+        else
+            -- ──────── 手动方案 ────────
+            -- 关键顺序：先扣商业化存档 → 再入背包 → 最后显式落盘。
+            -- 跳过任一步都会导致双账不一致（玩家拿双份 或 背包到账商业化存档不变）。
+            -- API 站标准入口：UGCCommoditySystem.UseUGCCommodity2
+            --   签名：(PlayerController, ObjectID, Icon, Desc, Count, bShowDialog)
+            --   注意 Icon/Desc 可传 nil，会自动从 UGCObject 表读取；bShowDialog 在 DS 端忽略
+            UGCCommoditySystem.UseUGCCommodity2(self, CommodityID, nil, nil, Count, false)
+
+            -- 统一入包（使用增加道具的发放接口，绝不调用消费玩家已有道具的开包类接口）
+            UGCBackpackSystemV2.AddItemV2(self, ItemId, Count)
+        end
+
+        -- ④ 显式落盘（不能用定时器 / 退出流程兜底；结算之后调用无效）
+        UGCPlayerStateSystem.SavePlayerArchiveData(UID, self:BuildArchiveSnapshot())
+    else
+        -- 客户端：仅做展示，不重复发奖
+        self:ShowCompensationTip(CommodityID, Count, ProductID)
+    end
+end
+
+-- ===== 批量补偿回调（仅服务器；按需注册其一，见注册代码注释）=====
+---@param PlayerKey number
+---@param UID number
+---@param CommodityList table  -- 兼容命名表与位置数组两种形态
+function UGCPlayerController:OnCompensateUGCCommodityBatch(PlayerKey, UID, CommodityList)
+    -- ① 服务端权限校验
+    if not UGCGameSystem.IsServer() then
+        return
+    end
+    -- ② UID 首行过滤
+    if UID ~= UGCGameSystem.GetUIDByPlayerController(self) then
+        return
+    end
+
+    local bAuto = self:IsAutoTransferEnabled()
+    local archiveDirty = false
+
+    for _, item in ipairs(CommodityList) do
+        local CommodityID = item.CommodityID or item[1]
+        local Count       = item.Count       or item[2]
+        local ProductID   = item.ProductID   or item[3]
+        if CommodityID and Count then
+            if bAuto then
+                -- 自动方案：仅打点 + 监听补发通知；不手动入包
+                self:WatchAutoTransferResult(CommodityID, Count)
+            else
+                -- 手动方案：先扣商业化存档 → 再入背包
+                UGCCommoditySystem.UseUGCCommodity2(self, CommodityID, nil, nil, Count, false)
+                local ItemId = self:GetMappedRealItemID(CommodityID)
+                if ItemId and ItemId > 0 then
+                    UGCBackpackSystemV2.AddItemV2(self, ItemId, Count)
+                end
+            end
+            archiveDirty = true
+        end
+    end
+
+    -- ③ 批量补偿统一落盘（仅在确实修改过存档时落盘，避免无谓 IO）
+    if archiveDirty then
+        UGCPlayerStateSystem.SavePlayerArchiveData(UID, self:BuildArchiveSnapshot())
+    end
+end
+
+-- ===== 跨局补偿回调：未就绪必须缓存，就绪后补发 =====
+---@param PlayerKey number
+---@param UID number
+---@param CommodityID number
+---@param Count number
+function UGCPlayerController:OnBuyUGCCommodityResultBetweenGames(PlayerKey, UID, CommodityID, Count)
+    if UID ~= UGCGameSystem.GetUIDByPlayerController(self) then
+        return
+    end
+
+    -- 项目自定义：VIM = Virtual Item Manager；nil 即未实例化
+    local VIM = self:GetVirtualItemManager()
+    if VIM == nil then
+        -- 未就绪 → 进缓存队列，等 GamePart 加载完成事件后补发
+        table.insert(self.PendingCompensateList, {CommodityID = CommodityID, Count = Count})
+        return
+    end
+
+    self:ApplyCompensateCommodity(CommodityID, Count)
+end
+
+-- ===== 注销（PlayerController:ReceiveEndPlay，对称移除）=====
+function UGCPlayerController:ReceiveEndPlay()
+    UGCCommoditySystem.CompensateUGCCommodityDelegate:Remove(self.OnCompensateUGCCommodity, self)
+
+    if UGCGameSystem.IsServer() then
+        -- 按需：若启用了批量委托则同步注销
+        -- UGCCommoditySystem.CompensateUGCCommodityBatchDelegate:Remove(self.OnCompensateUGCCommodityBatch, self)
+        UGCCommoditySystem.BuyUGCCommodityResultBetweenGamesDelegate:Remove(self.OnBuyUGCCommodityResultBetweenGames, self)
+    end
+end
+```
+
+### A.3 成功样例的工程实践特征
+
+  * 三个委托按生效范围齐全注册（**按需只注册单笔 / 批量其中之一可彻底规避并存触发的防重复杂度** ），且**跨局委托在`ReceiveBeginPlay()` 中同步注册**（早于商品数据就绪）。
+  * 每个回调首行 **UID 过滤** ，杜绝多玩家串号。
+  * 虚拟物品管理器未初始化时补偿进入**待处理缓存** ，`GamePart` 加载完成后统一补发——局内 / 局外均不丢。
+  * 数量校验与映射均有安全护栏（不满足条件记录错误日志后跳过，不崩溃）。
+  * **商业化存档与背包同步（核心）** ：手动方案严格按"先 `UseUGCCommodity2` 扣商业化存档 → 再 `AddItemV2` 入背包 → 最后 `SavePlayerArchiveData` 落盘"三步走；自动方案不手动入包，改监听"补发通知 + 自动转移结果"事件感知异常。任何一步跳过都会导致双账不一致（玩家拿双份或背包到账但商业化存档不变）。
+  * 埋点对账（补偿事件上报）贯穿发放流程，便于运营核对。
+
+**结论** ：**范式正确的工程即使测试记录无 Fail，也应作为新接入的基准模板；v2 关键差异点在于"广播时机两个委托并存触发"与"商业化存档 ↔ 背包双账同步"，需结合真机日志与项目配置（手动 / 自动方案）确认** 。
+
+* * *
+
+## 附录 B：错误案例与教训（脱敏汇总）
+
+> 以下案例基于对多个接入异常工程的代码级复盘，已去除工程名、商品 ID、开发者信息，仅保留可复现的错误模式。每个案例含「**现象 → 根因 → 修复建议** 」。
+
+### B.1 补偿只改内存不落盘（“退出重进补发丢失”）
+
+环节 | 内容
+---|---
+**现象** | 补偿到账后玩家退出重进，道具消失。
+**根因** | 补偿回调只更新了内存中的存档数据，`Save()` 调用被注释或缺失；落盘依赖定时器 / 退出流程兜底，强杀、闪退、离线时不触发。
+**修复** | 补偿处理完成后在回调内显式调用存档保存接口（推荐 `UGCPlayerStateSystem.SavePlayerArchiveData`），不依赖兜底路径。
+
+### B.2 防重条件写反（仅在同时监听单笔 + 批量时才会出现）
+
+环节 | 内容
+---|---
+**现象** | 同一商品先后收到不同类型补偿（单笔 / 批量）时，后到者收不到。
+**根因** | 同时监听 `CompensateUGCCommodityDelegate` \+ `CompensateUGCCommodityBatchDelegate` 两个委托，且去重逻辑写成"类型不同且在时间窗口内则拒绝"（条件方向写反）。发起一次批量补偿时**两个委托并存触发** ——`CompensateUGCCommodityBatchDelegate` 一次性广播整个 `CommodityList`，**同时** `CompensateUGCCommodityDelegate` 对列表中每件商品逐个广播 N 次。反条件写法导致后到的单笔委托被"代发"过的同商品杀掉。
+**修复** | **推荐做法（按需监听其一，从根源规避）** ：业务上只监听单笔 / 批量其中之一委托，彻底规避并存触发的防重复杂度。**仅在业务必须同时监听两个委托时** ，再做精确防重：按"商品 + 时间窗口 + **同类型** "去重，**条件方向必须是`Type == v.Type`，不要写 `~=`**。同时建议在监听注册时就把"按需其一"做成项目约定，避免新人接入时再踩同一坑。
+
+### B.3 发奖与展示双套映射不一致（发错道具、数量不对）
+
+环节 | 内容
+---|---
+**现象** | 玩家实际收到的道具与弹窗展示的道具不一致；数量对不上。
+**根因** | 服务端发奖用一套映射（按物品 ID 查表），客户端 / UI 预览用另一套映射（按商品 ID 查配置），两套数据源不一致。
+**修复** | 发奖与展示使用同一映射源；对账时以**服务端实际入包内容** 为准。
+
+### B.4 商品映射表缺行（同批补偿部分成功部分失败）
+
+环节 | 内容
+---|---
+**现象** | 同一批补偿中，A 商品正常到账、B 商品未到账，且无报错。
+**根因** | 映射表中缺少 B 商品对应的物品配置，查询返回空后**静默跳过** （只打了一行日志，无 UI 提示）。
+**修复** | 映射表全量补齐；映射缺失时**打错误日志并计入对账清单** ，便于运营发现。
+
+### B.5 用"消费型开包接口"当作发放接口（第二次不再发放）
+
+环节 | 内容
+---|---
+**现象** | 某礼包补偿第一次发放成功，第二次不再发放。
+**根因** | 补偿直接调用了"开启已有礼包"的接口（先检查背包礼包道具数量、开包后消耗该道具）。第一次开已有道具成功并消耗；第二次背包道具为 0，接口静默返回失败。
+**修复** | 补偿发放应使用**增加道具 / 直接发放** 的接口（如 `UGCBackpackSystemV2.AddItemV2`），不能依赖"消费玩家已有道具"的路径。
+
+### B.6 补偿到达时数据未就绪，直接丢弃（局内 Fail 局外 Pass）
+
+环节 | 内容
+---|---
+**现象** | 局外（大厅 / 桌面）补偿正常到账，局内刚进入对局时收不到；或反之。
+**根因** | 回调前置校验（如虚拟物品数量 `VICount` >= `Count`）失败后**直接丢弃** ，无重试队列；局内刚进图数据未就绪、局外数据就绪，导致表现不一致。
+**修复** | 数据未就绪 / 数量不足时**进待处理队列** ，等数据就绪后补发（参考附录 A 的双缓存兜底）。
+
+### B.7 补偿事件派发后无业务监听（"通知即完"断链）
+
+环节 | 内容
+---|---
+**现象** | 局内补偿正常，局外 / 跨局补偿丢失。
+**根因** | 回调只派发了自定义事件并弹提示，但**没有任何业务模块监听该事件** 、也没有把补偿写入背包 / 存档——完全依赖平台自动发放，局外无兜底。
+**修复** | 回调内必须有**实际消费方** （入包 + 落盘），事件派发仅作辅助通知。
+
+### B.8 委托注册时机 / 分支遗漏（补偿广播错过）
+
+环节 | 内容
+---|---
+**现象** | 开局初期或重连后的补偿丢失。
+**根因** | ① 委托在 `AddTimer`（API 站标准名为 `UGCGameSystem.SetTimer`）延迟 10 秒后才注册，开局前 10 秒内到达的补偿错过；② 批量 / 跨局委托只在首次登录分支注册，杀进程重连分支未注册。
+**修复** | 注册**同步执行、不延迟** ；首登与重连分支都要注册。
+
+### B.9 批量回调缺 UID / 权限过滤（重复入包、串号）
+
+环节 | 内容
+---|---
+**现象** | 多玩家场景下补偿重复发放或发放到错误玩家。
+**根因** | 批量回调无 `HasAuthority()`（API 站标准名为 `UGCActorComponentUtility.HasAuthority(InActor)`）判断、无 `UID` / `PlayerKey` 过滤，服务端与客户端都执行发奖逻辑。
+**修复** | 批量回调加**首行`UID` 过滤 + 服务端权限校验**；参考附录 A.2。
+
+* * *
+
+## 附录 C：接入自检清单（上线前逐项核对）
+
+  * **确认方案** ：本项目是**手动方案** （默认，未配置自动转移）还是已配置"商业化→背包**自动转移** "。两种方案的入包路径完全不同，先确认再写代码。
+  * **手动方案** ：先用 `UGCCommoditySystem.UseUGCCommodity2`（或项目自定义 `VirtualItemManager:Remove` 扩展）**扣商业化存档** 数量，再 `UGCBackpackSystemV2.AddItemV2` 入背包，最后 `SavePlayerArchiveData` 落盘；**自动方案** ：**不手动入包** ，改监听"补发 / 增加物品通知"与"自动转移结果"事件感知异常（背包满、转移失败等）。
+  * **单笔 / 批量委托按需注册其一（推荐）** ，避免并存触发的防重复杂度。发起一次批量补偿时，Batch + 单笔两个委托**并存触发** （Batch 广播整列表 + 单笔逐个广播 N 次），需同时监听两个委托的项目必须做精确防重（`Type == v.Type`，不要写 `~=`）。
+  * 三个委托按生效范围正确注册（单笔双端 / 批量 + 跨局仅服务端）
+  * 注册同步完成、无延迟；首登与重连分支均注册
+  * 每个回调首行 `UID` / `PlayerKey` 过滤
+  * 商品 → 物品映射表完整，映射不到打错误日志（不静默吞）
+  * 未就绪（虚拟物品管理器 `nil` / 数量不足 / 背包未初始化）→ 缓存队列 + 就绪补发
+  * 发放用"增加道具"统一入口（`UGCBackpackSystemV2.AddItemV2`），不用消费玩家已有道具的接口
+  * 补偿后显式强制落盘（`UGCPlayerStateSystem.SavePlayerArchiveData`，**注意结算后调用无效** ），不依赖定时器 / 退出兜底
+  * 去重逻辑按"同类型去重"写，不写反（**仅在同时监听单笔 + 批量时才需要** ）
+  * 批量回调兼容**命名表 / 位置数组** 两种 `CommodityList` 结构
+  * 批量回调有权限 + `UID` 校验（`UGCActorComponentUtility.HasAuthority(self)` \+ 首行 `UID` 过滤），不双端重复发
+  * PIE 直接调用回调函数模拟测试全场景（局内 / 大厅 / 桌面 / 离线）
+
+* * *
+
 
 ---
 
@@ -44127,7 +45353,7 @@ category: "商业化及功能模板"
 
 # 邮件模板
 
-创建于 2026-07-16 02:05 最后修改于 2026-08-04 03:47
+创建于 2026-07-16 02:05 最后修改于 2026-09-07 04:40
 
 邮件模板是绿洲编辑器提供的官方功能模板，可用于在UGC项目中快速搭建完整的邮件系统。该模板支持多种类型的邮件管理，具备丰富的UI交互和完善的附件领取机制，让玩家可以方便地接收、查看和管理游戏内的各类邮件。
 
@@ -44208,7 +45434,16 @@ end
 
 * * *
 
-### 模拟邮件发送
+### 发送邮件
+
+#### 发送要求
+
+  * 文本标题：限制字数≤20个字
+  * 文本正文：限制字数≤500个字
+  * 附件种类：限制最多一个邮件可以发放种类≤10种（如不同货币类型）
+  * 附件数量：限制最多一个种类可以发放≤9999个
+
+#### 模拟邮件发送（仅调试期间有效）
 
 > 正式发布的玩法需联系官方运营进行邮件发送
 
@@ -44226,6 +45461,22 @@ end
 ```
 
 ![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/LiuBQimage.png)
+
+* * *
+
+#### 正式服发送邮件
+
+> 在正式服中，通过邮件附件发送的物品必须存在相关商品配置，详细配置流程可见：[商业化系统](<https://developer.gp.qq.com/wikieditor/#/catalog/20008>)
+
+正式发布的玩法需联系官方运营进行邮件发送，并且按以下格式提供邮件信息：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/m0AhBimage.png)
+
+> [模版样式附件](<https://doc.weixin.qq.com/sheet/e3_AE4ACAapAAsCNauFgtgkmR56JZqht?scode=AJEAIQdfAAoGGC1aCiAE4ACAapAAs&tab=BB08J2>)
+
+待官方人员确认可发送后，开发者需按以下格式向 `OasisEra@tencent.com` 发送电子邮件：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/GY7sbimage.png)
 
 ## UI界面说明
 
@@ -44370,6 +45621,18 @@ MailItemDetail_UIBP | 邮件详情弹窗，展示邮件正文和附件
 ### Q7：自定义UI后如何替换默认界面？
 
 **A** ：在 `UGCMailboxComponent` 中修改 `MailUIPath` 属性，指向自定义UI蓝图路径即可。
+
+* * *
+
+### Q8：为玩家进行补偿时，哪种情况适合通过发送邮件实现？
+
+**A** ：仅当玩家因异常情况导致道具或物品丢失时，才适合通过发送邮件的方式进行补偿。玩法内部的常规物品流转，应由开发者自行实现相应的逻辑。
+
+* * *
+
+### Q9：发送全服邮件时，未来新注册的玩家会收到该邮件吗？
+
+**A** ：未来新注册的玩家也会收到全服邮件。
 
 ## API参考
 
@@ -45778,6 +47041,97 @@ ps：若找不到合适的参考图，纯文字提示词也是能生成的
   * 单次生成不论失败或成功都会消耗次数
   * 提示词长度输入不超过150字
   * 参考图及提示词不得涉及政治,色情等其他违规恶意内容;若存在恶意违规情况,将被限制或禁止使用该功能
+
+
+---
+
+---
+id: "20453"
+title: "AI生成角色"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20453"
+category: "AI工具"
+---
+
+# AI生成角色
+
+创建于 2026-09-10 09:23
+
+AI生成角色功能允许开发者通过输入关键词并导入风格图片，帮助开发者快速生成可供直接使用的角色模型与外观贴图。
+
+> 目前仅支持生成骨架类型为“主角骨架”的角色，暂不支持其他骨架类型
+
+## 操作步骤
+
+### 生成角色模型
+
+在编辑器主界面的工具栏，点击打开【AI协作】窗口，选择【AI生成角色】进入角色生成界面。
+
+![ai生成角色.drawio.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/lwubiai%E7%94%9F%E6%88%90%E8%A7%92%E8%89%B2.drawio.png)
+
+上传风格图并输入提示词后，点击“生成预览”。
+
+![ai生成角色-第 2 页.drawio.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/EqsXPai%E7%94%9F%E6%88%90%E8%A7%92%E8%89%B2-%E7%AC%AC%202%20%E9%A1%B5.drawio.png)
+
+角色模型的生成需要一定时间，可从历史记录查看生成进度，尚未完成的任务会显示“生成模型中”。
+
+![企业微信截图_17875630988791.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/oKhEn%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17875630988791.png)
+
+已生成完毕的模型会提示“已生成模型”，选择对应历史记录后点击“下载”即可将角色模型资源保存至本地。
+
+![ai生成角色-第 3 页.drawio.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/RNji0ai%E7%94%9F%E6%88%90%E8%A7%92%E8%89%B2-%E7%AC%AC%203%20%E9%A1%B5.drawio.png)
+
+* * *
+
+### 配置角色模型
+
+首先将先将模型Lod0以及所有纹理贴图导入工程。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/8QpSjimage.png)
+![企业微信截图_1787567049659.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/I9l0Z%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1787567049659.png)
+
+导入模型期间，骨架选择“主角骨架”，勾选【导入动画】，最后点击“导入所有”。
+
+![企业微信截图_1787641854713.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/vUh2F%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1787641854713.png)
+
+创建一个材质实例，父级选择“通用物件（Spline）”，按下图所示，在对应属性引用对应纹理贴图并保存。
+
+属性 | 引用贴图名称
+---|---
+Albedo | base_color_out
+Normal | normal_out
+RoughnessMetallicAoEmissive | Baltic_Erangel_road2V_RMA
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/PkMHhimage.png)
+
+打开模型Lod0并挂载材质实例。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/PB2mIimage.png)
+
+最后从属性【LOD导入】中选择“导入LOD层级 X ”，分别导入模型 Lod1 和 Lod2，完成角色模型的配置。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/bOPyPimage.png)
+
+* * *
+
+### 使用角色模型
+
+以下以替换玩家模型为例，相关代码如下：
+
+```
+-- UGCPlayerPawn.lua部分代码
+
+function UGCPlayerPawn:ReceiveBeginPlay()
+    UGCPlayerPawn.SuperClass.ReceiveBeginPlay(self)
+    -- 设置玩家的LOD模型
+    self.timer = Timer.InsertTimer(1, function ()
+        UGCPlayerPawnSystem.ChangeAvatarMesh(self, UGCGameSystem.GetUGCResourcesFullPath('Asset/Blueprint/NewFolder/lod0.lod0'),true)
+    end)
+end
+```
+
+最终画面效果如下：
+
+![企业微信截图_17875766392005.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/IisJC%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17875766392005.png)
 
 
 ---
@@ -53937,6 +55291,84 @@ Show Attached Actor | 勾选后，即使某个Actor被附加（Attach）到了�
 ---
 
 ---
+id: "20451"
+title: "开启/关闭角色背负功能"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20451"
+category: "常用实战教学"
+---
+
+# 开启/关闭角色背负功能
+
+创建于 2026-09-11 08:43
+
+本文档介绍如何开启/关闭角色背负功能，可以实现背负倒地玩家或搬运死亡盒子。
+
+## GameMode配置
+
+  * 在编辑器上方工具栏的`玩法通用设置中`，找到Pawn——背负队友配置：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/MhyTMimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/X4Wujimage.png)
+
+  * 搬运死亡盒子效果：
+
+![死亡盒子.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/lPsq0%E6%AD%BB%E4%BA%A1%E7%9B%92%E5%AD%90.gif)
+
+  * 背负角色效果：
+
+![背人.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/qhpZa%E8%83%8C%E4%BA%BA.gif)
+
+## API参考
+
+在 [`UGCPlayerPawnSystem`](<https://developer.gp.qq.com/api/#/searchContent/UGCPlayerPawnSystem?classDetailShow=true&path=class%2Fdetail%2FOthers%2FUGCPlayerPawnSystem.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UGCPlayerPawnSystem>) 新增了背负、背负死亡盒子等功能的接口。
+
+### 背负队友API
+
+接口 | 作用域 | 说明
+---|---|---
+ConfirmCarryOther | 服务器 | 确认背负倒地队友
+ConfirmPutDownCarried | 服务器 | 确认放下被背负的队友
+InterruptCarry | 服务器 | 中断背负（背负方/被背负方均可）
+BreakAwayFromCarrier | 服务器 | 被背负者主动脱离
+SetCarryOtherEnabled | 服务器 | 设置是否允许背负他人
+SetBeCarriedEnabled | 服务器 | 设置是否允许被他人背负
+SetCarryDetectRange | 服务器 | 设置背负检测范围（扇形）
+SetBreakAwayCooldown | 服务器 | 设置脱离冷却时间（秒）
+GetCarryState | 服务器/客户端 | 获取背负状态枚举
+GetCarryTarget | 服务器/客户端 | 获取正在背负的目标
+GetCarriedByWho | 服务器/客户端 | 获取谁在背自己
+IsBeingCarried | 服务器/客户端 | 是否正在被背负
+IsCarryingOther | 服务器/客户端 | 是否正在背负他人
+IsCarriedByAI | 服务器/客户端 | 是否被 AI 背负
+AddOnCarryStateChanged | 服务器 | 监听背负状态变化
+RemoveOnCarryStateChanged | 服务器 | 取消监听
+
+### 搬运死亡盒子 API
+
+接口 | 作用域 | 说明
+---|---|---
+ConfirmCarryDeadBox | 服务器 | 确认搬起死亡盒子
+ConfirmPutDownDeadBox | 服务器 | 确认放下死亡盒子
+InterruptCarryDeadBox | 服务器 | 中断搬运
+SetCarryDeadBoxEnabled | 服务器 | 全局开关（GameState + CVar）
+SetCarryDeadBoxDetectRange | 服务器 | 设置搬运检测范围（扇形）
+SetCarryDeadBoxPutDownParams | 服务器 | 设置放下检测参数
+GetCarryDeadBoxState | 服务器/客户端 | 获取搬运状态
+GetCarriedDeadBox | 服务器/客户端 | 获取正在搬运的盒子
+IsCarryingDeadBox | 服务器/客户端 | 是否正在搬运盒子
+AddOnCarryDeadBoxStateChanged | 服务器 | 监听搬运状态变化
+RemoveOnCarryDeadBoxStateChanged | 服务器 | 取消监听
+
+### 是否生成死亡盒子
+
+接口 | 作用域 | 说明
+---|---|---
+SkipSpawnDeadTombBox | 服务器 | 控制玩家死亡后是否跳过生成死亡盒子
+
+
+---
+
+---
 id: "336"
 title: "资源商店"
 source: "https://developer.gp.qq.com/wikieditor/#/catalog/336"
@@ -55070,7 +56502,7 @@ category: "性能优化及异常处理"
 
 # PIE日志面板
 
-创建于 2026-06-01 06:47
+创建于 2026-06-01 06:47 最后修改于 2026-09-11 11:38
 
 ## PIE日志面板
 

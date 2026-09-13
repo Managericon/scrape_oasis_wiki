@@ -238,6 +238,15 @@
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20242"
   },
   {
+    "id": "20458",
+    "title": "前置工程检查",
+    "categories": [
+      "绿洲编辑器基础内容",
+      "调试游戏"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20458"
+  },
+  {
     "id": "127",
     "title": "匹配设置",
     "categories": [
@@ -1534,6 +1543,16 @@
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20412"
   },
   {
+    "id": "20454",
+    "title": "宠物模板",
+    "categories": [
+      "进阶内容",
+      "GamePlay系统",
+      "怪物系统"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20454"
+  },
+  {
     "id": "379",
     "title": "普通载具",
     "categories": [
@@ -1808,6 +1827,15 @@
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20445"
   },
   {
+    "id": "20463",
+    "title": "背包Tips系统",
+    "categories": [
+      "进阶内容",
+      "UI系统"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20463"
+  },
+  {
     "id": "20223",
     "title": "特效编辑器",
     "categories": [
@@ -1823,15 +1851,6 @@
       "输入系统"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20290"
-  },
-  {
-    "id": "20211",
-    "title": "绿洲玩法适配和平精英模拟器",
-    "categories": [
-      "进阶内容",
-      "输入系统"
-    ],
-    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20211"
   },
   {
     "id": "204",
@@ -2158,6 +2177,14 @@
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20409"
   },
   {
+    "id": "20456",
+    "title": "假人系统",
+    "categories": [
+      "通用功能"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20456"
+  },
+  {
     "id": "20008",
     "title": "商业化系统",
     "categories": [
@@ -2326,6 +2353,14 @@
       "AI工具"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20395"
+  },
+  {
+    "id": "20453",
+    "title": "AI生成角色",
+    "categories": [
+      "AI工具"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20453"
   },
   {
     "id": "20190",
@@ -2720,6 +2755,14 @@
       "常用实战教学"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20442"
+  },
+  {
+    "id": "20451",
+    "title": "开启/关闭角色背负功能",
+    "categories": [
+      "常用实战教学"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20451"
   },
   {
     "id": "336",
