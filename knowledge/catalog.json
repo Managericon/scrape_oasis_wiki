@@ -175,6 +175,15 @@
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20352"
   },
   {
+    "id": "20469",
+    "title": "热重载 HotReload Lua 使用说明",
+    "categories": [
+      "绿洲编辑器基础内容",
+      "脚本编写"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20469"
+  },
+  {
     "id": "354",
     "title": "调试日志说明",
     "categories": [
@@ -326,6 +335,14 @@
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/380"
   },
   {
+    "id": "20461",
+    "title": "工单管理",
+    "categories": [
+      "绿洲编辑器基础内容"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20461"
+  },
+  {
     "id": "20414",
     "title": "UGCAskQ MCP 使用说明",
     "categories": [
@@ -333,6 +350,15 @@
       "UGCAskQ MCP"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20414"
+  },
+  {
+    "id": "20464",
+    "title": "通过UGC-AskQ制作编辑器工具",
+    "categories": [
+      "绿洲编辑器基础内容",
+      "UGCAskQ MCP"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20464"
   },
   {
     "id": "298",
@@ -378,6 +404,15 @@
       "资源管理与编辑"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20247"
+  },
+  {
+    "id": "20455",
+    "title": "外部资产浏览器",
+    "categories": [
+      "新手入门",
+      "资源管理与编辑"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20455"
   },
   {
     "id": "313",
@@ -588,6 +623,14 @@
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/203"
   },
   {
+    "id": "20457",
+    "title": "Actor属性复制",
+    "categories": [
+      "进阶内容"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20457"
+  },
+  {
     "id": "155",
     "title": "通过模式编辑器创建游戏规则",
     "categories": [
@@ -663,6 +706,16 @@
       "角色系统"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20228"
+  },
+  {
+    "id": "20466",
+    "title": "角色AI托管",
+    "categories": [
+      "进阶内容",
+      "GamePlay系统",
+      "角色系统"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20466"
   },
   {
     "id": "178",
@@ -1124,6 +1177,17 @@
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20470"
   },
   {
+    "id": "20475",
+    "title": "背包UI开放",
+    "categories": [
+      "进阶内容",
+      "GamePlay系统",
+      "物资系统",
+      "物资编辑器2.0"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20475"
+  },
+  {
     "id": "20144",
     "title": "怪物快速配置指南",
     "categories": [
@@ -1541,6 +1605,16 @@
       "怪物系统"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20412"
+  },
+  {
+    "id": "20452",
+    "title": "刷怪点模板与改造使用",
+    "categories": [
+      "进阶内容",
+      "GamePlay系统",
+      "怪物系统"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20452"
   },
   {
     "id": "20454",
@@ -2183,6 +2257,15 @@
       "通用功能"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20456"
+  },
+  {
+    "id": "20427",
+    "title": "交互相关功能组件",
+    "categories": [
+      "通用功能",
+      "交互物"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20427"
   },
   {
     "id": "20008",
@@ -3002,13 +3085,5 @@
       "常见问题"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20391"
-  },
-  {
-    "id": "20427",
-    "title": "交互相关功能组件",
-    "categories": [
-      "交互物"
-    ],
-    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20427"
   }
 ]

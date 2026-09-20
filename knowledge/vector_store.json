@@ -210,16 +210,6 @@
         "category": "AI工具"
       }
     },
-    "交互物/20427_交互相关功能组件.md": {
-      "sha256": "062ee0d8dcba27a887b0807063a91bb541dc30a18b7e28c5fd8af8aa101c1267",
-      "file_id": "file-1LiurxysfHaiHYMrRFECHE",
-      "attributes": {
-        "id": "20427",
-        "title": "交互相关功能组件",
-        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20427",
-        "category": "交互物"
-      }
-    },
     "商业化及功能模板/20008_商业化系统.md": {
       "sha256": "40ed08aa7b008db3405db3c91da5ecd381b5237b66943e7f2d16eadfe26cd09b",
       "file_id": "file-V8k9P1zg5S4A8iRwYvjmpE",
@@ -941,8 +931,8 @@
       }
     },
     "新手入门/游戏场景/场景编辑基础/20248_PCG工具箱.md": {
-      "sha256": "3c745db3b4cd2372e40ad3401e415261e00a50592860950c27bd4ee992e51ef0",
-      "file_id": "file-E3ci9ycStnbG2VKAAn6YUJ",
+      "sha256": "67d1a3b04f52e651ef325bd5bc0dc0dbe443e9b3e07260bbe6d00f3c1c6f1810",
+      "file_id": "file-F1Ap89SHHuSQihXJG6azCs",
       "attributes": {
         "id": "20248",
         "title": "PCG工具箱",
@@ -1007,6 +997,16 @@
         "id": "20247",
         "title": "资产迁移",
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20247",
+        "category": "新手入门/资源管理与编辑"
+      }
+    },
+    "新手入门/资源管理与编辑/20455_外部资产浏览器.md": {
+      "sha256": "8fb12577cd9933a2b57a026c108e2e1e9939761ed8f217a43c6b847d9cf53732",
+      "file_id": "file-RQ1E5hEpqBPxGS8M7C4bJo",
+      "attributes": {
+        "id": "20455",
+        "title": "外部资产浏览器",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20455",
         "category": "新手入门/资源管理与编辑"
       }
     },
@@ -1191,8 +1191,8 @@
       }
     },
     "版本日志/20472_1.38 Release Notes.md": {
-      "sha256": "bc7e1f718e48ffce4b59a0a7badd6b810846604208a936627edbdab637e75d4e",
-      "file_id": "file-WzcHqgcHyxMTbFRMxf9voL",
+      "sha256": "74228beb0e1adb8cedad394da5e046cc93f6e962db9725827b3d2ce1268476e3",
+      "file_id": "file-DNFv8u7a1FpUYQmrJ5rW5G",
       "attributes": {
         "id": "20472",
         "title": "1.38 Release Notes",
@@ -1500,6 +1500,16 @@
         "category": "玩法案例及模板/多人PVE模板"
       }
     },
+    "绿洲编辑器基础内容/20461_工单管理.md": {
+      "sha256": "5b81bc1bac810153d46317c4233238c1a08ca5e1f088eb28ef65c9d067806b26",
+      "file_id": "file-YRZZKjMBUPsfUB2MNbNKmo",
+      "attributes": {
+        "id": "20461",
+        "title": "工单管理",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20461",
+        "category": "绿洲编辑器基础内容"
+      }
+    },
     "绿洲编辑器基础内容/289_绿洲启元编辑器介绍与安装.md": {
       "sha256": "5c8e327145638231ebcc5458db72365724783559ea7823967ac5f0708f893dcb",
       "file_id": "file-WQMzdSMmEbXBCuXrnbAMMX",
@@ -1551,12 +1561,22 @@
       }
     },
     "绿洲编辑器基础内容/UGCAskQ MCP/20414_UGCAskQ MCP 使用说明.md": {
-      "sha256": "b0ed1ad978c1be7442bb72c5a8a290dc6080bd97cff3b0cef6afd7a992237e96",
-      "file_id": "file-EGEUXA2CPrvbZYpmYrGrPL",
+      "sha256": "b38ac0b98a01edef8f2f321de2825d1bd7ae0fc6d5f233b05e520a9fb5c8ac91",
+      "file_id": "file-WNVuxbZDjhWvLKsKG7EVU8",
       "attributes": {
         "id": "20414",
         "title": "UGCAskQ MCP 使用说明",
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20414",
+        "category": "绿洲编辑器基础内容/UGCAskQ MCP"
+      }
+    },
+    "绿洲编辑器基础内容/UGCAskQ MCP/20464_通过UGC-AskQ制作编辑器工具.md": {
+      "sha256": "f168ec992c12dd4f0033f61e1a9303522abb991331672222345339991af6bf7b",
+      "file_id": "file-NMoBEH3ZpukdE77hQP1RA4",
+      "attributes": {
+        "id": "20464",
+        "title": "通过UGC-AskQ制作编辑器工具",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20464",
         "category": "绿洲编辑器基础内容/UGCAskQ MCP"
       }
     },
@@ -1667,6 +1687,16 @@
         "id": "20352",
         "title": "Actor实例路径使用",
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20352",
+        "category": "绿洲编辑器基础内容/脚本编写"
+      }
+    },
+    "绿洲编辑器基础内容/脚本编写/20469_热重载 HotReload Lua 使用说明.md": {
+      "sha256": "dfa06e2da747c5179da378ce2662fb48922890e5deb4d6470f542e4fe514d5e3",
+      "file_id": "file-VBthTMhFXNDL2VSZEaXcAC",
+      "attributes": {
+        "id": "20469",
+        "title": "热重载 HotReload Lua 使用说明",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20469",
         "category": "绿洲编辑器基础内容/脚本编写"
       }
     },
@@ -1781,8 +1811,8 @@
       }
     },
     "进阶内容/20023_自定义行为统计.md": {
-      "sha256": "8a31485f512d97704f865f9eccec49d4eb44afe03c5e882ffa1936489e104700",
-      "file_id": "file-WhpSSTejEsK2DNYtdH7nAC",
+      "sha256": "404356cbdd8a58ea3ac33723ebcbc1666a396e99ea9099c11c8461d0ef67e322",
+      "file_id": "file-Pd9LWzLcA3EnkQcxQSYRS8",
       "attributes": {
         "id": "20023",
         "title": "自定义行为统计",
@@ -1811,12 +1841,22 @@
       }
     },
     "进阶内容/20437_新手引导组件.md": {
-      "sha256": "127b833e416f6f55cd708ce3bf2d8d5544d6fbc304fa843fa89c0eb1a147c3ad",
-      "file_id": "file-QJXd17Bc3KZ1RhmjqaTqh1",
+      "sha256": "872e83701d971d50968e71a27dbc86d0f3678d33f8cabee85cf6621f28d67ed1",
+      "file_id": "file-JXLcFpouncVZonqb1CZLZs",
       "attributes": {
         "id": "20437",
         "title": "新手引导组件",
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20437",
+        "category": "进阶内容"
+      }
+    },
+    "进阶内容/20457_Actor属性复制.md": {
+      "sha256": "de245440bc8900646b5b1d703a67168d0b4cbd52084f0c1fd6f36e7043ce05fd",
+      "file_id": "file-4vRfLCYsivHNbQNw3ErNak",
+      "attributes": {
+        "id": "20457",
+        "title": "Actor属性复制",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20457",
         "category": "进阶内容"
       }
     },
@@ -2127,6 +2167,16 @@
         "id": "20412",
         "title": "怪物血条",
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20412",
+        "category": "进阶内容/GamePlay系统/怪物系统"
+      }
+    },
+    "进阶内容/GamePlay系统/怪物系统/20452_刷怪点模板与改造使用.md": {
+      "sha256": "20ae54b6a10314567859f9d317f463c6aa812d99f4078f1f3f28493b7cd650b4",
+      "file_id": "file-6tNvMC3EXSxMtKDRgF3CuA",
+      "attributes": {
+        "id": "20452",
+        "title": "刷怪点模板与改造使用",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20452",
         "category": "进阶内容/GamePlay系统/怪物系统"
       }
     },
@@ -2631,8 +2681,8 @@
       }
     },
     "进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20104_背包系统.md": {
-      "sha256": "efc088f118099cfe7c40810fda8cd6a3ecbc050a545711c7d49a9ed862721670",
-      "file_id": "file-9DsJdReWKCXwAbsDcMsGS3",
+      "sha256": "3f33eb08d63f2385c6a56e8d45f6900e49d742636942940764df6ee31d0bfe7f",
+      "file_id": "file-67JnDgau888Ct2RWtJhHoV",
       "attributes": {
         "id": "20104",
         "title": "背包系统",
@@ -2691,8 +2741,8 @@
       }
     },
     "进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20420_自定义拾取组件.md": {
-      "sha256": "b4d40c0fc64918eeb694ccdf874ed5b4ca76d25630c0f3d376b035f2b98a4dec",
-      "file_id": "file-Wu1wcSV6cZ8ynqmyWA5YRR",
+      "sha256": "a898124fadb0849503d2ce9e6f5cb91702f2a9385cda7a48e5b4d8049281d480",
+      "file_id": "file-CDcdrXmHbNPZ9haRnTeHqs",
       "attributes": {
         "id": "20420",
         "title": "自定义拾取组件",
@@ -2740,6 +2790,16 @@
         "category": "进阶内容/GamePlay系统/物资系统/物资编辑器2.0"
       }
     },
+    "进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20475_背包UI开放.md": {
+      "sha256": "54486ea4ca35c9844dbb27e2eb64bb90b5a9c8a3836ae4281fdd23e4aaf705e8",
+      "file_id": "file-2QCGay7J76RrvrYti4kQjG",
+      "attributes": {
+        "id": "20475",
+        "title": "背包UI开放",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20475",
+        "category": "进阶内容/GamePlay系统/物资系统/物资编辑器2.0"
+      }
+    },
     "进阶内容/GamePlay系统/角色系统/153_修改主角属性.md": {
       "sha256": "0ed06c96ef4d67a235ce48420cd449fbae3434805f8aeebdb44c15157e48b4d6",
       "file_id": "file-GrocuuGm2F849oV6BuFV5k",
@@ -2777,6 +2837,16 @@
         "id": "20228",
         "title": "角色Avatar复制",
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20228",
+        "category": "进阶内容/GamePlay系统/角色系统"
+      }
+    },
+    "进阶内容/GamePlay系统/角色系统/20466_角色AI托管.md": {
+      "sha256": "f2b8bafb625ba0511224013117ff76f0693ac951d4a986c72ba74c0b5b77048e",
+      "file_id": "file-9jbrzdBeos6Tyg9q6nWsDc",
+      "attributes": {
+        "id": "20466",
+        "title": "角色AI托管",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20466",
         "category": "进阶内容/GamePlay系统/角色系统"
       }
     },
@@ -3389,11 +3459,21 @@
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20456",
         "category": "通用功能"
       }
+    },
+    "通用功能/交互物/20427_交互相关功能组件.md": {
+      "sha256": "59db8c855c4bf0d349520d616f08f4cf07708e5decab2580fc28d9af91ac1a32",
+      "file_id": "file-FcJ7rSdDYQQUjACLYG7o4L",
+      "attributes": {
+        "id": "20427",
+        "title": "交互相关功能组件",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20427",
+        "category": "通用功能/交互物"
+      }
     }
   },
   "summary": {
-    "uploaded": 19,
-    "skipped": 320,
+    "uploaded": 16,
+    "skipped": 331,
     "failed": 0
   }
 }

@@ -7,9 +7,30 @@ category: "版本日志"
 
 # 1.38 Release Notes
 
-创建于 2026-08-31 02:06 最后修改于 2026-09-07 07:08
+创建于 2026-08-31 02:06 最后修改于 2026-09-14 11:12
 
 关于版本功能使用中发现及反馈的bug修复安排，可前往 [bug修复计划公示表](<https://docs.qq.com/sheet/DSUFnT1BQWGpHYWNN?tab=b5fzcz>) 中查看了解。
+
+## 1.38.12.15916 版本说明
+
+### 编辑器
+
+**bug Fixes**
+
+  * 修复了打开背包后，点击左侧装备栏物品图标无响应且无法弹出装备详情的问题
+  * 修复了使用 `PopKartAccelerateArea` 组件时，弹出的 Tips 内容为空白的问题
+  * 修复了正式服弹出RPC溢出提示窗的问题，将仅在外延线开启弹窗
+  * 修复了技能编辑器配置技能动画时，选择动画资产异常的问题
+  * 修复了多次拾取同一物品时，仅首次弹出Tips、后续拾取不再弹出的问题
+  * 修复了 `UGCItemSystemV2` 接口参数定义错误的问题
+  * 修复了实体编辑器中宠物模板配置错误，且未显示“新”标识的问题
+  * 修复了地震波法术场对施法者自身造成伤害的问题
+  * 修复了驾驶载具“沙舟”后，客户端报错并掉线的问题
+  * 修复了跨服务端进入队伍后，队伍列表仍显示旧队伍信息的问题
+  * 修复了将物品从背包丢弃后再次拾取时，拾取物模型未生效的问题
+  * 修复了PIE存档失效的问题
+
+* * *
 
 ## 1.38.12.15914 版本说明
 
@@ -3806,6 +3827,141 @@ end
 ---
 
 ---
+id: "20469"
+title: "热重载 HotReload Lua 使用说明"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20469"
+category: "绿洲编辑器基础内容/脚本编写"
+---
+
+# 热重载 HotReload Lua 使用说明
+
+创建于 2026-09-14 05:50
+
+## 功能简介
+
+能力边界速览
+
+维度 | 是否支持 | 说明
+---|---|---
+函数逻辑替换 | ✅ | 新版本函数在下次调用时生效
+变量状态保留 | ✅ | 模块内的变量值保持不变，不会被重置
+upvalue 状态嫁接 | ✅ | 闭包捕获的外部局部变量状态会被保留
+蓝图绑定同步更新 | ✅ | LuaBind 模块对应的蓝图 UFunction 自动重绑定
+自定义热更回调 | ✅ | 模块可实现 `OnHotReload()` 执行初始化逻辑
+新变量初始化 | ❌ | 新增变量的初始化表达式不会执行，需手动处理
+协程/定时器引用更新 | ❌ | 已注册的 timer/协程仍引用旧函数，需手动处理
+运行时编辑（免 PIE 改文件） | ❌ | 需在 PIE 运行中改文件后触发热更
+
+  * 适用场景：调参、改逻辑、定位 bug 时的快速迭代
+  * 不适用场景：新增模块、修改模块结构、需要重置运行时状态的场景（建议重启 PIE）
+
+## 快速上手
+
+典型迭代流程三步走：
+
+  1. 启动 PIE 调试：编辑器中点击调试，等待 DebugGame 窗口显示 “Project Succeeded” 且 PIE 客户端启动完成
+  2. 修改 Lua 文件：在 Script/ 目录下编辑目标 .lua 文件并保存（例如 Script/Game/MySystem.lua）
+  3. 触发热更并验证：点击 DebugGame 窗口底部的 “热重载Lua文件” 按钮，等待日志提示成功后，在 PIE 中触发对应逻辑验证效果
+
+> 热更生效后，PIE 客户端与 DS 的日志（ShadowTrackerExtra/Saved/Logs/项目名称/）中可见 lua hotreload 相关记录，可用于确认热更是否真正触达目标端
+
+## 触发方式
+
+HotReload Lua 通过 DebugGame 窗口的 “HotReload Lua” 按钮触发热更，按钮位于 PIE 调试窗口底部。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/nbKeB%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17876434823517.png)
+
+**触发流程**
+
+点击按钮后，系统自动完成以下操作：
+
+  1. 扫描工程 Script/ 目录下所有 .lua 文件；
+  2. 自动检测自上次热更以来有改动的文件；
+  3. 将改动文件下发到 DS 与所有客户端，触发函数级热更；
+  4. 在窗口日志区显示当前热更的模块名与最终重载数量。
+
+优势：无需手动指定模块名，自动增量检测，DS 与客户端同步下发；按钮路径直接下发文件内容到目标端，可靠性高
+
+## OnHotReload 回调
+
+若模块需要在热更完成后执行初始化逻辑（例如重新订阅事件、刷新缓存、重置临时状态），可在模块中实现 `OnHotReload` 回调：
+
+```
+local M = {}
+
+function M.OnHotReload(self)
+    -- self 即模块表本身
+    -- 热更完成后自动调用，可在此处：
+    --   - 重新订阅事件
+    --   - 刷新缓存
+    --   - 初始化新增变量
+    --   - 重启定时器/协程
+end
+
+function M.SomeFunc()
+    -- 业务逻辑
+end
+
+return M
+```
+
+热更完成时，系统会自动以 M:OnHotReload() 形式调用该回调。建议凡是有运行时状态的模块都实现此回调，确保热更后状态一致。
+
+## 重要注意事项
+
+**硬性限制**
+
+以下限制由热更机制本质决定，无法绕过，需在开发中主动规避：
+
+  1. 模块名必须以 Script 开头
+
+按钮路径自动转换的模块名形如 Script.X.Y；否则会被拒绝并提示 Can Only Reload File under Script Folder。
+
+  2. 新变量不会初始化
+
+热更对变量只保留旧值或新增空值，新变量的初始化表达式（如 local counter = 10）不会执行。如需初始化新变量，请在 OnHotReload 中手动处理。
+
+  3. 协程与定时器仍引用旧函数
+
+如果旧函数已注册了 timer 或协程引用了旧 closure，热更后这些引用仍指向旧函数，新逻辑不会被调用。必须在 OnHotReload 中手动重启定时器或重新注册协程。
+
+  4. 每次重新 PIE 需等待连接重建
+
+每次重新 PIE 会清空客户端连接列表，必须等 PIE 客户端 BeginPlay 重新注册后才能热更。若过早触发热更会提示 “Connection not established”。
+
+  5. DS 不能直接读本地文件
+
+DS 收到的热更消息必须携带文件内容（由客户端中转读取并附加）。这一过程对开发者透明，但意味着 DS 热更依赖至少一个客户端已连接。
+
+**热更友好的代码模式**
+
+为降低热更失败风险，建议遵循以下代码模式：
+
+推荐 | 不推荐 | 原因
+---|---|---
+状态存入模块表字段 `M.counter` | 顶层 `local counter` 计数器 | 模块表字段在热更时可被显式保留/初始化
+纯函数逻辑，状态外置 | 闭包捕获大量外部状态 | upvalue 嫁接仅对同名 `upvalue` 生效，复杂闭包易出错
+定时器回调引用模块表函数 | 定时器回调直接捕获 `local` 函数 | 前者热更后通过 `OnHotReload` 重启即可生效；后者引用旧 `closure`
+修改现有函数体 | 新增/删除函数或改命名 | 热更依赖函数名匹配，结构变更易导致引用错乱
+热更前保存全部文件 | 部分文件未保存即热更 | 多文件协同修改时，未保存文件不参与热更，可能导致模块间不一致
+
+## 常见问题排查
+
+现象 | 排查方向
+---|---
+点击按钮提示 “Connection not established” | 确认 PIE 客户端是否启动完成；连接列表可能被重新 PIE 清空后未重新注册，稍等片刻再试
+热更提示 “LUA_CONSOLE_HOTRELOAD Require Failed” | 检查 Lua 文件语法是否正确（luaL_dostring 返回非 0 即报此错）
+提示 “NewModule is Not a Table” | 模块返回值不是 table，例如直接 `return 1` 或文件末尾忘了 `return M`
+函数已更新但变量没变化 | 这是设计行为：变量值被保留。如需重置请在 OnHotReload 中手动初始化
+函数已更新但行为没变化 | 检查是否有定时器/协程引用了旧 closure；需在 OnHotReload 中重启
+DS 收不到热更消息 | 确认是否有客户端已连接（DS 热更依赖客户端中转）；检查消息是否超长分块未重组完整
+蓝图事件绑定的 Lua 函数热更后没生效 | 确认模块走的是 LuaBind 路径，非 LuaBind 模块的蓝图绑定不会自动更新
+热更后部分模块生效、部分不生效 | 多文件协同修改时，确认所有改动文件均已保存；未保存文件不参与热更
+
+
+---
+
+---
 id: "354"
 title: "调试日志说明"
 source: "https://developer.gp.qq.com/wikieditor/#/catalog/354"
@@ -6142,6 +6298,145 @@ b. 如果原团队需要保留，则可以在原团队先添加其他子账号�
 ---
 
 ---
+id: "20461"
+title: "工单管理"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20461"
+category: "绿洲编辑器基础内容"
+---
+
+# 工单管理
+
+创建于 2026-09-17 03:56
+
+工单管理系统是绿洲启元面向开发者提供的官方支持通道，覆盖编辑器技术支持答疑、发布/测试/运营流程咨询、外网紧急问题响应等场景。开发者通过自助建单的方式提交问题，单据会根据问题类型自动指派给对应的平台工作人员进行处理。本文介绍工单管理的使用流程、单据内容填写规范、状态含义与跟进方式，便于开发者高效完成问题反馈与跟踪。
+
+## 一、背景说明
+
+在玩法开发的全生命周期中，开发者经常会遇到编辑器能力咨询、提审与运营流程问题、外网线上紧急异常等诉求。绿洲启元鼓励开发者优先通过工单系统进行问题沟通，相较于私聊沟通，工单系统能够：
+
+  * **统一记录与可追溯** ：所有沟通内容沉淀在单据内，便于后续回看与版本对照。
+  * **高效分派** ：根据单据类型自动指派给对应模块的工作人员，避免中转与延误。
+  * **支持高频诉求迭代** ：官方能够从工单数据中识别高频问题，并以此驱动平台能力与流程的持续优化。
+  * **后续能力扩展** ：工单系统后续将迭代接入 AI 分析能力，辅助快速定位工程代码类问题。
+
+## 二、入口说明
+
+工单管理入口位于 [绿洲启元管理平台](<https://gpeditor.qq.com/auth?authsrc=user#myprojects>) 内。开发者使用已开通编辑器权限的账号登录管理平台后，可在管理平台中访问工单管理模块并发起建单。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/pAMclimage.png)
+
+### 账号管理要求
+
+使用工单管理功能前，请确保当前登录账号同时满足以下条件：
+
+  * 账号已在绿洲启元生态内申请并开通编辑器权限。
+  * 账号体系下挂有项目（团队或个人项目均可）。
+  *
+
+> 账号权限与团队关系请参考[团队账号功能使用说明](<https://developer.gp.qq.com/wikieditor/#/catalog/380>)。如当前账号不满足条件，请联系团队主账号在 [绿洲启元管理平台](<https://gpeditor.qq.com/auth?authsrc=user#account>) 账号管理页中补全项目挂载。
+
+## 三、创建工单
+
+进入工单管理模块后，开发者可以根据问题类型选用不同的工单模板，点击【创建工单】即可进入单据编辑状态。系统会根据所选模板自动填充部分基础字段，减少重复填写。
+
+### 单据内容说明
+
+创建工单后，开发者需要补充单据内容。完整的单据应包含以下五部分信息：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/nqhxVimage.png)
+
+**① 标题内容**
+
+建议使用 `【项目名称 + 问题概述 + 诉求】` 的格式，例如 `【XX 玩法】编辑器中角色无法触发复活`。简洁明确的标题有助于工作人员快速判断问题归属。
+
+**② 模板内容**
+
+按照所选模板的提示逐项补充描述信息，例如复现步骤、期望结果、实际结果、影响范围、出现频次等。模板字段是为该类问题设计的最少必要信息集，建议完整填写。
+
+**③ Job ID**
+
+工单内容中需要提供提审包 `Job ID`（提审后的版本标识），便于工作人员定位到具体的工程版本。若当前问题尚未提审、无 `Job ID`，请先输出纯数字占位字段，并在附件提供工程压缩包。
+
+**④ 问题类型**
+
+下拉选择问题类型，常见分类包括：
+
+  * **技术支持** ：编辑器能力使用、脚本与蓝图问题、调试工具使用等。
+  * **流程咨询** ：发布、测试、提审、运营等流程类问题。
+  * **外网问题** ：灰度期或正式上线后的线上异常、紧急修复请求等。
+
+请开发者根据实际情况选择最贴近的类型，便于系统自动分派。
+
+**⑤ 提交按钮**
+
+确认所有信息填写无误后，点击【提交】即可完成建单。系统会按照问题类型自动指派给对应的平台工作人员，进入待处理状态。
+
+## 四、消息提醒
+
+工单提交后，所有后续的进度变化都会通过站内消息中心通知开发者。
+
+  * **① 红点提醒** ：当单据状态发生变化（例如已分派、已回复、已完结）时，平台右上角头像处的消息中心会出现红点提示。
+  * **② 通知详情** ：点击消息中心进入消息列表后，可查看工单答疑的提醒说明，点击超链接可跳转到该工单的详细页继续跟进。
+  * **③ 评论区补充说明** ：当平台工作人员需要联系开发者补充内容时，会在该工单的评论区留下说明，开发者可进入工单详情页查看并回复。
+
+## 五、紧急情况说明
+
+工单系统部分场景下可能存在回复链路较长或平台工作人员补充说明不够清晰的情况。
+
+针对上述情况，开发者在建单后还可以采取以下方式获取更直接的协助：
+
+  * **评论区补充说明** ：平台工作人员联系开发者进行内容补充时，会在工单的评论区补充说明详情，请开发者及时查看评论区内容并配合回复。
+  * **人工通道** ：如果出现紧急问题、或工单评论区补充说明仍不清晰的情况，开发者可在工单详情页复制单据编号，通过官方团队人工进行咨询。
+
+## 六、单据状态与跟进
+
+工单系统会跟踪每一个单据所处的处理阶段，开发者可通过单据详情页查看当前状态，并根据状态推进后续沟通与跟进。
+
+### 状态说明
+
+工单系统中常见的四类状态及其含义如下：
+
+状态名称 | 含义 | 典型场景
+---|---|---
+**规划中** | 单据已提交，平台正在根据问题类型转交给对应工作人员 | 新建工单提交后的初始状态
+**实现中** | 单据已进入工作人员处理流程，例如已转给技术人员查证 | 工作人员确认接手，开始排查
+**已实现** | 单据已回复或处理完毕，进入完结状态 | 问题已解决或已给出明确答复
+**已拒绝** | 单据被判定为无效，例如重复单据、内容缺失或不符 | 与历史单据重复、缺少关键信息无法处理等
+
+### 状态流转示意
+
+单据的典型流转路径如下：
+
+```
+规划中（待分派） ──► 实现中（处理中） ──► 已实现（已完结）
+                       │
+                       └─► 已拒绝
+```
+
+> 同一单据在"实现中"与"已实现"之间可能存在多轮沟通（评论区内补充说明、追问与回复），最终由工作人员关闭或由开发者确认完结。
+
+### 跟进建议
+
+  * 单据提交后如长时间停留在"规划中"，请确认标题与问题类型是否清晰，便于平台快速分派。
+  * 单据进入"实现中"后，请关注评论区通知并及时补充工作人员要求的资料。
+  * 单据完结后若仍有问题，可在工单详情页追加内容或重新发起新单据（建议附上原单据编号便于追溯）。
+  * 单据被标记为"已拒绝"时，请先根据拒绝原因调整后再发起新单据，避免重复被拒。
+
+## 注意事项
+
+  1. **优先使用工单系统** ：相较于私聊沟通，工单系统具有可追溯、自动分派、可度量的优势，是官方推荐的统一支持渠道。
+  2. **账号与权限前置** ：使用前请确认账号已开通编辑器权限且已挂项目，否则将无法访问工单管理入口。
+  3. **模板字段完整填写** ：模板字段是针对该类问题设计的最小必要信息集合，缺失关键字段会导致处理人无法定位问题，进而延长处理时长。
+  4. **Job ID 准确性** ：工单内容中提供的 `Job ID` 必须为当前问题对应的提审包 ID，否则工作人员无法定位到具体版本。
+  5. **关注状态变化** ：单据状态变化会以站内消息形式通知，建议开发者定期查看消息中心红点，避免遗漏关键节点。
+  6. **评论区是主要沟通阵地** ：单据进入"实现中"后，工作人员主要通过工单评论区与开发者沟通，请勿仅依赖消息中心链接而忽略评论区内容。
+  7. **紧急情况走人工通道兜底** ：工单系统仍处于迭代初期，遇到紧急问题或评论区说明不清晰时，可在工单详情页复制单据编号后走官方人工通道咨询。
+  8. **后续能力扩展** ：工单系统后续将持续迭代，开发者可关注版本日志中的能力更新说明。
+
+
+---
+
+---
 id: "20414"
 title: "UGCAskQ MCP 使用说明"
 source: "https://developer.gp.qq.com/wikieditor/#/catalog/20414"
@@ -6150,7 +6445,7 @@ category: "绿洲编辑器基础内容/UGCAskQ MCP"
 
 # UGCAskQ MCP 使用说明
 
-创建于 2026-07-10 07:09 最后修改于 2026-08-26 10:59
+创建于 2026-07-10 07:09 最后修改于 2026-09-15 06:13
 
 > 本文档帮助开发者快速上手 UGCAskQ MCP，了解如何将 AI 助手接入绿洲启元编辑器，并高效完成玩法内容的制作。
 
@@ -6168,7 +6463,7 @@ category: "绿洲编辑器基础内容/UGCAskQ MCP"
 
 ## 概述
 
-UGCAskQ MCP（Model Context Protocol）是绿洲启元编辑器的 AI 协作接口，允许 Claude、Cursor 等 AI 助手直接读取和操作编辑器中的各类内容，让开发者可以通过自然语言来完成复杂的编辑器操作。
+UGCAskQ MCP（Model Context Protocol）是绿洲启元编辑器的 AI 协作接口，允许 Claude、Cursor、WorkBuddy、CodeBuddy 等 AI 助手直接读取和操作编辑器中的各类内容，让开发者可以通过自然语言来完成复杂的编辑器操作。AskQ 在 UGCEditor 内以本机 SSE 服务暴露编辑器能力。AI 客户端连上后，按「先读后写」的流程改工程数据：先调用只读接口确认当前值，再下达修改指令。
 
 连接后，AI 助手能够感知当前编辑器的状态（当前选中了哪些对象、场景里有什么、哪个技能配置了什么），并代替开发者执行操作，例如批量添加 Actor、配置技能属性、生成行为树节点等。
 
@@ -6189,6 +6484,22 @@ UGCAskQ MCP（Model Context Protocol）是绿洲启元编辑器的 AI 协作接�
 > **提示：** 如果端口连接失败，可以在面板中修改 Port 值后重新点击 Start Server。
 
 ### 第二步：在 AI 客户端中配置 MCP
+
+#### 自动配置
+
+在你的 AI 客户端里运行以下提示词：
+
+```
+请帮我在当前这个 AI 客户端里配置 AskQ（UGC 编辑器）MCP，要求：
+1. 先识别我现在用的是哪个客户端（例如 WorkBuddy、CodeBuddy、Claude Desktop、Cursor），以及它存 MCP 配置的位置与格式。不要假设一定是某一个产品。
+2. 合并写入，不要删掉已有其它 MCP 服务器。
+3. 增加或覆盖名为 UGC-AskQ 的 SSE 条目，地址：http://127.0.0.1:12463/sse
+若该客户端字段名不是 url（例如有的用 serverUrl / type:sse），按该客户端官方写法转换，语义不变。
+4. 配完告诉我：识别到的客户端、改了哪个文件、完整写入片段、是否需要我重启 MCP / 重载窗口。
+5. 如果本机 AskQ 端口不是 12463，或你不确定配置路径，先问我再写。
+```
+
+#### 手动配置
 
 以 Claude 为例，在项目根目录（或工作区根目录）创建 `.mcp.json` 文件，内容如下：
 
@@ -6367,45 +6678,59 @@ AI 可以辅助搭建怪物和 NPC 的行为逻辑，支持：
 
 * * *
 
+## 修常见编辑器报错
+
+把弹窗原文丢给 AI，比只说 “好像有问题” 有效得多。下面是绿洲启元编辑器里高频出现的几类校验弹窗，可以直接复制粘贴给 AI：
+
+  * ItemID[1001] Icon 不能为空
+  * ItemName 超过 15 字
+  * ItemDesc 超过 60 字
+  * ItemID 不在允许范围
+  * 虚拟物品映射 ID 不存在
+  * Shop ProductId 非法
+
+> ⚠️ AI 改完后，在编辑器里再点一次校验；**最终以编辑器与进游戏为准** ，AI 改完不代表真的过了平台校验。
+
+* * *
+
+## 易踩坑场景
+
+你想让 AI 做的事 | 现状 | 怎么办
+---|---|---
+一句话 “做完整套怪物系统（模型+AI+掉落+UI）” | 链路太长，中间易漏 | 拆开：先血量，再掉落，再刷怪
+同一批表靠对话改上百次 | 上下文膨胀，又慢又贵 | 拆成几次短对话，或先改一小批
+只说 “帮我优化一下手感” | 目标不具体 | 说清字段与目标值，如 “开火间隔从 0.1 改到 0.15”
+
+> **说清楚「改谁、改哪个字段、改成多少」，成功率最高。**
+
+* * *
+
+## 说法对照
+
+更好（发给 AI） | 含糊（容易跑偏）
+---|---
+“把 哥布林 的最大生命改成 500” | “怪物弱一点”
+“把铲子 MaxCount 改成 1，保存” | “工具别堆叠”
+“报错：ItemName 超 15 字，帮我缩短并写回” | “名字不对”
+“列出当前所有种子物品的 ItemID” | “看看物品”
+
+* * *
+
 ## 推荐使用方式
 
-### 用法一：批量内容生成
-
-当需要在场景中批量放置同类内容时，MCP 能显著节省时间。例如：
-
-> _“按照以下坐标列表，在场景中放置 10 个 BP_Bush：(100,0,0), (200,0,0)…，缩放随机在 0.8 到 1.2 之间”_
-
-* * *
-
-### 用法二：技能原型快速迭代
-
-在策划阶段，可以用自然语言快速配置技能原型，让 AI 帮你填写各种参数：
-
-> _“我想做一个冲刺技能：按下后主角向前冲 500 单位，期间无敌 0.3 秒，冷却 8 秒，请帮我在技能编辑器里创建这个技能并配置好基础参数”_
-
-* * *
-
-### 用法三：配置核查与批量修改
-
-当需要核查或修改大量配置时，可以让 AI 读取后汇总：
-
-> _“读取所有近战类技能，列出它们的冷却时间，找出冷却时间超过 10 秒的技能”_
-
-* * *
-
-### 用法四：UI 布局辅助
-
-描述你想要的界面样式，让 AI 帮你搭建控件结构：
-
-> _“帮我做一个简单的游戏结算界面：顶部是大字标题，中间是分数显示，底部是返回大厅按钮”_
-
-* * *
-
-### 用法五：行为树搭建
-
-向 AI 描述 NPC 或怪物的行为逻辑，由 AI 负责节点的添加和连接：
-
-> _“帮我给巡逻小怪搭建一个行为树：默认沿路点巡逻，发现玩家后追击，追击超过 15 秒或距离超过 800 则放弃追击回到巡逻”_
+场景 | 你对 AI 说（示例） | AI 大致做什么
+---|---|---
+改数值/属性 | “把哥布林血量改成 500，攻击改成 30” | 定位怪物配置，改字段并保存
+改物品字段 | “铲子叠加上限改成 1，质量改成蓝” | 改堆叠、品质等
+改展示名 | “胡萝卜种子的展示名改成『胡萝卜种子』” | 改名称
+调武器手感 | “这把枪射速慢一点，伤害高一点” | 调武器相关数值
+摸底清单 | “当前工程里有哪些物品？” | 列物编 / 资产
+改前确认 | “这个怪物现在血量是多少？” | 只读查询
+批量巡检 | “商店表里 ProductId 不合法的有哪些？” | 按平台规则筛表
+修校验弹窗 | 粘贴报错全文或截图 | 定位表 / 物品并改完
+场景摆放 | “在出生点附近摆一个宝箱” | 场景内摆放了对应资源
+同类批量 | “把这 8 个种子物品的重量都改成 0.1” | 多资产多次 plan 或批处理
+预览验证 | “进 PIE 试一下” / “热更 Lua 再试” | 启动测试
 
 * * *
 
@@ -6428,16 +6753,133 @@ A: 可以。AI 会感知到你当前选中的 Actor 或打开的编辑器，可�
 
 * * *
 
-## 注意事项
+## 推荐使用节奏
 
-  * MCP Server 仅接受来自**本机** 的连接，不支持远程访问。
-  * AI 的操作效果会直接反映在编辑器中，**建议操作前先保存工程** ，避免误操作导致数据丢失。
-  * 复杂的多步骤操作（如完整的关卡搭建），建议分阶段让 AI 执行，每个阶段确认效果后再继续。
-  * 部分编辑器（如特效编辑器、音频编辑器等）当前暂无 MCP 接口，操作这些模块时仍需在编辑器中手动完成。
+  1. **连上先摸底** ：让 AI 报告当前工程里有哪些对象、目标现在叫什么，再下达修改指令。
+  2. **一次改一件事** ：先 “血量 500”，确认保存后再改攻击；避免一句话让 AI 同时改 5 个字段。
+  3. **改完自己点校验或进 PIE** ：AI 改完不代表过了平台校验，最终以编辑器校验与进游戏为准。
 
 * * *
 
-_最后更新：2026-06-22_
+## 注意事项
+
+  * MCP 仅接受**本机** 连接（默认 127.0.0.1），不支持远程访问；不要把端口暴露到公网。
+  * AI 操作直接作用于工程，**操作前请先保存并备份工程** ，避免误操作导致数据丢失。
+  * 复杂的多步骤操作（完整关卡搭建）请分阶段让 AI 执行，每阶段确认效果后再继续。
+  * 部分编辑器（**特效编辑器、音频编辑器** 等）当前暂无 MCP 接口，操作这些模块时仍需在编辑器内手动完成。
+  * 实验性功能：MCP 仍处于早期迭代，可能不稳定；建议每次只让 AI 执行一小步、逐步验证。
+
+* * *
+
+
+---
+
+---
+id: "20464"
+title: "通过UGC-AskQ制作编辑器工具"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20464"
+category: "绿洲编辑器基础内容/UGCAskQ MCP"
+---
+
+# 通过UGC-AskQ制作编辑器工具
+
+# 通过 UGC-AskQ 制作编辑器工具
+
+创建于 2026-09-15 08:43
+
+本文介绍一种工程化做法：把绿洲启元编辑器里反复要做的批量操作（例如批量改物品属性、批量校验收货字段、按条件巡检工程），先用自然语言描述清楚需求，让 AI 协助落成一份独立可运行的小工具（如 `npm start` 启动的本地网页面板、`.mjs` 脚本等）。该工具直连 `AskQ MCP` 编辑器接口，之后所有重复操作都通过工具本身执行，避免编辑器卡顿，也减少对 AI 对话的依赖。
+
+> **前置条件** ：UGCEditor 已打开目标玩法工程，且 `AskQ MCP` 已启动（默认监听 `http://127.0.0.1:12463/sse`，端口可在编辑器 MCP 控制面板内调整）。本文的所有示例均以物品编辑器为演示场景，其它模块的方法论相同。
+
+![性能测试面板](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/zyrzyimage.png)
+
+## 一、怎么用自然语言描述工具需求
+
+本节先讲方法论，第 3 节给一个完整示例。
+
+### 描述示例对照
+
+无需先写代码，下面是一段已经验证可用的描述，从每段里抠出关键约束，AI 就能产出一个能跑的网页面板：
+
+段位 | 示例文本
+---|---
+目标 | “策划想批量改物品名称和品质”
+看到什么 | “列出当前工程所有 Item 物编，显示 ItemName、ItemQuality、MaxCount”
+可改字段 | “可以改 ItemName / ItemQuality / MaxCount / UnitWeight / ItemDetail，保存后写回编辑器”
+界面 | “左边列表，右边表单，选中后改字段，点保存按钮提交”
+后续扩展 | “支持按名称搜索过滤；以后可能要做批量改同一品质的所有物品”
+
+> 描述越具体，AI 产出的工具越准
+
+### 一个完整的需求描述示范
+
+直接把下面这段贴给 AI，工具即可成型：
+
+> 做一个本地网页工具，直连 `AskQ MCP`（地址 `127.0.0.1:12463`）：
+>
+>   * 打开后自动读当前工程和地图
+>   * 左边列出所有 `Item` 物编，支持按名称 / `ItemID` 搜索
+>   * 右边选中物品后，可以改 `ItemName` / `ItemQuality` / `MaxCount` / `UnitWeight` / `ItemDetail`
+>   * 点 **保存到编辑器** 后走 `plan + write` 流程，改完自动刷新列表
+>   * 参考本仓库已有的 `askq-client.mjs` 和 `server.js` 结构
+>
+
+>
+> 不要每次靠 AI 手动点 MCP，做成独立工具，`npm start` 就能跑。
+
+把开发环境和模板工程位置告诉 AI 后，AI 会生成脚本、网页与启动方式；开发者需要做的只剩"运行—验收—改字段再写"。
+
+### 描述技巧
+
+写描述时，建议遵守下面三条：
+
+  1. **先说结果，再说过程** ：“我要一个网页能改物品属性” 比 “我想做一个 React 项目” 更明确，更容易收敛。AI 会按结果反推过程。
+  2. **点名字段名** ：知道要改 `ItemQuality` 就直接写；不确定时说 “物品的品质相关字段”，让 AI 自己列出再让开发者勾选。含糊的"那个东西"会让 AI 猜字段名。
+  3. **改完要核对** ：描述里明确"改之前列出当前值，改完再读回来确认"。`AskQ MCP` 是先读后写协议，没有"读回核对"这一句，模型容易一步到位直接写，写错没办法回退。
+
+## 二、动手做第一个工具：物品管理面板
+
+本节用"读工程 → 列物编 `Item` → 改 CDO 字段 → 保存回编辑器"为例，展示从一句话需求到一个能跑的本地面板的完整产出。
+
+### 工具长什么样
+
+启动后，浏览器打开面板，实际效果：
+
+  * 顶部展示当前工程（`MCPTool`）与当前地图（`UGCmap`）。
+  * 左侧是 `Item` 物编列表，列出当前工程内全部 114 个物品，每个物品带真实图标缩略图。
+  * 右侧是字段表单，选中左侧任一物品后即可编辑其 `ItemName` / `ItemQuality` / `MaxCount` / `UnitWeight` / `ItemDetail`。
+  * 底部是 **保存到编辑器** 按钮，点击后走 `plan → write` 流程，写入成功后自动刷新左侧列表并高亮刚改过的行。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/LEJ3Iimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Rg5GEimage.png)
+
+### 当时给 AI 的需求
+
+下面这段需求已经被实际跑通，是落到 AI 的输入原文：
+
+> 做一个网页工具，列出当前工程所有 `Item`，选中后可以改 `ItemName` / `ItemQuality` / `MaxCount` / `UnitWeight` / `ItemDetail`，保存后写回编辑器。左边列表右边表单，直连 `AskQ MCP`。
+
+**你用自然语言描述需求，AI 帮你写成工具；之后所有批改都由工具直连 MCP 完成，稳定、可重复。**
+
+## 三、可继续延伸的工具类型
+
+描述时讲工具本身：给谁用、看到什么、能做什么。
+
+工具类型 | 工具长什么样（描述示例）
+---|---
+批改参数 | “我想按品质筛选物品，勾选一批后统一改 `MaxCount`；改之前先看当前值，改完能核对有没有生效”
+巡检 / 体检 | “一键扫一遍工程里所有 `Item`，把 `ItemName` 为空、超过 20 字、`Icon` 没填的都列出来，方便策划逐项修”
+批量物编 | “我有一个物品模板，想按编号批量创建 `Item_001` 到 `Item_010`，创建时能指定共用的品质和叠加上限”
+可视化面板 | “策划用的网页：左边是当前工程所有 `Item` 列表，能搜索；右边选中后改名称、品质、叠加上限，保存后写回编辑器”
+自动校验 | “提交前自动检查所有 `Item` 的 `ItemID` 是否在合法范围，不合规的列出来并阻止提交”
+
+> 凡是「同一个操作要重复做很多遍」的，都可以先用自然语言把工具长什么样说清楚，再交给 AI 落成脚本或网页。
+
+## 四、要点回顾
+
+  1. **描述要具体** ：字段名、界面布局、批量规则——说得越清楚，AI 生成的工具越准。
+  2. **做成独立工具** ：让 AI 写成 `npm start` 或 `node xxx.mjs` 就能跑的脚本 / 网页，而不是一段一次性脚本。
+  3. **先读后写** ：描述里写清楚 “改之前列出当前值，改完再读回来确认”。
 
 
 ---
@@ -6991,6 +7433,182 @@ category: "新手入门/资源管理与编辑"
   * 迁移物品蓝图时，其信息不会自动录入表格 `UGCBattleltem` ，迁移完成后需要在目标工程打开对应物品蓝图，打开后系统将自动完成物品ID的生成与表格更新
   * 不建议基于操作系统文件资源管理器直接复制资源文件至其他工程，否则会导致资源引用关系异常，请规范使用编辑器的资产迁移功能
   * 从资源商店下载资源并导入工程后，其产生在 `ExtendResource` 目录的资源暂不支持资产迁移
+
+
+---
+
+---
+id: "20455"
+title: "外部资产浏览器"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20455"
+category: "新手入门/资源管理与编辑"
+---
+
+# 外部资产浏览器
+
+# UAsset Browser 外部资产浏览器使用说明
+
+创建于 2026-09-15 08:44
+
+UAssetBrowser（简称 UAB）是绿洲启元编辑器内置的外部资产浏览器，用于将磁盘上散落的、不属于当前玩法项目的 `.uasset` 资产文件，通过独立浏览面板进行可视化管理，并一键导入到当前玩法项目中。
+
+## 一、功能简介
+
+### 为什么需要 UAB
+
+玩法项目内的内容浏览器（Content Browser）只能显示"当前项目已加载的资源"。但在实际开发中，开发者经常需要引用以下来源的资产：
+
+  * 其他玩法项目的资产
+  * 旧项目备份
+  * 同事发来的资产压缩包
+  * 个人素材库
+
+这些文件对内容浏览器不可见，UAB 通过独立的资产索引系统解决该问题。
+
+### 核心工作流
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/PEdzXimage.png)
+
+### 关键特性
+
+  * 支持导入尚未加载到玩法项目的外部 `.uasset`
+  * 保留源资产完整数据（缩略图、元数据全部保真）
+  * 导入时自动分析依赖并一并复制
+  * 玩法项目类型的资产路径自动重映射，避免引用断裂
+
+## 二、前置条件
+
+条件 | 说明
+---|---
+绿洲启元编辑器 | Windows 版绿洲启元编辑器已启动
+当前玩法项目 | 已打开一个玩法项目
+源 uasset 文件 | 绿洲启元编辑器兼容的 `.uasset` 格式
+磁盘权限 | 对源目录具有读权限，对目标玩法项目目录具有读写权限
+
+## 三、打开 UAB 面板
+
+UAB 作为独立 Tab 挂载在绿洲启元编辑器内，打开后可拖动停靠到编辑器任意位置。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/BX210image.png)
+
+## 四、UAB 面板界面介绍
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/YJKwBimage.png)
+
+区域 | 功能
+---|---
+顶部工具栏 | 添加浏览源按钮、搜索框、过滤器
+左侧目录树 | 显示已添加的浏览源及子目录结构，点击节点切换
+右侧资产列表 | 显示当前选中目录下的所有 `.uasset`，支持缩略图预览
+底部状态栏 | 显示扫描到的资产数量、文件夹数量等信息
+
+## 五、添加浏览源目录
+
+### 操作步骤
+
+  1. 点击 UAB 顶部工具栏的 **Add** 按钮。
+  2. 在弹出的目录选择对话框中选择目标目录，例如：
+     * `D:\玩法项目\ProjectA\Asset`
+     * `E:\Backup\Assets`
+  3. 点击确认。
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/zxGcrimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/axcwnimage.png)
+
+UAB 会自动扫描该目录及所有子目录里的 `.uasset` 文件，完成后：
+
+  * 左侧目录树出现新的根节点
+  * 右侧资产列表显示扫描到的所有 `.uasset`（含缩略图）
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/ZDIOhimage.png)
+添加的浏览源会自动保存到编辑器配置中，下次打开绿洲启元编辑器时自动恢复。建议把常用的外部资产源（团队资产库、个人素材目录）永久添加为浏览源。
+
+## 六、浏览与筛选资产
+
+### 目录树导航
+
+点击左侧目录树的节点，右侧资产列表会切换显示该目录下的 `.uasset`。展开/折叠节点可以浏览子目录。
+
+### 搜索与过滤
+
+在顶部搜索框输入关键字（不区分大小写），资产列表会实时过滤出名称匹配的资产。UAB 还提供按类型、标签等维度的过滤器。
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/GxZNkimage.png)
+
+### 缩略图预览
+
+鼠标悬停在资产上，会显示 ToolTip 提示框，展示资产元信息（资产类型、缩略图等）。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/lnRbOimage.png)
+
+## 七、导入资产到当前玩法项目
+
+这是 UAB 的核心功能，将选中的外部资产导入到当前打开的玩法项目中。
+
+### 操作步骤
+
+  1. 在 UAB 资产列表中选中一个或多个 `.uasset`（Ctrl 多选或 Shift 连续选择）。
+  2. 按住左键拖拽选中的资产，移动到玩法项目内容浏览器面板的目标子目录上方。
+  3. 释放鼠标，弹出确认菜单。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/SeCg9image.png)
+
+### 确认菜单
+
+菜单项 | 含义 | 适用场景
+---|---|---
+Import To Current Project | 保留源资产的相对目录结构导入 | 推荐默认选项，保持目录结构清晰
+FlatImport To Current Folder | 忽略源目录结构，全部平铺到目标目录 | 需要重新组织资产结构时使用
+
+导入完成后，UAB 会自动执行**依赖分析、文件拷贝、路径修复、加载刷新** ，完成后：
+
+  * 内容浏览器自动刷新，显示新导入的资产并高亮选中
+  * 源资产的相对目录结构完整还原
+  * 所有依赖资产被一并复制（除非该依赖已存在于宿主项目目录中）
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/kALq1image.png)
+
+## 八、常见使用场景
+
+### 场景 1：跨玩法项目共享资产
+
+**需求** ：项目 A 的开发者制作了一个技能特效，项目 B 的开发者希望直接复用。
+
+**操作** ：
+
+  1. 打开绿洲启元编辑器，打开项目 B。
+  2. 用 UAB 添加项目 A 的资产目录为浏览源，例如 `D:\玩法项目\ProjectA\Asset`。
+  3. 在目录树中找到目标资产，例如 `VFX/Skills/Fireball.uasset`。
+  4. 拖拽到项目 B 的内容浏览器目标目录，选择 **FlatImport To Current Folder** 。
+
+**结果** ：项目 A 的 `.uasset` 及其依赖全部复制到项目 B，无需项目 A 处于打开状态。
+
+### 场景 2：从旧项目备份恢复资产
+
+**需求** ：老项目目录已从工作区移除，但硬盘上还有备份。
+
+**操作** ：用 UAB 添加备份目录为浏览源（例如 `E:\Backup\OldProject_2025\Asset`），用搜索框定位资产后拖拽到当前玩法项目。
+
+**结果** ：资产及其依赖被复制到当前项目，备份目录的文件不受影响。
+
+### 场景 3：快速审阅外部资产
+
+**需求** ：同事发来一个 zip 包，含 100 个 `.uasset`，希望先查看再决定是否采用。
+
+**操作** ：解压 zip 到本地目录（例如 `D:\Temp\Review`），用 UAB 添加该目录为浏览源，**只浏览、不导入** ；审阅完毕后移除该浏览源即可。
+
+**结果** ：UAB 的数据不会影响当前玩法项目，审阅过程中可随时移除浏览源。
+
+## 九、使用建议
+
+### 推荐做法
+
+  * **永久添加常用资产源** ：团队资产库、个人素材目录等常用来源建议永久添加为浏览源，下次打开编辑器时自动恢复。
+  * **批量导入前开启回滚** ：确保批量导入失败时能自动回滚，避免部分导入导致状态不一致；建议提前做好备份或版本管理。
+
+### 注意事项
+
+  * **UAB 是只读浏览器** ：不要在 UAB 中直接编辑资产。如需编辑，请先将资产导入到当前玩法项目。
+
+  * **编辑器版本兼容性** ：UAB 的导入是文件级拷贝，不会重新序列化。如果源 `.uasset` 是其他编辑器版本打包的，可能加载失败。建议每次导入资产之后，手动将新增的资产执行保存/编译操作。
 
 
 ---
@@ -8221,9 +8839,9 @@ category: "新手入门/游戏场景/场景编辑基础"
 
 # PCG工具箱
 
-创建于 2026-05-19 12:12 最后修改于 2026-08-12 10:41
+创建于 2026-05-19 12:12 最后修改于 2026-09-15 08:43
 
-在绿洲启元编辑器中，开发者可以使用PCG工具箱，快速编辑并生成路面。它由样条线组件（Spline）和程序化生成（PGC）相关的规则组成，通过调整曲线和改变配置规则，可以生成不同效果的道路、桥梁和交叉路口。
+在绿洲启元编辑器中，开发者可以使用PCG工具箱，快速编辑并生成路面。它由样条线组件（Spline）和程序化生成（PCG）相关的规则组成，通过调整曲线和改变配置规则，可以生成不同效果的道路、桥梁和交叉路口。
 
 ![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/IXcxhimage.png)
 
@@ -8328,19 +8946,54 @@ category: "新手入门/游戏场景/场景编辑基础"
 
 ![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/N7Go7image.png)
 
-## 装饰物编辑
+## 实例编辑
 
-在PCG工具箱点击“Instance”，进入装饰物编辑模式。
+### 样条实例编辑
 
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/p3PnUimage.png)
+在PCG工具箱点击“样条实例”，进入样条实例编辑模式。
 
-根据自身需求，编辑需要生成的装饰物、生成间隔以及大小范围。
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/YxwUjimage.png)
 
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/gNUH6image.png)
+根据自身需求，编辑需要生成的样条实例、生成间隔以及大小范围。
 
-装饰物编辑方式和道路的类似。
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/2cLSDimage.png)
+
+样条实例的编辑方式与道路类似。
 
 ![splineinstance.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/u5Ogbsplineinstance.gif)
+
+* * *
+
+### 样条Mesh编辑
+
+样条线 Mesh 允许通过组合多个不同的网格模型，生成多样化的连贯效果
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/UANChimage.png)
+
+在PCG工具箱点击“样条Mesh”，进入样条Mesh编辑模式。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/tUXOPimage.png)
+
+配置属性以及说明如下：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/jpQwvimage.png)
+
+属性名称 | 说明
+---|---
+Select Mesh Mode | 选择网格模式，用于控制样条Mesh的生成方式
+• 随机：根据【Mesh】配置，在生成时随机选择其中一个Mesh
+• 间隔放置：根据【Mesh】配置，按固定顺序生成
+Random Seed | 随机种子。支持手动输入数值，用于锁定特定的随机效果，避免每次生成的结果过于一致
+Distance | 每个网格的生成长度，单位：cm
+Mesh | 参与生成的网格列表，支持添加多个数组元素
+Scale Min | 生成样条Mesh时的最小缩放倍率
+Scale Max | 生成样条Mesh时的最大缩放倍率
+Offset Min | 生成样条Mesh时的最小位置偏移量
+Offset Max | 生成样条Mesh时的最大位置偏移量
+
+样条Mesh的编辑方式与道路类似。
+
+![_20260813_164408-ezgif.com-video-to-gif-converter.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/rNkVs_20260813_164408-ezgif.com-video-to-gif-converter.gif)
 
 ## 自定义效果
 
@@ -8378,7 +9031,7 @@ Rail End | 终点围栏配置
 Mesh | 围栏模型（需使用通用物件/Spline材质）
 Offset | 围栏生成时的位置偏移量
 Rotation | 围栏生成时的角度偏移量
-SampleDistance | 单次生成围栏的长度，达到该长度后将切换至下一段围栏配置，，单位：cm
+SampleDistance | 单次生成围栏的长度，达到该长度后将切换至下一段围栏配置，单位：cm
 Forward | 围栏延伸方向对应的轴向
 
 * * *
@@ -8470,7 +9123,7 @@ Up | 人行道朝向上方的轴向
 
 ## 道路模型规范
 
-开发者可以根据自身需求制作路面模型，导入的模型中，Pivot需在最左侧，道路延申方向为X轴正轴，模型导入步骤可参见 [静态模型导入](<https://developer.gp.qq.com/wikieditor/#/catalog/277?autoJump=%E9%9D%99%E6%80%81%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5>)。
+开发者可以根据自身需求制作路面模型，导入的模型中，Pivot需在最左侧，道路延伸方向为X轴正轴，模型导入步骤可参见 [静态模型导入](<https://developer.gp.qq.com/wikieditor/#/catalog/277?autoJump=%E9%9D%99%E6%80%81%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5>)。
 
 ![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/v2sdwimage.png)
 
@@ -9542,6 +10195,298 @@ end
 ## 注意事项：
 
 在同一个Actor中发送的CallUnrealRPC事件，在另一端接收可以保证接收顺序，但是在不同Actor中发送的RPC事件则无法保证接收顺序，如需严格保序的数据，建议在同一个Actor中进行发送。
+
+
+---
+
+---
+id: "20457"
+title: "Actor属性复制"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20457"
+category: "进阶内容"
+---
+
+# Actor属性复制
+
+创建于 2026-09-16 10:05
+
+绿洲启元基于 UE4 引擎的网络同步体系下，同一个 Actor 在 DS 与多个 Client 上各存在一份；**复制属性** 就是 DS 把 Actor 上的数据"推"给 Client 的机制。本文档面向 UGC Lua 开发者，系统介绍四种复制属性类型（`Lifetime` / `RepOnce` / `InitialOnlyList` / `Blacklist`）的声明方式、触发 API 与典型场景，作为 [网络同步系统介绍](<https://developer.gp.qq.com/wikieditor/#/catalog/203>) 中"属性同步"一节的实操补充。
+
+* * *
+
+## 一、什么是复制属性
+
+在多人游戏中，同一个 Actor 在 **DS** 和 **多个 Client** 上各存在一份。**复制属性** 就是 DS 把 Actor 上的数据"推"给 Client 的机制。整体流向：
+
+> DS 修改属性 → 触发同步 → Client 收到新值 → Client 逻辑使用新值
+
+UGC 玩法中常见的需要复制的属性：玩家血量/积分/状态、机关开关、任务进度、阶段切换、排行榜数据。
+
+> **基础概念** 请参见 [绿洲启元玩法开发框架介绍](<https://developer.gp.qq.com/wikieditor/#/catalog/352>) 中"DS & Client"一节；本词条聚焦 Lua 侧的声明与触发 API。
+
+* * *
+
+## 二、四种复制属性类型
+
+类型 | 同步行为 | 典型用途
+---|---|---
+**`Lifetime`** | DS 每次复制时自动比对，有变化就同步 | 高频变化的属性（坐标、状态）
+**`RepOnce`** | 修改后需主动调用 `DOREPONCE`，下次复制时才比对 | 绝大多数普通属性（**推荐默认使用** ）
+**`InitialOnlyList`** | 首次复制到 Client 时写入初始包，之后不再同步 | 配置类、只在 Actor 出现时需要一次的属性
+**`Blacklist`** | 直接禁用差异比对和复制 | 确认不需要同步的属性
+
+> **UGC 开发者最常用的是`RepOnce`**。90% 以上的复制属性变化频率都很低，用 `RepOnce` 能显著降低 DS 开销。
+
+### 速查：四种类型在 Lua 中的使用形式
+
+核心区别：**声明在哪个函数 + 是否需要主动调用`DOREPONCE`**。
+
+类型 | 声明函数 | 触发方式 | 是否需要 `DOREPONCE`
+---|---|---|---
+**`Lifetime`** | `GetReplicatedProperties` | 自动 | ❌ 不需要
+**`RepOnce`** | `GetReplicatedProperties`（常配 `Lazy`） | `DOREPONCE` | ✅ 需要
+**`InitialOnlyList`** | `GetInitialOnlyListReplicatedProps` | 自动（首次复制时） | ❌ 不需要
+**`Blacklist`** | `GetBlackListReplicatedProps` | — | ❌ 永远不复制
+
+#### 1\. `Lifetime`（自动同步）
+
+```
+function MyActor:GetReplicatedProperties()
+    return "Health"                       -- 默认 Auto，即 Lifetime
+end
+
+function MyActor:TakeDamage(Dmg)
+    self.Health = self.Health - Dmg       -- 改值即可，引擎自动比对
+end
+```
+
+#### 2\. `RepOnce`（按需同步，最常用）
+
+```
+function MyActor:GetReplicatedProperties()
+    return {"CurrentPhase", "Lazy"}       -- 配 Lazy 一起用
+end
+
+function MyActor:ChangePhase(NewPhase)
+    self.CurrentPhase = NewPhase
+    DOREPONCE(self, "CurrentPhase")       -- 不调 Client 收不到
+end
+```
+
+> 如果属性是 C++/蓝图预声明的（非 Lua 声明），不需要 `GetReplicatedProperties`，直接用 `DOREPONCE_NATIVE(self, "isFoodAdded")`。
+
+#### 3\. `InitialOnlyList`（首次复制专用）
+
+```
+function MyActor:GetInitialOnlyListReplicatedProps()
+    return "LevelID", "Difficulty", "MaxPlayers"
+end
+
+function MyActor:ReceiveBeginPlay()
+    self.LevelID = 101
+    self.Difficulty = 0.8
+    self.MaxPlayers = 32                  -- Client 首次看到 Actor 时自动收到，之后不再同步
+end
+```
+
+#### 4\. `Blacklist`（禁用同步）
+
+```
+function MyActor:GetBlackListReplicatedProps()
+    return "bTearOff", "bCanBeDamaged"    -- 通常是继承自父类、但用不到的属性
+end
+```
+
+### Condition 参数
+
+`GetReplicatedProperties` 第三个参数可指定复制条件，常用 `OwnerOnly`（只同步给 Owner Client）：
+
+```
+function MyActor:GetReplicatedProperties()
+    return
+        "a",                              -- 默认 Auto
+        {"b", "Auto"},                    -- 显式 Auto
+        {"c", "Lazy"},                    -- Lazy
+        {"d", "Lazy", "OwnerOnly"}        -- Lazy + 只给 Owner 同步
+end
+```
+
+### 两个触发 API 对比
+
+接口 | 适用属性 | 是否需要 `GetReplicatedProperties`
+---|---|---
+`DOREPONCE(self, name)` | Lua 声明的属性 | 是
+`DOREPONCE_NATIVE(self, name)` | C++/蓝图预声明的属性 | 否
+
+> **口诀** ：Lua 自己的属性用 `DOREPONCE`，引擎给的属性用 `DOREPONCE_NATIVE`。
+
+### 一句话总结
+
+> **自动同步** → `GetReplicatedProperties` \+ 不调用 `DOREPONCE`
+>  **按需同步** → `GetReplicatedProperties` \+ 改值后 `DOREPONCE`
+>  **一次性下发** → `GetInitialOnlyListReplicatedProps` \+ `BeginPlay` 里设值
+>  **禁用属性** → `GetBlackListReplicatedProps` 列出属性名
+
+* * *
+
+## 三、如何选择：决策指南
+
+![](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Ycckzreplication_decision_flowchart_v1.png)
+
+不确定就先用 **`RepOnce`** —— 开销最小，触发时机最可控。
+
+### 场景对照表
+
+场景 | 推荐类型 | 原因
+---|---|---
+游戏阶段切换 | `RepOnce` | 阶段性变化，频率低
+玩家血量 | `Lifetime` | 每帧变化
+玩家积分、击杀数 | `RepOnce` | 离散事件触发
+关卡一次性配置 | `InitialOnlyList` | 只关心首次值
+内置但用不到的属性 | `Blacklist` | 减少无谓复制
+任务进度数组 | `RepOnce` \+ `Lazy` | 多数时间不变，按需触发
+
+* * *
+
+## 四、实战案例
+
+### 案例 1：游戏阶段切换（`RepOnce`）
+
+```
+function UGCGameMode:GetReplicatedProperties()
+    return {"CurrentPhase", "Lazy"}
+end
+
+function UGCGameMode:ChangePhase(NewPhase)
+    self.CurrentPhase = NewPhase
+    DOREPONCE(self, "CurrentPhase")
+end
+```
+
+### 案例 2：玩家血量（`Lifetime`）
+
+```
+function UGCPlayerPawn:GetReplicatedProperties()
+    return "Health"
+end
+
+function UGCPlayerPawn:TakeDamage(Damage)
+    self.Health = self.Health - Damage     -- 无需 DOREPONCE
+end
+```
+
+### 案例 3：关卡配置下发（`InitialOnlyList`）
+
+```
+function LevelActor:GetInitialOnlyListReplicatedProps()
+    return "LevelID", "Difficulty", "RecommendedPlayers"
+end
+
+function LevelActor:ReceiveBeginPlay()
+    self.LevelID = self:GetCurrentLevelID()
+    self.Difficulty = GameConfig.GetDifficulty()
+    self.RecommendedPlayers = GameConfig.GetRecommendedPlayers()
+end
+```
+
+### 案例 4：`Lazy` 列表按需同步
+
+```
+function EscapePlayerController:GetReplicatedProperties()
+    return "EscapeCoin", "KillNums", "KillPlayerNums", {"DebugSpeLimitItemArray", "Lazy"}
+end
+
+function EscapePlayerController:GMDebugSpeDropItem()
+    if self:HasAuthority() then
+        local GameMode = GameplayStatics.GetGameMode(self)
+        if GameMode and GameMode.EscapeItemLimit then
+            self.DebugSpeLimitItemArray = ToTable_Dev(GameMode.EscapeItemLimit:GetItemListArray())
+            DOREPONCE(self, "DebugSpeLimitItemArray")
+        end
+    end
+end
+```
+
+### 案例 5：同步 C++ 预声明属性
+
+```
+function BTF_GameMode:InitStartSpot(StartSpot, NewPlayer)
+    local PlayerState = NewPlayer.PlayerState
+    PlayerState.LiveState = ExtraPlayerLiveState.InDefault
+    DOREPONCE_NATIVE(PlayerState, "LiveState")    -- 属性来自 C++，用 _NATIVE
+end
+```
+
+### 案例 6：禁用冗余属性（`Blacklist`）
+
+```
+function MyActor:GetBlackListReplicatedProps()
+    return "bTearOff", "bCanBeDamaged"
+end
+```
+
+* * *
+
+## 五、常见问题
+
+**Q1：4 种类型可以混用吗？**
+可以，每个属性独立声明。如 `return "Health", {"Inventory", "Lazy"}`。
+
+**Q2：连续多次调用`DOREPONCE` 有问题吗？**
+没有，幂等。但无意义的重复应避免。
+
+**Q3：调用`DOREPONCE` 后 Client 什么时候收到？**
+下次网络复制时，取决于 Actor 复制频率和 DS 负载。需要立即触发可加 [`ForceNetUpdate()`](<https://developer.gp.qq.com/api/#/searchContent/AActor?classDetailShow=true&path=class%2Fdetail%2FOthers%2FAActor.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=AActor&autoJump=ForceNetUpdate>)
+
+**Q4：Client 能直接修改复制属性吗？**
+不能，Client 修改不会回传 DS。要让 DS 感知，用 RPC（参考 [网络同步系统介绍](<https://developer.gp.qq.com/wikieditor/#/catalog/203>) 中"RPC"一节）。
+
+**Q5：怎么判断属性是 Lua 声明还是 C++/蓝图预声明？**
+在 `GetReplicatedProperties` 里的 → Lua 声明，用 `DOREPONCE`；不在但 Actor 上有 `UPROPERTY(Replicated)` 标记的 → 引擎预声明，用 `DOREPONCE_NATIVE`。
+
+**Q6：`Lazy` 属性忘了调 `DOREPONCE` 会怎样？**
+Client 永远收不到变化（除 Actor 首次出现的初始值）。这是"Client 没看到新值"最常见的根因。
+
+* * *
+
+## 六、最佳实践
+
+  1. **默认用`RepOnce`（`Lazy`）**——除非高频变化或一次性配置。
+  2. **`DOREPONCE` 紧跟修改之后**——避免中间出错导致"改值了但忘了同步"。
+  3. **不要在 Client 调用`DOREPONCE`**——同步是 DS 主动推，Client 调用无效。
+  4. **慎用`InitialOnlyList`**——只对"首次出现时"的 Client 有效，后加入的 Client 收不到。UGC 玩法大部分场景用 `RepOnce` 更安全。
+  5. **`Blacklist` 只用于明确不用的属性**——误标会导致"Client 没收到"难排查。
+
+* * *
+
+## 注意事项
+
+  * 复制属性的 `OnRep_变量名()` 回调**无法保证顺序** ，存在强依赖的属性应合并到同一 Lua Table 中一起同步（详见 [网络同步系统介绍](<https://developer.gp.qq.com/wikieditor/#/catalog/203>) “属性同步 - 注意事项”）。
+  * 同一帧内多次修改同一个属性，**只有最后一次值会被同步** ，中间的修改会丢失。
+  * 修改后必须主动调用 `DOREPONCE` / `DOREPONCE_NATIVE` 才会触发同步，**仅赋值不会同步** 。
+  * 复制方向固定是 **DS → Client** ，Client 上的修改不会回传 DS；如需 Client → DS 通信请使用 RPC。
+  * "属性是否需要复制"应以业务需求判断，**默认原则是"不需要就不声明"** ，避免无谓的 DS 开销。
+
+* * *
+
+## 接口索引
+
+接口 | 用途
+---|---
+`GetReplicatedProperties` | 声明 `Lifetime` / `RepOnce`(`Lazy`) 属性
+`GetInitialOnlyListReplicatedProps` | 声明 `InitialOnlyList` 属性
+`GetBlackListReplicatedProps` | 声明禁用属性
+`DOREPONCE(self, name)` | 标记 Lua 声明的属性为脏
+`DOREPONCE_NATIVE(self, name)` | 标记 C++/蓝图声明的属性为脏
+`ForceNetUpdate()` | 强制立即触发一次网络更新
+
+* * *
+
+## 相关文档
+
+  * [网络同步系统介绍](<https://developer.gp.qq.com/wikieditor/#/catalog/203>) —— 属性同步基础概念、监听 `OnRep_变量名()` 写法、RPC 同步方法
+  * [绿洲启元玩法开发框架介绍](<https://developer.gp.qq.com/wikieditor/#/catalog/352>) —— DS / Client 协作模型、`GameMode` / `GameState` / `PlayerController` / `PlayerState` 适用场景
+  * [修改主角属性](<https://developer.gp.qq.com/wikieditor/#/catalog/153>) —— 玩家属性在 `PlayerState` / `PlayerPawn` 上的存放与修改实践
 
 
 ---
@@ -11025,6 +11970,127 @@ Avatar展示Actor显示Avatar后，点击“PlayAnim”按键，该Actor会循�
 点击“StopAnim”按键，该Actor播放一次指定动画后停止。
 
 ![停止播放2.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/7gpGn%E5%81%9C%E6%AD%A2%E6%92%AD%E6%94%BE2.gif)
+
+
+---
+
+---
+id: "20466"
+title: "角色AI托管"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20466"
+category: "进阶内容/GamePlay系统/角色系统"
+---
+
+# 角色AI托管
+
+创建于 2026-09-15 06:31
+
+## 概述
+
+游戏中常见的自动战斗、自动寻路相关功能，会使得玩家操作的角色临时处于托管状态，并按一定预设好的行为逻辑自动行动，在这个过程中，玩家如果进行了任何操作，就又会恢复手动操作。在绿洲编辑器下，欲实现这样一套功能，可以使用新提供的 `UGCPlayerAIHostComponent` 来解决。角色AI托管依赖导航网格系统作为前提，具体配置方式请参考[导航网格](<https://developer.gp.qq.com/wikieditor/#/catalog/20266>)。
+
+## 添加UGCPlayerAIHostComponent组件
+
+在 `PlayerController` 蓝图中添加 `UGCPlayerAIHostComponent` 组件
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/WcoA6image.png)
+
+给PlayerController挂载了该组件后，且调用接口激活了该组件的托管模式后，角色就会使用配置的行为树里的行为逻辑，进行托管操作了。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/LqKroimage.png)
+
+参数 | 说明
+---|---
+AIHostBTAsset | AI托管组件默认运行的行为树。托管时，会启用该行为树，则玩家角色会以该行为树的配置行为逻辑自动执行相应行为。也可以默认不配置，运行时动态传进去——用于控制不同需求下可能需要用不同的行为树的情况（比如自动战斗、自动寻路应该是俩不同的行为树）
+没有操作自动托管 | 如果玩家在自由操作模式下，如果经过一段时间没有操作，是否自动进入托管状态
+任一操作退出托管 | 玩家在托管状态下，如果进行了任一一个操作，会直接退出托管，恢复自由操作
+进入托管挂机时间 | 自由操作模式下，没有操作自动进入托管的时间
+踢出对局托管时间 | 玩家进入托管了多久后，会自动踢出对局
+
+## 制作玩家托管使用的行为树
+
+制作玩家托管行为树的方案和制作怪物行为树的原理类似。但需要注意的是，并非所有节点都能在玩家托管行为树中使用，对于此种行为树，可参考现成提供好的一个自动战斗行为树资产。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/NlTPeimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/HlTz5image.png)
+
+将刚才制作好的行为树添加到组件上
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Ka1a7image.png)
+
+## 通过技能开/关托管功能
+
+在**技能编辑器** 中的 自动战斗 模板下创建托管技能模板，并将创建好的[技能添加](<https://developer.gp.qq.com/wikieditor/#/catalog/20091?autoJump=%E6%B7%BB%E5%8A%A0%E6%8A%80%E8%83%BD>)到 `UGCPlayerPawn` 蓝图上。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/2prA0image.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/JaTXgimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/J0QsXimage.png)
+
+完成技能配置后启动调试效果如下：
+
+![2026-08-1917-45-16-ezgif.com-video-to-gif-converter.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/WPD1r2026-08-1917-45-16-ezgif.com-video-to-gif-converter.gif)
+
+## 手动调用API开/关托管功能
+
+### 获取AI托管组件
+
+```
+    local Controller = OwnerActor:GetControllerSafety()
+    if not UE.IsValid(Controller) then
+        return nil
+    end
+
+    local AIHostCompClass = LoadClass("/Script/UGCGame.UGCPlayerAIHostComponent")
+    if not AIHostCompClass then
+        print('AIHostCompClass is Not Valid.............')
+        return nil
+    end
+
+    local AIHostComp = Controller:GetComponentByClass(AIHostCompClass)
+    if not UE.IsValid(AIHostComp) then
+        print('AIHostComp is Not Valid.............')
+        return nil
+    end
+
+return AIHostComp
+```
+
+### 开启托管并透传行为树
+
+```
+	--服务端调用
+ local HostComp = self:GetAIHostComponent(self:GetOwnerActor())
+ if UE.IsValid(HostComp) then
+     --HostComp:ServerRequestStartAIHosting()
+     HostComp:StopAIHosting()
+     HostComp.AIHostBTAsset = self.AutoCombatBTAsset
+     --HostComp.bAutoStartAIHost = true
+     HostComp:StartAIHosting()
+end
+```
+
+### 退出托管
+
+```
+--服务端调用
+local HostComp = self:GetAIHostComponent(self:GetOwnerActor())
+if UE.IsValid(HostComp) then
+    print('test432 StopAIHosting')
+    HostComp:StopAIHosting()
+    --HostComp.bAutoStartAIHost = false
+end
+```
+
+#### 没有操作自动托管
+
+如果需要使用该功能，不建议直接在组件上开启该选项，因为一旦开启，由于组件是持续生效的，则会导致玩家在进入游戏后，只要没有操作一段时间就进入托管状态。（当然如果就是需要这种效果也可以这么使用。）通常还是建议，组件上默认关闭，开启了托管模式后，再打开该开关，关闭了托管模式，同时也将该开关关掉。
+
+```
+local HostComp = self:GetAIHostComponent(self:GetOwnerActor())
+if UE.IsValid(HostComp) then
+    HostComp.bAutoStartAIHost = true
+end
+```
 
 
 ---
@@ -19395,7 +20461,7 @@ category: "进阶内容/GamePlay系统/物资系统/物资编辑器2.0"
 
 # 背包系统
 
-创建于 2026-04-24 07:29
+创建于 2026-04-24 07:29 最后修改于 2026-09-20 08:19
 
 配合 [物品编辑器](<https://developer.gp.qq.com/wikieditor/?timeStamp=1725589224096#/catalog/20101>) 构建的全新背包系统，区别于和平精英经典背包的单列布局结构，新背包采用网格布局的设计，加入了背包扩容的概念，在继承物品基础操作和可堆叠的功能上，支持持久化存储物品数据的能力，并扩展出装备栏和仓库的独立功能，使得新的背包系统更通用、扩展性更强，为开发者打造多元化的绿洲玩法提供能力支撑。
 
@@ -19763,6 +20829,14 @@ end
 
 * * *
 
+#### 背包拖拽开关
+
+通过取消勾选关闭内置的拖拽逻辑，开发者可以通过 `UGCGommonUISystem.AddDragSuccess` 自行处理相关逻辑。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Ebum8image.png)
+
+* * *
+
 ### 自定义装备栏
 
 装备栏的槽位分为武器槽位和装备槽位两部分，其中武器槽位包含2个固定预设的主副武器槽位，除此之外，开发者可以修改和扩展自定义的槽位。
@@ -19825,6 +20899,112 @@ end
   * 最大仓库格子容量：仓库最大网格数，包含空闲状态和待解锁状态，也即 **`待解锁格子数 = 最大格子容量 - 默认格子容量`**
 
 ![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/KgQpXimage.png)
+
+## 背包持久化数据分析（GM工具）
+
+在 V2 背包中，物品实例化数据（CustomData）会随玩家背包/仓库一同持久化。当开发者在物品编辑器中为单个物品挂载过多自定义实例化数据，或玩家持有的物品数量过多时，会导致：
+
+  * 持久化数据膨胀：单次保存数据量过大，影响存档性能与稳定性
+  * 超出存储上限：可能触发持久化失败或被截断
+  * 不易自查：开发者无法直观看到自己玩法下的背包持久化数据规模
+
+此功能提供了一套面向开发者的【V2背包持久化数据大小分析】能力，可在 DS 端通过 GM 按钮一键检测当前玩家的背包数据规模、定位超限物品，并输出优化建议。
+
+### 功能能力
+
+**1\. 新增 API：UGCBackpackSystemV2.GetBackpackPersistData**
+
+获取玩家的完整背包持久化数据（只读），用于分析与优化数据大小。
+
+```
+---获取背包完整持久化数据（只读）
+---在背包数据持久化时，会以此数据执行
+---可以通过这个接口，分析并优化持久化数据大小和物品实例化数据大小
+---生效范围：服务器
+---@param Player PlayerPawn | PlayerController @玩家角色或者玩家控制器
+---@param ContainsNoPersist boolean @true:包含不持久化物品数据, false:仅包含持久化物品数据. 默认false
+---@return table @背包完整持久化数据
+function UGCBackpackSystemV2.GetBackpackPersistData(Player, ContainsNoPersist)
+```
+
+返回值结构（与实际持久化落地的数据一致）：
+
+```
+{
+    BackpackInstanceData  = {...}, -- 背包物品实例化数据
+    WareHouseInstanceData = {...}, -- 仓库物品实例化数据
+    CellCapacity          = {...}, -- 已解锁的背包格子容量
+    WareHouseCellCapacity = {...}, -- 已解锁的仓库格子容量
+    DepotMaxCount         = number,
+    DisableSlots          = {...}, -- 被禁用的装备槽位
+    FailedBackpackItemsCache = {...}, -- 加背包失败的物品缓存
+}
+```
+
+> 仅在服务器端生效。客户端调用会返回 nil。
+
+**2\. GM 按钮：分析背包/物品数据**
+
+在 GM 面板的「背包」分组下新增按钮，按钮触发之后，在 DS（服务器）端执行，对触发 GM 的玩家做一次完整分析。
+
+内置阈值：
+
+项 | 阈值 | 含义
+---|---|---
+TOTAL_SIZE_LIMIT | 256 KB | 单个玩家背包持久化数据整体大小上限
+BACKPACK_ITEM_LIMIT | 200 | 背包物品数量上限
+WAREHOUSE_ITEM_LIMIT | 200 | 仓库物品数量上限
+SINGLE_ITEM_SIZE_LIMIT | 0.5 KB | 单个物品实例化数据大小上限
+
+分析维度：
+
+  1. 整体持久化数据大小：通过 UGCPlayerStateSystem.GetTableDataSize 计算总字节数，超过 TOTAL_SIZE_LIMIT 时输出告警。
+  2. 背包/仓库物品数量：超过对应上限时告警并提示玩家清理或扩容。
+  3. 单个物品实例化数据大小：遍历背包与仓库，找出每件物品的实例化数据大小：
+     * 输出最大单个物品大小及对应 ItemID
+     * 收集所有超过 SINGLE_ITEM_SIZE_LIMIT 的物品，按大小降序排序，输出前 10 条 [WARNING]，多余条目以 [NOTICE] 统一说明剩余数量
+  4. 输出汇总结论：若无超限项，输出「数据占用情况良好」；否则汇总所有告警。
+
+日志格式：
+
+DS 日志中可通过关键字 V2背包持久化数据大小分析 直接检索，示例片段：
+
+```
+========== [V2背包物品实例化数据分析] PlayerController:xxx Begin ==========
+[背包] 物品数量:N 最大单个物品数据大小:xx (ItemID:yyy)
+[仓库] 物品数量:M 最大单个物品数据大小:xx (ItemID:yyy)
+[Result] 检测到 K 条告警/提示：
+  [WARNING] 背包 中物品(ItemID:xxx) 实例化数据大小 xx 已超出单个物品限制 0.50KB...
+  [NOTICE]  背包 中共有 N 个超限物品，仅展示数据最大的前 10 条，剩余 N-10 条已省略。
+========== [V2背包物品实例化数据分析] PlayerController:xxx End ==========
+```
+
+### 使用方式
+
+**方式一：GM 面板（推荐自查使用）**
+
+  1. 启动调试进入对局，打开 GM 面板。
+  2. 在【背包】分组下点击【分析背包/物品数据】按钮。
+  3. 在DS日志中搜索关键字 `V2背包持久化数据大小分析` ，即可看到完整的分析报告与告警。
+
+**方式二：调用开放化 API（自定义分析流程）**
+
+开发者可在自己的服务器端 Lua 中调用 GetBackpackPersistData，结合自定义的统计逻辑，构建周期性巡检或持久化前校验：
+
+```
+local Data = UGCBackpackSystemV2.GetBackpackPersistData(PC, false)
+if Data then
+    -- TODO: 通过 UGCPlayerStateSystem.GetTableDataSize 等接口分析数据规模
+end
+```
+
+### 优化建议
+
+当检测到告警时，建议按以下方向优化：
+
+  * 单物品实例化数据超限：精简该物品 CustomData 中的字段，避免存储大字符串、嵌套表、不必要的运行时缓存
+  * 背包/仓库物品数量超限：通过销毁、合并堆叠、扩容或调整玩法节奏来控制玩家持有的物品数量
+  * 整体数据超限：综合上述两点，优先治理单物品大小最大的若干物品，可显著降低整体持久化压力
 
 ## API参考
 
@@ -20780,7 +21960,7 @@ category: "进阶内容/GamePlay系统/物资系统/物资编辑器2.0"
 
 # 自定义拾取组件
 
-创建于 2026-07-27 11:03 最后修改于 2026-09-08 10:58
+创建于 2026-07-27 11:03 最后修改于 2026-09-17 03:57
 
 物品编辑器提供了自定义拾取权重和自动拾取数量的配置，开发者能够通过开启自定义拾取组件使其生效，让自定义物品可以按照权重在拾取列表中排序和自动拾取，且支持关闭原有拾取列表UI，启用自定义的拾取物控件交互UI。
 
@@ -20951,7 +22131,7 @@ function UGC_WrapperNameWidget_UIBP:CanShowPickUpWidget()
     if not UE.IsValid(self.WrapperActor) then return false end
     -- 仅显示831开头的UGC物品
     local DefineID = self.WrapperActor:GetDefineID()
-    return tostring(DefineID.TypeID):sub(1, 3) == "831"
+    return tostring(DefineID.TypeSpecificID):sub(1, 3) == "831"
 end
 ```
 
@@ -22085,6 +23265,689 @@ self._cachedItemDefineID = UGCBackpackSystemV2.GetItemDataV2(Player, ItemID)
 local defineID = UGCBackpackSystemV2.GetItemDataV2(Player, ItemID)
 self._cachedItemDefineID = totable(defineID)
 ```
+
+
+---
+
+---
+id: "20475"
+title: "背包UI开放"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20475"
+category: "进阶内容/GamePlay系统/物资系统/物资编辑器2.0"
+---
+
+# 背包UI开放
+
+创建于 2026-09-16 06:27
+
+背包UI的开放允许开发者自定义V2背包的每一个UI控件，做出不同风格的背包面板，在控件模板的lua中自定义显示逻辑。
+
+## 配置方式
+
+在【UI编辑器】->【元件】中找到背包各部位对应的控件UI模板，选择需要创建的自定义背包UI控件。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/PZ3TAimage.png)
+
+在【玩法通用设置】->【GamePart】中添加【GP_Backpack_V2】，创建一个自定义的V2背包UI组件 `BP_BackpackUIComponentV2_Custom`。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/DiHDCimage.png)
+
+在V2背包UI组件中替换背包对应部位的UI控件。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/skNbUimage.png)
+
+## 各部位控件的lua和效果展示
+
+### 背包入口按钮
+
+**Lua**
+
+核心的Lua实现是背包的容量更新：
+
+```
+---更新容量显示
+function Bag_1_Enter:UpdateCapacity(CurrentCount, MaxCapacity)
+    self.CurrentCapacity = CurrentCount or 0
+    self.MaxCapacity = MaxCapacity or 1
+
+    -- 计算进度百分比
+    local Percent = 0
+    if self.MaxCapacity > 0 then
+        Percent = math.min(self.CurrentCapacity / self.MaxCapacity, 1.0)
+    end
+
+    -- 满容状态
+    local bFull = self.CurrentCapacity >= self.MaxCapacity
+    if bFull then
+        self.Image_FullStatus:SetVisibility(ESlateVisibility.Visible)
+    else
+        self.Image_FullStatus:SetVisibility(ESlateVisibility.Hidden)
+    end
+
+    -- 容量进度条
+    local DMI = self.Image_BackPackCDBar:GetDynamicMaterial()
+    if DMI then
+        DMI:SetScalarParameterValue("Mask_Percent", Percent)
+        if bFull then
+            self.Image_BackPackCDBar:SetVisibility(ESlateVisibility.Hidden)
+        else
+            self.Image_BackPackCDBar:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+        end
+    end
+end
+```
+
+**效果**
+
+无背包：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/VMysmimage.png)
+
+一级包：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/TVSR0image.png)
+
+二级包：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/JDHvrimage.png)
+
+三级包
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/iBYlDimage.png)
+
+背包满：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/CACKnimage.png)
+
+* * *
+
+### 物品显示控件
+
+通用物品格子控件用于显示物品图标、品质背景、品质条、数量文本、耐久遮罩和配件品质点列表，以及物品拖拽起来显示的图标。
+
+配置位置在【玩法通用设置】->【物品】：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/JWJpcimage.png)
+
+其中，物品格子的品质底图（Image_QualityBarBg）、品质条（Image_QualityBar），会读取物品物品的品质配置：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/xz2meimage.png)
+
+**Lua**
+
+核心的Lua实现是物品的信息显示：
+
+```
+---设置物品信息
+---根据物品ID或DefineID设置物品的图标、品质、数量等显示信息。
+---传入nil时显示空状态（空图标），传入DefineID时会额外显示实例的配件信息和耐久信息。
+---Count大于1时显示数量文本。
+---@param ItemData {Item: number|ItemDefineID, Count: number} @物品信息表，Item为物品ID或DefineID（nil则显示空状态），Count为物品数量
+function Bag_2_Common:SetItemInfo(ItemData)
+    self:Clear();
+
+    if ItemData == nil then
+        return
+    end
+
+    local Item = ItemData.Item
+    if Item == nil then
+        Item = ItemData.ItemDefineID or ItemData.ItemID
+
+        if Item == nil then
+            return
+        end
+    end
+
+    local Count = ItemData.Count or 0
+
+    if type(Item) == "number" then
+        self.ItemID = Item
+    else
+        self.ItemDefineID = totable(Item)
+        self.ItemID = Item.TypeSpecificID
+    end
+
+    -- 防御：无效 ItemID 直接保持空状态，避免异步加载空路径
+    if not self.ItemID or self.ItemID <= 0 then
+        return
+    end
+
+    self.Image_Null:SetVisibility(ESlateVisibility.Collapsed)
+    self.CanvasPanel_Icon:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    self.Image_Icon:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+
+    -- 异步加载物品图标（使用带皮肤的接口，优先显示玩家商业化皮肤图标）
+    local weakSelf = WeakObjectPtr(self)
+    local LocalPC = UGCGameSystem.GetLocalPlayerController()
+
+-- 根据传入参数类型选择不同的接口
+    local IconPath, Quality
+    if self.ItemDefineID then
+        IconPath = UGCItemSystemV2.GetItemIconWithPlayerSkinV2ByDefineID(self.ItemDefineID, LocalPC)
+        Quality = UGCItemSystemV2.GetItemQualityV2ByDefineID(self.ItemDefineID)
+    else
+        IconPath = UGCItemSystemV2.GetItemIconWithPlayerSkinV2(self.ItemID, LocalPC)
+        Quality = UGCItemSystemV2.GetItemQualityV2(self.ItemID)
+    end
+
+    UGCObjectUtility.AsyncLoadObjectBySoftPath(IconPath, function(LoadedTexture)
+        if weakSelf:IsValid() then
+            weakSelf:Get().Image_Icon:SetBrushFromTexture(LoadedTexture, false)
+        end
+    end)
+    self:SetQuality(Quality)
+
+    if Count and Count > 1 then
+        self.TextBlock_Num:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    end
+    self.TextBlock_Num:SetText(tostring(Count))
+
+    -- 如果是实例物品
+    if self.ItemDefineID then
+        -- 耐久遮罩
+        self:UpdateDurabilityMask();
+
+        -- 右上角 配件信息
+        self:UpdateAttachInfo();
+    end
+end
+```
+
+**效果**
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/ImCz3image.png)
+
+* * *
+
+### 背包格子控件
+
+背包格子控件用于承接背包相关的数据，如显示物品“新”、物品格子锁定、解锁货币等信息。
+
+**Lua**
+
+核心的Lua实现是背包格子的新、解锁：
+
+```
+---更新格子解锁状态
+---@param State EBackpackItemState @格子状态, 默认为Unlock
+function Bag_3_Grid:UpdateItemState(State)
+    self.State = State
+    if State == nil then
+        State = EBackpackItemState.Unlock
+    end
+
+    if State == EBackpackItemState.Lock then -- 格子上锁
+        if self.UGC_Common_Item_UIBP then
+            self.UGC_Common_Item_UIBP:SetVisibility(ESlateVisibility.Collapsed)
+        end
+        self.CanvasPanel_Lock:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    else
+        -- 解锁格子
+        if self.UGC_Common_Item_UIBP then
+            self.UGC_Common_Item_UIBP:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+        end
+        self.CanvasPanel_Lock:SetVisibility(ESlateVisibility.Collapsed)
+    end
+end
+
+---显示 新 标记
+---@param bNew boolean @是否显示 新 标记
+function Bag_3_Grid:SetIsNewItem(bNew)
+    if bNew and self.ItemDefineID and self.ItemDefineID.TypeSpecificID > 0 then
+        self.CanvasPanel_New:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    else
+        self.CanvasPanel_New:SetVisibility(ESlateVisibility.Collapsed)
+    end
+end
+```
+
+**效果**
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/FK7whimage.png)
+
+### 装备面板
+
+#### 主武器UI模板
+
+装备品质背景 `Image_QualityBar` 会读取玩法偶那个用配置上的 `装备品质条纹理`。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/67h8himage.png)
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/ToGK6image.png)
+
+**Lua**
+
+核心的实现是武器数据更新：
+
+```
+--更新武器展示信息
+--@param data table 武器数据
+function Bag_4_MainWeapon:UpdateCurrentDisplay(data)
+    self.UGCCommonDragDropItem:SetDragEnable(false)
+    if data == nil then
+        return
+    end
+
+    if self.TextBlock_TypeName then
+        self.TextBlock_TypeName:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+        local SlotDisplayName = nil
+        if self.SlotName then
+            SlotDisplayName = UGCItemSystemV2.GetDisplayNameBySlotName(self.ItemID, self.SlotName)
+        end
+        self.TextBlock_TypeName:SetText(SlotDisplayName or self.SlotName or "")
+    end
+
+    if self.ItemID and self.ItemID > 0 then
+        if self.Image_QualityBar then
+            self.Image_QualityBar:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+        end
+        if self.Image_Weaponcucoloris then
+            self.Image_Weaponcucoloris:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+        end
+
+        local ItemName, Quality
+        if self.ItemDefineID then
+            ItemName = UGCItemSystemV2.GetItemNameV2ByDefineID(self.ItemDefineID)
+            Quality = UGCItemSystemV2.GetItemQualityV2ByDefineID(self.ItemDefineID)
+        else
+            ItemName = UGCItemSystemV2.GetItemNameV2(self.ItemID)
+            Quality = UGCItemSystemV2.GetItemQualityV2(self.ItemID)
+        end
+        local QualityBgPath = UGCItemSystemV2.GetEquipmentQualityTexturePath(Quality)
+
+        if self.TextBlock_TypeName then
+            self.TextBlock_TypeName:SetText(ItemName)
+        end
+
+        if self.Image_QualityBar then
+            self.Image_QualityBar:SetVisibility(ESlateVisibility.Collapsed)
+        end
+        if self.Image_QualityBg then
+            self.Image_QualityBg:SetVisibility(ESlateVisibility.Collapsed)
+        end
+        local QualityBgWidget = self.Image_QualityBar or self.Image_QualityBg
+        if QualityBgWidget and QualityBgPath then
+            QualityBgWidget:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+            local weakSelf = WeakObjectPtr(self)
+            UGCObjectUtility.AsyncLoadObject(QualityBgPath, function(LoadedTexture)
+                if weakSelf:IsValid() then
+                    local selfObj = weakSelf:Get()
+                    if selfObj then
+                        if selfObj.Image_QualityBar then
+                            selfObj.Image_QualityBar:SetBrushFromTexture(LoadedTexture, false)
+                        elseif selfObj.Image_QualityBg then
+                            selfObj.Image_QualityBg:SetBrushFromTexture(LoadedTexture, false)
+                        end
+                    end
+                end
+            end)
+        end
+
+        if self.Image_TitleQualityBg then
+            local TitleQualityBgPath = UGCItemSystemV2.GetQualityBarTexturePath(Quality)
+            if TitleQualityBgPath then
+                local weakSelf = WeakObjectPtr(self)
+                UGCObjectUtility.AsyncLoadObject(TitleQualityBgPath, function(LoadedTexture)
+                    if weakSelf:IsValid() then
+                        local selfObj = weakSelf:Get()
+                        if selfObj and selfObj.Image_TitleQualityBg then
+                            selfObj.Image_TitleQualityBg:SetBrushFromTexture(LoadedTexture, false)
+                            selfObj.Image_TitleQualityBg.Brush.TintColor = {SpecifiedColor = {R = 1, G = 1, B = 1, A = 0.45}, ColorUseRule = 0}
+                        end
+                    end
+                end)
+            end
+        end
+
+        if self.Image_Weaponcucoloris then
+            local LocalPC = UGCGameSystem.GetLocalPlayerController()
+            local weakSelf = WeakObjectPtr(self)
+            local BigIconPath
+            if self.ItemDefineID then
+                BigIconPath = UGCItemSystemV2.GetBigIconTextureWithPlayerSkinV2ByDefineID(self.ItemDefineID, LocalPC)
+            else
+                BigIconPath = UGCItemSystemV2.GetBigIconTextureWithPlayerSkinV2(self.ItemID, LocalPC)
+            end
+            if BigIconPath then
+                UGCObjectUtility.AsyncLoadObjectBySoftPath(BigIconPath, function(LoadedTexture)
+                    if weakSelf:IsValid() then
+                        local selfObj = weakSelf:Get()
+                        if selfObj and selfObj.Image_Weaponcucoloris then
+                            selfObj.Image_Weaponcucoloris:SetBrushFromTexture(LoadedTexture, false)
+                        end
+                    end
+                end)
+            end
+        end
+
+        local PP = UGCGameSystem.GetLocalPlayerPawn()
+        if PP then
+            local UsingWeapon = UGCWeaponManagerSystem.GetCurrentWeapon(PP)
+            if UsingWeapon then
+                if self.ItemDefineID then
+                    local bIsCurrentWeapon = (UsingWeapon.ItemDefineID.InstanceID == self.ItemDefineID.InstanceID)
+                    if self.CurrentUsingText then
+                        if bIsCurrentWeapon then
+                            self.CurrentUsingText:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+                        else
+                            self.CurrentUsingText:SetVisibility(ESlateVisibility.Collapsed)
+                        end
+                    end
+                elseif self.CurrentUsingText then
+                    self.CurrentUsingText:SetVisibility(ESlateVisibility.Collapsed)
+                end
+            end
+        end
+
+        if PP and not IsMeleeSlot(self.SlotName) then
+            self:RetryGetWeapon(10, 0.02, function(Weapon)
+                if Weapon then
+                    if self.LastWeapon == nil or self.LastWeapon ~= Weapon then
+                        if CheckObjectContainsField(Weapon, "OnCurBulletChange") then
+                            Weapon.OnCurBulletChange:Add(function()
+                                self:UpdateWeaponBulletCount(Weapon)
+                            end)
+                        end
+                    end
+                    self.LastWeapon = Weapon
+
+                    self:UpdateWeaponBulletCount(Weapon)
+                    self:UpdateBulletType(Weapon)
+                end
+            end)
+        end
+
+        self.UGCCommonDragDropItem:SetDragEnable(true)
+        self:EnsureFittingWidgets(function()
+            self:UpdateAttachUI()
+        end)
+    end
+end
+```
+
+**效果**
+
+> 如果想要在装备栏上挂接自定义的UI组件，需要在UI更新的时候监听 data 是否为空，若为空则需要手动隐藏
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/S0U4Pimage.png)
+
+* * *
+
+#### 副武器UI模板
+
+**效果**
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/C1H58image.png)
+
+* * *
+
+#### 近战武器UI模板
+
+**效果**
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/qZ8TXimage.png)
+
+#### 配件槽位UI模板
+
+**效果**
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/HqIjIimage.png)
+
+### 物品详情面板
+
+#### 物品详情UI模板
+
+**Lua**
+
+核心实现是异步加载装备Widget、武器属性框Widget、配件列表Widget。
+
+**效果**
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/DxXGKimage.png)
+
+* * *
+
+#### 武器属性框UI模板
+
+武器属性框UI是一个容器，用来显示下面的武器属性条UI。
+
+**Lua**
+
+核心的实现是计算武器的各个维度的属性值：
+
+```
+local function CalculateWeaponPropertyList(ItemData)
+    if not ItemData then return {} end
+
+    local ItemID = (ItemData.ItemDefineID and ItemData.ItemDefineID.TypeSpecificID or 0)
+    if ItemID <= 0 then ItemID = ItemData.ItemID or 0 end
+
+    local ItemHandle = UGCItemSystemV2.GetConfigItemHandle(ItemID)
+    if not ItemHandle then
+        return {}
+    end
+
+    local PC = UGCGameSystem.GetLocalPlayerController()
+    local WeaponClass = ItemHandle:GetWeaponClass()
+    local Weapon = UGCGameSystem.NewObject(PC, WeaponClass)
+    if not Weapon or not UE.IsValid(Weapon) then
+        return {}
+    end
+
+    local isOverride = ItemHandle.bIsAttributeOverride
+
+    -- 最大值（用于计算百分比）
+    local MaxPower        = 150
+    local MaxShootRange   = 2000   -- 单位m，原始值单位cm
+    local MaxStability    = 10
+    local MaxClipCapacity = 120
+    local MaxShootSpeed   = 600
+
+    -- 威力
+    local power = isOverride and ItemHandle.BaseImpactDamage or Weapon:GetBulletBaseDamage()
+
+    -- 射程（原始单位cm，显示单位m）
+    local shootRange = isOverride and ItemHandle.BulletRange or Weapon:GetBulletRangeEntity()
+
+    -- 稳定性
+    local vRecoil      = Weapon:GetVerticalRecoilFactorModifier()
+    local hRecoil      = Weapon:GetHorizontalRecoilFactorModifier()
+    local shake        = Weapon:GetAnimationKickFromEntity()
+    local recoilFactor = isOverride and ItemHandle.RecoilFactor or Weapon.RecoilFactorWrapper.InnerDataProp
+    local stability    = (vRecoil + hRecoil) * recoilFactor + shake
+
+    -- 弹夹容量（先通过接口获取，再根据覆盖模式取值）
+    local clipCapacity = Weapon:GetMaxBulletNumInOneClipFromEntity(true)
+    if isOverride then
+        clipCapacity = ItemHandle.MaxBulletNumInOneClip
+    else
+        clipCapacity = Weapon.MaxBulletNumInOneClipWrapper.InnerDataProp
+    end
+
+    -- 射速
+    local shootInterval  = Weapon:GetShootIntervalFromEntity()
+    local reloadSpeed    = Weapon:GetReloadTime()
+    local intervalFactor = isOverride and ItemHandle.ShootIntervalFactor or Weapon.ShootIntervalFactorWrapper.InnerDataProp
+    if intervalFactor == nil or type(intervalFactor) ~= "number" then
+        intervalFactor = 1
+    end
+    -- reloadSpeed 可能返回 -1（表示不支持换弹），此时不应计入射速计算
+    local reloadContribution = (clipCapacity > 0 and reloadSpeed and reloadSpeed > 0) and (reloadSpeed / clipCapacity) or 0
+    local divisor            = shootInterval + reloadContribution
+    local shootSpeed         = divisor > 0 and (60 / divisor * intervalFactor) or 0
+
+    return {
+        { name = "威力",   value = power        / MaxPower,             rawValue = math.floor(power) },
+        { name = "射程",   value = shootRange    / MaxShootRange / 100,  rawValue = math.floor(shootRange / 100) },
+        { name = "稳定性", value = stability     / MaxStability,         rawValue = math.floor(stability) },
+        { name = "容量",   value = clipCapacity  / MaxClipCapacity,      rawValue = math.floor(clipCapacity) },
+        { name = "射速",   value = shootSpeed    / MaxShootSpeed,        rawValue = math.floor(shootSpeed) },
+    }
+end
+```
+
+**效果**
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/cKYP8image.png)
+
+* * *
+
+#### 配件列表UI模板
+
+**Lua**
+
+核心实现是初始化配件信息：
+
+```
+---初始化配件展示信息（图标、名称、品质、描述）
+---@param InParams table|nil @参数表 {DefineID: FItemDefineID, ItemID: number}
+function Bag_8_ListAtt:InitData(InParams)
+    InParams = InParams or {}
+    self.AttachItem = InParams
+    self:Clear()
+
+    local DefineID = InParams.DefineID
+    local ItemID = 0
+    if (DefineID and DefineID.TypeSpecificID or 0) > 0 then
+        ItemID = DefineID.TypeSpecificID
+    elseif InParams.ItemID and InParams.ItemID > 0 then
+        ItemID = InParams.ItemID
+    end
+    if ItemID <= 0 then
+        self:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+        return
+    end
+
+    local LocalPC = UGCGameSystem.GetLocalPlayerController()
+    local IconSoftPath, Quality, ItemName, desc
+    if DefineID then
+        IconSoftPath = UGCItemSystemV2.GetItemIconWithPlayerSkinV2ByDefineID(DefineID, LocalPC)
+        Quality = UGCItemSystemV2.GetItemQualityV2ByDefineID(DefineID)
+        ItemName = UGCItemSystemV2.GetItemNameV2ByDefineID(DefineID)
+        desc = UGCItemSystemV2.GetItemDetailV2ByDefineID(DefineID)
+    else
+        IconSoftPath = UGCItemSystemV2.GetItemIconWithPlayerSkinV2(ItemID, LocalPC)
+        Quality = UGCItemSystemV2.GetItemQualityV2(ItemID)
+        ItemName = UGCItemSystemV2.GetItemNameV2(ItemID)
+        desc = UGCItemSystemV2.GetItemDetailV2(ItemID)
+    end
+
+    -- 设置物品图标
+    local IconPath = KismetSystemLibrary.BreakSoftObjectPath(IconSoftPath)
+    if IconPath then
+        if self.Image_Icon then
+            self.Image_Icon:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+            FuncUtil.SetImageWithPathAsync(self.Image_Icon, IconPath)
+        end
+    end
+
+    -- 品质背景
+    local QualityBgPath = UGCItemSystemV2.GetQualityTexturePath(Quality)
+    if QualityBgPath and self.Image_Bg then
+        self.Image_Bg:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+        FuncUtil.SetImageWithPathAsync(self.Image_Bg, QualityBgPath)
+    end
+
+    -- 物品名称
+    if self.TextBlock_IconName then
+        self.TextBlock_IconName:SetText(ItemName)
+    end
+
+    -- 物品描述
+    if self.UTRichTextBlock_describe then
+        self.UTRichTextBlock_describe:SetText(desc)
+    end
+end
+```
+
+**效果**
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/iq6U2image.png)
+
+* * *
+
+#### 武器属性条UI模板
+
+武器属性条UI模板用于显示武器的单个属性数值，用进度条显示。
+
+**Lua**
+
+核心的实现是刷新两个物品的Data的对比：
+
+```
+---刷新数值对比显示
+function Bag_7_AttItem:RefreshCompare()
+    if self.PrevAttributeNum == nil then
+        self.WidgetSwitcher_Num:SetVisibility(ESlateVisibility.Collapsed)
+        return
+    end
+
+    local curNum = tonumber(self.AttributeNum) or 0
+    local prevNum = tonumber(self.PrevAttributeNum) or 0
+    local diff = curNum - prevNum
+
+    if diff < 0 then
+        self.HorizontalBox_decline:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+        self.HorizontalBox_UP:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+        self.WidgetSwitcher_Num:SetActiveWidgetIndex(0)
+        self.WidgetSwitcher_Num:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+        self.TextBlock_decline:SetText(tostring(diff))
+    elseif diff > 0 then
+        self.HorizontalBox_decline:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+        self.HorizontalBox_UP:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+        self.WidgetSwitcher_Num:SetActiveWidgetIndex(1)
+        self.WidgetSwitcher_Num:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+        self.TextBlock_Up:SetText("+" .. tostring(diff))
+    else
+        self.WidgetSwitcher_Num:SetVisibility(ESlateVisibility.Collapsed)
+    end
+end
+```
+
+**效果**
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/IXBkRimage.png)
+
+### 弹框面板
+
+#### TipsUI模板
+
+配置UI控件之后，参考 [背包接入UGCTips系统](<https://developer.gp.qq.com/wikieditor/#/catalog/20463>) 进行配置。
+
+**效果**
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/L37Umimage.png)
+
+* * *
+
+#### 购买/扩容确认弹框UI模板
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/6IIQLimage.png)
+
+* * *
+
+#### 取出代币弹框UI模板
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/uCKLmimage.png)
+
+* * *
+
+#### 丢弃物品弹框UI模板
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/0UV0ximage.png)
+
+* * *
+
+#### 销毁物品弹框UI模板
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/coCfrimage.png)
+
+* * *
+
+#### 数量选择控件UI模板
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/N4Y5cimage.png)
 
 
 ---
@@ -27175,6 +29038,358 @@ Preconstruct 时绑定两个消息：
 
   1. 单客户端触发怪物的血条显示后，将同步至其他满足条件的客户端可见
   2. 怪物血条显示方式可以使用多种搭配，只要满足任意一个配置方式就可以显示怪物血条，不会因为某个方式没激活或反激活使得别的显示方式不生效
+
+
+---
+
+---
+id: "20452"
+title: "刷怪点模板与改造使用"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20452"
+category: "进阶内容/GamePlay系统/怪物系统"
+---
+
+# 刷怪点模板与改造使用
+
+创建于 2026-09-14 05:51
+
+根据不同玩法刷怪需求，绿洲启元编辑器预设了四种刷怪点模板，本文档将介绍如何创建以及改造使用刷怪点模板。
+
+## 创建刷怪点蓝图
+
+编辑器菜单栏点击【实体编辑器】按钮，打开实体编辑器操作界面。
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/rElbnimage.png)
+
+在编辑器上方工具栏中打开【实体编辑器】，在【关卡元件】页签找到“刷怪点”模板，点击打开下拉栏可以看到预置的四种刷怪点模板。4个模板都继承自基类 **AUGCMobSpawner** ，基类提供 Range/Height/MaxAliveCount/SpawnCD 等通用参数。
+
+模板 | 适用场景
+---|---
+波次刷怪点 | 多波次分批，每波可换怪物类型
+路点刷怪点 | 怪物沿预设路径行走
+区域触发刷怪点 | 玩家进入触发区域后刷怪
+存活数量刷怪点 | 维持场内固定怪物数量
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/UFv4simage.png)
+
+## 配置刷怪点
+
+### 通用参数
+
+所有刷怪点模板都继承自 **AUGCMobSpawner** ，以下参数在基类蓝图中已提供，所有模板可直接使用：
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/PjOCPimage.png)
+
+属性名 | 属性说明
+---|---
+刷出的怪物阵营 | 默认为-1表示使用 [怪物蓝图中配置的阵营](<https://developer.gp.qq.com/wikieditor/#/catalog/20095?autoJump=%E8%AE%BE%E7%BD%AE%E6%80%AA%E7%89%A9%E9%98%B5%E8%90%A5>) ，若大于-1则会将此数据覆盖到刷出的怪物上
+刷怪器控制模式 | \- 管理器控制：需要使用**刷怪管理器** 引用这个刷怪点才可以让其刷怪
+\- 最大数量控制：刷怪点自动刷怪，仅当场上怪物数量 < `最大存活数量` 时才继续刷怪，同时刷怪总量仍然受最大/最小生成数量约束
+\- 无控制：刷怪点自动刷怪，且不受其他条件控制
+最大存活数量 | 仅对 `刷怪器控制模式` 为“最大数量控制”时生效，通常该设定值建议小于最小生成数量；例如设置为1，则代表怪物死亡一个再补充一个，直到刷出怪物的总量为最大刷怪数量为止
+怪物配置模式 | 支持蓝图配置，怪物组表，自定义三种模式
+\- 蓝图配置：`怪物蓝图` 属性可配，指定怪物蓝图类，刷固定种类的怪物
+\- 怪物组表：`怪物组ID` 属性可配，指定使用的刷怪策略
+\- 自定义参数：`自定义参数` 属性可配，可添加任意组KV结构的元素，通过 `自定义刷新规则` 实现怪物的生成
+使用NavMesh找随机点 | 是否优先在被 [导航网格](<https://developer.gp.qq.com/wikieditor/#/catalog/20266>) 覆盖的范围内刷怪
+随机朝向 | 怪物生成后的初始朝向，默认使用刷新点蓝图箭头组件的方向，否则随机朝向
+生成范围 | 刷新器以自身为中心的圆柱范围内寻找合适位置，生成范围为圆柱的半径（单位：厘米）
+生成高度范围 | 刷新器以自身为中心的圆柱范围内寻找合适位置，生成高度范围为圆柱的高度（单位：厘米）
+最小生成数量 | \- 当刷新器独立刷怪时，为可生成怪物总数量的最小值
+\- 当配合刷怪管理器使用时，为每波次生成怪物数量的最小值
+最大生成数量 | \- 当刷新器独立刷怪时，为可生成怪物总数量的最大值
+\- 当配合刷怪管理器使用时，为每波次生成怪物数量的最大值
+刷怪间隔(秒) | 每次刷怪的时间间隔，仅对刷新器独立刷怪有效
+单次刷怪数量 | 每次刷怪的固定数量，直到刷出怪物的总数达到最大值则停止刷怪，仅对刷新器独立刷怪有效
+刷在地面上 | 勾选后，会尽量将怪物贴近地面，防止生成在半空中
+
+> 基类已封装通用逻辑（刷怪位置生成、SpawnCD 节流、MaxAliveCount 上限等）。复杂行为才挂 Lua 模板；简单需求（如"维持固定数量"）只用基类配置即可生效。
+
+### 波次刷怪点
+
+波次刷怪点适用场景：副本分段挑战，每波不同的怪物和数量，怪物按方向角分散在刷怪器四周。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/X9d2Pimage.png)
+
+参数 | 说明
+---|---
+Mob Classes | 每波刷的怪物类（按索引对齐）
+Mob Counts | 每波刷几只怪
+Spawn Angles | 刷怪方向角（相对刷怪器朝向，度）
+Wave Delay | 波次间间隔（秒）
+Check Interval | 全灭检测间隔（秒）
+
+  * 位置算法：每个怪物位置 = CalcPositionByAngle(方向角) + Random(ScatterRange)；每只怪在基础方向角 ± ScatterRange 范围内随机散布
+
+**改造示例**
+
+  * 每波结束播特效
+
+```
+function WaveSpawnMob:OnAllWavesComplete()
+		print_dev("[WaveSpawnMob] All waves complete!")
+		self:PlayVictoryEffect()  -- 调用蓝图方法
+end
+```
+
+  * Boss 波次用不同逻辑（波次 3 是 BOSS）
+
+```
+function WaveSpawnMob:SpawnCurrentWave()
+		-- ...原有代码...
+		if self.WaveIndex == 3 then
+				local Boss = self:SpawnMob(MobClass)
+				if UE.IsValid(Boss) then
+						Boss:K2_SetActorLocation(self:K2_GetActorLocation() + Vector.New(0, 0, 100))
+				end
+				return
+		end
+		-- ...原有波次代码...
+end
+```
+
+  * 中途玩家死亡时终止刷怪
+
+```
+function WaveSpawnMob:ReceiveBeginPlay()
+		self:StartWaveSpawn()
+		self.OnPartyWipe:Add(self.HandlePartyWipe, self)
+end
+
+function WaveSpawnMob:HandlePartyWipe()
+		self:StopSpawn()
+		local WeakSelf = WeakObjectPtr(self)
+		Timer.InsertTimer(10.0, function()
+				if WeakSelf:IsValid() then
+						WeakSelf:Get():RestartWaves()
+				end
+		end)
+end
+```
+
+### 路点刷怪点
+
+路点刷怪点适用场景：怪物需要沿一条或多条路径行走（巡逻、追击、护送等）。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/yoKbQimage.png)
+
+参数 | 说明
+---|---
+Mob Classes | 每波刷的怪物类（按索引对齐）
+Mob Counts | 每波刷几只怪
+Wave Delay | 波次间间隔（秒）
+Check Interval | 全灭检测间隔（秒）
+Spawn Delay | 同波次内单只刷怪间隔（秒）
+Find Waypoint Type | 路径模式（见下表）
+
+路径模式：
+
+FindWaypointType | 是否循环 | 是否原路返回 | 典型用途
+---|---|---|---
+CircleLoop（0） | 是 | 否 | 永久巡逻（最常用）
+OneWay | 否 | 否 | 一次性迁徙（走到终点就停）
+OneWayReturn | 否 | 是 | 哨兵来回巡逻
+OneWayLoop | 是 | 是 | 巡逻 + 来回走
+
+**改造示例**
+
+  * 自定义路径选择（部分怪走 A 路，部分走 B 路）
+
+```
+function WayPointSpawnMob:SetSpawnMob(Mob)
+		if not Mob or not UE.IsValid(Mob) then return end
+
+		Mob:K2_SetActorLocation(self:K2_GetActorLocation())
+		local LogicPartComp = Mob.LogicPartManagerComp
+		local Tag = STExtraGameplayStatics.RequestGameplayTag("LogicPart.Class.FollowWaypoint", true)
+		local FollowPart = LogicPartComp:GetLogicPartByTag(Tag)
+		if not FollowPart then return end
+
+		local IsCycle = (self.FindWaypointType == 0 or self.FindWaypointType == 3)
+		local IsReturn = (self.FindWaypointType == 2 or self.FindWaypointType == 3)
+
+		if self.CurrentWaveSpawnedCount % 2 == 0 then
+				local HalfCount = math.floor(#self.CacheWaypointInfos / 2)
+				local GroupA = {}
+				for i = 1, HalfCount do table.insert(GroupA, self.CacheWaypointInfos[i]) end
+				FollowPart:SetWaypoints(GroupA, IsCycle, IsReturn)
+		else
+				local HalfCount = math.floor(#self.CacheWaypointInfos / 2)
+				local GroupB = {}
+				for i = HalfCount + 1, #self.CacheWaypointInfos do
+						table.insert(GroupB, self.CacheWaypointInfos[i])
+				end
+				FollowPart:SetWaypoints(GroupB, IsCycle, IsReturn)
+		end
+
+		local AI = AIBlueprintHelperLibrary.GetAIController(Mob)
+		if AI and UE.IsValid(AI) then
+				local BB = AIBlueprintHelperLibrary.GetBlackboard(AI)
+				if BB then BB:SetValueasBool("bUsePathPoint", true) end
+		end
+end
+```
+
+  * 刷怪前先播警报动画
+
+```
+function WayPointSpawnMob:StartWaveSpawn()
+		-- ...原有代码...
+		local WeakSelf = WeakObjectPtr(self)
+		Timer.InsertTimer(3.0, function()
+				if WeakSelf:IsValid() then
+						WeakSelf:Get():SpawnCurrentWave()
+				end
+		end)
+end
+```
+
+### 区域触发刷怪点
+
+区域触发刷怪点适用场景： 玩家踩入触发区域后，在区域内刷出一批怪物，怪物全灭后结束。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/3UfvKimage.png)
+
+参数 | 说明
+---|---
+Mob Classes | 要刷的怪物蓝图类
+Mob Count | 一次性刷几只怪
+Check Interval | 全灭检测间隔（秒）
+
+> 关于 MobClass vs 怪物配置模式：当前模板使用 MobClass（Default 里），不走基类 MobConfig 路径。改造时可任选其一，但不要两个都配
+
+**改造示例**
+
+  * 触发后关门，全灭后开门（修复问题 2 + 4）
+
+```
+function OverlapSpawnMob:OnOverlapCheck(OverlappedActors)
+		if not OverlappedActors or not OverlappedActors.InActorList
+				or OverlappedActors.InActorList:Num() <= 0
+				or self.IsSpawning then
+				return
+		end
+
+		-- 参数检查（修复问题 6）
+		if not self.MobClass then
+				print_dev("[OverlapSpawnMob] MobClass 未配置，无法刷怪")
+				return
+		end
+		if not self.MobCount or self.MobCount <= 0 then
+				print_dev("[OverlapSpawnMob] MobCount 无效：" .. tostring(self.MobCount))
+				return
+		end
+
+		self.IsSpawning = true
+		self.AliveMobs = {}
+
+		-- 关门
+		if self.ExitDoor and UE.IsValid(self.ExitDoor) then
+				self.ExitDoor:CloseDoor()
+		end
+
+		for i = 1, self.MobCount do
+				local Mob = self:SpawnMob(self.MobClass)
+				if Mob and UE.IsValid(Mob) then
+						table.insert(self.AliveMobs, WeakObjectPtr(Mob))
+				end
+		end
+		self:StartCheckTimer()
+end
+
+function OverlapSpawnMob:OnAllDead()
+		print_dev("[OverlapSpawnMob] All mobs dead, open door")
+		-- 开门
+		if self.ExitDoor and UE.IsValid(self.ExitDoor) then
+				self.ExitDoor:OpenDoor()
+		end
+		-- 修复问题 2：重置 IsSpawning，允许下次进入再次触发
+		self.IsSpawning = false
+		-- 触发区域完成事件（蓝图侧可绑定下一步逻辑）
+		self:OnAreaCompleted()
+end
+```
+
+> 改造要点：ExitDoor 必须为 APUBGDoor 类型，否则 CloseDoor / OpenDoor 调用无效。
+
+  * 玩家未全灭就死亡（允许重新触发）
+
+```
+function OverlapSpawnMob:ReceiveBeginPlay()
+		self.OverlapCheckArea.OnOverlapCheckChange:Add(self.OnOverlapCheck, self)
+		self.OnPlayerDeath:Add(self.HandlePlayerDeath, self)
+end
+
+function OverlapSpawnMob:HandlePlayerDeath()
+		self:StopCheckTimer()
+		self.IsSpawning = false
+		self.AliveMobs = {}
+		if self.ExitDoor and UE.IsValid(self.ExitDoor) then
+				self.ExitDoor:OpenDoor()
+		end
+end
+```
+
+### 存活数量刷怪点
+
+存活数量刷怪点适用场景： 无限割草、刷怪场训练、压力区域等需要持续维持怪物密度的场景。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/2RZfQimage.png)
+
+**核心机制** ：场上始终维持配置的存活怪物上限。初始刷满，之后定时检测，存活不足时立即补刷差额。
+
+**需要 Lua 扩展时**
+
+如果需求超出基类能力（如多怪物轮换、补刷位置随机化等），可以挂以下最小 Lua 实现：
+
+```
+local KeepAliveSpawner = {
+    CheckTimerId = nil,
+}
+
+function KeepAliveSpawner:ReceiveBeginPlay()
+    self:SpawnToFull()
+    self:StartKeepAliveLoop()
+end
+
+function KeepAliveSpawner:SpawnToFull()
+    while self:GetAliveCount() < self.MaxAliveCount do
+        self:SpawnMob(self.MobClass)
+    end
+end
+
+function KeepAliveSpawner:StartKeepAliveLoop()
+    local WeakSelf = WeakObjectPtr(self)
+    local Interval = self.CheckInterval or 2.0
+    self.CheckTimerId = Timer.InsertTimer(Interval, function()
+        if not WeakSelf:IsValid() then return end
+        local This = WeakSelf:Get()
+        if This:GetAliveCount() < This.MaxAliveCount then
+            local Need = This.MaxAliveCount - This:GetAliveCount()
+            for i = 1, Need do
+                This:SpawnMob(This.MobClass)
+            end
+        end
+        This:StartKeepAliveLoop()
+    end)
+end
+
+function KeepAliveSpawner:ReceiveDestroyed()
+    if self.CheckTimerId then
+        Timer.RemoveTimer(self.CheckTimerId)
+    end
+end
+
+return KeepAliveSpawner
+```
+
+## 刷怪点改造最佳实践
+
+  * 不要在 ReceiveTick 中做重活，刷怪逻辑应走定时器或事件驱动。
+  * 多波次配置时确保 MobClasses 和 MobCounts 长度一致，否则会跳过空配置。
+  * 改造时优先新增方法，避免修改模板原方法。原方法签名（如 SpawnCurrentWave）可能被其他模块依赖。
+  * 路径模式下确保怪物已挂载 FollowWaypointPart 逻辑部件，否则 SetWaypoints 无效。
+  * 刷怪距离要大于怪物模型半径，避免刷出时穿模；推荐距离 ≥ 100 厘米。
+  * 补刷类机制注意 SpawnCD：基类的 SpawnCD 会强制节流，避免一次刷出过多。
+  * 能基类解决就不挂 Lua：基类参数是"零代码、零维护"的方案，先看基类能不能满足。
 
 
 ---
@@ -33573,7 +35788,7 @@ category: "进阶内容"
 
 # 自定义行为统计
 
-创建于 2026-08-26 10:59 最后修改于 2026-09-11 03:59
+创建于 2026-08-26 10:59 最后修改于 2026-09-20 11:15
 
 开发者可以制定具体的数据指标来跟踪玩家的行为模式与偏好，玩法上线后通过分析这些数据，针对性优化游戏的设计与体验，包含但不限于：
 
@@ -33641,6 +35856,8 @@ end
 `SubReason` | number | 二级原因
 `AddOrReduce` | number | 增加/减少标识（1=增加, 0=减少）
 `CustomData` | table | 扩展数据（可为空表 `{}`）
+
+> 填入货币及物品TLog后，需向官方团队提供相关参数的映射关系，模版可见 [自定义行为参数映射关系](<https://doc.weixin.qq.com/sheet/e3_AE4ACAapAAsCN7l7bnf84TCOrvu9g?scode=AJEAIQdfAAomC6eii0AE4ACAapAAs&tab=BB08J2>)
 
 **注意事项**
 
@@ -33792,7 +36009,7 @@ category: "进阶内容"
 
 # 新手引导
 
-创建于 2026-08-17 08:32
+创建于 2026-08-17 08:32 最后修改于 2026-09-20 10:42
 
 本章节介绍新手引导系统提供的 UI 模板及其使用方法。提供三种引导UI模板：新手引导组件、强引导组件、抬头HUD引导。
 
@@ -33836,6 +36053,51 @@ category: "进阶内容"
 [强引导组件](<https://developer.gp.qq.com/wikieditor/#/catalog/20383>)
 
 [抬头HUD引导](<https://developer.gp.qq.com/wikieditor/#/catalog/20398?autoJump=%E9%98%9F%E4%BC%8D%E4%BF%A1%E6%81%AF%E9%9D%A2%E6%9D%BF>) （以队伍UI界面为例）
+
+### 引导线控件
+
+关键蓝图绑定控件：
+
+  * `SizeBox_0`：用于设置追踪目标actor位置映射图片
+  * `TaskTextBlock`：用于设置引导所需显示文本
+  * `LineGuideActorClass`：引导线 Actor 的类引用（在蓝图中设置）
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/KANpaimage.png)
+
+代码逻辑：
+
+方法 | 功能
+---|---
+`Construct()` | 初始化时获取本地 PlayerController，通过 `TagName` 查找带 Tag 的目标 Actor
+`Tick(DeltaTime)` | 每帧将目标 Actor 的世界坐标投影到屏幕坐标，移动 `SizeBox_0` 到对应位置；若有引导线 Actor 则显示距离
+`OpenGuide()`/`HideGuide()` | 显示/隐藏引导标记
+`BeginLineGuide()` | 在玩家位置生成 `LineGuideActorClass` 引导线 Actor，并设置其追踪目标为 `TargetActor`
+`ClearLineGuideActor()` | 销毁引导线 Actor
+
+关键字段：
+
+  * `TagName` ：目标 Actor 的 Tag 名称，在蓝图中配置
+  * `TargetActor` (Actor)：引导指向的目标
+  * `TaskTextBlock` ：引导所需要显示的文本提示框
+  * `DistanceTextBlock` ：引导所需要显示的距离提示框
+  * `LineGuideActor`：当前引导线 Actor 实例
+
+使用流程：
+
+1.在蓝图中设置 `TagName` 和 `LineGuideActorClass`，并在想要追踪引导的物体上挂上相应Tag
+2.调用 `OpenGuide()` 显示引导标记
+3.调用 `BeginLineGuide()` 生成引导线
+4.按需在代码或蓝图中配置`TaskTextBlock`
+5.不需要时调用 `HideGuide()` 和 `ClearLineGuideActor()`
+
+相关调整项：
+
+  * 引导线默认actor可配置:`Spacing`属性为生成引导线段间隔距离
+  * `Mesh`和`Material`属性可以分别配置生成引导线线段Staticmesh与应用的材质
+  * `SpawnOffSet`属性可调整引导线在角色身上生成的位置
+  * `UpdateTime`属性可以控制引导线更新的频率。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/GlL8oimage.png)
 
 ## 配置细节
 
@@ -38855,6 +41117,135 @@ AIPlayerKey | 要销毁的假人的 AIPlayerKey
 是否强制结束先前的切换 bForceFinishPreviousSwitch | 布尔 | 强制打断上一次正在进行的切枪动作
 切换超时时间 SwitchTimeout | 浮点（秒） | 切枪动作总超时时间（Advanced）
 状态结束延迟时间 StateEndDelayTime | 浮点（秒） | 切枪状态结束后延迟多久完成任务（Advanced）
+
+
+---
+
+---
+id: "20427"
+title: "交互相关功能组件"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20427"
+category: "通用功能/交互物"
+---
+
+# 交互相关功能组件
+
+创建于 2026-08-17 08:33 最后修改于 2026-09-16 06:27
+
+以下组件为交互相关的功能组件，开发者可根据需求为任意Actor添加组件。
+
+## ActivityFakePossessComponent
+
+该组件主要用于当主角与某个交互物交互时需要Possess另一个Actor，即操控另一个Actor，能够处理在操控另一个Actor时PlayerPawn的状态和动作。其配置项如下：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/3IJGkimage.png)
+
+## ClickActorComponent
+
+交互按钮显示组件，支持通过客户端或服务器检查是否显示交互以及按钮按下行为的执行。其配置项以及关键配置项的说明如下：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/qlvxOimage.png)
+
+属性名称 | 说明
+---|---
+CheckType | 决定了包围盒如何检查进入范围内的角色
+• Tick：每次Tick主动检查OverlapComponent中的 `ASTExtraBaseCharacter` ，性能开销大
+• Event：被动由Overlap事件触发获取进入范围内的 `ASTExtraBaseCharacter` ，性能开销小
+Static | 用于配置Event类型检查角色时，这个Overlap区域是否会运行时发生变化
+是否开启精准交互 | 勾选后，将启用精准交互检测逻辑。配合下方的“用于精准检测的组件”使用，以替代默认的粗略碰撞体检测，实现更精确的交互判定
+用于精准检测的组件 | 选择一个或多个蓝图内的特定组件（如 Mesh 的特定部位）作为精准交互的碰撞源
+Click Button Info | 显示按钮的配置信息，可配置多种按钮
+CheckFunction | 用于检查按钮是否显示，需要输入框中输入函数名字并点击AssignNew注册，在左侧选择函数后并在lua中实现对应函数
+ExecuteFunction | 用于执行点击按钮后触发的行为，需要输入框中输入函数名字并点击AssignNew注册，在左侧选择函数后并在lua中实现对应函数
+UIInfo | 显示的UI配置，包含名称、图标、挂载的父容器、冷却时间、UI 层级等详细属性
+OverlapComponent | 用于配置能够触发UI显示的范围的包围盒，进入范围内的角色会Tick调用CheckFunction对应的函数来检查UI是否显示
+ForceClinet | 是否强制在客户端调用CheckFunction和ExecuteFunction
+• 未勾选：若组件所属Actor开启复制，CheckFunction和ExecuteFunction在DS上调用，非Actor是同步时，则在客户端调用
+• 勾选：无论组件所属的Actor是否开启复制，CheckFunction和ExecuteFunction都在触发按钮的客户都调用
+PC端客户端增加的交互间隔 | 针对 PC 端客户端设置的额外交互检测间隔（单位：秒）。用于限制客户端频繁发起交互请求的频率，优化性能并防止恶意发包
+Check Multi Comp Overlap | 勾选后，将检查该Actor还有没有其他Collision有Overlap，如果有的话，就不执行EndOverlap逻辑
+
+### 使用示例
+
+以下为开门按钮的示例，相关说明及配置如下：
+
+  1. 交互按钮用来检查主动靠近的角色，所以CheckType选择Event类型，且由于门的Actor是固定不动的，会动的只有Mesh，所以勾选Static
+  2. UI按钮使用默认配置，只需要把按钮文本ButtonName和按钮图标ButtonUI配置即可
+  3. CheckFunction和ExecuteFunction通过AssignNew配置两个蓝图函数CheckOpenDoor和OnClickOpenDoor并在Lua实现对应逻辑
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Ltw5vimage.png)
+
+以下为 `CheckOpenDoor` 和 `OnClickOpenDoor` 相关逻辑:
+
+```
+function BP_Door:CheckOpenDoor(PC, ExtraMessage)
+    return not self.bIsOpen
+end
+
+function BP_Door:OnClickOpenDoor(PC, ExtraMessage)
+    if not self.bIsOpen then
+    	local Rotation = self:K2_GetActorRotation()
+        Rotation.Yaw = Rotation.Yaw - 90
+        self.bIsOpen = true
+    	self.StaticMesh:K2_SetRelativeRotation(Rotation, false, nil, true)
+    end
+end
+```
+
+调试效果如下：
+
+![ezgif-7ab04a8a61f1d6cf.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/pOf29ezgif-7ab04a8a61f1d6cf.gif)
+
+## CustomActorMoveComponent
+
+该组件用于为Actor提供简单移动功能。其配置项以及关键配置项的说明如下：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/TYyopimage.png)
+
+属性名称 | 说明
+---|---
+Actor Start Look to Forward | 勾选后，开始移动时自动把Actor旋转自朝向移动方向
+Actor Forward Dir | 以哪个轴为Actor的前面的方向
+Acceleration | 加速度，单位：cm/s²
+Use Acceleration | 勾选后，Actor将通过加速度的设置进行移动
+Use NewAcceleration | 勾选时加速无速度上限，未勾选时有速度上限，速度到加速到MoveSpeed后匀速移动（MoveSpeed可通过调用 [`SetMoveSpeed`](<https://developer.gp.qq.com/api/#/searchContent/UCustomActorMoveComponent?classDetailShow=true&path=class%2Fdetail%2FOthers%2FUCustomActorMoveComponent.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UCustomActorMoveComponent>) 进行设置）
+Rep Time | 移动同步频率
+
+> 待确认，Use NewAcceleration说明的“MoveSpeed”是指图中的哪个属性
+
+## OverlapCheckAreaComponent
+
+该组件用于检测一定范围内指定类型的Actor，其配置项以及说明如下：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/qJLoaimage.png)
+
+属性名称 | 说明
+---|---
+BeginPlay自动开始检测 | 勾选后，组件会在所属Actor的 `BeginPlay` 阶段自动启动检测。取消勾选后，需手动调用组件的 [`self.OverlapCheckArea:StartCheck({self},true)`](<https://developer.gp.qq.com/api/#/searchContent/UOverlapCheckAreaComponent?classDetailShow=true&path=class%2Fdetail%2FOthers%2FUOverlapCheckAreaComponent.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UOverlapCheckAreaComponent&autoJump=StartCheck>) 来启动
+CheckType | 决定检测逻辑的触发方式：
+• Event（事件模式）：按照固定频率检测
+• Tick（Tick模式）：按固定频率循环检测，需配合下方的【Check间隔】设定检测频率
+RunSide | 设置检测逻辑的执行位置，可选择仅客户端检测、仅服务器检测或两端均检测
+ObjectTypes | 对象类型检测，用于指定需要检测的对象类别。例如，若设置为 Pawn，组件将仅检测被归类为 Pawn 及其子类的物体（如 PlayerPawn）。此方式适用于检测具有明确对象归属的物理实体，内部会自动映射到对应的 ECollisionChannel
+ChannelTypes | 碰撞通道检测，用于指定该组件需要检测的底层碰撞通道。除了常见的对象类型外，引擎中存在一些特殊的、未绑定具体对象的纯通道（如 ECC_Trigger、ECC_Visibility 等）。提供此选项可直接操作 ECollisionChannel，适用于需要精细控制特定物理通道或处理非对象类碰撞体的复杂场景
+Overlap组件 | 可以选择充当检测区域的Collision
+每次检测都通知检测到了哪些Actor | 勾选后，每次检测逻辑执行时，都会在回调中返回当前区域内检测到的所有 Actor 列表
+每次检测都通知检测到了哪些Actor时,即使为空也会通知 | 勾选【每次检测都通知检测到了哪些Actor】时生效
+Check间隔 | 检测频率，仅【CheckType】选择Tick模式下生效
+是否为静态 | 勾选后，检测区域视为静态（Static），通常用于优化性能
+
+## 掉落组件
+
+详细说明见 [通用掉落组件Wiki](<https://developer.gp.qq.com/wikieditor/#/catalog/20142>) 。
+
+## API参考
+
+函数库/类名 | 函数类型 | 函数功能范围
+---|---|---
+[UActivityFakePossessComponent](<https://developer.gp.qq.com/api/#/searchContent/UActivityFakePossessComponent?classDetailShow=true&path=class%2Fdetail%2FOthers%2FUActivityFakePossessComponent.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UActivityFakePossessComponent>) | 对象函数 | 包含ActivityFakePossessComponent相关接口。能够将这个Actor的控制权传递给玩家的组件
+[UClickActorComponentBase](<https://developer.gp.qq.com/api/#/searchContent/UClickActorComponentBase?classDetailShow=true&path=class%2Fdetail%2FOthers%2FUClickActorComponentBase.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UClickActorComponentBase>) | 对象函数 | 包含ClickActorComponent相关接口。一个提供给按钮使用的组件，用于实现靠近显示按钮的逻辑
+[UCustomActorMoveComponent](<https://developer.gp.qq.com/api/#/searchContent/UCustomActorMoveComponent?classDetailShow=true&path=class%2Fdetail%2FOthers%2FUCustomActorMoveComponent.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UCustomActorMoveComponent>) | 对象函数 | 包含CustomActorMoveComponent相关接口。一个给ActivityBaseActor移动功能的组件，用于移动所挂载的ActivityBaseActor
+[UOverlapCheckAreaComponent](<https://developer.gp.qq.com/api/#/searchContent/UOverlapCheckAreaComponent?classDetailShow=true&path=class%2Fdetail%2FOthers%2FUOverlapCheckAreaComponent.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UOverlapCheckAreaComponent>) | 对象函数 | 包含OverlapCheckAreaComponent相关接口。区域重叠检测组件，能够检测到某个范围内开启重叠检测的Actor
 
 
 ---
@@ -58637,132 +61028,3 @@ Lua 脚本中存在不合法的 API 调用。请查看日志中随附的文件�
 * * *
 
 > 排查 PIE 失败时，建议优先在 Output Log 中搜索 `PIE debug failed` 定位具体报错，再对照本文档查找对应解决方案。如按文档操作后问题仍未解决，请联系官方技术支持。
-
-
----
-
----
-id: "20427"
-title: "交互相关功能组件"
-source: "https://developer.gp.qq.com/wikieditor/#/catalog/20427"
-category: "交互物"
----
-
-# 交互相关功能组件
-
-创建于 2026-08-17 08:33
-
-以下组件为交互相关的功能组件，开发者可根据需求为任意Actor添加组件。
-
-## ActivityFakePossessComponent
-
-该组件主要用于当主角与某个交互物交互时需要Possess另一个Actor，即操控另一个Actor，能够处理在操控另一个Actor时PlayerPawn的状态和动作。其配置项如下：
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/3IJGkimage.png)
-
-## ClickActorComponent
-
-交互按钮显示组件，支持通过客户端或服务器检查是否显示交互以及按钮按下行为的执行。其配置项以及关键配置项的说明如下：
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/qlvxOimage.png)
-
-属性名称 | 说明
----|---
-CheckType | 决定了包围盒如何检查进入范围内的角色
-• Tick：每次Tick主动检查OverlapComponent中的 `ASTExtraBaseCharacter` ，性能开销大
-• Event：被动由Overlap事件触发获取进入范围内的 `ASTExtraBaseCharacter` ，性能开销小
-Static | 用于配置Event类型检查角色时，这个Overlap区域是否会运行时发生变化
-是否开启精准交互 | 勾选后，将启用精准交互检测逻辑。配合下方的“用于精准检测的组件”使用，以替代默认的粗略碰撞体检测，实现更精确的交互判定
-用于精准检测的组件 | 选择一个或多个蓝图内的特定组件（如 Mesh 的特定部位）作为精准交互的碰撞源
-Click Button Info | 显示按钮的配置信息，可配置多种按钮
-CheckFunction | 用于检查按钮是否显示，需要输入框中输入函数名字并点击AssignNew注册，在左侧选择函数后并在lua中实现对应函数
-ExecuteFunction | 用于执行点击按钮后触发的行为，需要输入框中输入函数名字并点击AssignNew注册，在左侧选择函数后并在lua中实现对应函数
-UIInfo | 显示的UI配置，包含名称、图标、挂载的父容器、冷却时间、UI 层级等详细属性
-OverlapComponent | 用于配置能够触发UI显示的范围的包围盒，进入范围内的角色会Tick调用CheckFunction对应的函数来检查UI是否显示
-ForceClinet | 是否强制在客户端调用CheckFunction和ExecuteFunction
-• 未勾选：若组件所属Actor开启复制，CheckFunction和ExecuteFunction在DS上调用，非Actor是同步时，则在客户端调用
-• 勾选：无论组件所属的Actor是否开启复制，CheckFunction和ExecuteFunction都在触发按钮的客户都调用
-PC端客户端增加的交互间隔 | 针对 PC 端客户端设置的额外交互检测间隔（单位：秒）。用于限制客户端频繁发起交互请求的频率，优化性能并防止恶意发包
-Check Multi Comp Overlap | 勾选后，将检查该Actor还有没有其他Collision有Overlap，如果有的话，就不执行EndOverlap逻辑
-
-### 使用示例
-
-以下为开门按钮的示例，相关说明及配置如下：
-
-  1. 交互按钮用来检查主动靠近的角色，所以CheckType选择Event类型，且由于门的Actor是固定不动的，会动的只有Mesh，所以勾选Static
-  2. UI按钮使用默认配置，只需要把按钮文本ButtonName和按钮图标ButtonUI配置即可
-  3. CheckFunction和ExecuteFunction通过AssignNew配置两个蓝图函数CheckOpenDoor和OnClickOpenDoor并在Lua实现对应逻辑
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Ltw5vimage.png)
-
-以下为 `CheckOpenDoor` 和 `OnClickOpenDoor` 相关逻辑:
-
-```
-function BP_Door:CheckOpenDoor(PC, ExtraMessage)
-    return not self.bIsOpen
-end
-
-function BP_Door:OnClickOpenDoor(PC, ExtraMessage)
-    if not self.bIsOpen then
-    	local Rotation = self:K2_GetActorRotation()
-        Rotation.Yaw = Rotation.Yaw - 90
-        self.bIsOpen = true
-    	self.StaticMesh:K2_SetRelativeRotation(Rotation, false, nil, true)
-    end
-end
-```
-
-调试效果如下：
-
-![ezgif-7ab04a8a61f1d6cf.gif](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/pOf29ezgif-7ab04a8a61f1d6cf.gif)
-
-## CustomActorMoveComponent
-
-该组件用于为Actor提供简单移动功能。其配置项以及关键配置项的说明如下：
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/TYyopimage.png)
-
-属性名称 | 说明
----|---
-Actor Start Look to Forward | 勾选后，开始移动时自动把Actor旋转自朝向移动方向
-Actor Forward Dir | 以哪个轴为Actor的前面的方向
-Acceleration | 加速度，单位：cm/s²
-Use Acceleration | 勾选后，Actor将通过加速度的设置进行移动
-Use NewAcceleration | 勾选时加速无速度上限，未勾选时有速度上限，速度到加速到MoveSpeed后匀速移动（MoveSpeed可通过调用 [`SetMoveSpeed`](<https://developer.gp.qq.com/api/#/searchContent/UCustomActorMoveComponent?classDetailShow=true&path=class%2Fdetail%2FOthers%2FUCustomActorMoveComponent.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UCustomActorMoveComponent>) 进行设置）
-Rep Time | 移动同步频率
-
-> 待确认，Use NewAcceleration说明的“MoveSpeed”是指图中的哪个属性
-
-## OverlapCheckAreaComponent
-
-该组件用于检测一定范围内指定类型的Actor，其配置项以及说明如下：
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/qJLoaimage.png)
-
-属性名称 | 说明
----|---
-BeginPlay自动开始检测 | 勾选后，组件会在所属Actor的 `BeginPlay` 阶段自动启动检测。取消勾选后，需手动调用组件的 [`self.OverlapCheckArea:StartCheck({self},true)`](<https://developer.gp.qq.com/api/#/searchContent/UOverlapCheckAreaComponent?classDetailShow=true&path=class%2Fdetail%2FOthers%2FUOverlapCheckAreaComponent.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UOverlapCheckAreaComponent&autoJump=StartCheck>) 来启动
-CheckType | 决定检测逻辑的触发方式：
-• Event（事件模式）：按照固定频率检测
-• Tick（Tick模式）：按固定频率循环检测，需配合下方的【Check间隔】设定检测频率
-RunSide | 设置检测逻辑的执行位置，可选择仅客户端检测、仅服务器检测或两端均检测
-ObjectTypes | 对象类型检测，用于指定需要检测的对象类别。例如，若设置为 Pawn，组件将仅检测被归类为 Pawn 及其子类的物体（如 PlayerPawn）。此方式适用于检测具有明确对象归属的物理实体，内部会自动映射到对应的 ECollisionChannel
-ChannelTypes | 碰撞通道检测，用于指定该组件需要检测的底层碰撞通道。除了常见的对象类型外，引擎中存在一些特殊的、未绑定具体对象的纯通道（如 ECC_Trigger、ECC_Visibility 等）。提供此选项可直接操作 ECollisionChannel，适用于需要精细控制特定物理通道或处理非对象类碰撞体的复杂场景
-Overlap组件 | 可以选择充当检测区域的Collision
-每次检测都通知检测到了哪些Actor | 勾选后，每次检测逻辑执行时，都会在回调中返回当前区域内检测到的所有 Actor 列表
-每次检测都通知检测到了哪些Actor时,即使为空也会通知 | 勾选【每次检测都通知检测到了哪些Actor】时生效
-Check间隔 | 检测频率，仅【CheckType】选择Tick模式下生效
-是否为静态 | 勾选后，检测区域视为静态（Static），通常用于优化性能
-
-## 掉落组件
-
-详细说明见 [通用掉落组件Wiki](<https://developer.gp.qq.com/wikieditor/#/catalog/20142>) 。
-
-## API参考
-
-函数库/类名 | 函数类型 | 函数功能范围
----|---|---
-[UActivityFakePossessComponent](<https://developer.gp.qq.com/api/#/searchContent/UActivityFakePossessComponent?classDetailShow=true&path=class%2Fdetail%2FOthers%2FUActivityFakePossessComponent.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UActivityFakePossessComponent>) | 对象函数 | 包含ActivityFakePossessComponent相关接口。能够将这个Actor的控制权传递给玩家的组件
-[UClickActorComponentBase](<https://developer.gp.qq.com/api/#/searchContent/UClickActorComponentBase?classDetailShow=true&path=class%2Fdetail%2FOthers%2FUClickActorComponentBase.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UClickActorComponentBase>) | 对象函数 | 包含ClickActorComponent相关接口。一个提供给按钮使用的组件，用于实现靠近显示按钮的逻辑
-[UCustomActorMoveComponent](<https://developer.gp.qq.com/api/#/searchContent/UCustomActorMoveComponent?classDetailShow=true&path=class%2Fdetail%2FOthers%2FUCustomActorMoveComponent.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UCustomActorMoveComponent>) | 对象函数 | 包含CustomActorMoveComponent相关接口。一个给ActivityBaseActor移动功能的组件，用于移动所挂载的ActivityBaseActor
-[UOverlapCheckAreaComponent](<https://developer.gp.qq.com/api/#/searchContent/UOverlapCheckAreaComponent?classDetailShow=true&path=class%2Fdetail%2FOthers%2FUOverlapCheckAreaComponent.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UOverlapCheckAreaComponent>) | 对象函数 | 包含OverlapCheckAreaComponent相关接口。区域重叠检测组件，能够检测到某个范围内开启重叠检测的Actor

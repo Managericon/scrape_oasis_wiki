@@ -11,7 +11,7 @@
     "selector": ".github-markdown-body",
     "images": 0,
     "code_blocks": 0,
-    "sha256": "bc7e1f718e48ffce4b59a0a7badd6b810846604208a936627edbdab637e75d4e"
+    "sha256": "74228beb0e1adb8cedad394da5e046cc93f6e962db9725827b3d2ce1268476e3"
   },
   {
     "id": "20418",
@@ -301,6 +301,21 @@
     "sha256": "caf8a0548ccc643b27a5e61f440fefa590e3019b341045e8ffc5c2de60322ed1"
   },
   {
+    "id": "20469",
+    "title": "热重载 HotReload Lua 使用说明",
+    "categories": [
+      "绿洲编辑器基础内容",
+      "脚本编写"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20469",
+    "status": "ok",
+    "file": "articles/绿洲编辑器基础内容/脚本编写/20469_热重载 HotReload Lua 使用说明.md",
+    "selector": ".github-markdown-body",
+    "images": 1,
+    "code_blocks": 1,
+    "sha256": "dfa06e2da747c5179da378ce2662fb48922890e5deb4d6470f542e4fe514d5e3"
+  },
+  {
     "id": "354",
     "title": "调试日志说明",
     "categories": [
@@ -554,6 +569,20 @@
     "sha256": "0db2e7aa3181b330623b27bc1886e1e69d3b2e575b79fa1bd03a0ff951514c7d"
   },
   {
+    "id": "20461",
+    "title": "工单管理",
+    "categories": [
+      "绿洲编辑器基础内容"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20461",
+    "status": "ok",
+    "file": "articles/绿洲编辑器基础内容/20461_工单管理.md",
+    "selector": ".github-markdown-body",
+    "images": 2,
+    "code_blocks": 1,
+    "sha256": "5b81bc1bac810153d46317c4233238c1a08ca5e1f088eb28ef65c9d067806b26"
+  },
+  {
     "id": "20414",
     "title": "UGCAskQ MCP 使用说明",
     "categories": [
@@ -565,8 +594,23 @@
     "file": "articles/绿洲编辑器基础内容/UGCAskQ MCP/20414_UGCAskQ MCP 使用说明.md",
     "selector": ".github-markdown-body",
     "images": 0,
-    "code_blocks": 1,
-    "sha256": "b0ed1ad978c1be7442bb72c5a8a290dc6080bd97cff3b0cef6afd7a992237e96"
+    "code_blocks": 2,
+    "sha256": "b38ac0b98a01edef8f2f321de2825d1bd7ae0fc6d5f233b05e520a9fb5c8ac91"
+  },
+  {
+    "id": "20464",
+    "title": "通过UGC-AskQ制作编辑器工具",
+    "categories": [
+      "绿洲编辑器基础内容",
+      "UGCAskQ MCP"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20464",
+    "status": "ok",
+    "file": "articles/绿洲编辑器基础内容/UGCAskQ MCP/20464_通过UGC-AskQ制作编辑器工具.md",
+    "selector": ".github-markdown-body",
+    "images": 3,
+    "code_blocks": 0,
+    "sha256": "f168ec992c12dd4f0033f61e1a9303522abb991331672222345339991af6bf7b"
   },
   {
     "id": "298",
@@ -642,6 +686,21 @@
     "images": 4,
     "code_blocks": 0,
     "sha256": "a2ad50a863636ac0ec09d97c7c09019c1f14386a9557532cac9909a76256ba63"
+  },
+  {
+    "id": "20455",
+    "title": "外部资产浏览器",
+    "categories": [
+      "新手入门",
+      "资源管理与编辑"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20455",
+    "status": "ok",
+    "file": "articles/新手入门/资源管理与编辑/20455_外部资产浏览器.md",
+    "selector": ".github-markdown-body",
+    "images": 10,
+    "code_blocks": 0,
+    "sha256": "8fb12577cd9933a2b57a026c108e2e1e9939761ed8f217a43c6b847d9cf53732"
   },
   {
     "id": "313",
@@ -861,9 +920,9 @@
     "status": "ok",
     "file": "articles/新手入门/游戏场景/场景编辑基础/20248_PCG工具箱.md",
     "selector": ".github-markdown-body",
-    "images": 34,
+    "images": 38,
     "code_blocks": 0,
-    "sha256": "3c745db3b4cd2372e40ad3401e415261e00a50592860950c27bd4ee992e51ef0"
+    "sha256": "67d1a3b04f52e651ef325bd5bc0dc0dbe443e9b3e07260bbe6d00f3c1c6f1810"
   },
   {
     "id": "20350",
@@ -982,6 +1041,20 @@
     "images": 0,
     "code_blocks": 6,
     "sha256": "3b6047eec9c723deb878d1d85e77deeba4e915657990aafd373a563c1ca3547f"
+  },
+  {
+    "id": "20457",
+    "title": "Actor属性复制",
+    "categories": [
+      "进阶内容"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20457",
+    "status": "ok",
+    "file": "articles/进阶内容/20457_Actor属性复制.md",
+    "selector": ".github-markdown-body",
+    "images": 1,
+    "code_blocks": 11,
+    "sha256": "de245440bc8900646b5b1d703a67168d0b4cbd52084f0c1fd6f36e7043ce05fd"
   },
   {
     "id": "155",
@@ -1107,6 +1180,22 @@
     "images": 10,
     "code_blocks": 3,
     "sha256": "c461d8e0cf62e7c85ceaa274780d4759ad6a585f79a797ec2553bb48f1923916"
+  },
+  {
+    "id": "20466",
+    "title": "角色AI托管",
+    "categories": [
+      "进阶内容",
+      "GamePlay系统",
+      "角色系统"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20466",
+    "status": "ok",
+    "file": "articles/进阶内容/GamePlay系统/角色系统/20466_角色AI托管.md",
+    "selector": ".github-markdown-body",
+    "images": 9,
+    "code_blocks": 4,
+    "sha256": "f2b8bafb625ba0511224013117ff76f0693ac951d4a986c72ba74c0b5b77048e"
   },
   {
     "id": "178",
@@ -1645,9 +1734,9 @@
     "status": "ok",
     "file": "articles/进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20104_背包系统.md",
     "selector": ".github-markdown-body",
-    "images": 41,
-    "code_blocks": 6,
-    "sha256": "efc088f118099cfe7c40810fda8cd6a3ecbc050a545711c7d49a9ed862721670"
+    "images": 42,
+    "code_blocks": 10,
+    "sha256": "3f33eb08d63f2385c6a56e8d45f6900e49d742636942940764df6ee31d0bfe7f"
   },
   {
     "id": "20103",
@@ -1749,7 +1838,7 @@
     "selector": ".github-markdown-body",
     "images": 19,
     "code_blocks": 3,
-    "sha256": "b4d40c0fc64918eeb694ccdf874ed5b4ca76d25630c0f3d376b035f2b98a4dec"
+    "sha256": "a898124fadb0849503d2ce9e6f5cb91702f2a9385cda7a48e5b4d8049281d480"
   },
   {
     "id": "20429",
@@ -1818,6 +1907,23 @@
     "images": 0,
     "code_blocks": 2,
     "sha256": "2d0951b141518454346923262a60f9c22c79ab4c4666d140053bd1c6877593f1"
+  },
+  {
+    "id": "20475",
+    "title": "背包UI开放",
+    "categories": [
+      "进阶内容",
+      "GamePlay系统",
+      "物资系统",
+      "物资编辑器2.0"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20475",
+    "status": "ok",
+    "file": "articles/进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20475_背包UI开放.md",
+    "selector": ".github-markdown-body",
+    "images": 28,
+    "code_blocks": 7,
+    "sha256": "54486ea4ca35c9844dbb27e2eb64bb90b5a9c8a3836ae4281fdd23e4aaf705e8"
   },
   {
     "id": "20144",
@@ -2465,6 +2571,22 @@
     "images": 30,
     "code_blocks": 4,
     "sha256": "c5258c67e2e1e74c4bd37e4268f96d578cf7bbae55e007feef2c6a0505cd695c"
+  },
+  {
+    "id": "20452",
+    "title": "刷怪点模板与改造使用",
+    "categories": [
+      "进阶内容",
+      "GamePlay系统",
+      "怪物系统"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20452",
+    "status": "ok",
+    "file": "articles/进阶内容/GamePlay系统/怪物系统/20452_刷怪点模板与改造使用.md",
+    "selector": ".github-markdown-body",
+    "images": 7,
+    "code_blocks": 8,
+    "sha256": "20ae54b6a10314567859f9d317f463c6aa812d99f4078f1f3f28493b7cd650b4"
   },
   {
     "id": "20454",
@@ -3292,7 +3414,7 @@
     "selector": ".github-markdown-body",
     "images": 3,
     "code_blocks": 4,
-    "sha256": "8a31485f512d97704f865f9eccec49d4eb44afe03c5e882ffa1936489e104700"
+    "sha256": "404356cbdd8a58ea3ac33723ebcbc1666a396e99ea9099c11c8461d0ef67e322"
   },
   {
     "id": "20437",
@@ -3304,9 +3426,9 @@
     "status": "ok",
     "file": "articles/进阶内容/20437_新手引导组件.md",
     "selector": ".github-markdown-body",
-    "images": 2,
+    "images": 4,
     "code_blocks": 14,
-    "sha256": "127b833e416f6f55cd708ce3bf2d8d5544d6fbc304fa843fa89c0eb1a147c3ad"
+    "sha256": "872e83701d971d50968e71a27dbc86d0f3678d33f8cabee85cf6621f28d67ed1"
   },
   {
     "id": "20052",
@@ -3533,6 +3655,21 @@
     "images": 18,
     "code_blocks": 12,
     "sha256": "8696a3124f7c10fdc6feeaf2721ea1f5b8564f4f37951903cd909b49e90b2e7e"
+  },
+  {
+    "id": "20427",
+    "title": "交互相关功能组件",
+    "categories": [
+      "通用功能",
+      "交互物"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20427",
+    "status": "ok",
+    "file": "articles/通用功能/交互物/20427_交互相关功能组件.md",
+    "selector": ".github-markdown-body",
+    "images": 6,
+    "code_blocks": 1,
+    "sha256": "59db8c855c4bf0d349520d616f08f4cf07708e5decab2580fc28d9af91ac1a32"
   },
   {
     "id": "20008",
@@ -4940,19 +5077,5 @@
     "images": 0,
     "code_blocks": 0,
     "sha256": "0fa096ca78433320da807618cf5c66c50ef99d8f732d35d7b4b5c39ff4c11d0e"
-  },
-  {
-    "id": "20427",
-    "title": "交互相关功能组件",
-    "categories": [
-      "交互物"
-    ],
-    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20427",
-    "status": "ok",
-    "file": "articles/交互物/20427_交互相关功能组件.md",
-    "selector": ".github-markdown-body",
-    "images": 6,
-    "code_blocks": 1,
-    "sha256": "062ee0d8dcba27a887b0807063a91bb541dc30a18b7e28c5fd8af8aa101c1267"
   }
 ]
