@@ -11,7 +11,7 @@
     "selector": ".github-markdown-body",
     "images": 0,
     "code_blocks": 0,
-    "sha256": "74228beb0e1adb8cedad394da5e046cc93f6e962db9725827b3d2ce1268476e3"
+    "sha256": "eaa00175612bf31aa89101e8f20b376f27fbf6559c657d62eb1b37334e31bae0"
   },
   {
     "id": "20418",
@@ -328,7 +328,7 @@
     "selector": ".github-markdown-body",
     "images": 21,
     "code_blocks": 5,
-    "sha256": "61dbf95cce0ce639310aaccfc6d4f2b5e5f322e1a884320e98c5dc2d91640aa4"
+    "sha256": "5c5f79a334b37bb1ceed2380e425f27e1c24905ab5980d13c081617e253d4925"
   },
   {
     "id": "307",
@@ -1397,9 +1397,9 @@
     "status": "ok",
     "file": "articles/进阶内容/GamePlay系统/技能系统/技能编辑器2.0/20094_技能Task查询手册.md",
     "selector": ".github-markdown-body",
-    "images": 96,
+    "images": 95,
     "code_blocks": 3,
-    "sha256": "5cf0ad694e477a10ba978fc5d210a77d6ddfe189938e711800144442fcdcb4bc"
+    "sha256": "55a93199ce138d872606643f4b7c0aced23a3402a605ce4c342fc12ab50a5ea8"
   },
   {
     "id": "20114",
@@ -1870,9 +1870,9 @@
     "status": "ok",
     "file": "articles/进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20433_物品实例化数据.md",
     "selector": ".github-markdown-body",
-    "images": 11,
+    "images": 17,
     "code_blocks": 6,
-    "sha256": "1bc53314190d9c9d8c53bb4e2e2cf95dea969b682ad510aec679eca88c2a6c99"
+    "sha256": "f2cd38c9aac12747f28d50f50527285286bc4b35102533914fcd869716fe2186"
   },
   {
     "id": "20471",
@@ -4941,18 +4941,6 @@
     "sha256": "32c881b2c6a666940e2673e2cf7c2daa3cb9387a1ff9dab51db4c31db7fa14d7"
   },
   {
-    "id": "20002",
-    "title": "和平营地绿洲专区使用说明书",
-    "categories": [],
-    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20002",
-    "status": "ok",
-    "file": "articles/20002_和平营地绿洲专区使用说明书.md",
-    "selector": ".github-markdown-body",
-    "images": 18,
-    "code_blocks": 0,
-    "sha256": "16cf20366c2836f3aa078f310656d609c458989675f96ee996ecc73d27d00df8"
-  },
-  {
     "id": "20310",
     "title": "编辑器安装",
     "categories": [
@@ -5077,5 +5065,19 @@
     "images": 0,
     "code_blocks": 0,
     "sha256": "0fa096ca78433320da807618cf5c66c50ef99d8f732d35d7b4b5c39ff4c11d0e"
+  },
+  {
+    "id": "20002",
+    "title": "和平营地绿洲专区使用说明书",
+    "categories": [
+      "和平营地"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20002",
+    "status": "ok",
+    "file": "articles/和平营地/20002_和平营地绿洲专区使用说明书.md",
+    "selector": ".github-markdown-body",
+    "images": 18,
+    "code_blocks": 0,
+    "sha256": "cdbf51930ecaf2a4d8eb02141f5e03f3e66d8ec7bea64f0b77900f320cdc9dbb"
   }
 ]

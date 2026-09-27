@@ -3009,12 +3009,6 @@
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/271"
   },
   {
-    "id": "20002",
-    "title": "和平营地绿洲专区使用说明书",
-    "categories": [],
-    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20002"
-  },
-  {
     "id": "20310",
     "title": "编辑器安装",
     "categories": [
@@ -3085,5 +3079,13 @@
       "常见问题"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20391"
+  },
+  {
+    "id": "20002",
+    "title": "和平营地绿洲专区使用说明书",
+    "categories": [
+      "和平营地"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20002"
   }
 ]

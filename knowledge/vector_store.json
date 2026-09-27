@@ -152,15 +152,6 @@
         "category": "API Wiki/globalfunc"
       }
     },
-    "20002_和平营地绿洲专区使用说明书.md": {
-      "sha256": "16cf20366c2836f3aa078f310656d609c458989675f96ee996ecc73d27d00df8",
-      "file_id": "file-A8RQF1yYKJkBQamua3PLof",
-      "attributes": {
-        "id": "20002",
-        "title": "和平营地绿洲专区使用说明书",
-        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20002"
-      }
-    },
     "336_资源商店.md": {
       "sha256": "11fac5718b02c564057207ab17f6c3f47147645cdff416417da23f960b93cbb8",
       "file_id": "file-H5xABC7WfvNWCeDkFgGHLe",
@@ -208,6 +199,16 @@
         "title": "AI生成角色",
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20453",
         "category": "AI工具"
+      }
+    },
+    "和平营地/20002_和平营地绿洲专区使用说明书.md": {
+      "sha256": "cdbf51930ecaf2a4d8eb02141f5e03f3e66d8ec7bea64f0b77900f320cdc9dbb",
+      "file_id": "file-CVFcyaKH9SRA3x77RiXGUP",
+      "attributes": {
+        "id": "20002",
+        "title": "和平营地绿洲专区使用说明书",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20002",
+        "category": "和平营地"
       }
     },
     "商业化及功能模板/20008_商业化系统.md": {
@@ -1191,8 +1192,8 @@
       }
     },
     "版本日志/20472_1.38 Release Notes.md": {
-      "sha256": "74228beb0e1adb8cedad394da5e046cc93f6e962db9725827b3d2ce1268476e3",
-      "file_id": "file-DNFv8u7a1FpUYQmrJ5rW5G",
+      "sha256": "eaa00175612bf31aa89101e8f20b376f27fbf6559c657d62eb1b37334e31bae0",
+      "file_id": "file-XypwuGwJZRrsJ5jYJ6VKNK",
       "attributes": {
         "id": "20472",
         "title": "1.38 Release Notes",
@@ -1801,8 +1802,8 @@
       }
     },
     "绿洲编辑器基础内容/调试游戏/354_调试日志说明.md": {
-      "sha256": "61dbf95cce0ce639310aaccfc6d4f2b5e5f322e1a884320e98c5dc2d91640aa4",
-      "file_id": "file-1Qp8Fsw9C7CCT7HsWajrVr",
+      "sha256": "5c5f79a334b37bb1ceed2380e425f27e1c24905ab5980d13c081617e253d4925",
+      "file_id": "file-YC73bX2NeseK8isoNuLmj8",
       "attributes": {
         "id": "354",
         "title": "调试日志说明",
@@ -2531,8 +2532,8 @@
       }
     },
     "进阶内容/GamePlay系统/技能系统/技能编辑器2.0/20094_技能Task查询手册.md": {
-      "sha256": "5cf0ad694e477a10ba978fc5d210a77d6ddfe189938e711800144442fcdcb4bc",
-      "file_id": "file-Wsj1rBeVtEXBYvNk8BD7L7",
+      "sha256": "55a93199ce138d872606643f4b7c0aced23a3402a605ce4c342fc12ab50a5ea8",
+      "file_id": "file-RjqKUCj3AoNcXc5dGbdGoH",
       "attributes": {
         "id": "20094",
         "title": "技能Task查询手册",
@@ -2761,8 +2762,8 @@
       }
     },
     "进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20433_物品实例化数据.md": {
-      "sha256": "1bc53314190d9c9d8c53bb4e2e2cf95dea969b682ad510aec679eca88c2a6c99",
-      "file_id": "file-KTTseWuMSfwXoH3EF9BZWX",
+      "sha256": "f2cd38c9aac12747f28d50f50527285286bc4b35102533914fcd869716fe2186",
+      "file_id": "file-651U5yHfzMkpSKVJn4MqYa",
       "attributes": {
         "id": "20433",
         "title": "物品实例化数据",
@@ -3472,8 +3473,8 @@
     }
   },
   "summary": {
-    "uploaded": 16,
-    "skipped": 331,
+    "uploaded": 5,
+    "skipped": 342,
     "failed": 0
   }
 }

@@ -7,9 +7,27 @@ category: "版本日志"
 
 # 1.38 Release Notes
 
-创建于 2026-08-31 02:06 最后修改于 2026-09-14 11:12
+创建于 2026-08-31 02:06 最后修改于 2026-09-22 06:45
 
 关于版本功能使用中发现及反馈的bug修复安排，可前往 [bug修复计划公示表](<https://docs.qq.com/sheet/DSUFnT1BQWGpHYWNN?tab=b5fzcz>) 中查看了解。
+
+## 1.38.12.15918 版本说明
+
+### 编辑器
+
+**bug Fixes**
+
+  * 修复了PIE下保存存档出现空字符串KEY字段时导致崩溃的问题
+  * 修复了PIE下存档整数数据在读档时可能出现小数的问题
+  * 修复了通过外部资产浏览器将资产拖入目标工程时，点击“Import to Current Project”后编辑器崩溃的问题
+  * 修复了特定条件下调试时出现黑屏的问题
+  * 修复了编辑器新版本更新提示缺少图标的问题
+  * 修复了编辑器自动生成覆盖无效的navmesh的问题
+  * 修复了技能“机甲近战”占用开火键的问题
+  * 修复了真机测试期间载具“莲花”丢失的问题
+  * 修复了使用部分技能时，技能选点UI变红后释放技能，角色会播放技能动作但实际未释放技能的问题
+
+* * *
 
 ## 1.38.12.15916 版本说明
 
@@ -3970,7 +3988,7 @@ category: "绿洲编辑器基础内容/调试游戏"
 
 # 调试日志说明
 
-创建于 2026-08-04 03:47
+创建于 2026-08-04 03:47 最后修改于 2026-09-24 08:17
 
 ## 简介
 
@@ -3982,9 +4000,17 @@ category: "绿洲编辑器基础内容/调试游戏"
 
 ### 日志打印函数ugcprint
 
-我们可以使用`ugcprint`函数进行日志打印，此函数功能等同于Lua中的`print`函数，但会根据游戏当前运行的环境，决定日志是否打印。使用编辑器Debug以及配套的研发用安卓Apk时，`ugcprint`会进行日志打印。当游戏运行在正式服的和平精英中时，`ugcprint`函数则不会进行打印。
+我们可以使用`ugcprint`函数进行日志打印，此函数功能等同于Lua中的`print`函数，但在真机上时只会在DS日志中打印，不会在客户端日志打印，可以用于错误日志的重点打印，或者一些关键流程日志的打印。
 
-可以把`ugcprint`函数看作开发环境中才生效的打印函数，而`print`函数则在正式环境中也会生效，所以尽量用于错误日志的打印，或者一些关键流程日志的打印。此外，`ugcprint`函数打印的日志会在开发环境的游戏中显示出来，如下所示，点击左上角问号按钮，会显示`ugcprint`函数打印的日志
+打印类型 | 平台 | 客户端日志 | DS日志
+---|---|---|---
+print | - | √ | √
+ugcprint | pie | √ | √
+ugcprint | 真机 |  | √
+
+此外，`ugcprint`函数打印的日志可以单独在pie中显示出来，如下所示，点击左上角问号按钮，会显示`ugcprint`函数打印的日志。
+
+> 注意：日志量过大会引起服务器卡顿、阻塞，在实际研发使用`print`和`ugcprint`时建议打印前根据需要[判断当前环境](<https://developer.gp.qq.com/api/#/searchContent/UGCGameSystem?classDetailShow=true&path=class%2Fdetail%2F%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3%2F%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD%2FUGCGameSystem.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UGCGameSystem&autoJump=GetDSEnvType>)
 
 ![001.f0287a05.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/001.f0287a05.png)
 
@@ -3998,6 +4024,9 @@ function TestCube:ReceiveBeginPlay()
 end
 
 function TestCube:Box_OnComponentBeginOverlap(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult)
+ -- 外研线环境校验(OuterlineDev)
+    local curEnv = UGCGameSystem:GetDSEnvType()   -- 获取当前DS环境类型的API，需按实际接口替换
+    if curEnv == UGCGameSystem.DSEnvType.OuterlineDev then
     ugcprint("TestCube:Box_OnComponentBeginOverlap")
 end
 ```
@@ -15671,7 +15700,7 @@ category: "进阶内容/GamePlay系统/技能系统/技能编辑器2.0"
 
 # 技能Task查询手册
 
-创建于 2026-05-22 03:30 最后修改于 2026-09-02 05:56
+创建于 2026-05-22 03:30 最后修改于 2026-09-23 01:47
 
 ## 通用属性
 
@@ -16627,20 +16656,6 @@ end
 
 * * *
 
-### 技能Task-显示取消按钮
-
-执行该Task时，将显示技能的取消按钮，点击取消按钮，则可以主动取消该技能。
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/UZnpjimage.png)
-
-  * 取消按钮自定义描述：未配置时显示默认值“取消释放”，若已配置时则使用该配置字符串进行显示
-  * Cancel Action：
-    * 直接取消技能：结束技能流程，跳转End阶段
-    * 仅发送取消事件： 不直接结束技能，触发状态图中的技能取消状态和事件
-  * 取消按钮UI：支持自定义取消按钮控件的样式
-
-* * *
-
 ### 技能Task-显示UI
 
 执行该Task时，将按配置显示一个UI效果。
@@ -16853,7 +16868,7 @@ end
 
 **扇形目标选取器**
 
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Fhy7Dimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/HmotHimage.png)
 
   * 半径：扇形区域的半径
   * 角度：扇形区域的角度
@@ -16870,6 +16885,15 @@ end
     * 敌人：敌方
     * 中立：中立
   * 选取目标需要是否可见：如果勾选，目标需要可见才会被选取
+  * 额外目标过滤器：选取到的目标进行额外过滤
+    * Actor类过滤器：选取符合对应Actor类的目标
+    * 状态Tag过滤器：选取符合对应状态Tag的目标
+    * 自定义条件过滤器：选取符合自定义条件的目标
+    * 实体类型过滤器：选取符合对应实体类型的目标
+    * 非队友过滤器：选取非队友目标
+
+> 额外目标过滤器均支持取反操作，取反后将选取非对应条件的目标
+
   * 变换源类型：该选取区域的起点位置类型，非“释放者自身”类型依赖前置 **`目标选择`** 类型Task的选取结果
     * 技能释放者自身：扇形区域以施法者为中心
     * 技能选择的位置：扇形区域以选中的目标位置为中心
@@ -16889,7 +16913,7 @@ end
 
 **矩形目标选取器**
 
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/cgihkimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/R3xVPimage.png)
 
   * 选取器宽度：选取矩形区域的宽度
   * 选取器长度：选取矩形区域的长度
@@ -16904,7 +16928,16 @@ end
     * 相同：友方
     * 敌人：敌方
     * 中立：中立
-  * 是否需要可见：如果勾选，目标需要可见，才会被选取。
+  * 是否需要可见：如果勾选，目标需要可见才会被选取
+  * 额外目标过滤器：选取到的目标进行额外过滤
+    * Actor类过滤器：选取符合对应Actor类的目标
+    * 状态Tag过滤器：选取符合对应状态Tag的目标
+    * 自定义条件过滤器：选取符合自定义条件的目标
+    * 实体类型过滤器：选取符合对应实体类型的目标
+    * 非队友过滤器：选取非队友目标
+
+> 额外目标过滤器均支持取反操作，取反后将选取非对应条件的目标
+
   * 位置来源类型：该选取区域的起点位置类型，非“释放者自身”类型依赖前置 **`目标选择`** 类型Task的选取结果
     * 技能释放者自身：扇形区域以施法者为中心
     * 技能选择的位置：扇形区域以选中的目标位置为中心
@@ -16925,7 +16958,7 @@ end
 
 **球形目标选择器**
 
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/rFa1ximage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/vzu8wimage.png)
 
   * 球形选取半径：球形范围的半径。
   * 最大数量：至多能选取到多少个目标，-1代表无限制
@@ -16938,7 +16971,16 @@ end
     * 相同：友方
     * 敌人：敌方
     * 中立：中立
-  * 是否需要可见：如果勾选，目标需要可见，才会被选取。
+  * 是否需要可见：如果勾选，目标需要可见才会被选取
+  * 额外目标过滤器：选取到的目标进行额外过滤
+    * Actor类过滤器：选取符合对应Actor类的目标
+    * 状态Tag过滤器：选取符合对应状态Tag的目标
+    * 自定义条件过滤器：选取符合自定义条件的目标
+    * 实体类型过滤器：选取符合对应实体类型的目标
+    * 非队友过滤器：选取非队友目标
+
+> 额外目标过滤器均支持取反操作，取反后将选取非对应条件的目标
+
   * 位置来源类型：该选取区域的起点位置类型，非“释放者自身”类型依赖前置 **`目标选择`** 类型Task的选取结果
     * 技能释放者自身：球形区域以施法者为中心
     * 技能选择的位置：球形区域以选中的目标位置为中心
@@ -16961,7 +17003,7 @@ end
 
 执行时，点击技能UI的触控位置会额外显示一个右摇杆用于目标选取，右摇杆的轴位置最终会映射到实际场景里的3D位置，并基于该位置为中心进行目标的选取。
 
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/h8sMhimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/yPYxgimage.png)
 
   * 操纵杆范围半径：摇杆选取区域大小，选到的点位和施法者的最大距离，支持 [属性绑定](<https://developer.gp.qq.com/wikieditor/#/catalog/20108>)
   * 范围半径：选取目标位置半径区域大小，支持 [属性绑定](<https://developer.gp.qq.com/wikieditor/#/catalog/20108>)
@@ -16997,6 +17039,15 @@ end
     * 敌人：敌方
     * 中立：中立
   * 是否需要可见：如果勾选，目标需要可见才会被选取
+  * 额外目标过滤器：选取到的目标进行额外过滤
+    * Actor类过滤器：选取符合对应Actor类的目标
+    * 状态Tag过滤器：选取符合对应状态Tag的目标
+    * 自定义条件过滤器：选取符合自定义条件的目标
+    * 实体类型过滤器：选取符合对应实体类型的目标
+    * 非队友过滤器：选取非队友目标
+
+> 额外目标过滤器均支持取反操作，取反后将选取非对应条件的目标
+
   * 位置来源类型：该选取区域的起点位置类型，非“释放者自身”类型依赖前置 **`目标选择`** 类型Task的选取结果
     * 技能释放者自身：摇杆出发点以施法者为中心
     * 技能选择的位置：摇杆出发点以选中的目标位置为中心
@@ -17010,7 +17061,7 @@ end
 
 以屏幕中心发射射线进行检测，将命中的目标作为最终选取的目标。
 
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/dUKc7image.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/wrSTrimage.png)
 
   * 检测距离：射线检测的最大有效距离，支持 [属性绑定](<https://developer.gp.qq.com/wikieditor/#/catalog/20108>)
   * 扫描球半径：检测射线的体积半径大小，射线路径上在此半径范围内的所有物体均会被视为命中
@@ -17044,6 +17095,15 @@ end
     * Enemy：敌方
     * Neutral：中立
   * 是否需要可见：如果勾选，目标需要可见才会被选取
+  * 额外目标过滤器：选取到的目标进行额外过滤
+    * Actor类过滤器：选取符合对应Actor类的目标
+    * 状态Tag过滤器：选取符合对应状态Tag的目标
+    * 自定义条件过滤器：选取符合自定义条件的目标
+    * 实体类型过滤器：选取符合对应实体类型的目标
+    * 非队友过滤器：选取非队友目标
+
+> 额外目标过滤器均支持取反操作，取反后将选取非对应条件的目标
+
   * 位置来源类型：该选取区域的起点位置类型，非“释放者自身”类型依赖前置 **`目标选择`** 类型Task的选取结果
     * 技能释放者自身：射线出发点以施法者为中心
     * 技能选择的位置：射线出发点以选中的目标位置为中心
@@ -22187,7 +22247,7 @@ category: "进阶内容/GamePlay系统/物资系统/物资编辑器2.0"
 
 # 物品实例化数据
 
-创建于 2026-08-12 04:35
+创建于 2026-08-12 04:35 最后修改于 2026-09-23 01:47
 
 ## 功能概述
 
@@ -22238,9 +22298,9 @@ DataID 是物品实例数据的唯一标识，格式为 “ItemID_Level”：
 
 ## 使用说明
 
-### 前置：启用 [V2背包](<https://developer.gp.qq.com/wikieditor/#/catalog/20104?autoJump=%E5%90%AF%E7%94%A8%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F:~:text=%E5%A4%A7%E7%BA%B2-,%E5%90%AF%E7%94%A8%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F,-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%83%8C%E5%8C%85>) 和 [自定义拾取组件](<https://developer.gp.qq.com/wikieditor/#/catalog/20420>)
+### 前置
 
-点击编辑器菜单栏的【玩法通用设置】按钮，在【GamePart】中添加【GP_BackpackV2】模块和【GP_PickUpV2List】。
+点击编辑器菜单栏的【玩法通用设置】按钮，在【GamePart】中添加【GP_BackpackV2】模块和【GP_PickUpV2List】，启用 [V2背包](<https://developer.gp.qq.com/wikieditor/#/catalog/20104?autoJump=%E5%90%AF%E7%94%A8%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F:~:text=%E5%A4%A7%E7%BA%B2-,%E5%90%AF%E7%94%A8%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F,-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%83%8C%E5%8C%85>) 和 [自定义拾取组件](<https://developer.gp.qq.com/wikieditor/#/catalog/20420>)。
 
 ![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/YJediimage.png)
 
@@ -22356,7 +22416,7 @@ end)
 
 ### 添加带实例数据的物品
 
-#### 方式一：通过接口直接添加到背包
+#### 方式一：通过接口添加到背包
 
 流程说明：
 
@@ -22466,6 +22526,54 @@ function CustomWrapper:OnItemPickup(PickerPawn)
 end
 ```
 
+### 通过物品编辑器配置实例化数据
+
+#### 物品配置项
+
+除了通过表格的方式解析实例化数据，物品编辑器还提供了更加便捷的实例化数据配置方式，如下：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/vEU7kimage.png)
+
+通过新建实例化数据预设，可以为当前物品配置不同的实例化数据。
+
+> 注意：此处的实例化数据，会直接存入物品的 CustomData 字段中，因此我们建议您，尽量进行简写，比如LEVEL简写成Lv，QUALITY简写成Q，以及对应的值，也可以尽量使用1、2、3，A、B、C的方式简写
+
+配置完成之后，注册属性覆盖即可。
+
+#### 拾取物配置
+
+在场景中创建 `UGCPickupWrapper_BP` ，可以看到新增了一个物品实例化数据预设索引：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/wfFcIimage.png)
+
+配置上索引，在 `GameState.lua` 上注册重写函数即可，在场景中摆上三个物品：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/zHCmSimage.png)
+
+#### 掉落组件/表配置
+
+怪物的掉落物也可以掉落带有实例数据的物品。
+
+**蓝图掉落**
+
+在怪物的 [掉落组件](<https://developer.gp.qq.com/wikieditor/#/catalog/20142>) 上，选择蓝图掉落方式，填写想要掉落的物品实例化数据索引：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/ynEgOimage.png)
+
+进入调试，击杀怪物可见：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/ZbLOCimage.png)
+
+  * 索引0：带有一个红点瞄准镜
+  * 索引1：带有一个红点瞄准镜、一个枪口
+  * 索引-1：不带有配件，直接使用配置数据
+
+**读表掉落**
+
+[掉落表](<https://developer.gp.qq.com/wikieditor/#/catalog/20058>) 新增了物品实例化数据的索引，配置索引之后，在怪物的掉落组件上配置掉落ID：
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/VS3gyimage.png)
+
 ## 案例工程操作指南
 
 在编辑器创建项目中找到功能演示工程，创建一个工程。
@@ -22500,15 +22608,15 @@ end
 
 函数名 | 说明
 ---|---
-[RegisterItemPropertyGetOverride](<https://developer.gp.qq.com/wikieditor/>) | 注册物品属性读取函数
-[UnregisterItemPropertyGetOverride](<https://developer.gp.qq.com/wikieditor/>) | 注销物品属性读取函数
+[RegisterItemPropertyGetOverride](<https://developer.gp.qq.com/api/#/searchContent/UGCItemSystemV2?classDetailShow=true&path=class%2Fdetail%2F%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3%2F%E7%89%A9%E5%93%81%E4%B8%8E%E8%83%8C%E5%8C%85%2FUGCItemSystemV2.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UGCItemSystemV2&autoJump=RegisterItemPropertyGetOverride:~:text=%E5%87%BD%E6%95%B0-,RegisterItemPropertyGetOverride,-UnregisterItemPropertyGetOverride>) | 注册物品属性读取函数
+[UnregisterItemPropertyGetOverride](<https://developer.gp.qq.com/api/#/searchContent/UGCItemSystemV2?classDetailShow=true&path=class%2Fdetail%2F%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3%2F%E7%89%A9%E5%93%81%E4%B8%8E%E8%83%8C%E5%8C%85%2FUGCItemSystemV2.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UGCItemSystemV2&autoJump=UnregisterItemPropertyGetOverride:~:text=RegisterItemPropertyGetOverride-,UnregisterItemPropertyGetOverride,-GetConfigItemHandle>) | 注销物品属性读取函数
 
 **自定义数据重写**
 
 函数名 | 说明
 ---|---
-[LoadItemCustomData](<https://developer.gp.qq.com/wikieditor/>) | 获取物品自定义数据
-[LoadItemCustomData](<https://developer.gp.qq.com/wikieditor/>) | 保存物品自定义数据
+[LoadItemCustomData](<https://developer.gp.qq.com/api/#/searchContent/UGCItemSystemV2?classDetailShow=true&path=class%2Fdetail%2F%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3%2F%E7%89%A9%E5%93%81%E4%B8%8E%E8%83%8C%E5%8C%85%2FUGCItemSystemV2.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UGCItemSystemV2&autoJump=LoadItemCustomData:~:text=GetItemCustomizedTypeV2-,LoadItemCustomData,-SaveItemCustomData>) | 获取物品自定义数据
+[SaveItemCustomData](<https://developer.gp.qq.com/api/#/searchContent/UGCItemSystemV2?classDetailShow=true&path=class%2Fdetail%2F%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3%2F%E7%89%A9%E5%93%81%E4%B8%8E%E8%83%8C%E5%8C%85%2FUGCItemSystemV2.json&isSelect=1&apiEnc=%5B%22%E7%B1%BB%22%5D&apiLabel=UGCItemSystemV2&autoJump=SaveItemCustomData:~:text=LoadItemCustomData-,SaveItemCustomData,-GetItemDefineID>) | 保存物品自定义数据
 
 **支持重写的属性列表**
 
@@ -60051,232 +60159,6 @@ category: "开发者须知"
 ---
 
 ---
-id: "20002"
-title: "和平营地绿洲专区使用说明书"
-source: "https://developer.gp.qq.com/wikieditor/#/catalog/20002"
-category: ""
----
-
-# 和平营地绿洲专区使用说明书
-
-# 《和平营地》绿洲专区开发者使用说明书
-
-最后修改于 2025-12-12 03:05
-
-## 一、和平营地介绍
-
-《和平营地》(以下简称营地）是和平精英官方社区APP，是和平核心玩家聚集地，活跃着大量和平精英高活跃、高付费、高段位的核心玩家。营地提供丰富的辅助工具、精彩内容、社区功能、战绩数据及游戏福利，也是游戏链接玩家的重要且有效的桥梁。
-
-![未标题-4.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Y9dGQ%E6%9C%AA%E6%A0%87%E9%A2%98-4.png)
-
-## 二、营地对绿洲开发者的支持
-
-**打造开发者与玩家零距离沟通平台，帮助开发者沉淀玩法用户**
-
-  * 账号通过认证，开启**开发者专属认证标识，营地内账号头像都会展示创作者标识**
-  * 通过玩法评价、社区动态、评价等功能，快速收集用户评价反馈
-  * 通过发布玩法公告、开发者动态&内容，介绍和宣传玩法、发布玩法攻略，同步玩法开发进度等
-
-## 三、营地绿洲开发者特有功能说明
-
-### 1、开发者认证申请
-
-绿洲开发者**先与官方联系人员提交入驻营地申请** ，官方确认后，可在和平精英官网申请页面中，进行资料提交及认证申请。
-
-![企业微信截图_17119715711058\(1\).png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/61TZY%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17119715711058\(1\).png)
-
-**官网认证流程：**
-
-1.确认需认证营地ID、营地登录方式（微信登录/QQ登录），提交相应的营地ID提供给官方联系人员（获取营地ID：和平营地—我——右上角打开设置）
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/W10Wqimage.png)
-
-2.进入认证网站，选择登录账号。
-重要提醒：请确保【登录 [认证网站](<https://author.gp.qq.com/#/login>) 的账号】与【需认证的营地账号】保持一致，否则将导致账号数据信息不一致而认证失败。
-（如需认证的营地账号为微信登录，但使用QQ登录认证网站，将认证账号不一致）
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Gdrrjimage.png)
-
-3.点击【前往身份认证】，选择认证类型【个人认证】-【创作者】，提交前请再次确认【认证平台营地ID】与【需认证账号营地ID】是否一致
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/CiOYfimage.png)
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/dbcrtimage.png)
-
-4.根据弹窗提醒，粘贴【玩法链接】至【作品链接】区域，确认提交后通知和平营地运营审核
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/STGZHimage.png)
-
-5.认证成功后，请再次回到认证网站，点击【填写认证信息】提交认证信息。该认证信息将显示在营地，作为认证身份信息介绍使用。
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/TIchximage.png)
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/oRmfzimage.png)
-
-**注意事项：**
-
-  1. 建议使用已通过管理平台添加到团队内的账号（需要有营地运营权限）进行注册申请
-  2. 认证需要进行身份证实名认证，需提前准备好：个人身份证正反面照片、个人手持身份证照片（手持身份证照片请确保手臂完整露出），每张照片大小不得超过1M
-  3. 认证类型选择“绿洲启元创作者”
-  4. 账号签名需包含开发玩法，建议格式：绿洲启元《XXXX玩法》开发者
-  5. 玩法链接需要从营地上绿洲专区找到对应玩法，然后分享到微信，从微信点进去在复制下链接（注：如果团队下超过5个玩法，填写其中5个即可）
-
-### 2、营地使用说明
-
-#### 1）个人主页展示团队下玩法列表
-
-通过绿洲启元创作者认证，且拥有营地运营权限（管理平台里账号角色勾选管理员或者运营角色）的账号，若团队下有玩法或互动剧情作品，那么创作者个人主页-【绿洲启元】页签将会展示该团队下所有玩法。
-
-![企业微信截图_17509228265530.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/LHzWb%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17509228265530.png)
-
-#### 2）发布开发者公告
-
-首先进入和平营地【绿洲】板块——【玩法详情页】——找到【来自开发者的话】
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/0ytKBimage.png)
-
-**● 入口展示及发布规则**
-
-该账号必须是通过“绿洲启元创作者”认证，且拥有营地运营权限（管理平台里账号勾选管理员或者运营角色）”的账号方可看到公告编辑入口。
-
-文本内容字数限制：开发者的话文本长度限制300字，默认展示1行，超出部分折叠，点击右上角”>“可展开显示全部内容。
-
-发布次数限制：开发者每月仅可发布3次公告（按自然月计算），每次成功发布新公告后，”发布成功“弹窗内实时显示剩余可编辑次数提示。
-
-**● 如何发布和修改公告（初次编辑）？**
-
-  1. 初次编辑点击“编辑”按钮，弹出输入框，输入文本内容，点击“发布”即可
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Z9Cdoimage.png)
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/S5k9Himage.png)
-
-  2. 修改公告时在原有公告下方点击“编辑“按钮，弹出新内容覆盖提示弹窗，点击“继续编辑”弹出输入框，输入文本内容，点击“发布”即可。（**注：修改发布也计入发布次数** ）
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/KA9OUimage.png)
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/8tbHmimage.png)
-
-**● 如何删除公告？**
-
-点击“删除”按钮，二次弹窗确认，完成删除操作
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/aamHTimage.png)
-
-#### 3）发布动态
-
-  * 打开【绿洲】-【玩法详情页】-【讨论】板块-右下角编辑按钮-输入动态内容-【发布】
-  * 打开绿洲玩法对应话题#xxxxx#-右下角编辑按钮-输入动态内容-【发布】，（发布的动态会自动同步到玩法话题下）
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/yYXVKimage.png)
-
-#### 4）发布视频及图文资讯
-
-移动端打开【我】-【创作中心】-【上传视频】进行视频投稿
-也可选择通过PC端官网进行图文及视频投稿：[和平精英](<https://author.gp.qq.com/#/login>)（需实名认证）
-
-![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/ZSWVRimage.png)
-
-## 四、开发者运营规范
-
-**开发者入驻营地后，需要严格遵守规则，如违反规则，将进行禁言、封号或者取消开发者认证等处理**
-
-### 1、账号安全
-
-  * 账号作为开发团队账号，需对发布人进行管理限制，只允许团队内成员使用
-  * 账号认证后，不能进行交易转移给他人等操作，否则官方将收回认证
-
-### 2、发言规范
-
-  * 严格遵守营地的发言规则，禁止发布违规言论，禁止发布广告，禁止与玩家进行吵架、互骂等行为
-
-### 3、内容规范
-
-  * 发布的内容需要遵守营地内容规范，内容质量、标题、配图、封面均需符合要求
-  * 官方内部会对开发者发布的内容进行审核，若内容被判定违规时开发者将会收到和平营地小秘书的消息通知，同时判定违规的内容会直接设置为所有人不可见
-  * 发布公告、置顶帖子等内容时，严禁发布含有引流信息的内容
-  * 禁止搬运他人内容，禁止出现低俗、涉黄、涉政等信息
-
-### 4、行为规范
-
-  * 开发者作为和平官方合作者，需要严格规范自身行为，禁止骚扰用户、禁止私自拉玩家群、导流到其他地方、牟取私利、欺骗用户等行为
-
-## 五、其他说明
-
-### 1、开发者运营形式汇总
-
-综合来讲，通过绿洲启元创作者认证，并且拥有营地运营权限（管理平台里账号勾选管理员或者运营角色）的开发者账号，可以在营地采用的运营形式主要包括：
-
-#### 1）开发者公告
-
-开发者在玩法详情页公告区内，发布开发者公告，与玩家介绍玩法、分享思路、预告版本更新内容、同步BUG修复进度等。
-
-#### 2）发布动态、动态下与玩家互动
-
-开发者在玩法话题下或在玩法详情页的【讨论】板块内，发布动态进行自我介绍，并与玩家进行互动交流，获取玩家关注及反馈。
-
-#### 3）发布评价、回复玩家评价
-
-开发者在玩法详情页的【评价】板块内，发布对于玩法的评价；也可以回复其他玩家的评价，与玩家积极互动，帮助玩家了解更多玩法设计背后的思考。
-
-#### 4）玩法图文、视频资讯内容
-
-开发者可通过开发者账号发布玩法相关攻略或介绍，形式可选择图文或视频，提升玩家对玩法理解，达到玩法宣传目的。
-
-### 2、相关内容发布主题模板参考
-
-#### 1）团队介绍
-
-和平营地的小伙伴们大家好，我们是【玩法名称】的开发团队xxx工作室·，非常荣幸能够入驻和平营地。
-团队介绍（内容参考：组成人员/开发理念/主研游戏类型······）
-感谢官方提供的机会，让我们可以和玩家们进行更近距离地互动，我们期待收到更多大家的反馈，以便我们能够不断改进并为大家带来更优质的游戏体验！
-
-#### 2）玩法上新
-
-亲爱的特种兵：
-全新绿洲玩法【玩法名称】已上线，我们的开发团队经过不懈的探索和努力，希望玩家们可以从中感受游戏的乐趣。
-【上线时间】：x年x月x日
-【玩法介绍】：新的玩法将会带来······
-【攻略tips】：
-我们诚挚地邀请您参与体验【玩法名称】，期待您的支持和反馈！
-
-#### 3）版本更新
-
-亲爱的特种兵：
-感谢您一直以来对【玩法名称】的支持，我们的开发团队一直在不断努力，致力于为玩家们提供更好的游戏体验，我们将在近期推出【玩法名称】新版本。
-【上线时间】：x年x月x日
-【重要更新】：此次更新将带来······
-感谢您一直以来的支持和信任，祝您游戏愉快！
-
-#### 4）BUG修复
-
-亲爱的特种兵：
-近期经玩家反馈/官方排查发现，【玩法名称】玩法游戏体验过程中出现以下BUG：
-1.【BUG描述】
-2.【BUG描述】
-非常抱歉给您带来了不好的游戏体验，目前该BUG已修复，如果您在游戏体验过程中再遇到任何问题，请随时与我们反馈，我们将争取以最快的速度响应并解决问题！
-感谢您的支持与理解，祝您游戏愉快！
-
-## 开发者营地功能使用FAQ
-
-**Q：我在官网提交身份认证申请时，显示系统异常。**
-A：建议开发者先自行检查是否已在官网绑定营地账号，如果未绑定营地账号，则需要先绑定，再进行申请身份认证。同时，可清除网页缓存、尝试重新登录等，如还是无法成功提交，请录制操作步骤视频提供给官方进行排查。
-
-**Q：如何在营地绑定账号？**
-A：在官网【应用绑定】界面进行绑定，验证码在营地【好友的消息】-【系统消息】可以查看获取。
-
-**Q：我团队中负责在和平营地运营的员工离职/转岗后，应该如何更换认证账号？**
-A：需向官方接口人进行申请对离职员工使用的账号取消认证，同时提供新的账号资料给官方进行审核认证 。
-
-**Q：为什么我在营地的发文会审核不通过？**
-A：常见原因有：文章中含有乱码/违反法律法规的敏感词、使用未经授权的素材（包括和平官方的素材）等 。
-
-**Q：我发布的内容感觉审核太慢了，如何减少审核时长？**
-A：24小时内会有审核结果，如超过24小时还没有审核结果或者有紧急/特殊情况可联系官方人员。
-
-**Q：我想发布新公告，但是一直显示发布失败，无法成功发布。**
-A：一般情况下发布失败是因为文本内容里面含有敏感词，建议复核并修改文本，检查是否含敏感词、异常代码、乱码等情况再进行提交。
-
-
----
-
----
 id: "20310"
 title: "编辑器安装"
 source: "https://developer.gp.qq.com/wikieditor/#/catalog/20310"
@@ -61028,3 +60910,229 @@ Lua 脚本中存在不合法的 API 调用。请查看日志中随附的文件�
 * * *
 
 > 排查 PIE 失败时，建议优先在 Output Log 中搜索 `PIE debug failed` 定位具体报错，再对照本文档查找对应解决方案。如按文档操作后问题仍未解决，请联系官方技术支持。
+
+
+---
+
+---
+id: "20002"
+title: "和平营地绿洲专区使用说明书"
+source: "https://developer.gp.qq.com/wikieditor/#/catalog/20002"
+category: "和平营地"
+---
+
+# 和平营地绿洲专区使用说明书
+
+# 《和平营地》绿洲专区开发者使用说明书
+
+最后修改于 2026-09-21 09:23
+
+## 一、和平营地介绍
+
+《和平营地》(以下简称营地）是和平精英官方社区APP，是和平核心玩家聚集地，活跃着大量和平精英高活跃、高付费、高段位的核心玩家。营地提供丰富的辅助工具、精彩内容、社区功能、战绩数据及游戏福利，也是游戏链接玩家的重要且有效的桥梁。
+
+![未标题-4.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Y9dGQ%E6%9C%AA%E6%A0%87%E9%A2%98-4.png)
+
+## 二、营地对绿洲开发者的支持
+
+**打造开发者与玩家零距离沟通平台，帮助开发者沉淀玩法用户**
+
+  * 账号通过认证，开启**开发者专属认证标识，营地内账号头像都会展示创作者标识**
+  * 通过玩法评价、社区动态、评价等功能，快速收集用户评价反馈
+  * 通过发布玩法公告、开发者动态&内容，介绍和宣传玩法、发布玩法攻略，同步玩法开发进度等
+
+## 三、营地绿洲开发者特有功能说明
+
+### 1、开发者认证申请
+
+绿洲开发者**先与官方联系人员提交入驻营地申请** ，官方确认后，可在和平精英官网申请页面中，进行资料提交及认证申请。
+
+![企业微信截图_17119715711058\(1\).png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/61TZY%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17119715711058\(1\).png)
+
+**官网认证流程：**
+
+1.确认需认证营地ID、营地登录方式（微信登录/QQ登录），提交相应的营地ID提供给官方联系人员（获取营地ID：和平营地—我——右上角打开设置）
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/W10Wqimage.png)
+
+2.进入认证网站，选择登录账号。
+重要提醒：请确保【登录 [认证网站](<https://author.gp.qq.com/#/login>) 的账号】与【需认证的营地账号】保持一致，否则将导致账号数据信息不一致而认证失败。
+（如需认证的营地账号为微信登录，但使用QQ登录认证网站，将认证账号不一致）
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Gdrrjimage.png)
+
+3.点击【前往身份认证】，选择认证类型【个人认证】-【创作者】，提交前请再次确认【认证平台营地ID】与【需认证账号营地ID】是否一致
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/CiOYfimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/dbcrtimage.png)
+
+4.根据弹窗提醒，粘贴【玩法链接】至【作品链接】区域，确认提交后通知和平营地运营审核
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/STGZHimage.png)
+
+5.认证成功后，请再次回到认证网站，点击【填写认证信息】提交认证信息。该认证信息将显示在营地，作为认证身份信息介绍使用。
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/TIchximage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/oRmfzimage.png)
+
+**注意事项：**
+
+  1. 建议使用已通过管理平台添加到团队内的账号（需要有营地运营权限）进行注册申请
+  2. 认证需要进行身份证实名认证，需提前准备好：个人身份证正反面照片、个人手持身份证照片（手持身份证照片请确保手臂完整露出），每张照片大小不得超过1M
+  3. 认证类型选择“绿洲启元创作者”
+  4. 账号签名需包含开发玩法，建议格式：绿洲启元《XXXX玩法》开发者
+  5. 玩法链接需要从营地上绿洲专区找到对应玩法，然后分享到微信，从微信点进去在复制下链接（注：如果团队下超过5个玩法，填写其中5个即可）
+
+### 2、营地使用说明
+
+#### 1）个人主页展示团队下玩法列表
+
+通过绿洲启元创作者认证，且拥有营地运营权限（管理平台里账号角色勾选管理员或者运营角色）的账号，若团队下有玩法或互动剧情作品，那么创作者个人主页-【绿洲启元】页签将会展示该团队下所有玩法。
+
+![企业微信截图_17509228265530.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/LHzWb%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17509228265530.png)
+
+#### 2）发布开发者公告
+
+首先进入和平营地【绿洲】板块——【玩法详情页】——找到【来自开发者的话】
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/0ytKBimage.png)
+
+**● 入口展示及发布规则**
+
+该账号必须是通过“绿洲启元创作者”认证，且拥有营地运营权限（管理平台里账号勾选管理员或者运营角色）”的账号方可看到公告编辑入口。
+
+文本内容字数限制：开发者的话文本长度限制300字，默认展示1行，超出部分折叠，点击右上角”>“可展开显示全部内容。
+
+发布次数限制：开发者每月仅可发布3次公告（按自然月计算），每次成功发布新公告后，”发布成功“弹窗内实时显示剩余可编辑次数提示。
+
+**● 如何发布和修改公告（初次编辑）？**
+
+  1. 初次编辑点击“编辑”按钮，弹出输入框，输入文本内容，点击“发布”即可
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/Z9Cdoimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/S5k9Himage.png)
+
+  2. 修改公告时在原有公告下方点击“编辑“按钮，弹出新内容覆盖提示弹窗，点击“继续编辑”弹出输入框，输入文本内容，点击“发布”即可。（**注：修改发布也计入发布次数** ）
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/KA9OUimage.png)
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/8tbHmimage.png)
+
+**● 如何删除公告？**
+
+点击“删除”按钮，二次弹窗确认，完成删除操作
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/aamHTimage.png)
+
+#### 3）发布动态
+
+  * 打开【绿洲】-【玩法详情页】-【讨论】板块-右下角编辑按钮-输入动态内容-【发布】
+  * 打开绿洲玩法对应话题#xxxxx#-右下角编辑按钮-输入动态内容-【发布】，（发布的动态会自动同步到玩法话题下）
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/yYXVKimage.png)
+
+#### 4）发布视频及图文资讯
+
+移动端打开【我】-【创作中心】-【上传视频】进行视频投稿
+也可选择通过PC端官网进行图文及视频投稿：[和平精英](<https://author.gp.qq.com/#/login>)（需实名认证）
+
+![image.png](https://cgugc-video-test-1258633575.cos.ap-shanghai.myqcloud.com/wiki_picture/ZSWVRimage.png)
+
+## 四、开发者运营规范
+
+**开发者入驻营地后，需要严格遵守规则，如违反规则，将进行禁言、封号或者取消开发者认证等处理**
+
+### 1、账号安全
+
+  * 账号作为开发团队账号，需对发布人进行管理限制，只允许团队内成员使用
+  * 账号认证后，不能进行交易转移给他人等操作，否则官方将收回认证
+
+### 2、发言规范
+
+  * 严格遵守营地的发言规则，禁止发布违规言论，禁止发布广告，禁止与玩家进行吵架、互骂等行为
+
+### 3、内容规范
+
+  * 发布的内容需要遵守营地内容规范，内容质量、标题、配图、封面均需符合要求
+  * 官方内部会对开发者发布的内容进行审核，若内容被判定违规时开发者将会收到和平营地小秘书的消息通知，同时判定违规的内容会直接设置为所有人不可见
+  * 发布公告、置顶帖子等内容时，严禁发布含有引流信息的内容
+  * 禁止搬运他人内容，禁止出现低俗、涉黄、涉政等信息
+
+### 4、行为规范
+
+  * 开发者作为和平官方合作者，需要严格规范自身行为，禁止骚扰用户、禁止私自拉玩家群、导流到其他地方、牟取私利、欺骗用户等行为
+
+## 五、其他说明
+
+### 1、开发者运营形式汇总
+
+综合来讲，通过绿洲启元创作者认证，并且拥有营地运营权限（管理平台里账号勾选管理员或者运营角色）的开发者账号，可以在营地采用的运营形式主要包括：
+
+#### 1）开发者公告
+
+开发者在玩法详情页公告区内，发布开发者公告，与玩家介绍玩法、分享思路、预告版本更新内容、同步BUG修复进度等。
+
+#### 2）发布动态、动态下与玩家互动
+
+开发者在玩法话题下或在玩法详情页的【讨论】板块内，发布动态进行自我介绍，并与玩家进行互动交流，获取玩家关注及反馈。
+
+#### 3）发布评价、回复玩家评价
+
+开发者在玩法详情页的【评价】板块内，发布对于玩法的评价；也可以回复其他玩家的评价，与玩家积极互动，帮助玩家了解更多玩法设计背后的思考。
+
+#### 4）玩法图文、视频资讯内容
+
+开发者可通过开发者账号发布玩法相关攻略或介绍，形式可选择图文或视频，提升玩家对玩法理解，达到玩法宣传目的。
+
+### 2、相关内容发布主题模板参考
+
+#### 1）团队介绍
+
+和平营地的小伙伴们大家好，我们是【玩法名称】的开发团队xxx工作室·，非常荣幸能够入驻和平营地。
+团队介绍（内容参考：组成人员/开发理念/主研游戏类型······）
+感谢官方提供的机会，让我们可以和玩家们进行更近距离地互动，我们期待收到更多大家的反馈，以便我们能够不断改进并为大家带来更优质的游戏体验！
+
+#### 2）玩法上新
+
+亲爱的特种兵：
+全新绿洲玩法【玩法名称】已上线，我们的开发团队经过不懈的探索和努力，希望玩家们可以从中感受游戏的乐趣。
+【上线时间】：x年x月x日
+【玩法介绍】：新的玩法将会带来······
+【攻略tips】：
+我们诚挚地邀请您参与体验【玩法名称】，期待您的支持和反馈！
+
+#### 3）版本更新
+
+亲爱的特种兵：
+感谢您一直以来对【玩法名称】的支持，我们的开发团队一直在不断努力，致力于为玩家们提供更好的游戏体验，我们将在近期推出【玩法名称】新版本。
+【上线时间】：x年x月x日
+【重要更新】：此次更新将带来······
+感谢您一直以来的支持和信任，祝您游戏愉快！
+
+#### 4）BUG修复
+
+亲爱的特种兵：
+近期经玩家反馈/官方排查发现，【玩法名称】玩法游戏体验过程中出现以下BUG：
+1.【BUG描述】
+2.【BUG描述】
+非常抱歉给您带来了不好的游戏体验，目前该BUG已修复，如果您在游戏体验过程中再遇到任何问题，请随时与我们反馈，我们将争取以最快的速度响应并解决问题！
+感谢您的支持与理解，祝您游戏愉快！
+
+## 开发者营地功能使用FAQ
+
+**Q：我在官网提交身份认证申请时，显示系统异常。**
+A：建议开发者先自行检查是否已在官网绑定营地账号，如果未绑定营地账号，则需要先绑定，再进行申请身份认证。同时，可清除网页缓存、尝试重新登录等，如还是无法成功提交，请录制操作步骤视频提供给官方进行排查。
+
+**Q：如何在营地绑定账号？**
+A：在官网【应用绑定】界面进行绑定，验证码在营地【好友的消息】-【系统消息】可以查看获取。
+
+**Q：我团队中负责在和平营地运营的员工离职/转岗后，应该如何更换认证账号？**
+A：需向官方接口人进行申请对离职员工使用的账号取消认证，同时提供新的账号资料给官方进行审核认证 。
+
+**Q：为什么我在营地的发文会审核不通过？**
+A：常见原因有：文章中含有乱码/违反法律法规的敏感词、使用未经授权的素材（包括和平官方的素材）等 。
+
+**Q：我发布的内容感觉审核太慢了，如何减少审核时长？**
+A：24小时内会有审核结果，如超过24小时还没有审核结果或者有紧急/特殊情况可联系官方人员。
+
+**Q：我想发布新公告，但是一直显示发布失败，无法成功发布。**
+A：一般情况下发布失败是因为文本内容里面含有敏感词，建议复核并修改文本，检查是否含敏感词、异常代码、乱码等情况再进行提交。
