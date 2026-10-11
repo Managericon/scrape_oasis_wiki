@@ -371,6 +371,16 @@
         "category": "商业化及功能模板"
       }
     },
+    "商业化及功能模板/20484_玩家档案模板.md": {
+      "sha256": "dd16087d5210b3c91f1490dc7488389472abdb59e0b847f9bd36993dde128113",
+      "file_id": "file-LUAy395Vkv3o1pZPYeB1XK",
+      "attributes": {
+        "id": "20484",
+        "title": "玩家档案模板",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20484",
+        "category": "商业化及功能模板"
+      }
+    },
     "商业化及功能模板/礼包/20049_礼包模板.md": {
       "sha256": "f2d0353d94e475f9a8025a762cfc2fb2908de4d4a96c56baa61877ce24bdd6e7",
       "file_id": "file-TsA461LagPMLAeCM7SbHb3",
@@ -1192,8 +1202,8 @@
       }
     },
     "版本日志/20472_1.38 Release Notes.md": {
-      "sha256": "eaa00175612bf31aa89101e8f20b376f27fbf6559c657d62eb1b37334e31bae0",
-      "file_id": "file-XypwuGwJZRrsJ5jYJ6VKNK",
+      "sha256": "befa7c21fe9ae94e051f120ca25aaf5f155498d43711890845a4a234e48cfa9a",
+      "file_id": "file-G8QxVjAhHQV9qKJsrQfuxk",
       "attributes": {
         "id": "20472",
         "title": "1.38 Release Notes",
@@ -1202,8 +1212,8 @@
       }
     },
     "玩法案例及模板/20289_俯视角模板.md": {
-      "sha256": "355cfba751692e95269ca56eb83b4937b1489dc39cde6d225bfa4de05c4c44ca",
-      "file_id": "file-6v822JEG1L1pbkWm9jyDpe",
+      "sha256": "746b01f6c8add4dadc436c43a537d124e6632f5e7cb6d2adead0621dae6abdcb",
+      "file_id": "file-2ck6E7hbo9453ob5e6FASA",
       "attributes": {
         "id": "20289",
         "title": "俯视角模板",
@@ -2742,8 +2752,8 @@
       }
     },
     "进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20420_自定义拾取组件.md": {
-      "sha256": "a898124fadb0849503d2ce9e6f5cb91702f2a9385cda7a48e5b4d8049281d480",
-      "file_id": "file-CDcdrXmHbNPZ9haRnTeHqs",
+      "sha256": "48a56c41f0e11ce0236c0dfffb31ce6fc6462be9788eacad8e7b7fcddffe8148",
+      "file_id": "file-NujcT3m89mQ4mpHe4qoLr6",
       "attributes": {
         "id": "20420",
         "title": "自定义拾取组件",
@@ -2792,8 +2802,8 @@
       }
     },
     "进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20475_背包UI开放.md": {
-      "sha256": "54486ea4ca35c9844dbb27e2eb64bb90b5a9c8a3836ae4281fdd23e4aaf705e8",
-      "file_id": "file-2QCGay7J76RrvrYti4kQjG",
+      "sha256": "6bca91c7b0f98573556f2fae2f64b8c06be2aee8c8daa1a80b016a2961bb77f8",
+      "file_id": "file-Qu1tJc9gA7FhY6HJGfF9i8",
       "attributes": {
         "id": "20475",
         "title": "背包UI开放",
@@ -3028,6 +3038,16 @@
         "id": "20463",
         "title": "背包Tips系统",
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20463",
+        "category": "进阶内容/UI系统"
+      }
+    },
+    "进阶内容/UI系统/20478_Moba技能按钮模板.md": {
+      "sha256": "83d08e202323e7273098c3a33a47763b5422ecd6a19382a4ff3d78cd8dbc11bc",
+      "file_id": "file-8bRgMr9yYszx5vWpGoBQF5",
+      "attributes": {
+        "id": "20478",
+        "title": "Moba技能按钮模板",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20478",
         "category": "进阶内容/UI系统"
       }
     },
@@ -3473,8 +3493,8 @@
     }
   },
   "summary": {
-    "uploaded": 0,
-    "skipped": 347,
+    "uploaded": 6,
+    "skipped": 343,
     "failed": 0
   }
 }

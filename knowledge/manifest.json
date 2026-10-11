@@ -11,7 +11,7 @@
     "selector": ".github-markdown-body",
     "images": 0,
     "code_blocks": 0,
-    "sha256": "eaa00175612bf31aa89101e8f20b376f27fbf6559c657d62eb1b37334e31bae0"
+    "sha256": "befa7c21fe9ae94e051f120ca25aaf5f155498d43711890845a4a234e48cfa9a"
   },
   {
     "id": "20418",
@@ -1838,7 +1838,7 @@
     "selector": ".github-markdown-body",
     "images": 19,
     "code_blocks": 3,
-    "sha256": "a898124fadb0849503d2ce9e6f5cb91702f2a9385cda7a48e5b4d8049281d480"
+    "sha256": "48a56c41f0e11ce0236c0dfffb31ce6fc6462be9788eacad8e7b7fcddffe8148"
   },
   {
     "id": "20429",
@@ -1921,9 +1921,9 @@
     "status": "ok",
     "file": "articles/进阶内容/GamePlay系统/物资系统/物资编辑器2.0/20475_背包UI开放.md",
     "selector": ".github-markdown-body",
-    "images": 28,
+    "images": 35,
     "code_blocks": 7,
-    "sha256": "54486ea4ca35c9844dbb27e2eb64bb90b5a9c8a3836ae4281fdd23e4aaf705e8"
+    "sha256": "6bca91c7b0f98573556f2fae2f64b8c06be2aee8c8daa1a80b016a2961bb77f8"
   },
   {
     "id": "20144",
@@ -3068,6 +3068,21 @@
     "sha256": "99ec1f2c01cef0622f73e3dc677c65153e14a3ebfd457dfc455c3088522e2fb8"
   },
   {
+    "id": "20478",
+    "title": "Moba技能按钮模板",
+    "categories": [
+      "进阶内容",
+      "UI系统"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20478",
+    "status": "ok",
+    "file": "articles/进阶内容/UI系统/20478_Moba技能按钮模板.md",
+    "selector": ".github-markdown-body",
+    "images": 7,
+    "code_blocks": 0,
+    "sha256": "83d08e202323e7273098c3a33a47763b5422ecd6a19382a4ff3d78cd8dbc11bc"
+  },
+  {
     "id": "20223",
     "title": "特效编辑器",
     "categories": [
@@ -3926,6 +3941,20 @@
     "sha256": "b7fbd7f4dff4f684b8c57f2fc4b5d890804832f6898560000c778d962e4362a0"
   },
   {
+    "id": "20484",
+    "title": "玩家档案模板",
+    "categories": [
+      "商业化及功能模板"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20484",
+    "status": "ok",
+    "file": "articles/商业化及功能模板/20484_玩家档案模板.md",
+    "selector": ".github-markdown-body",
+    "images": 7,
+    "code_blocks": 6,
+    "sha256": "dd16087d5210b3c91f1490dc7488389472abdb59e0b847f9bd36993dde128113"
+  },
+  {
     "id": "20207",
     "title": "视频生成3D动画",
     "categories": [
@@ -4171,9 +4200,9 @@
     "status": "ok",
     "file": "articles/玩法案例及模板/20289_俯视角模板.md",
     "selector": ".github-markdown-body",
-    "images": 29,
+    "images": 34,
     "code_blocks": 5,
-    "sha256": "355cfba751692e95269ca56eb83b4937b1489dc39cde6d225bfa4de05c4c44ca"
+    "sha256": "746b01f6c8add4dadc436c43a537d124e6632f5e7cb6d2adead0621dae6abdcb"
   },
   {
     "id": "20015",

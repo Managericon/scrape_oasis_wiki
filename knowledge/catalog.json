@@ -1910,6 +1910,15 @@
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20463"
   },
   {
+    "id": "20478",
+    "title": "Moba技能按钮模板",
+    "categories": [
+      "进阶内容",
+      "UI系统"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20478"
+  },
+  {
     "id": "20223",
     "title": "特效编辑器",
     "categories": [
@@ -2412,6 +2421,14 @@
       "商业化及功能模板"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20415"
+  },
+  {
+    "id": "20484",
+    "title": "玩家档案模板",
+    "categories": [
+      "商业化及功能模板"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20484"
   },
   {
     "id": "20207",
