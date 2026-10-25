@@ -922,8 +922,8 @@
       }
     },
     "新手入门/游戏场景/关卡编辑/330_一般地图子关卡管理.md": {
-      "sha256": "ddbe63d00d127660c8ee33744010dfe4e2ddf13a317d9cfd52fa6e34be4e4606",
-      "file_id": "file-MF7QC5bz4SMfLfjqTzehpR",
+      "sha256": "456cf4df5174da63a327eadb576de6325f6bae22d0758f4e0fdcf94309715230",
+      "file_id": "file-VWEsgWZgYqCVwRC8tiBP5H",
       "attributes": {
         "id": "330",
         "title": "一般地图子关卡管理",
@@ -1571,26 +1571,6 @@
         "category": "绿洲编辑器基础内容"
       }
     },
-    "绿洲编辑器基础内容/UGCAskQ MCP/20414_UGCAskQ MCP 使用说明.md": {
-      "sha256": "b38ac0b98a01edef8f2f321de2825d1bd7ae0fc6d5f233b05e520a9fb5c8ac91",
-      "file_id": "file-WNVuxbZDjhWvLKsKG7EVU8",
-      "attributes": {
-        "id": "20414",
-        "title": "UGCAskQ MCP 使用说明",
-        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20414",
-        "category": "绿洲编辑器基础内容/UGCAskQ MCP"
-      }
-    },
-    "绿洲编辑器基础内容/UGCAskQ MCP/20464_通过UGC-AskQ制作编辑器工具.md": {
-      "sha256": "f168ec992c12dd4f0033f61e1a9303522abb991331672222345339991af6bf7b",
-      "file_id": "file-NMoBEH3ZpukdE77hQP1RA4",
-      "attributes": {
-        "id": "20464",
-        "title": "通过UGC-AskQ制作编辑器工具",
-        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20464",
-        "category": "绿洲编辑器基础内容/UGCAskQ MCP"
-      }
-    },
     "绿洲编辑器基础内容/上传和发布玩法/363_项目设置.md": {
       "sha256": "3305e827a8607a70bf44f8b3a1b422cdbc65e817d3d317f6a092d20eba2bc202",
       "file_id": "file-B9SbQbCj5PCKBaeTGa5R2v",
@@ -1659,6 +1639,26 @@
         "title": "二次匹配功能",
         "source": "https://developer.gp.qq.com/wikieditor/#/catalog/376",
         "category": "绿洲编辑器基础内容/匹配系统"
+      }
+    },
+    "绿洲编辑器基础内容/外部AI接入/20414_UGCAskQ MCP 使用说明.md": {
+      "sha256": "fd3cf3170647f81cb360c5e81ccb6c332b44ccfbdd58539aa39d0bf1eeb30342",
+      "file_id": "file-GpWfK3U4oqXjPh3rAWZrnp",
+      "attributes": {
+        "id": "20414",
+        "title": "UGCAskQ MCP 使用说明",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20414",
+        "category": "绿洲编辑器基础内容/外部AI接入"
+      }
+    },
+    "绿洲编辑器基础内容/外部AI接入/20464_通过UGC-AskQ制作编辑器工具.md": {
+      "sha256": "4523cb6effc0988f8c0f3c2b5aede14b6e4e4343cc0985a373e93315ef520f2a",
+      "file_id": "file-WRcNKV2HNq8sqTqqjYTg4Z",
+      "attributes": {
+        "id": "20464",
+        "title": "通过UGC-AskQ制作编辑器工具",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20464",
+        "category": "绿洲编辑器基础内容/外部AI接入"
       }
     },
     "绿洲编辑器基础内容/编辑器功能窗口/124_场景编辑器概述.md": {
@@ -1822,8 +1822,8 @@
       }
     },
     "进阶内容/20023_自定义行为统计.md": {
-      "sha256": "404356cbdd8a58ea3ac33723ebcbc1666a396e99ea9099c11c8461d0ef67e322",
-      "file_id": "file-Pd9LWzLcA3EnkQcxQSYRS8",
+      "sha256": "fc5c4fd199cb8d5f0635ab67d627e64526dd40f329d84fec0f7ccb0e5c73f451",
+      "file_id": "file-WnPvamGnz1JYesekj7yiaJ",
       "attributes": {
         "id": "20023",
         "title": "自定义行为统计",
@@ -2012,8 +2012,8 @@
       }
     },
     "进阶内容/GamePlay系统/怪物系统/20161_怪物调试工具.md": {
-      "sha256": "acb16190c89a997687f1acac6ef2aa634e28d5b917201e8801d091ea2fd9559c",
-      "file_id": "file-5Mnq8yT5ZdiwjQ5JbTLuEu",
+      "sha256": "45e587e78210839c0af781217371cb362b4bb8bb3216b1ffc371d35178ead1ad",
+      "file_id": "file-JipnXAt4ib2z16dP4zY6mu",
       "attributes": {
         "id": "20161",
         "title": "怪物调试工具",
@@ -2861,6 +2861,16 @@
         "category": "进阶内容/GamePlay系统/角色系统"
       }
     },
+    "进阶内容/GamePlay系统/角色系统/20485_组队招募.md": {
+      "sha256": "75bc54be1190fef28a387433505ec0185c19b9cd05b790d9e78967a9e236281c",
+      "file_id": "file-GFi93yJiiiQ9mkt3m6M1fN",
+      "attributes": {
+        "id": "20485",
+        "title": "组队招募",
+        "source": "https://developer.gp.qq.com/wikieditor/#/catalog/20485",
+        "category": "进阶内容/GamePlay系统/角色系统"
+      }
+    },
     "进阶内容/GamePlay系统/角色系统/362_角色出生点.md": {
       "sha256": "6b7bb28ce6405645fb0937abb66ee680508248d1541a912cc8e9042465495844",
       "file_id": "file-N9gsLgzzNKqs5M1oNXTz7u",
@@ -3493,8 +3503,8 @@
     }
   },
   "summary": {
-    "uploaded": 1,
-    "skipped": 348,
+    "uploaded": 6,
+    "skipped": 344,
     "failed": 0
   }
 }

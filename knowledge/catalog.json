@@ -347,7 +347,7 @@
     "title": "UGCAskQ MCP 使用说明",
     "categories": [
       "绿洲编辑器基础内容",
-      "UGCAskQ MCP"
+      "外部AI接入"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20414"
   },
@@ -356,7 +356,7 @@
     "title": "通过UGC-AskQ制作编辑器工具",
     "categories": [
       "绿洲编辑器基础内容",
-      "UGCAskQ MCP"
+      "外部AI接入"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20464"
   },
@@ -716,6 +716,16 @@
       "角色系统"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20466"
+  },
+  {
+    "id": "20485",
+    "title": "组队招募",
+    "categories": [
+      "进阶内容",
+      "GamePlay系统",
+      "角色系统"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20485"
   },
   {
     "id": "178",

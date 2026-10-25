@@ -587,30 +587,30 @@
     "title": "UGCAskQ MCP 使用说明",
     "categories": [
       "绿洲编辑器基础内容",
-      "UGCAskQ MCP"
+      "外部AI接入"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20414",
     "status": "ok",
-    "file": "articles/绿洲编辑器基础内容/UGCAskQ MCP/20414_UGCAskQ MCP 使用说明.md",
+    "file": "articles/绿洲编辑器基础内容/外部AI接入/20414_UGCAskQ MCP 使用说明.md",
     "selector": ".github-markdown-body",
     "images": 0,
     "code_blocks": 2,
-    "sha256": "b38ac0b98a01edef8f2f321de2825d1bd7ae0fc6d5f233b05e520a9fb5c8ac91"
+    "sha256": "fd3cf3170647f81cb360c5e81ccb6c332b44ccfbdd58539aa39d0bf1eeb30342"
   },
   {
     "id": "20464",
     "title": "通过UGC-AskQ制作编辑器工具",
     "categories": [
       "绿洲编辑器基础内容",
-      "UGCAskQ MCP"
+      "外部AI接入"
     ],
     "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20464",
     "status": "ok",
-    "file": "articles/绿洲编辑器基础内容/UGCAskQ MCP/20464_通过UGC-AskQ制作编辑器工具.md",
+    "file": "articles/绿洲编辑器基础内容/外部AI接入/20464_通过UGC-AskQ制作编辑器工具.md",
     "selector": ".github-markdown-body",
     "images": 3,
     "code_blocks": 0,
-    "sha256": "f168ec992c12dd4f0033f61e1a9303522abb991331672222345339991af6bf7b"
+    "sha256": "4523cb6effc0988f8c0f3c2b5aede14b6e4e4343cc0985a373e93315ef520f2a"
   },
   {
     "id": "298",
@@ -858,7 +858,7 @@
     "selector": ".github-markdown-body",
     "images": 2,
     "code_blocks": 0,
-    "sha256": "ddbe63d00d127660c8ee33744010dfe4e2ddf13a317d9cfd52fa6e34be4e4606"
+    "sha256": "456cf4df5174da63a327eadb576de6325f6bae22d0758f4e0fdcf94309715230"
   },
   {
     "id": "281",
@@ -1196,6 +1196,22 @@
     "images": 9,
     "code_blocks": 4,
     "sha256": "f2b8bafb625ba0511224013117ff76f0693ac951d4a986c72ba74c0b5b77048e"
+  },
+  {
+    "id": "20485",
+    "title": "组队招募",
+    "categories": [
+      "进阶内容",
+      "GamePlay系统",
+      "角色系统"
+    ],
+    "url": "https://developer.gp.qq.com/wikieditor/#/catalog/20485",
+    "status": "ok",
+    "file": "articles/进阶内容/GamePlay系统/角色系统/20485_组队招募.md",
+    "selector": ".github-markdown-body",
+    "images": 11,
+    "code_blocks": 2,
+    "sha256": "75bc54be1190fef28a387433505ec0185c19b9cd05b790d9e78967a9e236281c"
   },
   {
     "id": "178",
@@ -2147,7 +2163,7 @@
     "selector": ".github-markdown-body",
     "images": 11,
     "code_blocks": 0,
-    "sha256": "acb16190c89a997687f1acac6ef2aa634e28d5b917201e8801d091ea2fd9559c"
+    "sha256": "45e587e78210839c0af781217371cb362b4bb8bb3216b1ffc371d35178ead1ad"
   },
   {
     "id": "20017",
@@ -3429,7 +3445,7 @@
     "selector": ".github-markdown-body",
     "images": 3,
     "code_blocks": 4,
-    "sha256": "404356cbdd8a58ea3ac33723ebcbc1666a396e99ea9099c11c8461d0ef67e322"
+    "sha256": "fc5c4fd199cb8d5f0635ab67d627e64526dd40f329d84fec0f7ccb0e5c73f451"
   },
   {
     "id": "20437",
