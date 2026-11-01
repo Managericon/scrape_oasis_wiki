@@ -1202,8 +1202,8 @@
       }
     },
     "版本日志/20472_1.38 Release Notes.md": {
-      "sha256": "befa7c21fe9ae94e051f120ca25aaf5f155498d43711890845a4a234e48cfa9a",
-      "file_id": "file-G8QxVjAhHQV9qKJsrQfuxk",
+      "sha256": "1a6c7c85e927d27fb7742f66f14762650afef415e52c0d67543aaec8314dd0e3",
+      "file_id": "file-HTqJWx7SRaRsYTQdWJNsDa",
       "attributes": {
         "id": "20472",
         "title": "1.38 Release Notes",
@@ -2012,8 +2012,8 @@
       }
     },
     "进阶内容/GamePlay系统/怪物系统/20161_怪物调试工具.md": {
-      "sha256": "45e587e78210839c0af781217371cb362b4bb8bb3216b1ffc371d35178ead1ad",
-      "file_id": "file-JipnXAt4ib2z16dP4zY6mu",
+      "sha256": "c5c08df9f81cec4ee6e2052b252692e62b6070ea602051aa59a01b82a7aafd0b",
+      "file_id": "file-DbCVnZSVpi3fUHBsTmfc2H",
       "attributes": {
         "id": "20161",
         "title": "怪物调试工具",
@@ -3503,8 +3503,8 @@
     }
   },
   "summary": {
-    "uploaded": 6,
-    "skipped": 344,
+    "uploaded": 2,
+    "skipped": 348,
     "failed": 0
   }
 }
