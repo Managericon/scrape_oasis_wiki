@@ -21,6 +21,7 @@ The Slot for the UScrollBox, contains the widget that are scrollable
 |---|---|---|
 | `Padding` | `FMargin` | The padding area between the slot and the content it contains. |
 | `HorizontalAlignment` | `TEnumAsByte < EHorizontalAlignment >` | The alignment of the object horizontally. |
+| `VerticalAlignment` | `TEnumAsByte < EVerticalAlignment >` | The alignment of the object vertically. |
 
 ## Functions
 
@@ -53,6 +54,24 @@ SetHorizontalAlignment(InHorizontalAlignment: EHorizontalAlignment) -> void
 | Name | Type | Description |
 |---|---|---|
 | `InHorizontalAlignment` | `EHorizontalAlignment` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetVerticalAlignment`
+
+```text
+SetVerticalAlignment(InVerticalAlignment: EVerticalAlignment) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InVerticalAlignment` | `EVerticalAlignment` | - |
 
 **Returns**
 

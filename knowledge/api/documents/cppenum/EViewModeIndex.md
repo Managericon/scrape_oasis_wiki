@@ -38,6 +38,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `VMI_MaterialTextureScaleAccuracy` | `25` | - |
 | `VMI_RequiredTextureResolution` | `26` | - |
 | `VMI_TexelDensity` | `27` | - |
-| `VMI_FSOCOccluderVisualization` | `28` | - |
-| `VMI_Max` | `29` | - |
+| `VMI_Max` | `28` | - |
 | `VMI_Unknown` | `255` | - |

@@ -14,7 +14,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | Name | Type/Value | Description |
 |---|---|---|
 | `BaseDamage` | `float` | - |
-| `MinimumDamage` | `float` | - |
 | `InnerRadius` | `float` | - |
+| `MinimumDamage` | `float` | - |
 | `OuterRadius` | `float` | - |
 | `DamageFalloff` | `float` | - |

@@ -19,4 +19,6 @@ api_root: "https://developer.gp.qq.com/api/"
 | `EGATD_OCT_ChangeSuit` | `3` | - |
 | `EGATD_OCT_Clear` | `4` | - |
 | `EGATD_OCT_Clint_AsyncPuton` | `5` | - |
-| `EGATD_OCT_Max` | `6` | - |
+| `EGATD_OCT_NoDS_AsyncPuton` | `6` | - |
+| `EGATD_OCT_NoDS_AsyncClear` | `7` | - |
+| `EGATD_OCT_MAX` | `8` | - |

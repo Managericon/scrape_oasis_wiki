@@ -212,6 +212,24 @@ SetForcedLodModel(NewForcedLodModel: int32) -> void
 |---|---|
 | `void` | - |
 
+### `SetMinLodModel`
+
+```text
+SetMinLodModel(InMinLod: int32) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InMinLod` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ### `SetDistanceFieldSelfShadowBias`
 
 ```text

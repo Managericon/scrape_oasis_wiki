@@ -101,6 +101,12 @@ api_root: "https://developer.gp.qq.com/api/"
 | `Weapon_ReloadTimeMagOutTactical` | `ShootWeaponEntityComp\|ReloadTimeMagOutTactical` | --Weapon [战术换弹开始到拔出弹夹时间-ReloadTimeMagOutTactical], |
 | `Weapon_ReloadTimeMagIn` | `ShootWeaponEntityComp\|ReloadTimeMagIn` | --Weapon [全弹夹换弹时弹夹插入到换弹结束的时间-ReloadTimeMagIn], |
 | `Weapon_ReloadTimeMagInTactical` | `ShootWeaponEntityComp\|ReloadTimeMagInTactical` | --Weapon [战术换弹时弹夹插入到换弹结束的时间-ReloadTimeMagInTactical], |
+| `Weapon_ReloadTimeFakeMagShow` | `ShootWeaponEntityComp\|ReloadTimeFakeMagShow` | --Weapon [完整换弹假弹匣显示时间-ReloadTimeFakeMagShow], |
+| `Weapon_ReloadTimeFakeMagOut` | `ShootWeaponEntityComp\|ReloadTimeFakeMagOut` | --Weapon [完整换弹假弹匣挂到手上时间-ReloadTimeFakeMagOut], |
+| `Weapon_ReloadTimeFakeMagHide` | `ShootWeaponEntityComp\|ReloadTimeFakeMagHide` | --Weapon [完整换弹假弹匣隐藏时间-ReloadTimeFakeMagHide], |
+| `Weapon_ReloadTimeFakeMagShowTactical` | `ShootWeaponEntityComp\|ReloadTimeFakeMagShowTactical` | --Weapon [战术换弹假弹匣显示时间-ReloadTimeFakeMagShowTactical], |
+| `Weapon_ReloadTimeFakeMagOutTactical` | `ShootWeaponEntityComp\|ReloadTimeFakeMagOutTactical` | --Weapon [战术换弹假弹匣挂到手上时间-ReloadTimeFakeMagOutTactical], |
+| `Weapon_ReloadTimeFakeMagHideTactical` | `ShootWeaponEntityComp\|ReloadTimeFakeMagHideTactical` | --Weapon [战术换弹假弹匣隐藏时间-ReloadTimeFakeMagHideTactical], |
 | `Weapon_VerticalRecoilFactorModifier` | `ShootWeaponEntityComp\|VerticalRecoilFactorModifier` | --Weapon [垂直后坐力修改参数-VerticalRecoilFactorModifier], |
 | `Weapon_HorizontalRecoilFactorModifier` | `ShootWeaponEntityComp\|HorizontalRecoilFactorModifier` | --Weapon [水平后坐力修改参数-HorizontalRecoilFactorModifier], |
 | `Weapon_AccessoriesRecoveryFactor` | `ShootWeaponEntityComp\|AccessoriesRecoveryFactor` | --Weapon [后坐回正参数-AccessoriesRecoveryFactor], |

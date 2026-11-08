@@ -26,14 +26,14 @@ api_root: "https://developer.gp.qq.com/api/"
 IsAlive(PlayerKey: number) -> boolean
 ```
 
-是否存活
+普通玩家和人机玩家是否存活
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | - |
+| `PlayerKey` | `number` | 普通玩家和人机玩家的PlayerKey |
 
 **Returns**
 
@@ -110,14 +110,14 @@ GetPlayerAccountInfo(PlayerKey: number) -> FPlayerAccountInfo
 GetPlayerBattleInfo(PlayerKey: number) -> FPlayerBattleInfo
 ```
 
-获取玩家的战斗数据
+获取普通玩家和人机玩家的战斗数据
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | - |
+| `PlayerKey` | `number` | 普通玩家和人机玩家唯一 Key |
 
 **Returns**
 
@@ -292,20 +292,20 @@ GetPlayerPlatformGender(PlatformGender: number, UID: number) -> number
 GetTeamID(PlayerKey: number) -> number
 ```
 
-获取 TeamID
+获取普通玩家和人机玩家的 TeamID
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | - |
+| `PlayerKey` | `number` | 普通玩家和人机玩家唯一 Key |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `number` | - |
+| `number` | 队伍 ID |
 
 ### `GetPlayerKeyInt64`
 
@@ -313,14 +313,14 @@ GetTeamID(PlayerKey: number) -> number
 GetPlayerKeyInt64(PlayerState: PlayerState) -> number
 ```
 
-获取 64 位玩家 PlayerKey
+获取 64 位普通玩家和人机玩家的 PlayerKey
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerState` | `PlayerState` | - |
+| `PlayerState` | `PlayerState` | 普通玩家和人机玩家的PlayerState |
 
 **Returns**
 
@@ -334,20 +334,42 @@ GetPlayerKeyInt64(PlayerState: PlayerState) -> number
 GetPlayerKey(PlayerState: PlayerState) -> string
 ```
 
-获取字符串玩家 PlayerKey
+获取字符串普通玩家和人机玩家的 PlayerKey
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerState` | `PlayerState` | - |
+| `PlayerState` | `PlayerState` | 普通玩家和人机玩家的PlayerState |
 
 **Returns**
 
 | Type | Description |
 |---|---|
 | `string` | - |
+
+### `QueryPlayerReturnInfos`
+
+```text
+QueryPlayerReturnInfos(UIDs: number[]) -> UGCPromiseFuture
+```
+
+查询玩家回流状态信息
+注意：单次查询不超过 200 个，超过则截断
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `UIDs` | `number[]` | 玩家 UID 列表 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCPromiseFuture` | 已启动的异步任务，Then 回调内 Task:Get() 取 ResultMap：ResultMap[UID] = FUGCReturnPlayerInfo，失败时为空表 |
 
 ## Language
 

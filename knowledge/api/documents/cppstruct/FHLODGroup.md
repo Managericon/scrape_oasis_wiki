@@ -25,13 +25,7 @@ LODDrawDistanceScale 等参数。
 | `LODDrawDistanceScale` | `float` | - |
 | `DesiredGridSize` | `float` | - |
 | `DesiredGridOffset` | `float` | - |
-| `MaxBoundForHLOD` | `float` | - |
-| `MinSubActorsForHLOD` | `int32` | - |
-| `ClusterBoundsMinRadius` | `float` | - |
-| `ClusterTreeLevel` | `int32` | - |
-| `ClusterMinInstances` | `int32` | - |
-| `MinClustersPerLODActor` | `int32` | - |
-| `MaxClustersPerLODActor` | `int32` | - |
+| `DesiredGridScaleFactor` | `int32` | Grid Scale Factor for upper HLOD levels of this Group.<br>	   Same semantics as FHierarchicalSimplification::DesiredGridScaleFactor,<br>	   but applied independently per-Group, allowing different Groups to use<br>	   different merge granularity at upper HLOD levels.<br>	   If 0 or 1, this Group will NOT generate upper-level HLOD (only Level0). |
 | `LOD0ReduceFactor` | `float` | LOD0 percentage-based reduction factor (OriginalTriangles  this value). Corresponds to global r.HLOD.ProxyMeshLOD0ReduceFactor |
 | `PerVolumeTriangles` | `float` | Volume-based: triangles allowed per cubic-meter of Bounds. Corresponds to global r.HLOD.ProxyMeshPerVolumeTraingles |
 | `LODReduceFactor` | `float` | LOD1~N successive reduction factor. Corresponds to global r.HLOD.ProxyMeshReduceFactor |
@@ -43,3 +37,7 @@ LODDrawDistanceScale 等参数。
 | `bOverrideProxyMeshCullingDistance` | `bool` | - |
 | `bEmissiveMap` | `bool` | Whether to bake Emissive channel into ProxyMesh material for this Group. |
 | `EmissiveTextureSize` | `FIntPoint` | Override Emissive texture size (only used when bEmissiveMap=true) |
+| `bReusePreviousLevelClusters` | `bool` | Will reuse the clusters generated for the previous (lower) HLOD level |
+| `DesiredBoundRadius` | `float` | Desired Bounding Radius for clustering - this is not guaranteed but used to calculate filling factor for auto clustering |
+| `DesiredFillingPercentage` | `float` | Desired Filling Percentage for clustering - this is not guaranteed but used to calculate filling factor for auto clustering |
+| `MinNumberOfActorsToBuild` | `int32` | Min number of actors to build LODActor |

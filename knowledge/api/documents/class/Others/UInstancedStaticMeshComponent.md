@@ -104,6 +104,28 @@ Set a DIP value on one instance for the given material slot.
 |---|---|
 | `bool` | - |
 
+### `SetAllInstancesDIP`
+
+```text
+SetAllInstancesDIP(MaterialIndex: int32, Name: FString &, Value: FVector4 &) -> bool
+```
+
+Set the same DIP value on all instances.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `MaterialIndex` | `int32` | - |
+| `Name` | `FString &` | - |
+| `Value` | `FVector4 &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
 ### `GetInstanceTransform`
 
 ```text

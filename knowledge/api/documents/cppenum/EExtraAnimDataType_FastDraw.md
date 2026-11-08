@@ -20,3 +20,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `FastDraw_KeepingAimOff` | `4` | - |
 | `FastDraw_KeepingMoveBS` | `5` | - |
 | `FastDraw_Obstructed` | `6` | - |
+| `FastDraw_SprintSwitchIn` | `7` | - |
+| `FastDraw_SprintSwitchOut_LeftWeapon` | `8` | - |
+| `FastDraw_SprintSwitchOut_RightWeapon` | `9` | - |
+| `FastDraw_SprintSwitchOut_All` | `10` | - |

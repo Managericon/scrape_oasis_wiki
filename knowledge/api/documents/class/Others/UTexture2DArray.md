@@ -20,6 +20,9 @@ api_root: "https://developer.gp.qq.com/api/"
 | `AddressX` | `TEnumAsByte < enum TextureAddress >` | The addressing mode to use for the X axis. |
 | `AddressY` | `TEnumAsByte < enum TextureAddress >` | The addressing mode to use for the Y axis. |
 | `AddressZ` | `TEnumAsByte < enum TextureAddress >` | The addressing mode to use for the Z axis. |
+| `bApplySingleImageAdjustSetting` | `bool` | - |
+| `bCreatedByUGCEditor_Ext` | `bool` | - |
+| `SourceTextures` | `TArray < UTexture2D * >` | Add Textures |
 
 ## Functions
 

@@ -33,6 +33,7 @@ PrimitiveComponents are SceneComponents that contain or generate some sort of ge
 | `VLMOptimizeType` | `EVLMOptimizeType` | To optimize performance, VLM can select optimization method. |
 | `bInstanceCulling` | `uint8` | - |
 | `OverrideQueryMobilityType` | `EOverrideQueryMobilityType` | - |
+| `SignificanceForOcclusionCull` | `ESignificanceForOcclusionCull` | - |
 | `bUseAsPVSOC` | `uint8` | - |
 | `bUseDynamicPVS` | `uint8` | - |
 | `FramePredictionCacheState` | `EFPCacheState` | - |
@@ -99,6 +100,8 @@ PrimitiveComponents are SceneComponents that contain or generate some sort of ge
 | `ScopeLocalTranslation` | `FVector` | - |
 | `ScopeLocalRotation` | `FRotator` | - |
 | `ScopeRadius` | `float` | - |
+| `bIsInScopeCullingLens` | `uint8` | 标记此 Component 为 In-Scope Culling 的准镜镜片 Stencil Mark Mesh（美术提供的独立片状 Mesh） |
+| `ScopeCullingParticipation` | `EScopeCullingParticipation` | 控制此 Primitive 是否参与准镜 Stencil 剔除。<br>	   Default = 由系统规则决定；Participate = 强制参与；Exempt = 强制豁免（即使是 FppLayer 也不参与） |
 | `bIsFppLayer` | `uint8` | - |
 | `bIsTppLayer` | `uint8` | When enabled, the component will NOT cast a shadow on components with bIsFppLayer enabled.<br>	  This requires bCastInsetShadow to be enabled. |
 | `bUseAsOccluder` | `uint8` | Whether to render the primitive in the depth only pass.<br>	  This should generally be true for all objects, and let the renderer make decisions about whether to render objects in the depth only pass.<br>	  @todo - if any rendering features rely on a complete depth only pass, this variable needs to go away. |
@@ -141,7 +144,8 @@ PrimitiveComponents are SceneComponents that contain or generate some sort of ge
 | `bRenderCustomDepth` | `uint8` | If true, this component will be rendered in the CustomDepth pass (usually used for outlines) |
 | `bUpdateTransformUseTeleportPhysics` | `uint8` | - |
 | `bUseAsyncCompilePSO` | `uint8` | #if WITH_ANDROID_ASYNC_COMPILE_PSO<br>	 whether this mesh is using async compile pso , only used for android |
-| `bIgnoreOtherCanBeOverlap` | `uint8` | - |
+| `bMightTransformToSkeletal` | `uint8` | whether this mesh is relating to a skeletal mesh which it might transform to later |
+| `bIgnoreOtherCanBeOverlap` | `uint8` | #endif |
 | `bMoveMultiPenetratingIgnoreFlag` | `uint8` | 是否在移动的时候，有多个渗透，就忽略开启本标志的物体 |
 | `bHasCustomNavigableGeometry` | `TEnumAsByte < EHasCustomNavigableGeometry :: Type >` | If true then DoCustomNavigableGeometryExport will be called to collect navigable geometry of this component. |
 | `CanCharacterStepUpOn` | `TEnumAsByte < enum ECanBeCharacterBase >` | Determine whether a Character can step up onto this component.<br>	  This controls whether they can try to step up on it when they bump in to it, not whether they can walk on it after landing on it.<br>	  @see FWalkableSlopeOverride |
@@ -3223,6 +3227,24 @@ IsComponentDeviceEnough() -> bool
 | Type | Description |
 |---|---|
 | `bool` | - |
+
+### `SetUseAsOccluder`
+
+```text
+SetUseAsOccluder(bInUseAsOccluder: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bInUseAsOccluder` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
 
 ## Delegates
 

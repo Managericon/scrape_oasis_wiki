@@ -2042,6 +2042,44 @@ GetSubAnimInstanceBySlot(SubInstanceSlotName: FName) -> UAnimInstance *
 |---|---|
 | `UAnimInstance *` | - |
 
+### `GetSubAnimInstanceBySlotRecursive`
+
+```text
+GetSubAnimInstanceBySlotRecursive(SubInstanceSlotName: FName, OutInstance: UAnimInstance * &) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SubInstanceSlotName` | `FName` | - |
+| `OutInstance` | `UAnimInstance * &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `GetSubAnimInstanceByNodeTagRecursive`
+
+```text
+GetSubAnimInstanceByNodeTagRecursive(NodeTag: FName, OutInstance: UAnimInstance * &) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NodeTag` | `FName` | - |
+| `OutInstance` | `UAnimInstance * &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
 ### `IsUseSubAnimInstanceBySlot`
 
 ```text
@@ -2332,6 +2370,18 @@ SetFollowedAnimInstance(InputFollowedInstance: UAnimInstance *) -> void
 
 ```text
 ResetFollowedAnimInstance() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ResetAllFollowerAnimInstances`
+
+```text
+ResetAllFollowerAnimInstances() -> void
 ```
 
 **Returns**

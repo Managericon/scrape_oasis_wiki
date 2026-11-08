@@ -16,4 +16,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `SingleColorOverlay` | `0` | - |
 | `PerMaterialHash` | `1` | - |
 | `PerMaterialResolvedColor` | `2` | - |
-| `ViewportViewMode` | `3` | - |
+| `EngineVisualizationToggle` | `3` | - |
+| `PerSectionDensity` | `4` | - |

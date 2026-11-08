@@ -15,3 +15,4 @@ api_root: "https://developer.gp.qq.com/api/"
 |---|---|---|
 | `Local` | `0` | - |
 | `Root` | `1` | - |
+| `Unused` | `2` | - |

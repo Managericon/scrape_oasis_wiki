@@ -9,7 +9,7 @@ api_root: "https://developer.gp.qq.com/api/"
 
 # UGCMobPawnSystem
 
-怪物系统接口库
+【废弃】怪物系统接口库
 
 ## Functions
 

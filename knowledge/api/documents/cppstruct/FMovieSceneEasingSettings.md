@@ -19,5 +19,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `bManualEaseIn` | `bool` | Whether to manually override this section's ease in time |
 | `ManualEaseInTime` | `float` | Manually override this section's ease in time |
 | `EaseOut` | `TScriptInterface < IMovieSceneEasingFunction >` | - |
-| `bManualEaseOut` | `bool` | Whether to manually override this section's ease out time |
 | `ManualEaseOutTime` | `float` | Manually override this section's ease-out time |
+| `bManualEaseOut` | `bool` | Whether to manually override this section's ease out time |

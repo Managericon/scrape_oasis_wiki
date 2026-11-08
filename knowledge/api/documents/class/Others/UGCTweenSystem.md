@@ -13,6 +13,20 @@ Tween 动画系统接口库
 
 ## Functions
 
+### `ReleaseTweenDelegates`
+
+```text
+ReleaseTweenDelegates(Handle: FTweenHandle)
+```
+
+释放某个 Handle 关联的所有 Delegate（解除 FLuaGCObject 根引用）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Handle` | `FTweenHandle` | 动画句柄 |
+
 ### `MakeConfig`
 
 ```text

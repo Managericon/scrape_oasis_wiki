@@ -131,7 +131,7 @@ PreTakeDamageEvent(DamageCauser: AActor *, EventInstigator: AController *, Damag
 |---|---|---|
 | `DamageCauser` | `AActor *` | 伤害来源 |
 | `EventInstigator` | `AController *` | 伤害来源的Controller |
-| `Damage` | `float` | - |
+| `Damage` | `float` | 伤害值 |
 | `DamageContext` | `FGameMagnitudeContext &` | 伤害事件上下文 |
 
 **Returns**
@@ -155,7 +155,7 @@ PostTakeDamageEvent(DamageCauser: AActor *, EventInstigator: AController *, Dama
 |---|---|---|
 | `DamageCauser` | `AActor *` | 伤害来源 |
 | `EventInstigator` | `AController *` | 伤害来源的Controller |
-| `Damage` | `float` | - |
+| `Damage` | `float` | 伤害值 |
 | `DamageContext` | `FGameMagnitudeContext &` | 伤害事件上下文 |
 
 **Returns**
@@ -177,7 +177,7 @@ PreOverrideDamageValue(Damage: float, DamageType: int32, EventInstigator: AContr
 
 | Name | Type | Description |
 |---|---|---|
-| `Damage` | `float` | - |
+| `Damage` | `float` | 伤害值 |
 | `DamageType` | `int32` | 伤害类型 |
 | `EventInstigator` | `AController *` | 伤害来源的Controller |
 | `DamageCauser` | `AActor *` | 伤害来源 |
@@ -202,7 +202,7 @@ PostOverrideDamageValue(Damage: float, DamageType: int32, EventInstigator: ACont
 
 | Name | Type | Description |
 |---|---|---|
-| `Damage` | `float` | - |
+| `Damage` | `float` | 伤害值 |
 | `DamageType` | `int32` | 伤害类型 |
 | `EventInstigator` | `AController *` | 伤害来源的Controller |
 | `DamageCauser` | `AActor *` | 伤害来源 |

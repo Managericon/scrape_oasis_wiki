@@ -15,10 +15,10 @@ Settings applied when building a mesh.
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `bUseMikkTSpace` | `bool` | If true, degenerate triangles will be removed. |
 | `bRecomputeNormals` | `bool` | If true, normals in the raw mesh are ignored and recomputed. |
 | `bRecomputeTangents` | `bool` | If true, tangents in the raw mesh are ignored and recomputed. |
 | `bRemoveDegenerates` | `bool` | If true, degenerate triangles will be removed. |
+| `bUseMikkTSpace` | `bool` | If true, degenerate triangles will be removed. |
 | `bBuildAdjacencyBuffer` | `bool` | Required for PNT tessellation but can be slow. Recommend disabling for larger meshes. |
 | `bBuildReversedIndexBuffer` | `bool` | Required to optimize mesh in mirrored transform. Double index buffer size. |
 | `bIgnoreTriangleOrderOptimization` | `bool` | - |

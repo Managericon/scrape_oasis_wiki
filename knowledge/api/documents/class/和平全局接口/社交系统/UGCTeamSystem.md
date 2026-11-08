@@ -61,14 +61,14 @@ GetTeamPlayersNumber() -> number
 ChangePlayerTeamID(PlayerKey: number, TeamID: number)
 ```
 
-改变玩家 TeamID
+改变普通玩家和人机玩家的 TeamID
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | 玩家 PlayerKey |
+| `PlayerKey` | `number` | 普通玩家和人机玩家 PlayerKey |
 | `TeamID` | `number` | 队伍 ID |
 
 ### `LeaveTeam`
@@ -180,10 +180,10 @@ GetUIDsByTeamID(TeamID: number) -> @UID
 ### `GetPlayerKeysByTeamID`
 
 ```text
-GetPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> @PlayerKey
+GetPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> number[]
 ```
 
-根据TeamID获取对应队伍里所有的玩家PlayerKey，PlayerKey需要客户端连上DS后，才会被初始化，若在客户端连上DS前调用该接口，返回的PlayerKey列表不准确
+根据TeamID获取对应队伍里所有普通玩家和人机玩家的PlayerKey，PlayerKey需要客户端连上DS后，才会被初始化，若在客户端连上DS前调用该接口，返回的PlayerKey列表不准确
 生效范围：服务器
 
 **Parameters**
@@ -197,15 +197,15 @@ GetPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> @PlayerKey
 
 | Type | Description |
 |---|---|
-| `@PlayerKey` | 列表 |
+| `number[]` | 普通玩家和人机玩家的PlayerKey 列表 |
 
 ### `GetAIPlayerKeysByTeamID`
 
 ```text
-GetAIPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> @PlayerKey
+GetAIPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> number[]
 ```
 
-根据 TeamID 获取对应队伍里所有的假人玩家 AIPlayerKey，PlayerKey需要客户端连上DS后，才会被初始化，若在客户端连上DS前调用该接口，返回的PlayerKey列表不准确
+根据 TeamID 获取对应队伍里所有人机玩家的 AIPlayerKey，PlayerKey需要客户端连上DS后，才会被初始化，若在客户端连上DS前调用该接口，返回的PlayerKey列表不准确
 生效范围：服务器
 
 **Parameters**
@@ -219,7 +219,7 @@ GetAIPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> @PlayerKe
 
 | Type | Description |
 |---|---|
-| `@PlayerKey` | 列表 |
+| `number[]` | 人机玩家 AIPlayerKey 列表 |
 
 ### `GetPlayerControllersByTeamID`
 
@@ -245,10 +245,10 @@ GetPlayerControllersByTeamID(TeamID: number) -> @PlayerController
 ### `GetPlayerPawnsByTeamID`
 
 ```text
-GetPlayerPawnsByTeamID(TeamID: number) -> @PlayerPawn
+GetPlayerPawnsByTeamID(TeamID: number) -> PlayerPawn[]
 ```
 
-根据TeamID获取对应队伍里所有的玩家PlayerPawn
+根据TeamID获取对应队伍里所有普通玩家和人机玩家的PlayerPawn
 生效范围：服务器&客户端
 
 **Parameters**
@@ -261,15 +261,15 @@ GetPlayerPawnsByTeamID(TeamID: number) -> @PlayerPawn
 
 | Type | Description |
 |---|---|
-| `@PlayerPawn` | 列表 |
+| `PlayerPawn[]` | 普通玩家和人机玩家的PlayerPawn 列表 |
 
 ### `GetPlayerStatesByTeamID`
 
 ```text
-GetPlayerStatesByTeamID(TeamID: number) -> @PlayerState
+GetPlayerStatesByTeamID(TeamID: number) -> ASTExtraPlayerState[]
 ```
 
-根据TeamID获取对应队伍里所有的玩家PlayerState
+根据TeamID获取对应队伍里所有普通玩家和人机玩家的PlayerState
 生效范围：服务器&客户端
 
 **Parameters**
@@ -282,7 +282,7 @@ GetPlayerStatesByTeamID(TeamID: number) -> @PlayerState
 
 | Type | Description |
 |---|---|
-| `@PlayerState` | 列表 |
+| `ASTExtraPlayerState[]` | 普通玩家和人机玩家的PlayerState 列表 |
 
 ### `GetLobbyTeamUIDsByUID`
 
@@ -521,7 +521,7 @@ GetTeamIDs(bReturnAsLuaTable: boolean) -> @TeamID
 GetPlayerList(bWithOB?: boolean) -> number[]
 ```
 
-获取所有玩家信息列表
+获取所有普通玩家和人机玩家的信息列表
 生效范围：服务器
 
 **Parameters**
@@ -534,7 +534,7 @@ GetPlayerList(bWithOB?: boolean) -> number[]
 
 | Type | Description |
 |---|---|
-| `number[]` | 玩家信息列表 |
+| `number[]` | 普通玩家和人机玩家的信息列表 |
 
 ### `GetTeamSizeByID`
 
@@ -543,7 +543,7 @@ GetTeamSizeByID(TeamID: number) -> number
 ```
 
 【废弃】请使用 UGCTeamSystem.GetTeamSizeByTeamID
-获取队伍中的玩家数量
+获取队伍中的普通玩家和人机玩家数量
 生效范围：服务器
 
 **Parameters**
@@ -556,7 +556,7 @@ GetTeamSizeByID(TeamID: number) -> number
 
 | Type | Description |
 |---|---|
-| `number` | 玩家数量 |
+| `number` | 普通玩家和人机玩家数量 |
 
 ### `GetTeamSizeByTeamID`
 
@@ -564,7 +564,7 @@ GetTeamSizeByID(TeamID: number) -> number
 GetTeamSizeByTeamID(TeamID: number) -> number
 ```
 
-获取队伍中的玩家数量
+获取队伍中的普通玩家和人机玩家数量
 生效范围：服务器
 
 **Parameters**
@@ -577,7 +577,7 @@ GetTeamSizeByTeamID(TeamID: number) -> number
 
 | Type | Description |
 |---|---|
-| `number` | 玩家数量 |
+| `number` | 普通玩家和人机玩家数量 |
 
 ### `GetTeamLeaderKeyByTeamID`
 
@@ -585,7 +585,7 @@ GetTeamSizeByTeamID(TeamID: number) -> number
 GetTeamLeaderKeyByTeamID(TeamID: number) -> number[]
 ```
 
-通过队伍编号获取队长PlayerKey列表（每个在大厅点击开始游戏的玩家都会被设置为队长，例如四人匹配，队伍里只有一个队长，三人匹配，再随机匹配一个队友，三人里面点击开始游戏的是队长，随机匹配的那个队友也是队长，属于他自己那个小队的队长）
+通过队伍编号获取队长PlayerKey列表，包含普通玩家和人机玩家（每个在大厅点击开始游戏的玩家都会被设置为队长，例如四人匹配，队伍里只有一个队长，三人匹配，再随机匹配一个队友，三人里面点击开始游戏的是队长，随机匹配的那个队友也是队长，属于他自己那个小队的队长）
 生效范围：服务器
 
 **Parameters**
@@ -598,7 +598,7 @@ GetTeamLeaderKeyByTeamID(TeamID: number) -> number[]
 
 | Type | Description |
 |---|---|
-| `number[]` | 队长PlayerKey |
+| `number[]` | 普通玩家和人机玩家队长的PlayerKey |
 
 ### `GetIsLeaderOrNotByPlayerKey`
 
@@ -606,14 +606,14 @@ GetTeamLeaderKeyByTeamID(TeamID: number) -> number[]
 GetIsLeaderOrNotByPlayerKey(PlayerKey: number) -> boolean
 ```
 
-通过玩家PlayerKey查询身份
+通过普通玩家和人机玩家的PlayerKey查询身份
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | 玩家 PlayerKey |
+| `PlayerKey` | `number` | 普通玩家和人机玩家 PlayerKey |
 
 **Returns**
 
@@ -691,14 +691,14 @@ IsTeamIDValid(TeamID: number) -> ASTExtraPlayerState
 GetTeamIDByPlayerKey(PlayerKey: number) -> number
 ```
 
-根据PlayerKey获取队伍ID
+根据PlayerKey获取普通玩家和人机玩家的队伍ID
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | 玩家 PlayerKey |
+| `PlayerKey` | `number` | 普通玩家和人机玩家 PlayerKey |
 
 **Returns**
 

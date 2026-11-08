@@ -20,6 +20,43 @@ Base class for 3D constraint section
 | Name | Type/Value | Description |
 |---|---|---|
 | `ConstraintId` | `FGuid` | The possessable guid that this constraint uses |
+| `ConstraintBindingID` | `FMovieSceneObjectBindingID` | The binding ID of the target this constraint attaches to. May resolve into a parent sequence for cross-sub-sequence spawnables. |
+
+## Functions
+
+### `GetConstraintBindingID`
+
+```text
+GetConstraintBindingID() -> const MOVIESCENETRACKS_API FMovieSceneObjectBindingID &
+```
+
+Get the full binding ID (supports cross-sub-sequence bindings).
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `const MOVIESCENETRACKS_API FMovieSceneObjectBindingID &` | - |
+
+### `SetConstraintBindingID`
+
+```text
+SetConstraintBindingID(InBindingID: FMovieSceneObjectBindingID &) -> MOVIESCENETRACKS_API void
+```
+
+Set the full binding ID (supports cross-sub-sequence bindings).
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InBindingID` | `FMovieSceneObjectBindingID &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `MOVIESCENETRACKS_API void` | - |
 
 ## Language
 

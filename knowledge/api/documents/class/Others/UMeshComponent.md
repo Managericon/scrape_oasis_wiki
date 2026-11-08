@@ -450,6 +450,44 @@ Set all occurrences of Vector Material Parameters with ParameterName in the set 
 |---|---|
 | `void` | - |
 
+### `HasScalarParameterOnMaterials`
+
+```text
+HasScalarParameterOnMaterials(ParameterName: FName) -> bool
+```
+
+Engine Modify Start
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ParameterName` | `FName` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `HasVectorParameterOnMaterials`
+
+```text
+HasVectorParameterOnMaterials(ParameterName: FName) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ParameterName` | `FName` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
 ### `UpdateLodBiasByDeviceLevel`
 
 ```text

@@ -20,3 +20,6 @@ api_root: "https://developer.gp.qq.com/api/"
 | `IOS_10` | `10` | - |
 | `IOS_11` | `11` | - |
 | `IOS_12` | `12` | - |
+| `IOS_13` | `13` | - |
+| `IOS_14` | `14` | - |
+| `IOS_15` | `15` | - |

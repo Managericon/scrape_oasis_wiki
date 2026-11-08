@@ -31,4 +31,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `SRC_VulkanDriverVersion` | `15` | - |
 | `SRC_VulkanApiVersion` | `16` | - |
 | `SRC_MainBroadInfo` | `17` | - |
-| `SRC_MAX` | `18` | - |
+| `SRC_SocModel` | `18` | - |
+| `SRC_MAX` | `19` | - |

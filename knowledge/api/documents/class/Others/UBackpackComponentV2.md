@@ -589,15 +589,84 @@ CanAutoEquip(ItemDefineID: FItemDefineID &) -> bool
 |---|---|
 | `bool` | - |
 
+### `CheckCapacity`
+
+```text
+CheckCapacity(Param: FBackpackV2CheckCapacityParam &) -> FBackpackV2CheckCapacityResult
+```
+
+检查容量是否足够（是否超容）
+	  容量是抽象概念：默认实现按格子数判断，子类可覆写为重量等其它规则
+	  ExtraItems  ExcludedItems  MergeItems 用于预估操作后的占用；都为空时检查当前是否超限
+	  DS 被调用
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Param` | `FBackpackV2CheckCapacityParam &` | 容量检查参数 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FBackpackV2CheckCapacityResult` | 容量检查结果。bPassed 为 true 表示检查通过 |
+
+### `DoesOccupyCapacity`
+
+```text
+DoesOccupyCapacity(ItemDefineID: FItemDefineID &) -> bool
+```
+
+物品当前是否占用容量
+	  容量是抽象概念：默认实现与 IsCellItem 一致（已附加、已装备、货币不占用）
+	  子类可覆写，例如让货币物品占用容量
+	  DS 被调用
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemDefineID` | `FItemDefineID &` | 物品 DefineID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否占用容量 |
+
+### `DoesOccupyCapacityByItemID`
+
+```text
+DoesOccupyCapacityByItemID(ItemID: int32) -> bool
+```
+
+物品是否占用容量（尚无实例、仅有 ItemID 时使用）
+	  容量是抽象概念：默认实现与 DoesOccupyCapacity 一致（货币不占用；无实例故不考虑附加）
+	  子类可覆写，例如让货币物品占用容量
+	  DS 被调用
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemID` | `int32` | 物品 ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否占用容量 |
+
 ### `HandleExceedCellCapacity`
 
 ```text
 HandleExceedCellCapacity(ItemDefineID: FItemDefineID &, Count: int32) -> void
 ```
 
-处理超过格子容量的物品
+处理超过容量的物品
 	  普通情况下，背包内容量已满时，无法添加物品。
-	  但存在特殊情况，背包满容量时依然成功添加物品、原本不占格子的物品变为占用格子、背包容量发生变化。
+	  但存在特殊情况，背包满容量时依然成功添加物品、原本不占容量的物品变为占用容量、背包容量发生变化。
 	  超容量物品会被直接移除，移除后在此函数处理保底逻辑
 	  默认保底逻辑为丢弃到地上
 	  重写此事件时，请不要将超容量物品在此处重新添加到背包里
@@ -617,6 +686,52 @@ HandleExceedCellCapacity(ItemDefineID: FItemDefineID &, Count: int32) -> void
 | Type | Description |
 |---|---|
 | `void` | - |
+
+### `GetExceedCapacityRemoveItemList`
+
+```text
+GetExceedCapacityRemoveItemList(OperationItemDefineIDList: TArray < FItemDefineID > &) -> TArray < FItemDefineID >
+```
+
+处理超过容量时，获取需要移除的物品列表
+	  若本接口返回的列表处理完后仍超限，会进行兜底处理
+	  DS 被调用
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `OperationItemDefineIDList` | `TArray < FItemDefineID > &` | 该次背包操作相关的物品（本次新增触发超限的物品） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TArray < FItemDefineID >` | 需要移除的物品列表 |
+
+### `GetForceExceedCapacityRemoveItemList`
+
+```text
+GetForceExceedCapacityRemoveItemList(OperationItemDefineIDList: TArray < FItemDefineID > &) -> TArray < FItemDefineID >
+```
+
+获取需要强制走超限处理的物品列表
+	  在容量检查之前被调用，即使当前完全未超限，返回的物品也会被移除并触发 HandleExceedCellCapacity
+	  基类默认返回空列表，不影响原有未超限提前返回逻辑
+	  可重载并自定义
+	  DS 被调用
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `OperationItemDefineIDList` | `TArray < FItemDefineID > &` | 该次背包操作相关的物品（本次新增触发检查的物品） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TArray < FItemDefineID >` | 需要移除的物品列表 |
 
 ## Delegates
 

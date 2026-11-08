@@ -21,3 +21,6 @@ api_root: "https://developer.gp.qq.com/api/"
 | `InputAction_PeekLeft` | `5` | - |
 | `InputAction_PeekRight` | `6` | - |
 | `InputAction_Scope` | `7` | - |
+| `InputAction_MainShootWeapon1` | `8` | - |
+| `InputAction_MainShootWeapon2` | `9` | - |
+| `InputAction_SubShootWeapon` | `10` | - |

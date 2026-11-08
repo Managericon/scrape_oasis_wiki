@@ -19,7 +19,7 @@ PersistEffectBase, PersistEffectSkill和PersistEffectBuff的基类
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `bPersistOnUnapply` | `bool` | Unapply 时是否缓存到 PlayerState 上的 PersistEffectCacheComponent，<br>	  下次同类型 Apply 会取回并触发 OnRecover |
+| `UnApplyPolicy` | `EPersistEffectUnApplyPolicy` | Unapply 后的实例处理策略。<br>	  Cache 会缓存到 PlayerState 上的 PersistEffectCacheComponent，<br>	  下次同类型 Apply 会取回并触发 OnRecover。<br>	  CacheAndApplyOnRespawn 会缓存实例，并在角色复活后自动恢复到 PersistBaseComponent。 |
 
 ## Functions
 
@@ -181,20 +181,20 @@ GetRemainingTime() -> float
 |---|---|
 | `float` | 剩余时间 |
 
-### `SetPersistOnUnapply`
+### `SetUnApplyPolicy`
 
 ```text
-SetPersistOnUnapply(bInPersistOnUnapply: bool) -> void
+SetUnApplyPolicy(InUnApplyPolicy: EPersistEffectUnApplyPolicy) -> void
 ```
 
-运行时动态修改 bPersistOnUnapply。仅服务端生效，不 Replicated。
+运行时动态修改 UnApply 后的实例处理策略。仅服务端生效，不进行网络复制。
 	  可在 OnApply  Tick  OnUnApply_BP 等任意服务端时机调用。
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `bInPersistOnUnapply` | `bool` | - |
+| `InUnApplyPolicy` | `EPersistEffectUnApplyPolicy` | - |
 
 **Returns**
 
@@ -202,19 +202,19 @@ SetPersistOnUnapply(bInPersistOnUnapply: bool) -> void
 |---|---|
 | `void` | - |
 
-### `ShouldPersistOnUnapply`
+### `GetUnApplyPolicy`
 
 ```text
-ShouldPersistOnUnapply() -> bool
+GetUnApplyPolicy() -> EPersistEffectUnApplyPolicy
 ```
 
-读取当前 bPersistOnUnapply (含运行时修改值)。
+获取当前 UnApply 后的实例处理策略（含运行时修改值）。
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `bool` | - |
+| `EPersistEffectUnApplyPolicy` | - |
 
 ### `GetOwnerActor`
 

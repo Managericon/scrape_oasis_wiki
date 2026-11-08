@@ -15,6 +15,6 @@ Editor only data that needs to be saved between sessions for editing but has no 
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `ExpansionStates` | `TMap < FString , FMovieSceneExpansionState >` | Map of node path -> expansion state. |
 | `WorkingRange` | `FFloatRange` | User-defined working range in which the entire sequence should reside. |
+| `ExpansionStates` | `TMap < FString , FMovieSceneExpansionState >` | Map of node path -> expansion state. |
 | `ViewRange` | `FFloatRange` | The last view-range that the user was observing |

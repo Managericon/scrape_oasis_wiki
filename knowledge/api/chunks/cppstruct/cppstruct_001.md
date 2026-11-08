@@ -821,6 +821,11 @@ This node uses a source transform of a socket on the skeletal mesh to automatica
 | `bLazySimulate_Rotation` | `bool` | - |
 | `bLazySimulate_Rotation_OnlyRoot` | `bool` | - |
 | `LazySimulateAlpha_Rotation` | `float` | - |
+| `bSmoothSimulate` | `bool` | - |
+| `bSmoothSimulate_ConsiderLargeCoordinate` | `bool` | - |
+| `bSmoothSimulate_LockRootBone` | `bool` | - |
+| `SmoothSimulate_Threshold` | `float` | - |
+| `SmoothSimulate_Alpha` | `float` | - |
 | `SimulationSpace` | `AnimPhysSimSpaceType` | The space used to run the simulation |
 | `RelativeSpaceBone` | `FBoneReference` | When in BoneRelative sim space, the simulation will use this bone as the origin |
 | `bChain` | `bool` | Set to true to use the solver to simulate a connected chain |
@@ -1041,6 +1046,7 @@ This is the base of all runtime animation nodes
 | `PerBoneSampleData` | `TArray < FBlendSampleData >` | - |
 | `bResetChildOnActivation` | `bool` | This reinitializes child pose when re-activated. For example, when active child changes |
 | `bResetChildOnBlendListChange` | `bool` | - |
+| `bResetBlendWeightOnBlendListActivation` | `bool` | - |
 
 
 ---
@@ -1146,6 +1152,7 @@ This is the base of all runtime animation nodes
 | `bLoop` | `bool` | - |
 | `StartPosition` | `float` | - |
 | `BlendSpace` | `UBlendSpaceBase *` | - |
+| `bTriggerAnimNotify` | `bool` | - |
 | `bResetPlayTimeWhenBlendSpaceChanges` | `bool` | - |
 | `bResetPlayTimeWhenBlendSpaceReactive` | `bool` | - |
 | `bResetSampleCacheWhenBlendSpaceChanges` | `bool` | - |
@@ -1699,12 +1706,12 @@ Node to handle re-targeting of Hand IK bone chain.
 | `LayerSetup` | `TArray < FInputBlendPose >` | Configuration for the parts of the skeleton to blend for each layer. Allows<br>	  certain parts of the tree to be blended out or omitted from the pose. |
 | `BlendWeights` | `TArray < float >` | The weights of each layer |
 | `bMeshSpaceRotationBlend` | `bool` | Whether to blend bone rotations in mesh space or in local space |
-| `bBlendRootMotionBasedOnRootBone` | `bool` | Whether to incorporate the per-bone blend weight of the root bone when lending root motion |
 | `CurveBlendOption` | `TEnumAsByte < enum ECurveBlendOption :: Type >` | How to blend the layers together |
+| `bBlendRootMotionBasedOnRootBone` | `bool` | Whether to incorporate the per-bone blend weight of the root bone when lending root motion |
 | `bHasRelevantPoses` | `bool` | - |
+| `PerBoneBlendWeights` | `TArray < FPerBoneBlendWeight >` | - |
 | `SkeletonGuid` | `FGuid` | - |
 | `VirtualBoneGuid` | `FGuid` | - |
-| `PerBoneBlendWeights` | `TArray < FPerBoneBlendWeight >` | - |
 | `DesiredBoneBlendWeightsInitMesh` | `TWeakObjectPtr < USkeletalMesh >` | - |
 
 
@@ -2362,6 +2369,7 @@ Scale the length of a chain of bones.
 |---|---|---|
 | `Sequence` | `UAnimSequenceBase *` | - |
 | `bLoopAnimation` | `bool` | - |
+| `bTriggerAnimNotify` | `bool` | - |
 | `bCheckNeedInitializeSupFirst` | `bool` | - |
 | `PlayRate` | `float` | - |
 | `StartPosition` | `float` | - |
@@ -2397,8 +2405,8 @@ Scale the length of a chain of bones.
 | Name | Type/Value | Description |
 |---|---|---|
 | `ComponentPose` | `FComponentSpacePoseLink` | - |
-| `AlphaScaleBias` | `FInputScaleBias` | - |
 | `Alpha` | `float` | - |
+| `AlphaScaleBias` | `FInputScaleBias` | - |
 | `LODThreshold` | `int32` | Max LOD that this node is allowed to run<br>	 For example if you have LODThreadhold to be 2, it will run until LOD 2 (based on 0 index)<br>	 when the component LOD becomes 3, it will stop updateevaluate<br>	 currently transition would be issue and that has to be re-visited |
 | `bActiveNode` | `bool` | Engine Modify<br>	 Enable Node to be ignored at runtime but keep alpha value no change<br>	 false will ignore (do no or skip) evaluate, but no affect on update |
 | `ActualAlpha` | `float` | - |
@@ -3365,6 +3373,42 @@ Node for storing an auto-complete tree based on each char in the command.
 | Name | Type/Value | Description |
 |---|---|---|
 | `AxisName` | `FName` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppstruct/detail/FBackpackV2CheckCapacityParam.json -->
+
+# FBackpackV2CheckCapacityParam
+
+CheckCapacity 的检查参数
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ExtraItems` | `TMap < FItemDefineID , int32 >` | 额外的物品，检查时额外计算的物品（可以通过此参数预检查物品加入背包后的情况） |
+| `MergeItems` | `TMap < FItemDefineID , int32 >` | 即将 Merge 到已有物品堆叠上的数量<br>	  可以通过此参数预检查堆叠数量增加后占用容量的情况 |
+| `ExcludedItems` | `TMap < FItemDefineID , int32 >` | 排除的物品，检查时需要从背包物品列表中排除的物品（可以通过此参数预检查物品离开背包后的情况） |
+| `UnEquipOrDetachItems` | `TArray < FItemDefineID >` | 即将取消装备或取消 Attach 的物品<br>	  可以通过此参数预检查这些物品回到背包后占用容量的情况 |
+| `RootOperate` | `EBackpackV2RootOperate` | 当前背包根操作<br>	  若 A 操作会引发 B 操作，则 A 为父操作，最父级的操作为根操作<br>	  比如触发丢弃装备时，可能先触发装备卸下，再完成丢弃。则根操作为丢弃。 |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppstruct/detail/FBackpackV2CheckCapacityResult.json -->
+
+# FBackpackV2CheckCapacityResult
+
+CheckCapacity 的检查结果
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bPassed` | `bool` | 检查是否通过（未超容为 true） |
+| `PartialExtraItems` | `TMap < FItemDefineID , int32 >` | 添加时可部分容纳的物品<br>	  仅当 CheckCapacity 参数只设置了 ExtraItems，并且检查结果为 false 时有效<br>	  例如 ExtraItems 中 A 物品 10 个，实际只能容纳 5 个：bPassed 为 false，此处记录 A 物品 5 个 |
+| `PartialMergeItems` | `TMap < FItemDefineID , int32 >` | Merge 时可部分容纳的物品<br>	  仅当 CheckCapacity 参数只设置了 MergeItems，并且检查结果为 false 时有效<br>	  例如 MergeItems 中 A 物品 10 个，实际只能容纳 5 个：bPassed 为 false，此处记录 A 物品 5 个 |
 
 
 ---
@@ -5523,8 +5567,8 @@ Container for indicating a set of collision channels that this object will colli
 | `WorldDynamic` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `Pawn` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `Visibility` | `TEnumAsByte < enum ECollisionResponse >` | - |
-| `Camera` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `PhysicsBody` | `TEnumAsByte < enum ECollisionResponse >` | - |
+| `Camera` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `Vehicle` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `Destructible` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `EngineTraceChannel1` | `TEnumAsByte < enum ECollisionResponse >` | - |
@@ -5543,8 +5587,8 @@ Container for indicating a set of collision channels that this object will colli
 | `GameTraceChannel8` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel9` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel10` | `TEnumAsByte < enum ECollisionResponse >` | - |
-| `GameTraceChannel12` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel11` | `TEnumAsByte < enum ECollisionResponse >` | - |
+| `GameTraceChannel12` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel13` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel14` | `TEnumAsByte < enum ECollisionResponse >` | - |
 | `GameTraceChannel15` | `TEnumAsByte < enum ECollisionResponse >` | - |
@@ -5554,8 +5598,8 @@ Container for indicating a set of collision channels that this object will colli
 | `WorldStatic` | `uint8` | - |
 | `WorldDynamic` | `uint8` | - |
 | `Pawn` | `uint8` | - |
-| `Visibility` | `uint8` | - |
 | `Camera` | `uint8` | - |
+| `Visibility` | `uint8` | - |
 | `PhysicsBody` | `uint8` | - |
 | `Vehicle` | `uint8` | - |
 | `Destructible` | `uint8` | - |
@@ -6549,8 +6593,8 @@ Structure for custom profiles.
 | `CDRecoveryTime` | `float` | CD能量充能时间 |
 | `AllowRecoveryDuringActivation` | `bool` | 技能激活期间恢复CD能量 |
 | `MaxLayer` | `int` | 最大充能次数 |
-| `CDEnergyConsume` | `float` | 持续消耗型每秒扣除速率 |
-| `AllowConsumeMinEnergy` | `float` | 能开始消耗能量的最小百分比 |
+| `CDEnergyConsume` | `float` | 持续消耗型每秒扣除速率<br>	  单位是百分比（能量域 0-100，运行时 MaxEnergy = 100，CurEnergy 直接与该值比较），默认 1 即每秒消耗 1% 能量 |
+| `AllowConsumeMinEnergy` | `float` | 能开始消耗能量的最小百分比<br>	  单位是百分比（能量域 0-100），默认 10 即需要 10% 能量才能启动技能 |
 | `ConsumeTimeType` | `EPESkillConsumeTimeType` | CD能量和消耗扣除时机 |
 
 
@@ -8860,6 +8904,7 @@ Represents the appearance of an SHeaderRow
 
 | Name | Type/Value | Description |
 |---|---|---|
+| `PropertyFilter` | `EHLODPropertyFilter` | Select which mode to display properties for. Grid mode shows Grid-specific properties; Cluster mode shows Cluster-specific properties. |
 | `TransitionScreenSize` | `float` | The screen radius an mesh object should reach before swapping to the LOD actor, once one of parent displays, it won't draw any of children. |
 | `OverrideDrawDistance` | `float` | - |
 | `bUseOverrideDrawDistance` | `bool` | - |
@@ -8871,16 +8916,23 @@ Represents the appearance of an SHeaderRow
 | `DesiredFillingPercentage` | `float` | Desired Filling Percentage for clustering - this is not guaranteed but used to calculate filling factor  for auto clustering |
 | `DesiredGridSize` | `float` | - |
 | `DesiredGridOffset` | `float` | - |
+| `DesiredGridScaleFactor` | `int32` | Grid Scale Factor for upper HLOD levels (Grid mode only).<br>	   Must be an integer to guarantee that upper-level Grid boundaries align<br>	   exactly with lower-level Grid boundaries, preventing overlap during HLOD level transitions.<br>	 <br>	   This property is only meaningful for Setup[1] and above:<br>	   - Setup[0]: DesiredGridScaleFactor is IGNORED (Level0 GridSize = DesiredGridSize directly)<br>	   - Setup[1]: Level1 GridSize = Level0 GridSize  Setup[1].ScaleFactor<br>	   - Setup[2]: Level2 GridSize = Level1 GridSize  Setup[2].ScaleFactor<br>	 <br>	   Example: ScaleFactor=2 means each upper Grid cell contains exactly 2x2=4 lower Grid cells. |
 | `DesiredGridVolume` | `TArray < FVector4 >` | - |
 | `GridIgnoreStaticMeshs` | `TArray < FString >` | - |
 | `HLODGroups` | `TArray < FHLODGroup >` | - |
 | `MinNumberOfActorsToBuild` | `int32` | Min number of actors to build LODActor |
 | `bOnlyGenerateClustersForVolumes` | `bool` | Min number of actors to build LODActor |
 | `bReusePreviousLevelClusters` | `bool` | Will reuse the clusters generated for the previous (lower) HLOD level |
+| `LOD0ReduceFactor` | `float` | LOD0 percentage-based reduction factor (OriginalTriangles  this value). Corresponds to global r.HLOD.ProxyMeshLOD0ReduceFactor |
+| `PerVolumeTriangles` | `float` | Volume-based: triangles allowed per cubic-meter of Bounds. Corresponds to global r.HLOD.ProxyMeshPerVolumeTraingles |
+| `LODReduceFactor` | `float` | LOD1~N successive reduction factor. Corresponds to global r.HLOD.ProxyMeshReduceFactor |
+| `LODMinTriangles` | `int32` | Minimum triangle threshold (no further LOD generated below this). Corresponds to global r.HLOD.ProxyMeshLODMinTriangles |
+| `LODMaxCount` | `int32` | Maximum LOD level count. Corresponds to global r.HLOD.ProxyMeshLODMax |
 | `ProxyMeshLOD1SwitchDistance` | `float` | Distance (in cm) at which ProxyMesh switches from LOD0 to LOD1. Overrides legacy triangle-count-based ScreenSize calculation. |
 | `bOverrideProxyMeshLOD1SwitchDistance` | `bool` | - |
 | `ProxyMeshCullingDistance` | `float` | Distance (in cm) at which ProxyMesh is culled (not rendered). Overrides legacy CVar-based culling distance. |
 | `bOverrideProxyMeshCullingDistance` | `bool` | - |
+| `ProxyMeshSmallObjectCullThreshold` | `float` | 小物件剔除阈值（cm）：Box 最长边（缩放后）低于此值的实例组件将被剔除，不参与 ProxyMesh 生成，但仍保留为 SubActor。<br>	   设为 0 则禁用小物件剔除。每一层级可独立配置不同阈值。<br>	   例：Level0 设为 800cm，Level1 设为 1500cm（上层级剔除更粗粒度的小物件）。 |
 
 
 ---
@@ -8895,12 +8947,12 @@ Structure containing information about one hit of a trace, such as point of impa
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `bStartPenetrating` | `uint32` | Whether the trace started in penetration, i.e. with an initial blocking overlap.<br>	  In the case of penetration, if PenetrationDepth > 0.f, then it will represent the distance along the Normal vector that will result in<br>	  minimal contact between the swept shape and the object that was hit. In this case, ImpactNormal will be the normal opposed to movement at that location<br>	  (ie, Normal may not equal ImpactNormal). ImpactPoint will be the same as Location, since there is no single impact point to report. |
 | `bBlockingHit` | `uint32` | Indicates if this hit was a result of blocking collision. If false, there was no hit or it was an overlaptouch instead. |
-| `ImpactPoint` | `FVector_NetQuantize` | Location in world space of the actual contact of the trace shape (box, sphere, ray, etc) with the impacted object.<br>	  Example: for a sphere trace test, this is the point where the surface of the sphere touches the other object.<br>	  @note: In the case of initial overlap (bStartPenetrating=true), ImpactPoint will be the same as Location because there is no meaningful single impact point to report. |
+| `bStartPenetrating` | `uint32` | Whether the trace started in penetration, i.e. with an initial blocking overlap.<br>	  In the case of penetration, if PenetrationDepth > 0.f, then it will represent the distance along the Normal vector that will result in<br>	  minimal contact between the swept shape and the object that was hit. In this case, ImpactNormal will be the normal opposed to movement at that location<br>	  (ie, Normal may not equal ImpactNormal). ImpactPoint will be the same as Location, since there is no single impact point to report. |
 | `Time` | `float` | 'Time' of impact along trace direction (ranging from 0.0 to 1.0) if there is a hit, indicating time between TraceStart and TraceEnd.<br>	  For swept movement (but not queries) this may be pulled back slightly from the actual time of impact, to prevent precision problems with adjacent geometry. |
 | `Distance` | `float` | The distance from the TraceStart to the Location in world space. This value is 0 if there was an initial overlap (trace started inside another colliding object). |
 | `Location` | `FVector_NetQuantize` | The location in world space where the moving shape would end up against the impacted object, if there is a hit. Equal to the point of impact for line tests.<br>	  Example: for a sphere trace test, this is the point where the center of the sphere would be located when it touched the other object.<br>	  For swept movement (but not queries) this may not equal the final location of the shape since hits are pulled back slightly to prevent precision issues from overlapping another surface. |
+| `ImpactPoint` | `FVector_NetQuantize` | Location in world space of the actual contact of the trace shape (box, sphere, ray, etc) with the impacted object.<br>	  Example: for a sphere trace test, this is the point where the surface of the sphere touches the other object.<br>	  @note: In the case of initial overlap (bStartPenetrating=true), ImpactPoint will be the same as Location because there is no meaningful single impact point to report. |
 | `Normal` | `FVector_NetQuantizeNormal` | Normal of the hit in world space, for the object that was swept. Equal to ImpactNormal for line tests.<br>	  This is computed for capsules and spheres, otherwise it will be the same as ImpactNormal.<br>	  Example: for a sphere trace test, this is a normalized vector pointing in towards the center of the sphere at the point of impact. |
 | `ImpactNormal` | `FVector_NetQuantizeNormal` | Normal of the hit in world space, for the object that was hit by the sweep, if any.<br>	  For example if a box hits a flat plane, this is a normalized vector pointing out from the plane.<br>	  In the case of impact with a corner or edge of a surface, usually the "most opposing" normal (opposed to the query direction) is chosen. |
 | `TraceStart` | `FVector_NetQuantize` | Start location of the trace.<br>	  For example if a sphere is swept against the world, this is the starting location of the center of the sphere. |
@@ -8968,13 +9020,7 @@ LODDrawDistanceScale 等参数。
 | `LODDrawDistanceScale` | `float` | - |
 | `DesiredGridSize` | `float` | - |
 | `DesiredGridOffset` | `float` | - |
-| `MaxBoundForHLOD` | `float` | - |
-| `MinSubActorsForHLOD` | `int32` | - |
-| `ClusterBoundsMinRadius` | `float` | - |
-| `ClusterTreeLevel` | `int32` | - |
-| `ClusterMinInstances` | `int32` | - |
-| `MinClustersPerLODActor` | `int32` | - |
-| `MaxClustersPerLODActor` | `int32` | - |
+| `DesiredGridScaleFactor` | `int32` | Grid Scale Factor for upper HLOD levels of this Group.<br>	   Same semantics as FHierarchicalSimplification::DesiredGridScaleFactor,<br>	   but applied independently per-Group, allowing different Groups to use<br>	   different merge granularity at upper HLOD levels.<br>	   If 0 or 1, this Group will NOT generate upper-level HLOD (only Level0). |
 | `LOD0ReduceFactor` | `float` | LOD0 percentage-based reduction factor (OriginalTriangles  this value). Corresponds to global r.HLOD.ProxyMeshLOD0ReduceFactor |
 | `PerVolumeTriangles` | `float` | Volume-based: triangles allowed per cubic-meter of Bounds. Corresponds to global r.HLOD.ProxyMeshPerVolumeTraingles |
 | `LODReduceFactor` | `float` | LOD1~N successive reduction factor. Corresponds to global r.HLOD.ProxyMeshReduceFactor |
@@ -8986,6 +9032,10 @@ LODDrawDistanceScale 等参数。
 | `bOverrideProxyMeshCullingDistance` | `bool` | - |
 | `bEmissiveMap` | `bool` | Whether to bake Emissive channel into ProxyMesh material for this Group. |
 | `EmissiveTextureSize` | `FIntPoint` | Override Emissive texture size (only used when bEmissiveMap=true) |
+| `bReusePreviousLevelClusters` | `bool` | Will reuse the clusters generated for the previous (lower) HLOD level |
+| `DesiredBoundRadius` | `float` | Desired Bounding Radius for clustering - this is not guaranteed but used to calculate filling factor for auto clustering |
+| `DesiredFillingPercentage` | `float` | Desired Filling Percentage for clustering - this is not guaranteed but used to calculate filling factor for auto clustering |
+| `MinNumberOfActorsToBuild` | `int32` | Min number of actors to build LODActor |
 
 
 ---
@@ -9316,9 +9366,9 @@ An Input Chord is a key and the modifier keys that are to be held with it.
 |---|---|---|
 | `Key` | `FKey` | The Key is the core of the chord. |
 | `bShift` | `uint32` | Whether the shift key is part of the chord. |
+| `bCtrl` | `uint32` | Whether the control key is part of the chord. |
 | `bAlt` | `uint32` | Whether the alt key is part of the chord. |
 | `bCmd` | `uint32` | Whether the command key is part of the chord. |
-| `bCtrl` | `uint32` | Whether the control key is part of the chord. |
 
 
 ---
@@ -10170,8 +10220,8 @@ Structure storing Layer Data for import
 | `Owner` | `ALandscapeProxy *` | - |
 | `DebugColorChannel` | `int32` | - |
 | `bValid` | `uint32` | - |
-| `bUseForPC` | `uint32` | - |
 | `bUseForOrigin` | `uint32` | - |
+| `bUseForPC` | `uint32` | - |
 
 
 ---
@@ -10692,10 +10742,10 @@ Debug options for Lightmass
 
 | Name | Type/Value | Description |
 |---|---|---|
+| `bDebugMode` | `uint32` | If false, UnrealLightmass.exe is launched automatically (default)<br>	 	If true, it must be launched manually (e.g. through a debugger) with the -debug command line parameter. |
 | `bStatsEnabled` | `uint32` | If true, all participating Lightmass agents will report back detailed stats to the log. |
 | `bGatherBSPSurfacesAcrossComponents` | `uint32` | If true, BSP surfaces split across model components are joined into 1 mapping |
 | `CoplanarTolerance` | `float` | The tolerance level used when gathering BSP surfaces. |
-| `bDebugMode` | `uint32` | If false, UnrealLightmass.exe is launched automatically (default)<br>	 	If true, it must be launched manually (e.g. through a debugger) with the -debug command line parameter. |
 | `bUseImmediateImport` | `uint32` | If true, Lightmass will import mappings immediately as they complete.<br>	 	It will not process them, however. |
 | `bImmediateProcessMappings` | `uint32` | If true, Lightmass will process appropriate mappings as they are imported.<br>	 	NOTE: Requires ImmediateMode be enabled to actually work. |
 | `bSortMappings` | `uint32` | If true, Lightmass will sort mappings by texel cost. |
@@ -11018,8 +11068,8 @@ ManagementRule逻辑规则的运行时版本
 | `CheckTargetAssetTags` | `FManagementRuleFNameArrayCheck` | - |
 | `CheckSourcePackages` | `FManagementRuleFNameArrayCheck` | - |
 | `CheckSourcePackageClassTypes` | `FManagementRuleFNameArrayCheck` | - |
-| `bOnlySoftReferences` | `bool` | - |
 | `CheckOrMask` | `uint8` | 控制7个检查条件之间的或与非逻辑，每一位对应一个检查条件（见EManagementRuleCheckOrMask）。<br>	  置1的位参与\|\|组合（OrGroup），置0的位参与&&组合（AndGroup）。<br>	  最终结果 = AndGroup全部为true && (OrGroup为空 \|\| OrGroup至少一个为true)。<br>	  默认值0x00，即全部&&，保持原有行为。 |
+| `bOnlySoftReferences` | `bool` | - |
 
 
 ---
@@ -11547,10 +11597,10 @@ Settings applied when building a mesh.
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `bUseMikkTSpace` | `bool` | If true, degenerate triangles will be removed. |
 | `bRecomputeNormals` | `bool` | If true, normals in the raw mesh are ignored and recomputed. |
 | `bRecomputeTangents` | `bool` | If true, tangents in the raw mesh are ignored and recomputed. |
 | `bRemoveDegenerates` | `bool` | If true, degenerate triangles will be removed. |
+| `bUseMikkTSpace` | `bool` | If true, degenerate triangles will be removed. |
 | `bBuildAdjacencyBuffer` | `bool` | Required for PNT tessellation but can be slow. Recommend disabling for larger meshes. |
 | `bBuildReversedIndexBuffer` | `bool` | Required to optimize mesh in mirrored transform. Double index buffer size. |
 | `bIgnoreTriangleOrderOptimization` | `bool` | - |
@@ -11634,9 +11684,9 @@ Mesh merging settings
 | `ExportSpecificLOD_DEPRECATED` | `int32` | - |
 | `SpecificLOD` | `int32` | - |
 | `bUseLandscapeCulling` | `bool` | Whether or not to use available landscape geometry to cull away invisible triangles |
-| `bIncludeImposters` | `bool` | - |
 | `bAllowDistanceField` | `bool` | Whether to allow distance field to be computed for this mesh. Disable this to save memory if the merged mesh will only be rendered in the distance. |
 | `FilteredMinBoundsRadius` | `float` | - |
+| `bIncludeImposters` | `bool` | - |
 | `bDisableBorderSmear` | `bool` | - |
 | `BorderSmearReplaceColor` | `FLinearColor` | - |
 | `CustomOutputSize` | `FIntPoint` | - |
@@ -11686,8 +11736,8 @@ Mesh merging settings
 | `bRecalculateNormals` | `bool` | Whether Simplygon should recalculate normals, otherwise the normals channel will be sampled from the original mesh |
 | `bBakeVertexData_DEPRECATED` | `bool` | - |
 | `bUseLandscapeCulling` | `bool` | Whether or not to use available landscape geometry to cull away invisible triangles |
-| `bAssignLODGroup` | `bool` | Choose whether you want to apply LODs to the generated mesh or not. |
 | `LandscapeCullingPrecision` | `TEnumAsByte < ELandscapeCullingPrecision :: Type >` | Level of detail of the landscape that should be used for the culling |
+| `bAssignLODGroup` | `bool` | Choose whether you want to apply LODs to the generated mesh or not. |
 | `LODGroupIndex` | `int32` | - |
 | `bAggregateMeshes` | `bool` | - |
 | `AggregatorMode` | `EChartAggregationMode` | - |
@@ -12171,8 +12221,8 @@ Evaluation template for primitive component materials
 | `bManualEaseIn` | `bool` | Whether to manually override this section's ease in time |
 | `ManualEaseInTime` | `float` | Manually override this section's ease in time |
 | `EaseOut` | `TScriptInterface < IMovieSceneEasingFunction >` | - |
-| `bManualEaseOut` | `bool` | Whether to manually override this section's ease out time |
 | `ManualEaseOutTime` | `float` | Manually override this section's ease-out time |
+| `bManualEaseOut` | `bool` | Whether to manually override this section's ease out time |
 
 
 ---
@@ -12187,8 +12237,8 @@ Editor only data that needs to be saved between sessions for editing but has no 
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `ExpansionStates` | `TMap < FString , FMovieSceneExpansionState >` | Map of node path -> expansion state. |
 | `WorkingRange` | `FFloatRange` | User-defined working range in which the entire sequence should reside. |
+| `ExpansionStates` | `TMap < FString , FMovieSceneExpansionState >` | Map of node path -> expansion state. |
 | `ViewRange` | `FFloatRange` | The last view-range that the user was observing |
 
 
@@ -12497,6 +12547,7 @@ Persistent identifier to a specific object binding within a sequence hierarchy.
 | `SequenceID` | `int32` | Sequence ID stored as an int32 so that it can be used in the blueprint VM |
 | `Space` | `EMovieSceneObjectBindingSpace` | The binding's resolution space |
 | `Guid` | `FGuid` | Identifier for the object binding within the sequence |
+| `ResolveParentIndex` | `int32` | Parent index to resolve the sequence ID from. 0 = local, N>0 = Nth parent, -1 = fixed to root. |
 
 
 ---
@@ -12790,9 +12841,9 @@ MovieSceneSpawnable describes an object that can be spawned for this MovieScene
 | Name | Type/Value | Description |
 |---|---|---|
 | `Guid` | `FGuid` | Unique identifier of the spawnable object. |
-| `Name` | `FString` | Name label |
 | `ObjectTemplate` | `UObject *` | - |
 | `ChildPossessables` | `TArray < FGuid >` | Set of GUIDs to possessable object bindings that are bound to an object inside this spawnable |
+| `Name` | `FString` | Name label |
 | `Ownership` | `ESpawnOwnership` | Property indicating where ownership responsibility for this object lies |
 | `GeneratedClass_DEPRECATED` | `UClass *` | Deprecated generated class |
 
@@ -12909,11 +12960,11 @@ Generic evaluation options for any track
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `bCanEvaluateNearestSection` | `uint32` | true when the value of bEvalNearestSection is to be considered for the track |
+| `bEvaluateNearestSection_DEPRECATED` | `uint32` | - |
 | `bEvalNearestSection` | `uint32` | When evaluating empty space on a track, will evaluate the last position of the previous section (if possible), or the first position of the next section, in that order of preference. |
 | `bEvaluateInPreroll` | `uint32` | Evaluate this track as part of its parent sub-section's pre-roll, if applicable |
 | `bEvaluateInPostroll` | `uint32` | Evaluate this track as part of its parent sub-section's post-roll, if applicable |
-| `bEvaluateNearestSection_DEPRECATED` | `uint32` | - |
+| `bCanEvaluateNearestSection` | `uint32` | true when the value of bEvalNearestSection is to be considered for the track |
 
 
 ---
@@ -13838,8 +13889,8 @@ Holds the packet simulation settings in one place
 |---|---|---|
 | `PktLoss` | `int32` | When set, will cause calls to FlushNet to drop packets.<br>	  Value is treated as % of packets dropped (i.e. 0 = None, 100 = All).<br>	  No general pattern  ordering is guaranteed.<br>	  Clamped between 0 and 100.<br>	 <br>	  Works with all other settings. |
 | `PktOrder` | `int32` | When set, will cause calls to FlushNet to change ordering of packets at random.<br>	  Value is treated as a bool (i.e. 0 = False, anything else = True).<br>	  This works by randomly selecting packets to be delayed until a subsequent call to FlushNet.<br>	 <br>	  Takes precedence over PktDup and PktLag. |
-| `PktLag` | `int32` | When set, will cause calls to FlushNet to delay packets.<br>	  Value is treated as millisecond lag.<br>	 <br>	  Cannot be used with PktOrder. |
 | `PktDup` | `int32` | When set, will cause calls to FlushNet to duplicate packets.<br>	  Value is treated as % of packets duplicated (i.e. 0 = None, 100 = All).<br>	  No general pattern  ordering is guaranteed.<br>	  Clamped between 0 and 100.<br>	 <br>	  Cannot be used with PktOrder or PktLag. |
+| `PktLag` | `int32` | When set, will cause calls to FlushNet to delay packets.<br>	  Value is treated as millisecond lag.<br>	 <br>	  Cannot be used with PktOrder. |
 | `PktLagVariance` | `int32` | When set, will cause PktLag to use variable lag instead of constant.<br>	  Value is treated as millisecond lag range (e.g. -GivenVariance <= 0 <= GivenVariance).<br>	  Clamped between 0 and 100.<br>	 <br>	  Can only be used when PktLag is enabled. |
 | `PktIncomingLoss` | `int32` | The ratio of incoming packets that will be dropped<br>	  to simulate packet loss |
 

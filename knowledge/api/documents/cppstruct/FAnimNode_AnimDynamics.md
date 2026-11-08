@@ -22,6 +22,11 @@ api_root: "https://developer.gp.qq.com/api/"
 | `bLazySimulate_Rotation` | `bool` | - |
 | `bLazySimulate_Rotation_OnlyRoot` | `bool` | - |
 | `LazySimulateAlpha_Rotation` | `float` | - |
+| `bSmoothSimulate` | `bool` | - |
+| `bSmoothSimulate_ConsiderLargeCoordinate` | `bool` | - |
+| `bSmoothSimulate_LockRootBone` | `bool` | - |
+| `SmoothSimulate_Threshold` | `float` | - |
+| `SmoothSimulate_Alpha` | `float` | - |
 | `SimulationSpace` | `AnimPhysSimSpaceType` | The space used to run the simulation |
 | `RelativeSpaceBone` | `FBoneReference` | When in BoneRelative sim space, the simulation will use this bone as the origin |
 | `bChain` | `bool` | Set to true to use the solver to simulate a connected chain |

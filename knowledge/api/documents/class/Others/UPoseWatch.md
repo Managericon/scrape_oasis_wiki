@@ -19,8 +19,9 @@ api_root: "https://developer.gp.qq.com/api/"
 |---|---|---|
 | `Node` | `UEdGraphNode *` | - |
 | `PoseWatchColour` | `FColor` | - |
-| `CustomPoseDrawColour` | `FColor` | - |
 | `CustomBoneText` | `FText` | - |
+| `bIsEnabled` | `bool` | - |
+| `ViewportOffset` | `FVector` | - |
 
 ## Language
 

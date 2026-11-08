@@ -23,6 +23,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `DiffuseTexture` | `UTexture2D *` | Diffuse Texture |
 | `NormalmapTexture` | `UTexture2D *` | Normalmap Texture |
 | `TextureRotation` | `float` | Rotation (in degree) applied when sampling diffusenormal texture |
+| `bApplyMipGradientScale` | `bool` | - |
 | `TextureTiling` | `FVector2D` | Scaling applied when sampling diffusenormal texture |
 | `TextureTilingFar` | `FVector2D` | - |
 | `TextureTilingFarScale` | `FVector2D` | - |

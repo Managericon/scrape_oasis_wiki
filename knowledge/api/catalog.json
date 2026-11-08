@@ -3436,6 +3436,32 @@
     "file": "documents/class/Others/UBTAttachment_LuaBase.md"
   },
   {
+    "id": "api:class:UBTComposite_Selector",
+    "name": "UBTComposite_Selector",
+    "title": "UBTComposite_Selector",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/UBTComposite_Selector.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/UBTComposite_Selector.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/UBTComposite_Selector.md"
+  },
+  {
+    "id": "api:class:UBTComposite_Sequence",
+    "name": "UBTComposite_Sequence",
+    "title": "UBTComposite_Sequence",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/UBTComposite_Sequence.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/UBTComposite_Sequence.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/UBTComposite_Sequence.md"
+  },
+  {
     "id": "api:class:UBTComposite_SimpleParallel",
     "name": "UBTComposite_SimpleParallel",
     "title": "UBTComposite_SimpleParallel",
@@ -6992,6 +7018,19 @@
     "file": "documents/class/和平全局接口/怪物系统/UGCMobPawnSystem.md"
   },
   {
+    "id": "api:class:UGCModeArchiveSystem",
+    "name": "UGCModeArchiveSystem",
+    "title": "UGCModeArchiveSystem",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/UGCModeArchiveSystem.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/UGCModeArchiveSystem.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/UGCModeArchiveSystem.md"
+  },
+  {
     "id": "api:class:UGCMultiMode",
     "name": "UGCMultiMode",
     "title": "UGCMultiMode",
@@ -7073,6 +7112,19 @@
     "url": "https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E6%8A%80%E8%83%BD%E7%B3%BB%E7%BB%9F/UGCPersistEffectSystem.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/和平全局接口/技能系统/UGCPersistEffectSystem.md"
+  },
+  {
+    "id": "api:class:UGCPhysicsUtility",
+    "name": "UGCPhysicsUtility",
+    "title": "UGCPhysicsUtility",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/UGCPhysicsUtility.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/UGCPhysicsUtility.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/UGCPhysicsUtility.md"
   },
   {
     "id": "api:class:UGCPlayerControllerSystem",
@@ -15377,6 +15429,19 @@
     "file": "documents/class/Others/UReorganizationTagSettings.md"
   },
   {
+    "id": "api:class:UReorgLODLevelsSettings",
+    "name": "UReorgLODLevelsSettings",
+    "title": "UReorgLODLevelsSettings",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/UReorgLODLevelsSettings.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/UReorgLODLevelsSettings.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/UReorgLODLevelsSettings.md"
+  },
+  {
     "id": "api:class:URetainerBox",
     "name": "URetainerBox",
     "title": "URetainerBox",
@@ -15427,6 +15492,19 @@
     "url": "https://developer.gp.qq.com/api/class/detail/Others/URichTextBlockDecorator.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/URichTextBlockDecorator.md"
+  },
+  {
+    "id": "api:class:URichTextBlockWidgetDecorator",
+    "name": "URichTextBlockWidgetDecorator",
+    "title": "URichTextBlockWidgetDecorator",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/URichTextBlockWidgetDecorator.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/URichTextBlockWidgetDecorator.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/URichTextBlockWidgetDecorator.md"
   },
   {
     "id": "api:class:URig",
@@ -16717,6 +16795,19 @@
     "file": "documents/class/Others/USubmixEffectSubmixEQPreset.md"
   },
   {
+    "id": "api:class:USubModeDynamicLevelsSettings",
+    "name": "USubModeDynamicLevelsSettings",
+    "title": "USubModeDynamicLevelsSettings",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/USubModeDynamicLevelsSettings.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/USubModeDynamicLevelsSettings.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/USubModeDynamicLevelsSettings.md"
+  },
+  {
     "id": "api:class:USubsurfaceProfile",
     "name": "USubsurfaceProfile",
     "title": "USubsurfaceProfile",
@@ -17131,6 +17222,19 @@
     "url": "https://developer.gp.qq.com/api/class/detail/Others/UUGCItemWarehouseBase.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/class/Others/UUGCItemWarehouseBase.md"
+  },
+  {
+    "id": "api:class:UUGCMBackpackComponentV2",
+    "name": "UUGCMBackpackComponentV2",
+    "title": "UUGCMBackpackComponentV2",
+    "kind": "class",
+    "categories": [
+      "Others"
+    ],
+    "json_path": "class/detail/Others/UUGCMBackpackComponentV2.json",
+    "url": "https://developer.gp.qq.com/api/class/detail/Others/UUGCMBackpackComponentV2.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/class/Others/UUGCMBackpackComponentV2.md"
   },
   {
     "id": "api:class:UUGCMotionComponent",
@@ -18798,6 +18902,17 @@
     "file": "documents/cppenum/EActivityEctypeQuitReason.md"
   },
   {
+    "id": "api:cppenum:EActivityInteractionType",
+    "name": "EActivityInteractionType",
+    "title": "EActivityInteractionType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EActivityInteractionType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EActivityInteractionType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EActivityInteractionType.md"
+  },
+  {
     "id": "api:cppenum:EActivityUIShowMode",
     "name": "EActivityUIShowMode",
     "title": "EActivityUIShowMode",
@@ -18862,6 +18977,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EActorMetricsType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EActorMetricsType.md"
+  },
+  {
+    "id": "api:cppenum:EActorRotateDisableMask",
+    "name": "EActorRotateDisableMask",
+    "title": "EActorRotateDisableMask",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EActorRotateDisableMask.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EActorRotateDisableMask.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EActorRotateDisableMask.md"
   },
   {
     "id": "api:cppenum:EActorSequenceObjectReferenceType",
@@ -19216,6 +19342,17 @@
     "file": "documents/cppenum/EAIBotType.md"
   },
   {
+    "id": "api:cppenum:EAIBREquipGameModeType",
+    "name": "EAIBREquipGameModeType",
+    "title": "EAIBREquipGameModeType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EAIBREquipGameModeType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAIBREquipGameModeType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EAIBREquipGameModeType.md"
+  },
+  {
     "id": "api:cppenum:EAICheckShootingPoseType",
     "name": "EAICheckShootingPoseType",
     "title": "EAICheckShootingPoseType",
@@ -19445,6 +19582,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EAIInteractableType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EAIInteractableType.md"
+  },
+  {
+    "id": "api:cppenum:EAIItemDefineType",
+    "name": "EAIItemDefineType",
+    "title": "EAIItemDefineType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EAIItemDefineType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAIItemDefineType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EAIItemDefineType.md"
   },
   {
     "id": "api:cppenum:EAILiveState",
@@ -19819,6 +19967,28 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EAirDropBoxSimulateOpenType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EAirDropBoxSimulateOpenType.md"
+  },
+  {
+    "id": "api:cppenum:EAirDropPeneMode",
+    "name": "EAirDropPeneMode",
+    "title": "EAirDropPeneMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EAirDropPeneMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAirDropPeneMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EAirDropPeneMode.md"
+  },
+  {
+    "id": "api:cppenum:EAirDropTerrainState",
+    "name": "EAirDropTerrainState",
+    "title": "EAirDropTerrainState",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EAirDropTerrainState.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAirDropTerrainState.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EAirDropTerrainState.md"
   },
   {
     "id": "api:cppenum:EAirDropType",
@@ -20743,6 +20913,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EAnimToTextureNumBoneInfluences.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EAnimToTextureNumBoneInfluences.md"
+  },
+  {
+    "id": "api:cppenum:EAnisotropyLevel",
+    "name": "EAnisotropyLevel",
+    "title": "EAnisotropyLevel",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EAnisotropyLevel.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EAnisotropyLevel.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EAnisotropyLevel.md"
   },
   {
     "id": "api:cppenum:EAntiAliasingMethod",
@@ -22340,6 +22521,17 @@
     "file": "documents/cppenum/EBackpackType.md"
   },
   {
+    "id": "api:cppenum:EBackpackV2RootOperate",
+    "name": "EBackpackV2RootOperate",
+    "title": "EBackpackV2RootOperate",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBackpackV2RootOperate.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBackpackV2RootOperate.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBackpackV2RootOperate.md"
+  },
+  {
     "id": "api:cppenum:EBakingVolumeProbeGIMethod",
     "name": "EBakingVolumeProbeGIMethod",
     "title": "EBakingVolumeProbeGIMethod",
@@ -22912,6 +23104,17 @@
     "file": "documents/cppenum/EBlockyBinaryOperation.md"
   },
   {
+    "id": "api:cppenum:EBlockyBlockSrc",
+    "name": "EBlockyBlockSrc",
+    "title": "EBlockyBlockSrc",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBlockyBlockSrc.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBlockyBlockSrc.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBlockyBlockSrc.md"
+  },
+  {
     "id": "api:cppenum:EBlockyBlockTypeGroup",
     "name": "EBlockyBlockTypeGroup",
     "title": "EBlockyBlockTypeGroup",
@@ -22976,6 +23179,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EBlockyFunctionArgumentAttribute.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EBlockyFunctionArgumentAttribute.md"
+  },
+  {
+    "id": "api:cppenum:EBlockyGraphSaveObservation",
+    "name": "EBlockyGraphSaveObservation",
+    "title": "EBlockyGraphSaveObservation",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBlockyGraphSaveObservation.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBlockyGraphSaveObservation.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBlockyGraphSaveObservation.md"
   },
   {
     "id": "api:cppenum:EBlockyListItemType",
@@ -23075,6 +23289,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EBlockySelectionMode.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EBlockySelectionMode.md"
+  },
+  {
+    "id": "api:cppenum:EBlockySimulateTouchPhase",
+    "name": "EBlockySimulateTouchPhase",
+    "title": "EBlockySimulateTouchPhase",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBlockySimulateTouchPhase.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBlockySimulateTouchPhase.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBlockySimulateTouchPhase.md"
   },
   {
     "id": "api:cppenum:EBlockyToolButtonType",
@@ -23539,6 +23764,17 @@
     "file": "documents/cppenum/EBotProxyAutoCondition.md"
   },
   {
+    "id": "api:cppenum:EBotProxyConnectionStatus",
+    "name": "EBotProxyConnectionStatus",
+    "title": "EBotProxyConnectionStatus",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBotProxyConnectionStatus.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBotProxyConnectionStatus.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBotProxyConnectionStatus.md"
+  },
+  {
     "id": "api:cppenum:EBotProxyProtocolVersion",
     "name": "EBotProxyProtocolVersion",
     "title": "EBotProxyProtocolVersion",
@@ -23550,17 +23786,6 @@
     "file": "documents/cppenum/EBotProxyProtocolVersion.md"
   },
   {
-    "id": "api:cppenum:EBotProxyStatus",
-    "name": "EBotProxyStatus",
-    "title": "EBotProxyStatus",
-    "kind": "cppenum",
-    "categories": [],
-    "json_path": "cppenum/detail/EBotProxyStatus.json",
-    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBotProxyStatus.json",
-    "api_root": "https://developer.gp.qq.com/api/",
-    "file": "documents/cppenum/EBotProxyStatus.md"
-  },
-  {
     "id": "api:cppenum:EBotStateEntityCategory",
     "name": "EBotStateEntityCategory",
     "title": "EBotStateEntityCategory",
@@ -23570,6 +23795,28 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EBotStateEntityCategory.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EBotStateEntityCategory.md"
+  },
+  {
+    "id": "api:cppenum:EBoundedMoveBlockedPolicy",
+    "name": "EBoundedMoveBlockedPolicy",
+    "title": "EBoundedMoveBlockedPolicy",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBoundedMoveBlockedPolicy.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBoundedMoveBlockedPolicy.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBoundedMoveBlockedPolicy.md"
+  },
+  {
+    "id": "api:cppenum:EBoundedMoveRejectReason",
+    "name": "EBoundedMoveRejectReason",
+    "title": "EBoundedMoveRejectReason",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EBoundedMoveRejectReason.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EBoundedMoveRejectReason.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EBoundedMoveRejectReason.md"
   },
   {
     "id": "api:cppenum:EBountyBuyingResultType",
@@ -24562,6 +24809,39 @@
     "file": "documents/cppenum/ECharacterBodyAnimHurtType.md"
   },
   {
+    "id": "api:cppenum:ECharacterControlFacingMode",
+    "name": "ECharacterControlFacingMode",
+    "title": "ECharacterControlFacingMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECharacterControlFacingMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECharacterControlFacingMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECharacterControlFacingMode.md"
+  },
+  {
+    "id": "api:cppenum:ECharacterControlMoveMode",
+    "name": "ECharacterControlMoveMode",
+    "title": "ECharacterControlMoveMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECharacterControlMoveMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECharacterControlMoveMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECharacterControlMoveMode.md"
+  },
+  {
+    "id": "api:cppenum:ECharacterControlPose",
+    "name": "ECharacterControlPose",
+    "title": "ECharacterControlPose",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECharacterControlPose.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECharacterControlPose.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECharacterControlPose.md"
+  },
+  {
     "id": "api:cppenum:ECharacterDyingWeaponAnimType",
     "name": "ECharacterDyingWeaponAnimType",
     "title": "ECharacterDyingWeaponAnimType",
@@ -24758,6 +25038,28 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ECharacterPresetSocketMeshType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ECharacterPresetSocketMeshType.md"
+  },
+  {
+    "id": "api:cppenum:ECharacterPushMode",
+    "name": "ECharacterPushMode",
+    "title": "ECharacterPushMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECharacterPushMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECharacterPushMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECharacterPushMode.md"
+  },
+  {
+    "id": "api:cppenum:ECharacterPushShape",
+    "name": "ECharacterPushShape",
+    "title": "ECharacterPushShape",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECharacterPushShape.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECharacterPushShape.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECharacterPushShape.md"
   },
   {
     "id": "api:cppenum:ECharacterShieldAnimType",
@@ -25112,6 +25414,17 @@
     "file": "documents/cppenum/ECJActorMovementCompensationMode.md"
   },
   {
+    "id": "api:cppenum:ECJAlignmentAlphaMode",
+    "name": "ECJAlignmentAlphaMode",
+    "title": "ECJAlignmentAlphaMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECJAlignmentAlphaMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECJAlignmentAlphaMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECJAlignmentAlphaMode.md"
+  },
+  {
     "id": "api:cppenum:ECJAssetSide",
     "name": "ECJAssetSide",
     "title": "ECJAssetSide",
@@ -25178,6 +25491,17 @@
     "file": "documents/cppenum/ECJMISwitchRelatedParamType.md"
   },
   {
+    "id": "api:cppenum:ECJOrientationWarpingSpace",
+    "name": "ECJOrientationWarpingSpace",
+    "title": "ECJOrientationWarpingSpace",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECJOrientationWarpingSpace.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECJOrientationWarpingSpace.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECJOrientationWarpingSpace.md"
+  },
+  {
     "id": "api:cppenum:ECJPelvisHeightMode",
     "name": "ECJPelvisHeightMode",
     "title": "ECJPelvisHeightMode",
@@ -25187,6 +25511,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ECJPelvisHeightMode.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ECJPelvisHeightMode.md"
+  },
+  {
+    "id": "api:cppenum:ECJWarpingEvaluationMode",
+    "name": "ECJWarpingEvaluationMode",
+    "title": "ECJWarpingEvaluationMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECJWarpingEvaluationMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECJWarpingEvaluationMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECJWarpingEvaluationMode.md"
   },
   {
     "id": "api:cppenum:EClampMode",
@@ -25574,6 +25909,17 @@
     "file": "documents/cppenum/ECollisionEnabled.md"
   },
   {
+    "id": "api:cppenum:ECollisionLaunchCheckMode",
+    "name": "ECollisionLaunchCheckMode",
+    "title": "ECollisionLaunchCheckMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECollisionLaunchCheckMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECollisionLaunchCheckMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECollisionLaunchCheckMode.md"
+  },
+  {
     "id": "api:cppenum:ECollisionLimitType",
     "name": "ECollisionLimitType",
     "title": "ECollisionLimitType",
@@ -25792,6 +26138,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ECommandOperationType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ECommandOperationType.md"
+  },
+  {
+    "id": "api:cppenum:ECommandPredictType",
+    "name": "ECommandPredictType",
+    "title": "ECommandPredictType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECommandPredictType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECommandPredictType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECommandPredictType.md"
   },
   {
     "id": "api:cppenum:ECommandRunType",
@@ -26124,6 +26481,17 @@
     "file": "documents/cppenum/EComponentType.md"
   },
   {
+    "id": "api:cppenum:ECompositeCurveBakeMode",
+    "name": "ECompositeCurveBakeMode",
+    "title": "ECompositeCurveBakeMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECompositeCurveBakeMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECompositeCurveBakeMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECompositeCurveBakeMode.md"
+  },
+  {
     "id": "api:cppenum:ECompositeTextureMode",
     "name": "ECompositeTextureMode",
     "title": "ECompositeTextureMode",
@@ -26331,6 +26699,28 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EConsoleType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EConsoleType.md"
+  },
+  {
+    "id": "api:cppenum:EConsoleVariablesEditorPresetImportMode",
+    "name": "EConsoleVariablesEditorPresetImportMode",
+    "title": "EConsoleVariablesEditorPresetImportMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EConsoleVariablesEditorPresetImportMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EConsoleVariablesEditorPresetImportMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EConsoleVariablesEditorPresetImportMode.md"
+  },
+  {
+    "id": "api:cppenum:EConsoleVariablesEditorRowDisplayType",
+    "name": "EConsoleVariablesEditorRowDisplayType",
+    "title": "EConsoleVariablesEditorRowDisplayType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EConsoleVariablesEditorRowDisplayType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EConsoleVariablesEditorRowDisplayType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EConsoleVariablesEditorRowDisplayType.md"
   },
   {
     "id": "api:cppenum:EConstraintFrame",
@@ -26784,6 +27174,50 @@
     "file": "documents/cppenum/ECurveEditorTangentVisibility.md"
   },
   {
+    "id": "api:cppenum:ECurveMotionAxis",
+    "name": "ECurveMotionAxis",
+    "title": "ECurveMotionAxis",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECurveMotionAxis.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECurveMotionAxis.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECurveMotionAxis.md"
+  },
+  {
+    "id": "api:cppenum:ECurveMotionMathOperation",
+    "name": "ECurveMotionMathOperation",
+    "title": "ECurveMotionMathOperation",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECurveMotionMathOperation.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECurveMotionMathOperation.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECurveMotionMathOperation.md"
+  },
+  {
+    "id": "api:cppenum:ECurveMotionSpace",
+    "name": "ECurveMotionSpace",
+    "title": "ECurveMotionSpace",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECurveMotionSpace.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECurveMotionSpace.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECurveMotionSpace.md"
+  },
+  {
+    "id": "api:cppenum:ECurveMotionType",
+    "name": "ECurveMotionType",
+    "title": "ECurveMotionType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECurveMotionType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECurveMotionType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECurveMotionType.md"
+  },
+  {
     "id": "api:cppenum:ECurveMoveMotionWarpingType",
     "name": "ECurveMoveMotionWarpingType",
     "title": "ECurveMoveMotionWarpingType",
@@ -26793,6 +27227,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ECurveMoveMotionWarpingType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ECurveMoveMotionWarpingType.md"
+  },
+  {
+    "id": "api:cppenum:ECurveMoveSpace",
+    "name": "ECurveMoveSpace",
+    "title": "ECurveMoveSpace",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ECurveMoveSpace.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ECurveMoveSpace.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ECurveMoveSpace.md"
   },
   {
     "id": "api:cppenum:ECurvePlayerEndType",
@@ -27334,6 +27779,39 @@
     "file": "documents/cppenum/EDataDrivenPlayerState.md"
   },
   {
+    "id": "api:cppenum:EDataDrivenProjectileApplyCondition",
+    "name": "EDataDrivenProjectileApplyCondition",
+    "title": "EDataDrivenProjectileApplyCondition",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDataDrivenProjectileApplyCondition.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDataDrivenProjectileApplyCondition.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDataDrivenProjectileApplyCondition.md"
+  },
+  {
+    "id": "api:cppenum:EDataDrivenProjectileEffectiveTeam",
+    "name": "EDataDrivenProjectileEffectiveTeam",
+    "title": "EDataDrivenProjectileEffectiveTeam",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDataDrivenProjectileEffectiveTeam.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDataDrivenProjectileEffectiveTeam.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDataDrivenProjectileEffectiveTeam.md"
+  },
+  {
+    "id": "api:cppenum:EDataDrivenSkillSkyBoxType",
+    "name": "EDataDrivenSkillSkyBoxType",
+    "title": "EDataDrivenSkillSkyBoxType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDataDrivenSkillSkyBoxType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDataDrivenSkillSkyBoxType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDataDrivenSkillSkyBoxType.md"
+  },
+  {
     "id": "api:cppenum:EDataReporterType",
     "name": "EDataReporterType",
     "title": "EDataReporterType",
@@ -27796,6 +28274,17 @@
     "file": "documents/cppenum/EDetailMode.md"
   },
   {
+    "id": "api:cppenum:EDevicePreviewType",
+    "name": "EDevicePreviewType",
+    "title": "EDevicePreviewType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDevicePreviewType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDevicePreviewType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDevicePreviewType.md"
+  },
+  {
     "id": "api:cppenum:EDeviceQualityTier",
     "name": "EDeviceQualityTier",
     "title": "EDeviceQualityTier",
@@ -27838,6 +28327,28 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EDialogueVoiceType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EDialogueVoiceType.md"
+  },
+  {
+    "id": "api:cppenum:EDiamondSide",
+    "name": "EDiamondSide",
+    "title": "EDiamondSide",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDiamondSide.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDiamondSide.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDiamondSide.md"
+  },
+  {
+    "id": "api:cppenum:EDiamondSideMask",
+    "name": "EDiamondSideMask",
+    "title": "EDiamondSideMask",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDiamondSideMask.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDiamondSideMask.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDiamondSideMask.md"
   },
   {
     "id": "api:cppenum:EDifferentTeammateReportingType",
@@ -27970,6 +28481,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EditColor.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EditColor.md"
+  },
+  {
+    "id": "api:cppenum:EDiveFlyPhase",
+    "name": "EDiveFlyPhase",
+    "title": "EDiveFlyPhase",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDiveFlyPhase.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDiveFlyPhase.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDiveFlyPhase.md"
   },
   {
     "id": "api:cppenum:EDoBrakeReasonType",
@@ -28258,6 +28780,28 @@
     "file": "documents/cppenum/EDropdownSchemeTypes.md"
   },
   {
+    "id": "api:cppenum:EDropEffectArbitrationPolicy",
+    "name": "EDropEffectArbitrationPolicy",
+    "title": "EDropEffectArbitrationPolicy",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDropEffectArbitrationPolicy.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDropEffectArbitrationPolicy.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDropEffectArbitrationPolicy.md"
+  },
+  {
+    "id": "api:cppenum:EDropEffectType",
+    "name": "EDropEffectType",
+    "title": "EDropEffectType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDropEffectType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDropEffectType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDropEffectType.md"
+  },
+  {
     "id": "api:cppenum:EDropExtraItemGeneratorType",
     "name": "EDropExtraItemGeneratorType",
     "title": "EDropExtraItemGeneratorType",
@@ -28401,6 +28945,17 @@
     "file": "documents/cppenum/EDropItmeLimitType.md"
   },
   {
+    "id": "api:cppenum:EDropModifyType",
+    "name": "EDropModifyType",
+    "title": "EDropModifyType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDropModifyType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDropModifyType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDropModifyType.md"
+  },
+  {
     "id": "api:cppenum:EDropPattern",
     "name": "EDropPattern",
     "title": "EDropPattern",
@@ -28421,6 +28976,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EDropRuleItemPackageMode.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EDropRuleItemPackageMode.md"
+  },
+  {
+    "id": "api:cppenum:EDropSourceType",
+    "name": "EDropSourceType",
+    "title": "EDropSourceType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDropSourceType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDropSourceType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDropSourceType.md"
   },
   {
     "id": "api:cppenum:EDropType",
@@ -28586,6 +29152,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EDynamicActorScene.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EDynamicActorScene.md"
+  },
+  {
+    "id": "api:cppenum:EDynamicAirDropBoxType",
+    "name": "EDynamicAirDropBoxType",
+    "title": "EDynamicAirDropBoxType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EDynamicAirDropBoxType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EDynamicAirDropBoxType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EDynamicAirDropBoxType.md"
   },
   {
     "id": "api:cppenum:EDynamicCompType",
@@ -29402,6 +29979,17 @@
     "file": "documents/cppenum/EEscapeGalleryExhibitType.md"
   },
   {
+    "id": "api:cppenum:EEscapeGalleryPetType",
+    "name": "EEscapeGalleryPetType",
+    "title": "EEscapeGalleryPetType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EEscapeGalleryPetType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EEscapeGalleryPetType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EEscapeGalleryPetType.md"
+  },
+  {
     "id": "api:cppenum:EEscapeGameDifficultyType",
     "name": "EEscapeGameDifficultyType",
     "title": "EEscapeGameDifficultyType",
@@ -29829,6 +30417,28 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EExtraInvalidCondition.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EExtraInvalidCondition.md"
+  },
+  {
+    "id": "api:cppenum:EExtraItemAssignMode",
+    "name": "EExtraItemAssignMode",
+    "title": "EExtraItemAssignMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EExtraItemAssignMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EExtraItemAssignMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EExtraItemAssignMode.md"
+  },
+  {
+    "id": "api:cppenum:EExtraMontageType",
+    "name": "EExtraMontageType",
+    "title": "EExtraMontageType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EExtraMontageType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EExtraMontageType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EExtraMontageType.md"
   },
   {
     "id": "api:cppenum:EExtraWeaponUIType",
@@ -31305,6 +31915,28 @@
     "file": "documents/cppenum/EFRRSerializeFlag.md"
   },
   {
+    "id": "api:cppenum:EFSOCOccluderDrawContent",
+    "name": "EFSOCOccluderDrawContent",
+    "title": "EFSOCOccluderDrawContent",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EFSOCOccluderDrawContent.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EFSOCOccluderDrawContent.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EFSOCOccluderDrawContent.md"
+  },
+  {
+    "id": "api:cppenum:EFSOCVisualizationLitMode",
+    "name": "EFSOCVisualizationLitMode",
+    "title": "EFSOCVisualizationLitMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EFSOCVisualizationLitMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EFSOCVisualizationLitMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EFSOCVisualizationLitMode.md"
+  },
+  {
     "id": "api:cppenum:EFullyLoadPackageType",
     "name": "EFullyLoadPackageType",
     "title": "EFullyLoadPackageType",
@@ -32614,6 +33246,17 @@
     "file": "documents/cppenum/EHardPointOccupyState.md"
   },
   {
+    "id": "api:cppenum:EHardpointStatus",
+    "name": "EHardpointStatus",
+    "title": "EHardpointStatus",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EHardpointStatus.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EHardpointStatus.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EHardpointStatus.md"
+  },
+  {
     "id": "api:cppenum:EHardwareClass",
     "name": "EHardwareClass",
     "title": "EHardwareClass",
@@ -32920,6 +33563,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EHLODBatchingPolicy.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EHLODBatchingPolicy.md"
+  },
+  {
+    "id": "api:cppenum:EHLODPropertyFilter",
+    "name": "EHLODPropertyFilter",
+    "title": "EHLODPropertyFilter",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EHLODPropertyFilter.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EHLODPropertyFilter.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EHLODPropertyFilter.md"
   },
   {
     "id": "api:cppenum:EHMDTrackingOrigin",
@@ -33305,6 +33959,83 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EHorseWingMaxSpeedAnimationType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EHorseWingMaxSpeedAnimationType.md"
+  },
+  {
+    "id": "api:cppenum:EHoudiniHandleType",
+    "name": "EHoudiniHandleType",
+    "title": "EHoudiniHandleType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EHoudiniHandleType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EHoudiniHandleType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EHoudiniHandleType.md"
+  },
+  {
+    "id": "api:cppenum:EHoudiniRuntimeSettingsAxisImport",
+    "name": "EHoudiniRuntimeSettingsAxisImport",
+    "title": "EHoudiniRuntimeSettingsAxisImport",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EHoudiniRuntimeSettingsAxisImport.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EHoudiniRuntimeSettingsAxisImport.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EHoudiniRuntimeSettingsAxisImport.md"
+  },
+  {
+    "id": "api:cppenum:EHoudiniRuntimeSettingsRecomputeFlag",
+    "name": "EHoudiniRuntimeSettingsRecomputeFlag",
+    "title": "EHoudiniRuntimeSettingsRecomputeFlag",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EHoudiniRuntimeSettingsRecomputeFlag.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EHoudiniRuntimeSettingsRecomputeFlag.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EHoudiniRuntimeSettingsRecomputeFlag.md"
+  },
+  {
+    "id": "api:cppenum:EHoudiniRuntimeSettingsSessionType",
+    "name": "EHoudiniRuntimeSettingsSessionType",
+    "title": "EHoudiniRuntimeSettingsSessionType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EHoudiniRuntimeSettingsSessionType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EHoudiniRuntimeSettingsSessionType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EHoudiniRuntimeSettingsSessionType.md"
+  },
+  {
+    "id": "api:cppenum:EHoudiniToolSelectionType",
+    "name": "EHoudiniToolSelectionType",
+    "title": "EHoudiniToolSelectionType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EHoudiniToolSelectionType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EHoudiniToolSelectionType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EHoudiniToolSelectionType.md"
+  },
+  {
+    "id": "api:cppenum:EHoudiniToolType",
+    "name": "EHoudiniToolType",
+    "title": "EHoudiniToolType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EHoudiniToolType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EHoudiniToolType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EHoudiniToolType.md"
+  },
+  {
+    "id": "api:cppenum:EHoudiniVertexAttributeDataType",
+    "name": "EHoudiniVertexAttributeDataType",
+    "title": "EHoudiniVertexAttributeDataType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EHoudiniVertexAttributeDataType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EHoudiniVertexAttributeDataType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EHoudiniVertexAttributeDataType.md"
   },
   {
     "id": "api:cppenum:EHuntBowVerifyResult",
@@ -33956,6 +34687,17 @@
     "file": "documents/cppenum/EISLDragVisualBoundsMode.md"
   },
   {
+    "id": "api:cppenum:EISLDragVisualSizeMode",
+    "name": "EISLDragVisualSizeMode",
+    "title": "EISLDragVisualSizeMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EISLDragVisualSizeMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EISLDragVisualSizeMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EISLDragVisualSizeMode.md"
+  },
+  {
     "id": "api:cppenum:EItemAddAndEquipResultV2",
     "name": "EItemAddAndEquipResultV2",
     "title": "EItemAddAndEquipResultV2",
@@ -34108,6 +34850,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EItemReporterTime.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EItemReporterTime.md"
+  },
+  {
+    "id": "api:cppenum:EItemSegmentType",
+    "name": "EItemSegmentType",
+    "title": "EItemSegmentType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EItemSegmentType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EItemSegmentType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EItemSegmentType.md"
   },
   {
     "id": "api:cppenum:EItemStopReason",
@@ -34616,6 +35369,17 @@
     "file": "documents/cppenum/ELaunchModeType.md"
   },
   {
+    "id": "api:cppenum:ELaunchMoveDirSource",
+    "name": "ELaunchMoveDirSource",
+    "title": "ELaunchMoveDirSource",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELaunchMoveDirSource.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELaunchMoveDirSource.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELaunchMoveDirSource.md"
+  },
+  {
     "id": "api:cppenum:ELavaType",
     "name": "ELavaType",
     "title": "ELavaType",
@@ -34746,28 +35510,6 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ELevelObjectSets.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ELevelObjectSets.md"
-  },
-  {
-    "id": "api:cppenum:ELevelPartitionGeneratedAssetKind",
-    "name": "ELevelPartitionGeneratedAssetKind",
-    "title": "ELevelPartitionGeneratedAssetKind",
-    "kind": "cppenum",
-    "categories": [],
-    "json_path": "cppenum/detail/ELevelPartitionGeneratedAssetKind.json",
-    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELevelPartitionGeneratedAssetKind.json",
-    "api_root": "https://developer.gp.qq.com/api/",
-    "file": "documents/cppenum/ELevelPartitionGeneratedAssetKind.md"
-  },
-  {
-    "id": "api:cppenum:ELevelPartitionRuleKind",
-    "name": "ELevelPartitionRuleKind",
-    "title": "ELevelPartitionRuleKind",
-    "kind": "cppenum",
-    "categories": [],
-    "json_path": "cppenum/detail/ELevelPartitionRuleKind.json",
-    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELevelPartitionRuleKind.json",
-    "api_root": "https://developer.gp.qq.com/api/",
-    "file": "documents/cppenum/ELevelPartitionRuleKind.md"
   },
   {
     "id": "api:cppenum:ELevelReorganizationPlatform",
@@ -35188,6 +35930,17 @@
     "file": "documents/cppenum/ELobbyCharacterPosIndex.md"
   },
   {
+    "id": "api:cppenum:ELobbyDuoStaticEmoteType",
+    "name": "ELobbyDuoStaticEmoteType",
+    "title": "ELobbyDuoStaticEmoteType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELobbyDuoStaticEmoteType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELobbyDuoStaticEmoteType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELobbyDuoStaticEmoteType.md"
+  },
+  {
     "id": "api:cppenum:ELobbyGameType",
     "name": "ELobbyGameType",
     "title": "ELobbyGameType",
@@ -35331,6 +36084,17 @@
     "file": "documents/cppenum/ELobbyStateResourceConfigMode.md"
   },
   {
+    "id": "api:cppenum:ELobbyTargetGestureType",
+    "name": "ELobbyTargetGestureType",
+    "title": "ELobbyTargetGestureType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELobbyTargetGestureType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELobbyTargetGestureType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELobbyTargetGestureType.md"
+  },
+  {
     "id": "api:cppenum:ELobbyUseSWPState",
     "name": "ELobbyUseSWPState",
     "title": "ELobbyUseSWPState",
@@ -35441,6 +36205,17 @@
     "file": "documents/cppenum/ELocationStVertSurfaceSource.md"
   },
   {
+    "id": "api:cppenum:ELockActivateMode",
+    "name": "ELockActivateMode",
+    "title": "ELockActivateMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELockActivateMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELockActivateMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELockActivateMode.md"
+  },
+  {
     "id": "api:cppenum:ELockedVehicleState",
     "name": "ELockedVehicleState",
     "title": "ELockedVehicleState",
@@ -35450,6 +36225,39 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ELockedVehicleState.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ELockedVehicleState.md"
+  },
+  {
+    "id": "api:cppenum:ELockFilterAngleType",
+    "name": "ELockFilterAngleType",
+    "title": "ELockFilterAngleType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELockFilterAngleType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELockFilterAngleType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELockFilterAngleType.md"
+  },
+  {
+    "id": "api:cppenum:ELockFilterType",
+    "name": "ELockFilterType",
+    "title": "ELockFilterType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELockFilterType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELockFilterType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELockFilterType.md"
+  },
+  {
+    "id": "api:cppenum:ELockMode",
+    "name": "ELockMode",
+    "title": "ELockMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELockMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELockMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELockMode.md"
   },
   {
     "id": "api:cppenum:ELockOperation",
@@ -35472,6 +36280,39 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ELockPPType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ELockPPType.md"
+  },
+  {
+    "id": "api:cppenum:ELockSelector",
+    "name": "ELockSelector",
+    "title": "ELockSelector",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELockSelector.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELockSelector.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELockSelector.md"
+  },
+  {
+    "id": "api:cppenum:ELockSorterType",
+    "name": "ELockSorterType",
+    "title": "ELockSorterType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELockSorterType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELockSorterType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELockSorterType.md"
+  },
+  {
+    "id": "api:cppenum:ELockTakeOutWeaponPriorityType",
+    "name": "ELockTakeOutWeaponPriorityType",
+    "title": "ELockTakeOutWeaponPriorityType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELockTakeOutWeaponPriorityType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELockTakeOutWeaponPriorityType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELockTakeOutWeaponPriorityType.md"
   },
   {
     "id": "api:cppenum:ELockTargetState",
@@ -35725,6 +36566,83 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ELowMemoryGCLevel.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ELowMemoryGCLevel.md"
+  },
+  {
+    "id": "api:cppenum:ELPRGeneratedAssetKind",
+    "name": "ELPRGeneratedAssetKind",
+    "title": "ELPRGeneratedAssetKind",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELPRGeneratedAssetKind.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELPRGeneratedAssetKind.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELPRGeneratedAssetKind.md"
+  },
+  {
+    "id": "api:cppenum:ELPRIncrementalAction",
+    "name": "ELPRIncrementalAction",
+    "title": "ELPRIncrementalAction",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELPRIncrementalAction.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELPRIncrementalAction.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELPRIncrementalAction.md"
+  },
+  {
+    "id": "api:cppenum:ELPRKind",
+    "name": "ELPRKind",
+    "title": "ELPRKind",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELPRKind.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELPRKind.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELPRKind.md"
+  },
+  {
+    "id": "api:cppenum:ELPRSnapshotChangeType",
+    "name": "ELPRSnapshotChangeType",
+    "title": "ELPRSnapshotChangeType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELPRSnapshotChangeType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELPRSnapshotChangeType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELPRSnapshotChangeType.md"
+  },
+  {
+    "id": "api:cppenum:ELPRSnapshotKind",
+    "name": "ELPRSnapshotKind",
+    "title": "ELPRSnapshotKind",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELPRSnapshotKind.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELPRSnapshotKind.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELPRSnapshotKind.md"
+  },
+  {
+    "id": "api:cppenum:ELPRSnapshotPass",
+    "name": "ELPRSnapshotPass",
+    "title": "ELPRSnapshotPass",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELPRSnapshotPass.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELPRSnapshotPass.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELPRSnapshotPass.md"
+  },
+  {
+    "id": "api:cppenum:ELPRSnapshotScope",
+    "name": "ELPRSnapshotScope",
+    "title": "ELPRSnapshotScope",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ELPRSnapshotScope.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ELPRSnapshotScope.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ELPRSnapshotScope.md"
   },
   {
     "id": "api:cppenum:ELuaExtendPushPropertyType",
@@ -36189,6 +37107,17 @@
     "file": "documents/cppenum/EMaterialCookQualityLevel.md"
   },
   {
+    "id": "api:cppenum:EMaterialCookShaderPlatform",
+    "name": "EMaterialCookShaderPlatform",
+    "title": "EMaterialCookShaderPlatform",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EMaterialCookShaderPlatform.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EMaterialCookShaderPlatform.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EMaterialCookShaderPlatform.md"
+  },
+  {
     "id": "api:cppenum:EMaterialDecalResponse",
     "name": "EMaterialDecalResponse",
     "title": "EMaterialDecalResponse",
@@ -36275,6 +37204,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EMaterialMergeType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EMaterialMergeType.md"
+  },
+  {
+    "id": "api:cppenum:EMaterialParamValueType",
+    "name": "EMaterialParamValueType",
+    "title": "EMaterialParamValueType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EMaterialParamValueType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EMaterialParamValueType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EMaterialParamValueType.md"
   },
   {
     "id": "api:cppenum:EMaterialPositionTransformSource",
@@ -38037,6 +38977,17 @@
     "file": "documents/cppenum/ENativeEventSwitch.md"
   },
   {
+    "id": "api:cppenum:ENatureObjectSizeBucket",
+    "name": "ENatureObjectSizeBucket",
+    "title": "ENatureObjectSizeBucket",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ENatureObjectSizeBucket.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ENatureObjectSizeBucket.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ENatureObjectSizeBucket.md"
+  },
+  {
     "id": "api:cppenum:ENavCostDisplay",
     "name": "ENavCostDisplay",
     "title": "ENavCostDisplay",
@@ -38508,6 +39459,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ENoiseFunction.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ENoiseFunction.md"
+  },
+  {
+    "id": "api:cppenum:ENormalBPTableType",
+    "name": "ENormalBPTableType",
+    "title": "ENormalBPTableType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ENormalBPTableType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ENormalBPTableType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ENormalBPTableType.md"
   },
   {
     "id": "api:cppenum:ENormalMode",
@@ -39962,6 +40924,61 @@
     "file": "documents/cppenum/EPatrolCarEventState.md"
   },
   {
+    "id": "api:cppenum:EPatternCurveHitResult",
+    "name": "EPatternCurveHitResult",
+    "title": "EPatternCurveHitResult",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPatternCurveHitResult.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPatternCurveHitResult.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPatternCurveHitResult.md"
+  },
+  {
+    "id": "api:cppenum:EPatternCurveRunState",
+    "name": "EPatternCurveRunState",
+    "title": "EPatternCurveRunState",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPatternCurveRunState.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPatternCurveRunState.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPatternCurveRunState.md"
+  },
+  {
+    "id": "api:cppenum:EPatternFadeStrategy",
+    "name": "EPatternFadeStrategy",
+    "title": "EPatternFadeStrategy",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPatternFadeStrategy.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPatternFadeStrategy.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPatternFadeStrategy.md"
+  },
+  {
+    "id": "api:cppenum:EPatternProgressMode",
+    "name": "EPatternProgressMode",
+    "title": "EPatternProgressMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPatternProgressMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPatternProgressMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPatternProgressMode.md"
+  },
+  {
+    "id": "api:cppenum:EPatternProgressSource",
+    "name": "EPatternProgressSource",
+    "title": "EPatternProgressSource",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPatternProgressSource.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPatternProgressSource.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPatternProgressSource.md"
+  },
+  {
     "id": "api:cppenum:EPawnActionAbortState",
     "name": "EPawnActionAbortState",
     "title": "EPawnActionAbortState",
@@ -40963,6 +41980,17 @@
     "file": "documents/cppenum/EPCGProxyInterfaceMode.md"
   },
   {
+    "id": "api:cppenum:EPCGRegionBrushLayerCompositionMode",
+    "name": "EPCGRegionBrushLayerCompositionMode",
+    "title": "EPCGRegionBrushLayerCompositionMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGRegionBrushLayerCompositionMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGRegionBrushLayerCompositionMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGRegionBrushLayerCompositionMode.md"
+  },
+  {
     "id": "api:cppenum:EPCGRegionBrushMode",
     "name": "EPCGRegionBrushMode",
     "title": "EPCGRegionBrushMode",
@@ -40994,6 +42022,72 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGReverseSplineOperation.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EPCGReverseSplineOperation.md"
+  },
+  {
+    "id": "api:cppenum:EPCGRoadDesignChangeType",
+    "name": "EPCGRoadDesignChangeType",
+    "title": "EPCGRoadDesignChangeType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGRoadDesignChangeType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGRoadDesignChangeType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGRoadDesignChangeType.md"
+  },
+  {
+    "id": "api:cppenum:EPCGRoadDesignConnectDirection",
+    "name": "EPCGRoadDesignConnectDirection",
+    "title": "EPCGRoadDesignConnectDirection",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGRoadDesignConnectDirection.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGRoadDesignConnectDirection.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGRoadDesignConnectDirection.md"
+  },
+  {
+    "id": "api:cppenum:EPCGRoadDesignLaneType",
+    "name": "EPCGRoadDesignLaneType",
+    "title": "EPCGRoadDesignLaneType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGRoadDesignLaneType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGRoadDesignLaneType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGRoadDesignLaneType.md"
+  },
+  {
+    "id": "api:cppenum:EPCGRoadDesignRoadSide",
+    "name": "EPCGRoadDesignRoadSide",
+    "title": "EPCGRoadDesignRoadSide",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGRoadDesignRoadSide.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGRoadDesignRoadSide.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGRoadDesignRoadSide.md"
+  },
+  {
+    "id": "api:cppenum:EPCGRoadIntersectionMatchLevel",
+    "name": "EPCGRoadIntersectionMatchLevel",
+    "title": "EPCGRoadIntersectionMatchLevel",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGRoadIntersectionMatchLevel.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGRoadIntersectionMatchLevel.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGRoadIntersectionMatchLevel.md"
+  },
+  {
+    "id": "api:cppenum:EPCGRoadNetworkAttribute",
+    "name": "EPCGRoadNetworkAttribute",
+    "title": "EPCGRoadNetworkAttribute",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGRoadNetworkAttribute.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGRoadNetworkAttribute.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGRoadNetworkAttribute.md"
   },
   {
     "id": "api:cppenum:EPCGSelfPruningType",
@@ -41106,17 +42200,6 @@
     "file": "documents/cppenum/EPCGSplineMeshForwardAxis.md"
   },
   {
-    "id": "api:cppenum:EPCGSplineMetadataType",
-    "name": "EPCGSplineMetadataType",
-    "title": "EPCGSplineMetadataType",
-    "kind": "cppenum",
-    "categories": [],
-    "json_path": "cppenum/detail/EPCGSplineMetadataType.json",
-    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGSplineMetadataType.json",
-    "api_root": "https://developer.gp.qq.com/api/",
-    "file": "documents/cppenum/EPCGSplineMetadataType.md"
-  },
-  {
     "id": "api:cppenum:EPCGSplineSamplingDimension",
     "name": "EPCGSplineSamplingDimension",
     "title": "EPCGSplineSamplingDimension",
@@ -41181,6 +42264,28 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGSplitAxis.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EPCGSplitAxis.md"
+  },
+  {
+    "id": "api:cppenum:EPCGSplitSplineDataBehavior",
+    "name": "EPCGSplitSplineDataBehavior",
+    "title": "EPCGSplitSplineDataBehavior",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGSplitSplineDataBehavior.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGSplitSplineDataBehavior.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGSplitSplineDataBehavior.md"
+  },
+  {
+    "id": "api:cppenum:EPCGSplitSplineMode",
+    "name": "EPCGSplitSplineMode",
+    "title": "EPCGSplitSplineMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGSplitSplineMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGSplitSplineMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGSplitSplineMode.md"
   },
   {
     "id": "api:cppenum:EPCGTagFilterOperation",
@@ -41280,6 +42385,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGToolkitMaskColorScheme.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EPCGToolkitMaskColorScheme.md"
+  },
+  {
+    "id": "api:cppenum:EPCGToolkitPaintViewMode",
+    "name": "EPCGToolkitPaintViewMode",
+    "title": "EPCGToolkitPaintViewMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPCGToolkitPaintViewMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPCGToolkitPaintViewMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPCGToolkitPaintViewMode.md"
   },
   {
     "id": "api:cppenum:EPCGToolkitToolMessageType",
@@ -41777,6 +42893,17 @@
     "file": "documents/cppenum/EPEMeleeAttackTrackType.md"
   },
   {
+    "id": "api:cppenum:EPendingStateActionType",
+    "name": "EPendingStateActionType",
+    "title": "EPendingStateActionType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPendingStateActionType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPendingStateActionType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPendingStateActionType.md"
+  },
+  {
     "id": "api:cppenum:EPEPassiveSkillDisplayType",
     "name": "EPEPassiveSkillDisplayType",
     "title": "EPEPassiveSkillDisplayType",
@@ -42019,6 +43146,17 @@
     "file": "documents/cppenum/EPersistEffectClientEvent.md"
   },
   {
+    "id": "api:cppenum:EPersistEffectUnApplyPolicy",
+    "name": "EPersistEffectUnApplyPolicy",
+    "title": "EPersistEffectUnApplyPolicy",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPersistEffectUnApplyPolicy.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPersistEffectUnApplyPolicy.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPersistEffectUnApplyPolicy.md"
+  },
+  {
     "id": "api:cppenum:EPersistEffectUnApplyReason",
     "name": "EPersistEffectUnApplyReason",
     "title": "EPersistEffectUnApplyReason",
@@ -42127,6 +43265,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EPESkillAttachType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EPESkillAttachType.md"
+  },
+  {
+    "id": "api:cppenum:EPESkillCameraRotationMode",
+    "name": "EPESkillCameraRotationMode",
+    "title": "EPESkillCameraRotationMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPESkillCameraRotationMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPESkillCameraRotationMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPESkillCameraRotationMode.md"
   },
   {
     "id": "api:cppenum:EPESkillCameraShakeTargetType",
@@ -42501,6 +43650,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EPESkillShieldSpawnLocation.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EPESkillShieldSpawnLocation.md"
+  },
+  {
+    "id": "api:cppenum:EPESkillSpawnLocationSource",
+    "name": "EPESkillSpawnLocationSource",
+    "title": "EPESkillSpawnLocationSource",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPESkillSpawnLocationSource.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPESkillSpawnLocationSource.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPESkillSpawnLocationSource.md"
   },
   {
     "id": "api:cppenum:EPESkillSpawnTargetType",
@@ -43669,6 +44829,28 @@
     "file": "documents/cppenum/EPoseStateType.md"
   },
   {
+    "id": "api:cppenum:EPoseWatchDisplayMode",
+    "name": "EPoseWatchDisplayMode",
+    "title": "EPoseWatchDisplayMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPoseWatchDisplayMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPoseWatchDisplayMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPoseWatchDisplayMode.md"
+  },
+  {
+    "id": "api:cppenum:EPoseWatchPoseType",
+    "name": "EPoseWatchPoseType",
+    "title": "EPoseWatchPoseType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPoseWatchPoseType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPoseWatchPoseType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPoseWatchPoseType.md"
+  },
+  {
     "id": "api:cppenum:EPositionType",
     "name": "EPositionType",
     "title": "EPositionType",
@@ -43779,6 +44961,50 @@
     "file": "documents/cppenum/EPressType.md"
   },
   {
+    "id": "api:cppenum:EPreviewAvatarMask",
+    "name": "EPreviewAvatarMask",
+    "title": "EPreviewAvatarMask",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPreviewAvatarMask.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPreviewAvatarMask.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPreviewAvatarMask.md"
+  },
+  {
+    "id": "api:cppenum:EPreviewDeviceTier",
+    "name": "EPreviewDeviceTier",
+    "title": "EPreviewDeviceTier",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPreviewDeviceTier.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPreviewDeviceTier.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPreviewDeviceTier.md"
+  },
+  {
+    "id": "api:cppenum:EPreviewMemoryTier",
+    "name": "EPreviewMemoryTier",
+    "title": "EPreviewMemoryTier",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPreviewMemoryTier.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPreviewMemoryTier.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPreviewMemoryTier.md"
+  },
+  {
+    "id": "api:cppenum:EPreviewViewTargetMask",
+    "name": "EPreviewViewTargetMask",
+    "title": "EPreviewViewTargetMask",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EPreviewViewTargetMask.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EPreviewViewTargetMask.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EPreviewViewTargetMask.md"
+  },
+  {
     "id": "api:cppenum:EPrewarmOperationReason",
     "name": "EPrewarmOperationReason",
     "title": "EPrewarmOperationReason",
@@ -43876,6 +45102,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EProjectileActionType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EProjectileActionType.md"
+  },
+  {
+    "id": "api:cppenum:EProjectileAttachRotateType",
+    "name": "EProjectileAttachRotateType",
+    "title": "EProjectileAttachRotateType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EProjectileAttachRotateType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EProjectileAttachRotateType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EProjectileAttachRotateType.md"
   },
   {
     "id": "api:cppenum:EProjectileDeAttachType",
@@ -44648,6 +45885,17 @@
     "file": "documents/cppenum/EQueryType.md"
   },
   {
+    "id": "api:cppenum:EQuickListType",
+    "name": "EQuickListType",
+    "title": "EQuickListType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EQuickListType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EQuickListType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EQuickListType.md"
+  },
+  {
     "id": "api:cppenum:EQuickSignInputType",
     "name": "EQuickSignInputType",
     "title": "EQuickSignInputType",
@@ -45154,6 +46402,28 @@
     "file": "documents/cppenum/ERecoveryType.md"
   },
   {
+    "id": "api:cppenum:ERedSwitchFXAttachTarget",
+    "name": "ERedSwitchFXAttachTarget",
+    "title": "ERedSwitchFXAttachTarget",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ERedSwitchFXAttachTarget.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ERedSwitchFXAttachTarget.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ERedSwitchFXAttachTarget.md"
+  },
+  {
+    "id": "api:cppenum:ERedSwitchFXSlotFilter",
+    "name": "ERedSwitchFXSlotFilter",
+    "title": "ERedSwitchFXSlotFilter",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ERedSwitchFXSlotFilter.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ERedSwitchFXSlotFilter.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ERedSwitchFXSlotFilter.md"
+  },
+  {
     "id": "api:cppenum:ERefereeClientState",
     "name": "ERefereeClientState",
     "title": "ERefereeClientState",
@@ -45495,6 +46765,28 @@
     "file": "documents/cppenum/EREOperationType.md"
   },
   {
+    "id": "api:cppenum:EReorgHLODSection",
+    "name": "EReorgHLODSection",
+    "title": "EReorgHLODSection",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EReorgHLODSection.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EReorgHLODSection.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EReorgHLODSection.md"
+  },
+  {
+    "id": "api:cppenum:EReorgHLODSectionStatus",
+    "name": "EReorgHLODSectionStatus",
+    "title": "EReorgHLODSectionStatus",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EReorgHLODSectionStatus.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EReorgHLODSectionStatus.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EReorgHLODSectionStatus.md"
+  },
+  {
     "id": "api:cppenum:EReplaceLevelCycleType",
     "name": "EReplaceLevelCycleType",
     "title": "EReplaceLevelCycleType",
@@ -45504,6 +46796,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EReplaceLevelCycleType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EReplaceLevelCycleType.md"
+  },
+  {
+    "id": "api:cppenum:EReplacementPreset",
+    "name": "EReplacementPreset",
+    "title": "EReplacementPreset",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EReplacementPreset.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EReplacementPreset.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EReplacementPreset.md"
   },
   {
     "id": "api:cppenum:EReplaceSlot",
@@ -46133,6 +47436,17 @@
     "file": "documents/cppenum/ERightJoystickInputState.md"
   },
   {
+    "id": "api:cppenum:ERLMoveTargetType",
+    "name": "ERLMoveTargetType",
+    "title": "ERLMoveTargetType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ERLMoveTargetType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ERLMoveTargetType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ERLMoveTargetType.md"
+  },
+  {
     "id": "api:cppenum:ERLMoveTaskType",
     "name": "ERLMoveTaskType",
     "title": "ERLMoveTaskType",
@@ -46197,6 +47511,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ERoleFrontAxis.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ERoleFrontAxis.md"
+  },
+  {
+    "id": "api:cppenum:ERollingInputEventType",
+    "name": "ERollingInputEventType",
+    "title": "ERollingInputEventType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ERollingInputEventType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ERollingInputEventType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ERollingInputEventType.md"
   },
   {
     "id": "api:cppenum:ERollState",
@@ -46285,6 +47610,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ERootMotionSourceStatusFlags.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ERootMotionSourceStatusFlags.md"
+  },
+  {
+    "id": "api:cppenum:ERopeAirdropDisconnectType",
+    "name": "ERopeAirdropDisconnectType",
+    "title": "ERopeAirdropDisconnectType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ERopeAirdropDisconnectType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ERopeAirdropDisconnectType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ERopeAirdropDisconnectType.md"
   },
   {
     "id": "api:cppenum:ERopeConstraintType",
@@ -46527,6 +47863,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ERuleSetType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ERuleSetType.md"
+  },
+  {
+    "id": "api:cppenum:ERuntimeDetailsDSSnapshotOp",
+    "name": "ERuntimeDetailsDSSnapshotOp",
+    "title": "ERuntimeDetailsDSSnapshotOp",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ERuntimeDetailsDSSnapshotOp.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ERuntimeDetailsDSSnapshotOp.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ERuntimeDetailsDSSnapshotOp.md"
   },
   {
     "id": "api:cppenum:ERuntimeDetailsFileType",
@@ -46859,6 +48206,17 @@
     "file": "documents/cppenum/EScannerCollisionPreset.md"
   },
   {
+    "id": "api:cppenum:EScannerCollisionRatioAxis",
+    "name": "EScannerCollisionRatioAxis",
+    "title": "EScannerCollisionRatioAxis",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EScannerCollisionRatioAxis.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EScannerCollisionRatioAxis.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EScannerCollisionRatioAxis.md"
+  },
+  {
     "id": "api:cppenum:EScannerCompareMode",
     "name": "EScannerCompareMode",
     "title": "EScannerCompareMode",
@@ -46934,6 +48292,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EScannerEmitterSelecterType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EScannerEmitterSelecterType.md"
+  },
+  {
+    "id": "api:cppenum:EScannerFaceOverlapType",
+    "name": "EScannerFaceOverlapType",
+    "title": "EScannerFaceOverlapType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EScannerFaceOverlapType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EScannerFaceOverlapType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EScannerFaceOverlapType.md"
   },
   {
     "id": "api:cppenum:EScannerGeneralOutType",
@@ -47066,6 +48435,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EScannerModuleSelecterType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EScannerModuleSelecterType.md"
+  },
+  {
+    "id": "api:cppenum:EScannerNonManifoldType",
+    "name": "EScannerNonManifoldType",
+    "title": "EScannerNonManifoldType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EScannerNonManifoldType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EScannerNonManifoldType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EScannerNonManifoldType.md"
   },
   {
     "id": "api:cppenum:EScannerNumericCompareOp",
@@ -47288,6 +48668,17 @@
     "file": "documents/cppenum/EScannerUVCoordinateMode.md"
   },
   {
+    "id": "api:cppenum:EScannerUVOverlapType",
+    "name": "EScannerUVOverlapType",
+    "title": "EScannerUVOverlapType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EScannerUVOverlapType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EScannerUVOverlapType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EScannerUVOverlapType.md"
+  },
+  {
     "id": "api:cppenum:EScanPropOperationType",
     "name": "EScanPropOperationType",
     "title": "EScanPropOperationType",
@@ -47330,6 +48721,39 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EScanTextureType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EScanTextureType.md"
+  },
+  {
+    "id": "api:cppenum:ESCBAreaType",
+    "name": "ESCBAreaType",
+    "title": "ESCBAreaType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESCBAreaType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESCBAreaType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESCBAreaType.md"
+  },
+  {
+    "id": "api:cppenum:ESCBDeviceTier",
+    "name": "ESCBDeviceTier",
+    "title": "ESCBDeviceTier",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESCBDeviceTier.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESCBDeviceTier.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESCBDeviceTier.md"
+  },
+  {
+    "id": "api:cppenum:ESCBMeshUsageCategory",
+    "name": "ESCBMeshUsageCategory",
+    "title": "ESCBMeshUsageCategory",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESCBMeshUsageCategory.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESCBMeshUsageCategory.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESCBMeshUsageCategory.md"
   },
   {
     "id": "api:cppenum:ESceneCaptureCompositeMode",
@@ -47407,6 +48831,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ESceneTextureId.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ESceneTextureId.md"
+  },
+  {
+    "id": "api:cppenum:EScopeCullingParticipation",
+    "name": "EScopeCullingParticipation",
+    "title": "EScopeCullingParticipation",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EScopeCullingParticipation.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EScopeCullingParticipation.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EScopeCullingParticipation.md"
   },
   {
     "id": "api:cppenum:EScopeMeshAnimType",
@@ -47539,6 +48974,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EScrollGestureDirection.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EScrollGestureDirection.md"
+  },
+  {
+    "id": "api:cppenum:ESeamErrorType",
+    "name": "ESeamErrorType",
+    "title": "ESeamErrorType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESeamErrorType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESeamErrorType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESeamErrorType.md"
   },
   {
     "id": "api:cppenum:ESearchCase",
@@ -47814,6 +49260,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ESequenceEvalTimeType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ESequenceEvalTimeType.md"
+  },
+  {
+    "id": "api:cppenum:ESequencePreviewAvatarGender",
+    "name": "ESequencePreviewAvatarGender",
+    "title": "ESequencePreviewAvatarGender",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESequencePreviewAvatarGender.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESequencePreviewAvatarGender.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESequencePreviewAvatarGender.md"
   },
   {
     "id": "api:cppenum:ESequencerLoopMode",
@@ -48146,17 +49603,6 @@
     "file": "documents/cppenum/EShootDanceCurveType.md"
   },
   {
-    "id": "api:cppenum:EShootEvent",
-    "name": "EShootEvent",
-    "title": "EShootEvent",
-    "kind": "cppenum",
-    "categories": [],
-    "json_path": "cppenum/detail/EShootEvent.json",
-    "url": "https://developer.gp.qq.com/api/cppenum/detail/EShootEvent.json",
-    "api_root": "https://developer.gp.qq.com/api/",
-    "file": "documents/cppenum/EShootEvent.md"
-  },
-  {
     "id": "api:cppenum:EShootingRoomStatus",
     "name": "EShootingRoomStatus",
     "title": "EShootingRoomStatus",
@@ -48408,6 +49854,28 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ESightType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ESightType.md"
+  },
+  {
+    "id": "api:cppenum:ESignificanceForOcclusionCull",
+    "name": "ESignificanceForOcclusionCull",
+    "title": "ESignificanceForOcclusionCull",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESignificanceForOcclusionCull.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESignificanceForOcclusionCull.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESignificanceForOcclusionCull.md"
+  },
+  {
+    "id": "api:cppenum:ESilkPortSide",
+    "name": "ESilkPortSide",
+    "title": "ESilkPortSide",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESilkPortSide.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESilkPortSide.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESilkPortSide.md"
   },
   {
     "id": "api:cppenum:ESimpleFindEnemyType",
@@ -48872,6 +50340,17 @@
     "file": "documents/cppenum/ESkillActionParticleParamType.md"
   },
   {
+    "id": "api:cppenum:ESkillActionPriority",
+    "name": "ESkillActionPriority",
+    "title": "ESkillActionPriority",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESkillActionPriority.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESkillActionPriority.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESkillActionPriority.md"
+  },
+  {
     "id": "api:cppenum:ESkillActionsListType",
     "name": "ESkillActionsListType",
     "title": "ESkillActionsListType",
@@ -48958,6 +50437,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ESkillDebugEventType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ESkillDebugEventType.md"
+  },
+  {
+    "id": "api:cppenum:ESkillDebugShapeType",
+    "name": "ESkillDebugShapeType",
+    "title": "ESkillDebugShapeType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESkillDebugShapeType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESkillDebugShapeType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESkillDebugShapeType.md"
   },
   {
     "id": "api:cppenum:ESkillEditorSperatorMode",
@@ -49103,6 +50593,17 @@
     "file": "documents/cppenum/ESkillEventWeaponScopeType.md"
   },
   {
+    "id": "api:cppenum:ESkillFlowNodeKind",
+    "name": "ESkillFlowNodeKind",
+    "title": "ESkillFlowNodeKind",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESkillFlowNodeKind.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESkillFlowNodeKind.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESkillFlowNodeKind.md"
+  },
+  {
     "id": "api:cppenum:ESkillFlowNodeState",
     "name": "ESkillFlowNodeState",
     "title": "ESkillFlowNodeState",
@@ -49112,6 +50613,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ESkillFlowNodeState.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ESkillFlowNodeState.md"
+  },
+  {
+    "id": "api:cppenum:ESkillFlowPinSide",
+    "name": "ESkillFlowPinSide",
+    "title": "ESkillFlowPinSide",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESkillFlowPinSide.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESkillFlowPinSide.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESkillFlowPinSide.md"
   },
   {
     "id": "api:cppenum:ESkillFlowState",
@@ -49147,6 +50659,17 @@
     "file": "documents/cppenum/ESkillIconStatus.md"
   },
   {
+    "id": "api:cppenum:ESkillInitialCDMode",
+    "name": "ESkillInitialCDMode",
+    "title": "ESkillInitialCDMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESkillInitialCDMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESkillInitialCDMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESkillInitialCDMode.md"
+  },
+  {
     "id": "api:cppenum:ESkillNodeActionType",
     "name": "ESkillNodeActionType",
     "title": "ESkillNodeActionType",
@@ -49156,6 +50679,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ESkillNodeActionType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ESkillNodeActionType.md"
+  },
+  {
+    "id": "api:cppenum:ESkillPreviewCameraAnchorMode",
+    "name": "ESkillPreviewCameraAnchorMode",
+    "title": "ESkillPreviewCameraAnchorMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESkillPreviewCameraAnchorMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESkillPreviewCameraAnchorMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESkillPreviewCameraAnchorMode.md"
   },
   {
     "id": "api:cppenum:ESkillValidationType",
@@ -49189,6 +50723,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ESkipBulletNumVerifyMaskType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ESkipBulletNumVerifyMaskType.md"
+  },
+  {
+    "id": "api:cppenum:ESkipReturnAdditionalBulletsMaskType",
+    "name": "ESkipReturnAdditionalBulletsMaskType",
+    "title": "ESkipReturnAdditionalBulletsMaskType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ESkipReturnAdditionalBulletsMaskType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ESkipReturnAdditionalBulletsMaskType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ESkipReturnAdditionalBulletsMaskType.md"
   },
   {
     "id": "api:cppenum:ESkipStartFireClipIDVerifyMaskType",
@@ -52546,6 +54091,17 @@
     "file": "documents/cppenum/ETipType.md"
   },
   {
+    "id": "api:cppenum:ETipWhiteListTypeMask",
+    "name": "ETipWhiteListTypeMask",
+    "title": "ETipWhiteListTypeMask",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ETipWhiteListTypeMask.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ETipWhiteListTypeMask.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ETipWhiteListTypeMask.md"
+  },
+  {
     "id": "api:cppenum:ETLog_BackpackEquipmentSlotType",
     "name": "ETLog_BackpackEquipmentSlotType",
     "title": "ETLog_BackpackEquipmentSlotType",
@@ -52555,6 +54111,28 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ETLog_BackpackEquipmentSlotType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ETLog_BackpackEquipmentSlotType.md"
+  },
+  {
+    "id": "api:cppenum:ETombBoxDirectResKind",
+    "name": "ETombBoxDirectResKind",
+    "title": "ETombBoxDirectResKind",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ETombBoxDirectResKind.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ETombBoxDirectResKind.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ETombBoxDirectResKind.md"
+  },
+  {
+    "id": "api:cppenum:ETombBoxResSourceSide",
+    "name": "ETombBoxResSourceSide",
+    "title": "ETombBoxResSourceSide",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ETombBoxResSourceSide.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ETombBoxResSourceSide.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ETombBoxResSourceSide.md"
   },
   {
     "id": "api:cppenum:ETombBoxSkinValueType",
@@ -52830,6 +54408,39 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/ETrainHeadingDir.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/ETrainHeadingDir.md"
+  },
+  {
+    "id": "api:cppenum:ETrainingBoxAxis",
+    "name": "ETrainingBoxAxis",
+    "title": "ETrainingBoxAxis",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ETrainingBoxAxis.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ETrainingBoxAxis.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ETrainingBoxAxis.md"
+  },
+  {
+    "id": "api:cppenum:ETrainingBoxDir",
+    "name": "ETrainingBoxDir",
+    "title": "ETrainingBoxDir",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ETrainingBoxDir.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ETrainingBoxDir.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ETrainingBoxDir.md"
+  },
+  {
+    "id": "api:cppenum:ETrainingBoxSortMode",
+    "name": "ETrainingBoxSortMode",
+    "title": "ETrainingBoxSortMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/ETrainingBoxSortMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/ETrainingBoxSortMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/ETrainingBoxSortMode.md"
   },
   {
     "id": "api:cppenum:ETrainRouteMoveState",
@@ -53371,6 +54982,17 @@
     "file": "documents/cppenum/EUAESkillEvent.md"
   },
   {
+    "id": "api:cppenum:EUAESkillHitBackDirType",
+    "name": "EUAESkillHitBackDirType",
+    "title": "EUAESkillHitBackDirType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUAESkillHitBackDirType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUAESkillHitBackDirType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUAESkillHitBackDirType.md"
+  },
+  {
     "id": "api:cppenum:EUAESpotGroupType",
     "name": "EUAESpotGroupType",
     "title": "EUAESpotGroupType",
@@ -53569,6 +55191,39 @@
     "file": "documents/cppenum/EUGCBattlePhase.md"
   },
   {
+    "id": "api:cppenum:EUGCCameraInputType",
+    "name": "EUGCCameraInputType",
+    "title": "EUGCCameraInputType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCCameraInputType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCCameraInputType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCCameraInputType.md"
+  },
+  {
+    "id": "api:cppenum:EUGCCameraOffsetDataPriority",
+    "name": "EUGCCameraOffsetDataPriority",
+    "title": "EUGCCameraOffsetDataPriority",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCCameraOffsetDataPriority.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCCameraOffsetDataPriority.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCCameraOffsetDataPriority.md"
+  },
+  {
+    "id": "api:cppenum:EUGCCameraRotationControlFlags",
+    "name": "EUGCCameraRotationControlFlags",
+    "title": "EUGCCameraRotationControlFlags",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCCameraRotationControlFlags.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCCameraRotationControlFlags.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCCameraRotationControlFlags.md"
+  },
+  {
     "id": "api:cppenum:EUGCCampSpawnPointSelectionMethod",
     "name": "EUGCCampSpawnPointSelectionMethod",
     "title": "EUGCCampSpawnPointSelectionMethod",
@@ -53732,6 +55387,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCDropItemPositionDirection.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EUGCDropItemPositionDirection.md"
+  },
+  {
+    "id": "api:cppenum:EUGCDynamicButtonHostMode",
+    "name": "EUGCDynamicButtonHostMode",
+    "title": "EUGCDynamicButtonHostMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCDynamicButtonHostMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCDynamicButtonHostMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCDynamicButtonHostMode.md"
   },
   {
     "id": "api:cppenum:EUGCDynamicVarType",
@@ -54009,6 +55675,17 @@
     "file": "documents/cppenum/EUGCMCaptureMoveMode.md"
   },
   {
+    "id": "api:cppenum:EUGCMCombinationSourceKind",
+    "name": "EUGCMCombinationSourceKind",
+    "title": "EUGCMCombinationSourceKind",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCMCombinationSourceKind.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMCombinationSourceKind.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCMCombinationSourceKind.md"
+  },
+  {
     "id": "api:cppenum:EUGCMCustomBlockCollisionType",
     "name": "EUGCMCustomBlockCollisionType",
     "title": "EUGCMCustomBlockCollisionType",
@@ -54029,6 +55706,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMCustomBlockType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EUGCMCustomBlockType.md"
+  },
+  {
+    "id": "api:cppenum:EUGCMDeepCheckResult",
+    "name": "EUGCMDeepCheckResult",
+    "title": "EUGCMDeepCheckResult",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCMDeepCheckResult.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMDeepCheckResult.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCMDeepCheckResult.md"
   },
   {
     "id": "api:cppenum:EUGCMDSWaitingExtraState",
@@ -54139,6 +55827,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMMapStatus.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EUGCMMapStatus.md"
+  },
+  {
+    "id": "api:cppenum:EUGCMMaterialParamType",
+    "name": "EUGCMMaterialParamType",
+    "title": "EUGCMMaterialParamType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCMMaterialParamType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMMaterialParamType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCMMaterialParamType.md"
   },
   {
     "id": "api:cppenum:EUGCMobDynamicStateOp",
@@ -54304,6 +56003,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMobileArchiveType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EUGCMobileArchiveType.md"
+  },
+  {
+    "id": "api:cppenum:EUGCMobileAttachSlot",
+    "name": "EUGCMobileAttachSlot",
+    "title": "EUGCMobileAttachSlot",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCMobileAttachSlot.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMobileAttachSlot.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCMobileAttachSlot.md"
   },
   {
     "id": "api:cppenum:EUGCMobileBindLimit",
@@ -54702,6 +56412,39 @@
     "file": "documents/cppenum/EUGCMobileSplineStyleMode.md"
   },
   {
+    "id": "api:cppenum:EUGCMobileSystemExecutionPolicy",
+    "name": "EUGCMobileSystemExecutionPolicy",
+    "title": "EUGCMobileSystemExecutionPolicy",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCMobileSystemExecutionPolicy.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMobileSystemExecutionPolicy.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCMobileSystemExecutionPolicy.md"
+  },
+  {
+    "id": "api:cppenum:EUGCMobileSystemLifecycleState",
+    "name": "EUGCMobileSystemLifecycleState",
+    "title": "EUGCMobileSystemLifecycleState",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCMobileSystemLifecycleState.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMobileSystemLifecycleState.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCMobileSystemLifecycleState.md"
+  },
+  {
+    "id": "api:cppenum:EUGCMobileSystemOperationResult",
+    "name": "EUGCMobileSystemOperationResult",
+    "title": "EUGCMobileSystemOperationResult",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCMobileSystemOperationResult.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMobileSystemOperationResult.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCMobileSystemOperationResult.md"
+  },
+  {
     "id": "api:cppenum:EUGCMobileTestMode",
     "name": "EUGCMobileTestMode",
     "title": "EUGCMobileTestMode",
@@ -54722,6 +56465,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMobileTransformModule.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EUGCMobileTransformModule.md"
+  },
+  {
+    "id": "api:cppenum:EUGCMobileUUIDDomain",
+    "name": "EUGCMobileUUIDDomain",
+    "title": "EUGCMobileUUIDDomain",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCMobileUUIDDomain.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMobileUUIDDomain.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCMobileUUIDDomain.md"
   },
   {
     "id": "api:cppenum:EUGCMobilityType",
@@ -54788,6 +56542,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCMobState.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EUGCMobState.md"
+  },
+  {
+    "id": "api:cppenum:EUGCModeArchiveError",
+    "name": "EUGCModeArchiveError",
+    "title": "EUGCModeArchiveError",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCModeArchiveError.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCModeArchiveError.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCModeArchiveError.md"
   },
   {
     "id": "api:cppenum:EUGCMotionCompType",
@@ -54911,6 +56676,50 @@
     "file": "documents/cppenum/EUGCPlayerSpawnPointSelectionMethod.md"
   },
   {
+    "id": "api:cppenum:EUGCPostProcessDiskBallShapeType",
+    "name": "EUGCPostProcessDiskBallShapeType",
+    "title": "EUGCPostProcessDiskBallShapeType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCPostProcessDiskBallShapeType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCPostProcessDiskBallShapeType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCPostProcessDiskBallShapeType.md"
+  },
+  {
+    "id": "api:cppenum:EUGCPostProcessFilterType",
+    "name": "EUGCPostProcessFilterType",
+    "title": "EUGCPostProcessFilterType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCPostProcessFilterType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCPostProcessFilterType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCPostProcessFilterType.md"
+  },
+  {
+    "id": "api:cppenum:EUGCPostProcessSoundWavePos",
+    "name": "EUGCPostProcessSoundWavePos",
+    "title": "EUGCPostProcessSoundWavePos",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCPostProcessSoundWavePos.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCPostProcessSoundWavePos.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCPostProcessSoundWavePos.md"
+  },
+  {
+    "id": "api:cppenum:EUGCPostProcessSoundWaveType",
+    "name": "EUGCPostProcessSoundWaveType",
+    "title": "EUGCPostProcessSoundWaveType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCPostProcessSoundWaveType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCPostProcessSoundWaveType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCPostProcessSoundWaveType.md"
+  },
+  {
     "id": "api:cppenum:EUGCRemoveItemReason",
     "name": "EUGCRemoveItemReason",
     "title": "EUGCRemoveItemReason",
@@ -54920,6 +56729,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCRemoveItemReason.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EUGCRemoveItemReason.md"
+  },
+  {
+    "id": "api:cppenum:EUGCReturnPlayerStatus",
+    "name": "EUGCReturnPlayerStatus",
+    "title": "EUGCReturnPlayerStatus",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCReturnPlayerStatus.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCReturnPlayerStatus.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCReturnPlayerStatus.md"
   },
   {
     "id": "api:cppenum:EUGCSpawnWaveStartCondition",
@@ -55041,6 +56861,28 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCToastSizeType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EUGCToastSizeType.md"
+  },
+  {
+    "id": "api:cppenum:EUGCUILayer",
+    "name": "EUGCUILayer",
+    "title": "EUGCUILayer",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCUILayer.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCUILayer.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCUILayer.md"
+  },
+  {
+    "id": "api:cppenum:EUGCUIState",
+    "name": "EUGCUIState",
+    "title": "EUGCUIState",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EUGCUIState.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EUGCUIState.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EUGCUIState.md"
   },
   {
     "id": "api:cppenum:EUGCWeaponCooperateType",
@@ -55516,17 +57358,6 @@
     "file": "documents/cppenum/EVaultType.md"
   },
   {
-    "id": "api:cppenum:EVectorDBType",
-    "name": "EVectorDBType",
-    "title": "EVectorDBType",
-    "kind": "cppenum",
-    "categories": [],
-    "json_path": "cppenum/detail/EVectorDBType.json",
-    "url": "https://developer.gp.qq.com/api/cppenum/detail/EVectorDBType.json",
-    "api_root": "https://developer.gp.qq.com/api/",
-    "file": "documents/cppenum/EVectorDBType.md"
-  },
-  {
     "id": "api:cppenum:EVectorFieldConstructionOp",
     "name": "EVectorFieldConstructionOp",
     "title": "EVectorFieldConstructionOp",
@@ -55844,6 +57675,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EVehicleForceTickAnimMask.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EVehicleForceTickAnimMask.md"
+  },
+  {
+    "id": "api:cppenum:EVehicleHookAirDropCDType",
+    "name": "EVehicleHookAirDropCDType",
+    "title": "EVehicleHookAirDropCDType",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EVehicleHookAirDropCDType.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EVehicleHookAirDropCDType.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EVehicleHookAirDropCDType.md"
   },
   {
     "id": "api:cppenum:EVehicleInterruptType",
@@ -56284,6 +58126,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EVFXFlipbookCameraMode.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EVFXFlipbookCameraMode.md"
+  },
+  {
+    "id": "api:cppenum:EVFXFlipbookFacingAxisLock",
+    "name": "EVFXFlipbookFacingAxisLock",
+    "title": "EVFXFlipbookFacingAxisLock",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EVFXFlipbookFacingAxisLock.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EVFXFlipbookFacingAxisLock.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EVFXFlipbookFacingAxisLock.md"
   },
   {
     "id": "api:cppenum:EVFXFlipbookOctaBlendMode",
@@ -56836,6 +58689,17 @@
     "file": "documents/cppenum/EWarDogCommandType.md"
   },
   {
+    "id": "api:cppenum:EWarDogIdleMode",
+    "name": "EWarDogIdleMode",
+    "title": "EWarDogIdleMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EWarDogIdleMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EWarDogIdleMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EWarDogIdleMode.md"
+  },
+  {
     "id": "api:cppenum:EWarDogLocomotionType",
     "name": "EWarDogLocomotionType",
     "title": "EWarDogLocomotionType",
@@ -56867,6 +58731,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EWarDogMoveToTargetState.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EWarDogMoveToTargetState.md"
+  },
+  {
+    "id": "api:cppenum:EWarDogPendingEmoteKind",
+    "name": "EWarDogPendingEmoteKind",
+    "title": "EWarDogPendingEmoteKind",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EWarDogPendingEmoteKind.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EWarDogPendingEmoteKind.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EWarDogPendingEmoteKind.md"
   },
   {
     "id": "api:cppenum:EWarDogSearchState",
@@ -57408,6 +59283,17 @@
     "file": "documents/cppenum/EWeaponVeiryIgnore.md"
   },
   {
+    "id": "api:cppenum:EWeaponWallAvoidFactorSource",
+    "name": "EWeaponWallAvoidFactorSource",
+    "title": "EWeaponWallAvoidFactorSource",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EWeaponWallAvoidFactorSource.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EWeaponWallAvoidFactorSource.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EWeaponWallAvoidFactorSource.md"
+  },
+  {
     "id": "api:cppenum:EWeaponWeightType",
     "name": "EWeaponWeightType",
     "title": "EWeaponWeightType",
@@ -57769,6 +59655,17 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/EWrapperMeshLoadType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/EWrapperMeshLoadType.md"
+  },
+  {
+    "id": "api:cppenum:EWrapperVisualFlag",
+    "name": "EWrapperVisualFlag",
+    "title": "EWrapperVisualFlag",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/EWrapperVisualFlag.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/EWrapperVisualFlag.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/EWrapperVisualFlag.md"
   },
   {
     "id": "api:cppenum:EWriteDisallowedWarningState",
@@ -58781,6 +60678,28 @@
     "url": "https://developer.gp.qq.com/api/cppenum/detail/UGCAsyncUtility.AsyncErrorType.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppenum/UGCAsyncUtility.AsyncErrorType.md"
+  },
+  {
+    "id": "api:cppenum:UGCVoiceManagerSystem.VoiceChannel",
+    "name": "UGCVoiceManagerSystem.VoiceChannel",
+    "title": "UGCVoiceManagerSystem.VoiceChannel",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/UGCVoiceManagerSystem.VoiceChannel.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/UGCVoiceManagerSystem.VoiceChannel.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/UGCVoiceManagerSystem.VoiceChannel.md"
+  },
+  {
+    "id": "api:cppenum:UGCVoiceManagerSystem.VoiceMode",
+    "name": "UGCVoiceManagerSystem.VoiceMode",
+    "title": "UGCVoiceManagerSystem.VoiceMode",
+    "kind": "cppenum",
+    "categories": [],
+    "json_path": "cppenum/detail/UGCVoiceManagerSystem.VoiceMode.json",
+    "url": "https://developer.gp.qq.com/api/cppenum/detail/UGCVoiceManagerSystem.VoiceMode.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppenum/UGCVoiceManagerSystem.VoiceMode.md"
   },
   {
     "id": "api:cppenum:UGetActorStrategy",
@@ -60783,6 +62702,28 @@
     "url": "https://developer.gp.qq.com/api/cppstruct/detail/FAxisBindingInfo.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FAxisBindingInfo.md"
+  },
+  {
+    "id": "api:cppstruct:FBackpackV2CheckCapacityParam",
+    "name": "FBackpackV2CheckCapacityParam",
+    "title": "FBackpackV2CheckCapacityParam",
+    "kind": "cppstruct",
+    "categories": [],
+    "json_path": "cppstruct/detail/FBackpackV2CheckCapacityParam.json",
+    "url": "https://developer.gp.qq.com/api/cppstruct/detail/FBackpackV2CheckCapacityParam.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppstruct/FBackpackV2CheckCapacityParam.md"
+  },
+  {
+    "id": "api:cppstruct:FBackpackV2CheckCapacityResult",
+    "name": "FBackpackV2CheckCapacityResult",
+    "title": "FBackpackV2CheckCapacityResult",
+    "kind": "cppstruct",
+    "categories": [],
+    "json_path": "cppstruct/detail/FBackpackV2CheckCapacityResult.json",
+    "url": "https://developer.gp.qq.com/api/cppstruct/detail/FBackpackV2CheckCapacityResult.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppstruct/FBackpackV2CheckCapacityResult.md"
   },
   {
     "id": "api:cppstruct:FBakedAnimationState",
@@ -67957,6 +69898,17 @@
     "file": "documents/cppstruct/FRawDistributionVector.md"
   },
   {
+    "id": "api:cppstruct:FRay",
+    "name": "FRay",
+    "title": "FRay",
+    "kind": "cppstruct",
+    "categories": [],
+    "json_path": "cppstruct/detail/FRay.json",
+    "url": "https://developer.gp.qq.com/api/cppstruct/detail/FRay.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppstruct/FRay.md"
+  },
+  {
     "id": "api:cppstruct:FRBFEntry",
     "name": "FRBFEntry",
     "title": "FRBFEntry",
@@ -68142,6 +70094,28 @@
     "url": "https://developer.gp.qq.com/api/cppstruct/detail/FRichCurveKey.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FRichCurveKey.md"
+  },
+  {
+    "id": "api:cppstruct:FRichTextStyleRow",
+    "name": "FRichTextStyleRow",
+    "title": "FRichTextStyleRow",
+    "kind": "cppstruct",
+    "categories": [],
+    "json_path": "cppstruct/detail/FRichTextStyleRow.json",
+    "url": "https://developer.gp.qq.com/api/cppstruct/detail/FRichTextStyleRow.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppstruct/FRichTextStyleRow.md"
+  },
+  {
+    "id": "api:cppstruct:FRichWidgetRow",
+    "name": "FRichWidgetRow",
+    "title": "FRichWidgetRow",
+    "kind": "cppstruct",
+    "categories": [],
+    "json_path": "cppstruct/detail/FRichWidgetRow.json",
+    "url": "https://developer.gp.qq.com/api/cppstruct/detail/FRichWidgetRow.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppstruct/FRichWidgetRow.md"
   },
   {
     "id": "api:cppstruct:FRigConfiguration",
@@ -69462,6 +71436,17 @@
     "url": "https://developer.gp.qq.com/api/cppstruct/detail/FSubmixEffectSubmixEQSettings.json",
     "api_root": "https://developer.gp.qq.com/api/",
     "file": "documents/cppstruct/FSubmixEffectSubmixEQSettings.md"
+  },
+  {
+    "id": "api:cppstruct:FSubModeDynamicLevelsEntry",
+    "name": "FSubModeDynamicLevelsEntry",
+    "title": "FSubModeDynamicLevelsEntry",
+    "kind": "cppstruct",
+    "categories": [],
+    "json_path": "cppstruct/detail/FSubModeDynamicLevelsEntry.json",
+    "url": "https://developer.gp.qq.com/api/cppstruct/detail/FSubModeDynamicLevelsEntry.json",
+    "api_root": "https://developer.gp.qq.com/api/",
+    "file": "documents/cppstruct/FSubModeDynamicLevelsEntry.md"
   },
   {
     "id": "api:cppstruct:FSubsurfaceProfileStruct",

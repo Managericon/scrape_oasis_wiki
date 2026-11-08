@@ -63,6 +63,8 @@ Characters are Pawns that have a mesh, collision, and built-in movement logic.
 | `bAsyncNewAnimInstance` | `bool` | - |
 | `AsyncAnimInstances` | `TMap < UAnimInstance * , bool >` | - |
 | `bMarkScopeIn` | `bool` | - |
+| `bAnimFollowing` | `bool` | - |
+| `bEnableAutonomousURO` | `bool` | - |
 | `ArrowComponent` | `UArrowComponent *` | - |
 
 ## Functions

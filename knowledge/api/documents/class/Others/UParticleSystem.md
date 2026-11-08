@@ -15,7 +15,7 @@ A ParticleSystem is a complete particle effect that contains any number of Parti
 
 ## Inheritance
 
-`UObject`
+`UObject` -> `IInterface_AssetUserData`
 
 ## Variables
 
@@ -75,6 +75,7 @@ A ParticleSystem is a complete particle effect that contains any number of Parti
 | `NamedMaterialSlots` | `TArray < FNamedEmitterMaterial >` | Array of named material slots for use by emitters of this system. <br>		Emitters can use these instead of their own materials by providing the name to the NamedMaterialOverrides property of their required module.<br>		These materials can be overridden using CreateNamedDynamicMaterialInstance() on a ParticleSystemComponent. |
 | `bInitParticlesOnCanNotEverRender` | `uint8` | - |
 | `AvailableDeviceLevel` | `int32` | - |
+| `AssetUserData` | `TArray < UAssetUserData * >` | Array of user data stored with the asset. Added for the VFX Flipbook 替代方案:<br>	  a UVFXFlipbookAssociationUserData is mounted here on the source<br>	  particle system (non-invasive association; the hard reference to the baked<br>	  Flipbook Blueprint is collected on cook alongside this asset). This UPROPERTY<br>	  is shown automatically in Cascade's Details panel via reflection.<br>	 <br>	  Reflected members must stay unconditional (UE4.18 UHT cannot gate them behind a<br>	  custom macro). The interface method bodies in ParticleComponents.cpp are the plain<br>	  standard AssetUserData implementations and carry no Flipbook-specific behavior. |
 
 ## Functions
 

@@ -29,3 +29,6 @@ api_root: "https://developer.gp.qq.com/api/"
 | `MutationCore` | `13` | - |
 | `GuineaPig` | `14` | - |
 | `WindChimes` | `15` | - |
+| `Assembly` | `16` | - |
+| `CatTree` | `17` | - |
+| `Hammock` | `18` | - |

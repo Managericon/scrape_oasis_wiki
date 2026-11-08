@@ -97,7 +97,7 @@ api_root: "https://developer.gp.qq.com/api/"
 ListenObjectMessage(ListenedObject: UObject, Message: string, Listener: UObject, Callback: function) -> number
 ```
 
-监听对象的广播信息，作用包含ListenUserDefinedObjectMessage，正常仅调用本接口即可
+监听对象广播的内置GMP消息（自定义消息请使用ListenUserDefinedObjectMessage）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -113,7 +113,31 @@ ListenObjectMessage(ListenedObject: UObject, Message: string, Listener: UObject,
 
 | Type | Description |
 |---|---|
-| `number` | 返回监听ID |
+| `number` | 成功返回监听ID(>=1)，失败返回-1 |
+
+### `ListenUserDefinedObjectMessage`
+
+```text
+ListenUserDefinedObjectMessage(ListenedObject: UObject, Message: string, Listener: UObject, Callback: function) -> int
+```
+
+监听自定义的对象广播信息，仅处理自定义消息（本接口即监听自定义消息的接口）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ListenedObject` | `UObject` | 被监听对象 |
+| `Message` | `string` | 广播信息的索引，后续的广播和监听都通过索引进行操作 |
+| `Listener` | `UObject` | 监听对象 |
+| `Callback` | `function` | 监听对象监听到广播后调用的回调函数 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int` | 成功返回监听ID(>=1)，失败返回-1 |
 
 ### `BroadcastUserDefinedObjectMessage`
 
@@ -121,7 +145,7 @@ ListenObjectMessage(ListenedObject: UObject, Message: string, Listener: UObject,
 BroadcastUserDefinedObjectMessage(ListenedObject: UObject, Message: string, ...: any)
 ```
 
-广播自定义的对象消息
+广播自定义的对象消息，仅处理自定义消息（内置GMP消息由引擎广播）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -138,7 +162,7 @@ BroadcastUserDefinedObjectMessage(ListenedObject: UObject, Message: string, ...:
 ListenGlobalMessage(WorldContextObject: UObject, Message: string, Listener: UObject, Callback: function) -> number
 ```
 
-监听全局的广播信息，作用包含ListenUserDefinedGlobalMessage，正常仅调用本接口即可
+监听全局广播的内置GMP消息（自定义消息请使用ListenUserDefinedGlobalMessage）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -154,7 +178,7 @@ ListenGlobalMessage(WorldContextObject: UObject, Message: string, Listener: UObj
 
 | Type | Description |
 |---|---|
-| `number` | 返回监听ID |
+| `number` | 成功返回监听ID(>=1)，失败返回-1 |
 
 ### `ListenUserDefinedGlobalMessage`
 
@@ -162,7 +186,7 @@ ListenGlobalMessage(WorldContextObject: UObject, Message: string, Listener: UObj
 ListenUserDefinedGlobalMessage(WorldContextObject: UObject, Message: string, Listener: UObject, Callback: function) -> number
 ```
 
-监听自定义的全局广播信息
+监听自定义的全局广播信息，仅处理自定义消息（本接口即监听自定义消息的接口）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -178,7 +202,7 @@ ListenUserDefinedGlobalMessage(WorldContextObject: UObject, Message: string, Lis
 
 | Type | Description |
 |---|---|
-| `number` | 返回监听ID |
+| `number` | 成功返回监听ID(>=1)，失败返回-1 |
 
 ### `BroadcastUserDefinedGlobalMessage`
 
@@ -186,7 +210,7 @@ ListenUserDefinedGlobalMessage(WorldContextObject: UObject, Message: string, Lis
 BroadcastUserDefinedGlobalMessage(Message: string, ...: any)
 ```
 
-广播自定义的全局消息
+广播自定义的全局消息，仅处理自定义消息（内置GMP消息由引擎广播）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -199,10 +223,10 @@ BroadcastUserDefinedGlobalMessage(Message: string, ...: any)
 ### `UnListenMessage`
 
 ```text
-UnListenMessage(Listener: UObject|number, Message: string)
+UnListenMessage(Listener: UObject|number, Message: string) -> number
 ```
 
-解除监听对象以及全局的广播信息
+解除内置GMP消息的监听（自定义消息请使用UnListenUserDefinedMessage）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -212,10 +236,38 @@ UnListenMessage(Listener: UObject|number, Message: string)
 | `Listener` | `UObject\|number` | 监听对象/监听ID |
 | `Message` | `string` | 广播信息的索引，后续的广播和监听都通过索引进行操作 |
 
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 成功返回0或实际移除数(>=1)，失败返回-1 |
+
+### `UnListenUserDefinedMessage`
+
+```text
+UnListenUserDefinedMessage(Listener: UObject|number, Message: string) -> number
+```
+
+解除自定义消息的监听，仅处理自定义消息（本接口即解除自定义消息监听的接口）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Listener` | `UObject\|number` | 监听对象/监听ID |
+| `Message` | `string` | 广播信息的索引，后续的广播和监听都通过索引进行操作 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 返回实际移除数(>=1)，无匹配返回-1 |
+
 ### `GetRemoteMessageHandle`
 
 ```text
-GetRemoteMessageHandle(Message: string) -> UGCRemoteMessageHandle
+GetRemoteMessageHandle(Message: string) -> UGCRemoteMessageHandle|number
 ```
 
 获取远程消息句柄
@@ -231,7 +283,7 @@ GetRemoteMessageHandle(Message: string) -> UGCRemoteMessageHandle
 
 | Type | Description |
 |---|---|
-| `UGCRemoteMessageHandle` | 消息句柄，Message非string或为""时返回nil |
+| `UGCRemoteMessageHandle\|number` | 消息句柄，Message非string或为""时返回-1 |
 
 ### `SendServerMessage`
 
@@ -322,7 +374,7 @@ UnListenRemoteMessage(Message: string, Callback: function|UGCCommonDelegate, Cal
 RegisterUserDefinedMessage(Message: string) -> string
 ```
 
-注册自定义消息
+注册自定义消息，名字与内置GMP消息重名时拒绝注册
 生效范围：服务器&客户端
 
 **Parameters**
@@ -335,7 +387,28 @@ RegisterUserDefinedMessage(Message: string) -> string
 
 | Type | Description |
 |---|---|
-| `string` | 返回注册后的Message，与输入的Message相同 |
+| `string` | 注册成功返回Message，重名拒绝返回nil |
+
+### `IsBuiltinMessage`
+
+```text
+IsBuiltinMessage(Message: string) -> boolean
+```
+
+查询消息是否为内置GMP消息（供监听前判断该用哪个监听接口）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Message` | `string` | 广播信息的索引 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是内置GMP消息返回true，否则false |
 
 ### `ClearAllListeners`
 

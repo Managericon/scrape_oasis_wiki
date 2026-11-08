@@ -6,6 +6,2159 @@ category: "API Wiki/class"
 kind: "api_chunk"
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevel.json -->
+
+# ULevel
+
+A Level is a collection of Actors (lights, volumes, mesh instances etc.).
+  Multiple Levels can be loaded and unloaded into the World to create a streaming experience.
+ 
+  @see UActor
+
+## Inheritance
+
+`UObject` -> `IInterface_AssetUserData`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `OwningWorld` | `UWorld *` | The World that has this level in its Levels array.<br>	  This is not the same as GetOuter(), because GetOuter() for a streaming level is a vestigial world that is not used.<br>	  It should not be accessed during BeginDestroy(), just like any other UObject references, since GC may occur in any order. |
+| `Model` | `UModel *` | BSP UModel. |
+| `ModelComponents` | `TArray < UModelComponent * >` | BSP Model components used for rendering. |
+| `ActorCluster` | `ULevelActorContainer *` | - |
+| `NumTextureStreamingUnbuiltComponents` | `int32` | Num of components missing valid texture streaming data. Updated in map check. |
+| `NumTextureStreamingDirtyResources` | `int32` | Num of resources that have changed since the last texture streaming build. Updated in map check. |
+| `LevelScriptActor` | `ALevelScriptActor *` | The level scripting actor, created by instantiating the class from LevelScriptBlueprint.  This handles all level scripting |
+| `NavListStart` | `ANavigationObjectBase *` | Start and end of the navigation list for this level, used for quickly fixing up<br>	  when streaming this level inout. @TODO DEPRECATED - DELETE |
+| `NavListEnd` | `ANavigationObjectBase *` | - |
+| `NavDataChunks` | `TArray < UNavigationDataChunk * >` | Navigation related data that can be stored per level |
+| `LightmapTotalSize` | `float` | Total number of KB used for lightmap textures in the level. |
+| `ShadowmapTotalSize` | `float` | Total number of KB used for shadowmap textures in the level. |
+| `StaticNavigableGeometry` | `TArray < FVector >` | threes of triangle vertices - AABB filtering friendly. Stored if there's a runtime need to rebuild navigation that accepts BSPs<br>	 	as well - it's a lot easier this way than retrieve this data at runtime |
+| `StreamingTextureGuids` | `TArray < FGuid >` | The Guid of each texture refered by FStreamingTextureBuildInfo::TextureLevelIndex |
+| `LevelVolumeProbeGIBakedStreamingData` | `ULevelVolumeProbeGIBakedStreamingData *` | - |
+| `PVSHandlerHash` | `FString` | - |
+| `PrecomputedVisibilityDataRegistry` | `UPrecomputedVisibilityDataRegistry *` | - |
+| `bIsLightingScenario` | `bool` | Whether the level is a lighting scenario.  Lighting is built separately for each lighting scenario level with all other scenario levels hidden.<br>	  Only one lighting scenario level should be visible at a time for correct rendering, and lightmaps from that level will be used on the rest of the world.<br>	  Note: When a lighting scenario level is present, lightmaps for all streaming levels are placed in the scenario's _BuildData package.<br>	 		This means that lightmaps for those streaming levels will not be streamed with them. |
+| `LevelBuildDataId` | `FGuid` | Identifies map build data specific to this level, eg lighting volume samples. |
+| `LightBuildLevelOffset` | `FIntVector` | Level offset at time when lighting was built |
+| `bTextureStreamingRotationChanged` | `uint8` | Whether a level transform rotation was applied since the texture streaming builds. Invalidates the precomputed streaming bounds. |
+| `bIsVisible` | `uint8` | Whether the level is currently visible associated with the world |
+| `bLocked` | `uint8` | Whether this level is locked; that is, its actors are read-only<br>	 	Used by WorldBrowser to lock a level when corresponding ULevelStreaming does not exist |
+| `bPVSDirty` | `uint8` | - |
+| `WorldSettings` | `AWorldSettings *` | - |
+| `MapBuildData` | `UMapBuildDataRegistry *` | Registry for data from the map build.  This is stored in a separate package from the level to speed up saving  autosaving.<br>	  ReleaseRenderingResources must be called before changing what is referenced, to update the rendering thread state. |
+| `RCRCommunicatorClassName` | `FSoftClassPath` | - |
+| `RCRCommunicator` | `URCRCommunicator *` | - |
+| `MeshRefCounter` | `TMap < UStaticMesh * , int32 >` | - |
+| `Level_RCR` | `ULevel_RCR *` | - |
+| `AssetUserData` | `TArray < UAssetUserData * >` | Array of user data stored with the asset |
+| `LevelScriptBlueprint` | `ULevelScriptBlueprint *` | Reference to the blueprint for level scripting |
+| `TextureStreamingResourceGuids` | `TArray < FGuid >` | The Guid list of all materials and meshes Guid used in the last texture streaming build. Used to know if the streaming data needs rebuild. Only used for the persistent level. |
+| `LevelSimplification` | `FLevelSimplificationDetails` | Level simplification settings for each LOD |
+| `PlatformLevelSimplification` | `TArray < FLevelSimplificationDetails >` | - |
+| `LevelColor` | `FLinearColor` | The level color used for visualization. (Show -> Advanced -> Level Coloration)<br>	  Used only in world composition mode |
+| `CurrentTieredMapBuildData` | `UMapBuildDataRegistry *` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelActorContainer.json -->
+
+# ULevelActorContainer
+
+Root object for all level actors
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Actors` | `TArray < AActor * >` | Array of actors in a level |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelBlocksFoliageDataContainer.json -->
+
+# ULevelBlocksFoliageDataContainer
+
+植被
+
+## Inheritance
+
+`ULevelBlocksDataContainer`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LevelFoliageLocations` | `TMap < FName , FFoliageTypeLocation >` | - |
+| `TreesFlyLevel` | `FStringAssetReference` | - |
+| `TreesFlyLevelName` | `FName` | - |
+| `SurroundingTreesLevels` | `TSet < FName >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelCapture.json -->
+
+# ULevelCapture
+
+## Inheritance
+
+`UMovieSceneCapture`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bAutoStartCapture` | `bool` | Specifies whether the capture should start immediately, or whether it will be invoked externally (through StartMovieCaptureStopMovieCapture exec commands) |
+| `PrerequisiteActorId` | `FGuid` | Copy of the ID from PrerequisiteActor. Required because JSON serialization exports the path of the object, rather that its GUID |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelScriptBlueprint.json -->
+
+# ULevelScriptBlueprint
+
+A level blueprint is a specialized type of blueprint. It is used to house
+  global, level-wide logic. In a level blueprint, you can operate on specific 
+  level-actor instances through blueprint's node-based interface. UE3 users 
+  should be familiar with this concept, as it is very similar to Kismet.
+ 
+  @see UBlueprint
+  @see ALevelScriptActor
+
+## Inheritance
+
+`UBlueprint`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `FriendlyName` | `FString` | The friendly name to use for UI |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelSequence.json -->
+
+# ULevelSequence
+
+Movie scene animation for Actors.
+
+## Inheritance
+
+`UMovieSceneSequence`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `MovieScene` | `UMovieScene *` | Pointer to the movie scene that controls this animation. |
+| `ObjectReferences` | `FLevelSequenceObjectReferenceMap` | Legacy object references - should be read-only. Not deprecated because they need to still be saved |
+| `BindingReferences` | `FLevelSequenceBindingReferences` | References to bound objects. |
+| `PossessedObjects_DEPRECATED` | `TMap < FString , FLevelSequenceObject >` | Deprecated property housing old possessed object bindings |
+| `DirectorClass` | `UClass *` | The class that is used to spawn this level sequence's director instance.<br>	  Director instances are allocated on-demand one per sequence during evaluation and are used by event tracks for triggering events. |
+| `DirectorBlueprint` | `UBlueprint *` | A pointer to the director blueprint that generates this sequence's DirectorClass. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelSequenceBurnIn.json -->
+
+# ULevelSequenceBurnIn
+
+Base class for level sequence burn ins
+
+## Inheritance
+
+`UUserWidget`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `FrameInformation` | `FLevelSequencePlayerSnapshot` | Snapshot of frame information. |
+| `LevelSequenceActor` | `ALevelSequenceActor *` | The actor to get our burn in frames from |
+
+## Functions
+
+### `SetSettings`
+
+```text
+SetSettings(InSettings: UObject *) -> void
+```
+
+Called when this burn in is receiving its settings
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InSettings` | `UObject *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetSettingsClass`
+
+```text
+GetSettingsClass() -> TSubclassOf < ULevelSequenceBurnInInitSettings >
+```
+
+Get the settings class to use for this burn in
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TSubclassOf < ULevelSequenceBurnInInitSettings >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelSequenceBurnInOptions.json -->
+
+# ULevelSequenceBurnInOptions
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bUseBurnIn` | `bool` | - |
+| `BurnInClass` | `FSoftClassPath` | - |
+| `Settings` | `ULevelSequenceBurnInInitSettings *` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelSequenceDirector.json -->
+
+# ULevelSequenceDirector
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Player` | `ULevelSequencePlayer *` | Pointer to the player that's playing back this director's sequence |
+
+## Functions
+
+### `OnCreated`
+
+```text
+OnCreated() -> void
+```
+
+Called when this director is created
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelSequencePlayer.json -->
+
+# ULevelSequencePlayer
+
+ULevelSequencePlayer is used to actually "play" an level sequence asset at runtime.
+ 
+  This class keeps track of playback state and provides functions for manipulating
+  an level sequence while its playing.
+
+## Inheritance
+
+`UMovieSceneSequencePlayer`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `AdditionalEventReceivers` | `TArray < UObject * >` | Array of additional event receivers |
+
+## Functions
+
+### `CreateLevelSequencePlayer`
+
+```text
+CreateLevelSequencePlayer(WorldContextObject: UObject *, LevelSequence: ULevelSequence *, Settings: FMovieSceneSequencePlaybackSettings, OutActor: ALevelSequenceActor * &) -> ULevelSequencePlayer *
+```
+
+Create a new level sequence player.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContextObject` | `UObject *` | Context object from which to retrieve a UWorld. |
+| `LevelSequence` | `ULevelSequence *` | The level sequence to play. |
+| `Settings` | `FMovieSceneSequencePlaybackSettings` | The desired playback settings |
+| `OutActor` | `ALevelSequenceActor * &` | The level sequence actor created to play this sequence. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ULevelSequencePlayer *` | - |
+
+### `GetEventReceivers`
+
+```text
+GetEventReceivers() -> TArray < UObject * >
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TArray < UObject * >` | - |
+
+## Delegates
+
+### `OnCameraCut`
+
+```text
+OnCameraCut(CameraComponent: UCameraComponent*) -> void
+```
+
+Event triggered when there is a camera cut
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `CameraComponent` | `UCameraComponent*` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelStreaming.json -->
+
+# ULevelStreaming
+
+Abstract base class of container object encapsulating data required for streaming and providing 
+  interface for when a level should be streamed in and out of memory.
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PackageName_DEPRECATED` | `FName` | Deprecated name of the package containing the level to load. Use GetWorldAsset() or GetWorldAssetPackageFName() instead. |
+| `WorldAsset` | `TSoftObjectPtr < UWorld >` | The reference to the world containing the level to load |
+| `PackageNameToLoad` | `FName` | If this isn't Name_None, then we load from this package on disk to the new package named PackageName |
+| `LODPackageNames` | `TArray < FName >` | LOD versions of this level |
+| `LevelTransform` | `FTransform` | Transform applied to actors after loading. |
+| `bShouldBeVisibleInEditor` | `uint32` | Whether this level should be visible in the Editor |
+| `bLocked` | `uint32` | Whether this level is locked; that is, its actors are read-only. |
+| `bShouldBeLoaded` | `uint32` | Whether the level should be loaded |
+| `bShouldBeVisible` | `uint32` | Whether the level should be visible if it is loaded |
+| `bIsStatic` | `uint32` | Whether this level only contains static actors that aren't affected by gameplay or replication.<br>	  If true, the engine can make certain optimizations and will add this level to the StaticLevels collection. |
+| `bShouldBlockOnLoad` | `uint32` | Whether we want to force a blocking load |
+| `LevelLODIndex` | `int32` | Requested LOD. Non LOD sub-levels have Index = -1 |
+| `bDisableDistanceStreaming` | `uint32` | Whether this level streaming object should be ignored by world composition distance streaming, <br>	   so streaming state can be controlled by other systems (ex: in blueprints) |
+| `bDrawOnLevelStatusMap` | `uint32` | If true, will be drawn on the 'level streaming status' map (STAT LEVELMAP console command) |
+| `DrawColor_DEPRECATED` | `FColor` | Deprecated level color used for visualization. |
+| `LevelColor` | `FLinearColor` | The level color used for visualization. (Show -> Advanced -> Level Coloration) |
+| `EditorStreamingVolumes` | `TArray < ALevelStreamingVolume * >` | The level streaming volumes bound to this level. |
+| `MinTimeBetweenVolumeUnloadRequests` | `float` | Cooldown time in seconds between volume-based unload requests.  Used in preventing spurious unload requests. |
+| `Keywords` | `TArray < FString >` | List of keywords to filter on in the level browser |
+| `LoadedLevel` | `ULevel *` | Pointer to Level object if currently loaded streamed in. |
+| `PendingUnloadLevel` | `ULevel *` | Pointer to a Level object that was previously active and was replaced with a new LoadedLevel (for LOD switching) |
+| `UnloadingLevels` | `TArray < ULevel * >` | Array to save unloading levels. |
+| `LevelStreamingInfo` | `FLevelLoadConditionInfo` | - |
+| `FolderPath` | `FName` | The folder path for this level within the world browser. This is only available in editor builds. <br>		A NONE path indicates that it exists at the root. It is '' separated. |
+
+## Functions
+
+### `GetWorldAssetPackageFName`
+
+```text
+GetWorldAssetPackageFName() -> ENGINE_API FName
+```
+
+Gets the package name for the world asset referred to by this level streaming as an FName
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API FName` | - |
+
+### `GetLoadedLevel`
+
+```text
+GetLoadedLevel() -> ENGINE_API class ULevel *
+```
+
+Gets a pointer to the LoadedLevel value
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API class ULevel *` | - |
+
+### `IsLevelVisible`
+
+```text
+IsLevelVisible() -> ENGINE_API bool
+```
+
+Returns whether streaming level is visible
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API bool` | - |
+
+### `IsLevelLoaded`
+
+```text
+IsLevelLoaded() -> ENGINE_API bool
+```
+
+Returns whether streaming level is loaded
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API bool` | - |
+
+### `IsStreamingStatePending`
+
+```text
+IsStreamingStatePending() -> ENGINE_API bool
+```
+
+Returns whether level has streaming state change pending
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API bool` | - |
+
+### `CreateInstance`
+
+```text
+CreateInstance(UniqueInstanceName: FString) -> ULevelStreaming *
+```
+
+Creates a new instance of this streaming level with a provided unique instance name
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `UniqueInstanceName` | `FString` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ULevelStreaming *` | - |
+
+### `GetLevelScriptActor`
+
+```text
+GetLevelScriptActor() -> ENGINE_API ALevelScriptActor *
+```
+
+Returns the Level Script Actor of the level if the level is loaded and valid
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API ALevelScriptActor *` | - |
+
+## Delegates
+
+### `OnLevelLoaded`
+
+```text
+OnLevelLoaded() -> void
+```
+
+Called when level is streamed in
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnLevelUnloaded`
+
+```text
+OnLevelUnloaded() -> void
+```
+
+Called when level is streamed out
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnLevelShown`
+
+```text
+OnLevelShown() -> void
+```
+
+Called when level is added to the world
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnLevelHidden`
+
+```text
+OnLevelHidden() -> void
+```
+
+Called when level is removed from the world
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelStreamingKismet.json -->
+
+# ULevelStreamingKismet
+
+## Inheritance
+
+`ULevelStreaming`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bInitiallyLoaded` | `uint32` | Whether the level should be loaded at startup |
+| `bInitiallyVisible` | `uint32` | Whether the level should be visible at startup if it is loaded |
+
+## Functions
+
+### `LoadLevelInstance`
+
+```text
+LoadLevelInstance(WorldContextObject: UObject *, LevelName: FString &, Location: FVector &, Rotation: FRotator &, bOutSuccess: bool &) -> ENGINE_API ULevelStreamingKismet *
+```
+
+Stream in a level with a specific location and rotation. You can create multiple instances of the same level!
+ 	
+ 	 The level to be loaded does not have to be in the persistent map's Levels list, however to ensure that the .umap does get
+ 	 packaged, please be sure to include the .umap in your Packaging Settings:
+ 	
+ 	   Project Settings -> Packaging -> List of Maps to Include in a Packaged Build (you may have to show advanced or type in filter)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContextObject` | `UObject *` | - |
+| `LevelName` | `FString &` | - Level package name, ex: GameMapsMyMapName, specifying short name like MyMapName will force very slow search on disk |
+| `Location` | `FVector &` | - World space location where the level should be spawned |
+| `Rotation` | `FRotator &` | - World space rotation for rotating the entire level |
+| `bOutSuccess` | `bool &` | - Whether operation was successful (map was found and added to the sub-levels list) |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API ULevelStreamingKismet *` | Streaming level object for a level instance |
+
+### `CreateLevelInstanceWithLevelName`
+
+```text
+CreateLevelInstanceWithLevelName(WorldContextObject: UObject *, LevelName: FString &, UniqueName: FString &, Trans: FTransform &, bOutSuccess: bool &) -> ENGINE_API ULevelStreamingKismet *
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContextObject` | `UObject *` | - |
+| `LevelName` | `FString &` | - |
+| `UniqueName` | `FString &` | - |
+| `Trans` | `FTransform &` | - |
+| `bOutSuccess` | `bool &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API ULevelStreamingKismet *` | - |
+
+### `CreateLevelInstanceWithLevel`
+
+```text
+CreateLevelInstanceWithLevel(OriStreamingLevel: ULevelStreaming *, UniqueName: FString &, Trans: FTransform &, bOutSuccess: bool &) -> ENGINE_API ULevelStreamingKismet *
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `OriStreamingLevel` | `ULevelStreaming *` | - |
+| `UniqueName` | `FString &` | - |
+| `Trans` | `FTransform &` | - |
+| `bOutSuccess` | `bool &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API ULevelStreamingKismet *` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULightComponent.json -->
+
+# ULightComponent
+
+## Inheritance
+
+`ULightComponentBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Temperature` | `float` | Color temperature in Kelvin of the blackbody illuminant.<br>	 White (D65) is 6500K. |
+| `MaxDrawDistance` | `float` | - |
+| `MaxDistanceFadeRange` | `float` | - |
+| `bUseTemperature` | `uint32` | false: use white (D65) as illuminant. |
+| `ShadowMapChannel_DEPRECATED` | `int32` | Legacy shadowmap channel from the lighting build, now stored in FLightComponentMapBuildData. |
+| `MinRoughness` | `float` | Min roughness effective for this light. Used for softening specular highlights. |
+| `SpecularScale` | `float` | Multiplier on specular highlights. Use only with great care! Any value besides 1 is not physical!<br>	 Can be used to artistically remove highlights mimicking polarizing filters or photo touch up. |
+| `bLocalLightDisableDiffuse` | `uint32` | Local light disable diffuse |
+| `ShadowResolutionScale` | `float` | Scales the resolution of shadowmaps used to shadow this light.  By default shadowmap resolution is chosen based on screen size of the caster. <br>	  Note: shadowmap resolution is still clamped by 'r.Shadow.MaxResolution' |
+| `LightPriority` | `int32` | Light priority for mobile light grid |
+| `ShadowBias` | `float` | Controls how accurate self shadowing of whole scene shadows from this light are.  <br>	  At 0, shadows will start at the their caster surface, but there will be many self shadowing artifacts.<br>	  larger values, shadows will start further from their caster, and there won't be self shadowing artifacts but object might appear to fly.<br>	  around 0.5 seems to be a good tradeoff. This also affects the soft transition of shadows |
+| `ShadowSharpen` | `float` | Amount to sharpen shadow filtering |
+| `ContactShadowLength` | `float` | Length of screen space ray trace for sharp contact shadows. Zero is disabled. |
+| `InverseSquaredFalloff_DEPRECATED` | `uint32` | - |
+| `bCacheStaticShadows` | `uint32` | - |
+| `CastTranslucentShadows` | `uint32` | Whether the light is allowed to cast dynamic shadows from translucency. |
+| `bCastShadowsFromCinematicObjectsOnly` | `uint32` | Whether the light should only cast shadows from components marked as bCastCinematicShadows. <br>	  This is useful for setting up cinematic Movable spotlights aimed at characters and avoiding the shadow depth rendering costs of the background.<br>	  Note: this only works with dynamic shadow maps, not with static shadowing or Ray Traced Distance Field shadows. |
+| `bAffectDynamicIndirectLighting` | `uint32` | Whether the light should be injected into the Light Propagation Volume |
+| `LightingChannels` | `FLightingChannels` | Channels that this light should affect.  <br>	  These channels only apply to opaque materials, direct lighting, and dynamic lighting and shadowing. |
+| `LightFunctionMaterial` | `UMaterialInterface *` | The light function material to be applied to this light.<br>	  Note that only non-lightmapped lights (UseDirectLightMap=False) can have a light function. |
+| `LightFunctionScale` | `FVector` | Scales the light function projection.  X and Y scale in the directions perpendicular to the light's direction, Z scales along the light direction. |
+| `IESTexture` | `UTextureLightProfile *` | IES texture (light profiles from real world measured data) |
+| `bUseIESBrightness` | `uint32` | true: take light brightness from IES profile, false: use the light brightness - the maximum light in one direction is used to define no masking. Use with InverseSquareFalloff. Will be disabled if a valid IES profile texture is not supplied. |
+| `IESBrightnessScale` | `float` | Global scale for IES brightness contribution. Only available when "Use IES Brightness" is selected, and a valid IES profile texture is set |
+| `LightFunctionFadeDistance` | `float` | Distance at which the light function should be completely faded to DisabledBrightness.  <br>	  This is useful for hiding aliasing from light functions applied in the distance. |
+| `DisabledBrightness` | `float` | Brightness factor applied to the light when the light function is specified but disabled, for example in scene captures that use SceneCapView_LitNoShadows. <br>	  This should be set to the average brightness of the light function material's emissive input, which should be between 0 and 1. |
+| `bEnableLightShaftBloom` | `uint32` | Whether to render light shaft bloom from this light. <br>	  For directional lights, the color around the light direction will be blurred radially and added back to the scene.<br>	  for point lights, the color on pixels closer than the light's SourceRadius will be blurred radially and added back to the scene. |
+| `BloomScale` | `float` | Scales the additive color. |
+| `BloomThreshold` | `float` | Scene color must be larger than this to create bloom in the light shafts. |
+| `BloomTint` | `FColor` | Multiplies against scene color to create the bloom color. |
+| `bUseRayTracedDistanceFieldShadows` | `bool` | Whether to use ray traced distance field area shadows.  The project setting bGenerateMeshDistanceFields must be enabled for this to have effect.<br>	  Distance field shadows support area lights so they create soft shadows with sharp contacts.  <br>	  They have less aliasing artifacts than standard shadowmaps, but inherit all the limitations of distance field representations (only uniform scale, no deformation).<br>	  These shadows have a low per-object cost (and don't depend on triangle count) so they are effective for distant shadows from a dynamic sun. |
+| `RayStartOffsetDepthScale` | `float` | Controls how large of an offset ray traced shadows have from the receiving surface as the camera gets further away.  <br>	  This can be useful to hide self-shadowing artifacts from low resolution distance fields on huge static meshes. |
+
+## Functions
+
+### `SetIntensity`
+
+```text
+SetIntensity(NewIntensity: float) -> void
+```
+
+Set intensity of the light
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewIntensity` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetIndirectLightingIntensity`
+
+```text
+SetIndirectLightingIntensity(NewIntensity: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewIntensity` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetVolumetricScatteringIntensity`
+
+```text
+SetVolumetricScatteringIntensity(NewIntensity: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewIntensity` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLightColor`
+
+```text
+SetLightColor(NewLightColor: FLinearColor, bSRGB: bool) -> void
+```
+
+Set color of the light
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewLightColor` | `FLinearColor` | - |
+| `bSRGB` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetTemperature`
+
+```text
+SetTemperature(NewTemperature: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewTemperature` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLightFunctionMaterial`
+
+```text
+SetLightFunctionMaterial(NewLightFunctionMaterial: UMaterialInterface *) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewLightFunctionMaterial` | `UMaterialInterface *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLightFunctionScale`
+
+```text
+SetLightFunctionScale(NewLightFunctionScale: FVector) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewLightFunctionScale` | `FVector` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLightFunctionFadeDistance`
+
+```text
+SetLightFunctionFadeDistance(NewLightFunctionFadeDistance: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewLightFunctionFadeDistance` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLightFunctionDisabledBrightness`
+
+```text
+SetLightFunctionDisabledBrightness(NewValue: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewValue` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAffectDynamicIndirectLighting`
+
+```text
+SetAffectDynamicIndirectLighting(bNewValue: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bNewValue` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAffectTranslucentLighting`
+
+```text
+SetAffectTranslucentLighting(bNewValue: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bNewValue` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetEnableLightShaftBloom`
+
+```text
+SetEnableLightShaftBloom(bNewValue: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bNewValue` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetBloomScale`
+
+```text
+SetBloomScale(NewValue: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewValue` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetBloomThreshold`
+
+```text
+SetBloomThreshold(NewValue: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewValue` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetBloomTint`
+
+```text
+SetBloomTint(NewValue: FColor) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewValue` | `FColor` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetIESTexture`
+
+```text
+SetIESTexture(NewValue: UTextureLightProfile *) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewValue` | `UTextureLightProfile *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetShadowBias`
+
+```text
+SetShadowBias(NewValue: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewValue` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ForceUpdateShadowState`
+
+```text
+ForceUpdateShadowState() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetSpecularScale`
+
+```text
+SetSpecularScale(NewValue: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewValue` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLocalLightDisableDiffuse`
+
+```text
+SetLocalLightDisableDiffuse(NewValue: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewValue` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULightComponentBase.json -->
+
+# ULightComponentBase
+
+## Inheritance
+
+`USceneComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LightGuid` | `FGuid` | GUID used to associate a light component with precomputed shadowing information across levels.<br>	  The GUID changes whenever the light position changes. |
+| `Brightness_DEPRECATED` | `float` | - |
+| `Intensity` | `float` | Total energy that the light emits.  <br>	  For pointspot lights with inverse squared falloff, this is in units of lumens.  1700 lumens corresponds to a 100W lightbulb. <br>	  For other lights, this is just a brightness multiplier. |
+| `LightColor` | `FColor` | Filter color of the light.<br>	  Note that this can change the light's effective intensity. |
+| `bAffectsWorld` | `uint32` | Whether the light can affect the world, or whether it is disabled.<br>	  A disabled light will not contribute to the scene in any way.  This setting cannot be changed at runtime and unbuilds lighting when changed.<br>	  Setting this to false has the same effect as deleting the light, so it is useful for non-destructive experiments. |
+| `CastShadows` | `uint32` | Whether the light should cast any shadows. |
+| `CastStaticShadows` | `uint32` | Whether the light should cast shadows from static objects.  Also requires Cast Shadows to be set to True. |
+| `CastDynamicShadows` | `uint32` | Whether the light should cast shadows from dynamic objects.  Also requires Cast Shadows to be set to True. |
+| `bAffectTranslucentLighting` | `uint32` | Whether the light affects translucency or not.  Disabling this can save GPU time when there are many small lights. |
+| `bCastVolumetricShadow` | `uint32` | Whether the light shadows volumetric fog.  Disabling this can save GPU time. |
+| `RequiredDeviceLevel` | `int32` | - |
+| `IndirectLightingIntensity` | `float` | Scales the indirect lighting contribution from this light. <br>	  A value of 0 disables any GI from this light. Default is 1. |
+| `VolumetricScatteringIntensity` | `float` | Intensity of the volumetric scattering from this light.  This scales Intensity and LightColor. |
+
+## Functions
+
+### `SetCastShadows`
+
+```text
+SetCastShadows(bNewValue: bool) -> void
+```
+
+Sets whether this light casts shadows
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bNewValue` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetLightColor`
+
+```text
+GetLightColor() -> FLinearColor
+```
+
+Gets the light color as a linear color
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FLinearColor` | - |
+
+### `SetCastVolumetricShadow`
+
+```text
+SetCastVolumetricShadow(bNewValue: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bNewValue` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULightmappedSurfaceCollection.json -->
+
+# ULightmappedSurfaceCollection
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SourceModel` | `UModel *` | The UModel these surfaces come from. |
+| `Surfaces` | `TArray < int32 >` | An array of the surface indices grouped into a single static lighting mapping. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULightmassPortalComponent.json -->
+
+# ULightmassPortalComponent
+
+## Inheritance
+
+`USceneComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PreviewBox` | `UBoxComponent *` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULightmassPrimitiveSettingsObject.json -->
+
+# ULightmassPrimitiveSettingsObject
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LightmassSettings` | `FLightmassPrimitiveSettings` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UListView.json -->
+
+# UListView
+
+Allows thousands of items to be displayed in a list.  Generates widgets dynamically for each item.
+
+## Inheritance
+
+`UTableViewBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ItemHeight` | `float` | The height of each widget |
+| `Items` | `TArray < UObject * >` | The list of items to generate widgets for |
+| `SelectionMode` | `TEnumAsByte < ESelectionMode :: Type >` | The selection method for the list |
+| `OnGenerateRowEvent` | `FOnGenerateRowUObject` | Called when a widget needs to be generated |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULocalizedOverlays.json -->
+
+# ULocalizedOverlays
+
+Implements an asset that contains a set of Basic Overlays that will be displayed in accordance with
+  the current locale, or a default set if an appropriate locale is not found
+
+## Inheritance
+
+`UOverlays`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `DefaultOverlays` | `UBasicOverlays *` | The overlays to use if no overlays are found for the current culture |
+| `LocaleToOverlaysMap` | `TMap < FString , UBasicOverlays * >` | Maps a set of cultures to specific BasicOverlays assets.<br>	  Cultures are comprised of three hyphen-separated parts:<br>	 		A two-letter ISO 639-1 language code (e.g., "zh")<br>	 		An optional four-letter ISO 15924 script code (e.g., "Hans")<br>	 		An optional two-letter ISO 3166-1 country code  (e.g., "CN") |
+| `AssetImportData` | `UAssetImportData *` | The import data used to make this overlays asset |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULocalPlayer.json -->
+
+# ULocalPlayer
+
+Each player that is active on the current client has a LocalPlayer. It stays active across maps
+ 	There may be several spawned in the case of splitscreencoop.
+ 	There may be 0 spawned on servers.
+
+## Inheritance
+
+`UPlayer`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ViewportClient` | `UGameViewportClient *` | The master viewport containing this player's view. |
+| `AspectRatioAxisConstraint` | `TEnumAsByte < enum EAspectRatioAxisConstraint >` | How to constrain perspective viewport FOV |
+| `PendingLevelPlayerControllerClass` | `TSubclassOf < APlayerController >` | The class of PlayerController to spawn for players logging in. |
+| `bSentSplitJoin` | `uint32` | set when we've sent a split join request |
+| `ControllerId` | `int32` | The controller ID which this player accepts input from. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULuaArrayHelper.json -->
+
+# ULuaArrayHelper
+
+数组帮助类
+
+## Functions
+
+### `Add`
+
+```text
+Add(Item: any)
+```
+
+添加元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 需要添加的元素 |
+
+### `AddUnique`
+
+```text
+AddUnique(Item: any)
+```
+
+往数组里添加一个元素，如果已存在则不压入
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 需要添加的元素 |
+
+### `Push`
+
+```text
+Push(Item: any)
+```
+
+往数组里压入一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 需要添加的元素 |
+
+### `Insert`
+
+```text
+Insert(Index: number, Item: any)
+```
+
+在指定位置插入一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 需要插入的元素索引 |
+| `Item` | `any` | 需要添加的元素 |
+
+### `Remove`
+
+```text
+Remove(Item: any)
+```
+
+移除一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 需要移除的元素 |
+
+### `RemoveAt`
+
+```text
+RemoveAt(Index: number)
+```
+
+根据索引移除一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 索引 |
+
+### `Pop`
+
+```text
+Pop() -> any
+```
+
+弹出最后一个元素
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `any` | 移除的元素 |
+
+### `Get`
+
+```text
+Get(Index: number)
+```
+
+跟据索引获取一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 索引 |
+
+### `Set`
+
+```text
+Set(Index: number, Item: any)
+```
+
+设置一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 索引 |
+| `Item` | `any` | 元素 |
+
+### `Find`
+
+```text
+Find(Item: any)
+```
+
+查找一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 元素 |
+
+### `Contains`
+
+```text
+Contains(Item: any)
+```
+
+判断数组是否包含某个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 元素 |
+
+### `Empty`
+
+```text
+Empty()
+```
+
+清空数组
+
+### `Reset`
+
+```text
+Reset(ExpectedSize: number)
+```
+
+重置数组
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ExpectedSize` | `number` | 数组容量（可选） |
+
+### `Num`
+
+```text
+Num() -> number
+```
+
+获取数组长度
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 数组长度 |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULuaMapHelper.json -->
+
+# ULuaMapHelper
+
+映射帮助类
+
+## Functions
+
+### `Add`
+
+```text
+Add(Key: any, Value: any) -> boolean
+```
+
+添加一个键值对
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `any` | 键 |
+| `Value` | `any` | 值 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否更新成功 |
+
+### `Remove`
+
+```text
+Remove(Key: any) -> number
+```
+
+根据键移除一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `any` | 键 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 移除的元素数量 |
+
+### `Get`
+
+```text
+Get(Key: any) -> any
+```
+
+根据键获取值
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `any` | 键 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `any` | 值 |
+
+### `Set`
+
+```text
+Set(Key: any, Value: any) -> boolean
+```
+
+更新键值对
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `any` | 键 |
+| `Value` | `any` | 值 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否更新成功 |
+
+### `Find`
+
+```text
+Find(Key: any) -> any
+```
+
+根据键获取值
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `any` | 键 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `any` | 值 |
+
+### `Empty`
+
+```text
+Empty()
+```
+
+清空哈希表
+
+### `Reset`
+
+```text
+Reset(ExpectedSize: number)
+```
+
+重置哈希表
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ExpectedSize` | `number` | 期望的哈希表长度（可选） |
+
+### `Num`
+
+```text
+Num() -> number
+```
+
+获取哈希表长度
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 长度 |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULuaMulticastDelegate.json -->
+
+# ULuaMulticastDelegate
+
+UE 多播委托基类，用于绑定多个回调函数
+
+## Functions
+
+### `Add`
+
+```text
+Add(Callback: function, Obj: any) -> number
+```
+
+添加回调，Func 作为 Key 去重，同 Func 不同 Obj 会覆盖
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Callback` | `function` | 回调函数，如果绑定了 Obj，则 Obj 作为回调第一个参数传入 |
+| `Obj` | `any` | 可选的绑定对象，作为回调第一个参数传入 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 回调引用 |
+
+### `AddInstance`
+
+```text
+AddInstance(Callback: function, Obj: any) -> number
+```
+
+添加回调，Func && Obj 共同作为 Key 去重，同 Func 不同 Obj 会共存
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Callback` | `function` | 回调函数，Obj 作为回调第一个参数传入 |
+| `Obj` | `any` | 绑定对象，作为回调第一个参数传入 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 回调引用 |
+
+### `Remove`
+
+```text
+Remove(Callback: function, Obj: any)
+```
+
+移除指定回调
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Callback` | `function` | 要移除的回调函数 |
+| `Obj` | `any` | 可选的绑定对象 |
+
+### `RemoveAll`
+
+```text
+RemoveAll()
+```
+
+移除所有 Lua 绑定
+
+### `Clear`
+
+```text
+Clear(bDonotKeepThis: boolean)
+```
+
+移除所有绑定（C++/BP/Lua）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bDonotKeepThis` | `boolean` | 是否不保留当前对象的回调 |
+
+### `Broadcast`
+
+```text
+Broadcast(...: any)
+```
+
+触发 Lua 广播
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `...` | `any` | 委托参数 |
+
+### `BroadcastAll`
+
+```text
+BroadcastAll(...: any)
+```
+
+触发所有广播（C++/BP/Lua）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `...` | `any` | 委托参数 |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULuaSetHelper.json -->
+
+# ULuaSetHelper
+
+集合帮助类
+
+## Functions
+
+### `Add`
+
+```text
+Add(Item: any) -> number
+```
+
+添加一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 需要添加的元素 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 索引 |
+
+### `Remove`
+
+```text
+Remove(Item: any) -> number
+```
+
+移除一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 需要移除的元素 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 移除的元素数量 |
+
+### `RemoveAt`
+
+```text
+RemoveAt(Index: number)
+```
+
+根据索引移除一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 索引 |
+
+### `Get`
+
+```text
+Get(Index: number) -> any
+```
+
+根据索引获取一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 索引 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `any` | 元素 |
+
+### `Set`
+
+```text
+Set(Index: number, Item: any) -> number
+```
+
+设置一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 索引 |
+| `Item` | `any` | 元素 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 索引 |
+
+### `Find`
+
+```text
+Find(Item: any) -> number
+```
+
+查找一个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 元素 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 索引 |
+
+### `Contains`
+
+```text
+Contains(Item: any) -> number
+```
+
+判断集合是否包含某个元素
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Item` | `any` | 元素 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 是否包含 |
+
+### `IsValidIndex`
+
+```text
+IsValidIndex(Index: number) -> number
+```
+
+判断指定索引是否合法
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `number` | 索引 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 是否合法 |
+
+### `Empty`
+
+```text
+Empty()
+```
+
+清空集合
+
+### `Reset`
+
+```text
+Reset(ExpectedSize: number)
+```
+
+重置集合
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ExpectedSize` | `number` | 期望的集合长度（可选） |
+
+### `Num`
+
+```text
+Num() -> number
+```
+
+获取集合长度
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 集合长度 |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULuaSingleDelegate.json -->
+
+# ULuaSingleDelegate
+
+UE 单播委托基类，用于绑定单个回调函数，后绑定会覆盖先绑定
+
+## Functions
+
+### `Bind`
+
+```text
+Bind(Callback: function, Obj?: any) -> number
+```
+
+绑定回调函数
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Callback` | `function` | 回调函数，如果绑定了 Obj，则 Obj 作为回调第一个参数传入 |
+| `Obj?` | `any` | 可选的绑定对象，作为回调第一个参数传入 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 回调引用 |
+
+### `UnBind`
+
+```text
+UnBind()
+```
+
+解绑回调函数
+
+### `Execute`
+
+```text
+Execute(...: any)
+```
+
+执行委托，触发已绑定的回调
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `...` | `any` | 委托参数 |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UManagementRuleSetting.json -->
+
+# UManagementRuleSetting
+
+ManagementRule逻辑规则的.ini文件配置版本，减少结构体和容器嵌套，方便.ini配置和阅读
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bEnable` | `bool` | - |
+| `SetResult` | `EAssetSetManagerResult` | - |
+| `CheckTargetDirectories` | `TArray < FManagementRuleFStringCheck >` | - |
+| `CheckTargetDirectoriesSwitch` | `FManagementRuleSwitch` | - |
+| `CheckTargetAssetsSwitch` | `FManagementRuleSwitch` | - |
+| `CheckTargetAssets` | `TArray < FManagementRuleFNameCheck >` | - |
+| `CheckTargetAssetClassSwitch` | `FManagementRuleSwitch` | - |
+| `CheckTargetAssetClassTypes` | `TArray < FManagementRuleFNameCheck >` | - |
+| `CheckSourcePackagesSwitch` | `FManagementRuleSwitch` | - |
+| `CheckSourcePackages` | `TArray < FManagementRuleFNameCheck >` | - |
+| `CheckSourcePackageClassSwitch` | `FManagementRuleSwitch` | - |
+| `CheckSourcePackageClassTypes` | `TArray < FManagementRuleFNameCheck >` | - |
+| `CheckTargetAssetTagSwitch` | `FManagementRuleSwitch` | - |
+| `CheckTargetAssetTags` | `TArray < FManagementRuleFNameCheck >` | - |
+| `bOnlySoftReferences` | `bool` | - |
+| `CheckOrMask` | `uint8` | 对应FManagementRule::CheckOrMask，控制6个检查条件之间的或与非逻辑，见EManagementRuleCheckOrMask |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMapBuildDataRegistry.json -->
+
+# UMapBuildDataRegistry
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LevelLightingQuality` | `TEnumAsByte < enum ELightingBuildQuality >` | The lighting quality the level was last built with |
+| `LevelVolumeProbeGIBakedStreamingData` | `ULevelVolumeProbeGIBakedStreamingData *` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMaterial.json -->
 
 # UMaterial
@@ -134,6 +2287,8 @@ A Material is an asset which can be applied to a mesh to control the visual look
 | `bBypassSystemMaterialQuality` | `uint32` | - |
 | `bBypassMobilePointLight` | `uint32` | - |
 | `bUseAsEarlyZ` | `uint32` | - |
+| `bUseAsEarlyZVulkan` | `uint32` | - |
+| `bDisableUseAsEarlyZVulkan` | `uint32` | - |
 | `bForceOutputLinearSpace` | `uint32` | - |
 | `bUseAsDrawToRenderTarget` | `uint32` | - |
 | `bRenderInTwoPass` | `uint32` | - |
@@ -4441,6 +6596,7 @@ Class that stores per-world instance parameter data for a given UMaterialParamet
 | Name | Type/Value | Description |
 |---|---|---|
 | `IDToFallbackLayers` | `TMap < FString , FMatIDFallbackArray >` | - |
+| `FallbackMaterial` | `UMaterialInterface *` | - |
 
 ## Language
 
@@ -6842,6 +8998,44 @@ Set all occurrences of Vector Material Parameters with ParameterName in the set 
 |---|---|
 | `void` | - |
 
+### `HasScalarParameterOnMaterials`
+
+```text
+HasScalarParameterOnMaterials(ParameterName: FName) -> bool
+```
+
+Engine Modify Start
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ParameterName` | `FName` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `HasVectorParameterOnMaterials`
+
+```text
+HasVectorParameterOnMaterials(ParameterName: FName) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ParameterName` | `FName` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
 ### `UpdateLodBiasByDeviceLevel`
 
 ```text
@@ -7663,6 +9857,43 @@ Base class for 3D constraint section
 | Name | Type/Value | Description |
 |---|---|---|
 | `ConstraintId` | `FGuid` | The possessable guid that this constraint uses |
+| `ConstraintBindingID` | `FMovieSceneObjectBindingID` | The binding ID of the target this constraint attaches to. May resolve into a parent sequence for cross-sub-sequence spawnables. |
+
+## Functions
+
+### `GetConstraintBindingID`
+
+```text
+GetConstraintBindingID() -> const MOVIESCENETRACKS_API FMovieSceneObjectBindingID &
+```
+
+Get the full binding ID (supports cross-sub-sequence bindings).
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `const MOVIESCENETRACKS_API FMovieSceneObjectBindingID &` | - |
+
+### `SetConstraintBindingID`
+
+```text
+SetConstraintBindingID(InBindingID: FMovieSceneObjectBindingID &) -> MOVIESCENETRACKS_API void
+```
+
+Set the full binding ID (supports cross-sub-sequence bindings).
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InBindingID` | `FMovieSceneObjectBindingID &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `MOVIESCENETRACKS_API void` | - |
 
 ## Language
 
@@ -8825,6 +11056,7 @@ Handles triggering of particle emitters
 
 | Name | Type/Value | Description |
 |---|---|---|
+| `bEnableLoopRetrigger` | `bool` | 是否启用范围式触发策略（新实现）。<br>	  默认关闭（false），走原始触发逻辑（老实现）。<br>	  需要同时 CVar Seq.EnableParticleLoopRetrigger 开启时才生效。 |
 | `ParticleSections` | `TArray < UMovieSceneSection * >` | List of all particle sections. |
 
 ## Language
@@ -9771,8 +12003,8 @@ Base class for a track in a Movie Scene
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `EvalOptions` | `FMovieSceneTrackEvalOptions` | General evaluation options for a given track |
 | `EvaluationRunSide` | `int32` | - |
+| `EvalOptions` | `FMovieSceneTrackEvalOptions` | General evaluation options for a given track |
 | `MinRunnableTCQuality` | `int32` | - |
 | `SavedTrackTags` | `TArray < FString >` | - |
 | `TrackTags` | `TArray < TSharedRef < FString > >` | - |
@@ -14609,6 +16841,7 @@ A tile set is a collection of tiles pulled from a texture that can be used to fi
 | `QualityLevelSpawnRateScale` | `float` | - |
 | `GPUToCPUEmitterSpawnRateScale` | `float` | - |
 | `DetailMode` | `TEnumAsByte < EDetailMode >` | If detail mode is >= system detail mode, primitive won't be rendered. |
+| `bGrayDisable` | `uint32` | - |
 | `bIsSoloing` | `uint32` | If true, then show only this emitter in the editor |
 | `bCookedOut` | `uint32` | If true, then this emitter was 'cooked out' by the cooker. <br>	 	This means it was completely disabled, but to preserve any<br>	 	indexing schemes, it is left in place. |
 | `bDisabledLODsKeepEmitterAlive` | `uint32` | When true, if the current LOD is disabled the emitter will be kept alive. Otherwise, the emitter will be considered complete if the current LOD is disabled. |
@@ -16265,6 +18498,8 @@ UCLASS(editinlinenew, hidecategories=Object, meta=(DisplayName = "Mesh Rotation 
 | `UVFlippingMode` | `EParticleUVFlipMode` | Controls UV Flipping for this emitter. |
 | `CutoutTexture` | `UTexture2D *` | Texture to generate bounding geometry from. |
 | `BoundingMode` | `TEnumAsByte < enum ESubUVBoundingVertexCount >` | More bounding vertices results in reduced overdraw, but adds more triangle overhead.<br>	 The eight vertex mode is best used when the SubUV texture has a lot of space to cut out that is not captured by the four vertex version,<br>	 and when the particles using the texture will be few and large. |
+| `CutoutAreaRatio` | `float` | Cutout polygon  unit quad. 1 is the full sprite; lower means less overdraw. |
+| `CutoutVertexCount` | `int32` | Cooked vertex count of the current cutout. |
 | `OpacitySourceMode` | `TEnumAsByte < enum EOpacitySourceMode >` | - |
 | `AlphaThreshold` | `float` | Alpha channel values larger than the threshold are considered occupied and will be contained in the bounding geometry.<br>	 Raising this threshold slightly can reduce overdraw in particles using this animation asset. |
 | `bCutoutUseSingleFrame` | `bool` | Generate Cutout geometry from the complete CutoutTexture instead of its SubUV grid. |
@@ -16817,6 +19052,7 @@ UCLASS(editinlinenew, hidecategories=Object, MinimalAPI, meta=(DisplayName = "Ro
 | `CameraFacingOption` | `TEnumAsByte < enum EMeshCameraFacingOptions >` | The camera facing option to use:<br>	 	All camera facing options without locked axis assume X-axis will be facing the camera.<br>	 		XAxisFacing_NoUp				- X-axis camera facing, no attempt to face an axis up or down.<br>	 		XAxisFacing_ZUp					- X-axis camera facing, Z-axis of the mesh should attempt to point up.<br>	 		XAxisFacing_NegativeZUp			- X-axis camera facing, Z-axis of the mesh should attempt to point down.<br>	 		XAxisFacing_YUp					- X-axis camera facing, Y-axis of the mesh should attempt to point up.<br>	 		XAxisFacing_NegativeYUp			- X-axis camera facing, Y-axis of the mesh should attempt to point down.<br>	 	All axis-locked camera facing options assume the AxisLockOption is set. EPAL_NONE will be treated as EPAL_X.<br>	 		LockedAxis_ZAxisFacing			- X-axis locked on AxisLockOption axis, rotate Z-axis of the mesh to face towards camera.<br>	 		LockedAxis_NegativeZAxisFacing	- X-axis locked on AxisLockOption axis, rotate Z-axis of the mesh to face away from camera.<br>	 		LockedAxis_YAxisFacing			- X-axis locked on AxisLockOption axis, rotate Y-axis of the mesh to face towards camera.<br>	 		LockedAxis_NegativeYAxisFacing	- X-axis locked on AxisLockOption axis, rotate Y-axis of the mesh to face away from camera.<br>	 	All velocity-aligned options do NOT require the ScreenAlignment be set to PSA_Velocity.<br>	 	Doing so will result in additional work being performed... (it will orient the mesh twice).<br>	 		VelocityAligned_ZAxisFacing         - X-axis aligned to the velocity, rotate the Z-axis of the mesh to face towards camera.<br>	 		VelocityAligned_NegativeZAxisFacing - X-axis aligned to the velocity, rotate the Z-axis of the mesh to face away from camera.<br>	 		VelocityAligned_YAxisFacing         - X-axis aligned to the velocity, rotate the Y-axis of the mesh to face towards camera.<br>	 		VelocityAligned_NegativeYAxisFacing - X-axis aligned to the velocity, rotate the Y-axis of the mesh to face away from camera. |
 | `bApplyParticleRotationAsSpin` | `uint32` | If true, apply 'sprite' particle rotation about the orientation axis (direction mesh is pointing).<br>	 	If false, apply 'sprite' particle rotation about the camera facing axis. |
 | `bFaceCameraDirectionRatherThanPosition` | `uint32` | If true, all camera facing options will point the mesh against the camera's view direction rather than pointing at the cameras location. <br>		If false, the camera facing will point to the cameras position as normal. |
+| `bCameraFacingInheritScale` | `uint32` | 勾选后，当 Mesh 粒子同时使用 Camera Facing 和 Local Space 时，粒子将继承组件的缩放。<br>		默认不勾选以保持存量效果兼容（旧行为下缩放恒为1）。 |
 | `bCollisionsConsiderPartilceSize` | `uint32` | If true, all collisions for mesh particle on this emitter will take the particle size into account.<br>		If false, particle size will be ignored in collision checks. |
 
 ## Language
@@ -17178,7 +19414,7 @@ A ParticleSystem is a complete particle effect that contains any number of Parti
 
 ## Inheritance
 
-`UObject`
+`UObject` -> `IInterface_AssetUserData`
 
 ## Variables
 
@@ -17238,6 +19474,7 @@ A ParticleSystem is a complete particle effect that contains any number of Parti
 | `NamedMaterialSlots` | `TArray < FNamedEmitterMaterial >` | Array of named material slots for use by emitters of this system. <br>		Emitters can use these instead of their own materials by providing the name to the NamedMaterialOverrides property of their required module.<br>		These materials can be overridden using CreateNamedDynamicMaterialInstance() on a ParticleSystemComponent. |
 | `bInitParticlesOnCanNotEverRender` | `uint8` | - |
 | `AvailableDeviceLevel` | `int32` | - |
+| `AssetUserData` | `TArray < UAssetUserData * >` | Array of user data stored with the asset. Added for the VFX Flipbook 替代方案:<br>	  a UVFXFlipbookAssociationUserData is mounted here on the source<br>	  particle system (non-invasive association; the hard reference to the baked<br>	  Flipbook Blueprint is collected on cook alongside this asset). This UPROPERTY<br>	  is shown automatically in Cascade's Details panel via reflection.<br>	 <br>	  Reflected members must stay unconditional (UE4.18 UHT cannot gate them behind a<br>	  custom macro). The interface method bodies in ParticleComponents.cpp are the plain<br>	  standard AssetUserData implementations and carry no Flipbook-specific behavior. |
 
 ## Functions
 
@@ -17258,2577 +19495,6 @@ ContainsEmitterType(TypeData: UClass *) -> bool
 | Type | Description |
 |---|---|
 | `bool` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UParticleSystemComponent.json -->
-
-# UParticleSystemComponent
-
-A particle emitter.
-
-## Inheritance
-
-`UPrimitiveComponent` -> `IWTACAggregateInterface` -> `IObjectPoolInterface`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `TemplateBindingType` | `EParticleTemplateBindingType` | - |
-| `Template` | `UParticleSystem *` | - |
-| `SoftTemplate` | `TSoftObjectPtr < UParticleSystem >` | - |
-| `EmitterMaterials` | `TArray < UMaterialInterface * >` | - |
-| `SkelMeshComponents` | `TArray < USkeletalMeshComponent * >` | The skeletal mesh components used with the socket location module.<br>	 	This is to prevent them from being garbage collected. |
-| `bResetOnDetach` | `uint8` | - |
-| `bUpdateOnDedicatedServer` | `uint8` | whether to update the particle system on dedicated servers |
-| `bAllowRecycling` | `uint8` | If true, this Particle System will be available for recycling after it has completed. Auto-destroyed systems cannot be recycled.<br>	  Some systems (currently particle trail effects) can recycle components to avoid respawning them to play new effects.<br>	  This is only an optimization and does not change particle system behavior, aside from not triggering normal component initialization events more than once. |
-| `bAutoManageAttachment` | `uint8` | True if we should automatically attach to AutoAttachParent when activated, and detach from our parent when completed.<br>	  This overrides any current attachment that may be present at the time of activation (deferring initial attachment until activation, if AutoAttachParent is null).<br>	  When enabled, detachment occurs regardless of whether AutoAttachParent is assigned, and the relative transform from the time of activation is restored.<br>	  This also disables attachment on dedicated servers, where we don't actually activate even if bAutoActivate is true.<br>	  @see AutoAttachParent, AutoAttachSocketName, AutoAttachLocationType |
-| `bWarmingUp` | `uint8` | - |
-| `bOverrideLODMethod` | `uint8` | indicates that the component's LODMethod overrides the Template's |
-| `bSkipUpdateDynamicDataDuringTick` | `uint8` | Flag indicating that dynamic updating of render data should NOT occur during Tick.<br>	 	This is used primarily to allow for warming up and simulated effects to a certain state. |
-| `LODMethod` | `TEnumAsByte < enum ParticleSystemLODMethod >` | The method of LOD level determination to utilize for this particle system |
-| `RequiredSignificance` | `EParticleSignificanceLevel` | The significance this component requires of it's emitters for them to be enabled. |
-| `bShouldUseTagGetSkeletalMesh` | `bool` | Array holding name instance parameters for this ParticleSystemComponent.<br>	 	Parameters can be used in Cascade using DistributionFloatVectorParticleParameters. |
-| `SkeletalMeshTagName` | `FName` | - |
-| `InstanceParameters` | `TArray < FParticleSysParam >` | - |
-| `OnParticleSpawn` | `FParticleSpawnSignature` | - |
-| `OnParticleBurst` | `FParticleBurstSignature` | - |
-| `OnParticleDeath` | `FParticleDeathSignature` | - |
-| `OnParticleCollide` | `FParticleCollisionSignature` | - |
-| `OldPosition` | `FVector` | - |
-| `PartSysVelocity` | `FVector` | - |
-| `WarmupTime` | `float` | - |
-| `WarmupTickRate` | `float` | - |
-| `OverrideEmitterMeshDataMap` | `TMap < FName , UStaticMesh * >` | - |
-| `SecondsBeforeInactive` | `float` | Number of seconds of emitter not being rendered that need to pass before it<br>	  no longer gets ticked becomes inactive. |
-| `MaxTimeBeforeForceUpdateTransform` | `float` | Time between forced UpdateTransforms for systems that use dynamically calculated bounds,<br>	  Which is effectively how often the bounds are shrunk. |
-| `ReplayClips` | `TArray < UParticleSystemReplay * >` | Array of replay clips for this particle system component.  These are serialized to disk.  You really should never add anything to this in the editor.  It's exposed so that you can delete clips if you need to, but be careful when doing so! |
-| `CustomTimeDilation` | `float` | Scales DeltaTime in UParticleSystemComponent::Tick(...) |
-| `bIsPCPlatformResource` | `bool` | Is PC Redirect Particle Resource |
-| `AutoAttachParent` | `TWeakObjectPtr < USceneComponent >` | Component we automatically attach to when activated, if bAutoManageAttachment is true.<br>	  If null during registration, we assign the existing AttachParent and defer attachment until we activate.<br>	  @see bAutoManageAttachment |
-| `AutoAttachSocketName` | `FName` | Socket we automatically attach to on the AutoAttachParent, if bAutoManageAttachment is true.<br>	  @see bAutoManageAttachment |
-| `AutoAttachLocationRule` | `EAttachmentRule` | Options for how we handle our location when we attach to the AutoAttachParent, if bAutoManageAttachment is true.<br>	  @see bAutoManageAttachment, EAttachmentRule |
-| `AutoAttachRotationRule` | `EAttachmentRule` | Options for how we handle our rotation when we attach to the AutoAttachParent, if bAutoManageAttachment is true.<br>	  @see bAutoManageAttachment, EAttachmentRule |
-| `AutoAttachScaleRule` | `EAttachmentRule` | Options for how we handle our scale when we attach to the AutoAttachParent, if bAutoManageAttachment is true.<br>	  @see bAutoManageAttachment, EAttachmentRule |
-| `bForceNoAsync` | `bool` | - |
-| `SystemFixedWorldBounds` | `FBox` | - |
-| `SystemFixedLocalBounds` | `FBox` | - |
-| `CollisionIgnoreActorList` | `TArray < AActor * >` | - |
-| `CollisionIgnoreComponentList` | `TArray < UPrimitiveComponent * >` | - |
-| `CollisionIgnoreInfoLastClearTime` | `float` | - |
-| `EditorLODLevel` | `int32` | INTERNAL. Used by the editor to set the LODLevel |
-| `EditorDetailMode` | `int32` | Used for applying Cascade's detail mode setting to in-level particle systems |
-| `AutoAttachLocationType_DEPRECATED` | `TEnumAsByte < EAttachLocation :: Type >` | DEPRECATED: Options for how we handle our location when we attach to the AutoAttachParent, if bAutoManageAttachment is true.<br>	  @see bAutoManageAttachment, EAttachLocation::Type |
-
-## Functions
-
-### `GetDuration`
-
-```text
-GetDuration() -> float
-```
-
-Returns duration
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `SetSystemFixedWorldBounds`
-
-```text
-SetSystemFixedWorldBounds(WorldBounds: FBox) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldBounds` | `FBox` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetSystemFixedLocalBounds`
-
-```text
-SetSystemFixedLocalBounds(LocalBounds: FBox) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `LocalBounds` | `FBox` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ClearSystemFixedBounds`
-
-```text
-ClearSystemFixedBounds() -> void
-```
-
-Clear any previously set fixed bounds for the system instance.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetWarmUp`
-
-```text
-SetWarmUp(WarmUpTime: float, WarmUpRate: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WarmUpTime` | `float` | - |
-| `WarmUpRate` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAutoAttachParams`
-
-```text
-SetAutoAttachParams(Parent: USceneComponent *, SocketName: FName, LocationType: EAttachLocation :: Type) -> void
-```
-
-DEPRECATED: Set AutoAttachParent, AutoAttachSocketName, AutoAttachLocationType to the specified parameters. Does not change bAutoManageAttachment; that must be set separately.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Parent` | `USceneComponent *` | Component to attach to. |
-| `SocketName` | `FName` | Socket on Parent to attach to. |
-| `LocationType` | `EAttachLocation :: Type` | Option for how we handle our location when we attach to Parent. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAutoAttachmentParameters`
-
-```text
-SetAutoAttachmentParameters(Parent: USceneComponent *, SocketName: FName, LocationRule: EAttachmentRule, RotationRule: EAttachmentRule, ScaleRule: EAttachmentRule) -> void
-```
-
-Set AutoAttachParent, AutoAttachSocketName, AutoAttachLocationRule, AutoAttachRotationRule, AutoAttachScaleRule to the specified parameters. Does not change bAutoManageAttachment; that must be set separately.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Parent` | `USceneComponent *` | Component to attach to. |
-| `SocketName` | `FName` | Socket on Parent to attach to. |
-| `LocationRule` | `EAttachmentRule` | Option for how we handle our location when we attach to Parent. |
-| `RotationRule` | `EAttachmentRule` | Option for how we handle our rotation when we attach to Parent. |
-| `ScaleRule` | `EAttachmentRule` | Option for how we handle our scale when we attach to Parent. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetBeamEndPoint`
-
-```text
-SetBeamEndPoint(EmitterIndex: int32, NewEndPoint: FVector) -> void
-```
-
-Set the beam end point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EmitterIndex` | `int32` | The index of the emitter to set it on |
-| `NewEndPoint` | `FVector` | The value to set it to |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetBeamSourcePoint`
-
-```text
-SetBeamSourcePoint(EmitterIndex: int32, NewSourcePoint: FVector, SourceIndex: int32) -> void
-```
-
-Set the beam source point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EmitterIndex` | `int32` | The index of the emitter to set it on |
-| `NewSourcePoint` | `FVector` | The value to set it to |
-| `SourceIndex` | `int32` | Which beam within the emitter to set it on |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetBeamSourceTangent`
-
-```text
-SetBeamSourceTangent(EmitterIndex: int32, NewTangentPoint: FVector, SourceIndex: int32) -> void
-```
-
-Set the beam source tangent
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EmitterIndex` | `int32` | The index of the emitter to set it on |
-| `NewTangentPoint` | `FVector` | The value to set it to |
-| `SourceIndex` | `int32` | Which beam within the emitter to set it on |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetBeamSourceStrength`
-
-```text
-SetBeamSourceStrength(EmitterIndex: int32, NewSourceStrength: float, SourceIndex: int32) -> void
-```
-
-Set the beam source strength
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EmitterIndex` | `int32` | The index of the emitter to set it on |
-| `NewSourceStrength` | `float` | The value to set it to |
-| `SourceIndex` | `int32` | Which beam within the emitter to set it on |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetBeamTargetPoint`
-
-```text
-SetBeamTargetPoint(EmitterIndex: int32, NewTargetPoint: FVector, TargetIndex: int32) -> void
-```
-
-Set the beam target point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EmitterIndex` | `int32` | The index of the emitter to set it on |
-| `NewTargetPoint` | `FVector` | The value to set it to |
-| `TargetIndex` | `int32` | Which beam within the emitter to set it on |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetBeamTargetTangent`
-
-```text
-SetBeamTargetTangent(EmitterIndex: int32, NewTangentPoint: FVector, TargetIndex: int32) -> void
-```
-
-Set the beam target tangent
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EmitterIndex` | `int32` | The index of the emitter to set it on |
-| `NewTangentPoint` | `FVector` | The value to set it to |
-| `TargetIndex` | `int32` | Which beam within the emitter to set it on |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetBeamTargetStrength`
-
-```text
-SetBeamTargetStrength(EmitterIndex: int32, NewTargetStrength: float, TargetIndex: int32) -> void
-```
-
-Set the beam target strength
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EmitterIndex` | `int32` | The index of the emitter to set it on |
-| `NewTargetStrength` | `float` | The value to set it to |
-| `TargetIndex` | `int32` | Which beam within the emitter to set it on |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetBeamEndPoint`
-
-```text
-GetBeamEndPoint(EmitterIndex: int32, OutEndPoint: FVector &) -> bool
-```
-
-Get the beam end point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EmitterIndex` | `int32` | The index of the emitter to get the value of |
-| `OutEndPoint` | `FVector &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | true		EmitterIndex is valid and End point is set - OutEndPoint is valid |
-
-### `GetBeamSourcePoint`
-
-```text
-GetBeamSourcePoint(EmitterIndex: int32, SourceIndex: int32, OutSourcePoint: FVector &) -> bool
-```
-
-Get the beam source point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EmitterIndex` | `int32` | The index of the emitter to get |
-| `SourceIndex` | `int32` | Which beam within the emitter to get |
-| `OutSourcePoint` | `FVector &` | Value of source point |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | true		EmitterIndex and SourceIndex are valid - OutSourcePoint is valid |
-
-### `GetBeamSourceTangent`
-
-```text
-GetBeamSourceTangent(EmitterIndex: int32, SourceIndex: int32, OutTangentPoint: FVector &) -> bool
-```
-
-Get the beam source tangent
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EmitterIndex` | `int32` | The index of the emitter to get |
-| `SourceIndex` | `int32` | Which beam within the emitter to get |
-| `OutTangentPoint` | `FVector &` | Value of source tangent |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | true		EmitterIndex and SourceIndex are valid - OutTangentPoint is valid |
-
-### `GetBeamSourceStrength`
-
-```text
-GetBeamSourceStrength(EmitterIndex: int32, SourceIndex: int32, OutSourceStrength: float &) -> bool
-```
-
-Get the beam source strength
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EmitterIndex` | `int32` | The index of the emitter to get |
-| `SourceIndex` | `int32` | Which beam within the emitter to get |
-| `OutSourceStrength` | `float &` | Value of source tangent |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | true		EmitterIndex and SourceIndex are valid - OutSourceStrength is valid |
-
-### `GetBeamTargetPoint`
-
-```text
-GetBeamTargetPoint(EmitterIndex: int32, TargetIndex: int32, OutTargetPoint: FVector &) -> bool
-```
-
-Get the beam target point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EmitterIndex` | `int32` | The index of the emitter to get |
-| `TargetIndex` | `int32` | Which beam within the emitter to get |
-| `OutTargetPoint` | `FVector &` | Value of target point |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | true		EmitterIndex and TargetIndex are valid - OutTargetPoint is valid |
-
-### `GetBeamTargetTangent`
-
-```text
-GetBeamTargetTangent(EmitterIndex: int32, TargetIndex: int32, OutTangentPoint: FVector &) -> bool
-```
-
-Get the beam target tangent
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EmitterIndex` | `int32` | The index of the emitter to get |
-| `TargetIndex` | `int32` | Which beam within the emitter to get |
-| `OutTangentPoint` | `FVector &` | Value of target tangent |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | true		EmitterIndex and TargetIndex are valid - OutTangentPoint is valid |
-
-### `GetBeamTargetStrength`
-
-```text
-GetBeamTargetStrength(EmitterIndex: int32, TargetIndex: int32, OutTargetStrength: float &) -> bool
-```
-
-Get the beam target strength
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EmitterIndex` | `int32` | The index of the emitter to get |
-| `TargetIndex` | `int32` | Which beam within the emitter to get |
-| `OutTargetStrength` | `float &` | Value of target tangent |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | true		EmitterIndex and TargetIndex are valid - OutTargetStrength is valid |
-
-### `SetEmitterEnable`
-
-```text
-SetEmitterEnable(EmitterName: FName, bNewEnableState: bool) -> void
-```
-
-EnablesDisables a sub-emitter
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EmitterName` | `FName` | The name of the sub-emitter to set it on |
-| `bNewEnableState` | `bool` | The value to set it to |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetFloatParameter`
-
-```text
-SetFloatParameter(ParameterName: FName, Param: float) -> void
-```
-
-Change a named float parameter
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ParameterName` | `FName` | - |
-| `Param` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetVectorParameter`
-
-```text
-SetVectorParameter(ParameterName: FName, Param: FVector) -> void
-```
-
-Set a named vector instance parameter on this ParticleSystemComponent.
-	 	Updates the parameter if it already exists, or creates a new entry if not.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ParameterName` | `FName` | - |
-| `Param` | `FVector` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetColorParameter`
-
-```text
-SetColorParameter(ParameterName: FName, Param: FLinearColor) -> void
-```
-
-Set a named color instance parameter on this ParticleSystemComponent.
-	 	Updates the parameter if it already exists, or creates a new entry if not.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ParameterName` | `FName` | - |
-| `Param` | `FLinearColor` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetActorParameter`
-
-```text
-SetActorParameter(ParameterName: FName, Param: AActor *) -> void
-```
-
-Set a named actor instance parameter on this ParticleSystemComponent.
-	 	Updates the parameter if it already exists, or creates a new entry if not.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ParameterName` | `FName` | - |
-| `Param` | `AActor *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetMaterialParameter`
-
-```text
-SetMaterialParameter(ParameterName: FName, Param: UMaterialInterface *) -> void
-```
-
-Set a named material instance parameter on this ParticleSystemComponent.
-	 	Updates the parameter if it already exists, or creates a new entry if not.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ParameterName` | `FName` | - |
-| `Param` | `UMaterialInterface *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetTemplate`
-
-```text
-SetTemplate(NewTemplate: UParticleSystem *) -> void
-```
-
-Change the ParticleSystem used by this ParticleSystemComponent
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewTemplate` | `UParticleSystem *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetNumActiveParticles`
-
-```text
-GetNumActiveParticles() -> int32
-```
-
-Get the current number of active particles in this system
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | - |
-
-### `BeginTrails`
-
-```text
-BeginTrails(InFirstSocketName: FName, InSecondSocketName: FName, InWidthMode: ETrailWidthMode, InWidth: float) -> void
-```
-
-Begins all trail emitters in this component.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InFirstSocketName` | `FName` | The name of the first socket for the trail. |
-| `InSecondSocketName` | `FName` | The name of the second socket for the trail. |
-| `InWidthMode` | `ETrailWidthMode` | How the width value is applied to the trail. |
-| `InWidth` | `float` | The width of the trail. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `EndTrails`
-
-```text
-EndTrails() -> void
-```
-
-Ends all trail emitters in this component.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetTrailSourceData`
-
-```text
-SetTrailSourceData(InFirstSocketName: FName, InSecondSocketName: FName, InWidthMode: ETrailWidthMode, InWidth: float) -> void
-```
-
-Sets the defining data for all trails in this component.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InFirstSocketName` | `FName` | The name of the first socket for the trail. |
-| `InSecondSocketName` | `FName` | The name of the second socket for the trail. |
-| `InWidthMode` | `ETrailWidthMode` | How the width value is applied to the trail. |
-| `InWidth` | `float` | The width of the trail. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetSocketName`
-
-```text
-SetSocketName(InSocketName: FName) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InSocketName` | `FName` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ManuallyTickComponent`
-
-```text
-ManuallyTickComponent(DeltaTime: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `DeltaTime` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `K2_Activate`
-
-```text
-K2_Activate(bReset: bool) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bReset` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `K2_ActivateSystem`
-
-```text
-K2_ActivateSystem(bFlagAsJustAttached: bool) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bFlagAsJustAttached` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `K2_Deactivate`
-
-```text
-K2_Deactivate() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `K2_DeactivateSystem`
-
-```text
-K2_DeactivateSystem() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `CreateNamedDynamicMaterialInstance`
-
-```text
-CreateNamedDynamicMaterialInstance(InName: FName, SourceMaterial: UMaterialInterface *) -> UMaterialInstanceDynamic *
-```
-
-Creates a Dynamic Material Instance for the specified named material override, optionally from the supplied material.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InName` | `FName` | - |
-| `SourceMaterial` | `UMaterialInterface *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UMaterialInstanceDynamic *` | - |
-
-### `GetNamedMaterial`
-
-```text
-GetNamedMaterial(InName: FName) -> UMaterialInterface *
-```
-
-Returns a named material. If this named material is not found, returns NULL.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InName` | `FName` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UMaterialInterface *` | - |
-
-### `GenerateParticleEvent`
-
-```text
-GenerateParticleEvent(InEventName: FName, InEmitterTime: float, InLocation: FVector, InDirection: FVector, InVelocity: FVector) -> void
-```
-
-Record a kismet event.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InEventName` | `FName` | The name of the event that fired. |
-| `InEmitterTime` | `float` | The emitter time when the event fired. |
-| `InLocation` | `FVector` | The location of the particle when the event fired. |
-| `InDirection` | `FVector` | - |
-| `InVelocity` | `FVector` | The velocity of the particle when the event fired. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetVectorRandParameter`
-
-```text
-SetVectorRandParameter(ParameterName: FName, Param: FVector &, ParamLow: FVector &) -> void
-```
-
-Set a named random vector instance parameter on this ParticleSystemComponent.
-	 	Updates the parameter if it already exists, or creates a new entry if not.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ParameterName` | `FName` | - |
-| `Param` | `FVector &` | - |
-| `ParamLow` | `FVector &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetFloatRandParameter`
-
-```text
-SetFloatRandParameter(ParameterName: FName, Param: float, ParamLow: float) -> void
-```
-
-Set a named random float instance parameter on this ParticleSystemComponent.
-	 	Updates the parameter if it already exists, or creates a new entry if not.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ParameterName` | `FName` | - |
-| `Param` | `float` | - |
-| `ParamLow` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `RewindEmitterInstances`
-
-```text
-RewindEmitterInstances() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Delegates
-
-### `OnSystemFinished`
-
-```text
-OnSystemFinished(PSystem: UParticleSystemComponent*) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PSystem` | `UParticleSystemComponent*` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UParticleSystemReplay.json -->
-
-# UParticleSystemReplay
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ClipIDNumber` | `int32` | Unique ID number for this replay clip |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPartTypeSocket.json -->
-
-# UPartTypeSocket
-
-## Inheritance
-
-`USkeletalMeshSocket`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PartType` | `uint8` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPathFollowingComponent.json -->
-
-# UPathFollowingComponent
-
-## Inheritance
-
-`UActorComponent` -> `IAIResourceInterface`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `MovementComp` | `UNavMovementComponent *` | associated movement component |
-| `MyNavData` | `ANavigationData *` | navigation data for agent described in movement component |
-
-## Functions
-
-### `OnActorBump`
-
-```text
-OnActorBump(SelfActor: AActor *, OtherActor: AActor *, NormalImpulse: FVector, Hit: FHitResult &) -> void
-```
-
-called when moving agent collides with another actor
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `SelfActor` | `AActor *` | - |
-| `OtherActor` | `AActor *` | - |
-| `NormalImpulse` | `FVector` | - |
-| `Hit` | `FHitResult &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetPathActionType`
-
-```text
-GetPathActionType() -> EPathFollowingAction :: Type
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `EPathFollowingAction :: Type` | - |
-
-### `GetPathDestination`
-
-```text
-GetPathDestination() -> FVector
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `OnNavDataRegistered`
-
-```text
-OnNavDataRegistered(NavData: ANavigationData *) -> void
-```
-
-called when NavigationSystem registers new navigation data type while this component
-	 	instance has empty MyNavData. This is usually the case for AI agents hand-placed
-	 	on levels.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NavData` | `ANavigationData *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPathNameMappingDataAsset.json -->
-
-# UPathNameMappingDataAsset
-
-## Inheritance
-
-`UDataAsset`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `VersionID` | `int32` | - |
-| `AllPathNameMapForLoad` | `TArray < FName >` | - |
-| `AllPathNameMapForWrite` | `TMap < FName , int32 >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPathNameMappingManager.json -->
-
-# UPathNameMappingManager
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PathNameMappingDataAsset` | `UPathNameMappingDataAsset *` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnAction.json -->
-
-# UPawnAction
-
-Things to remember:
- 	 Actions are created paused
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ChildAction` | `UPawnAction *` | Current child node executing on top of this Action |
-| `ParentAction` | `UPawnAction *` | - |
-| `OwnerComponent` | `UPawnActionsComponent *` | Extra reference to the component this action is being governed by |
-| `Instigator` | `UObject *` | indicates an object that caused this action. Used for mass removal of actions <br>	 	by specific object |
-| `BrainComp` | `UBrainComponent *` | @Note: THIS IS HERE _ONLY_ BECAUSE OF THE WAY AI MESSAGING IS CURRENTLY IMPLEMENTED. WILL GO AWAY! |
-| `bAllowNewSameClassInstance` | `uint32` | if this is FALSE and we're trying to push a new instance of a given class,<br>	 	but the top of the stack is already an instance of that class ignore the attempted push |
-| `bReplaceActiveSameClassInstance` | `uint32` | if this is TRUE, when we try to push a new instance of an action who has the<br>	 	same class as the action on the top of the stack, pop the one on the stack, and push the new one<br>	 	NOTE: This trumps bAllowNewClassInstance (e.g. if this is true and bAllowNewClassInstance<br>	 	is false the active instance will still be replaced) |
-| `bShouldPauseMovement` | `uint32` | this is a temporary solution to allow having movement action running in background while there's <br>	 	another action on top doing its thing<br>	 	@note should go away once AI resource locking comes on-line |
-| `bAlwaysNotifyOnFinished` | `uint32` | if set, action will call OnFinished notify even when ending as FailedToStart |
-
-## Functions
-
-### `GetActionPriority`
-
-```text
-GetActionPriority() -> TEnumAsByte < EAIRequestPriority :: Type >
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `TEnumAsByte < EAIRequestPriority :: Type >` | - |
-
-### `CreateActionInstance`
-
-```text
-CreateActionInstance(WorldContextObject: UObject *, ActionClass: TSubclassOf < UPawnAction >) -> UPawnAction *
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContextObject` | `UObject *` | - |
-| `ActionClass` | `TSubclassOf < UPawnAction >` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UPawnAction *` | - |
-
-### `Finish`
-
-```text
-Finish(WithResult: TEnumAsByte < EPawnActionResult :: Type >) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WithResult` | `TEnumAsByte < EPawnActionResult :: Type >` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnAction_BlueprintBase.json -->
-
-# UPawnAction_BlueprintBase
-
-## Inheritance
-
-`UPawnAction`
-
-## Functions
-
-### `ActionStart`
-
-```text
-ActionStart(ControlledPawn: APawn *) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ControlledPawn` | `APawn *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ActionTick`
-
-```text
-ActionTick(ControlledPawn: APawn *, DeltaSeconds: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ControlledPawn` | `APawn *` | - |
-| `DeltaSeconds` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ActionPause`
-
-```text
-ActionPause(ControlledPawn: APawn *) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ControlledPawn` | `APawn *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ActionResume`
-
-```text
-ActionResume(ControlledPawn: APawn *) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ControlledPawn` | `APawn *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ActionFinished`
-
-```text
-ActionFinished(ControlledPawn: APawn *, WithResult: EPawnActionResult :: Type) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ControlledPawn` | `APawn *` | - |
-| `WithResult` | `EPawnActionResult :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnAction_Move.json -->
-
-# UPawnAction_Move
-
-## Inheritance
-
-`UPawnAction`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `GoalActor` | `AActor *` | - |
-| `GoalLocation` | `FVector` | - |
-| `AcceptableRadius` | `float` | - |
-| `FilterClass` | `TSubclassOf < UNavigationQueryFilter >` | "None" will result in default filter being used |
-| `bAllowStrafe` | `uint32` | - |
-| `bFinishOnOverlap` | `uint32` | if set to true (default) will make action succeed when the pawn's collision component overlaps with goal's collision component |
-| `bUsePathfinding` | `uint32` | if set, movement will use path finding |
-| `bAllowPartialPath` | `uint32` | if set, use incomplete path when goal can't be reached |
-| `bProjectGoalToNavigation` | `uint32` | if set, GoalLocation will be projected on navigation before using |
-| `bUpdatePathToGoal` | `uint32` | if set, path to GoalActor will be updated with goal's movement |
-| `bAbortChildActionOnPathChange` | `uint32` | if set, other actions with the same priority will be aborted when path is changed |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnAction_Repeat.json -->
-
-# UPawnAction_Repeat
-
-## Inheritance
-
-`UPawnAction`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ActionToRepeat` | `UPawnAction *` | Action to repeat. This instance won't really be run, it's a source for copying actions to be actually performed |
-| `RecentActionCopy` | `UPawnAction *` | - |
-| `ChildFailureHandlingMode` | `TEnumAsByte < EPawnActionFailHandling :: Type >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnAction_Sequence.json -->
-
-# UPawnAction_Sequence
-
-## Inheritance
-
-`UPawnAction`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ActionSequence` | `TArray < UPawnAction * >` | - |
-| `ChildFailureHandlingMode` | `TEnumAsByte < EPawnActionFailHandling :: Type >` | - |
-| `RecentActionCopy` | `UPawnAction *` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnAction_Wait.json -->
-
-# UPawnAction_Wait
-
-uses system timers rather then ticking
-
-## Inheritance
-
-`UPawnAction`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `TimeToWait` | `float` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnActionsComponent.json -->
-
-# UPawnActionsComponent
-
-## Inheritance
-
-`UActorComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ControlledPawn` | `APawn *` | - |
-| `ActionStacks` | `TArray < FPawnActionStack >` | - |
-| `ActionEvents` | `TArray < FPawnActionEvent >` | - |
-| `CurrentAction` | `UPawnAction *` | - |
-
-## Functions
-
-### `K2_PerformAction`
-
-```text
-K2_PerformAction(Pawn: APawn *, Action: UPawnAction *, Priority: TEnumAsByte < EAIRequestPriority :: Type >) -> bool
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Pawn` | `APawn *` | - |
-| `Action` | `UPawnAction *` | - |
-| `Priority` | `TEnumAsByte < EAIRequestPriority :: Type >` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `K2_PushAction`
-
-```text
-K2_PushAction(NewAction: UPawnAction *, Priority: EAIRequestPriority :: Type, Instigator: UObject *) -> bool
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewAction` | `UPawnAction *` | - |
-| `Priority` | `EAIRequestPriority :: Type` | - |
-| `Instigator` | `UObject *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `K2_AbortAction`
-
-```text
-K2_AbortAction(ActionToAbort: UPawnAction *) -> EPawnActionAbortState :: Type
-```
-
-Aborts given action instance
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ActionToAbort` | `UPawnAction *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `EPawnActionAbortState :: Type` | - |
-
-### `K2_ForceAbortAction`
-
-```text
-K2_ForceAbortAction(ActionToAbort: UPawnAction *) -> EPawnActionAbortState :: Type
-```
-
-Aborts given action instance
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ActionToAbort` | `UPawnAction *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `EPawnActionAbortState :: Type` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnMovementComponent.json -->
-
-# UPawnMovementComponent
-
-PawnMovementComponent can be used to update movement for an associated Pawn.
-  It also provides ways to accumulate and read directional input in a generic way (with AddInputVector(), ConsumeInputVector(), etc).
-  @see APawn
-
-## Inheritance
-
-`UNavMovementComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PawnOwner` | `APawn *` | Pawn that owns this component. |
-
-## Functions
-
-### `AddInputVector`
-
-```text
-AddInputVector(WorldVector: FVector, bForce: bool) -> void
-```
-
-Adds the given vector to the accumulated input in world space. Input vectors are usually between 0 and 1 in magnitude. 
-	  They are accumulated during a frame then applied as acceleration during the movement update.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldVector` | `FVector` | - |
-| `bForce` | `bool` | If true always add the input, ignoring the result of IsMoveInputIgnored(). |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetPendingInputVector`
-
-```text
-GetPendingInputVector() -> FVector
-```
-
-Return the pending input vector in world space. This is the most up-to-date value of the input vector, pending ConsumeMovementInputVector() which clears it.
-	  PawnMovementComponents implementing movement usually want to use either this or ConsumeInputVector() as these functions represent the most recent state of input.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | The pending input vector in world space. |
-
-### `GetLastInputVector`
-
-```text
-GetLastInputVector() -> FVector
-```
-
-Return the last input vector in world space that was processed by ConsumeInputVector(), which is usually done by the Pawn or PawnMovementComponent.
-	 Any user that needs to know about the input that last affected movement should use this function.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | The last input vector in world space that was processed by ConsumeInputVector(). |
-
-### `ConsumeInputVector`
-
-```text
-ConsumeInputVector() -> FVector
-```
-
-Returns the pending input vector and resets it to zero.
-	  This should be used during a movement update (by the Pawn or PawnMovementComponent) to prevent accumulation of control input between frames.
-	  Copies the pending input vector to the saved input vector (GetLastMovementInputVector()).
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | The pending input vector. |
-
-### `IsMoveInputIgnored`
-
-```text
-IsMoveInputIgnored() -> bool
-```
-
-Helper to see if move input is ignored. If there is no Pawn or UpdatedComponent, returns true, otherwise defers to the Pawn's implementation of IsMoveInputIgnored().
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `GetPawnOwner`
-
-```text
-GetPawnOwner() -> APawn *
-```
-
-Return the Pawn that owns UpdatedComponent.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `APawn *` | - |
-
-### `K2_GetInputVector`
-
-```text
-K2_GetInputVector() -> FVector
-```
-
-(Deprecated) Return the input vector in world space.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnNoiseEmitterComponent.json -->
-
-# UPawnNoiseEmitterComponent
-
-PawnNoiseEmitterComponent tracks noise event data used by SensingComponents to hear a Pawn.
-  This component is intended to exist on either a Pawn or its Controller. It does nothing on network clients.
-
-## Inheritance
-
-`UActorComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bAIPerceptionSystemCompatibilityMode` | `uint32` | - |
-| `LastRemoteNoisePosition` | `FVector` | - |
-| `NoiseLifetime` | `float` | - |
-| `LastRemoteNoiseVolume` | `float` | - |
-| `LastRemoteNoiseTime` | `float` | - |
-| `LastLocalNoiseVolume` | `float` | - |
-| `LastLocalNoiseTime` | `float` | - |
-
-## Functions
-
-### `MakeNoise`
-
-```text
-MakeNoise(NoiseMaker: AActor *, Loudness: float, NoiseLocation: FVector &) -> void
-```
-
-Cache noises instigated by the owning pawn for AI sensing
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NoiseMaker` | `AActor *` | - is the actual actor which made the noise |
-| `Loudness` | `float` | - is the relative loudness of the noise (0.0 to 1.0) |
-| `NoiseLocation` | `FVector &` | - is the position of the noise |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnSensingComponent.json -->
-
-# UPawnSensingComponent
-
-SensingComponent encapsulates sensory (ie sight and hearing) settings and functionality for an Actor,
-  allowing the actor to seehear Pawns in the world. It does nothing on network clients.
-
-## Inheritance
-
-`UActorComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `HearingThreshold` | `float` | Max distance at which a makenoise(1.0) loudness sound can be heard, regardless of occlusion |
-| `LOSHearingThreshold` | `float` | Max distance at which a makenoise(1.0) loudness sound can be heard if unoccluded (LOSHearingThreshold should be > HearingThreshold) |
-| `SightRadius` | `float` | Maximum sight distance. |
-| `SensingInterval` | `float` | Amount of time between pawn sensing updates. Use SetSensingInterval() to adjust this at runtime. A value <= 0 prevents any updates. |
-| `HearingMaxSoundAge` | `float` | - |
-| `bEnableSensingUpdates` | `uint32` | If true, component will perform sensing updates. At runtime change this using SetSensingUpdatesEnabled(). |
-| `bOnlySensePlayers` | `uint32` | If true, will only sense player-controlled pawns in the world. Default: true |
-| `bSeePawns` | `uint32` | If true, we will perform visibility tests and will trigger notifications when a Pawn is visible. Default: true |
-| `bHearNoises` | `uint32` | If true, we will perform audibility tests and will be notified when a Pawn makes a noise that can be heard. Default: true<br>	  IMPORTANT NOTE: If we can see pawns (bSeePawns is true), and the pawn is visible, noise notifications are not triggered. |
-| `PeripheralVisionAngle` | `float` | How far to the side AI can see, in degrees. Use SetPeripheralVisionAngle to change the value at runtime. |
-| `PeripheralVisionCosine` | `float` | Cosine of limits of peripheral vision. Computed from PeripheralVisionAngle. |
-
-## Functions
-
-### `SetSensingInterval`
-
-```text
-SetSensingInterval(NewSensingInterval: float) -> void
-```
-
-Changes the SensingInterval.
-	  If we are currently waiting for an interval, this can either extend or shorten that interval.
-	  A value <= 0 prevents any updates.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewSensingInterval` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetSensingUpdatesEnabled`
-
-```text
-SetSensingUpdatesEnabled(bEnabled: bool) -> void
-```
-
-Enables or disables sensing updates. The timer is reset in either case.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bEnabled` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetPeripheralVisionAngle`
-
-```text
-SetPeripheralVisionAngle(NewPeripheralVisionAngle: float) -> void
-```
-
-Sets PeripheralVisionAngle. Calculates PeripheralVisionCosine from PeripheralVisionAngle
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewPeripheralVisionAngle` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetPeripheralVisionAngle`
-
-```text
-GetPeripheralVisionAngle() -> float
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetPeripheralVisionCosine`
-
-```text
-GetPeripheralVisionCosine() -> float
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-## Delegates
-
-### `OnSeePawn`
-
-```text
-OnSeePawn(Pawn: APawn*) -> void
-```
-
-Delegate to execute when we see a Pawn.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Pawn` | `APawn*` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnHearNoise`
-
-```text
-OnHearNoise(Instigator: APawn*, Location: const FVector&, Volume: float) -> void
-```
-
-Delegate to execute when we hear a noise from a Pawn's PawnNoiseEmitterComponent.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Instigator` | `APawn*` | - |
-| `Location` | `const FVector&` | - |
-| `Volume` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPendingNetGame.json -->
-
-# UPendingNetGame
-
-## Inheritance
-
-`UObject` -> `FNetworkNotify`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `NetDriver` | `UNetDriver *` | Net driver created for contacting the new server<br>	  Transferred to world on successful connection |
-| `DemoNetDriver` | `UDemoNetDriver *` | Demo Net driver created for loading demos, but we need to go through pending net game<br>	  Transferred to world on successful connection |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPersistBaseComponent.json -->
-
-# UPersistBaseComponent
-
-技能Buff组件
-
-## Inheritance
-
-`UGameplayTasksComponent` -> `IObjectPoolInterface`
-
-## Functions
-
-### `RegisterPersistEffectWithSlot`
-
-```text
-RegisterPersistEffectWithSlot(Slot: FGameplayTag, InPE: UPersistEffectBase *, bShouldUnapply: bool) -> bool
-```
-
-生效范围：服务器
-	  将PersistEffect注册到目标槽位中
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Slot` | `FGameplayTag` | 槽位 |
-| `InPE` | `UPersistEffectBase *` | 注册到槽位的PersistEffect |
-| `bShouldUnapply` | `bool` | 是否将原来槽位上的PersistEffect进行Unapply |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 注册是否成功 |
-
-### `UnRegisterPersistEffectWithSlot`
-
-```text
-UnRegisterPersistEffectWithSlot(Slot: FGameplayTag, bShouldUnapply: bool) -> bool
-```
-
-生效范围：服务器
-	  将目标槽位中的PersistEffect解除注册
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Slot` | `FGameplayTag` | 槽位 |
-| `bShouldUnapply` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 解除注册是否成功 |
-
-### `GetPersistEffectBySlot`
-
-```text
-GetPersistEffectBySlot(Slot: FGameplayTag) -> SHADOWTRACKEREXTRA_API UPersistEffectBase *
-```
-
-生效范围：服务器&客户端
-	  获取目标槽位中的PersistEffect
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Slot` | `FGameplayTag` | 槽位 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `SHADOWTRACKEREXTRA_API UPersistEffectBase *` | 槽位上的PersistEffect |
-
-## Delegates
-
-### `DynamicStateEnterHandle`
-
-```text
-DynamicStateEnterHandle(SelfRef: UPersistBaseComponent*, state: FGameplayTag) -> void
-```
-
-Event
-	  生效范围：服务器&客户端
-	  进入状态事件, 注意：服务端DynamicState是有计数的, 服务端多次EnterDynamicState都会触发这个代理
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `SelfRef` | `UPersistBaseComponent*` | 监听的组件 |
-| `state` | `FGameplayTag` | 进入的状态 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `DynamicStateLeaveHandle`
-
-```text
-DynamicStateLeaveHandle(SelfRef: UPersistBaseComponent*, state: FGameplayTag) -> void
-```
-
-Event
-      生效范围：服务器&客户端
-      离开状态事件, 注意：服务端DynamicState是有计数的, 服务端多次LeaveDynamicState都会触发这个代理, 只有当前计数为0时再Leave就不会触发
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `SelfRef` | `UPersistBaseComponent*` | 监听的组件 |
-| `state` | `FGameplayTag` | 离开的状态 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `DynamicStateInterruptedHandle`
-
-```text
-DynamicStateInterruptedHandle(SelfRef: UPersistBaseComponent*, state: FGameplayTag) -> void
-```
-
-Event
-	  生效范围：服务器&客户端
-	  打断状态事件
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `SelfRef` | `UPersistBaseComponent*` | 监听的组件 |
-| `state` | `FGameplayTag` | 打断的状态 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `DynamicStateInterruptedWithSourceHandle`
-
-```text
-DynamicStateInterruptedWithSourceHandle(SelfRef: UPersistBaseComponent*, InterruptedState: FGameplayTag, SourceState: FGameplayTag) -> void
-```
-
-Event
-	  生效范围：服务器
-	  打断状态事件
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `SelfRef` | `UPersistBaseComponent*` | 监听的组件 |
-| `InterruptedState` | `FGameplayTag` | - |
-| `SourceState` | `FGameplayTag` | 打断的状态的来源 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `DynamicStateDisabledChangedHandle`
-
-```text
-DynamicStateDisabledChangedHandle(SelfRef: UPersistBaseComponent*, state: FGameplayTag, bNewDisabled: bool) -> void
-```
-
-Event
-	  生效范围：服务器&客户端
-	  禁用状态事件
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `SelfRef` | `UPersistBaseComponent*` | 监听的组件 |
-| `state` | `FGameplayTag` | 禁用的状态 |
-| `bNewDisabled` | `bool` | 禁用解除禁用 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `DynamicStateDisabledResetHandle`
-
-```text
-DynamicStateDisabledResetHandle(SelfRef: UPersistBaseComponent*, state: FGameplayTag) -> void
-```
-
-Event
-	  生效范围：服务器&客户端
-	  重置禁用状态事件
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `SelfRef` | `UPersistBaseComponent*` | 监听的组件 |
-| `state` | `FGameplayTag` | 重置禁用的状态 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPersistEffectBase.json -->
-
-# UPersistEffectBase
-
-PersistEffectBase, PersistEffectSkill和PersistEffectBuff的基类
-
-## Inheritance
-
-`UBasicPersistEffect` -> `IGameplayTaskOwnerInterface` -> `ILimitationInterface` -> `IOwnershipChainInterface`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bPersistOnUnapply` | `bool` | Unapply 时是否缓存到 PlayerState 上的 PersistEffectCacheComponent，<br>	  下次同类型 Apply 会取回并触发 OnRecover |
-
-## Functions
-
-### `HasAuthority`
-
-```text
-HasAuthority() -> bool
-```
-
-检查当前对象是否运行在服务器端
-	  生效范围: 服务器&客户端
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 否运行在服务器端 |
-
-### `IsAutonomous`
-
-```text
-IsAutonomous(bConsiderObReplay: bool) -> const bool
-```
-
-检查当前对象是否运行在主控客户端
-	  生效范围: 服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bConsiderObReplay` | `bool` | 是否包含观战和回放时的主控端 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `const bool` | 否运行在主控客户端 |
-
-### `RefreshValidTime`
-
-```text
-RefreshValidTime() -> void
-```
-
-刷新PersistEffect的生效时间
-	  生效范围: 服务器
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetTickEnable`
-
-```text
-SetTickEnable(bEnable: bool) -> void
-```
-
-设置PersistEffect是否每帧执行Tick函数，在服务器调用只会开启服务器的Tick，在客户端调用只会开启客户端的Tick
-	  生效范围: 服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bEnable` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetApplyTime`
-
-```text
-SetApplyTime(Time: float) -> void
-```
-
-设置PersistEffect的生效时间
-	  生效范围: 服务器
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Time` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetApplyTime`
-
-```text
-GetApplyTime() -> float
-```
-
-获取PersistEffect的生效时间
-	  生效范围: 服务器&客户端
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetTimeStamp`
-
-```text
-GetTimeStamp() -> float
-```
-
-获取当前服务器时间戳
-	  生效范围: 服务器&客户端
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `HasTag`
-
-```text
-HasTag(Tag: FGameplayTag) -> bool
-```
-
-检查当前技能或Buff是否有某个类型的Tag
-	  生效范围SC
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Tag` | `FGameplayTag` | 要检查的Tag |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 是否有对应的Tag |
-
-### `GetRemainingTime`
-
-```text
-GetRemainingTime() -> float
-```
-
-获取剩余时间
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | 剩余时间 |
-
-### `SetPersistOnUnapply`
-
-```text
-SetPersistOnUnapply(bInPersistOnUnapply: bool) -> void
-```
-
-运行时动态修改 bPersistOnUnapply。仅服务端生效，不 Replicated。
-	  可在 OnApply  Tick  OnUnApply_BP 等任意服务端时机调用。
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bInPersistOnUnapply` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ShouldPersistOnUnapply`
-
-```text
-ShouldPersistOnUnapply() -> bool
-```
-
-读取当前 bPersistOnUnapply (含运行时修改值)。
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `GetOwnerActor`
-
-```text
-GetOwnerActor() -> AActor *
-```
-
-获取PersistEffect所属的Actor
-	  生效范围: 服务器&客户端
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `AActor *` | - |
-
-### `GetOwnerComponent`
-
-```text
-GetOwnerComponent() -> UPersistBaseComponent *
-```
-
-获取PersistEffect所属的组件
-	  生效范围: 服务器&客户端
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UPersistBaseComponent *` | - |
-
-## Events
-
-### `OnApply_BP`
-
-```text
-OnApply_BP(Character: AActor *) -> void
-```
-
-当PersistEffect挂载到角色身上时调用
-	  生效范围: 服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Character` | `AActor *` | 挂载的角色 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnUnApply_BP`
-
-```text
-OnUnApply_BP(Character: AActor *, Reason: EPersistEffectUnApplyReason) -> void
-```
-
-当PersistEffect从角色身上移除时调用
-	  生效范围: 服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Character` | `AActor *` | 挂载的角色 |
-| `Reason` | `EPersistEffectUnApplyReason` | 移除的原因 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `CanApply_BP`
-
-```text
-CanApply_BP(Character: AActor *) -> bool
-```
-
-当PersistEffect挂载到角色身上前检查是否可挂载时调用
-	  生效范围: 服务器
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Character` | `AActor *` | 尝试挂载的角色 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 是否可以挂载 |
-
-### `OnMerge_BP`
-
-```text
-OnMerge_BP(Target: UPersistEffectBase *, ApplyTime: float) -> void
-```
-
-当PersistEffect合并时调用
-	  生效范围: 服务器
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Target` | `UPersistEffectBase *` | 被合并的PersistEffect |
-| `ApplyTime` | `float` | 被合并的PersistEffect的生效时长 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `CanMerge_BP`
-
-```text
-CanMerge_BP(Target: UPersistEffectBase *) -> bool
-```
-
-当PersistEffect合并前检查是否可合并时调用
-	  生效范围: 服务器
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Target` | `UPersistEffectBase *` | 被合并的PersistEffect |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 是否可以合并 |
-
-### `OnRecover_BP`
-
-```text
-OnRecover_BP(Character: AActor *) -> void
-```
-
-当PersistEffect从缓存中恢复使用
-	  生效范围: 服务器
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Character` | `AActor *` | 恢复后的新挂载角色 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `Tick_BP`
-
-```text
-Tick_BP(Character: AActor *, DeltaTime: float) -> void
-```
-
-PersistEffect每帧调用，开启Tick需要SetTickEnable(true)
-	  生效范围: 服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Character` | `AActor *` | 挂载的角色 |
-| `DeltaTime` | `float` | 距离上次触发后经过的时间 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnInterrupted_BP`
-
-```text
-OnInterrupted_BP(Character: AActor *) -> void
-```
-
-当PersistEffect被打断时调用
-	  生效范围: 服务器
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Character` | `AActor *` | 挂载的角色 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
 
 ## Language
 

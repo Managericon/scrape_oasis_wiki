@@ -15,7 +15,7 @@ V2道具系统接口库
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `UGCItemSystemV2._GetterOverrides` | `-` | 存储外部注册的 Get 重写委托 key: 函数名（如 "GetItemNameV2ByDefineID"）, value: 重写函数 @type table |
+| `UGCItemSystemV2._GetterOverrides` | `-` | 存储外部注册的 Get 重写委托 DS 与 Client 为独立进程，各自维护独立的 Lua 状态，无需区分客户端/服务器侧 key: 函数名（如 "GetItemNameV2ByDefineID"）, value: 重写函数 @type table |
 
 ## Functions
 
@@ -65,11 +65,12 @@ UnregisterItemPropertyGetOverride(Key: EItemOverrideKey|nil) -> boolean
 ### `GetConfigItemHandle`
 
 ```text
-GetConfigItemHandle(ItemID: number) -> UBattleItemHandleBase
+GetConfigItemHandle(ItemID: number) -> UBattleItemHandleBase|table
 ```
 
 获取物品ItemHandle配置
 可以通过它取得所有物品中配置的静态数据（只读）
+手机UGC客户端不加载 Handle 蓝图，返回完整物品数据表（CompleteTable）的行数据（table），其余情况返回 Handle 对象
 生效范围：服务器&客户端
 
 **Parameters**
@@ -82,7 +83,28 @@ GetConfigItemHandle(ItemID: number) -> UBattleItemHandleBase
 
 | Type | Description |
 |---|---|
-| `UBattleItemHandleBase` | 配置数据 |
+| `UBattleItemHandleBase\|table` | 配置数据 |
+
+### `GetConfigItemHandleCDO`
+
+```text
+GetConfigItemHandleCDO(ItemID: number) -> UObject|table
+```
+
+获取物品ItemHandle配置（CDO）
+手机UGC客户端返回完整物品数据表（CompleteTable）的行数据（table），其余情况返回 Handle CDO
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemID` | `number` | 物品 ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UObject\|table` | 配置数据 |
 
 ### `GetItemInstanceDataManager`
 
@@ -98,6 +120,22 @@ GetItemInstanceDataManager() -> UUGCBattleItemInstanceDataManager
 | Type | Description |
 |---|---|
 | `UUGCBattleItemInstanceDataManager` | 实例数据管理器 |
+
+### `GetCommonItemWidgetClassPath`
+
+```text
+GetCommonItemWidgetClassPath() -> FSoftClassPath
+```
+
+获取 Common_Item 物品显示控件的配置（SoftClassPath）
+该控件用于背包、拾取等场景的物品格子显示
+生效范围：服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FSoftClassPath` | Common_Item 物品显示控件蓝图类路径，未配置时返回 nil |
 
 ### `IsUGCItemV2`
 

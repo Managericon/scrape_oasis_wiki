@@ -392,6 +392,36 @@ OnEnableChange_BP(bIsEnable: bool) -> void
 |---|---|
 | `void` | - |
 
+### `OnActivateSkill_BP`
+
+```text
+OnActivateSkill_BP() -> void
+```
+
+当控件绑定的技能激活时触发
+	  生效范围C
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnDeActivateSkill_BP`
+
+```text
+OnDeActivateSkill_BP() -> void
+```
+
+当控件绑定的技能结束或当前未激活时触发
+	  生效范围C
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ### `OnTagDisableChange_BP`
 
 ```text

@@ -20,6 +20,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `bLoop` | `bool` | - |
 | `StartPosition` | `float` | - |
 | `BlendSpace` | `UBlendSpaceBase *` | - |
+| `bTriggerAnimNotify` | `bool` | - |
 | `bResetPlayTimeWhenBlendSpaceChanges` | `bool` | - |
 | `bResetPlayTimeWhenBlendSpaceReactive` | `bool` | - |
 | `bResetSampleCacheWhenBlendSpaceChanges` | `bool` | - |

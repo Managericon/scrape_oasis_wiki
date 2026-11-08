@@ -22,4 +22,5 @@ Represents the appearance of an STextBlock
 | `SelectedBackgroundColor` | `FSlateColor` | The background color of selected text |
 | `HighlightColor` | `FLinearColor` | The color of highlighted text |
 | `HighlightShape` | `FSlateBrush` | The shape of highlighted text |
+| `StrikeBrush` | `FSlateBrush` | The brush used to draw a strike through the text (if any) |
 | `UnderlineBrush` | `FSlateBrush` | The brush used to draw an underline under the text (if any) |

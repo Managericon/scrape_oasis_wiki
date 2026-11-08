@@ -182,6 +182,27 @@ ConsumeCD() -> bool
 |---|---|
 | `bool` | 是否成功消耗 |
 
+### `ConsumeCDOverride`
+
+```text
+ConsumeCDOverride(OverwriteCDConsume: float) -> bool
+```
+
+生效范围：服务器
+	  消耗CD，能量类型使用传入的百分比（不大于0时使用技能默认值），计时类型扣除一层
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `OverwriteCDConsume` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否成功消耗 |
+
 ### `ConsumeCost`
 
 ```text

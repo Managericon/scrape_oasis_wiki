@@ -615,6 +615,12 @@ kind: "api_chunk"
 | `SuperPeopleAttrGroup_SkillCDRateAddScale` | `SkillCDRateAddScale` | --超体-通用属性 [技能CD恢复速率额外增加百分比（默认为0）-SkillCDRateAddScale], |
 | `SuperPeopleAttrGroup_SkillExtraChargeNum` | `SkillExtraChargeNum` | --超体-通用属性 [技能额外充能次数（默认为0）-SkillExtraChargeNum], |
 | `SuperPeopleAttrGroup_SpecialKeyValue` | `SpecialKeyValue` | --超体-通用属性 [特种密室钥匙的数值（通用，默认为0）-SpecialKeyValue], |
+| `SP_BadWomanAttrGroup_SkillBadWomanActiveCD` | `SkillBadWomanActiveCD` | --超体-时空魅影属性集 [时空魅影主动技能减CD-SkillBadWomanActiveCD], |
+| `SP_BadWomanAttrGroup_SkillBadWomanUltimateCD` | `SkillBadWomanUltimateCD` | --超体-时空魅影属性集 [时空魅影大招技能减CD-SkillBadWomanUltimateCD], |
+| `SP_BadWomanAttrGroup_BadWomanTransportGateDurationScale` | `BadWomanTransportGateDurationScale` | --超体-时空魅影属性集 [时空魅影传送门持续时长系数-BadWomanTransportGateDurationScale], |
+| `SP_BadWomanAttrGroup_BadWomanTransportGateMaxDistanceScale` | `BadWomanTransportGateMaxDistanceScale` | --超体-时空魅影属性集 [时空魅影最大可传送距离系数-BadWomanTransportGateMaxDistanceScale], |
+| `SP_BadWomanAttrGroup_BadWomanAIDurationScale` | `BadWomanAIDurationScale` | --超体-时空魅影属性集 [时空魅影分身存活时间系数-BadWomanAIDurationScale], |
+| `SP_BadWomanAttrGroup_BadWomanAIDamageScale` | `BadWomanAIDamageScale` | --超体-时空魅影属性集 [时空魅影分身武器伤害提升和武器命中率提升系数-BadWomanAIDamageScale], |
 | `SP_BattleMedicAttrGroup_PassiveSaveSelfSpeedScale` | `PassiveSaveSelfSpeedScale` | --超体-战地医生属性集 [自救速度百分比系数-PassiveSaveSelfSpeedScale], |
 | `SP_BattleMedicAttrGroup_InfiniteRescueSelfToggle` | `InfiniteRescueSelfToggle` | --超体-战地医生属性集 [无限自救开关-InfiniteRescueSelfToggle], |
 | `SP_BattleMedicAttrGroup_UAVRangeScale` | `UAVRangeScale` | --超体-战地医生属性集 [无人机治疗范围百分比系数-UAVRangeScale], |
@@ -630,6 +636,11 @@ kind: "api_chunk"
 | `SP_BomberAttributeGroup_SP_Bomber_AirraidExplosionRangeScale` | `SP_Bomber_AirraidExplosionRangeScale` | --超体-爆破职业属性集 [大招技能-爆炸范围系数属性-SP_Bomber_AirraidExplosionRangeScale], |
 | `SP_BomberAttributeGroup_SP_Bomber_AirraidExplosionDamageScale` | `SP_Bomber_AirraidExplosionDamageScale` | --超体-爆破职业属性集 [大招技能-爆炸伤害系数属性-SP_Bomber_AirraidExplosionDamageScale], |
 | `SP_BomberAttributeGroup_SP_Bomber_AirraidSkillCDR` | `SP_Bomber_AirraidSkillCDR` | --超体-爆破职业属性集 [大招技能-减CD属性-SP_Bomber_AirraidSkillCDR], |
+| `SP_CowBoyAtrrGroup_CowBoyActiveCDDecrease` | `CowBoyActiveCDDecrease` | --超体-孤胆枪手属性集 [孤胆小技能减CD-CowBoyActiveCDDecrease], |
+| `SP_CowBoyAtrrGroup_CowBoyActiveDurationScale` | `CowBoyActiveDurationScale` | --超体-孤胆枪手属性集 [孤胆小技能持续时间系数-CowBoyActiveDurationScale], |
+| `SP_CowBoyAtrrGroup_CowBoyActiveDamgeScale` | `CowBoyActiveDamgeScale` | --超体-孤胆枪手属性集 [孤胆小技能伤害系数-CowBoyActiveDamgeScale], |
+| `SP_CowBoyAtrrGroup_CowBoyUltimateCDDecrease` | `CowBoyUltimateCDDecrease` | --超体-孤胆枪手属性集 [孤胆大招减CD-CowBoyUltimateCDDecrease], |
+| `SP_CowBoyAtrrGroup_CowBoyUltimateDurationScale` | `CowBoyUltimateDurationScale` | --超体-孤胆枪手属性集 [孤胆大招持续时间系数-CowBoyUltimateDurationScale], |
 | `SP_CyberSpiderAtrrGroup_CyberExplosionRangeScale` | `CyberExplosionRangeScale` | --超体-源代码属性集 [源代码爆炸范围系数-CyberExplosionRangeScale], |
 | `SP_CyberSpiderAtrrGroup_CyberFlySpiderCount` | `CyberFlySpiderCount` | --超体-源代码属性集 [源代码蜘蛛数量-CyberFlySpiderCount], |
 | `SP_CyberSpiderAtrrGroup_CyberFlySpiderCDDecrease` | `CyberFlySpiderCDDecrease` | --超体-源代码属性集 [源代码蜘蛛减CD-CyberFlySpiderCDDecrease], |
@@ -713,6 +724,13 @@ kind: "api_chunk"
 | `SP_RocketBoyAttrGroup_Skill_Weapon_DurationRatio` | `Skill_Weapon_DurationRatio` | --超体-火箭小子属性集 [火箭小子空爆榴弹时长倍率-Skill_Weapon_DurationRatio], |
 | `SP_RocketBoyAttrGroup_Skill_Weapon_DamageRatio` | `Skill_Weapon_DamageRatio` | --超体-火箭小子属性集 [火箭小子空爆榴弹伤害倍率-Skill_Weapon_DamageRatio], |
 | `SP_RocketBoyAttrGroup_Skill_Weapon_RangeRatio` | `Skill_Weapon_RangeRatio` | --超体-火箭小子属性集 [火箭小子空爆榴弹范围倍率-Skill_Weapon_RangeRatio], |
+| `SP_SharkAtrrGroup_SharkPassiveDetectionScale` | `SharkPassiveDetectionScale` | --超体-深海之影属性集 [鲨鱼被动探测范围系数-SharkPassiveDetectionScale], |
+| `SP_SharkAtrrGroup_SharkActiveRangeScale` | `SharkActiveRangeScale` | --超体-深海之影属性集 [鲨鱼小技能范围系数-SharkActiveRangeScale], |
+| `SP_SharkAtrrGroup_SharkActiveCDDecrease` | `SharkActiveCDDecrease` | --超体-深海之影属性集 [鲨鱼小技能减CD-SharkActiveCDDecrease], |
+| `SP_SharkAtrrGroup_SharkActiveDurationScale` | `SharkActiveDurationScale` | --超体-深海之影属性集 [鲨鱼小技能持续时间系数-SharkActiveDurationScale], |
+| `SP_SharkAtrrGroup_SharkActiveDamgeScale` | `SharkActiveDamgeScale` | --超体-深海之影属性集 [鲨鱼小技能伤害系数-SharkActiveDamgeScale], |
+| `SP_SharkAtrrGroup_SharkUltimateCDDecrease` | `SharkUltimateCDDecrease` | --超体-深海之影属性集 [鲨鱼大招减CD-SharkUltimateCDDecrease], |
+| `SP_SharkAtrrGroup_SharkUltimateDurationScale` | `SharkUltimateDurationScale` | --超体-深海之影属性集 [鲨鱼大招持续时间系数-SharkUltimateDurationScale], |
 | `ChargeableUltimateSkillAttributeGroup_ChargeScale_NormalKill` | `ChargeScale_NormalKill` | --充能大招属性集 [击杀小怪充能系数-ChargeScale_NormalKill], |
 | `ChargeableUltimateSkillAttributeGroup_ChargeScale_EliteKill` | `ChargeScale_EliteKill` | --充能大招属性集 [击杀精英怪充能系数-ChargeScale_EliteKill], |
 | `ChargeableUltimateSkillAttributeGroup_ChargeScale_BossKill` | `ChargeScale_BossKill` | --充能大招属性集 [击杀Boss怪充能系数-ChargeScale_BossKill], |
@@ -1294,6 +1312,20 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EActivityInteractionType.json -->
+
+# EActivityInteractionType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Overlap` | `0` | - |
+| `Click` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EActivityUIShowMode.json -->
 
 # EActivityUIShowMode
@@ -1419,6 +1451,51 @@ kind: "api_chunk"
 | `METRICS_TRIS` | `1` | - |
 | `METRICS_SECTIONS` | `2` | - |
 | `METRICS_MAX` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EActorRotateDisableMask.json -->
+
+# EActorRotateDisableMask
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ActorRotateDisableMask1` | `0` | - |
+| `ActorRotateDisableMask2` | `1` | - |
+| `ActorRotateDisableMask3` | `2` | - |
+| `ActorRotateDisableMask4` | `3` | - |
+| `ActorRotateDisableMask5` | `4` | - |
+| `ActorRotateDisableMask6` | `5` | - |
+| `ActorRotateDisableMask7` | `6` | - |
+| `ActorRotateDisableMask8` | `7` | - |
+| `ActorRotateDisableMask9` | `8` | - |
+| `ActorRotateDisableMask10` | `9` | - |
+| `ActorRotateDisableMask11` | `10` | - |
+| `ActorRotateDisableMask12` | `11` | - |
+| `ActorRotateDisableMask13` | `12` | - |
+| `ActorRotateDisableMask14` | `13` | - |
+| `ActorRotateDisableMask15` | `14` | - |
+| `ActorRotateDisableMask16` | `15` | - |
+| `ActorRotateDisableMask17` | `16` | - |
+| `ActorRotateDisableMask18` | `17` | - |
+| `ActorRotateDisableMask19` | `18` | - |
+| `ActorRotateDisableMask20` | `19` | - |
+| `ActorRotateDisableMask21` | `20` | - |
+| `ActorRotateDisableMask22` | `21` | - |
+| `ActorRotateDisableMask23` | `22` | - |
+| `ActorRotateDisableMask24` | `23` | - |
+| `ActorRotateDisableMask25` | `24` | - |
+| `ActorRotateDisableMask26` | `25` | - |
+| `ActorRotateDisableMask27` | `26` | - |
+| `ActorRotateDisableMask28` | `27` | - |
+| `ActorRotateDisableMask29` | `28` | - |
+| `ActorRotateDisableMask30` | `29` | - |
+| `ActorRotateDisableMask31` | `30` | - |
+| `ActorRotateDisableMask32` | `31` | - |
+| `EmotePlaying` | `-1` | - |
 
 
 ---
@@ -1928,6 +2005,28 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAIBREquipGameModeType.json -->
+
+# EAIBREquipGameModeType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Erangel` | `0` | - |
+| `Miramar` | `1` | - |
+| `Paramo` | `2` | - |
+| `Warehouse` | `3` | - |
+| `Zombie` | `4` | - |
+| `Karakin` | `5` | - |
+| `KarakinStandard` | `6` | - |
+| `Vikendi` | `7` | - |
+| `Sanhok` | `8` | - |
+| `Diamond` | `9` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAICheckShootingPoseType.json -->
 
 # EAICheckShootingPoseType
@@ -2273,6 +2372,20 @@ kind: "api_chunk"
 | `BurglaryHole` | `7` | - |
 | `YinSoldiers` | `8` | - |
 | `SupplyBox` | `9` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAIItemDefineType.json -->
+
+# EAIItemDefineType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Invalid` | `0` | - |
+| `Weapon` | `1` | - |
 
 
 ---
@@ -2844,6 +2957,35 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAirDropPeneMode.json -->
+
+# EAirDropPeneMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `CenterPoint` | `0` | - |
+| `Box` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAirDropTerrainState.json -->
+
+# EAirDropTerrainState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `AboveGround` | `0` | - |
+| `UnderTerrain` | `1` | - |
+| `TerrainNotLoaded` | `2` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAirDropType.json -->
 
 # EAirDropType
@@ -3098,6 +3240,7 @@ kind: "api_chunk"
 | `CABLEPLACE` | `9` | - |
 | `SHRINES` | `10` | - |
 | `CELLAR_BREAKABLE_DOOR` | `11` | - |
+| `HEAVY_WEAPON_BOX` | `12` | - |
 
 
 ---
@@ -4231,6 +4374,22 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAnisotropyLevel.json -->
+
+# EAnisotropyLevel
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `NONE` | `0` | - |
+| `Level1` | `1` | - |
+| `Level4` | `2` | - |
+| `Level8` | `3` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EAntiAliasingMethod.json -->
 
 # EAntiAliasingMethod
@@ -4620,7 +4779,8 @@ kind: "api_chunk"
 | `SingleColorOverlay` | `0` | - |
 | `PerMaterialHash` | `1` | - |
 | `PerMaterialResolvedColor` | `2` | - |
-| `ViewportViewMode` | `3` | - |
+| `EngineVisualizationToggle` | `3` | - |
+| `PerSectionDensity` | `4` | - |
 
 
 ---
@@ -4649,6 +4809,8 @@ kind: "api_chunk"
 | `FSOCOccluder` | `13` | - |
 | `LightmapTypeCheck` | `14` | - |
 | `ReorganizationTagCheck` | `15` | - |
+| `ShadowProxy` | `16` | - |
+| `TexelDensity` | `17` | - |
 
 
 ---
@@ -6714,6 +6876,32 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBackpackV2RootOperate.json -->
+
+# EBackpackV2RootOperate
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Add` | `1` | - |
+| `Drop` | `2` | - |
+| `Remove` | `3` | - |
+| `AddAndEquip` | `4` | - |
+| `AddAttachChild` | `5` | - |
+| `Equip` | `6` | - |
+| `UnEquip` | `7` | - |
+| `Attach` | `8` | - |
+| `Detach` | `9` | - |
+| `Transfer` | `10` | - |
+| `RemoveCellCapacity` | `11` | - |
+| `RemoveMaxCellCapacity` | `12` | - |
+| `SeizeItem` | `13` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBakingVolumeProbeGIMethod.json -->
 
 # EBakingVolumeProbeGIMethod
@@ -7772,6 +7960,20 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBlockyBlockSrc.json -->
+
+# EBlockyBlockSrc
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Editor` | `0` | - |
+| `Ai` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBlockyBlockTypeGroup.json -->
 
 # EBlockyBlockTypeGroup
@@ -7885,6 +8087,20 @@ kind: "api_chunk"
 | `EBFAA_In` | `1` | - |
 | `EBFAA_Out` | `2` | - |
 | `EBFAA_Ref` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBlockyGraphSaveObservation.json -->
+
+# EBlockyGraphSaveObservation
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Live` | `0` | - |
+| `Committed` | `1` | - |
 
 
 ---
@@ -8064,6 +8280,21 @@ kind: "api_chunk"
 | `Selected` | `1` | - |
 | `ChildSlotSelected` | `2` | - |
 | `ChildHookupSlotSelected` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBlockySimulateTouchPhase.json -->
+
+# EBlockySimulateTouchPhase
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Started` | `0` | - |
+| `Moved` | `1` | - |
+| `Ended` | `2` | - |
 
 
 ---
@@ -8746,6 +8977,7 @@ kind: "api_chunk"
 | `LoongLion` | `10` | - |
 | `MultiLeggedRobot` | `11` | - |
 | `EscapeMonster` | `12` | - |
+| `SPBadWomanAIClone` | `13` | - |
 
 
 ---
@@ -8798,23 +9030,9 @@ kind: "api_chunk"
 
 ---
 
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBotProxyProtocolVersion.json -->
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBotProxyConnectionStatus.json -->
 
-# EBotProxyProtocolVersion
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `V1` | `1` | - |
-| `V2` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBotProxyStatus.json -->
-
-# EBotProxyStatus
+# EBotProxyConnectionStatus
 
 ## Variables
 
@@ -8828,6 +9046,20 @@ kind: "api_chunk"
 | `Deactivating` | `5` | - |
 | `Inactive` | `6` | - |
 | `Error` | `7` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBotProxyProtocolVersion.json -->
+
+# EBotProxyProtocolVersion
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `V1` | `1` | - |
+| `V2` | `2` | - |
 
 
 ---
@@ -8847,6 +9079,34 @@ kind: "api_chunk"
 | `Monster` | `4` | - |
 | `Pet` | `5` | - |
 | `Vehicle` | `6` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBoundedMoveBlockedPolicy.json -->
+
+# EBoundedMoveBlockedPolicy
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `StopWhenBlocked` | `0` | - |
+| `MoveWhenBlocked` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EBoundedMoveRejectReason.json -->
+
+# EBoundedMoveRejectReason
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `OutOfBounds` | `0` | - |
+| `OwnerSightBlocked` | `1` | - |
 
 
 ---
@@ -9343,10 +9603,11 @@ kind: "api_chunk"
 | `IgnoreBlockByTag` | `2` | - |
 | `IgnoreBlockByMobility` | `3` | - |
 | `IgnoreBlockByCollisionChannel` | `4` | - |
-| `Block` | `5` | - |
-| `ForceBlockByTag` | `6` | - |
-| `ForceBlockByMobilityTag` | `7` | - |
-| `EBulletShootBlockVerifyRes_None` | `8` | - |
+| `IgnoreBlockByCamp` | `5` | - |
+| `Block` | `6` | - |
+| `ForceBlockByTag` | `7` | - |
+| `ForceBlockByMobilityTag` | `8` | - |
+| `EBulletShootBlockVerifyRes_None` | `9` | - |
 
 
 ---
@@ -10386,6 +10647,7 @@ kind: "api_chunk"
 | `ECharAnim_Kick` | `77` | - |
 | `ECharAnim_SprintDoorOpen` | `78` | - |
 | `ECharAnim_BackpackIdle` | `80` | - |
+| `ECharAnim_EyeWatch` | `81` | - |
 | `ECharAnim_Max` | `255` | - |
 
 
@@ -10453,6 +10715,52 @@ kind: "api_chunk"
 | `Body_Head` | `1` | - |
 | `Body_Torso` | `2` | - |
 | `Body_Leg` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECharacterControlFacingMode.json -->
+
+# ECharacterControlFacingMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ViewDirection` | `0` | - |
+| `MovementDirection` | `1` | - |
+| `MovementDirectionWithPitch` | `2` | - |
+| `Custom` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECharacterControlMoveMode.json -->
+
+# ECharacterControlMoveMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Locomotion` | `0` | - |
+| `CustomLocomotion` | `1` | - |
+| `CustomFlying` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECharacterControlPose.json -->
+
+# ECharacterControlPose
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Stand` | `0` | - |
+| `Crouch` | `1` | - |
+| `Prone` | `2` | - |
 
 
 ---
@@ -10877,6 +11185,35 @@ kind: "api_chunk"
 |---|---|---|
 | `Static` | `0` | - |
 | `Skeletal` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECharacterPushMode.json -->
+
+# ECharacterPushMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `DepenetrateOnly` | `0` | - |
+| `LaunchOnly` | `1` | - |
+| `DepenetrateAndLaunch` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECharacterPushShape.json -->
+
+# ECharacterPushShape
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Box` | `0` | - |
+| `Sphere` | `1` | - |
 
 
 ---
@@ -11585,6 +11922,21 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECJAlignmentAlphaMode.json -->
+
+# ECJAlignmentAlphaMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `HeightOnly` | `0` | - |
+| `SpeedOnly` | `1` | - |
+| `MinOfBoth` | `2` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECJAssetSide.json -->
 
 # ECJAssetSide
@@ -11682,6 +12034,20 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECJOrientationWarpingSpace.json -->
+
+# ECJOrientationWarpingSpace
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ComponentTransform` | `0` | - |
+| `CustomTransform` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECJPelvisHeightMode.json -->
 
 # ECJPelvisHeightMode
@@ -11693,6 +12059,19 @@ kind: "api_chunk"
 | `AllLegs` | `0` | - |
 | `AllPlantedFeet` | `1` | - |
 | `FrontPlantedFeetUphill_FrontFeetDownhill` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECJWarpingEvaluationMode.json -->
+
+# ECJWarpingEvaluationMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Manual` | `0` | - |
 
 
 ---
@@ -12354,6 +12733,20 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECollisionLaunchCheckMode.json -->
+
+# ECollisionLaunchCheckMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ByCollisionEvent` | `0` | - |
+| `BySearchOverlap` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECollisionLimitType.json -->
 
 # ECollisionLimitType
@@ -12685,6 +13078,23 @@ kind: "api_chunk"
 | `UnbindCombination` | `6` | - |
 | `MoveInCombination` | `7` | - |
 | `MoveOutCombination` | `8` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECommandPredictType.json -->
+
+# ECommandPredictType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Rollback` | `0` | - |
+| `Replay` | `1` | - |
+| `ProcessRemote` | `2` | - |
+| `ProcessLocal` | `3` | - |
+| `ConfirmedLocal` | `4` | - |
 
 
 ---
@@ -13177,6 +13587,21 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECompositeCurveBakeMode.json -->
+
+# ECompositeCurveBakeMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `CubicAuto` | `0` | - |
+| `Linear` | `1` | - |
+| `Constant` | `2` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECompositeTextureMode.json -->
 
 # ECompositeTextureMode
@@ -13491,6 +13916,35 @@ kind: "api_chunk"
 | `CONSOLE_Any` | `0` | - |
 | `CONSOLE_Mobile` | `1` | - |
 | `CONSOLE_MAX` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EConsoleVariablesEditorPresetImportMode.json -->
+
+# EConsoleVariablesEditorPresetImportMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `AddToExisting` | `0` | - |
+| `ReplaceExisting` | `1` | - |
+| `UseDefault` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EConsoleVariablesEditorRowDisplayType.json -->
+
+# EConsoleVariablesEditorRowDisplayType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ShowCurrentValue` | `0` | - |
+| `ShowLastEnteredValue` | `1` | - |
 
 
 ---
@@ -14230,6 +14684,75 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECurveMotionAxis.json -->
+
+# ECurveMotionAxis
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `X` | `0` | - |
+| `Y` | `1` | - |
+| `Z` | `2` | - |
+| `XY` | `3` | - |
+| `XZ` | `4` | - |
+| `YZ` | `5` | - |
+| `XYZ` | `6` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECurveMotionMathOperation.json -->
+
+# ECurveMotionMathOperation
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Addition` | `1` | - |
+| `Subtraction` | `2` | - |
+| `Division` | `3` | - |
+| `Multiplication` | `4` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECurveMotionSpace.json -->
+
+# ECurveMotionSpace
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ComponentSpace` | `0` | - |
+| `LocalSpace` | `1` | - |
+| `RelativeToBone` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECurveMotionType.json -->
+
+# ECurveMotionType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Translation` | `-1` | - |
+| `Rotation` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `Scale` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `TranslationSpeed` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+| `RotationSpeed` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECurveMoveMotionWarpingType.json -->
 
 # ECurveMoveMotionWarpingType
@@ -14241,6 +14764,20 @@ kind: "api_chunk"
 | `SIMPLE_WARP` | `0` | - |
 | `SKEW_WARP` | `1` | - |
 | `ADJUSTMENTBLEND_WARP` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ECurveMoveSpace.json -->
+
+# ECurveMoveSpace
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `World` | `0` | - |
+| `Local` | `1` | - |
 
 
 ---
@@ -15174,6 +15711,62 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDataDrivenProjectileApplyCondition.json -->
+
+# EDataDrivenProjectileApplyCondition
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `OnImpact` | `0` | - |
+| `OnStop` | `1` | - |
+| `OnDestroyed` | `2` | - |
+| `OnHitGround` | `3` | - |
+| `OnHitPawn` | `4` | - |
+| `ContinueAlive` | `5` | - |
+| `ContinueAfterStop` | `6` | - |
+| `ContinueAfterOnGround` | `7` | - |
+| `OnHitNotPawn` | `8` | - |
+| `OnCompleteBounceTarget` | `9` | - |
+| `OnCompletePenetrate` | `10` | - |
+| `OnLaunch` | `11` | - |
+| `OnSurroundOver` | `12` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDataDrivenProjectileEffectiveTeam.json -->
+
+# EDataDrivenProjectileEffectiveTeam
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `AllPlayers` | `0` | - |
+| `FriendlyTeam` | `1` | - |
+| `FriendlyCamp` | `2` | - |
+| `EnemyTeam` | `3` | - |
+| `EnemyCamp` | `4` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDataDrivenSkillSkyBoxType.json -->
+
+# EDataDrivenSkillSkyBoxType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `SkyBox1` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDataReporterType.json -->
 
 # EDataReporterType
@@ -15913,6 +16506,23 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDevicePreviewType.json -->
+
+# EDevicePreviewType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Phone` | `0` | - |
+| `Tablet` | `1` | - |
+| `Foldable` | `2` | - |
+| `Desktop` | `3` | - |
+| `TV` | `4` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDeviceQualityTier.json -->
 
 # EDeviceQualityTier
@@ -15971,6 +16581,36 @@ kind: "api_chunk"
 |---|---|---|
 | `Male` | `0` | - |
 | `Female` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDiamondSide.json -->
+
+# EDiamondSide
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Left` | `0` | - |
+| `Right` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDiamondSideMask.json -->
+
+# EDiamondSideMask
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `LeftOnly` | `1` | - |
+| `RightOnly` | `2` | - |
+| `Both` | `3` | - |
 
 
 ---
@@ -16179,6 +16819,20 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDiveFlyPhase.json -->
+
+# EDiveFlyPhase
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Start` | `0` | - |
+| `Fly` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDoBrakeReasonType.json -->
 
 # EDoBrakeReasonType
@@ -16226,7 +16880,6 @@ kind: "api_chunk"
 | `Jumping` | `1` | - |
 | `Gliding` | `2` | - |
 | `Falling` | `3` | - |
-| `Landing` | `4` | - |
 
 
 ---
@@ -16385,7 +17038,8 @@ kind: "api_chunk"
 | `DP_HighFPS` | `20` | - |
 | `DP_PCQualityGrade` | `21` | - |
 | `DP_RHIName` | `22` | - |
-| `DP_SRC_MAX` | `23` | - |
+| `DP_IsUGCMap` | `23` | - |
+| `DP_SRC_MAX` | `24` | - |
 
 
 ---
@@ -16633,6 +17287,36 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDropEffectArbitrationPolicy.json -->
+
+# EDropEffectArbitrationPolicy
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `HighestPriority` | `0` | - |
+| `All` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDropEffectType.json -->
+
+# EDropEffectType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LuckyWeight` | `0` | - |
+| `RankUp` | `1` | - |
+| `GuaranteeItem` | `2` | - |
+| `BanItem` | `3` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDropExtraItemGeneratorType.json -->
 
 # EDropExtraItemGeneratorType
@@ -16644,7 +17328,8 @@ kind: "api_chunk"
 | `EDropExtraItemType_Default` | `0` | - |
 | `EDropExtraItemType_PlayerRank` | `1` | - |
 | `EDropExtraItemType_GlobalRank` | `2` | - |
-| `EDropExtraItemType_None` | `3` | - |
+| `EDropExtraItemType_DropConfig` | `3` | - |
+| `EDropExtraItemType_None` | `4` | - |
 
 
 ---
@@ -16829,6 +17514,21 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDropModifyType.json -->
+
+# EDropModifyType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Weight` | `0` | - |
+| `Percent` | `1` | - |
+| `ItemList` | `2` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDropPattern.json -->
 
 # EDropPattern
@@ -16854,6 +17554,25 @@ kind: "api_chunk"
 | `DropRuleItemPackageMode_Bulk` | `0` | - |
 | `DropRuleItemPackageMode_Packaged` | `1` | - |
 | `DropRuleItemPackageMode_None` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDropSourceType.json -->
+
+# EDropSourceType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Default` | `0` | - |
+| `Interactable` | `1` | - |
+| `Skill` | `2` | - |
+| `TreasureBox` | `3` | - |
+| `Airdrop` | `4` | - |
+| `Ground` | `5` | - |
+| `Intervene` | `6` | - |
 
 
 ---
@@ -17084,6 +17803,22 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDynamicAirDropBoxType.json -->
+
+# EDynamicAirDropBoxType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `SuperStuff` | `1` | - |
+| `SafePreview` | `2` | - |
+| `Relife` | `3` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EDynamicCompType.json -->
 
 # EDynamicCompType
@@ -17297,969 +18032,4 @@ kind: "api_chunk"
 | `EGPD_Input` | `0` | - |
 | `EGPD_Output` | `1` | - |
 | `EGPD_MAX` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEdGraphSchemaAction_K2Graph.json -->
-
-# EEdGraphSchemaAction_K2Graph
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Graph` | `0` | - |
-| `Subgraph` | `1` | - |
-| `Function` | `2` | - |
-| `Interface` | `3` | - |
-| `Macro` | `4` | - |
-| `MAX` | `5` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEditorArchiveDataType.json -->
-
-# EEditorArchiveDataType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EditorLoadArchiveData` | `0` | - |
-| `EditorUseBlueprintData` | `1` | - |
-| `EditorClearArchiveData` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEditorResToolRenameType.json -->
-
-# EEditorResToolRenameType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Prefix` | `0` | - |
-| `Suffix` | `1` | - |
-| `Replace` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEditorScriptingFilterType.json -->
-
-# EEditorScriptingFilterType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Include` | `0` | - |
-| `Exclude` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEditorScriptingStringMatchType.json -->
-
-# EEditorScriptingStringMatchType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Contains` | `0` | - |
-| `MatchesWildcard` | `1` | - |
-| `ExactMatch` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEditorToolColorChannel.json -->
-
-# EEditorToolColorChannel
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ETCC_R` | `0` | - |
-| `ETCC_G` | `1` | - |
-| `ETCC_B` | `2` | - |
-| `ETCC_A` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEffectAdjustType.json -->
-
-# EEffectAdjustType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EAT_MinShowDistanceAndLerp` | `0` | - |
-| `EAT_MinShowDistanceAndHide` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEffectModifierAutoReflectParamType.json -->
-
-# EEffectModifierAutoReflectParamType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Float` | `1` | - |
-| `Int32` | `2` | - |
-| `GameAttribute` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEffectModifierGenericParamType.json -->
-
-# EEffectModifierGenericParamType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Int32` | `1` | - |
-| `Float` | `2` | - |
-| `InstancedStruct` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEffectSpreadState.json -->
-
-# EEffectSpreadState
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ESS_InitialTrace` | `0` | - |
-| `ESS_InitialProcess` | `1` | - |
-| `ESS_Spreading` | `2` | - |
-| `ESS_SpreadDone` | `3` | - |
-| `ESS_Ending` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EElecMusicState.json -->
-
-# EElecMusicState
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `StartState` | `0` | - |
-| `StartToPlay` | `1` | - |
-| `Playing` | `2` | - |
-| `DropItemAdvanced` | `3` | - |
-| `DropItemOrdinary` | `4` | - |
-| `GameEnd` | `5` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EElevatorOp.json -->
-
-# EElevatorOp
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EElevator_None` | `0` | - |
-| `EElevator_Up` | `1` | - |
-| `EElevator_Down` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EElevatorOrderSortMode.json -->
-
-# EElevatorOrderSortMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EEOSM_Ascending` | `0` | - |
-| `EEOSM_Descending` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EElevatorStatus.json -->
-
-# EElevatorStatus
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EElevatorStatus_Wait` | `0` | - |
-| `EElevatorStatus_Up` | `1` | - |
-| `EElevatorStatus_Down` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmitterDynamicParameterValue.json -->
-
-# EEmitterDynamicParameterValue
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EDPV_UserSet` | `0` | - |
-| `EDPV_AutoSet` | `1` | - |
-| `EDPV_VelocityX` | `2` | - |
-| `EDPV_VelocityY` | `3` | - |
-| `EDPV_VelocityZ` | `4` | - |
-| `EDPV_VelocityMag` | `5` | - |
-| `EDPV_MAX` | `6` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmitterNormalsMode.json -->
-
-# EEmitterNormalsMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ENM_CameraFacing` | `0` | - |
-| `ENM_Spherical` | `1` | - |
-| `ENM_Cylindrical` | `2` | - |
-| `ENM_MAX` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmitterRenderMode.json -->
-
-# EEmitterRenderMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ERM_Normal` | `0` | - |
-| `ERM_Point` | `1` | - |
-| `ERM_Cross` | `2` | - |
-| `ERM_LightsOnly` | `3` | - |
-| `ERM_None` | `4` | - |
-| `ERM_MAX` | `5` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmitterRotationMode.json -->
-
-# EEmitterRotationMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `RotateAroundX` | `0` | - |
-| `RotateAroundY` | `1` | - |
-| `RotateAroundZ` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmitterSelfRotationMode.json -->
-
-# EEmitterSelfRotationMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SelfRotateAroundX` | `0` | - |
-| `SelfRotateAroundY` | `1` | - |
-| `SelfRotateAroundZ` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmitterType.json -->
-
-# EEmitterType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Gravity` | `0` | - |
-| `Radial` | `1` | - |
-| `Curve` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmoteAIEvent.json -->
-
-# EEmoteAIEvent
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Start` | `1` | - |
-| `Interrupt` | `2` | - |
-| `Finish` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmoteEndReason.json -->
-
-# EEmoteEndReason
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Finished` | `0` | - |
-| `PlayAnotherEmote` | `1` | - |
-| `SequenceNext` | `2` | - |
-| `Interrupted` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmoteMesh.json -->
-
-# EEmoteMesh
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Body` | `0` | - |
-| `Facial` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmoteType.json -->
-
-# EEmoteType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `AnimationEmote` | `0` | - |
-| `SkillEmote` | `1` | - |
-| `PairEmote` | `2` | - |
-| `ActivityEmote` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEMPZoneGenerateType.json -->
-
-# EEMPZoneGenerateType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Ringtaw` | `1` | - |
-| `Ringtaw1` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEMPZoneState.json -->
-
-# EEMPZoneState
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Warning` | `1` | - |
-| `Active` | `2` | - |
-| `IsEnd` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEndPlayReason.json -->
-
-# EEndPlayReason
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Destroyed` | `0` | - |
-| `LevelTransition` | `1` | - |
-| `EndPlayInEditor` | `2` | - |
-| `RemovedFromWorld` | `3` | - |
-| `Quit` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnemyType.json -->
-
-# EEnemyType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EPlayer` | `0` | - |
-| `EZombie` | `1` | - |
-| `EBuildings` | `2` | - |
-| `ETreasureBox` | `3` | - |
-| `EProjectile` | `4` | - |
-| `EAttackMeEnemy` | `5` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEntitlementCacheLevelRequest.json -->
-
-# EEntitlementCacheLevelRequest
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Memory` | `1` | - |
-| `Disk` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEntitlementCacheLevelRetrieved.json -->
-
-# EEntitlementCacheLevelRetrieved
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Memory` | `1` | - |
-| `Disk` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/eEntityMemberAnimationState.json -->
-
-# eEntityMemberAnimationState
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Idle` | `1` | - |
-| `Run` | `2` | - |
-| `Walk` | `3` | - |
-| `AttackedIdle` | `4` | - |
-| `AttackedWalk` | `5` | - |
-| `AttackedRunning` | `6` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEntityMemberAnimSharingState.json -->
-
-# EEntityMemberAnimSharingState
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Idle` | `0` | - |
-| `Run` | `1` | - |
-| `Walk` | `2` | - |
-| `Attack` | `3` | - |
-| `Hurt` | `4` | - |
-| `Dead` | `5` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/eEntityState.json -->
-
-# eEntityState
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Idle` | `0` | - |
-| `Moving` | `1` | - |
-| `Attack` | `2` | - |
-| `DestinationUnreachable` | `3` | - |
-| `NearDeath` | `4` | - |
-| `AttackedByPlayer` | `5` | - |
-| `Die` | `6` | - |
-| `StartAttackAnim` | `7` | - |
-| `Born` | `8` | - |
-| `Climb` | `9` | - |
-| `Falling` | `10` | - |
-| `Skill` | `11` | - |
-| `Max` | `12` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/eEntityTpye.json -->
-
-# eEntityTpye
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Melee` | `0` | - |
-| `Rnage` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvDirection.json -->
-
-# EEnvDirection
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `TwoPoints` | `0` | - |
-| `Rotation` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvironmentType.json -->
-
-# EEnvironmentType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Rainy` | `1` | - |
-| `Snowy` | `2` | - |
-| `Blizzard` | `3` | - |
-| `SandStorm` | `4` | - |
-| `Max` | `5` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvOverlapShape.json -->
-
-# EEnvOverlapShape
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Box` | `0` | - |
-| `Sphere` | `1` | - |
-| `Capsule` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvQueryHightlightMode.json -->
-
-# EEnvQueryHightlightMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `All` | `0` | - |
-| `Best5Pct` | `1` | - |
-| `Best25Pct` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvQueryParam.json -->
-
-# EEnvQueryParam
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Float` | `0` | - |
-| `Int` | `1` | - |
-| `Bool` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvQueryRunMode.json -->
-
-# EEnvQueryRunMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SingleResult` | `0` | - |
-| `RandomBest5Pct` | `1` | - |
-| `RandomBest25Pct` | `2` | - |
-| `AllMatching` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvQueryStatus.json -->
-
-# EEnvQueryStatus
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Processing` | `0` | - |
-| `Success` | `1` | - |
-| `Failed` | `2` | - |
-| `Aborted` | `3` | - |
-| `OwnerLost` | `4` | - |
-| `MissingParam` | `5` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvQueryTestClamping.json -->
-
-# EEnvQueryTestClamping
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `SpecifiedValue` | `1` | - |
-| `FilterThreshold` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvQueryTrace.json -->
-
-# EEnvQueryTrace
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Navigation` | `1` | - |
-| `Geometry` | `2` | - |
-| `NavigationOverLedges` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestCost.json -->
-
-# EEnvTestCost
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Low` | `0` | - |
-| `Medium` | `1` | - |
-| `High` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestDistance.json -->
-
-# EEnvTestDistance
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Distance3D` | `0` | - |
-| `Distance2D` | `1` | - |
-| `DistanceZ` | `2` | - |
-| `DistanceAbsoluteZ` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestDot.json -->
-
-# EEnvTestDot
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Dot3D` | `0` | - |
-| `Dot2D` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestFilterOperator.json -->
-
-# EEnvTestFilterOperator
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `AllPass` | `0` | - |
-| `AnyPass` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestFilterType.json -->
-
-# EEnvTestFilterType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Minimum` | `0` | - |
-| `Maximum` | `1` | - |
-| `Range` | `2` | - |
-| `Match` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestPathfinding.json -->
-
-# EEnvTestPathfinding
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PathExist` | `0` | - |
-| `PathCost` | `1` | - |
-| `PathLength` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestPurpose.json -->
-
-# EEnvTestPurpose
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Filter` | `0` | - |
-| `Score` | `1` | - |
-| `FilterAndScore` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestScoreEquation.json -->
-
-# EEnvTestScoreEquation
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Linear` | `0` | - |
-| `Square` | `1` | - |
-| `InverseLinear` | `2` | - |
-| `SquareRoot` | `3` | - |
-| `Constant` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestScoreOperator.json -->
-
-# EEnvTestScoreOperator
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `AverageScore` | `0` | - |
-| `MinScore` | `1` | - |
-| `MaxScore` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestWeight.json -->
-
-# EEnvTestWeight
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Square` | `1` | - |
-| `Inverse` | `2` | - |
-| `Unused` | `3` | - |
-| `Constant` | `4` | - |
-| `Skip` | `5` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTraceShape.json -->
-
-# EEnvTraceShape
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Line` | `0` | - |
-| `Box` | `1` | - |
-| `Sphere` | `2` | - |
-| `Capsule` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEQCompareOp.json -->
-
-# EEQCompareOp
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `GreateOrEqual` | `0` | - |
-| `Less` | `1` | - |
-| `NUM` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEQSNormalizationType.json -->
-
-# EEQSNormalizationType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Absolute` | `0` | - |
-| `RelativeToScores` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscalatorApplySpeedType.json -->
-
-# EEscalatorApplySpeedType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Absolute` | `1` | - |
-| `Relative` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeActorType.json -->
-
-# EEscapeActorType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Normal` | `0` | - |
-| `Helicopter` | `1` | - |
-| `Minecart` | `2` | - |
-| `HardPoint` | `3` | - |
-| `Backup` | `4` | - |
-| `WorldBoss` | `5` | - |
-| `MouseBall` | `6` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeAttachmentSlotType.json -->
-
-# EEscapeAttachmentSlotType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `GunPoint` | `1` | - |
-| `Grip` | `2` | - |
-| `Magazine` | `3` | - |
-| `Gunstock` | `4` | - |
-| `OpticalSight` | `5` | - |
-| `AngledOpticalSight` | `6` | - |
-| `ArmorSlot1` | `7` | - |
-| `ArmorSlot2` | `8` | - |
-| `ArmorSlot3` | `9` | - |
-| `ArmorSlot4` | `10` | - |
-| `ArmorSlot5` | `11` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeBPTableType.json -->
-
-# EEscapeBPTableType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Avatar` | `0` | - |
-| `Weapon` | `1` | - |
-| `Consumable` | `2` | - |
-| `CombineModel` | `3` | - |
-| `SeasonMission` | `4` | - |
 

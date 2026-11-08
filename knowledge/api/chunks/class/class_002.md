@@ -486,10 +486,10 @@ CanJoinTeam() -> boolean, number
 ### `IsRecruiting`
 
 ```text
-IsRecruiting() -> boolean
+IsRecruiting() -> boolean, number|nil, number|nil, boolean|nil
 ```
 
-查询当前所在局内玩法队伍是否正处于招募状态
+查询当前所在局内玩法队伍的招募信息
 生效范围：客户端
 
 **Returns**
@@ -497,6 +497,9 @@ IsRecruiting() -> boolean
 | Type | Description |
 |---|---|
 | `boolean` | 是否处于招募状态 |
+| `number\|nil` | 队伍目标文案序号，未招募时为 nil |
+| `number\|nil` | 队伍宣言文案序号，未招募时为 nil |
+| `boolean\|nil` | 招募范围，true=全局，false=本局，未招募时为 nil |
 
 ## Language
 
@@ -5491,6 +5494,44 @@ GetSubAnimInstanceBySlot(SubInstanceSlotName: FName) -> UAnimInstance *
 |---|---|
 | `UAnimInstance *` | - |
 
+### `GetSubAnimInstanceBySlotRecursive`
+
+```text
+GetSubAnimInstanceBySlotRecursive(SubInstanceSlotName: FName, OutInstance: UAnimInstance * &) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SubInstanceSlotName` | `FName` | - |
+| `OutInstance` | `UAnimInstance * &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `GetSubAnimInstanceByNodeTagRecursive`
+
+```text
+GetSubAnimInstanceByNodeTagRecursive(NodeTag: FName, OutInstance: UAnimInstance * &) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NodeTag` | `FName` | - |
+| `OutInstance` | `UAnimInstance * &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
 ### `IsUseSubAnimInstanceBySlot`
 
 ```text
@@ -5781,6 +5822,18 @@ SetFollowedAnimInstance(InputFollowedInstance: UAnimInstance *) -> void
 
 ```text
 ResetFollowedAnimInstance() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ResetAllFollowerAnimInstances`
+
+```text
+ResetAllFollowerAnimInstances() -> void
 ```
 
 **Returns**
@@ -6432,6 +6485,7 @@ Any property you're adding to AnimMontage and parent class has to be considered 
 | `FilteredBones` | `FInputBlendPose` | - |
 | `bAccumulateCurveSlotWeight` | `bool` | - |
 | `bCheckSlotNodeRelevant` | `bool` | - |
+| `bReTriggerNotifyStateOnLoop` | `bool` | 蒙太奇 Section 自循环回绕时，对跨越回绕边界的 AnimNotifyState 强制重新派发一次 End+Begin（如循环段上的音效每轮重新播放）。勾选后该蒙太奇所有满足条件的 NotifyState 都会生效。 |
 | `SyncGroup` | `FName` | If you're using marker based sync for this montage, make sure to add sync group name. For now we only support one group |
 | `SyncSlotIndex` | `int32` | wip: until we have UI working |
 | `MarkerData` | `FMarkerSyncData` | - |
@@ -7051,6 +7105,24 @@ SearchChildrenParticleAndDestroy(Children: TArray < USceneComponent * >, MeshCom
 | Type | Description |
 |---|---|
 | `void` | - |
+
+### `IsParticleVisible_BP`
+
+```text
+IsParticleVisible_BP(MeshComp: USkeletalMeshComponent *) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `MeshComp` | `USkeletalMeshComponent *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
 
 ## Language
 
@@ -10359,15 +10431,84 @@ CanAutoEquip(ItemDefineID: FItemDefineID &) -> bool
 |---|---|
 | `bool` | - |
 
+### `CheckCapacity`
+
+```text
+CheckCapacity(Param: FBackpackV2CheckCapacityParam &) -> FBackpackV2CheckCapacityResult
+```
+
+检查容量是否足够（是否超容）
+	  容量是抽象概念：默认实现按格子数判断，子类可覆写为重量等其它规则
+	  ExtraItems  ExcludedItems  MergeItems 用于预估操作后的占用；都为空时检查当前是否超限
+	  DS 被调用
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Param` | `FBackpackV2CheckCapacityParam &` | 容量检查参数 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FBackpackV2CheckCapacityResult` | 容量检查结果。bPassed 为 true 表示检查通过 |
+
+### `DoesOccupyCapacity`
+
+```text
+DoesOccupyCapacity(ItemDefineID: FItemDefineID &) -> bool
+```
+
+物品当前是否占用容量
+	  容量是抽象概念：默认实现与 IsCellItem 一致（已附加、已装备、货币不占用）
+	  子类可覆写，例如让货币物品占用容量
+	  DS 被调用
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemDefineID` | `FItemDefineID &` | 物品 DefineID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否占用容量 |
+
+### `DoesOccupyCapacityByItemID`
+
+```text
+DoesOccupyCapacityByItemID(ItemID: int32) -> bool
+```
+
+物品是否占用容量（尚无实例、仅有 ItemID 时使用）
+	  容量是抽象概念：默认实现与 DoesOccupyCapacity 一致（货币不占用；无实例故不考虑附加）
+	  子类可覆写，例如让货币物品占用容量
+	  DS 被调用
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemID` | `int32` | 物品 ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否占用容量 |
+
 ### `HandleExceedCellCapacity`
 
 ```text
 HandleExceedCellCapacity(ItemDefineID: FItemDefineID &, Count: int32) -> void
 ```
 
-处理超过格子容量的物品
+处理超过容量的物品
 	  普通情况下，背包内容量已满时，无法添加物品。
-	  但存在特殊情况，背包满容量时依然成功添加物品、原本不占格子的物品变为占用格子、背包容量发生变化。
+	  但存在特殊情况，背包满容量时依然成功添加物品、原本不占容量的物品变为占用容量、背包容量发生变化。
 	  超容量物品会被直接移除，移除后在此函数处理保底逻辑
 	  默认保底逻辑为丢弃到地上
 	  重写此事件时，请不要将超容量物品在此处重新添加到背包里
@@ -10387,6 +10528,52 @@ HandleExceedCellCapacity(ItemDefineID: FItemDefineID &, Count: int32) -> void
 | Type | Description |
 |---|---|
 | `void` | - |
+
+### `GetExceedCapacityRemoveItemList`
+
+```text
+GetExceedCapacityRemoveItemList(OperationItemDefineIDList: TArray < FItemDefineID > &) -> TArray < FItemDefineID >
+```
+
+处理超过容量时，获取需要移除的物品列表
+	  若本接口返回的列表处理完后仍超限，会进行兜底处理
+	  DS 被调用
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `OperationItemDefineIDList` | `TArray < FItemDefineID > &` | 该次背包操作相关的物品（本次新增触发超限的物品） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TArray < FItemDefineID >` | 需要移除的物品列表 |
+
+### `GetForceExceedCapacityRemoveItemList`
+
+```text
+GetForceExceedCapacityRemoveItemList(OperationItemDefineIDList: TArray < FItemDefineID > &) -> TArray < FItemDefineID >
+```
+
+获取需要强制走超限处理的物品列表
+	  在容量检查之前被调用，即使当前完全未超限，返回的物品也会被移除并触发 HandleExceedCellCapacity
+	  基类默认返回空列表，不影响原有未超限提前返回逻辑
+	  可重载并自定义
+	  DS 被调用
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `OperationItemDefineIDList` | `TArray < FItemDefineID > &` | 该次背包操作相关的物品（本次新增触发检查的物品） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TArray < FItemDefineID >` | 需要移除的物品列表 |
 
 ## Delegates
 
@@ -13989,6 +14176,56 @@ check if attachment is currently being active
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UBTComposite_Selector.json -->
+
+# UBTComposite_Selector
+
+Selector composite node.
+  Selector Nodes execute their children from left to right, and will stop executing its children when one of their children succeeds.
+  If a Selector's child succeeds, the Selector succeeds. If all the Selector's children fail, the Selector fails.
+
+## Inheritance
+
+`UBTCompositeNode`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bRunChildrenInSameFrame` | `uint8` | if set, instant (non-latent) child tasks of this selector are run within the same frame<br>	   instead of being deferred to the next tick. Latent tasks (InProgress) break the chain. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UBTComposite_Sequence.json -->
+
+# UBTComposite_Sequence
+
+Sequence composite node.
+  Sequence Nodes execute their children from left to right, and will stop executing its children when one of their children fails.
+  If a child fails, then the Sequence fails. If all the Sequence's children succeed, then the Sequence succeeds.
+
+## Inheritance
+
+`UBTCompositeNode`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bRunChildrenInSameFrame` | `uint8` | if set, instant (non-latent) child tasks of this sequence are run within the same frame<br>	   instead of being deferred to the next tick. Latent tasks (InProgress) break the chain. |
+
+## Language
+
+`cpp`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UBTComposite_SimpleParallel.json -->
 
 # UBTComposite_SimpleParallel
@@ -16550,6 +16787,7 @@ RunBehavior task allows pushing subtrees on execution stack.
 | Name | Type/Value | Description |
 |---|---|---|
 | `BehaviorAsset` | `UBehaviorTree *` | behavior to run |
+| `bRunSubtreeInSameFrame` | `uint8` | if set, this task acts as an instant node: pushing the subtree no longer breaks the parent<br>	   composite's same-frame chain, so the subtree can start within the same frame.<br>	   Needs the parent composite to opt in via bRunChildrenInSameFrame.<br>	   Only affects this node; the subtree's own children are governed by the subtree's composites. |
 
 ## Language
 
@@ -16578,6 +16816,7 @@ RunBehaviorDynamic task allows pushing subtrees on execution stack.
 | `InjectionTag` | `FGameplayTag` | Gameplay tag that will identify this task for subtree injection |
 | `DefaultBehaviorAsset` | `UBehaviorTree *` | default behavior to run |
 | `BehaviorAsset` | `UBehaviorTree *` | current subtree |
+| `bRunSubtreeInSameFrame` | `uint8` | if set, this task acts as an instant node: pushing the subtree no longer breaks the parent<br>	   composite's same-frame chain, so the subtree can start within the same frame.<br>	   Needs the parent composite to opt in via bRunChildrenInSameFrame.<br>	   Only affects this node; the subtree's own children are governed by the subtree's composites. |
 
 ## Language
 
@@ -18236,6 +18475,7 @@ A CameraShake is an asset that defines how to shake the camera in
 | `CameraOwner` | `APlayerCameraManager *` | - |
 | `ShakeScale` | `float` | Overall intensity scale for this shake instance. |
 | `OscillatorTimeRemaining` | `float` | Time remaining for oscillation shakes. Less than 0.f means shake infinitely. |
+| `AnimInstances` | `TArray < UCameraAnimInst * >` | The playing instances of the CameraAnim-based shake, if any. |
 | `AttenuationFloatCurve` | `UCurveFloat *` | Source camera curve to add. Can be null. |
 
 ## Functions
@@ -21817,431 +22057,6 @@ Switch controller from debug camera back to normal controller
 | Type | Description |
 |---|---|
 | `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCheckBox.json -->
-
-# UCheckBox
-
-The checkbox widget allows you to display a toggled state of 'unchecked', 'checked' and 
-  'indeterminable.  You can use the checkbox for a classic checkbox, or as a toggle button,
-  or as radio buttons.
-  
-   Single Child
-   Toggle
-
-## Inheritance
-
-`UContentWidget`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `CheckedState` | `ECheckBoxState` | Whether the check box is currently in a checked state |
-| `CheckedStateDelegate` | `FGetCheckBoxState` | A bindable delegate for the IsChecked. |
-| `WidgetStyle` | `FCheckBoxStyle` | The checkbox bar style |
-| `Style_DEPRECATED` | `USlateWidgetStyleAsset *` | Style of the check box |
-| `UncheckedImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is unchecked |
-| `UncheckedHoveredImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is unchecked and hovered |
-| `UncheckedPressedImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is unchecked and pressed |
-| `CheckedImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is checked |
-| `CheckedHoveredImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is checked and hovered |
-| `CheckedPressedImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is checked and pressed |
-| `UndeterminedImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is in an ambiguous state and hovered |
-| `UndeterminedHoveredImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is checked and hovered |
-| `UndeterminedPressedImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is in an ambiguous state and pressed |
-| `HorizontalAlignment` | `TEnumAsByte < EHorizontalAlignment >` | How the content of the toggle button should align within the given space |
-| `Padding_DEPRECATED` | `FMargin` | Spacing between the check box image and its content |
-| `BorderBackgroundColor_DEPRECATED` | `FSlateColor` | The color of the background border |
-| `IsFocusable` | `bool` | Sometimes a button should only be mouse-clickable and never keyboard focusable. |
-| `ClickMethod` | `TEnumAsByte < EButtonClickMethod :: Type >` | The type of mouse action required by the user to trigger the buttons 'Click' |
-| `TouchMethod` | `TEnumAsByte < EButtonTouchMethod :: Type >` | The type of touch action required by the user to trigger the buttons 'Click' |
-
-## Functions
-
-### `IsPressed`
-
-```text
-IsPressed() -> bool
-```
-
-Returns true if this button is currently pressed
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `IsChecked`
-
-```text
-IsChecked() -> bool
-```
-
-Returns true if the checkbox is currently checked
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `GetCheckedState`
-
-```text
-GetCheckedState() -> ECheckBoxState
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ECheckBoxState` | the full current checked state. |
-
-### `SetIsChecked`
-
-```text
-SetIsChecked(InIsChecked: bool) -> void
-```
-
-Sets the checked state.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InIsChecked` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetCheckedState`
-
-```text
-SetCheckedState(InCheckedState: ECheckBoxState) -> void
-```
-
-Sets the checked state.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InCheckedState` | `ECheckBoxState` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetClickMethod`
-
-```text
-SetClickMethod(InClickMethod: EButtonClickMethod :: Type) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InClickMethod` | `EButtonClickMethod :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetTouchMethod`
-
-```text
-SetTouchMethod(InTouchMethod: EButtonTouchMethod :: Type) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InTouchMethod` | `EButtonTouchMethod :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Delegates
-
-### `OnCheckStateChanged`
-
-```text
-OnCheckStateChanged(bIsChecked: bool) -> void
-```
-
-Called when the checked state has changed
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bIsChecked` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCheckBoxStyleAsset.json -->
-
-# UCheckBoxStyleAsset
-
-An asset describing a CheckBox's appearance.
-  Just a wrapper for the struct with real data in it.
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `CheckBoxStyle` | `FCheckBoxStyle` | The actual data describing the Check Box's appearance. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCheckBoxWidgetStyle.json -->
-
-# UCheckBoxWidgetStyle
-
-## Inheritance
-
-`USlateWidgetStyleContainerBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `CheckBoxStyle` | `FCheckBoxStyle` | The actual data describing the button's appearance. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCheckedStateBinding.json -->
-
-# UCheckedStateBinding
-
-## Inheritance
-
-`UPropertyBinding`
-
-## Functions
-
-### `GetValue`
-
-```text
-GetValue() -> ECheckBoxState
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ECheckBoxState` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UChildActorComponent.json -->
-
-# UChildActorComponent
-
-A component that spawns an Actor when registered, and destroys it when unregistered.
-
-## Inheritance
-
-`USceneComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ChildActorClass` | `TSubclassOf < AActor >` | The class of Actor to spawn |
-| `ChildActor` | `AActor *` | The actor that we spawned and own |
-| `bAllowTemplateModification` | `bool` | - |
-| `ChildActorTemplate` | `AActor *` | Property to point to the template child actor for details panel purposes |
-| `IsDestoryChildActor` | `bool` | - |
-| `bKeepChildActorComponet` | `bool` | - |
-| `bEnableReplication` | `bool` | - |
-| `bDumpChildActorLocation` | `bool` | - |
-| `bRedirectComps` | `uint8` | - |
-| `bPCOnlyComps` | `uint8` | - |
-
-## Functions
-
-### `SetChildActorClass`
-
-```text
-SetChildActorClass(InClass: TSubclassOf < AActor >) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InClass` | `TSubclassOf < AActor >` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnRep_ChildActor`
-
-```text
-OnRep_ChildActor() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `CreateChildActor`
-
-```text
-CreateChildActor() -> void
-```
-
-Create the child actor
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `DestroyChildActor`
-
-```text
-DestroyChildActor(bNeedInstanceData: bool) -> void
-```
-
-Kill any currently present child actor
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bNeedInstanceData` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Delegates
-
-### `OnChildActorRep`
-
-```text
-OnChildActorRep() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UChildConnection.json -->
-
-# UChildConnection
-
-Represents a secondary split screen connection that reroutes calls to the parent connection.
-
-## Inheritance
-
-`UNetConnection`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Parent` | `UNetConnection *` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UChunkLabel.json -->
-
-# UChunkLabel
-
-## Inheritance
-
-`UPrimaryDataAsset`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Rules` | `FPrimaryAssetRules` | Management rules for this specific asset, if set it will override the type rules |
-| `LogicChunkName` | `FString` | True to Label everything in this directory and sub directories |
-| `FinalChunkName` | `FString` | - |
-| `ChunkOutputPath` | `FString` | - |
-| `bIsRuntimeLabel` | `uint32` | Set to true if the label asset itself should be cooked and available at runtime. This does not affect the assets that are labeled, they are set with cook rule |
-| `Key` | `FString` | - |
-| `IV` | `FString` | - |
-| `ManagerRuleNames` | `TArray < FString >` | - |
-| `bUpdateManagerRulesWhenSaved` | `bool` | - |
-| `bForceReloadManagerRule` | `bool` | - |
 
 ## Language
 

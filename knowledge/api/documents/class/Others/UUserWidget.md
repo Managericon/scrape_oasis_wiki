@@ -19,8 +19,8 @@ The user widget is extensible by users through the WidgetBlueprint.
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `ColorAndOpacityDelegate` | `FGetLinearColor` | - |
 | `ColorAndOpacity` | `FLinearColor` | The color and opacity of this widget.  Tints all child widgets. |
+| `ColorAndOpacityDelegate` | `FGetLinearColor` | - |
 | `ForegroundColor` | `FSlateColor` | The foreground color of the widget, this is inherited by sub widgets.  Any color property<br>	  that is marked as inherit will use this color. |
 | `ForegroundColorDelegate` | `FGetSlateColor` | - |
 | `Padding` | `FMargin` | The padding area around the content. |
@@ -171,24 +171,6 @@ SetOffsetsInViewport(Margin: FMargin) -> void
 |---|---|
 | `void` | - |
 
-### `SetAlignmentInViewport`
-
-```text
-SetAlignmentInViewport(Alignment: FVector2D) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Alignment` | `FVector2D` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
 ### `SetAnchorsInViewport`
 
 ```text
@@ -200,6 +182,24 @@ SetAnchorsInViewport(Anchors: FAnchors) -> void
 | Name | Type | Description |
 |---|---|---|
 | `Anchors` | `FAnchors` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAlignmentInViewport`
+
+```text
+SetAlignmentInViewport(Alignment: FVector2D) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Alignment` | `FVector2D` | - |
 
 **Returns**
 
@@ -911,28 +911,6 @@ Called during drag and drop when the drag leaves the widget.
 |---|---|
 | `void` | - |
 
-### `OnDragOver`
-
-```text
-OnDragOver(MyGeometry: FGeometry, PointerEvent: FPointerEvent, Operation: UDragDropOperation *) -> bool
-```
-
-Called during drag and drop when the the mouse is being dragged over a widget.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `MyGeometry` | `FGeometry` | The geometry of the widget receiving the event. |
-| `PointerEvent` | `FPointerEvent` | The mouse event from when the drag occurred over the widget. |
-| `Operation` | `UDragDropOperation *` | The drag operation over the widget. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 'true' to indicate that you handled the drag over operation.  Returning 'false' will cause the operation to continue to bubble up. |
-
 ### `OnDrop`
 
 ```text
@@ -954,6 +932,28 @@ Called when the user is dropping something onto a widget.  Ends the drag and dro
 | Type | Description |
 |---|---|
 | `bool` | 'true' to indicate you handled the drop operation. |
+
+### `OnDragOver`
+
+```text
+OnDragOver(MyGeometry: FGeometry, PointerEvent: FPointerEvent, Operation: UDragDropOperation *) -> bool
+```
+
+Called during drag and drop when the the mouse is being dragged over a widget.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `MyGeometry` | `FGeometry` | The geometry of the widget receiving the event. |
+| `PointerEvent` | `FPointerEvent` | The mouse event from when the drag occurred over the widget. |
+| `Operation` | `UDragDropOperation *` | The drag operation over the widget. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 'true' to indicate that you handled the drag over operation.  Returning 'false' will cause the operation to continue to bubble up. |
 
 ### `OnTouchGesture`
 

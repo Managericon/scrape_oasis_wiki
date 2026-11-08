@@ -40,6 +40,8 @@ UPlanarReflectionComponent
 | `FrustumOptim` | `bool` | Frustum Cull Range Optimization |
 | `NoReflectionShadow` | `bool` | Do Not Render Shadow for PlanarRefelction |
 | `FrameBufferCache` | `bool` | Enable FrameBuffer Cache Or Not |
+| `bUseUnderPlaneClip` | `bool` | 是否启用反射平面下方裁剪（Oblique Near Clip Plane）。<br>	  开启后，穿过反射平面的物体在反射中不会显示其平面下方的部分。<br>	  需要同时开启 CVar r.PlanarReflection.ObliqueClipPlane 才能生效。 |
+| `UnderPlaneClipBias` | `float` | 裁剪平面沿法线方向的偏移量（世界单位）。<br>	  正值将裁剪面向上移动（裁剪更多），负值向下移动（裁剪更少）。<br>	  仅在 bUseUnderPlaneClip 开启时生效。 |
 
 ## Language
 

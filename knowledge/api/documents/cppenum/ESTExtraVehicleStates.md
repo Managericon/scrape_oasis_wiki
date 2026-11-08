@@ -17,4 +17,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `EVS_SPEED` | `1` | - |
 | `EVS_ELECTRONIC_FAILURE` | `2` | - |
 | `EVS_INVINCIBLE` | `3` | - |
-| `EVS_MAX` | `4` | - |
+| `EVS_STUN` | `4` | - |
+| `EVS_MAX` | `5` | - |

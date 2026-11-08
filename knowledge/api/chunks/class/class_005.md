@@ -6,6 +6,2458 @@ category: "API Wiki/class"
 kind: "api_chunk"
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UImportanceSamplingLibrary.json -->
+
+# UImportanceSamplingLibrary
+
+## Inheritance
+
+`UBlueprintFunctionLibrary`
+
+## Functions
+
+### `RandomSobolFloat`
+
+```text
+RandomSobolFloat(Index: int32, Dimension: int32, Seed: float) -> ENGINE_API float
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `int32` | - Which sequential point |
+| `Dimension` | `int32` | - Which Sobol dimension (0 to 15) |
+| `Seed` | `float` | - Random seed (in the range 0-1) to randomize across multiple sequences |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API float` | Sobol-distributed random number between 0 and 1 |
+
+### `NextSobolFloat`
+
+```text
+NextSobolFloat(Index: int32, Dimension: int32, PreviousValue: float) -> ENGINE_API float
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `int32` | - Which sequential point |
+| `Dimension` | `int32` | - Which Sobol dimension (0 to 15) |
+| `PreviousValue` | `float` | - The Sobol value for Index-1 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API float` | Sobol-distributed random number between 0 and 1 |
+
+### `RandomSobolCell2D`
+
+```text
+RandomSobolCell2D(Index: int32, NumCells: int32, Cell: FVector2D, Seed: FVector2D) -> ENGINE_API FVector2D
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `int32` | - Which sequential point in the cell (starting at 0) |
+| `NumCells` | `int32` | - Size of cell grid, 1 to 32768. Rounded up to the next power of two |
+| `Cell` | `FVector2D` | - Give a point from this integer grid cell |
+| `Seed` | `FVector2D` | - Random 2D seed (components in the range 0-1) to randomize across multiple sequences |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API FVector2D` | Sobol-distributed random 2D position in the given grid cell |
+
+### `NextSobolCell2D`
+
+```text
+NextSobolCell2D(Index: int32, NumCells: int32, PreviousValue: FVector2D) -> ENGINE_API FVector2D
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `int32` | - Which sequential point |
+| `NumCells` | `int32` | - Size of cell grid, 1 to 32768. Rounded up to the next power of two |
+| `PreviousValue` | `FVector2D` | - The Sobol value for Index-1 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API FVector2D` | Sobol-distributed random 2D position in the same grid cell |
+
+### `RandomSobolCell3D`
+
+```text
+RandomSobolCell3D(Index: int32, NumCells: int32, Cell: FVector, Seed: FVector) -> ENGINE_API FVector
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `int32` | - Which sequential point in the cell (starting at 0) |
+| `NumCells` | `int32` | - Size of cell grid, 1 to 1024. Rounded up to the next power of two |
+| `Cell` | `FVector` | - Give a point from this integer grid cell |
+| `Seed` | `FVector` | - Random 3D seed (components in the range 0-1) to randomize across multiple sequences |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API FVector` | Sobol-distributed random 3D vector in the given grid cell |
+
+### `NextSobolCell3D`
+
+```text
+NextSobolCell3D(Index: int32, NumCells: int32, PreviousValue: FVector) -> ENGINE_API FVector
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `int32` | - Which sequential point |
+| `NumCells` | `int32` | - Size of cell grid, 1 to 1024. Rounded up to the next power of two |
+| `PreviousValue` | `FVector` | - The Sobol value for Index-1 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API FVector` | Sobol-distributed random 3D position in the same grid cell |
+
+### `MakeImportanceTexture`
+
+```text
+MakeImportanceTexture(Texture: UTexture2D *, WeightingFunc: TEnumAsByte < EImportanceWeight :: Type >) -> ENGINE_API FImportanceTexture
+```
+
+Create an FImportanceTexture object for texture-driven importance sampling from a 2D RGBA8 texture
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Texture` | `UTexture2D *` | - Texture object to use. Must be RGBA8 format. |
+| `WeightingFunc` | `TEnumAsByte < EImportanceWeight :: Type >` | - How to turn the texture data into probability weights |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API FImportanceTexture` | new ImportanceTexture object for use with ImportanceSample |
+
+### `BreakImportanceTexture`
+
+```text
+BreakImportanceTexture(ImportanceTexture: FImportanceTexture &, Texture: UTexture2D * &, WeightingFunc: TEnumAsByte < EImportanceWeight :: Type > &) -> ENGINE_API void
+```
+
+Get texture used to create an ImportanceTexture object
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ImportanceTexture` | `FImportanceTexture &` | - The source ImportanceTexture object |
+| `Texture` | `UTexture2D * &` | - |
+| `WeightingFunc` | `TEnumAsByte < EImportanceWeight :: Type > &` | - How to turn the texture data into probability weights |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | new ImportanceTexture object for use with ImportanceSample |
+
+### `ImportanceSample`
+
+```text
+ImportanceSample(Texture: FImportanceTexture &, Rand: FVector2D &, Samples: int, Intensity: float, SamplePosition: FVector2D &, SampleColor: FLinearColor &, SampleIntensity: float &, SampleSize: float &) -> ENGINE_API void
+```
+
+Distribute sample points proportional to Texture2D luminance.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Texture` | `FImportanceTexture &` | - |
+| `Rand` | `FVector2D &` | - Random 2D point with components evenly distributed between 0 and 1 |
+| `Samples` | `int` | - Total number of samples that will be used |
+| `Intensity` | `float` | - Total intensity for light |
+| `SamplePosition` | `FVector2D &` | - |
+| `SampleColor` | `FLinearColor &` | - |
+| `SampleIntensity` | `float &` | - |
+| `SampleSize` | `float &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ENGINE_API void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInGameAdManager.json -->
+
+# UInGameAdManager
+
+## Inheritance
+
+`UPlatformInterfaceBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bShouldPauseWhileAdOpen` | `uint32` | If true, the game will pause when the user clicks on the ad, which could take over the screen |
+| `ClickedBannerDelegates` | `TArray < FOnUserClickedBanner >` | @todo document |
+| `ClosedAdDelegates` | `TArray < FOnUserClosedAdvertisement >` | @todo document |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInheritableComponentHandler.json -->
+
+# UInheritableComponentHandler
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Records` | `TArray < FComponentOverrideRecord >` | All component records |
+| `UnnecessaryComponents` | `TArray < UActorComponent * >` | List of components that were marked unnecessary, need to keep these around so it doesn't regenerate them when a child asks for one |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputActionDelegateBinding.json -->
+
+# UInputActionDelegateBinding
+
+## Inheritance
+
+`UInputDelegateBinding`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `InputActionDelegateBindings` | `TArray < FBlueprintInputActionDelegateBinding >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputAxisDelegateBinding.json -->
+
+# UInputAxisDelegateBinding
+
+## Inheritance
+
+`UInputDelegateBinding`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `InputAxisDelegateBindings` | `TArray < FBlueprintInputAxisDelegateBinding >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputAxisKeyDelegateBinding.json -->
+
+# UInputAxisKeyDelegateBinding
+
+## Inheritance
+
+`UInputDelegateBinding`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `InputAxisKeyDelegateBindings` | `TArray < FBlueprintInputAxisKeyDelegateBinding >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputComponent.json -->
+
+# UInputComponent
+
+Implement an Actor component for input bindings.
+ 
+  An Input Component is a transient component that enables an Actor to bind various forms of input events to delegate functions.  
+  Input components are processed from a stack managed by the PlayerController and processed by the PlayerInput.
+  Each binding can consume the input event preventing other components on the input stack from processing the input.
+
+## Inheritance
+
+`UActorComponent`
+
+## Functions
+
+### `IsControllerKeyDown`
+
+```text
+IsControllerKeyDown(Key: FKey) -> bool
+```
+
+Returns true if the given keybutton is pressed on the input of the controller (if present)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `FKey` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `WasControllerKeyJustPressed`
+
+```text
+WasControllerKeyJustPressed(Key: FKey) -> bool
+```
+
+Returns true if the given keybutton was up last frame and down this frame.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `FKey` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `WasControllerKeyJustReleased`
+
+```text
+WasControllerKeyJustReleased(Key: FKey) -> bool
+```
+
+Returns true if the given keybutton was down last frame and up this frame.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `FKey` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `GetControllerAnalogKeyState`
+
+```text
+GetControllerAnalogKeyState(Key: FKey) -> float
+```
+
+Returns the analog value for the given keybutton.  If analog isn't supported, returns 1 for down and 0 for up.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `FKey` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetControllerVectorKeyState`
+
+```text
+GetControllerVectorKeyState(Key: FKey) -> FVector
+```
+
+Returns the vector value for the given keybutton.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `FKey` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetTouchState`
+
+```text
+GetTouchState(FingerIndex: int32, LocationX: float &, LocationY: float &, bIsCurrentlyPressed: bool &) -> void
+```
+
+Returns the location of a touch, and if it's held down
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `FingerIndex` | `int32` | - |
+| `LocationX` | `float &` | - |
+| `LocationY` | `float &` | - |
+| `bIsCurrentlyPressed` | `bool &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetControllerKeyTimeDown`
+
+```text
+GetControllerKeyTimeDown(Key: FKey) -> float
+```
+
+Returns how long the given keybutton has been down.  Returns 0 if it's up or it just went down this frame.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `FKey` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetControllerMouseDelta`
+
+```text
+GetControllerMouseDelta(DeltaX: float &, DeltaY: float &) -> void
+```
+
+Retrieves how far the mouse moved this frame.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `DeltaX` | `float &` | - |
+| `DeltaY` | `float &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetControllerAnalogStickState`
+
+```text
+GetControllerAnalogStickState(WhichStick: EControllerAnalogStick :: Type, StickX: float &, StickY: float &) -> void
+```
+
+Retrieves the X and Y displacement of the given analog stick.  For WhickStick, 0 = left, 1 = right.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WhichStick` | `EControllerAnalogStick :: Type` | - |
+| `StickX` | `float &` | - |
+| `StickY` | `float &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputKeyDelegateBinding.json -->
+
+# UInputKeyDelegateBinding
+
+## Inheritance
+
+`UInputDelegateBinding`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `InputKeyDelegateBindings` | `TArray < FBlueprintInputKeyDelegateBinding >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputKeySelector.json -->
+
+# UInputKeySelector
+
+A widget for selecting a single key or a single key with a modifier.
+
+## Inheritance
+
+`UWidget`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `WidgetStyle` | `FButtonStyle` | The button style used at runtime |
+| `TextStyle` | `FTextBlockStyle` | The button style used at runtime |
+| `SelectedKey` | `FInputChord` | The currently selected key chord. |
+| `Font_DEPRECATED` | `FSlateFontInfo` | - |
+| `Margin` | `FMargin` | The amount of blank space around the text used to display the currently selected key. |
+| `ColorAndOpacity_DEPRECATED` | `FLinearColor` | - |
+| `KeySelectionText` | `FText` | Sets the text which is displayed while selecting keys. |
+| `NoKeySpecifiedText` | `FText` | Sets the text to display when no key text is available or not selecting a key. |
+| `bAllowModifierKeys` | `bool` | When true modifier keys such as control and alt are allowed in the <br>	 input chord representing the selected key, if false modifier keys are ignored. |
+| `bAllowGamepadKeys` | `bool` | When true gamepad keys are allowed in the input chord representing the selected key, otherwise they are ignored. |
+| `EscapeKeys` | `TArray < FKey >` | When true gamepad keys are allowed in the input chord representing the selected key, otherwise they are ignored. |
+
+## Functions
+
+### `SetSelectedKey`
+
+```text
+SetSelectedKey(InSelectedKey: FInputChord &) -> void
+```
+
+Sets the currently selected key.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InSelectedKey` | `FInputChord &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetKeySelectionText`
+
+```text
+SetKeySelectionText(InKeySelectionText: FText) -> void
+```
+
+Sets the text which is displayed while selecting keys.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InKeySelectionText` | `FText` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetNoKeySpecifiedText`
+
+```text
+SetNoKeySpecifiedText(InNoKeySpecifiedText: FText) -> void
+```
+
+Sets the text to display when no key text is available or not selecting a key.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InNoKeySpecifiedText` | `FText` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAllowModifierKeys`
+
+```text
+SetAllowModifierKeys(bInAllowModifierKeys: bool) -> void
+```
+
+Sets whether or not modifier keys are allowed in the selected key.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bInAllowModifierKeys` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAllowGamepadKeys`
+
+```text
+SetAllowGamepadKeys(bInAllowGamepadKeys: bool) -> void
+```
+
+Sets whether or not gamepad keys are allowed in the selected key.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bInAllowGamepadKeys` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetIsSelectingKey`
+
+```text
+GetIsSelectingKey() -> bool
+```
+
+Returns true if the widget is currently selecting a key, otherwise returns false.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `SetTextBlockVisibility`
+
+```text
+SetTextBlockVisibility(InVisibility: ESlateVisibility) -> void
+```
+
+Sets the visibility of the text block.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InVisibility` | `ESlateVisibility` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Delegates
+
+### `OnKeySelected`
+
+```text
+OnKeySelected(SelectedKey: FInputChord) -> void
+```
+
+Called whenever a new key is selected by the user.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SelectedKey` | `FInputChord` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnIsSelectingKeyChanged`
+
+```text
+OnIsSelectingKeyChanged() -> void
+```
+
+Called whenever the key selection mode starts or stops.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputSettings.json -->
+
+# UInputSettings
+
+Project wide settings for input handling
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `AxisConfig` | `TArray < struct FInputAxisConfigEntry >` | Properties of Axis controls |
+| `bAltEnterTogglesFullscreen` | `uint32` | - |
+| `bF11TogglesFullscreen` | `uint32` | - |
+| `bUseMouseForTouch` | `uint32` | - |
+| `bEnableMouseSmoothing` | `uint32` | - |
+| `bEnableFOVScaling` | `uint32` | - |
+| `FOVScale` | `float` | - |
+| `DoubleClickTime` | `float` | If a key is pressed twice in this amount of time it is considered a "double click" |
+| `bCaptureMouseOnLaunch` | `bool` | Controls if the viewport will capture the mouse on Launch of the application |
+| `DefaultViewportMouseCaptureMode` | `EMouseCaptureMode` | The default mouse capture mode for the game viewport |
+| `bDefaultViewportMouseLock_DEPRECATED` | `bool` | The default mouse lock state when the viewport acquires capture |
+| `DefaultViewportMouseLockMode` | `EMouseLockMode` | The default mouse lock state behavior when the viewport acquires capture |
+| `ActionMappings` | `TArray < struct FInputActionKeyMapping >` | List of Action Mappings |
+| `AxisMappings` | `TArray < struct FInputAxisKeyMapping >` | List of Axis Mappings |
+| `bAlwaysShowTouchInterface` | `bool` | Should the touch input interface be shown always, or only when the platform has a touch screen? |
+| `bShowConsoleOnFourFingerTap` | `bool` | Whether or not to show the console on 4 finger tap, on mobile platforms |
+| `DefaultTouchInterface` | `FSoftObjectPath` | The default on-screen touch input interface for the game (can be null to disable the onscreen interface) |
+| `ConsoleKey_DEPRECATED` | `FKey` | The key which opens the console. |
+| `ConsoleKeys` | `TArray < FKey >` | The keys which open the console. |
+
+## Functions
+
+### `GetInputSettings`
+
+```text
+GetInputSettings() -> UInputSettings *
+```
+
+Returns the game local input settings (action mappings, axis mappings, etc...)
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UInputSettings *` | - |
+
+### `AddActionMapping`
+
+```text
+AddActionMapping(KeyMapping: FInputActionKeyMapping &, bForceRebuildKeymaps: bool) -> void
+```
+
+Programmatically add an action mapping to the project defaults
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `KeyMapping` | `FInputActionKeyMapping &` | - |
+| `bForceRebuildKeymaps` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetActionMappingByName`
+
+```text
+GetActionMappingByName(InActionName: FName, OutMappings: TArray < FInputActionKeyMapping > &) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InActionName` | `FName` | - |
+| `OutMappings` | `TArray < FInputActionKeyMapping > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `RemoveActionMapping`
+
+```text
+RemoveActionMapping(KeyMapping: FInputActionKeyMapping &, bForceRebuildKeymaps: bool) -> void
+```
+
+Programmatically remove an action mapping to the project defaults
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `KeyMapping` | `FInputActionKeyMapping &` | - |
+| `bForceRebuildKeymaps` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `AddAxisMapping`
+
+```text
+AddAxisMapping(KeyMapping: FInputAxisKeyMapping &, bForceRebuildKeymaps: bool) -> void
+```
+
+Programmatically add an axis mapping to the project defaults
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `KeyMapping` | `FInputAxisKeyMapping &` | - |
+| `bForceRebuildKeymaps` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetAxisMappingByName`
+
+```text
+GetAxisMappingByName(InAxisName: FName, OutMappings: TArray < FInputAxisKeyMapping > &) -> void
+```
+
+Retrieve all axis mappings by a certain name.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InAxisName` | `FName` | - |
+| `OutMappings` | `TArray < FInputAxisKeyMapping > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `RemoveAxisMapping`
+
+```text
+RemoveAxisMapping(KeyMapping: FInputAxisKeyMapping &, bForceRebuildKeymaps: bool) -> void
+```
+
+Programmatically remove an axis mapping to the project defaults
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `KeyMapping` | `FInputAxisKeyMapping &` | - |
+| `bForceRebuildKeymaps` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SaveKeyMappings`
+
+```text
+SaveKeyMappings() -> void
+```
+
+Flush the current mapping values to the config file
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetActionNames`
+
+```text
+GetActionNames(ActionNames: TArray < FName > &) -> void
+```
+
+Populate a list of all defined action names
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ActionNames` | `TArray < FName > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetAxisNames`
+
+```text
+GetAxisNames(AxisNames: TArray < FName > &) -> void
+```
+
+Populate a list of all defined axis names
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `AxisNames` | `TArray < FName > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ForceRebuildKeymaps`
+
+```text
+ForceRebuildKeymaps() -> void
+```
+
+When changes are made to the default mappings, push those changes out to PlayerInput key maps
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ApplySettings`
+
+```text
+ApplySettings() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ResetToDefaultEditorSettings`
+
+```text
+ResetToDefaultEditorSettings() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SaveToConfig`
+
+```text
+SaveToConfig() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetActionMappings`
+
+```text
+GetActionMappings() -> TArray < struct FInputActionKeyMapping >
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TArray < struct FInputActionKeyMapping >` | - |
+
+### `GetAxisMappings`
+
+```text
+GetAxisMappings() -> TArray < struct FInputAxisKeyMapping >
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TArray < struct FInputAxisKeyMapping >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputTouchDelegateBinding.json -->
+
+# UInputTouchDelegateBinding
+
+## Inheritance
+
+`UInputDelegateBinding`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `InputTouchDelegateBindings` | `TArray < FBlueprintInputTouchDelegateBinding >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInstancedStaticMeshComponent.json -->
+
+# UInstancedStaticMeshComponent
+
+A component that efficiently renders multiple instances of the same StaticMesh.
+
+## Inheritance
+
+`UStaticMeshComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PerInstanceSMData` | `TArray < FInstancedStaticMeshInstanceData >` | Array of instances, bulk serialized. |
+| `InstancingRandomSeed` | `int32` | Value used to seed the random number stream that generates random numbers for each of this mesh's instances.<br>		this is set to zero (default), it will be populated automatically by the editor. |
+| `InstanceStartCullDistance` | `int32` | Distance from camera at which each instance begins to fade out. |
+| `InstanceEndCullDistance` | `int32` | Distance from camera at which each instance completely fades out. |
+| `InstanceNearCullDistance` | `int32` | Distance from camera at which each instance. |
+| `bIsFlyType` | `bool` | - |
+| `bIsFoliage` | `bool` | - |
+| `bIsPCFoliage` | `bool` | - |
+| `InstanceReorderTable` | `TArray < int32 >` | Mapping from PerInstanceSMData order to instance render buffer order. If empty, the PerInstanceSMData order is used. |
+| `RemovedInstances` | `TArray < int32 >` | - |
+| `InstanceVisibilityMapping` | `TMap < int32 , FInstanceVisibilityData >` | - |
+| `UseDynamicInstanceBuffer` | `bool` | Set to true to permit updating the vertex buffer used in the instance buffer without recreating it completely. This should be used if you plan on dynamically changing the instances at run-time. |
+| `KeepInstanceBufferCPUAccess` | `bool` | Set to true to keep instance buffer accessible by the CPU, otherwise it's discarded and considered never changing, only GPU has a copy of the data. |
+| `DynamicInstancingParametersValue` | `TArray < FVector4 >` | - |
+| `PerInstanceDynamicInstancingParameterCount` | `int32` | PerInstanceDynamicInstancingParameterCount |
+| `PhysicsSerializer` | `UPhysicsSerializer *` | Serialization of all the InstanceBodies. Helps speed up physics creation time. |
+| `StashInstanceTransform` | `TMap < int32 , FMatrix >` | - |
+| `NumPendingLightmaps` | `int32` | Number of pending lightmaps still to be calculated (Apply()'d). |
+| `CachedMappings` | `TArray < FInstancedStaticMeshMappingInfo >` | The mappings for all the instances of this component. |
+
+## Functions
+
+### `AddInstance`
+
+```text
+AddInstance(InstanceTransform: FTransform &) -> int32
+```
+
+Add an instance to this component. Transform is given in local space of this component.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InstanceTransform` | `FTransform &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | - |
+
+### `AddInstanceWorldSpace`
+
+```text
+AddInstanceWorldSpace(WorldTransform: FTransform &) -> int32
+```
+
+Add an instance to this component. Transform is given in world space.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldTransform` | `FTransform &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | - |
+
+### `SetInstanceDIP`
+
+```text
+SetInstanceDIP(InstanceIndex: int32, MaterialIndex: int32, Name: FString &, Value: FVector4 &) -> bool
+```
+
+Set a DIP value on one instance for the given material slot.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InstanceIndex` | `int32` | - |
+| `MaterialIndex` | `int32` | - |
+| `Name` | `FString &` | - |
+| `Value` | `FVector4 &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `SetAllInstancesDIP`
+
+```text
+SetAllInstancesDIP(MaterialIndex: int32, Name: FString &, Value: FVector4 &) -> bool
+```
+
+Set the same DIP value on all instances.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `MaterialIndex` | `int32` | - |
+| `Name` | `FString &` | - |
+| `Value` | `FVector4 &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `GetInstanceTransform`
+
+```text
+GetInstanceTransform(InstanceIndex: int32, OutInstanceTransform: FTransform &, bWorldSpace: bool) -> bool
+```
+
+Get the transform for the instance specified. Instance is returned in local space of this component unless bWorldSpace is set.  Returns True on success.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InstanceIndex` | `int32` | - |
+| `OutInstanceTransform` | `FTransform &` | - |
+| `bWorldSpace` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `UpdateInstanceTransform`
+
+```text
+UpdateInstanceTransform(InstanceIndex: int32, NewInstanceTransform: FTransform &, bWorldSpace: bool, bMarkRenderStateDirty: bool, bTeleport: bool) -> bool
+```
+
+Update the transform for the instance specified.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InstanceIndex` | `int32` | The index of the instance to update |
+| `NewInstanceTransform` | `FTransform &` | The new transform |
+| `bWorldSpace` | `bool` | If true, the new transform interpreted as a World Space transform, otherwise it is interpreted as Local Space |
+| `bMarkRenderStateDirty` | `bool` | If true, the change should be visible immediately. If you are updating many instances you should only set this to true for the last instance. |
+| `bTeleport` | `bool` | Whether or not the instance's physics should be moved normally, or teleported (moved instantly, ignoring velocity). |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True on success. |
+
+### `RemoveInstance`
+
+```text
+RemoveInstance(InstanceIndex: int32) -> bool
+```
+
+Remove the instance specified. Returns True on success. Note that this will leave the array in order, but may shrink it.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InstanceIndex` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `ClearInstances`
+
+```text
+ClearInstances() -> void
+```
+
+Clear all instances being rendered by this component.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetInstanceCount`
+
+```text
+GetInstanceCount() -> int32
+```
+
+Get the number of instances in this component.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | - |
+
+### `SetCullDistances`
+
+```text
+SetCullDistances(StartCullDistance: int32, EndCullDistance: int32) -> void
+```
+
+Sets the fading start and culling end distances for this component.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `StartCullDistance` | `int32` | - |
+| `EndCullDistance` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetNearCullDistance`
+
+```text
+SetNearCullDistance(CullDistance: int32) -> void
+```
+
+Sets the cull near distance for this component.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `CullDistance` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetInstancesOverlappingSphere`
+
+```text
+GetInstancesOverlappingSphere(Center: FVector &, Radius: float, bSphereInWorldSpace: bool) -> TArray < int32 >
+```
+
+Returns the instances with instance bounds overlapping the specified sphere. The return value is an array of instance indices.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Center` | `FVector &` | - |
+| `Radius` | `float` | - |
+| `bSphereInWorldSpace` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TArray < int32 >` | - |
+
+### `GetInstancesOverlappingBox`
+
+```text
+GetInstancesOverlappingBox(Box: FBox &, bBoxInWorldSpace: bool) -> TArray < int32 >
+```
+
+Returns the instances with instance bounds overlapping the specified box. The return value is an array of instance indices.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Box` | `FBox &` | - |
+| `bBoxInWorldSpace` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TArray < int32 >` | - |
+
+### `HideInstance`
+
+```text
+HideInstance(InstanceIndices: TArray < int32 > &) -> bool
+```
+
+Update the transform for the instance specified.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InstanceIndices` | `TArray < int32 > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | True on success. |
+
+### `ShowInstance`
+
+```text
+ShowInstance(InstanceIndices: TArray < int32 > &) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InstanceIndices` | `TArray < int32 > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInt32Binding.json -->
+
+# UInt32Binding
+
+## Inheritance
+
+`UPropertyBinding`
+
+## Functions
+
+### `GetValue`
+
+```text
+GetValue() -> int32
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpCurveEdSetup.json -->
+
+# UInterpCurveEdSetup
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Tabs` | `TArray < struct FCurveEdTab >` | - |
+| `ActiveTab` | `int32` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpData.json -->
+
+# UInterpData
+
+Interpolation data, containing keyframe tracks, event tracks etc.
+  This does not contain any  AActor  references or state, so can safely be stored in
+  packages, shared between multiple MatineeActors etc.
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `InterpLength` | `float` | Duration of interpolation sequence - in seconds. |
+| `PathBuildTime` | `float` | Position in Interp to move things to for path-building in editor. |
+| `InterpGroups` | `TArray < UInterpGroup * >` | Actual interpolation data. Groups of InterpTracks. |
+| `CurveEdSetup` | `UInterpCurveEdSetup *` | Used for curve editor to remember curve-editing setup. Only loaded in editor. |
+| `EdSectionStart` | `float` | Used in editor for defining sections to loop, stretch etc. |
+| `EdSectionEnd` | `float` | Used in editor for defining sections to loop, stretch etc. |
+| `bShouldBakeAndPrune` | `uint32` | If true, then the matinee should be baked and pruned at cook time. |
+| `CachedDirectorGroup` | `UInterpGroupDirector *` | Cached version of the director group, if any, for easy access while in game |
+| `AllEventNames` | `TArray < FName >` | Unique names of all events contained across all event tracks |
+| `InterpFilters` | `TArray < UInterpFilter * >` | Used for filtering which tracks are currently visible. |
+| `SelectedFilter` | `UInterpFilter *` | The currently selected filter. |
+| `DefaultFilters` | `TArray < UInterpFilter * >` | Array of default filters. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpFilter.json -->
+
+# UInterpFilter
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Caption` | `FString` | Caption for this filter. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpFilter_Classes.json -->
+
+# UInterpFilter_Classes
+
+## Inheritance
+
+`UInterpFilter`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ClassToFilterBy` | `TSubclassOf < UObject >` | Which class to filter groups by. |
+| `TrackClasses` | `TArray < TSubclassOf < UObject > >` | List of allowed track classes.  If empty, then all track classes will be included.  Only groups that<br>		contain at least one of these types of tracks will be displayed. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpFilter_Custom.json -->
+
+# UInterpFilter_Custom
+
+## Inheritance
+
+`UInterpFilter`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `GroupsToInclude` | `TArray < UInterpGroup * >` | Which groups are included in this filter. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpGroup.json -->
+
+# UInterpGroup
+
+## Inheritance
+
+`UObject` -> `FInterpEdInputInterface`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `InterpTracks` | `TArray < UInterpTrack * >` | - |
+| `GroupName` | `FName` | Within an InterpData, all GroupNames must be unique. <br>	 	Used for naming Variable connectors on the Action in Kismet and finding each groups object. |
+| `GroupColor` | `FColor` | Colour used for drawing tracks etc. related to this group. |
+| `bCollapsed` | `uint32` | Whether or not this group is folded away in the editor. |
+| `bVisible` | `uint32` | Whether or not this group is visible in the editor. |
+| `bIsFolder` | `uint32` | When enabled, this group is treated like a folder in the editor, which should only be used for organization.  Folders are never associated with actors and don't have a presence in the Kismet graph. |
+| `bIsParented` | `uint32` | When true, this group is considered a 'visual child' of another group.  This doesn't at all affect the behavior of the group, it's only for visual organization.  Also, it's implied that the parent is the next prior group in the array that doesn't have a parent. |
+| `bIsSelected` | `uint32` | When enabled, this group will be selected in the interp editor. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpGroupCamera.json -->
+
+# UInterpGroupCamera
+
+## Inheritance
+
+`UInterpGroup`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `CameraAnimInst` | `UCameraAnim *` | - |
+| `CompressTolerance` | `float` | When compress, tolerance option |
+| `Target` | `FCameraPreviewInfo` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpGroupInst.json -->
+
+# UInterpGroupInst
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Group` | `UInterpGroup *` | An instance of an UInterpGroup for a particular Actor. There may be multiple InterpGroupInsts for a single<br>	  UInterpGroup in the InterpData, if multiple Actors are connected to the same UInterpGroup. <br>	  The Outer of an UInterpGroupInst is a MatineeActor<br>	 <br>	 UInterpGroup within the InterpData that this is an instance of. |
+| `GroupActor` | `AActor *` | Actor that this Group instance is acting upon.<br>	 	NB: that this may be set to NULL at any time as a result of the  AActor  being destroyed. |
+| `TrackInst` | `TArray < UInterpTrackInst * >` | Array if InterpTrack instances. TrackInst.Num() == UInterpGroup.InterpTrack.Num() must be true. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpToMovementComponent.json -->
+
+# UInterpToMovementComponent
+
+Move the root component between a series of points over a given time  
+ 
+  @see UMovementComponent
+
+## Inheritance
+
+`UMovementComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Duration` | `float` | How long to take to move from the first point to the last (or vice versa) |
+| `bPauseOnImpact` | `uint32` | If true, will pause movement on impact. If false it will behave as if the end of the movement range was reached based on the BehaviourType. |
+| `BehaviourType` | `EInterpToBehaviourType` | Movement behaviour of the component |
+| `bForceSubStepping` | `uint32` | If true, forces sub-stepping to break up movement into discrete smaller steps to improve accuracy of the trajectory.<br>	  Objects that move in a straight line typically do not need to set this, as movement always uses continuous collision detection (sweeps) so collision is not missed.<br>	  Sub-stepping is automatically enabled when under the effects of gravity or when homing towards a target.<br>	  @see MaxSimulationTimeStep, MaxSimulationIterations |
+| `MaxSimulationTimeStep` | `float` | Max time delta for each discrete simulation step.<br>	  Lowering this value can address issues with fast-moving objects or complex collision scenarios, at the cost of performance.<br>	 <br>	  WARNING: if (MaxSimulationTimeStep  MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation.<br>	  @see MaxSimulationIterations, bForceSubStepping |
+| `MaxSimulationIterations` | `int32` | Max number of iterations used for each discrete simulation step.<br>	  Increasing this value can address issues with fast-moving objects or complex collision scenarios, at the cost of performance.<br>	 <br>	  WARNING: if (MaxSimulationTimeStep  MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation.<br>	  @see MaxSimulationTimeStep, bForceSubStepping |
+| `ControlPoints` | `TArray < FInterpControlPoint >` | List of control points to visit. |
+
+## Functions
+
+### `StopSimulating`
+
+```text
+StopSimulating(HitResult: FHitResult &) -> void
+```
+
+Clears the reference to UpdatedComponent, fires stop event, and stops ticking.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `HitResult` | `FHitResult &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `RestartMovement`
+
+```text
+RestartMovement(InitialDirection: float) -> void
+```
+
+Reset to start. Sets time to zero and direction to 1.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InitialDirection` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `FinaliseControlPoints`
+
+```text
+FinaliseControlPoints() -> void
+```
+
+Initialise the control points array. Call after adding control points if they are add after begin play .
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Delegates
+
+### `OnInterpToReverse`
+
+```text
+OnInterpToReverse(ImpactResult: const FHitResult&, Time: float) -> void
+```
+
+Called when InterpTo impacts something and reverse is enabled.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ImpactResult` | `const FHitResult&` | - |
+| `Time` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnInterpToStop`
+
+```text
+OnInterpToStop(ImpactResult: const FHitResult&, Time: float) -> void
+```
+
+Called when InterpTo has come to a stop.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ImpactResult` | `const FHitResult&` | - |
+| `Time` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnWaitBeginDelegate`
+
+```text
+OnWaitBeginDelegate(ImpactResult: const FHitResult&, Time: float) -> void
+```
+
+Called when InterpTo has come to a stop but will resume when possible.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ImpactResult` | `const FHitResult&` | - |
+| `Time` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnWaitEndDelegate`
+
+```text
+OnWaitEndDelegate(ImpactResult: const FHitResult&, Time: float) -> void
+```
+
+Called when InterpTo has resumed following a stop.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ImpactResult` | `const FHitResult&` | - |
+| `Time` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnResetDelegate`
+
+```text
+OnResetDelegate(ImpactResult: const FHitResult&, Time: float) -> void
+```
+
+Called when InterpTo reached the end and reset back to start .
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ImpactResult` | `const FHitResult&` | - |
+| `Time` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrack.json -->
+
+# UInterpTrack
+
+## Inheritance
+
+`UObject` -> `FCurveEdInterface` -> `FInterpEdInputInterface`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SubTracks` | `TArray < UInterpTrack * >` | A list of subtracks that belong to this track |
+| `TrackInstClass` | `TSubclassOf < UInterpTrackInst >` | - |
+| `ActiveCondition` | `TEnumAsByte < enum ETrackActiveCondition >` | Sets the condition that must be met for this track to be enabled |
+| `TrackTitle` | `FString` | Title of track type. |
+| `bOnePerGroup` | `uint32` | Whether there may only be one of this track in an UInterpGroup. |
+| `bDirGroupOnly` | `uint32` | If this track can only exist inside the Director group. |
+| `bDisableTrack` | `uint32` | Whether or not this track should actually update the target actor. |
+| `bIsSelected` | `uint32` | Whether or not this track is selected in the editor. |
+| `bIsAnimControlTrack` | `uint32` | If true, the  AActor  this track is working on will have BeginAnimControlFinishAnimControl called on it. |
+| `bSubTrackOnly` | `uint32` | If this track can only exist as a sub track. |
+| `bVisible` | `uint32` | Whether or not this track is visible in the editor. |
+| `bIsRecording` | `uint32` | Whether or not this track is recording in the editor. |
+| `SubTrackGroups` | `TArray < struct FSubTrackGroup >` | A list of subtrack groups (for editor UI organization only) |
+| `SupportedSubTracks` | `TArray < struct FSupportedSubTrackInfo >` | A list of supported tracks that can be a subtrack of this track. |
+| `TrackIcon` | `UTexture2D *` | - |
+| `bIsCollapsed` | `uint32` | If this track is collapsed. (Only applies  to tracks with subtracks). |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackAnimControl.json -->
+
+# UInterpTrackAnimControl
+
+## Inheritance
+
+`UInterpTrackFloatBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SlotName` | `FName` | Name of slot to use when playing animation. Passed to Actor. <br>	 	When multiple tracks use the same slot name, they are each given a different ChannelIndex when SetAnimPosition is called. |
+| `AnimSeqs` | `TArray < struct FAnimControlTrackKey >` | Track of different animations to play and when to start playing them. |
+| `bSkipAnimNotifiers` | `uint32` | Skip all anim notifiers |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackBoolProp.json -->
+
+# UInterpTrackBoolProp
+
+## Inheritance
+
+`UInterpTrack`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `BoolTrack` | `TArray < struct FBoolTrackKey >` | Array of booleans to set. |
+| `PropertyName` | `FName` | Name of property in Group  AActor  which this track will modify over time. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackColorProp.json -->
+
+# UInterpTrackColorProp
+
+## Inheritance
+
+`UInterpTrackVectorBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PropertyName` | `FName` | Name of property in Group  AActor  which this track mill modify over time. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackDirector.json -->
+
+# UInterpTrackDirector
+
+## Inheritance
+
+`UInterpTrack`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `CutTrack` | `TArray < struct FDirectorTrackCut >` | Array of cuts between cameras. |
+| `bSimulateCameraCutsOnClients` | `uint32` | True to allow clients to simulate their own camera cuts.  Can help with latency-induced timing issues. |
+| `PreviewCamera` | `ACameraActor *` | The camera actor which the track is currently focused on. Only valid if this track or it's group is selected |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackEvent.json -->
+
+# UInterpTrackEvent
+
+## Inheritance
+
+`UInterpTrack`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EventTrack` | `TArray < struct FEventTrackKey >` | Array of events to fire off. |
+| `bFireEventsWhenForwards` | `uint32` | If events should be fired when passed playing the sequence forwards. |
+| `bFireEventsWhenBackwards` | `uint32` | If events should be fired when passed playing the sequence backwards. |
+| `bFireEventsWhenJumpingForwards` | `uint32` | If true, events on this track are fired even when jumping forwads through a sequence - for example, skipping a cinematic. |
+| `bUseCustomEventName` | `uint32` | If checked each key's event name is the exact name of the custom event function in level script that will be called |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackFade.json -->
+
+# UInterpTrackFade
+
+## Inheritance
+
+`UInterpTrackFloatBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bPersistFade` | `uint32` | InterpTrackFade<br>	 <br>	  Special float property track that controls camera fading over time.<br>	  Should live in a Director group. |
+| `bFadeAudio` | `uint32` | True to set master audio volume along with the visual fade. |
+| `FadeColor` | `FLinearColor` | Color to fade to. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackFloatAnimBPParam.json -->
+
+# UInterpTrackFloatAnimBPParam
+
+## Inheritance
+
+`UInterpTrackFloatBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `AnimBlueprintClass` | `UAnimBlueprintGeneratedClass *` | - |
+| `AnimClass` | `TSubclassOf < UAnimInstance >` | Materials whose parameters we want to change and the references to those materials. |
+| `ParamName` | `FName` | Name of parameter in the MaterialInstance which this track will modify over time. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackFloatBase.json -->
+
+# UInterpTrackFloatBase
+
+## Inheritance
+
+`UInterpTrack`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `FloatTrack` | `FInterpCurveFloat` | Actually track data containing keyframes of float as it varies over time. |
+| `CurveTension` | `float` | Tension of curve, used for keypoints using automatic tangents. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackFloatMaterialParam.json -->
+
+# UInterpTrackFloatMaterialParam
+
+## Inheritance
+
+`UInterpTrackFloatBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `TargetMaterials` | `TArray < UMaterialInterface * >` | Materials whose parameters we want to change and the references to those materials. |
+| `ParamName` | `FName` | Name of parameter in the MaterialInstance which this track will modify over time. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackFloatParticleParam.json -->
+
+# UInterpTrackFloatParticleParam
+
+## Inheritance
+
+`UInterpTrackFloatBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ParamName` | `FName` | Name of property in the Emitter which this track mill modify over time. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackFloatProp.json -->
+
+# UInterpTrackFloatProp
+
+## Inheritance
+
+`UInterpTrackFloatBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PropertyName` | `FName` | Name of property in Group  AActor  which this track mill modify over time. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstAnimControl.json -->
+
+# UInterpTrackInstAnimControl
+
+## Inheritance
+
+`UInterpTrackInst`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LastUpdatePosition` | `float` | - |
+| `InitPosition` | `FVector` | - |
+| `InitRotation` | `FRotator` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstBoolProp.json -->
+
+# UInterpTrackInstBoolProp
+
+## Inheritance
+
+`UInterpTrackInstProperty`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `BoolProperty` | `UBoolProperty *` | Mask that indicates which bit the boolean property actually uses of the value pointed to by BoolProp. |
+| `ResetBool` | `bool` | Saved value for restoring state when exiting Matinee. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstColorProp.json -->
+
+# UInterpTrackInstColorProp
+
+## Inheritance
+
+`UInterpTrackInstProperty`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ResetColor` | `FColor` | Saved value for restoring state when exiting Matinee. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstDirector.json -->
+
+# UInterpTrackInstDirector
+
+## Inheritance
+
+`UInterpTrackInst`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `OldViewTarget` | `AActor *` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstEvent.json -->
+
+# UInterpTrackInstEvent
+
+## Inheritance
+
+`UInterpTrackInst`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LastUpdatePosition` | `float` | Position we were in last time we evaluated Events. <br>	 	During UpdateTrack, events between this time and the current time will be fired. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstFloatAnimBPParam.json -->
+
+# UInterpTrackInstFloatAnimBPParam
+
+## Inheritance
+
+`UInterpTrackInst`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `AnimScriptInstance` | `UAnimInstance *` | MIDs we're using to set the desired parameter. |
+| `ResetFloat` | `float` | Saved values for restoring state when exiting Matinee. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstFloatMaterialParam.json -->
+
+# UInterpTrackInstFloatMaterialParam
+
+## Inheritance
+
+`UInterpTrackInst`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `MaterialInstances` | `TArray < UMaterialInstanceDynamic * >` | MIDs we're using to set the desired parameter. |
+| `ResetFloats` | `TArray < float >` | Saved values for restoring state when exiting Matinee. |
+| `PrimitiveMaterialRefs` | `TArray < struct FPrimitiveMaterialRef >` | Primitive components on which materials have been overridden. |
+| `InstancedTrack` | `UInterpTrackFloatMaterialParam *` | track we are an instance of - used in the editor to propagate changes to the track's Materials array immediately |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstFloatParticleParam.json -->
+
+# UInterpTrackInstFloatParticleParam
+
+## Inheritance
+
+`UInterpTrackInst`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ResetFloat` | `float` | Saved value for restoring state when exiting Matinee. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstFloatProp.json -->
+
+# UInterpTrackInstFloatProp
+
+## Inheritance
+
+`UInterpTrackInstProperty`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ResetFloat` | `float` | Saved value for restoring state when exiting Matinee. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstLinearColorProp.json -->
+
+# UInterpTrackInstLinearColorProp
+
+## Inheritance
+
+`UInterpTrackInstProperty`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ResetColor` | `FLinearColor` | Saved value for restoring state when exiting Matinee. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstMove.json -->
+
+# UInterpTrackInstMove
+
+## Inheritance
+
+`UInterpTrackInst`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ResetLocation` | `FVector` | Saved position. Used in editor for resetting when quitting Matinee. |
+| `ResetRotation` | `FRotator` | Saved rotation. Used in editor for resetting when quitting Matinee. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstParticleReplay.json -->
+
+# UInterpTrackInstParticleReplay
+
+## Inheritance
+
+`UInterpTrackInst`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LastUpdatePosition` | `float` | Position we were in last time we evaluated.<br>	 	During UpdateTrack, events between this time and the current time will be processed. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstProperty.json -->
+
+# UInterpTrackInstProperty
+
+## Inheritance
+
+`UInterpTrackInst`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `InterpProperty` | `UProperty *` | Function to call after updating the value of the color property. |
+| `PropertyOuterObjectInst` | `UObject *` | Pointer to the UObject instance that is the outer of the color property we are interpolating on, this is used to process the property update callback. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstSlomo.json -->
+
+# UInterpTrackInstSlomo
+
+## Inheritance
+
+`UInterpTrackInst`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `OldTimeDilation` | `float` | Backup of initial LevelInfo MatineeTimeDilation setting when interpolation started. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstSound.json -->
+
+# UInterpTrackInstSound
+
+## Inheritance
+
+`UInterpTrackInst`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LastUpdatePosition` | `float` | - |
+| `PlayAudioComp` | `UAudioComponent *` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstToggle.json -->
 
 # UInterpTrackInstToggle
@@ -11067,6 +13519,113 @@ Resets the state of a given spring
 |---|---|
 | `void` | - |
 
+### `VectorSpringInterpEx`
+
+```text
+VectorSpringInterpEx(Current: FVector, Target: FVector, SpringState: FVectorSpringStateEx &, Stiffness: float, CriticalDampingFactor: float, DeltaTime: float, Mass: float, TargetVelocityAmount: float, bInitializeFromTarget: bool) -> FVector
+```
+
+Add by zoranouyang
+	 [从 UE5.8 移植，Ex 后缀表示新增的解析解版本]
+	
+	 用弹簧模型把向量从 Current 插值到 Target。
+	
+	 与 VectorSpringInterp（UE4.18 原版）的区别：原版使用显式欧拉积分的 PD 控制器，
+	 本版使用 UE5.8 的解析解（FMath::SpringDamperEx），数值稳定、任意 DeltaTime 无累积误差，
+	 且插值结果与 UE5.8 完全一致。原版函数保持不变，避免影响既有调用方的表现。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Current` | `FVector` | 当前值 |
+| `Target` | `FVector` | 目标值 |
+| `SpringState` | `FVectorSpringStateEx &` | 弹簧状态（速度等），每个弹簧需要独立且跨帧保存的变量 |
+| `Stiffness` | `float` | 弹簧刚度（越大越"硬"，围绕目标值的振荡也越明显） |
+| `CriticalDampingFactor` | `float` | 阻尼系数（0 = 无阻尼，1 = 临界阻尼即无振荡） |
+| `DeltaTime` | `float` | 时间间隔 |
+| `Mass` | `float` | 质量乘数 |
+| `TargetVelocityAmount` | `float` | 目标速度前馈量（0 = 完全不前馈，1 = 完全前馈） |
+| `bInitializeFromTarget` | `bool` | 为 true 时首帧直接吸附到目标值，避免初始突跳 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `QuaternionSpringInterpEx`
+
+```text
+QuaternionSpringInterpEx(Current: FQuat, Target: FQuat, SpringState: FQuaternionSpringStateEx &, Stiffness: float, CriticalDampingFactor: float, DeltaTime: float, Mass: float, TargetVelocityAmount: float, bInitializeFromTarget: bool) -> FQuat
+```
+
+Add by zoranouyang
+	 [从 UE5.8 移植，Ex 后缀表示新增；UE4.18 原本没有四元数弹簧插值]
+	
+	 用弹簧模型把四元数从 Current 插值到 Target。内部把四元数速度与角速度互相转换，
+	 底层复用与 VectorSpringInterpEx 相同的解析解积分器，结果与 UE5.8 完全一致。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Current` | `FQuat` | 当前旋转 |
+| `Target` | `FQuat` | 目标旋转 |
+| `SpringState` | `FQuaternionSpringStateEx &` | 弹簧状态（角速度等），每个弹簧需要独立且跨帧保存的变量 |
+| `Stiffness` | `float` | 弹簧刚度 |
+| `CriticalDampingFactor` | `float` | 阻尼系数（1 = 临界阻尼） |
+| `DeltaTime` | `float` | 时间间隔 |
+| `Mass` | `float` | 质量乘数 |
+| `TargetVelocityAmount` | `float` | 目标角速度前馈量 |
+| `bInitializeFromTarget` | `bool` | 为 true 时首帧直接吸附到目标旋转 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FQuat` | - |
+
+### `ResetVectorSpringStateEx`
+
+```text
+ResetVectorSpringStateEx(SpringState: FVectorSpringStateEx &) -> void
+```
+
+Resets the state of a given spring
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SpringState` | `FVectorSpringStateEx &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ResetQuaternionSpringStateEx`
+
+```text
+ResetQuaternionSpringStateEx(SpringState: FQuaternionSpringStateEx &) -> void
+```
+
+Resets the state of a given spring
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SpringState` | `FQuaternionSpringStateEx &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ### `RandomIntegerFromStream`
 
 ```text
@@ -14702,20 +17261,6 @@ Returns the platform specific unique device id
 |---|---|
 | `FString` | - |
 
-### `GetDeviceId`
-
-```text
-GetDeviceId() -> FString
-```
-
-Returns the platform specific unique device id
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FString` | - |
-
 ### `Conv_InterfaceToObject`
 
 ```text
@@ -14755,6 +17300,20 @@ MakeSoftObjectPath(PathString: FString &) -> FSoftObjectPath
 | Type | Description |
 |---|---|
 | `FSoftObjectPath` | SoftObjectPath |
+
+### `GetDeviceId`
+
+```text
+GetDeviceId() -> FString
+```
+
+Returns the platform specific unique device id
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FString` | - |
 
 ### `BreakSoftObjectPath`
 
@@ -16391,28 +18950,6 @@ Set a bool property by name
 |---|---|
 | `void` | - |
 
-### `SetObjectPropertyByName`
-
-```text
-SetObjectPropertyByName(Object: UObject *, PropertyName: FName, Value: UObject *) -> void
-```
-
-Set an OBJECT property by name
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Object` | `UObject *` | - |
-| `PropertyName` | `FName` | - |
-| `Value` | `UObject *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
 ### `SetClassPropertyByName`
 
 ```text
@@ -16428,6 +18965,28 @@ Set a CLASS property by name
 | `Object` | `UObject *` | - |
 | `PropertyName` | `FName` | - |
 | `Value` | `TSubclassOf < UObject >` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetObjectPropertyByName`
+
+```text
+SetObjectPropertyByName(Object: UObject *, PropertyName: FName, Value: UObject *) -> void
+```
+
+Set an OBJECT property by name
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Object` | `UObject *` | - |
+| `PropertyName` | `FName` | - |
+| `Value` | `UObject *` | - |
 
 **Returns**
 
@@ -16804,33 +19363,6 @@ BoxOverlapActors(WorldContextObject: UObject *, BoxPos: FVector, BoxRotation: FR
 |---|---|
 | `bool` | true if there was an overlap that passed the filters, false otherwise. |
 
-### `BoxOverlapComponents`
-
-```text
-BoxOverlapComponents(WorldContextObject: UObject *, BoxPos: FVector, BoxRotation: FRotator, Extent: FVector, ObjectTypes: TArray < TEnumAsByte < EObjectTypeQuery > > &, ComponentClassFilter: UClass *, ActorsToIgnore: TArray < AActor * > &, OutComponents: TArray < UPrimitiveComponent * > &) -> bool
-```
-
-返回一组跟指定Box范围发生重叠的Component
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContextObject` | `UObject *` | world上下文对象 |
-| `BoxPos` | `FVector` | Box中心位置 |
-| `BoxRotation` | `FRotator` | - |
-| `Extent` | `FVector` | - |
-| `ObjectTypes` | `TArray < TEnumAsByte < EObjectTypeQuery > > &` | 将结果限制为仅静态或仅动态的选项 |
-| `ComponentClassFilter` | `UClass *` | - |
-| `ActorsToIgnore` | `TArray < AActor * > &` | 需要忽略的Actor列表 |
-| `OutComponents` | `TArray < UPrimitiveComponent * > &` | 输出的产生碰撞的组件列表 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | true if there was an overlap that passed the filters, false otherwise. |
-
 ### `BoxOverlapOBBActors`
 
 ```text
@@ -16851,6 +19383,33 @@ Returns an array of actors that overlap the given axis-aligned box.
 | `ActorClassFilter` | `UClass *` | - |
 | `ActorsToIgnore` | `TArray < AActor * > &` | Ignore these actors in the list |
 | `OutActors` | `TArray < AActor * > &` | Returned array of actors. Unsorted. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true if there was an overlap that passed the filters, false otherwise. |
+
+### `BoxOverlapComponents`
+
+```text
+BoxOverlapComponents(WorldContextObject: UObject *, BoxPos: FVector, BoxRotation: FRotator, Extent: FVector, ObjectTypes: TArray < TEnumAsByte < EObjectTypeQuery > > &, ComponentClassFilter: UClass *, ActorsToIgnore: TArray < AActor * > &, OutComponents: TArray < UPrimitiveComponent * > &) -> bool
+```
+
+返回一组跟指定Box范围发生重叠的Component
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContextObject` | `UObject *` | world上下文对象 |
+| `BoxPos` | `FVector` | Box中心位置 |
+| `BoxRotation` | `FRotator` | - |
+| `Extent` | `FVector` | - |
+| `ObjectTypes` | `TArray < TEnumAsByte < EObjectTypeQuery > > &` | 将结果限制为仅静态或仅动态的选项 |
+| `ComponentClassFilter` | `UClass *` | - |
+| `ActorsToIgnore` | `TArray < AActor * > &` | 需要忽略的Actor列表 |
+| `OutComponents` | `TArray < UPrimitiveComponent * > &` | 输出的产生碰撞的组件列表 |
 
 **Returns**
 
@@ -18376,6 +20935,31 @@ AddFloatHistorySample(Value: float, FloatHistory: FDebugFloatHistory &) -> FDebu
 |---|---|
 | `FDebugFloatHistory` | - |
 
+### `DrawDebugDistance`
+
+```text
+DrawDebugDistance(WorldContextObject: UObject *, Self: FVector, Target: FVector, LinearColor: FLinearColor, Duration: float, Thickness: float) -> void
+```
+
+绘制Self到Tartget的连线与距离
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContextObject` | `UObject *` | - |
+| `Self` | `FVector` | - |
+| `Target` | `FVector` | - |
+| `LinearColor` | `FLinearColor` | - |
+| `Duration` | `float` | - |
+| `Thickness` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ### `DrawDebugActorName`
 
 ```text
@@ -18412,31 +20996,6 @@ DrawDebugActorMoveTrack(Actor: AActor *, LinearColor: FLinearColor, Duration: fl
 | Name | Type | Description |
 |---|---|---|
 | `Actor` | `AActor *` | - |
-| `LinearColor` | `FLinearColor` | - |
-| `Duration` | `float` | - |
-| `Thickness` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `DrawDebugDistance`
-
-```text
-DrawDebugDistance(WorldContextObject: UObject *, Self: FVector, Target: FVector, LinearColor: FLinearColor, Duration: float, Thickness: float) -> void
-```
-
-绘制Self到Tartget的连线与距离
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContextObject` | `UObject *` | - |
-| `Self` | `FVector` | - |
-| `Target` | `FVector` | - |
 | `LinearColor` | `FLinearColor` | - |
 | `Duration` | `float` | - |
 | `Thickness` | `float` | - |
@@ -18747,21 +21306,14 @@ GetTimeSinceLastPendingKillPurge() -> float
 |---|---|
 | `float` | - |
 
-### `ShowAdBanner`
+### `HideAdBanner`
 
 ```text
-ShowAdBanner(AdIdIndex: int32, bShowOnBottomOfScreen: bool) -> void
+HideAdBanner() -> void
 ```
 
-Will show an ad banner (iAd on iOS, or AdMob on Android) on the top or bottom of screen, on top of the GL view (doesn't resize the view)
+Hides the ad banner (iAd on iOS, or AdMob on Android). Will force close the ad if it's open
 	  (iOS and Android only)
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `AdIdIndex` | `int32` | The index of the ID to select for the ad to show |
-| `bShowOnBottomOfScreen` | `bool` | If true, the iAd will be shown at the bottom of the screen, top otherwise |
 
 **Returns**
 
@@ -18783,21 +21335,6 @@ Retrieves the total number of Ad IDs that can be selected between
 |---|---|
 | `int32` | - |
 
-### `HideAdBanner`
-
-```text
-HideAdBanner() -> void
-```
-
-Hides the ad banner (iAd on iOS, or AdMob on Android). Will force close the ad if it's open
-	  (iOS and Android only)
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
 ### `ForceCloseAdBanner`
 
 ```text
@@ -18806,6 +21343,28 @@ ForceCloseAdBanner() -> void
 
 Forces closed any displayed ad. Can lead to loss of revenue
 	  (iOS and Android only)
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ShowAdBanner`
+
+```text
+ShowAdBanner(AdIdIndex: int32, bShowOnBottomOfScreen: bool) -> void
+```
+
+Will show an ad banner (iAd on iOS, or AdMob on Android) on the top or bottom of screen, on top of the GL view (doesn't resize the view)
+	  (iOS and Android only)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `AdIdIndex` | `int32` | The index of the ID to select for the ad to show |
+| `bShowOnBottomOfScreen` | `bool` | If true, the iAd will be shown at the bottom of the screen, top otherwise |
 
 **Returns**
 
@@ -19007,6 +21566,27 @@ Resets the gamepad to player controller id assignments (Android only)
 |---|---|
 | `void` | - |
 
+### `SetSuppressViewportTransitionMessage`
+
+```text
+SetSuppressViewportTransitionMessage(WorldContextObject: UObject *, bState: bool) -> void
+```
+
+Sets the state of the transition message rendered by the viewport. (The blue text displayed when the game is paused and so forth.)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContextObject` | `UObject *` | World context |
+| `bState` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ### `ResetGamepadAssignmentToController`
 
 ```text
@@ -19046,27 +21626,6 @@ Returns true if controller id assigned to a gamepad (Android only)
 | Type | Description |
 |---|---|
 | `bool` | - |
-
-### `SetSuppressViewportTransitionMessage`
-
-```text
-SetSuppressViewportTransitionMessage(WorldContextObject: UObject *, bState: bool) -> void
-```
-
-Sets the state of the transition message rendered by the viewport. (The blue text displayed when the game is paused and so forth.)
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContextObject` | `UObject *` | World context |
-| `bState` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
 
 ### `GetPreferredLanguages`
 
@@ -19693,25 +22252,6 @@ AddResARMapping(InARPaths: TSet < FString > &) -> void
 |---|---|
 | `void` | - |
 
-### `IterateAddResARMapping`
-
-```text
-IterateAddResARMapping(InARRoot: FString &, InARPaths: TSet < FString > &) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InARRoot` | `FString &` | - |
-| `InARPaths` | `TSet < FString > &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
 ### `IterateRemoveResARMapping`
 
 ```text
@@ -19748,6 +22288,25 @@ IsResARMapping(InARPath: FString &) -> bool
 | Type | Description |
 |---|---|
 | `bool` | - |
+
+### `IterateAddResARMapping`
+
+```text
+IterateAddResARMapping(InARRoot: FString &, InARPaths: TSet < FString > &) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InARRoot` | `FString &` | - |
+| `InARPaths` | `TSet < FString > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
 
 ### `RemoveResMapping`
 
@@ -19917,6 +22476,92 @@ GetDelegateResolvedPackagePath(InSourcePackagePath: FString &) -> FString
 | Type | Description |
 |---|---|
 | `FString` | - |
+
+### `SToolUseReport`
+
+```text
+SToolUseReport(InToolID: int32) -> void
+```
+
+S工作台 - 工具打开上报
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InToolID` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SToolUseReportWithParm`
+
+```text
+SToolUseReportWithParm(InToolID: int32, InParm: FString &) -> void
+```
+
+S工作台 - 工具打开上报
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InToolID` | `int32` | - |
+| `InParm` | `FString &` | 扩展数据，最长 1024 字符，Json格式 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SToolUseReportWithEvent`
+
+```text
+SToolUseReportWithEvent(InToolID: int32, InEvent: FString &, InEventProfit: float) -> void
+```
+
+S工作台 - 工具打开上报
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InToolID` | `int32` | - |
+| `InEvent` | `FString &` | 事件名 事件标识（可含中文）最长 128 字符 |
+| `InEventProfit` | `float` | 事件收益（数值型指标，支持小数与负数） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SToolUseReportWithEventAndParm`
+
+```text
+SToolUseReportWithEventAndParm(InToolID: int32, InParm: FString &, InEvent: FString &, InEventProfit: float) -> void
+```
+
+编辑器工具打开上报
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InToolID` | `int32` | - |
+| `InParm` | `FString &` | 扩展数据，最长 1024 字符，Json格式 |
+| `InEvent` | `FString &` | 事件名 事件标识（可含中文）最长 128 字符 |
+| `InEventProfit` | `float` | 事件收益（数值型指标，支持小数与负数） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
 
 ## Language
 
@@ -20858,6 +23503,7 @@ Attempts to find the String Table ID and key used by the given text.
 | `MaterialIdLayers` | `TArray < ULandscapeMaterialIdLayerInfoObject * >` | 0-255 MaterialID layers |
 | `DiffuseTextureArray` | `UTexture2DArray *` | - |
 | `NormalTextureArray` | `UTexture2DArray *` | - |
+| `MatIDFallbackConfig` | `UMatIDFallbackConfig *` | - |
 | `bTextureArrayDirty` | `bool` | - |
 
 ## Language
@@ -20902,6 +23548,7 @@ Attempts to find the String Table ID and key used by the given text.
 | `SplatmapTextures` | `TArray < UTexture2D * >` | Helper to getset splatmap data, hold reference to splatmap textures |
 | `SplatmapLayerAllocations` | `TArray < FSplatmapLayerAllocationInfo >` | - |
 | `bUseMaterialId` | `bool` | Cached value of bUseMaterialId, should be equal to bUseMaterialId in ALandscape |
+| `bKeepMatIDSplatmapOnCook` | `bool` | - |
 | `SplatmapG8Texture` | `UTexture2D *` | - |
 | `SplatmapG16Texture` | `UTexture2D *` | - |
 | `MaterialInstances_ForPC` | `TArray < UMaterialInstanceConstant * >` | - |
@@ -21113,6 +23760,7 @@ GenerateSplatmapG16AndG8() -> void
 | `DiffuseTexture` | `UTexture2D *` | Diffuse Texture |
 | `NormalmapTexture` | `UTexture2D *` | Normalmap Texture |
 | `TextureRotation` | `float` | Rotation (in degree) applied when sampling diffusenormal texture |
+| `bApplyMipGradientScale` | `bool` | - |
 | `TextureTiling` | `FVector2D` | Scaling applied when sampling diffusenormal texture |
 | `TextureTilingFar` | `FVector2D` | - |
 | `TextureTilingFarScale` | `FVector2D` | - |
@@ -21335,2159 +23983,6 @@ GenerateSplatmapG16AndG8() -> void
 | `LayerName` | `FName` | The display name of the layer |
 | `bIsVisible` | `uint32` | Whether actors associated with the layer are visible in the viewport |
 | `ActorStats` | `TArray < FLayerActorStats >` | Basic stats regarding the number of Actors and their types currently assigned to the Layer |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevel.json -->
-
-# ULevel
-
-A Level is a collection of Actors (lights, volumes, mesh instances etc.).
-  Multiple Levels can be loaded and unloaded into the World to create a streaming experience.
- 
-  @see UActor
-
-## Inheritance
-
-`UObject` -> `IInterface_AssetUserData`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `OwningWorld` | `UWorld *` | The World that has this level in its Levels array.<br>	  This is not the same as GetOuter(), because GetOuter() for a streaming level is a vestigial world that is not used.<br>	  It should not be accessed during BeginDestroy(), just like any other UObject references, since GC may occur in any order. |
-| `Model` | `UModel *` | BSP UModel. |
-| `ModelComponents` | `TArray < UModelComponent * >` | BSP Model components used for rendering. |
-| `ActorCluster` | `ULevelActorContainer *` | - |
-| `NumTextureStreamingUnbuiltComponents` | `int32` | Num of components missing valid texture streaming data. Updated in map check. |
-| `NumTextureStreamingDirtyResources` | `int32` | Num of resources that have changed since the last texture streaming build. Updated in map check. |
-| `LevelScriptActor` | `ALevelScriptActor *` | The level scripting actor, created by instantiating the class from LevelScriptBlueprint.  This handles all level scripting |
-| `NavListStart` | `ANavigationObjectBase *` | Start and end of the navigation list for this level, used for quickly fixing up<br>	  when streaming this level inout. @TODO DEPRECATED - DELETE |
-| `NavListEnd` | `ANavigationObjectBase *` | - |
-| `NavDataChunks` | `TArray < UNavigationDataChunk * >` | Navigation related data that can be stored per level |
-| `LightmapTotalSize` | `float` | Total number of KB used for lightmap textures in the level. |
-| `ShadowmapTotalSize` | `float` | Total number of KB used for shadowmap textures in the level. |
-| `StaticNavigableGeometry` | `TArray < FVector >` | threes of triangle vertices - AABB filtering friendly. Stored if there's a runtime need to rebuild navigation that accepts BSPs<br>	 	as well - it's a lot easier this way than retrieve this data at runtime |
-| `StreamingTextureGuids` | `TArray < FGuid >` | The Guid of each texture refered by FStreamingTextureBuildInfo::TextureLevelIndex |
-| `LevelVolumeProbeGIBakedStreamingData` | `ULevelVolumeProbeGIBakedStreamingData *` | - |
-| `PVSHandlerHash` | `FString` | - |
-| `PrecomputedVisibilityDataRegistry` | `UPrecomputedVisibilityDataRegistry *` | - |
-| `bIsLightingScenario` | `bool` | Whether the level is a lighting scenario.  Lighting is built separately for each lighting scenario level with all other scenario levels hidden.<br>	  Only one lighting scenario level should be visible at a time for correct rendering, and lightmaps from that level will be used on the rest of the world.<br>	  Note: When a lighting scenario level is present, lightmaps for all streaming levels are placed in the scenario's _BuildData package.<br>	 		This means that lightmaps for those streaming levels will not be streamed with them. |
-| `LevelBuildDataId` | `FGuid` | Identifies map build data specific to this level, eg lighting volume samples. |
-| `LightBuildLevelOffset` | `FIntVector` | Level offset at time when lighting was built |
-| `bTextureStreamingRotationChanged` | `uint8` | Whether a level transform rotation was applied since the texture streaming builds. Invalidates the precomputed streaming bounds. |
-| `bIsVisible` | `uint8` | Whether the level is currently visible associated with the world |
-| `bLocked` | `uint8` | Whether this level is locked; that is, its actors are read-only<br>	 	Used by WorldBrowser to lock a level when corresponding ULevelStreaming does not exist |
-| `bPVSDirty` | `uint8` | - |
-| `WorldSettings` | `AWorldSettings *` | - |
-| `MapBuildData` | `UMapBuildDataRegistry *` | Registry for data from the map build.  This is stored in a separate package from the level to speed up saving  autosaving.<br>	  ReleaseRenderingResources must be called before changing what is referenced, to update the rendering thread state. |
-| `RCRCommunicatorClassName` | `FSoftClassPath` | - |
-| `RCRCommunicator` | `URCRCommunicator *` | - |
-| `MeshRefCounter` | `TMap < UStaticMesh * , int32 >` | - |
-| `Level_RCR` | `ULevel_RCR *` | - |
-| `AssetUserData` | `TArray < UAssetUserData * >` | Array of user data stored with the asset |
-| `LevelScriptBlueprint` | `ULevelScriptBlueprint *` | Reference to the blueprint for level scripting |
-| `TextureStreamingResourceGuids` | `TArray < FGuid >` | The Guid list of all materials and meshes Guid used in the last texture streaming build. Used to know if the streaming data needs rebuild. Only used for the persistent level. |
-| `LevelSimplification` | `FLevelSimplificationDetails` | Level simplification settings for each LOD |
-| `PlatformLevelSimplification` | `TArray < FLevelSimplificationDetails >` | - |
-| `LevelColor` | `FLinearColor` | The level color used for visualization. (Show -> Advanced -> Level Coloration)<br>	  Used only in world composition mode |
-| `CurrentTieredMapBuildData` | `UMapBuildDataRegistry *` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelActorContainer.json -->
-
-# ULevelActorContainer
-
-Root object for all level actors
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Actors` | `TArray < AActor * >` | Array of actors in a level |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelBlocksFoliageDataContainer.json -->
-
-# ULevelBlocksFoliageDataContainer
-
-植被
-
-## Inheritance
-
-`ULevelBlocksDataContainer`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `LevelFoliageLocations` | `TMap < FName , FFoliageTypeLocation >` | - |
-| `TreesFlyLevel` | `FStringAssetReference` | - |
-| `TreesFlyLevelName` | `FName` | - |
-| `SurroundingTreesLevels` | `TSet < FName >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelCapture.json -->
-
-# ULevelCapture
-
-## Inheritance
-
-`UMovieSceneCapture`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bAutoStartCapture` | `bool` | Specifies whether the capture should start immediately, or whether it will be invoked externally (through StartMovieCaptureStopMovieCapture exec commands) |
-| `PrerequisiteActorId` | `FGuid` | Copy of the ID from PrerequisiteActor. Required because JSON serialization exports the path of the object, rather that its GUID |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelScriptBlueprint.json -->
-
-# ULevelScriptBlueprint
-
-A level blueprint is a specialized type of blueprint. It is used to house
-  global, level-wide logic. In a level blueprint, you can operate on specific 
-  level-actor instances through blueprint's node-based interface. UE3 users 
-  should be familiar with this concept, as it is very similar to Kismet.
- 
-  @see UBlueprint
-  @see ALevelScriptActor
-
-## Inheritance
-
-`UBlueprint`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `FriendlyName` | `FString` | The friendly name to use for UI |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelSequence.json -->
-
-# ULevelSequence
-
-Movie scene animation for Actors.
-
-## Inheritance
-
-`UMovieSceneSequence`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `MovieScene` | `UMovieScene *` | Pointer to the movie scene that controls this animation. |
-| `ObjectReferences` | `FLevelSequenceObjectReferenceMap` | Legacy object references - should be read-only. Not deprecated because they need to still be saved |
-| `BindingReferences` | `FLevelSequenceBindingReferences` | References to bound objects. |
-| `PossessedObjects_DEPRECATED` | `TMap < FString , FLevelSequenceObject >` | Deprecated property housing old possessed object bindings |
-| `DirectorClass` | `UClass *` | The class that is used to spawn this level sequence's director instance.<br>	  Director instances are allocated on-demand one per sequence during evaluation and are used by event tracks for triggering events. |
-| `DirectorBlueprint` | `UBlueprint *` | A pointer to the director blueprint that generates this sequence's DirectorClass. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelSequenceBurnIn.json -->
-
-# ULevelSequenceBurnIn
-
-Base class for level sequence burn ins
-
-## Inheritance
-
-`UUserWidget`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `FrameInformation` | `FLevelSequencePlayerSnapshot` | Snapshot of frame information. |
-| `LevelSequenceActor` | `ALevelSequenceActor *` | The actor to get our burn in frames from |
-
-## Functions
-
-### `SetSettings`
-
-```text
-SetSettings(InSettings: UObject *) -> void
-```
-
-Called when this burn in is receiving its settings
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InSettings` | `UObject *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetSettingsClass`
-
-```text
-GetSettingsClass() -> TSubclassOf < ULevelSequenceBurnInInitSettings >
-```
-
-Get the settings class to use for this burn in
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `TSubclassOf < ULevelSequenceBurnInInitSettings >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelSequenceBurnInOptions.json -->
-
-# ULevelSequenceBurnInOptions
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bUseBurnIn` | `bool` | - |
-| `BurnInClass` | `FSoftClassPath` | - |
-| `Settings` | `ULevelSequenceBurnInInitSettings *` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelSequenceDirector.json -->
-
-# ULevelSequenceDirector
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Player` | `ULevelSequencePlayer *` | Pointer to the player that's playing back this director's sequence |
-
-## Functions
-
-### `OnCreated`
-
-```text
-OnCreated() -> void
-```
-
-Called when this director is created
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelSequencePlayer.json -->
-
-# ULevelSequencePlayer
-
-ULevelSequencePlayer is used to actually "play" an level sequence asset at runtime.
- 
-  This class keeps track of playback state and provides functions for manipulating
-  an level sequence while its playing.
-
-## Inheritance
-
-`UMovieSceneSequencePlayer`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `AdditionalEventReceivers` | `TArray < UObject * >` | Array of additional event receivers |
-
-## Functions
-
-### `CreateLevelSequencePlayer`
-
-```text
-CreateLevelSequencePlayer(WorldContextObject: UObject *, LevelSequence: ULevelSequence *, Settings: FMovieSceneSequencePlaybackSettings, OutActor: ALevelSequenceActor * &) -> ULevelSequencePlayer *
-```
-
-Create a new level sequence player.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContextObject` | `UObject *` | Context object from which to retrieve a UWorld. |
-| `LevelSequence` | `ULevelSequence *` | The level sequence to play. |
-| `Settings` | `FMovieSceneSequencePlaybackSettings` | The desired playback settings |
-| `OutActor` | `ALevelSequenceActor * &` | The level sequence actor created to play this sequence. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ULevelSequencePlayer *` | - |
-
-### `GetEventReceivers`
-
-```text
-GetEventReceivers() -> TArray < UObject * >
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `TArray < UObject * >` | - |
-
-## Delegates
-
-### `OnCameraCut`
-
-```text
-OnCameraCut(CameraComponent: UCameraComponent*) -> void
-```
-
-Event triggered when there is a camera cut
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `CameraComponent` | `UCameraComponent*` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelStreaming.json -->
-
-# ULevelStreaming
-
-Abstract base class of container object encapsulating data required for streaming and providing 
-  interface for when a level should be streamed in and out of memory.
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PackageName_DEPRECATED` | `FName` | Deprecated name of the package containing the level to load. Use GetWorldAsset() or GetWorldAssetPackageFName() instead. |
-| `WorldAsset` | `TSoftObjectPtr < UWorld >` | The reference to the world containing the level to load |
-| `PackageNameToLoad` | `FName` | If this isn't Name_None, then we load from this package on disk to the new package named PackageName |
-| `LODPackageNames` | `TArray < FName >` | LOD versions of this level |
-| `LevelTransform` | `FTransform` | Transform applied to actors after loading. |
-| `bShouldBeVisibleInEditor` | `uint32` | Whether this level should be visible in the Editor |
-| `bLocked` | `uint32` | Whether this level is locked; that is, its actors are read-only. |
-| `bShouldBeLoaded` | `uint32` | Whether the level should be loaded |
-| `bShouldBeVisible` | `uint32` | Whether the level should be visible if it is loaded |
-| `bIsStatic` | `uint32` | Whether this level only contains static actors that aren't affected by gameplay or replication.<br>	  If true, the engine can make certain optimizations and will add this level to the StaticLevels collection. |
-| `bShouldBlockOnLoad` | `uint32` | Whether we want to force a blocking load |
-| `LevelLODIndex` | `int32` | Requested LOD. Non LOD sub-levels have Index = -1 |
-| `bDisableDistanceStreaming` | `uint32` | Whether this level streaming object should be ignored by world composition distance streaming, <br>	   so streaming state can be controlled by other systems (ex: in blueprints) |
-| `bDrawOnLevelStatusMap` | `uint32` | If true, will be drawn on the 'level streaming status' map (STAT LEVELMAP console command) |
-| `DrawColor_DEPRECATED` | `FColor` | Deprecated level color used for visualization. |
-| `LevelColor` | `FLinearColor` | The level color used for visualization. (Show -> Advanced -> Level Coloration) |
-| `EditorStreamingVolumes` | `TArray < ALevelStreamingVolume * >` | The level streaming volumes bound to this level. |
-| `MinTimeBetweenVolumeUnloadRequests` | `float` | Cooldown time in seconds between volume-based unload requests.  Used in preventing spurious unload requests. |
-| `Keywords` | `TArray < FString >` | List of keywords to filter on in the level browser |
-| `LoadedLevel` | `ULevel *` | Pointer to Level object if currently loaded streamed in. |
-| `PendingUnloadLevel` | `ULevel *` | Pointer to a Level object that was previously active and was replaced with a new LoadedLevel (for LOD switching) |
-| `UnloadingLevels` | `TArray < ULevel * >` | Array to save unloading levels. |
-| `LevelStreamingInfo` | `FLevelLoadConditionInfo` | - |
-| `FolderPath` | `FName` | The folder path for this level within the world browser. This is only available in editor builds. <br>		A NONE path indicates that it exists at the root. It is '' separated. |
-
-## Functions
-
-### `GetWorldAssetPackageFName`
-
-```text
-GetWorldAssetPackageFName() -> ENGINE_API FName
-```
-
-Gets the package name for the world asset referred to by this level streaming as an FName
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API FName` | - |
-
-### `GetLoadedLevel`
-
-```text
-GetLoadedLevel() -> ENGINE_API class ULevel *
-```
-
-Gets a pointer to the LoadedLevel value
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API class ULevel *` | - |
-
-### `IsLevelVisible`
-
-```text
-IsLevelVisible() -> ENGINE_API bool
-```
-
-Returns whether streaming level is visible
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API bool` | - |
-
-### `IsLevelLoaded`
-
-```text
-IsLevelLoaded() -> ENGINE_API bool
-```
-
-Returns whether streaming level is loaded
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API bool` | - |
-
-### `IsStreamingStatePending`
-
-```text
-IsStreamingStatePending() -> ENGINE_API bool
-```
-
-Returns whether level has streaming state change pending
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API bool` | - |
-
-### `CreateInstance`
-
-```text
-CreateInstance(UniqueInstanceName: FString) -> ULevelStreaming *
-```
-
-Creates a new instance of this streaming level with a provided unique instance name
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `UniqueInstanceName` | `FString` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ULevelStreaming *` | - |
-
-### `GetLevelScriptActor`
-
-```text
-GetLevelScriptActor() -> ENGINE_API ALevelScriptActor *
-```
-
-Returns the Level Script Actor of the level if the level is loaded and valid
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API ALevelScriptActor *` | - |
-
-## Delegates
-
-### `OnLevelLoaded`
-
-```text
-OnLevelLoaded() -> void
-```
-
-Called when level is streamed in
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnLevelUnloaded`
-
-```text
-OnLevelUnloaded() -> void
-```
-
-Called when level is streamed out
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnLevelShown`
-
-```text
-OnLevelShown() -> void
-```
-
-Called when level is added to the world
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnLevelHidden`
-
-```text
-OnLevelHidden() -> void
-```
-
-Called when level is removed from the world
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULevelStreamingKismet.json -->
-
-# ULevelStreamingKismet
-
-## Inheritance
-
-`ULevelStreaming`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bInitiallyLoaded` | `uint32` | Whether the level should be loaded at startup |
-| `bInitiallyVisible` | `uint32` | Whether the level should be visible at startup if it is loaded |
-
-## Functions
-
-### `LoadLevelInstance`
-
-```text
-LoadLevelInstance(WorldContextObject: UObject *, LevelName: FString &, Location: FVector &, Rotation: FRotator &, bOutSuccess: bool &) -> ENGINE_API ULevelStreamingKismet *
-```
-
-Stream in a level with a specific location and rotation. You can create multiple instances of the same level!
- 	
- 	 The level to be loaded does not have to be in the persistent map's Levels list, however to ensure that the .umap does get
- 	 packaged, please be sure to include the .umap in your Packaging Settings:
- 	
- 	   Project Settings -> Packaging -> List of Maps to Include in a Packaged Build (you may have to show advanced or type in filter)
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContextObject` | `UObject *` | - |
-| `LevelName` | `FString &` | - Level package name, ex: GameMapsMyMapName, specifying short name like MyMapName will force very slow search on disk |
-| `Location` | `FVector &` | - World space location where the level should be spawned |
-| `Rotation` | `FRotator &` | - World space rotation for rotating the entire level |
-| `bOutSuccess` | `bool &` | - Whether operation was successful (map was found and added to the sub-levels list) |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API ULevelStreamingKismet *` | Streaming level object for a level instance |
-
-### `CreateLevelInstanceWithLevelName`
-
-```text
-CreateLevelInstanceWithLevelName(WorldContextObject: UObject *, LevelName: FString &, UniqueName: FString &, Trans: FTransform &, bOutSuccess: bool &) -> ENGINE_API ULevelStreamingKismet *
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContextObject` | `UObject *` | - |
-| `LevelName` | `FString &` | - |
-| `UniqueName` | `FString &` | - |
-| `Trans` | `FTransform &` | - |
-| `bOutSuccess` | `bool &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API ULevelStreamingKismet *` | - |
-
-### `CreateLevelInstanceWithLevel`
-
-```text
-CreateLevelInstanceWithLevel(OriStreamingLevel: ULevelStreaming *, UniqueName: FString &, Trans: FTransform &, bOutSuccess: bool &) -> ENGINE_API ULevelStreamingKismet *
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `OriStreamingLevel` | `ULevelStreaming *` | - |
-| `UniqueName` | `FString &` | - |
-| `Trans` | `FTransform &` | - |
-| `bOutSuccess` | `bool &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API ULevelStreamingKismet *` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULightComponent.json -->
-
-# ULightComponent
-
-## Inheritance
-
-`ULightComponentBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Temperature` | `float` | Color temperature in Kelvin of the blackbody illuminant.<br>	 White (D65) is 6500K. |
-| `MaxDrawDistance` | `float` | - |
-| `MaxDistanceFadeRange` | `float` | - |
-| `bUseTemperature` | `uint32` | false: use white (D65) as illuminant. |
-| `ShadowMapChannel_DEPRECATED` | `int32` | Legacy shadowmap channel from the lighting build, now stored in FLightComponentMapBuildData. |
-| `MinRoughness` | `float` | Min roughness effective for this light. Used for softening specular highlights. |
-| `SpecularScale` | `float` | Multiplier on specular highlights. Use only with great care! Any value besides 1 is not physical!<br>	 Can be used to artistically remove highlights mimicking polarizing filters or photo touch up. |
-| `bLocalLightDisableDiffuse` | `uint32` | Local light disable diffuse |
-| `ShadowResolutionScale` | `float` | Scales the resolution of shadowmaps used to shadow this light.  By default shadowmap resolution is chosen based on screen size of the caster. <br>	  Note: shadowmap resolution is still clamped by 'r.Shadow.MaxResolution' |
-| `LightPriority` | `int32` | Light priority for mobile light grid |
-| `ShadowBias` | `float` | Controls how accurate self shadowing of whole scene shadows from this light are.  <br>	  At 0, shadows will start at the their caster surface, but there will be many self shadowing artifacts.<br>	  larger values, shadows will start further from their caster, and there won't be self shadowing artifacts but object might appear to fly.<br>	  around 0.5 seems to be a good tradeoff. This also affects the soft transition of shadows |
-| `ShadowSharpen` | `float` | Amount to sharpen shadow filtering |
-| `ContactShadowLength` | `float` | Length of screen space ray trace for sharp contact shadows. Zero is disabled. |
-| `InverseSquaredFalloff_DEPRECATED` | `uint32` | - |
-| `bCacheStaticShadows` | `uint32` | - |
-| `CastTranslucentShadows` | `uint32` | Whether the light is allowed to cast dynamic shadows from translucency. |
-| `bCastShadowsFromCinematicObjectsOnly` | `uint32` | Whether the light should only cast shadows from components marked as bCastCinematicShadows. <br>	  This is useful for setting up cinematic Movable spotlights aimed at characters and avoiding the shadow depth rendering costs of the background.<br>	  Note: this only works with dynamic shadow maps, not with static shadowing or Ray Traced Distance Field shadows. |
-| `bAffectDynamicIndirectLighting` | `uint32` | Whether the light should be injected into the Light Propagation Volume |
-| `LightingChannels` | `FLightingChannels` | Channels that this light should affect.  <br>	  These channels only apply to opaque materials, direct lighting, and dynamic lighting and shadowing. |
-| `LightFunctionMaterial` | `UMaterialInterface *` | The light function material to be applied to this light.<br>	  Note that only non-lightmapped lights (UseDirectLightMap=False) can have a light function. |
-| `LightFunctionScale` | `FVector` | Scales the light function projection.  X and Y scale in the directions perpendicular to the light's direction, Z scales along the light direction. |
-| `IESTexture` | `UTextureLightProfile *` | IES texture (light profiles from real world measured data) |
-| `bUseIESBrightness` | `uint32` | true: take light brightness from IES profile, false: use the light brightness - the maximum light in one direction is used to define no masking. Use with InverseSquareFalloff. Will be disabled if a valid IES profile texture is not supplied. |
-| `IESBrightnessScale` | `float` | Global scale for IES brightness contribution. Only available when "Use IES Brightness" is selected, and a valid IES profile texture is set |
-| `LightFunctionFadeDistance` | `float` | Distance at which the light function should be completely faded to DisabledBrightness.  <br>	  This is useful for hiding aliasing from light functions applied in the distance. |
-| `DisabledBrightness` | `float` | Brightness factor applied to the light when the light function is specified but disabled, for example in scene captures that use SceneCapView_LitNoShadows. <br>	  This should be set to the average brightness of the light function material's emissive input, which should be between 0 and 1. |
-| `bEnableLightShaftBloom` | `uint32` | Whether to render light shaft bloom from this light. <br>	  For directional lights, the color around the light direction will be blurred radially and added back to the scene.<br>	  for point lights, the color on pixels closer than the light's SourceRadius will be blurred radially and added back to the scene. |
-| `BloomScale` | `float` | Scales the additive color. |
-| `BloomThreshold` | `float` | Scene color must be larger than this to create bloom in the light shafts. |
-| `BloomTint` | `FColor` | Multiplies against scene color to create the bloom color. |
-| `bUseRayTracedDistanceFieldShadows` | `bool` | Whether to use ray traced distance field area shadows.  The project setting bGenerateMeshDistanceFields must be enabled for this to have effect.<br>	  Distance field shadows support area lights so they create soft shadows with sharp contacts.  <br>	  They have less aliasing artifacts than standard shadowmaps, but inherit all the limitations of distance field representations (only uniform scale, no deformation).<br>	  These shadows have a low per-object cost (and don't depend on triangle count) so they are effective for distant shadows from a dynamic sun. |
-| `RayStartOffsetDepthScale` | `float` | Controls how large of an offset ray traced shadows have from the receiving surface as the camera gets further away.  <br>	  This can be useful to hide self-shadowing artifacts from low resolution distance fields on huge static meshes. |
-
-## Functions
-
-### `SetIntensity`
-
-```text
-SetIntensity(NewIntensity: float) -> void
-```
-
-Set intensity of the light
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewIntensity` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetIndirectLightingIntensity`
-
-```text
-SetIndirectLightingIntensity(NewIntensity: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewIntensity` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetVolumetricScatteringIntensity`
-
-```text
-SetVolumetricScatteringIntensity(NewIntensity: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewIntensity` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLightColor`
-
-```text
-SetLightColor(NewLightColor: FLinearColor, bSRGB: bool) -> void
-```
-
-Set color of the light
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewLightColor` | `FLinearColor` | - |
-| `bSRGB` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetTemperature`
-
-```text
-SetTemperature(NewTemperature: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewTemperature` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLightFunctionMaterial`
-
-```text
-SetLightFunctionMaterial(NewLightFunctionMaterial: UMaterialInterface *) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewLightFunctionMaterial` | `UMaterialInterface *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLightFunctionScale`
-
-```text
-SetLightFunctionScale(NewLightFunctionScale: FVector) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewLightFunctionScale` | `FVector` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLightFunctionFadeDistance`
-
-```text
-SetLightFunctionFadeDistance(NewLightFunctionFadeDistance: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewLightFunctionFadeDistance` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLightFunctionDisabledBrightness`
-
-```text
-SetLightFunctionDisabledBrightness(NewValue: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewValue` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAffectDynamicIndirectLighting`
-
-```text
-SetAffectDynamicIndirectLighting(bNewValue: bool) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bNewValue` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAffectTranslucentLighting`
-
-```text
-SetAffectTranslucentLighting(bNewValue: bool) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bNewValue` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetEnableLightShaftBloom`
-
-```text
-SetEnableLightShaftBloom(bNewValue: bool) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bNewValue` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetBloomScale`
-
-```text
-SetBloomScale(NewValue: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewValue` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetBloomThreshold`
-
-```text
-SetBloomThreshold(NewValue: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewValue` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetBloomTint`
-
-```text
-SetBloomTint(NewValue: FColor) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewValue` | `FColor` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetIESTexture`
-
-```text
-SetIESTexture(NewValue: UTextureLightProfile *) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewValue` | `UTextureLightProfile *` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetShadowBias`
-
-```text
-SetShadowBias(NewValue: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewValue` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ForceUpdateShadowState`
-
-```text
-ForceUpdateShadowState() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetSpecularScale`
-
-```text
-SetSpecularScale(NewValue: float) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewValue` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLocalLightDisableDiffuse`
-
-```text
-SetLocalLightDisableDiffuse(NewValue: bool) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewValue` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULightComponentBase.json -->
-
-# ULightComponentBase
-
-## Inheritance
-
-`USceneComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `LightGuid` | `FGuid` | GUID used to associate a light component with precomputed shadowing information across levels.<br>	  The GUID changes whenever the light position changes. |
-| `Brightness_DEPRECATED` | `float` | - |
-| `Intensity` | `float` | Total energy that the light emits.  <br>	  For pointspot lights with inverse squared falloff, this is in units of lumens.  1700 lumens corresponds to a 100W lightbulb. <br>	  For other lights, this is just a brightness multiplier. |
-| `LightColor` | `FColor` | Filter color of the light.<br>	  Note that this can change the light's effective intensity. |
-| `bAffectsWorld` | `uint32` | Whether the light can affect the world, or whether it is disabled.<br>	  A disabled light will not contribute to the scene in any way.  This setting cannot be changed at runtime and unbuilds lighting when changed.<br>	  Setting this to false has the same effect as deleting the light, so it is useful for non-destructive experiments. |
-| `CastShadows` | `uint32` | Whether the light should cast any shadows. |
-| `CastStaticShadows` | `uint32` | Whether the light should cast shadows from static objects.  Also requires Cast Shadows to be set to True. |
-| `CastDynamicShadows` | `uint32` | Whether the light should cast shadows from dynamic objects.  Also requires Cast Shadows to be set to True. |
-| `bAffectTranslucentLighting` | `uint32` | Whether the light affects translucency or not.  Disabling this can save GPU time when there are many small lights. |
-| `bCastVolumetricShadow` | `uint32` | Whether the light shadows volumetric fog.  Disabling this can save GPU time. |
-| `RequiredDeviceLevel` | `int32` | - |
-| `IndirectLightingIntensity` | `float` | Scales the indirect lighting contribution from this light. <br>	  A value of 0 disables any GI from this light. Default is 1. |
-| `VolumetricScatteringIntensity` | `float` | Intensity of the volumetric scattering from this light.  This scales Intensity and LightColor. |
-
-## Functions
-
-### `SetCastShadows`
-
-```text
-SetCastShadows(bNewValue: bool) -> void
-```
-
-Sets whether this light casts shadows
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bNewValue` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetLightColor`
-
-```text
-GetLightColor() -> FLinearColor
-```
-
-Gets the light color as a linear color
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FLinearColor` | - |
-
-### `SetCastVolumetricShadow`
-
-```text
-SetCastVolumetricShadow(bNewValue: bool) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bNewValue` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULightmappedSurfaceCollection.json -->
-
-# ULightmappedSurfaceCollection
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SourceModel` | `UModel *` | The UModel these surfaces come from. |
-| `Surfaces` | `TArray < int32 >` | An array of the surface indices grouped into a single static lighting mapping. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULightmassPortalComponent.json -->
-
-# ULightmassPortalComponent
-
-## Inheritance
-
-`USceneComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PreviewBox` | `UBoxComponent *` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULightmassPrimitiveSettingsObject.json -->
-
-# ULightmassPrimitiveSettingsObject
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `LightmassSettings` | `FLightmassPrimitiveSettings` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UListView.json -->
-
-# UListView
-
-Allows thousands of items to be displayed in a list.  Generates widgets dynamically for each item.
-
-## Inheritance
-
-`UTableViewBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ItemHeight` | `float` | The height of each widget |
-| `Items` | `TArray < UObject * >` | The list of items to generate widgets for |
-| `SelectionMode` | `TEnumAsByte < ESelectionMode :: Type >` | The selection method for the list |
-| `OnGenerateRowEvent` | `FOnGenerateRowUObject` | Called when a widget needs to be generated |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULocalizedOverlays.json -->
-
-# ULocalizedOverlays
-
-Implements an asset that contains a set of Basic Overlays that will be displayed in accordance with
-  the current locale, or a default set if an appropriate locale is not found
-
-## Inheritance
-
-`UOverlays`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `DefaultOverlays` | `UBasicOverlays *` | The overlays to use if no overlays are found for the current culture |
-| `LocaleToOverlaysMap` | `TMap < FString , UBasicOverlays * >` | Maps a set of cultures to specific BasicOverlays assets.<br>	  Cultures are comprised of three hyphen-separated parts:<br>	 		A two-letter ISO 639-1 language code (e.g., "zh")<br>	 		An optional four-letter ISO 15924 script code (e.g., "Hans")<br>	 		An optional two-letter ISO 3166-1 country code  (e.g., "CN") |
-| `AssetImportData` | `UAssetImportData *` | The import data used to make this overlays asset |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULocalPlayer.json -->
-
-# ULocalPlayer
-
-Each player that is active on the current client has a LocalPlayer. It stays active across maps
- 	There may be several spawned in the case of splitscreencoop.
- 	There may be 0 spawned on servers.
-
-## Inheritance
-
-`UPlayer`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ViewportClient` | `UGameViewportClient *` | The master viewport containing this player's view. |
-| `AspectRatioAxisConstraint` | `TEnumAsByte < enum EAspectRatioAxisConstraint >` | How to constrain perspective viewport FOV |
-| `PendingLevelPlayerControllerClass` | `TSubclassOf < APlayerController >` | The class of PlayerController to spawn for players logging in. |
-| `bSentSplitJoin` | `uint32` | set when we've sent a split join request |
-| `ControllerId` | `int32` | The controller ID which this player accepts input from. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULuaArrayHelper.json -->
-
-# ULuaArrayHelper
-
-数组帮助类
-
-## Functions
-
-### `Add`
-
-```text
-Add(Item: any)
-```
-
-添加元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Item` | `any` | 需要添加的元素 |
-
-### `AddUnique`
-
-```text
-AddUnique(Item: any)
-```
-
-往数组里添加一个元素，如果已存在则不压入
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Item` | `any` | 需要添加的元素 |
-
-### `Push`
-
-```text
-Push(Item: any)
-```
-
-往数组里压入一个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Item` | `any` | 需要添加的元素 |
-
-### `Insert`
-
-```text
-Insert(Index: number, Item: any)
-```
-
-在指定位置插入一个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `number` | 需要插入的元素索引 |
-| `Item` | `any` | 需要添加的元素 |
-
-### `Remove`
-
-```text
-Remove(Item: any)
-```
-
-移除一个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Item` | `any` | 需要移除的元素 |
-
-### `RemoveAt`
-
-```text
-RemoveAt(Index: number)
-```
-
-根据索引移除一个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `number` | 索引 |
-
-### `Pop`
-
-```text
-Pop() -> any
-```
-
-弹出最后一个元素
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `any` | 移除的元素 |
-
-### `Get`
-
-```text
-Get(Index: number)
-```
-
-跟据索引获取一个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `number` | 索引 |
-
-### `Set`
-
-```text
-Set(Index: number, Item: any)
-```
-
-设置一个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `number` | 索引 |
-| `Item` | `any` | 元素 |
-
-### `Find`
-
-```text
-Find(Item: any)
-```
-
-查找一个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Item` | `any` | 元素 |
-
-### `Contains`
-
-```text
-Contains(Item: any)
-```
-
-判断数组是否包含某个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Item` | `any` | 元素 |
-
-### `Empty`
-
-```text
-Empty()
-```
-
-清空数组
-
-### `Reset`
-
-```text
-Reset(ExpectedSize: number)
-```
-
-重置数组
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ExpectedSize` | `number` | 数组容量（可选） |
-
-### `Num`
-
-```text
-Num() -> number
-```
-
-获取数组长度
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | 数组长度 |
-
-## Language
-
-`lua`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULuaMapHelper.json -->
-
-# ULuaMapHelper
-
-映射帮助类
-
-## Functions
-
-### `Add`
-
-```text
-Add(Key: any, Value: any) -> boolean
-```
-
-添加一个键值对
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `any` | 键 |
-| `Value` | `any` | 值 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | 是否更新成功 |
-
-### `Remove`
-
-```text
-Remove(Key: any) -> number
-```
-
-根据键移除一个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `any` | 键 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | 移除的元素数量 |
-
-### `Get`
-
-```text
-Get(Key: any) -> any
-```
-
-根据键获取值
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `any` | 键 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `any` | 值 |
-
-### `Set`
-
-```text
-Set(Key: any, Value: any) -> boolean
-```
-
-更新键值对
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `any` | 键 |
-| `Value` | `any` | 值 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | 是否更新成功 |
-
-### `Find`
-
-```text
-Find(Key: any) -> any
-```
-
-根据键获取值
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `any` | 键 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `any` | 值 |
-
-### `Empty`
-
-```text
-Empty()
-```
-
-清空哈希表
-
-### `Reset`
-
-```text
-Reset(ExpectedSize: number)
-```
-
-重置哈希表
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ExpectedSize` | `number` | 期望的哈希表长度（可选） |
-
-### `Num`
-
-```text
-Num() -> number
-```
-
-获取哈希表长度
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | 长度 |
-
-## Language
-
-`lua`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULuaMulticastDelegate.json -->
-
-# ULuaMulticastDelegate
-
-UE 多播委托基类，用于绑定多个回调函数
-
-## Functions
-
-### `Add`
-
-```text
-Add(Callback: function, Obj: any) -> number
-```
-
-添加回调，Func 作为 Key 去重，同 Func 不同 Obj 会覆盖
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Callback` | `function` | 回调函数，如果绑定了 Obj，则 Obj 作为回调第一个参数传入 |
-| `Obj` | `any` | 可选的绑定对象，作为回调第一个参数传入 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | 回调引用 |
-
-### `AddInstance`
-
-```text
-AddInstance(Callback: function, Obj: any) -> number
-```
-
-添加回调，Func && Obj 共同作为 Key 去重，同 Func 不同 Obj 会共存
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Callback` | `function` | 回调函数，Obj 作为回调第一个参数传入 |
-| `Obj` | `any` | 绑定对象，作为回调第一个参数传入 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | 回调引用 |
-
-### `Remove`
-
-```text
-Remove(Callback: function, Obj: any)
-```
-
-移除指定回调
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Callback` | `function` | 要移除的回调函数 |
-| `Obj` | `any` | 可选的绑定对象 |
-
-### `RemoveAll`
-
-```text
-RemoveAll()
-```
-
-移除所有 Lua 绑定
-
-### `Clear`
-
-```text
-Clear(bDonotKeepThis: boolean)
-```
-
-移除所有绑定（C++/BP/Lua）
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bDonotKeepThis` | `boolean` | 是否不保留当前对象的回调 |
-
-### `Broadcast`
-
-```text
-Broadcast(...: any)
-```
-
-触发 Lua 广播
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `...` | `any` | 委托参数 |
-
-### `BroadcastAll`
-
-```text
-BroadcastAll(...: any)
-```
-
-触发所有广播（C++/BP/Lua）
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `...` | `any` | 委托参数 |
-
-## Language
-
-`lua`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULuaSetHelper.json -->
-
-# ULuaSetHelper
-
-集合帮助类
-
-## Functions
-
-### `Add`
-
-```text
-Add(Item: any) -> number
-```
-
-添加一个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Item` | `any` | 需要添加的元素 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | 索引 |
-
-### `Remove`
-
-```text
-Remove(Item: any) -> number
-```
-
-移除一个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Item` | `any` | 需要移除的元素 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | 移除的元素数量 |
-
-### `RemoveAt`
-
-```text
-RemoveAt(Index: number)
-```
-
-根据索引移除一个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `number` | 索引 |
-
-### `Get`
-
-```text
-Get(Index: number) -> any
-```
-
-根据索引获取一个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `number` | 索引 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `any` | 元素 |
-
-### `Set`
-
-```text
-Set(Index: number, Item: any) -> number
-```
-
-设置一个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `number` | 索引 |
-| `Item` | `any` | 元素 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | 索引 |
-
-### `Find`
-
-```text
-Find(Item: any) -> number
-```
-
-查找一个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Item` | `any` | 元素 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | 索引 |
-
-### `Contains`
-
-```text
-Contains(Item: any) -> number
-```
-
-判断集合是否包含某个元素
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Item` | `any` | 元素 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | 是否包含 |
-
-### `IsValidIndex`
-
-```text
-IsValidIndex(Index: number) -> number
-```
-
-判断指定索引是否合法
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `number` | 索引 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | 是否合法 |
-
-### `Empty`
-
-```text
-Empty()
-```
-
-清空集合
-
-### `Reset`
-
-```text
-Reset(ExpectedSize: number)
-```
-
-重置集合
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ExpectedSize` | `number` | 期望的集合长度（可选） |
-
-### `Num`
-
-```text
-Num() -> number
-```
-
-获取集合长度
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | 集合长度 |
-
-## Language
-
-`lua`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/ULuaSingleDelegate.json -->
-
-# ULuaSingleDelegate
-
-UE 单播委托基类，用于绑定单个回调函数，后绑定会覆盖先绑定
-
-## Functions
-
-### `Bind`
-
-```text
-Bind(Callback: function, Obj?: any) -> number
-```
-
-绑定回调函数
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Callback` | `function` | 回调函数，如果绑定了 Obj，则 Obj 作为回调第一个参数传入 |
-| `Obj?` | `any` | 可选的绑定对象，作为回调第一个参数传入 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | 回调引用 |
-
-### `UnBind`
-
-```text
-UnBind()
-```
-
-解绑回调函数
-
-### `Execute`
-
-```text
-Execute(...: any)
-```
-
-执行委托，触发已绑定的回调
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `...` | `any` | 委托参数 |
-
-## Language
-
-`lua`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UManagementRuleSetting.json -->
-
-# UManagementRuleSetting
-
-ManagementRule逻辑规则的.ini文件配置版本，减少结构体和容器嵌套，方便.ini配置和阅读
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bEnable` | `bool` | - |
-| `SetResult` | `EAssetSetManagerResult` | - |
-| `CheckTargetDirectoriesSwitch` | `FManagementRuleSwitch` | - |
-| `CheckTargetDirectories` | `TArray < FManagementRuleFStringCheck >` | - |
-| `CheckTargetAssetsSwitch` | `FManagementRuleSwitch` | - |
-| `CheckTargetAssets` | `TArray < FManagementRuleFNameCheck >` | - |
-| `CheckTargetAssetClassSwitch` | `FManagementRuleSwitch` | - |
-| `CheckTargetAssetClassTypes` | `TArray < FManagementRuleFNameCheck >` | - |
-| `CheckSourcePackagesSwitch` | `FManagementRuleSwitch` | - |
-| `CheckSourcePackages` | `TArray < FManagementRuleFNameCheck >` | - |
-| `CheckSourcePackageClassTypes` | `TArray < FManagementRuleFNameCheck >` | - |
-| `CheckSourcePackageClassSwitch` | `FManagementRuleSwitch` | - |
-| `CheckTargetAssetTagSwitch` | `FManagementRuleSwitch` | - |
-| `CheckTargetAssetTags` | `TArray < FManagementRuleFNameCheck >` | - |
-| `bOnlySoftReferences` | `bool` | - |
-| `CheckOrMask` | `uint8` | 对应FManagementRule::CheckOrMask，控制6个检查条件之间的或与非逻辑，见EManagementRuleCheckOrMask |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UMapBuildDataRegistry.json -->
-
-# UMapBuildDataRegistry
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `LevelLightingQuality` | `TEnumAsByte < enum ELightingBuildQuality >` | The lighting quality the level was last built with |
-| `LevelVolumeProbeGIBakedStreamingData` | `ULevelVolumeProbeGIBakedStreamingData *` | - |
 
 ## Language
 

@@ -31,3 +31,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `EGDMT_PlayerRespawn` | `15` | - |
 | `EGDMT_GameModeStateManager` | `16` | - |
 | `EGDMT_LevelManager` | `17` | - |
+| `EGDMT_PlayerDamageStats` | `18` | - |

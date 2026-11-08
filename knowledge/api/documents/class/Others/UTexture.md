@@ -30,16 +30,16 @@ api_root: "https://developer.gp.qq.com/api/"
 | `bNoTiling` | `uint32` | If true, the RHI texture will be created using TexCreate_NoTiling |
 | `bUseCinematicMipLevels` | `uint32` | Whether to use the extra cinematic quality mip-levels, when we're forcing mip-levels to be resident. |
 | `AssetUserData` | `TArray < UAssetUserData * >` | Array of user data stored with the asset |
-| `CachedCombinedLODBias` | `int32` | Cached combined group and texture LOD bias to use. |
 | `bAsyncResourceReleaseHasBeenStarted` | `uint32` | Whether the async resource release process has already been kicked off or not |
+| `CachedCombinedLODBias` | `int32` | Cached combined group and texture LOD bias to use. |
 | `CompressionSettings` | `TEnumAsByte < enum TextureCompressionSettings >` | Compression settings to use when building the texture. |
 | `Filter` | `TEnumAsByte < enum TextureFilter >` | The texture filtering mode to use when sampling this texture. |
 | `LODGroup` | `TEnumAsByte < enum TextureGroup >` | Texture group this texture belongs to |
 | `CrunchSetting` | `TEnumAsByte < enum ETextureCrunchSetting >` | - |
 | `bOverrideCrunchCompressionAmount` | `uint32` | - |
 | `CrunchCompressionAmount` | `float` | - |
-| `bOverrideBasisCompressionAmount` | `uint32` | - |
 | `BasisSetting` | `TEnumAsByte < enum ETextureBasisSetting >` | - |
+| `bOverrideBasisCompressionAmount` | `uint32` | - |
 | `BasisCompressionAmount` | `float` | - |
 | `Source` | `FTextureSource` | --------------------------------------------------------------------------<br>	-------------------------------------------------------------------------- |
 | `SourceFilePath_DEPRECATED` | `FString` | - |

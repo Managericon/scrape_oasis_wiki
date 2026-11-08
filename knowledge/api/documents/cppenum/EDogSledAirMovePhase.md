@@ -17,4 +17,3 @@ api_root: "https://developer.gp.qq.com/api/"
 | `Jumping` | `1` | - |
 | `Gliding` | `2` | - |
 | `Falling` | `3` | - |
-| `Landing` | `4` | - |

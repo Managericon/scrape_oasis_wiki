@@ -478,8 +478,8 @@ Point Of View type.
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `StartLocation` | `FVector` | - |
 | `LaunchVelocity` | `FVector` | - |
+| `StartLocation` | `FVector` | - |
 | `bTraceWithCollision` | `bool` | - |
 | `ProjectileRadius` | `float` | - |
 | `MaxSimTime` | `float` | - |
@@ -656,8 +656,8 @@ Structure with publicly exposed information about an asset type. These can be lo
 | Name | Type/Value | Description |
 |---|---|---|
 | `PrimaryAssetType` | `FName` | The logical name for this type of Primary Asset |
-| `AssetBaseClass` | `TSoftClassPtr < UObject >` | Base Class of all assets of this type |
 | `AssetBaseClassLoaded` | `UClass *` | Base Class of all assets of this type |
+| `AssetBaseClass` | `TSoftClassPtr < UObject >` | Base Class of all assets of this type |
 | `bHasBlueprintClasses` | `bool` | True if the assets loaded are blueprints classes, false if they are normal UObjects |
 | `bIsEditorOnly` | `bool` | True if this type is editor only |
 | `Directories` | `TArray < FDirectoryPath >` | Directories to search for this asset type |
@@ -801,8 +801,8 @@ Quaternion.
 | Name | Type/Value | Description |
 |---|---|---|
 | `BaseDamage` | `float` | - |
-| `MinimumDamage` | `float` | - |
 | `InnerRadius` | `float` | - |
+| `MinimumDamage` | `float` | - |
 | `OuterRadius` | `float` | - |
 | `DamageFalloff` | `float` | - |
 
@@ -925,6 +925,23 @@ Raw keyframe data for one track.  Each array will contain either NumFrames eleme
 | `MinValueVec` | `FVector` | - |
 | `MaxValueVec` | `FVector` | - |
 | `Distribution` | `UDistributionVector *` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppstruct/detail/FRay.json -->
+
+# FRay
+
+3D Ray represented by Origin and (normalized) Direction.
+  @note The full C++ class is located here: Engine\Source\Runtime\Core\Public\Math\Ray.h
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Origin` | `FVector` | - |
+| `Direction` | `FVector` | - |
 
 
 ---
@@ -1238,6 +1255,37 @@ One key in a rich, editable float curve
 | `ArriveTangentWeight` | `float` | If RCTWM_WeightedArrive or RCTWM_WeightedBoth, the weight of the left tangent |
 | `LeaveTangent` | `float` | If RCIM_Cubic, the leaving tangent at this key |
 | `LeaveTangentWeight` | `float` | If RCTWM_WeightedLeave or RCTWM_WeightedBoth, the weight of the right tangent |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppstruct/detail/FRichTextStyleRow.json -->
+
+# FRichTextStyleRow
+
+Simple struct for rich text styles
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `TextStyle` | `FTextBlockStyle` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppstruct/detail/FRichWidgetRow.json -->
+
+# FRichWidgetRow
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `WidgetClass` | `TSoftClassPtr < UUserWidget >` | - |
+| `Width` | `float` | - |
+| `Height` | `float` | - |
+| `bAutoHeight` | `bool` | - |
 
 
 ---
@@ -2202,8 +2250,8 @@ Settings used to ProxyLOD mesh(es).
 | `HardAngleThreshold` | `float` | Angle at which a hard edge is introduced between faces. |
 | `MergeDistance` | `int32` | - |
 | `bUseClippingPlane` | `bool` | - |
-| `ClippingLevel` | `float` | - |
 | `AxisIndex` | `int32` | - |
+| `ClippingLevel` | `float` | - |
 | `bPlaneNegativeHalfspace` | `bool` | - |
 | `bUseMassiveLOD` | `bool` | - |
 | `bUseAggregateLOD` | `bool` | - |
@@ -3488,6 +3536,22 @@ One key in a curve of FStrings.
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppstruct/detail/FSubModeDynamicLevelsEntry.json -->
+
+# FSubModeDynamicLevelsEntry
+
+从 INI 读取的单个 SubModeDynamicLevels 条目
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SubModeIds` | `TArray < int64 >` | 该条目对应的 SubModeId 数组（支持多个 SubModeId 共享同一组 DynamicLevelPaths） |
+| `DynamicLevelBlockCoords` | `TArray < FString >` | 该 SubMode 对应的 DynamicLevels 区块坐标集合（INI 中以字符串 "x,y" 形式填写）。<br>	   例：DynamicLevelBlockCoords=("3,1", "5,2")<br>	   FIntPoint 无法被 Config 文本反序列化，故用字符串保存，运行时解析。<br>	   当该 SubMode 激活时，与这些坐标匹配的 Reorg 关卡将被跳过。<br>	   为空表示无区块替换，所有 Reorg 关卡正常加载。<br>	   旧版 DynamicLevelPaths（完整关卡路径列表）仅保留作开发者人工核对，已不参与运行逻辑，见下方注释字段。 |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppstruct/detail/FSubsurfaceProfileStruct.json -->
 
 # FSubsurfaceProfileStruct
@@ -3903,6 +3967,7 @@ Represents the appearance of an STextBlock
 | `SelectedBackgroundColor` | `FSlateColor` | The background color of selected text |
 | `HighlightColor` | `FLinearColor` | The color of highlighted text |
 | `HighlightShape` | `FSlateBrush` | The shape of highlighted text |
+| `StrikeBrush` | `FSlateBrush` | The brush used to draw a strike through the text (if any) |
 | `UnderlineBrush` | `FSlateBrush` | The brush used to draw an underline under the text (if any) |
 
 
@@ -5960,8 +6025,8 @@ FWorldContext
 | `ObjectToRegionID_NonStatic` | `TMap < UObject * , FRegionID >` | - |
 | `CacheNonStaticObjectOldRegion` | `TMap < UObject * , FRegionID >` | - |
 | `OverlapObjectToRegionID_Dynamic` | `TMap < UObject * , FRegionID >` | - |
-| `OverlapObjectToRegionID_Vehicle` | `TMap < UObject * , FRegionID >` | - |
 | `OverlapObjectToRegionID_Player` | `TMap < UObject * , FRegionID >` | - |
+| `OverlapObjectToRegionID_Vehicle` | `TMap < UObject * , FRegionID >` | - |
 
 
 ---

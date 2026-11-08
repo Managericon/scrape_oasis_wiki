@@ -11,6 +11,15 @@ api_root: "https://developer.gp.qq.com/api/"
 
 语音系统接口库
 
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `UGCVoiceManagerSystem.VoiceMode` | `-` | - |
+| `UGCVoiceManagerSystem.VoiceChannel` | `-` | - |
+| `UGCVoiceManagerSystem.MicStateChangedEventID` | `-` | - |
+| `UGCVoiceManagerSystem._MicMode` | `-` | - |
+
 ## Functions
 
 ### `GetGVoiceInterface`
@@ -305,6 +314,141 @@ GetNormalizedMicVolume() -> integer
 | Type | Description |
 |---|---|
 | `integer` | 归一化音量值 0-100 |
+
+### `_ApplyMicChannel`
+
+```text
+_ApplyMicChannel()
+```
+
+内部：根据当前模式与频道，应用麦克风频道到 gvoice
+Always 模式使用 Open*Micphone（自由发言），Push 模式使用 Open*Interphone（按键发言）
+
+### `_ApplySpeakerChannel`
+
+```text
+_ApplySpeakerChannel()
+```
+
+内部：根据当前频道，应用扬声器频道到 gvoice
+
+### `RefreshVoiceUI`
+
+```text
+RefreshVoiceUI()
+```
+
+刷新主界面语音图标显示
+逻辑层调用切换麦克风或喇叭后调用，通知主界面刷新语音控件状态
+生效范围：客户端
+
+### `SetMicMode`
+
+```text
+SetMicMode(Mode: EVoiceMode)
+```
+
+设置说话模式（始终开启说话 / 按下说话），对应面板两个分区的切换
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Mode` | `EVoiceMode` | 说话模式（VoiceMode.Always 或 VoiceMode.Push） |
+
+### `SetMicChannel`
+
+```text
+SetMicChannel(Channel: EVoiceChannel)
+```
+
+设置麦克风指向的频道（全部 / 队伍 / 组队），对应面板中对应控件呈选中态
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Channel` | `EVoiceChannel` | 麦克风频道（VoiceChannel.All / Team / LobbyTeam） |
+
+### `SetMicEnabled`
+
+```text
+SetMicEnabled(bEnabled: boolean)
+```
+
+开启/关闭麦克风；关闭时对应控件呈禁用图标，开启时恢复到之前选中项
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnabled` | `boolean` | 是否开启麦克风 |
+
+### `SetSpeakerChannel`
+
+```text
+SetSpeakerChannel(Channel: EVoiceChannel)
+```
+
+设置扬声器收听的频道（全部 / 队伍），对应控件呈选中态
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Channel` | `EVoiceChannel` | 扬声器频道（VoiceChannel.All / Team） |
+
+### `SetSpeakerEnabled`
+
+```text
+SetSpeakerEnabled(bEnabled: boolean)
+```
+
+开启/关闭扬声器；关闭时对应控件呈禁用图标，开启时恢复到之前选中项
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnabled` | `boolean` | 是否开启扬声器 |
+
+### `GetMicState`
+
+```text
+GetMicState() -> EVoiceMode, EVoiceChannel, boolean
+```
+
+获取当前麦克风状态（说话模式、麦克风指向频道、开关状态）
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EVoiceMode` | 当前说话模式 |
+| `EVoiceChannel` | 当前麦克风指向频道 |
+| `boolean` | 当前麦克风开关状态 |
+
+### `GetSpeakerState`
+
+```text
+GetSpeakerState() -> EVoiceChannel, boolean
+```
+
+获取当前扬声器状态（收听频道、开关状态）
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EVoiceChannel` | 当前扬声器收听频道 |
+| `boolean` | 当前扬声器开关状态 |
 
 ## Language
 

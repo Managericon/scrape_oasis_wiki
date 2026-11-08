@@ -17,3 +17,6 @@ api_root: "https://developer.gp.qq.com/api/"
 | `KeepActorUUID` | `1` | - |
 | `KeepEventUUID` | `2` | - |
 | `KeepAllUUID` | `3` | - |
+| `KeepNotFoundEventUUID` | `4` | - |
+| `KeepNotFoundActionUUID` | `5` | - |
+| `KeepNotFoundEventActionUUID` | `6` | - |

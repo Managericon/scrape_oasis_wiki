@@ -6,6 +6,431 @@ category: "API Wiki/class"
 kind: "api_chunk"
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCheckBox.json -->
+
+# UCheckBox
+
+The checkbox widget allows you to display a toggled state of 'unchecked', 'checked' and 
+  'indeterminable.  You can use the checkbox for a classic checkbox, or as a toggle button,
+  or as radio buttons.
+  
+   Single Child
+   Toggle
+
+## Inheritance
+
+`UContentWidget`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `CheckedState` | `ECheckBoxState` | Whether the check box is currently in a checked state |
+| `CheckedStateDelegate` | `FGetCheckBoxState` | A bindable delegate for the IsChecked. |
+| `WidgetStyle` | `FCheckBoxStyle` | The checkbox bar style |
+| `Style_DEPRECATED` | `USlateWidgetStyleAsset *` | Style of the check box |
+| `UncheckedImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is unchecked |
+| `UncheckedHoveredImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is unchecked and hovered |
+| `UncheckedPressedImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is unchecked and pressed |
+| `CheckedImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is checked |
+| `CheckedHoveredImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is checked and hovered |
+| `CheckedPressedImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is checked and pressed |
+| `UndeterminedImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is in an ambiguous state and hovered |
+| `UndeterminedHoveredImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is checked and hovered |
+| `UndeterminedPressedImage_DEPRECATED` | `USlateBrushAsset *` | Image to use when the checkbox is in an ambiguous state and pressed |
+| `HorizontalAlignment` | `TEnumAsByte < EHorizontalAlignment >` | How the content of the toggle button should align within the given space |
+| `Padding_DEPRECATED` | `FMargin` | Spacing between the check box image and its content |
+| `BorderBackgroundColor_DEPRECATED` | `FSlateColor` | The color of the background border |
+| `IsFocusable` | `bool` | Sometimes a button should only be mouse-clickable and never keyboard focusable. |
+| `ClickMethod` | `TEnumAsByte < EButtonClickMethod :: Type >` | The type of mouse action required by the user to trigger the buttons 'Click' |
+| `TouchMethod` | `TEnumAsByte < EButtonTouchMethod :: Type >` | The type of touch action required by the user to trigger the buttons 'Click' |
+
+## Functions
+
+### `IsPressed`
+
+```text
+IsPressed() -> bool
+```
+
+Returns true if this button is currently pressed
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `IsChecked`
+
+```text
+IsChecked() -> bool
+```
+
+Returns true if the checkbox is currently checked
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `GetCheckedState`
+
+```text
+GetCheckedState() -> ECheckBoxState
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ECheckBoxState` | the full current checked state. |
+
+### `SetIsChecked`
+
+```text
+SetIsChecked(InIsChecked: bool) -> void
+```
+
+Sets the checked state.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InIsChecked` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetCheckedState`
+
+```text
+SetCheckedState(InCheckedState: ECheckBoxState) -> void
+```
+
+Sets the checked state.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InCheckedState` | `ECheckBoxState` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetClickMethod`
+
+```text
+SetClickMethod(InClickMethod: EButtonClickMethod :: Type) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InClickMethod` | `EButtonClickMethod :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetTouchMethod`
+
+```text
+SetTouchMethod(InTouchMethod: EButtonTouchMethod :: Type) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InTouchMethod` | `EButtonTouchMethod :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Delegates
+
+### `OnCheckStateChanged`
+
+```text
+OnCheckStateChanged(bIsChecked: bool) -> void
+```
+
+Called when the checked state has changed
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bIsChecked` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCheckBoxStyleAsset.json -->
+
+# UCheckBoxStyleAsset
+
+An asset describing a CheckBox's appearance.
+  Just a wrapper for the struct with real data in it.
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `CheckBoxStyle` | `FCheckBoxStyle` | The actual data describing the Check Box's appearance. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCheckBoxWidgetStyle.json -->
+
+# UCheckBoxWidgetStyle
+
+## Inheritance
+
+`USlateWidgetStyleContainerBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `CheckBoxStyle` | `FCheckBoxStyle` | The actual data describing the button's appearance. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCheckedStateBinding.json -->
+
+# UCheckedStateBinding
+
+## Inheritance
+
+`UPropertyBinding`
+
+## Functions
+
+### `GetValue`
+
+```text
+GetValue() -> ECheckBoxState
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ECheckBoxState` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UChildActorComponent.json -->
+
+# UChildActorComponent
+
+A component that spawns an Actor when registered, and destroys it when unregistered.
+
+## Inheritance
+
+`USceneComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ChildActorClass` | `TSubclassOf < AActor >` | The class of Actor to spawn |
+| `ChildActor` | `AActor *` | The actor that we spawned and own |
+| `bAllowTemplateModification` | `bool` | - |
+| `ChildActorTemplate` | `AActor *` | Property to point to the template child actor for details panel purposes |
+| `IsDestoryChildActor` | `bool` | - |
+| `bKeepChildActorComponet` | `bool` | - |
+| `bEnableReplication` | `bool` | - |
+| `bDumpChildActorLocation` | `bool` | - |
+| `bRedirectComps` | `uint8` | - |
+| `bPCOnlyComps` | `uint8` | - |
+
+## Functions
+
+### `SetChildActorClass`
+
+```text
+SetChildActorClass(InClass: TSubclassOf < AActor >) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InClass` | `TSubclassOf < AActor >` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnRep_ChildActor`
+
+```text
+OnRep_ChildActor() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `CreateChildActor`
+
+```text
+CreateChildActor() -> void
+```
+
+Create the child actor
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `DestroyChildActor`
+
+```text
+DestroyChildActor(bNeedInstanceData: bool) -> void
+```
+
+Kill any currently present child actor
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bNeedInstanceData` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Delegates
+
+### `OnChildActorRep`
+
+```text
+OnChildActorRep() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UChildConnection.json -->
+
+# UChildConnection
+
+Represents a secondary split screen connection that reroutes calls to the parent connection.
+
+## Inheritance
+
+`UNetConnection`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Parent` | `UNetConnection *` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UChunkLabel.json -->
+
+# UChunkLabel
+
+## Inheritance
+
+`UPrimaryDataAsset`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Rules` | `FPrimaryAssetRules` | Management rules for this specific asset, if set it will override the type rules |
+| `LogicChunkName` | `FString` | True to Label everything in this directory and sub directories |
+| `FinalChunkName` | `FString` | - |
+| `ChunkOutputPath` | `FString` | - |
+| `bIsRuntimeLabel` | `uint32` | Set to true if the label asset itself should be cooked and available at runtime. This does not affect the assets that are labeled, they are set with cook rule |
+| `Key` | `FString` | - |
+| `IV` | `FString` | - |
+| `ManagerRuleNames` | `TArray < FString >` | - |
+| `bUpdateManagerRulesWhenSaved` | `bool` | - |
+| `bForceReloadManagerRule` | `bool` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UCineCameraComponent.json -->
 
 # UCineCameraComponent
@@ -2141,6 +2566,7 @@ OnUpdateItemCountV2(NewItemCount: int32, OldItemCount: int32) -> void
 | `TextureLODGroupFilterOverride` | `TArray < FTextureLODGroupFilterOverride >` | - |
 | `bHadApplyConfigFor120fps` | `bool` | - |
 | `bHadApplyForEnergySaving` | `bool` | - |
+| `bHadApplyTextureFilter` | `bool` | - |
 
 ## Functions
 
@@ -14696,6 +15122,230 @@ GetComponentOwner(Component: UComponent) -> AActor
 |---|---|
 | `AActor` | 所属 Actor |
 
+### `ActivateComponent`
+
+```text
+ActivateComponent(Component: UActorComponent, bReset: boolean)
+```
+
+激活已停用的组件，恢复其逐帧更新及组件自身功能
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UActorComponent` | 要激活的组件 |
+| `bReset` | `boolean` | 是否强制重新执行组件的激活逻辑，默认 false；为 true 时即使组件已激活也会再次执行激活流程 |
+
+### `DeactivateComponent`
+
+```text
+DeactivateComponent(Component: UActorComponent)
+```
+
+停用已激活的组件并停止其逐帧更新，用于暂停粒子、移动等可激活组件
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UActorComponent` | 要停用的组件 |
+
+### `IsComponentActive`
+
+```text
+IsComponentActive(Component: UActorComponent) -> boolean
+```
+
+查询组件当前是否处于激活状态
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UActorComponent` | 目标组件；无效组件返回 false |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 当前调用端的组件激活状态；仅反映激活或停用状态，不代表可见性、物理模拟或有效性 |
+
+### `GetActorBounds`
+
+```text
+GetActorBounds(Actor: AActor, bOnlyCollidingComponents: boolean) -> Vector, Vector
+```
+
+获取 Actor 的包围盒中心与半尺寸，用于空间定位与范围判断
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+| `bOnlyCollidingComponents` | `boolean` | 是否只统计启用碰撞的组件，默认 false；为 false 时统计全部组件（含无碰撞的视觉组件） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Vector` | 世界空间包围盒中心；不含子 Actor 组件；Actor 无效时为零向量 |
+| `Vector` | 包围盒半尺寸，各轴为完整尺寸的一半；Actor 无效时为零向量 |
+
+### `SetComponentRelativeTransform`
+
+```text
+SetComponentRelativeTransform(Component: USceneComponent, RelativeTransform: FTransform)
+```
+
+设置组件相对于父级的 Transform，用于调整部件偏移、朝向与缩放（如挂点微调）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `USceneComponent` | 目标场景组件 |
+| `RelativeTransform` | `FTransform` | 相对父级的位置、旋转与缩放 |
+
+### `GetComponentRelativeTransform`
+
+```text
+GetComponentRelativeTransform(Component: USceneComponent) -> FTransform
+```
+
+获取组件相对于父级的 Transform，用于读取当前偏移、朝向与缩放（如缓存原值以便恢复）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `USceneComponent` | 目标场景组件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FTransform` | 相对父级的位置、旋转与缩放；Component 无效时返回 nil |
+
+### `GetAttachedActors`
+
+```text
+GetAttachedActors(Actor: AActor, bRecursive: boolean) -> AActor[]
+```
+
+获取 Actor 的子 Actor（可选递归取全部后代），用于遍历附着层级（如查询挂载的武器、道具）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+| `bRecursive` | `boolean` | 是否沿附着层级递归获取全部后代，默认 false；为 false 时仅返回直接子级 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor[]` | 已附着的 Actor 列表（同一 Actor 只出现一次）；无子 Actor 或 Actor 无效时返回空列表 |
+
+### `AddActorOffset`
+
+```text
+AddActorOffset(Actor: AActor, Delta: Vector)
+```
+
+立即沿世界空间平移 Actor 一段距离，用于逐步移动或位置校正（如落地对齐）；连续移动需每帧重复调用
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+| `Delta` | `Vector` | 世界空间位移增量 |
+
+### `GetComponentMobility`
+
+```text
+GetComponentMobility(Component: USceneComponent) -> EComponentMobility
+```
+
+获取场景组件移动性
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `USceneComponent` | 目标组件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EComponentMobility` | 组件移动性；Component 无效时返回 nil |
+
+### `IsComponentVisible`
+
+```text
+IsComponentVisible(Component: USceneComponent) -> boolean
+```
+
+查询组件是否可见，用于判断（如 3D 名牌、模型部件）当前是否展示
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `USceneComponent` | 目标组件（任意场景组件，含 3D 控件组件） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否可见；Component 无效时返回 false |
+
+### `SetComponentMobility`
+
+```text
+SetComponentMobility(Component: USceneComponent, Mobility: EComponentMobility)
+```
+
+设置场景组件移动性
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `USceneComponent` | 目标组件 |
+| `Mobility` | `EComponentMobility` | 移动性：Static, Stationary, Movable |
+
+### `SetComponentVisible`
+
+```text
+SetComponentVisible(Component: USceneComponent, bVisible: boolean)
+```
+
+设置组件的可见性，用于隐藏/显示单个组件（如 3D 名牌、模型部件）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `USceneComponent` | 目标组件（任意场景组件，含 3D 控件组件） |
+| `bVisible` | `boolean` | 是否可见 |
+
 ## Language
 
 `lua`
@@ -15965,14 +16615,14 @@ GetDamagePositionTypeFromContext(Context: FGameMagnitudeContext) -> EAvatarDamag
 GetBackpackComponent(PlayerPawn: PlayerPawn) -> UBackpackComponent
 ```
 
-获取背包组件(客户端仅能获取到自己的）
+获取普通玩家和人机玩家的背包组件(客户端仅能获取到自己的）
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -15986,14 +16636,14 @@ GetBackpackComponent(PlayerPawn: PlayerPawn) -> UBackpackComponent
 AddItem(PlayerPawn: PlayerPawn, ItemID: number, Count: number) -> boolean
 ```
 
-添加道具
+给普通玩家和人机玩家添加道具
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `ItemID` | `number` | 物品ID |
 | `Count` | `number` | 数量 |
 
@@ -16009,14 +16659,14 @@ AddItem(PlayerPawn: PlayerPawn, ItemID: number, Count: number) -> boolean
 DropItem(PlayerPawn: PlayerPawn, ItemID: number, Count: number, IsDestroy: boolean) -> boolean
 ```
 
-掉落道具（入参为ItemID，不关心具体哪个道具）
+让普通玩家和人机玩家掉落道具（入参为ItemID，不关心具体哪个道具）
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `ItemID` | `number` | 物品ID |
 | `Count` | `number` | 数量 |
 | `IsDestroy` | `boolean` | 是否直接销毁，不掉落地面 |
@@ -16033,14 +16683,14 @@ DropItem(PlayerPawn: PlayerPawn, ItemID: number, Count: number, IsDestroy: boole
 UseItem(PlayerPawn: PlayerPawn, ItemID: number) -> boolean
 ```
 
-使用道具（入参为ItemID，不关心具体哪个道具）
+让普通玩家和人机玩家使用道具（入参为ItemID，不关心具体哪个道具）
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `ItemID` | `number` | 物品ID |
 
 **Returns**
@@ -16055,14 +16705,14 @@ UseItem(PlayerPawn: PlayerPawn, ItemID: number) -> boolean
 DisuseItem(PlayerPawn: PlayerPawn, ItemID: number) -> boolean
 ```
 
-停止使用物品（入参为ItemID，默认选择同ID第一个，仅对物资编辑器生成的绷带，饮料类物资生效）
+让普通玩家和人机玩家停止使用物品（入参为ItemID，默认选择同ID第一个，仅对物资编辑器生成的绷带，饮料类物资生效）
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `ItemID` | `number` | 物品ID |
 
 **Returns**
@@ -16077,14 +16727,14 @@ DisuseItem(PlayerPawn: PlayerPawn, ItemID: number) -> boolean
 DropItemByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number, Count: number, IsDestroy: boolean) -> boolean
 ```
 
-根据InstanceID（物品实例ID）掉落道具
+根据InstanceID（物品实例ID）让普通玩家和人机玩家掉落道具
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `InstanceID` | `number` | 物品实例ID（唯一） |
 | `Count` | `number` | 数量 |
 | `IsDestroy` | `boolean` | 是否直接销毁，不掉落地面 |
@@ -16101,14 +16751,14 @@ DropItemByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number, Count: number, 
 UseItemByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number) -> boolean
 ```
 
-根据InstanceID（物品实例ID）使用道具
+根据InstanceID（物品实例ID）让普通玩家和人机玩家使用道具
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `InstanceID` | `number` | 物品实例ID（唯一） |
 
 **Returns**
@@ -16123,14 +16773,14 @@ UseItemByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number) -> boolean
 DisuseItemByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number) -> boolean
 ```
 
-根据InstanceID（物品实例ID）停止使用道具（仅对物资编辑器生成的绷带，饮料类物资生效）
+根据InstanceID（物品实例ID）让普通玩家和人机玩家停止使用道具（仅对物资编辑器生成的绷带，饮料类物资生效）
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `InstanceID` | `number` | 物品实例ID（唯一） |
 
 **Returns**
@@ -16145,14 +16795,14 @@ DisuseItemByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number) -> boolean
 GetItemCount(PlayerPawn: PlayerPawn, ItemID: number) -> number
 ```
 
-获取道具数量
+获取普通玩家和人机玩家的道具数量
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `ItemID` | `number` | 物品ID |
 
 **Returns**
@@ -16167,14 +16817,14 @@ GetItemCount(PlayerPawn: PlayerPawn, ItemID: number) -> number
 GetAllItemData(PlayerPawn: PlayerPawn) -> @LuaTable<ItemData>,
 ```
 
-获取背包里所有道具数据
+获取普通玩家和人机玩家背包里所有道具数据
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -16188,14 +16838,14 @@ GetAllItemData(PlayerPawn: PlayerPawn) -> @LuaTable<ItemData>,
 GetAllItemDataByItemID(PlayerPawn: PlayerPawn, ItemID: number) -> table
 ```
 
-获取ItemData列表
+获取普通玩家和人机玩家的ItemData列表
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `ItemID` | `number` | 物品ID |
 
 **Returns**
@@ -16210,14 +16860,14 @@ GetAllItemDataByItemID(PlayerPawn: PlayerPawn, ItemID: number) -> table
 GetItemDataByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number) -> FBattleItemData
 ```
 
-根据InstanceID（物品实例ID）获取ItemData
+根据InstanceID（物品实例ID）获取普通玩家和人机玩家的ItemData
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `InstanceID` | `number` | 物品实例ID（唯一） |
 
 **Returns**
@@ -16232,14 +16882,14 @@ GetItemDataByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number) -> FBattleIt
 GetCapacity(PlayerPawn: PlayerPawn) -> number
 ```
 
-获取背包剩余容量
+获取普通玩家和人机玩家的背包剩余容量
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -16253,14 +16903,14 @@ GetCapacity(PlayerPawn: PlayerPawn) -> number
 GetMaxCapacity(PlayerPawn: PlayerPawn) -> number
 ```
 
-获取背包最大剩余容量
+获取普通玩家和人机玩家的背包最大剩余容量
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -16274,14 +16924,14 @@ GetMaxCapacity(PlayerPawn: PlayerPawn) -> number
 HasItemBySubType(PlayerPawn: PlayerPawn, ItemSubType: number) -> boolean
 ```
 
-是否拥有某类物品
+普通玩家和人机玩家是否拥有某类物品
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `ItemSubType` | `number` | 道具字类型 |
 
 **Returns**
@@ -16296,14 +16946,14 @@ HasItemBySubType(PlayerPawn: PlayerPawn, ItemSubType: number) -> boolean
 GetWeaponsInBackpack(PlayerPawn: PlayerPawn) -> table
 ```
 
-获取背包中的武器
+获取普通玩家和人机玩家背包中的武器
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -16317,14 +16967,14 @@ GetWeaponsInBackpack(PlayerPawn: PlayerPawn) -> table
 GetWeaponAttachmentsInBackpack(PlayerPawn: PlayerPawn) -> table
 ```
 
-获取背包中的武器配件
+获取普通玩家和人机玩家背包中的武器配件
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -16338,14 +16988,14 @@ GetWeaponAttachmentsInBackpack(PlayerPawn: PlayerPawn) -> table
 GetArmorInBackpack(PlayerPawn: PlayerPawn) -> FBattleItemData
 ```
 
-获取当前防弹衣
+获取普通玩家和人机玩家的当前防弹衣
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -16359,14 +17009,14 @@ GetArmorInBackpack(PlayerPawn: PlayerPawn) -> FBattleItemData
 GetHelmetInBackpack(PlayerPawn: PlayerPawn) -> FBattleItemData
 ```
 
-获取当前头盔
+获取普通玩家和人机玩家的当前头盔
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -16380,14 +17030,14 @@ GetHelmetInBackpack(PlayerPawn: PlayerPawn) -> FBattleItemData
 GetConsumablesInBackpack(PlayerPawn: PlayerPawn) -> table
 ```
 
-获取背包中的所有消耗品
+获取普通玩家和人机玩家背包中的所有消耗品
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -16464,14 +17114,14 @@ GetPickupWrapperClassPath(ItemID: number) -> string
 GetAllAttachmentDefineIDInBackpack(PlayerPawn: PlayerPawn) -> table
 ```
 
-获取背包内所有枪械配件DefineID
+获取普通玩家和人机玩家背包内所有枪械配件DefineID
 生效范围：服务端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -16485,14 +17135,14 @@ GetAllAttachmentDefineIDInBackpack(PlayerPawn: PlayerPawn) -> table
 GetAllUnEquipedAttachmentDefineIDInBackpack(PlayerPawn: PlayerPawn) -> table
 ```
 
-获取背包内所有未装备的枪械配件DefineID
+获取普通玩家和人机玩家背包内所有未装备的枪械配件DefineID
 生效范围：服务端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -16745,6 +17395,35 @@ AddAndEquipItemV2(Player: PlayerPawn | PlayerController @玩家角色或者玩�
 |---|---|---|
 | `Player` | `PlayerPawn \| PlayerController @玩家角色或者玩家控制器` | 玩家角色或者玩家控制器 |
 | `DefineID` | `ItemDefineID` | 物品 DefineID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EItemAddAndEquipResultV2` | 添加装备返回结果枚举 |
+
+### `AddAndEquipItemToSlotV2`
+
+```text
+AddAndEquipItemToSlotV2(Player: PlayerPawn | PlayerController @玩家角色或者玩家控制器, DefineID: ItemDefineID, ParentItem: ItemDefineID, SlotName: string) -> EItemAddAndEquipResultV2
+```
+
+添加并装备物品到指定槽位
+生效范围：服务器
+
+通过 ItemDefineID 添加物品到背包并装备到指定槽位。
+指定槽位支持背包槽位和物品槽位：ParentItem 为空 DefineID 时装备到背包槽位；ParentItem 有效时作为配件装备到该物品的槽位。
+如果目标槽位已有物品，会先卸下原物品再装备新物品。
+装备类型无法堆叠，因此无需指定添加数量。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Player` | `PlayerPawn \| PlayerController @玩家角色或者玩家控制器` | 玩家角色或者玩家控制器 |
+| `DefineID` | `ItemDefineID` | 物品 DefineID |
+| `ParentItem` | `ItemDefineID` | 父物品 DefineID。为空表示背包槽位；有效表示物品槽位所属的父物品 |
+| `SlotName` | `string` | 目标槽位名称 |
 
 **Returns**
 
@@ -18082,7 +18761,7 @@ GetEquipSlotEnable(Player: PlayerPawn | PlayerController @玩家角色或者玩�
 GetCustomUIWidget(Player: PlayerPawn | PlayerController @玩家角色或者玩家控制器, Type: ECustomUIType, DefineID: ItemDefineID) -> UserWidget
 ```
 
-获取指定类型的自定义控件（打开过背包才会添加自定义控件）
+获取指定类型的自定义控件（打开过背包才会添加自定义控件,废弃）
 生效范围：客户端
 注意，背包UI在物品变更后延时刷新，不要在添加物品后 立即获取格子自定义控件
 
@@ -18335,7 +19014,7 @@ GetBackpackPersistData(Player: PlayerPawn | PlayerController @玩家角色或者
 ### `GetBackpackUIComponentConfig`
 
 ```text
-GetBackpackUIComponentConfig(ConfigKey: EBackpackUIComponentConfigKey) -> table|nil
+GetBackpackUIComponentConfig(ConfigKey: EBackpackUIComponentConfigKey, ...: any) -> table|nil
 ```
 
 获取 BackpackUIComponent 上的配置属性
@@ -18349,6 +19028,7 @@ GetBackpackUIComponentConfig(ConfigKey: EBackpackUIComponentConfigKey) -> table|
 | Name | Type | Description |
 |---|---|---|
 | `ConfigKey` | `EBackpackUIComponentConfigKey` | 配置属性的枚举键值 |
+| `...` | `any` | 可变参数，读取BtnFuncList需要透传(DefineID, DataType) |
 
 **Returns**
 
@@ -21020,756 +21700,6 @@ GetEMPZoneManager() -> UGCEMPZoneManager
 | Type | Description |
 |---|---|
 | `UGCEMPZoneManager` | 电磁干扰区管理器实例，失败时返回nil |
-
-## Language
-
-`lua`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UGCEntityTypeSystem.json -->
-
-# UGCEntityTypeSystem
-
-实体类型查询系统接口库
-
-## Functions
-
-### `IsActorOfEntityType`
-
-```text
-IsActorOfEntityType(Actor: AActor, EntityTypeName: string) -> boolean
-```
-
-判断Actor是否属于指定的实体类型
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Actor` | `AActor` | 要检查的Actor |
-| `EntityTypeName` | `string` | 实体类型名称 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | 是否属于指定类型 |
-
-### `GetActorEntityType`
-
-```text
-GetActorEntityType(Actor: AActor) -> string
-```
-
-获取Actor的实体类型（返回第一个匹配的）
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Actor` | `AActor` | 要检查的Actor |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `string` | 实体类型名称，如果没有匹配则返回空字符串 |
-
-### `GetActorEntityTypes`
-
-```text
-GetActorEntityTypes(Actor: AActor) -> string[]
-```
-
-获取Actor的所有匹配的实体类型
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Actor` | `AActor` | 要检查的Actor |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `string[]` | 实体类型名称数组 |
-
-### `GetAllEntityTypeNames`
-
-```text
-GetAllEntityTypeNames() -> string[]
-```
-
-获取所有已配置的实体类型名称
-生效范围：服务器&客户端
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `string[]` | 所有实体类型名称数组 |
-
-### `OverlapBoxByEntityType`
-
-```text
-OverlapBoxByEntityType(WorldContext: UObject, EntityTypeName: string, Location: FVector, HalfExtent: FVector, Rotation: FRotator) -> AActor[]
-```
-
-使用Box形状检测指定EntityType的Actor
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContext` | `UObject` | 世界上下文对象 |
-| `EntityTypeName` | `string` | 实体类型名称 |
-| `Location` | `FVector` | 检测位置 |
-| `HalfExtent` | `FVector` | Box的半尺寸（默认值：{X=50, Y=50, Z=50}） |
-| `Rotation` | `FRotator` | 旋转角度（默认值：{Pitch=0, Yaw=0, Roll=0}） |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `AActor[]` | 找到的Actor数组 |
-
-### `OverlapSphereByEntityType`
-
-```text
-OverlapSphereByEntityType(WorldContext: UObject, EntityTypeName: string, Location: FVector, Radius: number) -> AActor[]
-```
-
-使用Sphere形状检测指定EntityType的Actor
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContext` | `UObject` | 世界上下文对象 |
-| `EntityTypeName` | `string` | 实体类型名称 |
-| `Location` | `FVector` | 检测位置 |
-| `Radius` | `number` | 球体半径（默认值：100） |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `AActor[]` | 找到的Actor数组 |
-
-### `OverlapCapsuleByEntityType`
-
-```text
-OverlapCapsuleByEntityType(WorldContext: UObject, EntityTypeName: string, Location: FVector, Radius: number, HalfHeight: number, Rotation: FRotator) -> AActor[]
-```
-
-使用Capsule形状检测指定EntityType的Actor
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContext` | `UObject` | 世界上下文对象 |
-| `EntityTypeName` | `string` | 实体类型名称 |
-| `Location` | `FVector` | 检测位置 |
-| `Radius` | `number` | 胶囊体半径（默认值：100） |
-| `HalfHeight` | `number` | 胶囊体半高（默认值：100） |
-| `Rotation` | `FRotator` | 旋转角度（默认值：{Pitch=0, Yaw=0, Roll=0}） |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `AActor[]` | 找到的Actor数组 |
-
-### `IsActorOfClassType`
-
-```text
-IsActorOfClassType(Actor: AActor, ActorClassPath: string) -> boolean
-```
-
-检查Actor是否为指定的类类型
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Actor` | `AActor` | 要检查的Actor |
-| `ActorClassPath` | `string` | Actor类的路径 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | 是否为指定类型 |
-
-### `IsActorOfAnyClassTypes`
-
-```text
-IsActorOfAnyClassTypes(Actor: AActor, ActorClassPaths: string[]) -> boolean
-```
-
-检查Actor是否为指定类类型数组中的任意一种
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Actor` | `AActor` | 要检查的Actor |
-| `ActorClassPaths` | `string[]` | Actor类路径数组 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | 是否为指定类型之一 |
-
-### `IsActorOfEntityTypeByTag`
-
-```text
-IsActorOfEntityTypeByTag(Actor: AActor, EntityTypeTag: FGameplayTag) -> boolean
-```
-
-判断Actor是否属于指定的实体类型（使用GameplayTag）
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Actor` | `AActor` | 要检查的Actor |
-| `EntityTypeTag` | `FGameplayTag` | 实体类型GameplayTag |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | 是否属于指定类型 |
-
-### `IsActorOfEntityTypeByTags`
-
-```text
-IsActorOfEntityTypeByTags(Actor: AActor, EntityTypeTags: FGameplayTagContainer) -> boolean
-```
-
-判断Actor是否属于指定的实体类型（使用GameplayTagContainer）
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Actor` | `AActor` | 要检查的Actor |
-| `EntityTypeTags` | `FGameplayTagContainer` | 实体类型GameplayTag容器 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | 是否属于指定类型之一 |
-
-### `GetActorEntityTypeAsGameplayTag`
-
-```text
-GetActorEntityTypeAsGameplayTag(Actor: AActor) -> FGameplayTag
-```
-
-获取Actor的实体类型（返回GameplayTag）
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Actor` | `AActor` | 要检查的Actor |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FGameplayTag` | 实体类型GameplayTag |
-
-### `GetActorEntityTypesAsGameplayTagContainer`
-
-```text
-GetActorEntityTypesAsGameplayTagContainer(Actor: AActor) -> FGameplayTagContainer
-```
-
-获取Actor的所有匹配的实体类型（返回GameplayTagContainer）
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Actor` | `AActor` | 要检查的Actor |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FGameplayTagContainer` | 实体类型GameplayTag容器 |
-
-### `OverlapBoxByEntityTypeTag`
-
-```text
-OverlapBoxByEntityTypeTag(WorldContext: UObject, EntityTypeTag: FGameplayTag, Location: FVector, HalfExtent: FVector, Rotation: FRotator) -> AActor[]
-```
-
-使用Box形状检测指定EntityType的Actor（使用GameplayTag）
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContext` | `UObject` | 世界上下文对象 |
-| `EntityTypeTag` | `FGameplayTag` | 实体类型GameplayTag |
-| `Location` | `FVector` | 检测位置 |
-| `HalfExtent` | `FVector` | Box的半尺寸（默认值：{X=50, Y=50, Z=50}） |
-| `Rotation` | `FRotator` | 旋转角度（默认值：{Pitch=0, Yaw=0, Roll=0}） |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `AActor[]` | 找到的Actor数组 |
-
-### `OverlapBoxByEntityTypeTags`
-
-```text
-OverlapBoxByEntityTypeTags(WorldContext: UObject, EntityTypeTags: FGameplayTagContainer, Location: FVector, HalfExtent: FVector, Rotation: FRotator) -> AActor[]
-```
-
-使用Box形状检测指定EntityType的Actor（使用GameplayTagContainer）
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContext` | `UObject` | 世界上下文对象 |
-| `EntityTypeTags` | `FGameplayTagContainer` | 实体类型GameplayTag容器 |
-| `Location` | `FVector` | 检测位置 |
-| `HalfExtent` | `FVector` | Box的半尺寸（默认值：{X=50, Y=50, Z=50}） |
-| `Rotation` | `FRotator` | 旋转角度（默认值：{Pitch=0, Yaw=0, Roll=0}） |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `AActor[]` | 找到的Actor数组 |
-
-### `OverlapSphereByEntityTypeTag`
-
-```text
-OverlapSphereByEntityTypeTag(WorldContext: UObject, EntityTypeTag: FGameplayTag, Location: FVector, Radius: number) -> AActor[]
-```
-
-使用Sphere形状检测指定EntityType的Actor（使用GameplayTag）
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContext` | `UObject` | 世界上下文对象 |
-| `EntityTypeTag` | `FGameplayTag` | 实体类型GameplayTag |
-| `Location` | `FVector` | 检测位置 |
-| `Radius` | `number` | 球体半径（默认值：100） |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `AActor[]` | 找到的Actor数组 |
-
-### `OverlapSphereByEntityTypeTags`
-
-```text
-OverlapSphereByEntityTypeTags(WorldContext: UObject, EntityTypeTags: FGameplayTagContainer, Location: FVector, Radius: number) -> AActor[]
-```
-
-使用Sphere形状检测指定EntityType的Actor（使用GameplayTagContainer）
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContext` | `UObject` | 世界上下文对象 |
-| `EntityTypeTags` | `FGameplayTagContainer` | 实体类型GameplayTag容器 |
-| `Location` | `FVector` | 检测位置 |
-| `Radius` | `number` | 球体半径（默认值：100） |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `AActor[]` | 找到的Actor数组 |
-
-### `OverlapCapsuleByEntityTypeTag`
-
-```text
-OverlapCapsuleByEntityTypeTag(WorldContext: UObject, EntityTypeTag: FGameplayTag, Location: FVector, Radius: number, HalfHeight: number, Rotation: FRotator) -> AActor[]
-```
-
-使用Capsule形状检测指定EntityType的Actor（使用GameplayTag）
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContext` | `UObject` | 世界上下文对象 |
-| `EntityTypeTag` | `FGameplayTag` | 实体类型GameplayTag |
-| `Location` | `FVector` | 检测位置 |
-| `Radius` | `number` | 胶囊体半径（默认值：100） |
-| `HalfHeight` | `number` | 胶囊体半高（默认值：100） |
-| `Rotation` | `FRotator` | 旋转角度（默认值：{Pitch=0, Yaw=0, Roll=0}） |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `AActor[]` | 找到的Actor数组 |
-
-### `OverlapCapsuleByEntityTypeTags`
-
-```text
-OverlapCapsuleByEntityTypeTags(WorldContext: UObject, EntityTypeTags: FGameplayTagContainer, Location: FVector, Radius: number, HalfHeight: number, Rotation: FRotator) -> AActor[]
-```
-
-使用Capsule形状检测指定EntityType的Actor（使用GameplayTagContainer）
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldContext` | `UObject` | 世界上下文对象 |
-| `EntityTypeTags` | `FGameplayTagContainer` | 实体类型GameplayTag容器 |
-| `Location` | `FVector` | 检测位置 |
-| `Radius` | `number` | 胶囊体半径（默认值：100） |
-| `HalfHeight` | `number` | 胶囊体半高（默认值：100） |
-| `Rotation` | `FRotator` | 旋转角度（默认值：{Pitch=0, Yaw=0, Roll=0}） |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `AActor[]` | 找到的Actor数组 |
-
-### `GetAllEntityTypesAsGameplayTagContainer`
-
-```text
-GetAllEntityTypesAsGameplayTagContainer() -> FGameplayTagContainer
-```
-
-获取所有已配置的实体类型（返回GameplayTagContainer）
-生效范围：服务器&客户端
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FGameplayTagContainer` | 所有实体类型GameplayTag容器 |
-
-### `ConvertEntityTypeNameToGameplayTag`
-
-```text
-ConvertEntityTypeNameToGameplayTag(EntityTypeName: string) -> FGameplayTag
-```
-
-将实体类型名称转换为GameplayTag
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EntityTypeName` | `string` | 实体类型名称 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FGameplayTag` | 对应的GameplayTag |
-
-### `ConvertGameplayTagToEntityTypeName`
-
-```text
-ConvertGameplayTagToEntityTypeName(EntityTypeTag: FGameplayTag) -> string
-```
-
-将GameplayTag转换为实体类型名称
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `EntityTypeTag` | `FGameplayTag` | 实体类型GameplayTag |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `string` | 对应的实体类型名称 |
-
-### `SetConfigDataAssetPath`
-
-```text
-SetConfigDataAssetPath(ConfigDataAssetPath: string)
-```
-
-设置自定义配置DataAsset路径
-如果不调用此函数，将使用默认路径
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ConfigDataAssetPath` | `string` | 配置DataAsset的路径 |
-
-### `ForceReloadConfig`
-
-```text
-ForceReloadConfig()
-```
-
-强制重新加载配置
-配合SetConfigDataAssetPath使用，建议设置完路径后调用一次
-生效范围：服务器&客户端
-
-## Language
-
-`lua`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E6%80%AA%E7%89%A9%E7%B3%BB%E7%BB%9F/UGCFakePlayerSystem.json -->
-
-# UGCFakePlayerSystem
-
-假人玩家系统
-
-## Functions
-
-### `SpawnFakePlayer`
-
-```text
-SpawnFakePlayer(AIPlayerKey: number, TeamID: number, InFakePlayerClass: UClass)
-```
-
-生成假人玩家， GameMode 中 DataManager，AIProbe 数据中配置 AIController
-生效范围：服务器
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `AIPlayerKey` | `number` | AIPlayerKey，建议使用 UGCFakePlayerSystem.GetRandomAIPlayerKey 生成 |
-| `TeamID` | `number` | 队伍 ID |
-| `InFakePlayerClass` | `UClass` | 假人玩家的控制器类 |
-
-### `GetRandomAIPlayerKey`
-
-```text
-GetRandomAIPlayerKey() -> number
-```
-
-生成随机AIPlayerKey，用于UGCFakePlayerSystem.SpawnFakePlayer接口参数
-生效范围：服务器
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number` | AIPlayerKey |
-
-### `DestroyFakePlayer`
-
-```text
-DestroyFakePlayer(AIPlayerKey: number)
-```
-
-销毁假人玩家
-生效范围：服务器
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `AIPlayerKey` | `number` | AIPlayerKey |
-
-## Language
-
-`lua`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E5%95%86%E4%B8%9A%E5%8C%96%E4%B8%8E%E5%8A%9F%E8%83%BD%E6%A8%A1%E6%9D%BF/UGCGamePartSystem.json -->
-
-# UGCGamePartSystem
-
-GamePart系统接口库
-
-## Functions
-
-### `GetGamePartConfig`
-
-```text
-GetGamePartConfig(GamePartName: string) -> UUGCGamePartConfig
-```
-
-获取指定GamePart的Config
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `GamePartName` | `string` | GamePart名称 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UUGCGamePartConfig` | 指定GamePart的Config |
-
-### `GetGamePartGlobalActor`
-
-```text
-GetGamePartGlobalActor(GamePartName: string) -> AActor
-```
-
-获取指定GamePart的GlobalActor
-生效范围：服务器&客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `GamePartName` | `string` | GamePart名称 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `AActor` | 指定GamePart的GlobalActor |
-
-### `GetGamePartPlayerComponent`
-
-```text
-GetGamePartPlayerComponent(GamePartName: string, PC: PlayerController, PlayerComponentName: string) -> UActorComponent
-```
-
-获取指定GamePart的指定玩家的指定PlayerComponent
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `GamePartName` | `string` | GamePart名称 |
-| `PC` | `PlayerController` | 玩家控制器 |
-| `PlayerComponentName` | `string` | PlayerComponent名称 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UActorComponent` | 指定的PlayerComponent |
-
-### `IsGamePartLoaded`
-
-```text
-IsGamePartLoaded(GamePartName: string) -> boolean
-```
-
-获取指定GamePart是否已加载
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `GamePartName` | `string` | GamePart名称 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | GamePart是否已加载 |
-
-### `GetAllLoadedGameParts`
-
-```text
-GetAllLoadedGameParts() -> string[]
-```
-
-获取所有已加载的GamePart
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `string[]` | 所有已加载的GamePart列表 |
-
-## Language
-
-`lua`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UGCGameplayTag.json -->
-
-# UGCGameplayTag
-
-UGCGameplayTag
-
-## Functions
-
-### `__tostring`
-
-```text
-__tostring() -> string
-```
-
-返回 UGCGamePlayTag 的字符串
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `string` | - |
-
-### `IsValid`
-
-```text
-IsValid() -> boolean
-```
-
-检查当前这个 UGCGameplayTag 是否合法
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | - |
 
 ## Language
 

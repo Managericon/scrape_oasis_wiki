@@ -40,6 +40,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `SplatmapTextures` | `TArray < UTexture2D * >` | Helper to getset splatmap data, hold reference to splatmap textures |
 | `SplatmapLayerAllocations` | `TArray < FSplatmapLayerAllocationInfo >` | - |
 | `bUseMaterialId` | `bool` | Cached value of bUseMaterialId, should be equal to bUseMaterialId in ALandscape |
+| `bKeepMatIDSplatmapOnCook` | `bool` | - |
 | `SplatmapG8Texture` | `UTexture2D *` | - |
 | `SplatmapG16Texture` | `UTexture2D *` | - |
 | `MaterialInstances_ForPC` | `TArray < UMaterialInstanceConstant * >` | - |

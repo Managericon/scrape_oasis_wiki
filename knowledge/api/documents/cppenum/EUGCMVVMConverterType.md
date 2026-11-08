@@ -17,5 +17,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `BoolToHitTestInvisible` | `BoolToHitTestInvisible` | 将布尔值转换为可见性（true为HitTestInvisible，false为Collapsed） |
 | `BoolToSelfHitTestInvisible` | `BoolToSelfHitTestInvisible` | 将布尔值转换为可见性（true为SelfHitTestInvisible，false为Collapsed） |
 | `NumberToString` | `NumberToString` | 将数字转换为字符串 |
-| `NumberToPercent` | `NumberToPercent` | 将数字转换为百分比字符串 |
-| `BoolToText` | `BoolToText` | 将布尔值转换为文本（true为"是"，false为"否"） |
+| `NumberToPercent` | `NumberToPercent` | 将数字乘以 100 并格式化为不带小数的百分比字符串，例如 0.5 转为 "50%" |
+| `BoolToText` | `BoolToText` | 将布尔值转换为文本（默认 true 为 "True"，false 为 "False"） |

@@ -20,6 +20,6 @@ api_root: "https://developer.gp.qq.com/api/"
 | `CDRecoveryTime` | `float` | CD能量充能时间 |
 | `AllowRecoveryDuringActivation` | `bool` | 技能激活期间恢复CD能量 |
 | `MaxLayer` | `int` | 最大充能次数 |
-| `CDEnergyConsume` | `float` | 持续消耗型每秒扣除速率 |
-| `AllowConsumeMinEnergy` | `float` | 能开始消耗能量的最小百分比 |
+| `CDEnergyConsume` | `float` | 持续消耗型每秒扣除速率<br>	  单位是百分比（能量域 0-100，运行时 MaxEnergy = 100，CurEnergy 直接与该值比较），默认 1 即每秒消耗 1% 能量 |
+| `AllowConsumeMinEnergy` | `float` | 能开始消耗能量的最小百分比<br>	  单位是百分比（能量域 0-100），默认 10 即需要 10% 能量才能启动技能 |
 | `ConsumeTimeType` | `EPESkillConsumeTimeType` | CD能量和消耗扣除时机 |

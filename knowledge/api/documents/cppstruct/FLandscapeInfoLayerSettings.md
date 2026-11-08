@@ -21,5 +21,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `Owner` | `ALandscapeProxy *` | - |
 | `DebugColorChannel` | `int32` | - |
 | `bValid` | `uint32` | - |
-| `bUseForPC` | `uint32` | - |
 | `bUseForOrigin` | `uint32` | - |
+| `bUseForPC` | `uint32` | - |

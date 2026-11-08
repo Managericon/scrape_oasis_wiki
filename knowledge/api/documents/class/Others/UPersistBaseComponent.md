@@ -15,6 +15,12 @@ api_root: "https://developer.gp.qq.com/api/"
 
 `UGameplayTasksComponent` -> `IObjectPoolInterface`
 
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SlotStackPriorityConfig` | `UPESkillSlotPriorityDataAsset *` | 技能槽位优先级配置：配置技能Class与优先级数值。<br>	  RegisterPersistEffectWithSlotStack 注册时按优先级数值排序，数值最高的技能注册到槽位。 |
+
 ## Functions
 
 ### `RegisterPersistEffectWithSlot`

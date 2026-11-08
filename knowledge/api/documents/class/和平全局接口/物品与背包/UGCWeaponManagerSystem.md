@@ -19,14 +19,14 @@ api_root: "https://developer.gp.qq.com/api/"
 GetWeaponManagerComponent(PlayerPawn: PlayerPawn) -> UWeaponManagerComponent
 ```
 
-获取武器管理组件
+获取普通玩家和人机玩家的武器管理组件
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -40,14 +40,14 @@ GetWeaponManagerComponent(PlayerPawn: PlayerPawn) -> UWeaponManagerComponent
 GetWeaponBySlot(PlayerPawn: PlayerPawn, Slot: ESurviveWeaponPropSlot) -> ASTExtraWeapon
 ```
 
-获取对应插槽的武器实例
+获取普通玩家和人机玩家对应插槽的武器实例
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `Slot` | `ESurviveWeaponPropSlot` | 武器槽位 |
 
 **Returns**
@@ -62,14 +62,14 @@ GetWeaponBySlot(PlayerPawn: PlayerPawn, Slot: ESurviveWeaponPropSlot) -> ASTExtr
 GetCurrentWeapon(PlayerPawn: PlayerPawn) -> ASTExtraWeapon
 ```
 
-获取当前使用的武器实例
+获取普通玩家和人机玩家当前使用的武器实例
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -83,14 +83,14 @@ GetCurrentWeapon(PlayerPawn: PlayerPawn) -> ASTExtraWeapon
 GetLastUsedWeapon(PlayerPawn: PlayerPawn) -> ASTExtraWeapon
 ```
 
-获取上一把武器
+获取普通玩家和人机玩家的上一把武器
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -104,14 +104,14 @@ GetLastUsedWeapon(PlayerPawn: PlayerPawn) -> ASTExtraWeapon
 GetCurrentWeaponSlot(PlayerPawn: PlayerPawn) -> ESurviveWeaponPropSlot
 ```
 
-获取当前使用武器插槽
+获取普通玩家和人机玩家当前使用武器插槽
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -125,14 +125,14 @@ GetCurrentWeaponSlot(PlayerPawn: PlayerPawn) -> ESurviveWeaponPropSlot
 SwitchWeaponBySlot(PlayerPawn: PlayerPawn, Slot: ESurviveWeaponPropSlot, IsUseAnimation: boolean)
 ```
 
-切换对应槽位的武器
+让普通玩家和人机玩家切换对应槽位的武器
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `Slot` | `ESurviveWeaponPropSlot` | 武器槽位 |
 | `IsUseAnimation` | `boolean` | 是否播放使用动画 |
 
@@ -142,14 +142,14 @@ SwitchWeaponBySlot(PlayerPawn: PlayerPawn, Slot: ESurviveWeaponPropSlot, IsUseAn
 CurrentWeaponAttachToBack(PlayerPawn: PlayerPawn)
 ```
 
-收起武器
+让普通玩家和人机玩家收起武器
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 ### `GetWeaponItemID`
 
@@ -157,7 +157,7 @@ CurrentWeaponAttachToBack(PlayerPawn: PlayerPawn)
 GetWeaponItemID(Weapon: ASTExtraWeapon) -> number
 ```
 
-获取武器ItemID
+获取普通玩家和人机玩家的武器ItemID
 生效范围：服务器&客户端
 
 **Parameters**
@@ -178,7 +178,7 @@ GetWeaponItemID(Weapon: ASTExtraWeapon) -> number
 GetWeaponName(Weapon: ASTExtraWeapon) -> string
 ```
 
-获取武器名
+获取普通玩家和人机玩家的武器名
 生效范围：服务器&客户端
 
 **Parameters**
@@ -199,14 +199,14 @@ GetWeaponName(Weapon: ASTExtraWeapon) -> string
 GetCurrentUsingAmmoID(PlayerPawn: PlayerPawn) -> number
 ```
 
-获取当前消耗弹药
+获取普通玩家和人机玩家当前消耗弹药
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -220,14 +220,14 @@ GetCurrentUsingAmmoID(PlayerPawn: PlayerPawn) -> number
 SetWeaponSlotVisible(PlayerPawn: PlayerPawn, WeaponSlot: ESurviveWeaponPropSlot, bVisible: boolean)
 ```
 
-设置武器的可见性
+设置普通玩家和人机玩家武器的可见性
 生效范围：客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `WeaponSlot` | `ESurviveWeaponPropSlot` | 武器槽位 |
 | `bVisible` | `boolean` | 是否可见 |
 

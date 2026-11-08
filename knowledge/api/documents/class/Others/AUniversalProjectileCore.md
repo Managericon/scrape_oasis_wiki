@@ -90,6 +90,21 @@ ReceiveOnProjectileDestroyed() -> void
 |---|---|
 | `void` | - |
 
+### `OnProjectileContextChange`
+
+```text
+OnProjectileContextChange() -> void
+```
+
+抛体上下文改变时触发
+	  生效范围：Server
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ## Delegates
 
 ### `OnBulletHitDelegate`

@@ -13,7 +13,7 @@ api_root: "https://developer.gp.qq.com/api/"
 
 ## Inheritance
 
-`UBackpackAvatarHandle` -> `IUGCItemDataInterface` -> `IUGCObjectItemTableInterface` -> `IUGCItemEquipmentInterface` -> `IUGCItemEquipTargetInterface` -> `IUGCCommonDeadDropItemInterface` -> `IUGCBattleEquipHandleAttachInterface`
+`UBackpackAvatarHandle` -> `IUGCItemDataInterface` -> `IUGCObjectItemTableInterface` -> `IUGCItemEquipmentInterface` -> `IUGCItemEquipTargetInterface` -> `IUGCCommonDeadDropItemInterface` -> `IUGCBattleEquipHandleAttachInterface` -> `IUGCItemCompleteDataFillInterface`
 
 ## Events
 

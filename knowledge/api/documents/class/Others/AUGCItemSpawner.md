@@ -103,7 +103,7 @@ OnItemsSpawn(Items: TArray < AActor * > &) -> void
 
 | Name | Type | Description |
 |---|---|---|
-| `Items` | `TArray < AActor * > &` | - |
+| `Items` | `TArray < AActor * > &` | 输出的物资 |
 
 **Returns**
 

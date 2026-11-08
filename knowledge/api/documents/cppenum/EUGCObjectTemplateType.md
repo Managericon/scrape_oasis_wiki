@@ -21,4 +21,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `Asset` | `5` | - |
 | `UI` | `6` | - |
 | `DataAsset` | `7` | - |
-| `None` | `8` | - |
+| `PostProcess` | `8` | - |
+| `None` | `9` | - |

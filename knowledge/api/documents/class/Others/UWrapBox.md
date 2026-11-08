@@ -49,6 +49,26 @@ Sets the inner slot padding goes between slots sharing borders
 |---|---|
 | `void` | - |
 
+### `SetWrapWidth`
+
+```text
+SetWrapWidth(InWrapWidth: float) -> void
+```
+
+Sets the wrap width. Elements exceeding this width will wrap to the next line.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InWrapWidth` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ### `AddChildWrapBox`
 
 ```text

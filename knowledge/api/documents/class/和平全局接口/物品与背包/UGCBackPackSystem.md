@@ -19,14 +19,14 @@ api_root: "https://developer.gp.qq.com/api/"
 GetBackpackComponent(PlayerPawn: PlayerPawn) -> UBackpackComponent
 ```
 
-获取背包组件(客户端仅能获取到自己的）
+获取普通玩家和人机玩家的背包组件(客户端仅能获取到自己的）
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -40,14 +40,14 @@ GetBackpackComponent(PlayerPawn: PlayerPawn) -> UBackpackComponent
 AddItem(PlayerPawn: PlayerPawn, ItemID: number, Count: number) -> boolean
 ```
 
-添加道具
+给普通玩家和人机玩家添加道具
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `ItemID` | `number` | 物品ID |
 | `Count` | `number` | 数量 |
 
@@ -63,14 +63,14 @@ AddItem(PlayerPawn: PlayerPawn, ItemID: number, Count: number) -> boolean
 DropItem(PlayerPawn: PlayerPawn, ItemID: number, Count: number, IsDestroy: boolean) -> boolean
 ```
 
-掉落道具（入参为ItemID，不关心具体哪个道具）
+让普通玩家和人机玩家掉落道具（入参为ItemID，不关心具体哪个道具）
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `ItemID` | `number` | 物品ID |
 | `Count` | `number` | 数量 |
 | `IsDestroy` | `boolean` | 是否直接销毁，不掉落地面 |
@@ -87,14 +87,14 @@ DropItem(PlayerPawn: PlayerPawn, ItemID: number, Count: number, IsDestroy: boole
 UseItem(PlayerPawn: PlayerPawn, ItemID: number) -> boolean
 ```
 
-使用道具（入参为ItemID，不关心具体哪个道具）
+让普通玩家和人机玩家使用道具（入参为ItemID，不关心具体哪个道具）
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `ItemID` | `number` | 物品ID |
 
 **Returns**
@@ -109,14 +109,14 @@ UseItem(PlayerPawn: PlayerPawn, ItemID: number) -> boolean
 DisuseItem(PlayerPawn: PlayerPawn, ItemID: number) -> boolean
 ```
 
-停止使用物品（入参为ItemID，默认选择同ID第一个，仅对物资编辑器生成的绷带，饮料类物资生效）
+让普通玩家和人机玩家停止使用物品（入参为ItemID，默认选择同ID第一个，仅对物资编辑器生成的绷带，饮料类物资生效）
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `ItemID` | `number` | 物品ID |
 
 **Returns**
@@ -131,14 +131,14 @@ DisuseItem(PlayerPawn: PlayerPawn, ItemID: number) -> boolean
 DropItemByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number, Count: number, IsDestroy: boolean) -> boolean
 ```
 
-根据InstanceID（物品实例ID）掉落道具
+根据InstanceID（物品实例ID）让普通玩家和人机玩家掉落道具
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `InstanceID` | `number` | 物品实例ID（唯一） |
 | `Count` | `number` | 数量 |
 | `IsDestroy` | `boolean` | 是否直接销毁，不掉落地面 |
@@ -155,14 +155,14 @@ DropItemByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number, Count: number, 
 UseItemByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number) -> boolean
 ```
 
-根据InstanceID（物品实例ID）使用道具
+根据InstanceID（物品实例ID）让普通玩家和人机玩家使用道具
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `InstanceID` | `number` | 物品实例ID（唯一） |
 
 **Returns**
@@ -177,14 +177,14 @@ UseItemByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number) -> boolean
 DisuseItemByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number) -> boolean
 ```
 
-根据InstanceID（物品实例ID）停止使用道具（仅对物资编辑器生成的绷带，饮料类物资生效）
+根据InstanceID（物品实例ID）让普通玩家和人机玩家停止使用道具（仅对物资编辑器生成的绷带，饮料类物资生效）
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `InstanceID` | `number` | 物品实例ID（唯一） |
 
 **Returns**
@@ -199,14 +199,14 @@ DisuseItemByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number) -> boolean
 GetItemCount(PlayerPawn: PlayerPawn, ItemID: number) -> number
 ```
 
-获取道具数量
+获取普通玩家和人机玩家的道具数量
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `ItemID` | `number` | 物品ID |
 
 **Returns**
@@ -221,14 +221,14 @@ GetItemCount(PlayerPawn: PlayerPawn, ItemID: number) -> number
 GetAllItemData(PlayerPawn: PlayerPawn) -> @LuaTable<ItemData>,
 ```
 
-获取背包里所有道具数据
+获取普通玩家和人机玩家背包里所有道具数据
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -242,14 +242,14 @@ GetAllItemData(PlayerPawn: PlayerPawn) -> @LuaTable<ItemData>,
 GetAllItemDataByItemID(PlayerPawn: PlayerPawn, ItemID: number) -> table
 ```
 
-获取ItemData列表
+获取普通玩家和人机玩家的ItemData列表
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `ItemID` | `number` | 物品ID |
 
 **Returns**
@@ -264,14 +264,14 @@ GetAllItemDataByItemID(PlayerPawn: PlayerPawn, ItemID: number) -> table
 GetItemDataByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number) -> FBattleItemData
 ```
 
-根据InstanceID（物品实例ID）获取ItemData
+根据InstanceID（物品实例ID）获取普通玩家和人机玩家的ItemData
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `InstanceID` | `number` | 物品实例ID（唯一） |
 
 **Returns**
@@ -286,14 +286,14 @@ GetItemDataByInstanceID(PlayerPawn: PlayerPawn, InstanceID: number) -> FBattleIt
 GetCapacity(PlayerPawn: PlayerPawn) -> number
 ```
 
-获取背包剩余容量
+获取普通玩家和人机玩家的背包剩余容量
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -307,14 +307,14 @@ GetCapacity(PlayerPawn: PlayerPawn) -> number
 GetMaxCapacity(PlayerPawn: PlayerPawn) -> number
 ```
 
-获取背包最大剩余容量
+获取普通玩家和人机玩家的背包最大剩余容量
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -328,14 +328,14 @@ GetMaxCapacity(PlayerPawn: PlayerPawn) -> number
 HasItemBySubType(PlayerPawn: PlayerPawn, ItemSubType: number) -> boolean
 ```
 
-是否拥有某类物品
+普通玩家和人机玩家是否拥有某类物品
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `ItemSubType` | `number` | 道具字类型 |
 
 **Returns**
@@ -350,14 +350,14 @@ HasItemBySubType(PlayerPawn: PlayerPawn, ItemSubType: number) -> boolean
 GetWeaponsInBackpack(PlayerPawn: PlayerPawn) -> table
 ```
 
-获取背包中的武器
+获取普通玩家和人机玩家背包中的武器
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -371,14 +371,14 @@ GetWeaponsInBackpack(PlayerPawn: PlayerPawn) -> table
 GetWeaponAttachmentsInBackpack(PlayerPawn: PlayerPawn) -> table
 ```
 
-获取背包中的武器配件
+获取普通玩家和人机玩家背包中的武器配件
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -392,14 +392,14 @@ GetWeaponAttachmentsInBackpack(PlayerPawn: PlayerPawn) -> table
 GetArmorInBackpack(PlayerPawn: PlayerPawn) -> FBattleItemData
 ```
 
-获取当前防弹衣
+获取普通玩家和人机玩家的当前防弹衣
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -413,14 +413,14 @@ GetArmorInBackpack(PlayerPawn: PlayerPawn) -> FBattleItemData
 GetHelmetInBackpack(PlayerPawn: PlayerPawn) -> FBattleItemData
 ```
 
-获取当前头盔
+获取普通玩家和人机玩家的当前头盔
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -434,14 +434,14 @@ GetHelmetInBackpack(PlayerPawn: PlayerPawn) -> FBattleItemData
 GetConsumablesInBackpack(PlayerPawn: PlayerPawn) -> table
 ```
 
-获取背包中的所有消耗品
+获取普通玩家和人机玩家背包中的所有消耗品
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -518,14 +518,14 @@ GetPickupWrapperClassPath(ItemID: number) -> string
 GetAllAttachmentDefineIDInBackpack(PlayerPawn: PlayerPawn) -> table
 ```
 
-获取背包内所有枪械配件DefineID
+获取普通玩家和人机玩家背包内所有枪械配件DefineID
 生效范围：服务端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -539,14 +539,14 @@ GetAllAttachmentDefineIDInBackpack(PlayerPawn: PlayerPawn) -> table
 GetAllUnEquipedAttachmentDefineIDInBackpack(PlayerPawn: PlayerPawn) -> table
 ```
 
-获取背包内所有未装备的枪械配件DefineID
+获取普通玩家和人机玩家背包内所有未装备的枪械配件DefineID
 生效范围：服务端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 

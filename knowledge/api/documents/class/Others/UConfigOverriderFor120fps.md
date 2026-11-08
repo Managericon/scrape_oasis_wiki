@@ -22,6 +22,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `TextureLODGroupFilterOverride` | `TArray < FTextureLODGroupFilterOverride >` | - |
 | `bHadApplyConfigFor120fps` | `bool` | - |
 | `bHadApplyForEnergySaving` | `bool` | - |
+| `bHadApplyTextureFilter` | `bool` | - |
 
 ## Functions
 

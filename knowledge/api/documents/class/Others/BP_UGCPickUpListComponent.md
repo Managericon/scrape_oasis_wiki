@@ -16,6 +16,7 @@ UGC物品拾取组件
 | Name | Type/Value | Description |
 |---|---|---|
 | `BP_UGCPickUpListComponent.RefreshInterval` | `-` | - |
+| `BP_UGCPickUpListComponent.WidgetInfoDelayRefreshTime` | `-` | - |
 | `BP_UGCPickUpListComponent.bCanAutoPickC` | `-` | - |
 | `BP_UGCPickUpListComponent.HideForAimC` | `-` | - |
 | `BP_UGCPickUpListComponent.bNeedRefresh` | `-` | - |
@@ -27,11 +28,24 @@ UGC物品拾取组件
 | `BP_UGCPickUpListComponent.TomBoxItemListCache` | `-` | - |
 | `BP_UGCPickUpListComponent.PickUpFailCooldownMap` | `-` | - |
 | `BP_UGCPickUpListComponent.PendingPickUpUID` | `-` | - |
+| `BP_UGCPickUpListComponent.PendingPickUpItemID` | `-` | - |
+| `BP_UGCPickUpListComponent.PendingPickUpBeforeCount` | `-` | - |
 | `BP_UGCPickUpListComponent.PickupItemListCacheChange` | `-` | - |
 | `BP_UGCPickUpListComponent.TomBoxItemListCacheChange` | `-` | - |
 | `BP_UGCPickUpListComponent.bUpDateListDataChange` | `-` | - |
 
 ## Functions
+
+### `OnWrapperVisualsRefreshed`
+
+```text
+OnWrapperVisualsRefreshed()
+```
+
+OnWrapperVisualsRefreshed 委托回调
+ 当 C++ 端刷新拾取物表现（名称/图标/品质等）时触发
+ 参数 EWrapperVisualFlag 为位运算枚举，WidgetInfo 位表示 Widget 信息变更
+ 连续触发时防抖：清除上一个定时器，仅保留最后一次的延迟刷新
 
 ### `IsWeaponItem`
 
@@ -475,25 +489,53 @@ RuleGeneralOrder()
  @param Count number 物品数量
  @return table RuleResult
 
-### `Server_SetEquipReason`
+### `UGCPickUpWrapperActor`
 
 ```text
-Server_SetEquipReason()
+UGCPickUpWrapperActor()
 ```
 
-服务器端 RPC：设置指定物品的装备Reason（为客户端预测拾取做准备）
- @param PlayerController UserData 玩家控制器（系统自动传入）
- @param ItemDefineID table 物品DefineID
+客户端拾取入口（携带Reason，按 Reason 选择对应的拾取 RPC，保证时序一致）
+ 完整复刻旧 PickUpWrapperActor 的客户端行为，将拾取 RPC 按 Reason 拆分为两个独立 RPC
+ @param Wrapper APickUpWrapperActor 拾取物
+ @param ItemData FPickUpItemData 物品数据
+ @param pickCount number 拾取数量
+ @param Reason number EUGCCommonItemReason 拾取原因（仅区分 AddAndEquip / Default）
 
-### `Server_ResetEquipReason`
+### `Server_UGCPickUpWrapperActor`
 
 ```text
-Server_ResetEquipReason()
+Server_UGCPickUpWrapperActor()
 ```
 
-服务器端 RPC：重置指定物品的装备Reason
- @param PlayerController UserData 玩家控制器（系统自动传入）
- @param ItemDefineID table 物品DefineID
+服务器端 RPC（普通拾取）：以 Default 原因执行拾取
+ @param Wrapper APickUpWrapperActor 拾取物
+ @param InstanceID number 物品实例ID（对应 FPickUpItemData.InstanceID，作为 AdditionalParam）
+ @param pickCount number 拾取数量
+
+### `Server_UGCPickUpWrapperActor_AddAndEquip`
+
+```text
+Server_UGCPickUpWrapperActor_AddAndEquip()
+```
+
+服务器端 RPC（添加并装备）：以 AddAndEquip 原因执行拾取
+ @param Wrapper APickUpWrapperActor 拾取物
+ @param InstanceID number 物品实例ID（对应 FPickUpItemData.InstanceID，作为 AdditionalParam）
+ @param pickCount number 拾取数量
+
+### `DoPickUpWrapperActorOnServer`
+
+```text
+DoPickUpWrapperActorOnServer()
+```
+
+服务器端拾取实现：设置 Reason 并执行拾取（同一 RPC 内完成，保证时序一致）
+ Reason 直接写入 CommonReasonData，拾取流程完成后在函数末尾统一重置为 Default（避免污染后续物品操作）
+ @param Wrapper APickUpWrapperActor 拾取物
+ @param InstanceID number 物品实例ID（对应 FPickUpItemData.InstanceID，作为 AdditionalParam）
+ @param pickCount number 拾取数量
+ @param Reason number EUGCCommonItemReason 拾取原因
 
 ### `GetUGCAvailableServerRPCs`
 
@@ -508,6 +550,16 @@ GetUGCAvailableServerRPCs() -> table
 | Type | Description |
 |---|---|
 | `table` | RPC函数名列表 |
+
+### `TestLoadConsumableItemUIBP`
+
+```text
+TestLoadConsumableItemUIBP()
+```
+
+【测试】异步加载 UGC_ConsumableItem_UIBP 控件并打印创建结果
+ 用于验证 WidgetBlueprint 路径 `UGC_ConsumableItem_UIBP` 是否能被正常加载
+ 调用方式：PickUpComp:TestLoadConsumableItemUIBP()
 
 ### `CheckItemIsEquipped`
 

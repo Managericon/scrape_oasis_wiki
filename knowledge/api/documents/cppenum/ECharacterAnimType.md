@@ -94,4 +94,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `ECharAnim_Kick` | `77` | - |
 | `ECharAnim_SprintDoorOpen` | `78` | - |
 | `ECharAnim_BackpackIdle` | `80` | - |
+| `ECharAnim_EyeWatch` | `81` | - |
 | `ECharAnim_Max` | `255` | - |

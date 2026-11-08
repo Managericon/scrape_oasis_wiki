@@ -338,8 +338,8 @@ Actor is the base class for an Object that can be placed or spawned in a level.
 | `AttachmentReplication` | `FRepAttachment` | Used for replicating attachment of this actor's RootComponent to another actor.<br>	  This is filled in via GatherCurrentMovement() when the RootComponent has an AttachParent. |
 | `Role` | `TEnumAsByte < enum ENetRole >` | Describes how much control the local machine has over the actor. |
 | `NetDormancy` | `TEnumAsByte < enum ENetDormancy >` | Dormancy setting for actor to take itself off of the replication list without being destroyed on clients. |
-| `AutoReceiveInput` | `TEnumAsByte < EAutoReceiveInput :: Type >` | Automatically registers this actor to receive input from a player. |
 | `InputPriority` | `int32` | The priority of this input component when pushed in to the stack. |
+| `AutoReceiveInput` | `TEnumAsByte < EAutoReceiveInput :: Type >` | Automatically registers this actor to receive input from a player. |
 | `InputComponent` | `UInputComponent *` | Component that handles input for this actor, if input is enabled. |
 | `NetCullDistanceSquared` | `float` | Square of the max distance from the client's viewpoint that this actor is relevant and will be replicated. |
 | `NetCullFactorSquared` | `float` | NetCullDistanceSquared Factor for Connection |
@@ -882,26 +882,6 @@ Pushes this actor on to the stack of input being handled by a PlayerController.
 |---|---|
 | `void` | - |
 
-### `GetInputAxisValue`
-
-```text
-GetInputAxisValue(InputAxisName: FName) -> float
-```
-
-Gets the value of the input axis if input is enabled for this actor.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InputAxisName` | `FName` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
 ### `DisableInput`
 
 ```text
@@ -921,6 +901,26 @@ Removes this actor from the stack of input being handled by a PlayerController.
 | Type | Description |
 |---|---|
 | `void` | - |
+
+### `GetInputAxisValue`
+
+```text
+GetInputAxisValue(InputAxisName: FName) -> float
+```
+
+Gets the value of the input axis if input is enabled for this actor.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InputAxisName` | `FName` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
 
 ### `GetInputAxisKeyValue`
 
@@ -2938,20 +2938,6 @@ Return the ULevel name that this Actor is part of.
 |---|---|
 | `FString` | - |
 
-### `GetAttachParentActor`
-
-```text
-GetAttachParentActor() -> AActor *
-```
-
-Walk up the attachment chain from RootComponent until we encounter a different actor, and return it. If we are not attached to a component in a different actor, returns NULL
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `AActor *` | - |
-
 ### `GetAttachParentSocketName`
 
 ```text
@@ -2965,6 +2951,20 @@ Walk up the attachment chain from RootComponent until we encounter a different a
 | Type | Description |
 |---|---|
 | `FName` | - |
+
+### `GetAttachParentActor`
+
+```text
+GetAttachParentActor() -> AActor *
+```
+
+Walk up the attachment chain from RootComponent until we encounter a different actor, and return it. If we are not attached to a component in a different actor, returns NULL
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor *` | - |
 
 ### `GetAttachedActors`
 
@@ -3873,13 +3873,13 @@ Called when a touch input is received over this component when touch events are 
 |---|---|
 | `void` | - |
 
-### `OnInputTouchLeave`
+### `OnInputTouchEnter`
 
 ```text
-OnInputTouchLeave(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
+OnInputTouchEnter(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
 ```
 
-Called when a finger is moved off this actor when touch over events are enabled in the player controller.
+Called when a finger is moved over this actor when touch over events are enabled in the player controller.
 
 **Parameters**
 
@@ -3894,13 +3894,13 @@ Called when a finger is moved off this actor when touch over events are enabled 
 |---|---|
 | `void` | - |
 
-### `OnInputTouchEnter`
+### `OnInputTouchLeave`
 
 ```text
-OnInputTouchEnter(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
+OnInputTouchLeave(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
 ```
 
-Called when a finger is moved over this actor when touch over events are enabled in the player controller.
+Called when a finger is moved off this actor when touch over events are enabled in the player controller.
 
 **Parameters**
 
@@ -5069,6 +5069,8 @@ Characters are Pawns that have a mesh, collision, and built-in movement logic.
 | `bAsyncNewAnimInstance` | `bool` | - |
 | `AsyncAnimInstances` | `TMap < UAnimInstance * , bool >` | - |
 | `bMarkScopeIn` | `bool` | - |
+| `bAnimFollowing` | `bool` | - |
+| `bEnableAutonomousURO` | `bool` | - |
 | `ArrowComponent` | `UArrowComponent *` | - |
 
 ## Functions
@@ -9068,6 +9070,7 @@ UFUNCTION(CallInEditor, Category = "Build Static Mesh", meta = (CallInEditor = "
 | `LandscapeGuid` | `FGuid` | - |
 | `BoundingGuid` | `FGuid` | - |
 | `bUseMaterialId` | `bool` | Cached value of bUseMaterialId, should be equal to bUseMaterialId in ALandscape |
+| `bKeepMatIDSplatmapOnCook` | `bool` | - |
 | `MatIDFallbackMaterial` | `UMaterialInterface *` | - |
 | `MatIDFallbackHoleMaterial` | `UMaterialInterface *` | - |
 | `LandscapeSectionOffset` | `FIntPoint` | Offset in quads from global components grid origin (in quads) |
@@ -9083,9 +9086,9 @@ UFUNCTION(CallInEditor, Category = "Build Static Mesh", meta = (CallInEditor = "
 | `LODDistributionSetting` | `float` | The distribution setting used to change the LOD generation, 2 is the normal distribution, small number mean you want your last LODs to take more screen space and big number mean you want your first LODs to take more screen space. |
 | `NearMaxLOD_Baked` | `uint8` | - |
 | `NearFactor_Baked` | `float` | - |
+| `NearExtent_Baked` | `float` | - |
 | `FarFactor_Baked` | `float` | - |
 | `LandscapeRoughness` | `float` | - |
-| `NearExtent_Baked` | `float` | - |
 | `EnableImproveLOD` | `bool` | - |
 | `ImproveLODValues` | `TArray < float >` | LOD Values |
 | `NearMaxLOD` | `uint8` | - |
@@ -9108,9 +9111,9 @@ UFUNCTION(CallInEditor, Category = "Build Static Mesh", meta = (CallInEditor = "
 | `MinGrassWeightThreshold` | `float` | Minimal weight threshold to generate landscape grass |
 | `NegativeZBoundsExtension` | `float` | Allows overriding the landscape bounds. This is useful if you distort the landscape with world-position-offset, for example<br>	   Extension value in the negative Z axis, positive value increases bound size<br>	   Note that this can also be overridden per-component when the component is selected with the component select tool |
 | `PositiveZBoundsExtension` | `float` | Allows overriding the landscape bounds. This is useful if you distort the landscape with world-position-offset, for example<br>	   Extension value in the positive Z axis, positive value increases bound size<br>	   Note that this can also be overridden per-component when the component is selected with the component select tool |
-| `GrassColor_WorldMaskNoiseTexture` | `UTexture2D *` | Texture used to render grass color |
 | `GrassColor_UVScale_WorldMaskNoise` | `FVector2D` | - |
 | `GrassColor_Center_WorldMaskNoise` | `FVector2D` | - |
+| `GrassColor_WorldMaskNoiseTexture` | `UTexture2D *` | Texture used to render grass color |
 | `LandscapeComponents` | `TArray < ULandscapeComponent * >` | The array of LandscapeComponent that are used by the landscape |
 | `LandscapeAOTextureDataAsset` | `ULandscapeAOTextureDataAsset *` | - |
 | `CollisionComponents` | `TArray < ULandscapeHeightfieldCollisionComponent * >` | Array of LandscapeHeightfieldCollisionComponent |
@@ -16631,34 +16634,6 @@ StaticMeshActor is an instance of a UStaticMesh in the world.
 
 `ASTExtraCharacter` -> `ISTExtraInputInterface` -> `IPickupProxyFactory` -> `ISTExtraBaseCharacter_UGCEventInterface` -> `IGISPlayerInterface` -> `IGenericAbilityCarrierInterface` -> `IItemSkillV2RecevierInterface` -> `IInteractorInterface` -> `IDamageNumberInterface` -> `IMeleeAttackOwnerInterface`
 
-## Functions
-
-### `DSTeleportToLocationOrRotation`
-
-```text
-DSTeleportToLocationOrRotation(location: FVector, rotation: FRotator, setLoc: bool, setRot: bool, ResetVelocity: bool, bRecordTeleportInfo: bool) -> void
-```
-
-生效范围：服务器
-	  传送主角，只有服务器上调用生效，客户端调用无效
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `location` | `FVector` | 位置 |
-| `rotation` | `FRotator` | 旋转 |
-| `setLoc` | `bool` | 是否修改位置 |
-| `setRot` | `bool` | 是否修改旋转 |
-| `ResetVelocity` | `bool` | 是否重置速度 |
-| `bRecordTeleportInfo` | `bool` | 是否记录传送时间用于射击校验，如无特殊需求保持默认配置 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
 ## Events
 
 ### `UGC_WeaponShootBulletEvent`
@@ -18891,7 +18866,7 @@ OnItemsSpawn(Items: TArray < AActor * > &) -> void
 
 | Name | Type | Description |
 |---|---|---|
-| `Items` | `TArray < AActor * > &` | - |
+| `Items` | `TArray < AActor * > &` | 输出的物资 |
 
 **Returns**
 
@@ -19058,7 +19033,7 @@ SetItemConfigOverrideForSpawner(InItemConfig: FUGCItemSpawnerItemConfig, Spawner
 | Name | Type | Description |
 |---|---|---|
 | `InItemConfig` | `FUGCItemSpawnerItemConfig` | 新的物资刷新配置 |
-| `SpawnerIndex` | `int32` | - |
+| `SpawnerIndex` | `int32` | 物资刷新点编号 |
 
 **Returns**
 
@@ -19258,7 +19233,7 @@ PreTakeDamageEvent(DamageCauser: AActor *, EventInstigator: AController *, Damag
 |---|---|---|
 | `DamageCauser` | `AActor *` | 伤害来源 |
 | `EventInstigator` | `AController *` | 伤害来源的Controller |
-| `Damage` | `float` | - |
+| `Damage` | `float` | 伤害值 |
 | `DamageContext` | `FGameMagnitudeContext &` | 伤害事件上下文 |
 
 **Returns**
@@ -19282,7 +19257,7 @@ PostTakeDamageEvent(DamageCauser: AActor *, EventInstigator: AController *, Dama
 |---|---|---|
 | `DamageCauser` | `AActor *` | 伤害来源 |
 | `EventInstigator` | `AController *` | 伤害来源的Controller |
-| `Damage` | `float` | - |
+| `Damage` | `float` | 伤害值 |
 | `DamageContext` | `FGameMagnitudeContext &` | 伤害事件上下文 |
 
 **Returns**
@@ -19304,7 +19279,7 @@ PreOverrideDamageValue(Damage: float, DamageType: int32, EventInstigator: AContr
 
 | Name | Type | Description |
 |---|---|---|
-| `Damage` | `float` | - |
+| `Damage` | `float` | 伤害值 |
 | `DamageType` | `int32` | 伤害类型 |
 | `EventInstigator` | `AController *` | 伤害来源的Controller |
 | `DamageCauser` | `AActor *` | 伤害来源 |
@@ -19329,7 +19304,7 @@ PostOverrideDamageValue(Damage: float, DamageType: int32, EventInstigator: ACont
 
 | Name | Type | Description |
 |---|---|---|
-| `Damage` | `float` | - |
+| `Damage` | `float` | 伤害值 |
 | `DamageType` | `int32` | 伤害类型 |
 | `EventInstigator` | `AController *` | 伤害来源的Controller |
 | `DamageCauser` | `AActor *` | 伤害来源 |
@@ -19989,47 +19964,43 @@ GetItemCount() -> int32
 |---|---|
 | `int32` | 物品数量 |
 
-### `TryGetBatchedMeshes`
+### `SetItemOwner`
 
 ```text
-TryGetBatchedMeshes(InItemID: int32) -> bool
+SetItemOwner(NewItemOwner: ASTExtraPlayerController *) -> void
 ```
 
-尝试用合批缓存创建并附加组件到拾取物
-	  只在客户端有效（IS_CLIENT）
+设置物品所有者
+	  设置后只有所有者能拾取该物品，其余玩家的拾取请求会被拒绝
+	  所有者以 PlayerController 标识，所有者角色死亡重生后依然有效
+	  DS 调用
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `InItemID` | `int32` | - |
+| `NewItemOwner` | `ASTExtraPlayerController *` | 物品所有者，传 nullptr 清除所有者，恢复所有玩家可拾取 |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `bool` | true=合批命中，已创建组件；false=未命中或关闭，走原逻辑 |
+| `void` | - |
 
-### `SubmitForCaching`
+### `GetItemOwner`
 
 ```text
-SubmitForCaching(InItemID: int32, SourceActors: TArray < AActor * > &) -> bool
+GetItemOwner() -> ASTExtraPlayerController *
 ```
 
-提交源 Actor 给合批缓存；请求被受理后注册替换回调。
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InItemID` | `int32` | - |
-| `SourceActors` | `TArray < AActor * > &` | 当前已附加到拾取物的显示用子Actor |
+获取物品所有者，未设置时返回 nullptr
+	  DS & 客户端 可调用
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `bool` | true=已提交、已去重或等待材质；false=数量不足、请求拒绝或已同步命中缓存并替换 |
+| `ASTExtraPlayerController *` | 物品所有者 |
 
 ### `CanShowPickUpWidget`
 
@@ -20046,6 +20017,49 @@ CanShowPickUpWidget() -> bool
 | Type | Description |
 |---|---|
 | `bool` | - |
+
+### `OpenCustomizeNetRelevantCondition`
+
+```text
+OpenCustomizeNetRelevantCondition() -> void
+```
+
+开启自定义网络相关性条件
+	  DS  可调用
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `CustomizeCanNetRelevantFor`
+
+```text
+CustomizeCanNetRelevantFor(RealViewer: AActor *, ViewTarget: AActor *, SrcLocation: FVector &) -> bool
+```
+
+自定义网络相关性（此Actor是否对目标玩家可见）
+	  需要先调用 OpenCustomizeNetRelevantCondition 开启自定义网络相关性
+	  此函数返回值只是参与网络相关性计算，如果有其它内置条件，也会影响最终网络相关性结果。
+	  计算方式：Result = ResultA and ResultB and ResultC ...
+	  
+	  可重载并自定义
+	  DS 被调用
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `RealViewer` | `AActor *` | 该客户端的 PlayerController，标识“是谁这条连接” |
+| `ViewTarget` | `AActor *` | 当前视角 Actor，通常是该玩家的 Pawn；观战时为被观战者 |
+| `SrcLocation` | `FVector &` | 摄像机位置（GetPlayerViewPoint），距离判定应使用此点 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否网络相关（此Actor是否对目标玩家可见） |
 
 ## Events
 
@@ -20130,21 +20144,6 @@ OnUnInitPickupWrapper() -> void
 	  DS & 客户端 被调用
 	 
 	  能通过此事件，实现自定义的反初始化逻辑
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnBatchedMeshesReplaced`
-
-```text
-OnBatchedMeshesReplaced() -> void
-```
-
-合批结果已替换原始子Actor后回调（用于清空 Lua MeshActorList 等）
-	  客户端 被调用
 
 **Returns**
 
@@ -20349,6 +20348,21 @@ ReceiveOnProjectileDestroyed() -> void
 
 销毁时的额外接口
 	 生效范围：SC
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnProjectileContextChange`
+
+```text
+OnProjectileContextChange() -> void
+```
+
+抛体上下文改变时触发
+	  生效范围：Server
 
 **Returns**
 
@@ -20637,6 +20651,7 @@ Actor containing all script accessible world properties.
 | `OriginOfTheRegion` | `FVector` | - |
 | `bEnableObjectPool` | `bool` | - |
 | `LevelReorganizationData` | `UDataAsset *` | - |
+| `LevelPartitionRulesManifest` | `UDataAsset *` | - |
 | `bEnableParticleSignificance` | `bool` | - |
 | `bEnableHierarchicalLODSystem` | `uint32` | if set to true, hierarchical LODs will be built, which will create hierarchical LODActors |
 | `HLODSetupAsset` | `TSoftClassPtr < UHierarchicalLODSetup >` | If set overrides the level settings and global project settings |
@@ -20947,6 +20962,7 @@ UGC物品拾取组件
 | Name | Type/Value | Description |
 |---|---|---|
 | `BP_UGCPickUpListComponent.RefreshInterval` | `-` | - |
+| `BP_UGCPickUpListComponent.WidgetInfoDelayRefreshTime` | `-` | - |
 | `BP_UGCPickUpListComponent.bCanAutoPickC` | `-` | - |
 | `BP_UGCPickUpListComponent.HideForAimC` | `-` | - |
 | `BP_UGCPickUpListComponent.bNeedRefresh` | `-` | - |
@@ -20958,11 +20974,24 @@ UGC物品拾取组件
 | `BP_UGCPickUpListComponent.TomBoxItemListCache` | `-` | - |
 | `BP_UGCPickUpListComponent.PickUpFailCooldownMap` | `-` | - |
 | `BP_UGCPickUpListComponent.PendingPickUpUID` | `-` | - |
+| `BP_UGCPickUpListComponent.PendingPickUpItemID` | `-` | - |
+| `BP_UGCPickUpListComponent.PendingPickUpBeforeCount` | `-` | - |
 | `BP_UGCPickUpListComponent.PickupItemListCacheChange` | `-` | - |
 | `BP_UGCPickUpListComponent.TomBoxItemListCacheChange` | `-` | - |
 | `BP_UGCPickUpListComponent.bUpDateListDataChange` | `-` | - |
 
 ## Functions
+
+### `OnWrapperVisualsRefreshed`
+
+```text
+OnWrapperVisualsRefreshed()
+```
+
+OnWrapperVisualsRefreshed 委托回调
+ 当 C++ 端刷新拾取物表现（名称/图标/品质等）时触发
+ 参数 EWrapperVisualFlag 为位运算枚举，WidgetInfo 位表示 Widget 信息变更
+ 连续触发时防抖：清除上一个定时器，仅保留最后一次的延迟刷新
 
 ### `IsWeaponItem`
 
@@ -21406,25 +21435,53 @@ RuleGeneralOrder()
  @param Count number 物品数量
  @return table RuleResult
 
-### `Server_SetEquipReason`
+### `UGCPickUpWrapperActor`
 
 ```text
-Server_SetEquipReason()
+UGCPickUpWrapperActor()
 ```
 
-服务器端 RPC：设置指定物品的装备Reason（为客户端预测拾取做准备）
- @param PlayerController UserData 玩家控制器（系统自动传入）
- @param ItemDefineID table 物品DefineID
+客户端拾取入口（携带Reason，按 Reason 选择对应的拾取 RPC，保证时序一致）
+ 完整复刻旧 PickUpWrapperActor 的客户端行为，将拾取 RPC 按 Reason 拆分为两个独立 RPC
+ @param Wrapper APickUpWrapperActor 拾取物
+ @param ItemData FPickUpItemData 物品数据
+ @param pickCount number 拾取数量
+ @param Reason number EUGCCommonItemReason 拾取原因（仅区分 AddAndEquip / Default）
 
-### `Server_ResetEquipReason`
+### `Server_UGCPickUpWrapperActor`
 
 ```text
-Server_ResetEquipReason()
+Server_UGCPickUpWrapperActor()
 ```
 
-服务器端 RPC：重置指定物品的装备Reason
- @param PlayerController UserData 玩家控制器（系统自动传入）
- @param ItemDefineID table 物品DefineID
+服务器端 RPC（普通拾取）：以 Default 原因执行拾取
+ @param Wrapper APickUpWrapperActor 拾取物
+ @param InstanceID number 物品实例ID（对应 FPickUpItemData.InstanceID，作为 AdditionalParam）
+ @param pickCount number 拾取数量
+
+### `Server_UGCPickUpWrapperActor_AddAndEquip`
+
+```text
+Server_UGCPickUpWrapperActor_AddAndEquip()
+```
+
+服务器端 RPC（添加并装备）：以 AddAndEquip 原因执行拾取
+ @param Wrapper APickUpWrapperActor 拾取物
+ @param InstanceID number 物品实例ID（对应 FPickUpItemData.InstanceID，作为 AdditionalParam）
+ @param pickCount number 拾取数量
+
+### `DoPickUpWrapperActorOnServer`
+
+```text
+DoPickUpWrapperActorOnServer()
+```
+
+服务器端拾取实现：设置 Reason 并执行拾取（同一 RPC 内完成，保证时序一致）
+ Reason 直接写入 CommonReasonData，拾取流程完成后在函数末尾统一重置为 Default（避免污染后续物品操作）
+ @param Wrapper APickUpWrapperActor 拾取物
+ @param InstanceID number 物品实例ID（对应 FPickUpItemData.InstanceID，作为 AdditionalParam）
+ @param pickCount number 拾取数量
+ @param Reason number EUGCCommonItemReason 拾取原因
 
 ### `GetUGCAvailableServerRPCs`
 
@@ -21439,6 +21496,16 @@ GetUGCAvailableServerRPCs() -> table
 | Type | Description |
 |---|---|
 | `table` | RPC函数名列表 |
+
+### `TestLoadConsumableItemUIBP`
+
+```text
+TestLoadConsumableItemUIBP()
+```
+
+【测试】异步加载 UGC_ConsumableItem_UIBP 控件并打印创建结果
+ 用于验证 WidgetBlueprint 路径 `UGC_ConsumableItem_UIBP` 是否能被正常加载
+ 调用方式：PickUpComp:TestLoadConsumableItemUIBP()
 
 ### `CheckItemIsEquipped`
 
@@ -22525,138 +22592,6 @@ GetFriendRankData(RankID: number)
 | Name | Type | Description |
 |---|---|---|
 | `RankID` | `number` | 排行榜ID |
-
-### `RequestFriendUGCLevel`
-
-```text
-RequestFriendUGCLevel(FriendUIDList: table<number, number> @好友UID列表, OnComplete: fun(FilteredUIDList:table<number, number>) @全部profile获取完成后的回调，返回过滤后的UID列表)
-```
-
-异步获取好友绿洲等级(ugc_level)，profile数据存入ProfileDataList与排行榜数据复用
-通过ProfileMgr.GetProfileList批量获取（每批50个），profile返回数据中包含ugc_level字段
-全部批次回调完成后，剔除ugc_level<=1的好友，将剩余UID通过OnComplete回调返回
-生效范围：客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `FriendUIDList` | `table @好友UID列表` | 好友UID列表 |
-| `OnComplete` | `fun(FilteredUIDList:table) @全部profile获取完成后的回调，返回过滤后的UID列表` | 全部profile获取完成后的回调，返回过滤后的UID列表 |
-
-### `IsFriendRankEnabled`
-
-```text
-IsFriendRankEnabled(RankID: number) -> boolean
-```
-
-判断指定榜单的好友榜是否开启
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `RankID` | `number` | 榜单ID |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `boolean` | 好友榜是否开启 |
-
-### `GetFriendScore`
-
-```text
-GetFriendScore(RankID: number, UID: number) -> number|nil
-```
-
-从本地数据中获取指定UID在指定榜单的分数
-优先从FriendScoreData.ScoreMap取，其次从ShowPlayerRankData取，最后从ShowRankData取
-生效范围：客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `RankID` | `number` | 排行榜ID |
-| `UID` | `number` | 玩家UID |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `number\|nil` | 分数，nil表示未获取到 |
-
-### `BuildFriendRankList`
-
-```text
-BuildFriendRankList(RankID: number) -> {UID:number,
-```
-
-从本地FriendScoreData中，按好友列表过滤并排序，返回好友榜列表
-生效范围：客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `RankID` | `number` | 排行榜ID |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `{UID:number,` | Score:number}> |
-
-### `GetSelfFriendRankData`
-
-```text
-GetSelfFriendRankData(RankID: number) -> Score:number}
-```
-
-获取当前客户端玩家在好友榜中的排名和分数
-从BuildFriendRankList的排序结果中查找当前客户端玩家的排名
-生效范围：客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `RankID` | `number` | 排行榜ID |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `Score:number}` | 排名(从1开始)，分数(无数据时为0) |
-
-### `RequestFriendRankScores`
-
-```text
-RequestFriendRankScores(FriendUIDList: table<number, number> @好友UID列表, RankID: number)
-```
-
-客户端直接向大厅发送好友分数查询协议（分批，每批最多100个）
-使用cbdata透传{TotalBatch=, BatchIdx=}标记批次，响应中据此判断是否全部请求完毕
-生效范围：客户端
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `FriendUIDList` | `table @好友UID列表` | 好友UID列表 |
-| `RankID` | `number` | 子榜ID |
-
-### `OnFriendRankScoresRsp`
-
-```text
-OnFriendRankScoresRsp()
-```
-
-客户端收到大厅返回的好友分数查询响应
-rsp参数：res, uids, sub_rank, rank_scores, cbdata
-cbdata透传{TotalBatch=, BatchIdx=}，用于判断是否全部批次请求完毕
-生效范围：客户端
 
 ### `OpenReportUI`
 

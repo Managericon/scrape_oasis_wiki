@@ -21,8 +21,8 @@ Settings used to ProxyLOD mesh(es).
 | `HardAngleThreshold` | `float` | Angle at which a hard edge is introduced between faces. |
 | `MergeDistance` | `int32` | - |
 | `bUseClippingPlane` | `bool` | - |
-| `ClippingLevel` | `float` | - |
 | `AxisIndex` | `int32` | - |
+| `ClippingLevel` | `float` | - |
 | `bPlaneNegativeHalfspace` | `bool` | - |
 | `bUseMassiveLOD` | `bool` | - |
 | `bUseAggregateLOD` | `bool` | - |

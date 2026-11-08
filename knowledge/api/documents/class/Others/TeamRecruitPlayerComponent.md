@@ -129,10 +129,10 @@ CanJoinTeam() -> boolean, number
 ### `IsRecruiting`
 
 ```text
-IsRecruiting() -> boolean
+IsRecruiting() -> boolean, number|nil, number|nil, boolean|nil
 ```
 
-查询当前所在局内玩法队伍是否正处于招募状态
+查询当前所在局内玩法队伍的招募信息
 生效范围：客户端
 
 **Returns**
@@ -140,6 +140,9 @@ IsRecruiting() -> boolean
 | Type | Description |
 |---|---|
 | `boolean` | 是否处于招募状态 |
+| `number\|nil` | 队伍目标文案序号，未招募时为 nil |
+| `number\|nil` | 队伍宣言文案序号，未招募时为 nil |
+| `boolean\|nil` | 招募范围，true=全局，false=本局，未招募时为 nil |
 
 ## Language
 

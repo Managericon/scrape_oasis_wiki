@@ -111,6 +111,30 @@ GetAllLoadedGameParts() -> string[]
 |---|---|
 | `string[]` | 所有已加载的GamePart列表 |
 
+### `GetScriptModule`
+
+```text
+GetScriptModule()
+```
+
+获取指定GamePart的全局ScriptModule
+
+### `GetPlayerScriptModule`
+
+```text
+GetPlayerScriptModule()
+```
+
+获取指定GamePart的PlayerScriptModule
+
+### `GetLocalPlayerScriptModule`
+
+```text
+GetLocalPlayerScriptModule()
+```
+
+获取当前客户端指定GamePart的PlayerScriptModule
+
 ## Language
 
 `lua`

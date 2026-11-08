@@ -75,8 +75,8 @@ Actor is the base class for an Object that can be placed or spawned in a level.
 | `AttachmentReplication` | `FRepAttachment` | Used for replicating attachment of this actor's RootComponent to another actor.<br>	  This is filled in via GatherCurrentMovement() when the RootComponent has an AttachParent. |
 | `Role` | `TEnumAsByte < enum ENetRole >` | Describes how much control the local machine has over the actor. |
 | `NetDormancy` | `TEnumAsByte < enum ENetDormancy >` | Dormancy setting for actor to take itself off of the replication list without being destroyed on clients. |
-| `AutoReceiveInput` | `TEnumAsByte < EAutoReceiveInput :: Type >` | Automatically registers this actor to receive input from a player. |
 | `InputPriority` | `int32` | The priority of this input component when pushed in to the stack. |
+| `AutoReceiveInput` | `TEnumAsByte < EAutoReceiveInput :: Type >` | Automatically registers this actor to receive input from a player. |
 | `InputComponent` | `UInputComponent *` | Component that handles input for this actor, if input is enabled. |
 | `NetCullDistanceSquared` | `float` | Square of the max distance from the client's viewpoint that this actor is relevant and will be replicated. |
 | `NetCullFactorSquared` | `float` | NetCullDistanceSquared Factor for Connection |
@@ -619,26 +619,6 @@ Pushes this actor on to the stack of input being handled by a PlayerController.
 |---|---|
 | `void` | - |
 
-### `GetInputAxisValue`
-
-```text
-GetInputAxisValue(InputAxisName: FName) -> float
-```
-
-Gets the value of the input axis if input is enabled for this actor.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InputAxisName` | `FName` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
 ### `DisableInput`
 
 ```text
@@ -658,6 +638,26 @@ Removes this actor from the stack of input being handled by a PlayerController.
 | Type | Description |
 |---|---|
 | `void` | - |
+
+### `GetInputAxisValue`
+
+```text
+GetInputAxisValue(InputAxisName: FName) -> float
+```
+
+Gets the value of the input axis if input is enabled for this actor.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InputAxisName` | `FName` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
 
 ### `GetInputAxisKeyValue`
 
@@ -2675,20 +2675,6 @@ Return the ULevel name that this Actor is part of.
 |---|---|
 | `FString` | - |
 
-### `GetAttachParentActor`
-
-```text
-GetAttachParentActor() -> AActor *
-```
-
-Walk up the attachment chain from RootComponent until we encounter a different actor, and return it. If we are not attached to a component in a different actor, returns NULL
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `AActor *` | - |
-
 ### `GetAttachParentSocketName`
 
 ```text
@@ -2702,6 +2688,20 @@ Walk up the attachment chain from RootComponent until we encounter a different a
 | Type | Description |
 |---|---|
 | `FName` | - |
+
+### `GetAttachParentActor`
+
+```text
+GetAttachParentActor() -> AActor *
+```
+
+Walk up the attachment chain from RootComponent until we encounter a different actor, and return it. If we are not attached to a component in a different actor, returns NULL
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor *` | - |
 
 ### `GetAttachedActors`
 
@@ -3610,13 +3610,13 @@ Called when a touch input is received over this component when touch events are 
 |---|---|
 | `void` | - |
 
-### `OnInputTouchLeave`
+### `OnInputTouchEnter`
 
 ```text
-OnInputTouchLeave(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
+OnInputTouchEnter(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
 ```
 
-Called when a finger is moved off this actor when touch over events are enabled in the player controller.
+Called when a finger is moved over this actor when touch over events are enabled in the player controller.
 
 **Parameters**
 
@@ -3631,13 +3631,13 @@ Called when a finger is moved off this actor when touch over events are enabled 
 |---|---|
 | `void` | - |
 
-### `OnInputTouchEnter`
+### `OnInputTouchLeave`
 
 ```text
-OnInputTouchEnter(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
+OnInputTouchLeave(FingerIndex: ETouchIndex::Type, TouchedActor: AActor*) -> void
 ```
 
-Called when a finger is moved over this actor when touch over events are enabled in the player controller.
+Called when a finger is moved off this actor when touch over events are enabled in the player controller.
 
 **Parameters**
 

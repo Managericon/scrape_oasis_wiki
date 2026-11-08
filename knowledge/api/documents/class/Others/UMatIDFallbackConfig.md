@@ -18,6 +18,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | Name | Type/Value | Description |
 |---|---|---|
 | `IDToFallbackLayers` | `TMap < FString , FMatIDFallbackArray >` | - |
+| `FallbackMaterial` | `UMaterialInterface *` | - |
 
 ## Language
 

@@ -15,6 +15,7 @@ api_root: "https://developer.gp.qq.com/api/"
 |---|---|---|
 | `Sequence` | `UAnimSequenceBase *` | - |
 | `bLoopAnimation` | `bool` | - |
+| `bTriggerAnimNotify` | `bool` | - |
 | `bCheckNeedInitializeSupFirst` | `bool` | - |
 | `PlayRate` | `float` | - |
 | `StartPosition` | `float` | - |

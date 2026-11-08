@@ -21,3 +21,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `CanBreakMontage` | `5` | - |
 | `ChargeJumpEnable` | `6` | - |
 | `OptionalDamageFrame` | `7` | - |
+| `ComboPreInputEnable` | `8` | - |
+| `ComboPreInputDisable` | `9` | - |

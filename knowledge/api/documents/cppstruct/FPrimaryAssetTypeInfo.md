@@ -16,8 +16,8 @@ Structure with publicly exposed information about an asset type. These can be lo
 | Name | Type/Value | Description |
 |---|---|---|
 | `PrimaryAssetType` | `FName` | The logical name for this type of Primary Asset |
-| `AssetBaseClass` | `TSoftClassPtr < UObject >` | Base Class of all assets of this type |
 | `AssetBaseClassLoaded` | `UClass *` | Base Class of all assets of this type |
+| `AssetBaseClass` | `TSoftClassPtr < UObject >` | Base Class of all assets of this type |
 | `bHasBlueprintClasses` | `bool` | True if the assets loaded are blueprints classes, false if they are normal UObjects |
 | `bIsEditorOnly` | `bool` | True if this type is editor only |
 | `Directories` | `TArray < FDirectoryPath >` | Directories to search for this asset type |

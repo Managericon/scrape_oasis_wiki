@@ -25,6 +25,7 @@ RunBehaviorDynamic task allows pushing subtrees on execution stack.
 | `InjectionTag` | `FGameplayTag` | Gameplay tag that will identify this task for subtree injection |
 | `DefaultBehaviorAsset` | `UBehaviorTree *` | default behavior to run |
 | `BehaviorAsset` | `UBehaviorTree *` | current subtree |
+| `bRunSubtreeInSameFrame` | `uint8` | if set, this task acts as an instant node: pushing the subtree no longer breaks the parent<br>	   composite's same-frame chain, so the subtree can start within the same frame.<br>	   Needs the parent composite to opt in via bRunChildrenInSameFrame.<br>	   Only affects this node; the subtree's own children are governed by the subtree's composites. |
 
 ## Language
 

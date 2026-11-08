@@ -695,6 +695,230 @@ GetComponentOwner(Component: UComponent) -> AActor
 |---|---|
 | `AActor` | 所属 Actor |
 
+### `ActivateComponent`
+
+```text
+ActivateComponent(Component: UActorComponent, bReset: boolean)
+```
+
+激活已停用的组件，恢复其逐帧更新及组件自身功能
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UActorComponent` | 要激活的组件 |
+| `bReset` | `boolean` | 是否强制重新执行组件的激活逻辑，默认 false；为 true 时即使组件已激活也会再次执行激活流程 |
+
+### `DeactivateComponent`
+
+```text
+DeactivateComponent(Component: UActorComponent)
+```
+
+停用已激活的组件并停止其逐帧更新，用于暂停粒子、移动等可激活组件
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UActorComponent` | 要停用的组件 |
+
+### `IsComponentActive`
+
+```text
+IsComponentActive(Component: UActorComponent) -> boolean
+```
+
+查询组件当前是否处于激活状态
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UActorComponent` | 目标组件；无效组件返回 false |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 当前调用端的组件激活状态；仅反映激活或停用状态，不代表可见性、物理模拟或有效性 |
+
+### `GetActorBounds`
+
+```text
+GetActorBounds(Actor: AActor, bOnlyCollidingComponents: boolean) -> Vector, Vector
+```
+
+获取 Actor 的包围盒中心与半尺寸，用于空间定位与范围判断
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+| `bOnlyCollidingComponents` | `boolean` | 是否只统计启用碰撞的组件，默认 false；为 false 时统计全部组件（含无碰撞的视觉组件） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Vector` | 世界空间包围盒中心；不含子 Actor 组件；Actor 无效时为零向量 |
+| `Vector` | 包围盒半尺寸，各轴为完整尺寸的一半；Actor 无效时为零向量 |
+
+### `SetComponentRelativeTransform`
+
+```text
+SetComponentRelativeTransform(Component: USceneComponent, RelativeTransform: FTransform)
+```
+
+设置组件相对于父级的 Transform，用于调整部件偏移、朝向与缩放（如挂点微调）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `USceneComponent` | 目标场景组件 |
+| `RelativeTransform` | `FTransform` | 相对父级的位置、旋转与缩放 |
+
+### `GetComponentRelativeTransform`
+
+```text
+GetComponentRelativeTransform(Component: USceneComponent) -> FTransform
+```
+
+获取组件相对于父级的 Transform，用于读取当前偏移、朝向与缩放（如缓存原值以便恢复）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `USceneComponent` | 目标场景组件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FTransform` | 相对父级的位置、旋转与缩放；Component 无效时返回 nil |
+
+### `GetAttachedActors`
+
+```text
+GetAttachedActors(Actor: AActor, bRecursive: boolean) -> AActor[]
+```
+
+获取 Actor 的子 Actor（可选递归取全部后代），用于遍历附着层级（如查询挂载的武器、道具）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+| `bRecursive` | `boolean` | 是否沿附着层级递归获取全部后代，默认 false；为 false 时仅返回直接子级 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor[]` | 已附着的 Actor 列表（同一 Actor 只出现一次）；无子 Actor 或 Actor 无效时返回空列表 |
+
+### `AddActorOffset`
+
+```text
+AddActorOffset(Actor: AActor, Delta: Vector)
+```
+
+立即沿世界空间平移 Actor 一段距离，用于逐步移动或位置校正（如落地对齐）；连续移动需每帧重复调用
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 目标 Actor |
+| `Delta` | `Vector` | 世界空间位移增量 |
+
+### `GetComponentMobility`
+
+```text
+GetComponentMobility(Component: USceneComponent) -> EComponentMobility
+```
+
+获取场景组件移动性
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `USceneComponent` | 目标组件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EComponentMobility` | 组件移动性；Component 无效时返回 nil |
+
+### `IsComponentVisible`
+
+```text
+IsComponentVisible(Component: USceneComponent) -> boolean
+```
+
+查询组件是否可见，用于判断（如 3D 名牌、模型部件）当前是否展示
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `USceneComponent` | 目标组件（任意场景组件，含 3D 控件组件） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否可见；Component 无效时返回 false |
+
+### `SetComponentMobility`
+
+```text
+SetComponentMobility(Component: USceneComponent, Mobility: EComponentMobility)
+```
+
+设置场景组件移动性
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `USceneComponent` | 目标组件 |
+| `Mobility` | `EComponentMobility` | 移动性：Static, Stationary, Movable |
+
+### `SetComponentVisible`
+
+```text
+SetComponentVisible(Component: USceneComponent, bVisible: boolean)
+```
+
+设置组件的可见性，用于隐藏/显示单个组件（如 3D 名牌、模型部件）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `USceneComponent` | 目标组件（任意场景组件，含 3D 控件组件） |
+| `bVisible` | `boolean` | 是否可见 |
+
 ## Language
 
 `lua`

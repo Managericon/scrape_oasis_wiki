@@ -309,7 +309,7 @@ GetTargetEnemy(GenericCharacter: AUGCGenericCharacter) -> AActor
 ```
 
 获取当前仇恨目标
-生效范围：服务器
+生效范围：服务器&客户端
 
 **Parameters**
 
@@ -678,14 +678,14 @@ RangeSpawnGenericCharactersByGroupOnTime(WorldContextObject: UObject, GroupID: n
 GetPartTypeSockets(Character: ACharacter) -> UPartTypeSocket[]
 ```
 
-获取角色骨骼里所有的PartTypeSocket
+获取普通玩家和人机玩家角色骨骼里所有的PartTypeSocket
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `Character` | `ACharacter` | 角色 |
+| `Character` | `ACharacter` | 普通玩家和人机玩家角色 |
 
 **Returns**
 

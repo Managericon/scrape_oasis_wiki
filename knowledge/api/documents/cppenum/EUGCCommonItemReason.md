@@ -23,6 +23,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `AddAndEquip` | `7` | - |
 | `AddAttachChild` | `8` | - |
 | `ManuallyEquip` | `9` | - |
+| `SkipAutoEquip` | `10` | - |
 | `OnlySkipCheckCanAddItem` | `100` | - |
 | `OnlySkipCheckCanRemoveItem` | `101` | - |
 | `NoTips` | `102` | - |

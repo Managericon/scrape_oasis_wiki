@@ -212,14 +212,14 @@ ModifyWrapperItemCount(WrapperActor: APickUpWrapperActor, Count: number) -> bool
 DoPickWrapper(PlayerPawn: PlayerPawn, WrapperActor: APickUpWrapperActor) -> boolean
 ```
 
-拾取Wrapper
+让普通玩家和人机玩家拾取Wrapper
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | - |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `WrapperActor` | `APickUpWrapperActor` | 可拾取物 |
 
 **Returns**

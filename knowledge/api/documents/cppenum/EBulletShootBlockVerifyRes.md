@@ -18,7 +18,8 @@ api_root: "https://developer.gp.qq.com/api/"
 | `IgnoreBlockByTag` | `2` | - |
 | `IgnoreBlockByMobility` | `3` | - |
 | `IgnoreBlockByCollisionChannel` | `4` | - |
-| `Block` | `5` | - |
-| `ForceBlockByTag` | `6` | - |
-| `ForceBlockByMobilityTag` | `7` | - |
-| `EBulletShootBlockVerifyRes_None` | `8` | - |
+| `IgnoreBlockByCamp` | `5` | - |
+| `Block` | `6` | - |
+| `ForceBlockByTag` | `7` | - |
+| `ForceBlockByMobilityTag` | `8` | - |
+| `EBulletShootBlockVerifyRes_None` | `9` | - |

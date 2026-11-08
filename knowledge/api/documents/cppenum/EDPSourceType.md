@@ -36,4 +36,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `DP_HighFPS` | `20` | - |
 | `DP_PCQualityGrade` | `21` | - |
 | `DP_RHIName` | `22` | - |
-| `DP_SRC_MAX` | `23` | - |
+| `DP_IsUGCMap` | `23` | - |
+| `DP_SRC_MAX` | `24` | - |

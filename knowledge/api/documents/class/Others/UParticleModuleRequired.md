@@ -64,6 +64,8 @@ api_root: "https://developer.gp.qq.com/api/"
 | `UVFlippingMode` | `EParticleUVFlipMode` | Controls UV Flipping for this emitter. |
 | `CutoutTexture` | `UTexture2D *` | Texture to generate bounding geometry from. |
 | `BoundingMode` | `TEnumAsByte < enum ESubUVBoundingVertexCount >` | More bounding vertices results in reduced overdraw, but adds more triangle overhead.<br>	 The eight vertex mode is best used when the SubUV texture has a lot of space to cut out that is not captured by the four vertex version,<br>	 and when the particles using the texture will be few and large. |
+| `CutoutAreaRatio` | `float` | Cutout polygon  unit quad. 1 is the full sprite; lower means less overdraw. |
+| `CutoutVertexCount` | `int32` | Cooked vertex count of the current cutout. |
 | `OpacitySourceMode` | `TEnumAsByte < enum EOpacitySourceMode >` | - |
 | `AlphaThreshold` | `float` | Alpha channel values larger than the threshold are considered occupied and will be contained in the bounding geometry.<br>	 Raising this threshold slightly can reduce overdraw in particles using this animation asset. |
 | `bCutoutUseSingleFrame` | `bool` | Generate Cutout geometry from the complete CutoutTexture instead of its SubUV grid. |

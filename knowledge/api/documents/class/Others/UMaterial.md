@@ -133,6 +133,8 @@ A Material is an asset which can be applied to a mesh to control the visual look
 | `bBypassSystemMaterialQuality` | `uint32` | - |
 | `bBypassMobilePointLight` | `uint32` | - |
 | `bUseAsEarlyZ` | `uint32` | - |
+| `bUseAsEarlyZVulkan` | `uint32` | - |
+| `bDisableUseAsEarlyZVulkan` | `uint32` | - |
 | `bForceOutputLinearSpace` | `uint32` | - |
 | `bUseAsDrawToRenderTarget` | `uint32` | - |
 | `bRenderInTwoPass` | `uint32` | - |

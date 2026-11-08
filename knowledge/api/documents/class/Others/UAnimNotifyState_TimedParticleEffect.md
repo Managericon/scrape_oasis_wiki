@@ -231,6 +231,24 @@ SearchChildrenParticleAndDestroy(Children: TArray < USceneComponent * >, MeshCom
 |---|---|
 | `void` | - |
 
+### `IsParticleVisible_BP`
+
+```text
+IsParticleVisible_BP(MeshComp: USkeletalMeshComponent *) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `MeshComp` | `USkeletalMeshComponent *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
 ## Language
 
 `cpp`

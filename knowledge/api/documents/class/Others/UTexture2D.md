@@ -22,6 +22,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `FirstResourceMemMip` | `int32` | keep track of first mip level used for ResourceMem creation |
 | `bSuperSamplingMipBiasResponsive` | `uint32` | - |
 | `PerTextureMipBias` | `int32` | - |
+| `PerTextureMaxAnisotropy` | `int32` | 单贴图各向异性过滤等级。0 表示使用全局 r.MaxAnisotropy 设置，1-16 为自定义等级。需要 r.Texture.AllowPerTextureAnisotropy 开启才生效。 |
 | `bUseForTerrainRVT` | `uint32` | - |
 | `ImportedSize` | `FIntPoint` | The imported size of the texture. Only valid on cooked builds when texture source is not<br>	  available. Access ONLY via the GetImportedSize() accessor! |
 | `ForceMipLevelsToBeResidentTimestamp` | `double` | WorldSettings timestamp that tells the streamer to force all miplevels to be resident up until that time. |

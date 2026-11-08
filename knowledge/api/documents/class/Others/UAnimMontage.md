@@ -33,6 +33,7 @@ Any property you're adding to AnimMontage and parent class has to be considered 
 | `FilteredBones` | `FInputBlendPose` | - |
 | `bAccumulateCurveSlotWeight` | `bool` | - |
 | `bCheckSlotNodeRelevant` | `bool` | - |
+| `bReTriggerNotifyStateOnLoop` | `bool` | 蒙太奇 Section 自循环回绕时，对跨越回绕边界的 AnimNotifyState 强制重新派发一次 End+Begin（如循环段上的音效每轮重新播放）。勾选后该蒙太奇所有满足条件的 NotifyState 都会生效。 |
 | `SyncGroup` | `FName` | If you're using marker based sync for this montage, make sure to add sync group name. For now we only support one group |
 | `SyncSlotIndex` | `int32` | wip: until we have UI working |
 | `MarkerData` | `FMarkerSyncData` | - |

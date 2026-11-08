@@ -26,3 +26,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `LoongLion` | `10` | - |
 | `MultiLeggedRobot` | `11` | - |
 | `EscapeMonster` | `12` | - |
+| `SPBadWomanAIClone` | `13` | - |

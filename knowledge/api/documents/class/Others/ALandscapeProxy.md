@@ -21,6 +21,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `LandscapeGuid` | `FGuid` | - |
 | `BoundingGuid` | `FGuid` | - |
 | `bUseMaterialId` | `bool` | Cached value of bUseMaterialId, should be equal to bUseMaterialId in ALandscape |
+| `bKeepMatIDSplatmapOnCook` | `bool` | - |
 | `MatIDFallbackMaterial` | `UMaterialInterface *` | - |
 | `MatIDFallbackHoleMaterial` | `UMaterialInterface *` | - |
 | `LandscapeSectionOffset` | `FIntPoint` | Offset in quads from global components grid origin (in quads) |
@@ -36,9 +37,9 @@ api_root: "https://developer.gp.qq.com/api/"
 | `LODDistributionSetting` | `float` | The distribution setting used to change the LOD generation, 2 is the normal distribution, small number mean you want your last LODs to take more screen space and big number mean you want your first LODs to take more screen space. |
 | `NearMaxLOD_Baked` | `uint8` | - |
 | `NearFactor_Baked` | `float` | - |
+| `NearExtent_Baked` | `float` | - |
 | `FarFactor_Baked` | `float` | - |
 | `LandscapeRoughness` | `float` | - |
-| `NearExtent_Baked` | `float` | - |
 | `EnableImproveLOD` | `bool` | - |
 | `ImproveLODValues` | `TArray < float >` | LOD Values |
 | `NearMaxLOD` | `uint8` | - |
@@ -61,9 +62,9 @@ api_root: "https://developer.gp.qq.com/api/"
 | `MinGrassWeightThreshold` | `float` | Minimal weight threshold to generate landscape grass |
 | `NegativeZBoundsExtension` | `float` | Allows overriding the landscape bounds. This is useful if you distort the landscape with world-position-offset, for example<br>	   Extension value in the negative Z axis, positive value increases bound size<br>	   Note that this can also be overridden per-component when the component is selected with the component select tool |
 | `PositiveZBoundsExtension` | `float` | Allows overriding the landscape bounds. This is useful if you distort the landscape with world-position-offset, for example<br>	   Extension value in the positive Z axis, positive value increases bound size<br>	   Note that this can also be overridden per-component when the component is selected with the component select tool |
-| `GrassColor_WorldMaskNoiseTexture` | `UTexture2D *` | Texture used to render grass color |
 | `GrassColor_UVScale_WorldMaskNoise` | `FVector2D` | - |
 | `GrassColor_Center_WorldMaskNoise` | `FVector2D` | - |
+| `GrassColor_WorldMaskNoiseTexture` | `UTexture2D *` | Texture used to render grass color |
 | `LandscapeComponents` | `TArray < ULandscapeComponent * >` | The array of LandscapeComponent that are used by the landscape |
 | `LandscapeAOTextureDataAsset` | `ULandscapeAOTextureDataAsset *` | - |
 | `CollisionComponents` | `TArray < ULandscapeHeightfieldCollisionComponent * >` | Array of LandscapeHeightfieldCollisionComponent |

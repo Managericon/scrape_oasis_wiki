@@ -121,7 +121,7 @@ SetItemConfigOverrideForSpawner(InItemConfig: FUGCItemSpawnerItemConfig, Spawner
 | Name | Type | Description |
 |---|---|---|
 | `InItemConfig` | `FUGCItemSpawnerItemConfig` | 新的物资刷新配置 |
-| `SpawnerIndex` | `int32` | - |
+| `SpawnerIndex` | `int32` | 物资刷新点编号 |
 
 **Returns**
 

@@ -15,8 +15,9 @@ api_root: "https://developer.gp.qq.com/api/"
 |---|---|---|
 | `EWDAST_None` | `0` | - |
 | `EWDAST_Head` | `1` | - |
-| `EWDAST_Face` | `2` | - |
+| `EWDAST_Hat` | `2` | - |
 | `EWDAST_Body` | `3` | - |
 | `EWDAST_Feet` | `4` | - |
 | `EWDAST_Backpack` | `5` | - |
-| `EWDAST_Max` | `6` | - |
+| `EWDAST_Mask` | `6` | - |
+| `EWDAST_Max` | `7` | - |

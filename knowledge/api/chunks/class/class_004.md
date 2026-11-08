@@ -6,6 +6,780 @@ category: "API Wiki/class"
 kind: "api_chunk"
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UGCEntityTypeSystem.json -->
+
+# UGCEntityTypeSystem
+
+实体类型查询系统接口库
+
+## Functions
+
+### `IsActorOfEntityType`
+
+```text
+IsActorOfEntityType(Actor: AActor, EntityTypeName: string) -> boolean
+```
+
+判断Actor是否属于指定的实体类型
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 要检查的Actor |
+| `EntityTypeName` | `string` | 实体类型名称 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否属于指定类型 |
+
+### `GetActorEntityType`
+
+```text
+GetActorEntityType(Actor: AActor) -> string
+```
+
+获取Actor的实体类型（返回第一个匹配的）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 要检查的Actor |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `string` | 实体类型名称，如果没有匹配则返回空字符串 |
+
+### `GetActorEntityTypes`
+
+```text
+GetActorEntityTypes(Actor: AActor) -> string[]
+```
+
+获取Actor的所有匹配的实体类型
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 要检查的Actor |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `string[]` | 实体类型名称数组 |
+
+### `GetAllEntityTypeNames`
+
+```text
+GetAllEntityTypeNames() -> string[]
+```
+
+获取所有已配置的实体类型名称
+生效范围：服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `string[]` | 所有实体类型名称数组 |
+
+### `OverlapBoxByEntityType`
+
+```text
+OverlapBoxByEntityType(WorldContext: UObject, EntityTypeName: string, Location: FVector, HalfExtent: FVector, Rotation: FRotator) -> AActor[]
+```
+
+使用Box形状检测指定EntityType的Actor
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContext` | `UObject` | 世界上下文对象 |
+| `EntityTypeName` | `string` | 实体类型名称 |
+| `Location` | `FVector` | 检测位置 |
+| `HalfExtent` | `FVector` | Box的半尺寸（默认值：{X=50, Y=50, Z=50}） |
+| `Rotation` | `FRotator` | 旋转角度（默认值：{Pitch=0, Yaw=0, Roll=0}） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor[]` | 找到的Actor数组 |
+
+### `OverlapSphereByEntityType`
+
+```text
+OverlapSphereByEntityType(WorldContext: UObject, EntityTypeName: string, Location: FVector, Radius: number) -> AActor[]
+```
+
+使用Sphere形状检测指定EntityType的Actor
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContext` | `UObject` | 世界上下文对象 |
+| `EntityTypeName` | `string` | 实体类型名称 |
+| `Location` | `FVector` | 检测位置 |
+| `Radius` | `number` | 球体半径（默认值：100） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor[]` | 找到的Actor数组 |
+
+### `OverlapCapsuleByEntityType`
+
+```text
+OverlapCapsuleByEntityType(WorldContext: UObject, EntityTypeName: string, Location: FVector, Radius: number, HalfHeight: number, Rotation: FRotator) -> AActor[]
+```
+
+使用Capsule形状检测指定EntityType的Actor
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContext` | `UObject` | 世界上下文对象 |
+| `EntityTypeName` | `string` | 实体类型名称 |
+| `Location` | `FVector` | 检测位置 |
+| `Radius` | `number` | 胶囊体半径（默认值：100） |
+| `HalfHeight` | `number` | 胶囊体半高（默认值：100） |
+| `Rotation` | `FRotator` | 旋转角度（默认值：{Pitch=0, Yaw=0, Roll=0}） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor[]` | 找到的Actor数组 |
+
+### `IsActorOfClassType`
+
+```text
+IsActorOfClassType(Actor: AActor, ActorClassPath: string) -> boolean
+```
+
+检查Actor是否为指定的类类型
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 要检查的Actor |
+| `ActorClassPath` | `string` | Actor类的路径 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否为指定类型 |
+
+### `IsActorOfAnyClassTypes`
+
+```text
+IsActorOfAnyClassTypes(Actor: AActor, ActorClassPaths: string[]) -> boolean
+```
+
+检查Actor是否为指定类类型数组中的任意一种
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 要检查的Actor |
+| `ActorClassPaths` | `string[]` | Actor类路径数组 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否为指定类型之一 |
+
+### `IsActorOfEntityTypeByTag`
+
+```text
+IsActorOfEntityTypeByTag(Actor: AActor, EntityTypeTag: FGameplayTag) -> boolean
+```
+
+判断Actor是否属于指定的实体类型（使用GameplayTag）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 要检查的Actor |
+| `EntityTypeTag` | `FGameplayTag` | 实体类型GameplayTag |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否属于指定类型 |
+
+### `IsActorOfEntityTypeByTags`
+
+```text
+IsActorOfEntityTypeByTags(Actor: AActor, EntityTypeTags: FGameplayTagContainer) -> boolean
+```
+
+判断Actor是否属于指定的实体类型（使用GameplayTagContainer）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 要检查的Actor |
+| `EntityTypeTags` | `FGameplayTagContainer` | 实体类型GameplayTag容器 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否属于指定类型之一 |
+
+### `GetActorEntityTypeAsGameplayTag`
+
+```text
+GetActorEntityTypeAsGameplayTag(Actor: AActor) -> FGameplayTag
+```
+
+获取Actor的实体类型（返回GameplayTag）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 要检查的Actor |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FGameplayTag` | 实体类型GameplayTag |
+
+### `GetActorEntityTypesAsGameplayTagContainer`
+
+```text
+GetActorEntityTypesAsGameplayTagContainer(Actor: AActor) -> FGameplayTagContainer
+```
+
+获取Actor的所有匹配的实体类型（返回GameplayTagContainer）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `AActor` | 要检查的Actor |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FGameplayTagContainer` | 实体类型GameplayTag容器 |
+
+### `OverlapBoxByEntityTypeTag`
+
+```text
+OverlapBoxByEntityTypeTag(WorldContext: UObject, EntityTypeTag: FGameplayTag, Location: FVector, HalfExtent: FVector, Rotation: FRotator) -> AActor[]
+```
+
+使用Box形状检测指定EntityType的Actor（使用GameplayTag）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContext` | `UObject` | 世界上下文对象 |
+| `EntityTypeTag` | `FGameplayTag` | 实体类型GameplayTag |
+| `Location` | `FVector` | 检测位置 |
+| `HalfExtent` | `FVector` | Box的半尺寸（默认值：{X=50, Y=50, Z=50}） |
+| `Rotation` | `FRotator` | 旋转角度（默认值：{Pitch=0, Yaw=0, Roll=0}） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor[]` | 找到的Actor数组 |
+
+### `OverlapBoxByEntityTypeTags`
+
+```text
+OverlapBoxByEntityTypeTags(WorldContext: UObject, EntityTypeTags: FGameplayTagContainer, Location: FVector, HalfExtent: FVector, Rotation: FRotator) -> AActor[]
+```
+
+使用Box形状检测指定EntityType的Actor（使用GameplayTagContainer）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContext` | `UObject` | 世界上下文对象 |
+| `EntityTypeTags` | `FGameplayTagContainer` | 实体类型GameplayTag容器 |
+| `Location` | `FVector` | 检测位置 |
+| `HalfExtent` | `FVector` | Box的半尺寸（默认值：{X=50, Y=50, Z=50}） |
+| `Rotation` | `FRotator` | 旋转角度（默认值：{Pitch=0, Yaw=0, Roll=0}） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor[]` | 找到的Actor数组 |
+
+### `OverlapSphereByEntityTypeTag`
+
+```text
+OverlapSphereByEntityTypeTag(WorldContext: UObject, EntityTypeTag: FGameplayTag, Location: FVector, Radius: number) -> AActor[]
+```
+
+使用Sphere形状检测指定EntityType的Actor（使用GameplayTag）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContext` | `UObject` | 世界上下文对象 |
+| `EntityTypeTag` | `FGameplayTag` | 实体类型GameplayTag |
+| `Location` | `FVector` | 检测位置 |
+| `Radius` | `number` | 球体半径（默认值：100） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor[]` | 找到的Actor数组 |
+
+### `OverlapSphereByEntityTypeTags`
+
+```text
+OverlapSphereByEntityTypeTags(WorldContext: UObject, EntityTypeTags: FGameplayTagContainer, Location: FVector, Radius: number) -> AActor[]
+```
+
+使用Sphere形状检测指定EntityType的Actor（使用GameplayTagContainer）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContext` | `UObject` | 世界上下文对象 |
+| `EntityTypeTags` | `FGameplayTagContainer` | 实体类型GameplayTag容器 |
+| `Location` | `FVector` | 检测位置 |
+| `Radius` | `number` | 球体半径（默认值：100） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor[]` | 找到的Actor数组 |
+
+### `OverlapCapsuleByEntityTypeTag`
+
+```text
+OverlapCapsuleByEntityTypeTag(WorldContext: UObject, EntityTypeTag: FGameplayTag, Location: FVector, Radius: number, HalfHeight: number, Rotation: FRotator) -> AActor[]
+```
+
+使用Capsule形状检测指定EntityType的Actor（使用GameplayTag）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContext` | `UObject` | 世界上下文对象 |
+| `EntityTypeTag` | `FGameplayTag` | 实体类型GameplayTag |
+| `Location` | `FVector` | 检测位置 |
+| `Radius` | `number` | 胶囊体半径（默认值：100） |
+| `HalfHeight` | `number` | 胶囊体半高（默认值：100） |
+| `Rotation` | `FRotator` | 旋转角度（默认值：{Pitch=0, Yaw=0, Roll=0}） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor[]` | 找到的Actor数组 |
+
+### `OverlapCapsuleByEntityTypeTags`
+
+```text
+OverlapCapsuleByEntityTypeTags(WorldContext: UObject, EntityTypeTags: FGameplayTagContainer, Location: FVector, Radius: number, HalfHeight: number, Rotation: FRotator) -> AActor[]
+```
+
+使用Capsule形状检测指定EntityType的Actor（使用GameplayTagContainer）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContext` | `UObject` | 世界上下文对象 |
+| `EntityTypeTags` | `FGameplayTagContainer` | 实体类型GameplayTag容器 |
+| `Location` | `FVector` | 检测位置 |
+| `Radius` | `number` | 胶囊体半径（默认值：100） |
+| `HalfHeight` | `number` | 胶囊体半高（默认值：100） |
+| `Rotation` | `FRotator` | 旋转角度（默认值：{Pitch=0, Yaw=0, Roll=0}） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor[]` | 找到的Actor数组 |
+
+### `GetAllEntityTypesAsGameplayTagContainer`
+
+```text
+GetAllEntityTypesAsGameplayTagContainer() -> FGameplayTagContainer
+```
+
+获取所有已配置的实体类型（返回GameplayTagContainer）
+生效范围：服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FGameplayTagContainer` | 所有实体类型GameplayTag容器 |
+
+### `ConvertEntityTypeNameToGameplayTag`
+
+```text
+ConvertEntityTypeNameToGameplayTag(EntityTypeName: string) -> FGameplayTag
+```
+
+将实体类型名称转换为GameplayTag
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EntityTypeName` | `string` | 实体类型名称 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FGameplayTag` | 对应的GameplayTag |
+
+### `ConvertGameplayTagToEntityTypeName`
+
+```text
+ConvertGameplayTagToEntityTypeName(EntityTypeTag: FGameplayTag) -> string
+```
+
+将GameplayTag转换为实体类型名称
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EntityTypeTag` | `FGameplayTag` | 实体类型GameplayTag |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `string` | 对应的实体类型名称 |
+
+### `SetConfigDataAssetPath`
+
+```text
+SetConfigDataAssetPath(ConfigDataAssetPath: string)
+```
+
+设置自定义配置DataAsset路径
+如果不调用此函数，将使用默认路径
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ConfigDataAssetPath` | `string` | 配置DataAsset的路径 |
+
+### `ForceReloadConfig`
+
+```text
+ForceReloadConfig()
+```
+
+强制重新加载配置
+配合SetConfigDataAssetPath使用，建议设置完路径后调用一次
+生效范围：服务器&客户端
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E6%80%AA%E7%89%A9%E7%B3%BB%E7%BB%9F/UGCFakePlayerSystem.json -->
+
+# UGCFakePlayerSystem
+
+假人玩家系统
+
+## Functions
+
+### `SpawnFakePlayer`
+
+```text
+SpawnFakePlayer(AIPlayerKey: number, TeamID: number, InFakePlayerClass: UClass)
+```
+
+生成假人玩家， GameMode 中 DataManager，AIProbe 数据中配置 AIController
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `AIPlayerKey` | `number` | AIPlayerKey，建议使用 UGCFakePlayerSystem.GetRandomAIPlayerKey 生成 |
+| `TeamID` | `number` | 队伍 ID |
+| `InFakePlayerClass` | `UClass` | 假人玩家的控制器类 |
+
+### `GetRandomAIPlayerKey`
+
+```text
+GetRandomAIPlayerKey() -> number
+```
+
+生成随机AIPlayerKey，用于UGCFakePlayerSystem.SpawnFakePlayer接口参数
+生效范围：服务器
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | AIPlayerKey |
+
+### `DestroyFakePlayer`
+
+```text
+DestroyFakePlayer(AIPlayerKey: number)
+```
+
+销毁假人玩家
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `AIPlayerKey` | `number` | AIPlayerKey |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E5%95%86%E4%B8%9A%E5%8C%96%E4%B8%8E%E5%8A%9F%E8%83%BD%E6%A8%A1%E6%9D%BF/UGCGamePartSystem.json -->
+
+# UGCGamePartSystem
+
+GamePart系统接口库
+
+## Functions
+
+### `GetGamePartConfig`
+
+```text
+GetGamePartConfig(GamePartName: string) -> UUGCGamePartConfig
+```
+
+获取指定GamePart的Config
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `GamePartName` | `string` | GamePart名称 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UUGCGamePartConfig` | 指定GamePart的Config |
+
+### `GetGamePartGlobalActor`
+
+```text
+GetGamePartGlobalActor(GamePartName: string) -> AActor
+```
+
+获取指定GamePart的GlobalActor
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `GamePartName` | `string` | GamePart名称 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor` | 指定GamePart的GlobalActor |
+
+### `GetGamePartPlayerComponent`
+
+```text
+GetGamePartPlayerComponent(GamePartName: string, PC: PlayerController, PlayerComponentName: string) -> UActorComponent
+```
+
+获取指定GamePart的指定玩家的指定PlayerComponent
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `GamePartName` | `string` | GamePart名称 |
+| `PC` | `PlayerController` | 玩家控制器 |
+| `PlayerComponentName` | `string` | PlayerComponent名称 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UActorComponent` | 指定的PlayerComponent |
+
+### `IsGamePartLoaded`
+
+```text
+IsGamePartLoaded(GamePartName: string) -> boolean
+```
+
+获取指定GamePart是否已加载
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `GamePartName` | `string` | GamePart名称 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | GamePart是否已加载 |
+
+### `GetAllLoadedGameParts`
+
+```text
+GetAllLoadedGameParts() -> string[]
+```
+
+获取所有已加载的GamePart
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `string[]` | 所有已加载的GamePart列表 |
+
+### `GetScriptModule`
+
+```text
+GetScriptModule()
+```
+
+获取指定GamePart的全局ScriptModule
+
+### `GetPlayerScriptModule`
+
+```text
+GetPlayerScriptModule()
+```
+
+获取指定GamePart的PlayerScriptModule
+
+### `GetLocalPlayerScriptModule`
+
+```text
+GetLocalPlayerScriptModule()
+```
+
+获取当前客户端指定GamePart的PlayerScriptModule
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UGCGameplayTag.json -->
+
+# UGCGameplayTag
+
+UGCGameplayTag
+
+## Functions
+
+### `__tostring`
+
+```text
+__tostring() -> string
+```
+
+返回 UGCGamePlayTag 的字符串
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `string` | - |
+
+### `IsValid`
+
+```text
+IsValid() -> boolean
+```
+
+检查当前这个 UGCGameplayTag 是否合法
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | - |
+
+## Language
+
+`lua`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E5%B7%A5%E5%85%B7%E5%BA%93/UGCGameplayTagSystem.json -->
 
 # UGCGameplayTagSystem
@@ -381,7 +1155,8 @@ AllowSoftwareOcclusion(bEnabled: boolean)
 |---|---|---|
 | `UGCGameSystemImplementation.PlayerAntiAFKData` | `-` | - |
 | `UGCGameSystemImplementation.NationalArenaCachedData` | `-` | - |
-| `UGCGameSystemImplementation.CampDataBuffer` | `-` | - |
+| `UGCGameSystemImplementation.CampCachedData` | `-` | - |
+| `UGCGameSystemImplementation.bCampReportEnabled` | `-` | - |
 | `UGCGameSystem._RateLimiters` | `-` | - |
 | `UGCGameSystem.GameMode` | `-` | GameMode变量<br>生效范围：服务器 |
 | `UGCGameSystem.GameState` | `-` | GameState变量<br>生效范围：服务器&客户端 |
@@ -397,7 +1172,7 @@ AllowSoftwareOcclusion(bEnabled: boolean)
 GetAllPlayerController(NotIgnorePureSpectator: boolean) -> APlayerController[]
 ```
 
-获取所有的 PlayerController，客户端仅能拿到自己的PlayerController
+获取所有普通玩家和人机玩家的 PlayerController（人机玩家的 Controller 为 AIController），客户端仅能拿到自己的PlayerController
 生效范围：服务器&客户端
 
 **Parameters**
@@ -418,7 +1193,7 @@ GetAllPlayerController(NotIgnorePureSpectator: boolean) -> APlayerController[]
 GetAllPlayerPawn() -> ASTExtraPlayerCharacter[]
 ```
 
-获取所有的 PlayerPawn
+获取所有普通玩家和人机玩家的 PlayerPawn
 生效范围：服务器&客户端
 
 **Returns**
@@ -433,7 +1208,7 @@ GetAllPlayerPawn() -> ASTExtraPlayerCharacter[]
 GetAllPlayerState(NotIgnorePureSpectator?: boolean) -> ASTExtraPlayerState[]
 ```
 
-获取所有的 PlayerState，客户端仅能拿到所有队友的PlayerState
+获取所有普通玩家和人机玩家的 PlayerState，客户端仅能拿到所有队友的PlayerState
 生效范围：服务器&客户端
 
 **Parameters**
@@ -454,7 +1229,7 @@ GetAllPlayerState(NotIgnorePureSpectator?: boolean) -> ASTExtraPlayerState[]
 GetAllPlayerKey(NotIgnorePureSpectator?: boolean) -> int[]
 ```
 
-获取所有的 PlayerKey，包括敌人的，该接口通过Pawn获取敌人的PlayerKey，如果敌人没有Pawn，则获取的UID不全
+获取所有普通玩家和人机玩家的 PlayerKey，包括敌人的，该接口通过Pawn获取敌人的PlayerKey，如果敌人没有Pawn，则获取的UID不全
 生效范围：服务器&客户端
 
 **Parameters**
@@ -496,14 +1271,14 @@ GetAllUID(NotIgnorePureSpectator: boolean) -> int[]
 GetPlayerKeyByPlayerController(PlayerController: ASTExtraPlayerController) -> number
 ```
 
-通过PlayerController获取PlayerKey
+通过普通玩家和人机玩家的PlayerController获取PlayerKey
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `ASTExtraPlayerController` | - |
+| `PlayerController` | `ASTExtraPlayerController` | 普通玩家和人机玩家的Controller |
 
 **Returns**
 
@@ -517,14 +1292,14 @@ GetPlayerKeyByPlayerController(PlayerController: ASTExtraPlayerController) -> nu
 GetPlayerKeyByPlayerPawn(PlayerPawn: ASTExtraPlayerCharacter) -> number
 ```
 
-通过PlayerPawn获取PlayerKey
+通过普通玩家和人机玩家的PlayerPawn获取PlayerKey
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `ASTExtraPlayerCharacter` | - |
+| `PlayerPawn` | `ASTExtraPlayerCharacter` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -538,14 +1313,14 @@ GetPlayerKeyByPlayerPawn(PlayerPawn: ASTExtraPlayerCharacter) -> number
 GetPlayerKeyByPlayerState(PlayerState: ASTExtraPlayerState) -> number
 ```
 
-通过PlayerState获取PlayerKey
+通过普通玩家和人机玩家的PlayerState获取PlayerKey
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerState` | `ASTExtraPlayerState` | - |
+| `PlayerState` | `ASTExtraPlayerState` | 普通玩家和人机玩家的PlayerState |
 
 **Returns**
 
@@ -580,20 +1355,20 @@ GetPlayerKeyByUID(UID: number) -> number
 GetPlayerControllerByPlayerKey(PlayerKey: number) -> APlayerController
 ```
 
-根据 PlayerKey 获取 PlayerController
+根据 PlayerKey 获取普通玩家和人机玩家的 PlayerController（人机玩家返回 AIController）
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | 玩家唯一 Key |
+| `PlayerKey` | `number` | 普通玩家和人机玩家唯一 Key |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `APlayerController` | 玩家 Controller |
+| `APlayerController` | 普通玩家和人机玩家的 Controller |
 
 ### `GetPlayerControllerByUID`
 
@@ -622,20 +1397,20 @@ GetPlayerControllerByUID(UID: number) -> ASTExtraPlayerController
 GetPlayerControllerByPlayerState(PlayerState: ASTExtraPlayerState) -> ASTExtraPlayerController
 ```
 
-通过PlayerState获取PlayerController，客户端只能通过PlayerState获取当前客户端的PlayerController
+通过普通玩家和人机玩家的PlayerState获取PlayerController，客户端只能通过PlayerState获取当前客户端的PlayerController
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerState` | `ASTExtraPlayerState` | - |
+| `PlayerState` | `ASTExtraPlayerState` | 普通玩家和人机玩家的PlayerState |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `ASTExtraPlayerController` | 玩家 Controller |
+| `ASTExtraPlayerController` | 普通玩家和人机玩家的Controller |
 
 ### `GetPlayerControllerByPlayerPawn`
 
@@ -643,20 +1418,20 @@ GetPlayerControllerByPlayerState(PlayerState: ASTExtraPlayerState) -> ASTExtraPl
 GetPlayerControllerByPlayerPawn(PlayerPawn: ASTExtraPlayerCharacter) -> ASTExtraPlayerController
 ```
 
-通过PlayerPawn获取PlayerController，客户端只能通过PlayerPawn获取当前客户端的PlayerController
+通过普通玩家和人机玩家的PlayerPawn获取PlayerController，客户端只能通过PlayerPawn获取当前客户端的PlayerController
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `ASTExtraPlayerCharacter` | - |
+| `PlayerPawn` | `ASTExtraPlayerCharacter` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `ASTExtraPlayerController` | 玩家 Controller |
+| `ASTExtraPlayerController` | 普通玩家和人机玩家的Controller |
 
 ### `GetAIControllerByPlayerKey`
 
@@ -664,20 +1439,20 @@ GetPlayerControllerByPlayerPawn(PlayerPawn: ASTExtraPlayerCharacter) -> ASTExtra
 GetAIControllerByPlayerKey(AIPlayerKey: number) -> AFakePlayerAIController
 ```
 
-根据 AIPlayerKey 获取 AIController
+根据 AIPlayerKey 获取人机玩家的 AIController
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `AIPlayerKey` | `number` | 假玩家唯一 Key |
+| `AIPlayerKey` | `number` | 人机玩家唯一 Key |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `AFakePlayerAIController` | 假玩家 AIController |
+| `AFakePlayerAIController` | 人机玩家 AIController |
 
 ### `GetPlayerPawnByPlayerKey`
 
@@ -685,20 +1460,20 @@ GetAIControllerByPlayerKey(AIPlayerKey: number) -> AFakePlayerAIController
 GetPlayerPawnByPlayerKey(PlayerKey: number) -> PlayerPawn
 ```
 
-根据 PlayerKey 获取 PlayerPawn（不会获取到尸体）
+根据 PlayerKey 获取普通玩家和人机玩家的 PlayerPawn（不会获取到尸体）
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | 玩家唯一 Key |
+| `PlayerKey` | `number` | 普通玩家和人机玩家唯一 Key |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `PlayerPawn` | 玩家 Pawn |
+| `PlayerPawn` | 普通玩家和人机玩家的 Pawn |
 
 ### `GetPlayerPawnByUID`
 
@@ -727,20 +1502,20 @@ GetPlayerPawnByUID(UID: number) -> ASTExtraPlayerCharacter
 GetPlayerPawnByPlayerState(PlayerState: ASTExtraPlayerState) -> ASTExtraPlayerCharacter
 ```
 
-通过PlayerState获取PlayerPawn
+通过普通玩家和人机玩家的PlayerState获取PlayerPawn
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerState` | `ASTExtraPlayerState` | - |
+| `PlayerState` | `ASTExtraPlayerState` | 普通玩家和人机玩家的PlayerState |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `ASTExtraPlayerCharacter` | 玩家 Pawn |
+| `ASTExtraPlayerCharacter` | 普通玩家和人机玩家的 Pawn |
 
 ### `GetPlayerPawnByPlayerController`
 
@@ -748,20 +1523,20 @@ GetPlayerPawnByPlayerState(PlayerState: ASTExtraPlayerState) -> ASTExtraPlayerCh
 GetPlayerPawnByPlayerController(PlayerController: ASTExtraPlayerController) -> ASTExtraPlayerCharacter
 ```
 
-通过PlayerController获取PlayerPawn
+通过普通玩家和人机玩家的PlayerController获取PlayerPawn
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `ASTExtraPlayerController` | - |
+| `PlayerController` | `ASTExtraPlayerController` | 普通玩家和人机玩家的Controller |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `ASTExtraPlayerCharacter` | 玩家 Pawn |
+| `ASTExtraPlayerCharacter` | 普通玩家和人机玩家的 Pawn |
 
 ### `GetPlayerStateByPlayerKey`
 
@@ -769,20 +1544,20 @@ GetPlayerPawnByPlayerController(PlayerController: ASTExtraPlayerController) -> A
 GetPlayerStateByPlayerKey(PlayerKey: number) -> APlayerState
 ```
 
-根据 PlayerKey 获取 PlayerState，客户端只能拿到队友的PlayerState
+根据 PlayerKey 获取普通玩家和人机玩家的 PlayerState，客户端只能拿到队友的PlayerState
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | 玩家唯一 Key |
+| `PlayerKey` | `number` | 普通玩家和人机玩家唯一 Key |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `APlayerState` | 玩家 PlayerState |
+| `APlayerState` | 普通玩家和人机玩家的 PlayerState |
 
 ### `GetPlayerStateByPlayerPawn`
 
@@ -790,20 +1565,20 @@ GetPlayerStateByPlayerKey(PlayerKey: number) -> APlayerState
 GetPlayerStateByPlayerPawn(PlayerPawn: ASTExtraPlayerCharacter) -> ASTExtraPlayerState
 ```
 
-通过 PlayerPawn 获取 PlayerState，客户端仅能拿到所有队友的PlayerState
+通过普通玩家和人机玩家的 PlayerPawn 获取 PlayerState，客户端仅能拿到所有队友的PlayerState
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `ASTExtraPlayerCharacter` | - |
+| `PlayerPawn` | `ASTExtraPlayerCharacter` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `ASTExtraPlayerState` | 玩家 PlayerState |
+| `ASTExtraPlayerState` | 普通玩家和人机玩家的 PlayerState |
 
 ### `GetPlayerStateByUID`
 
@@ -832,20 +1607,20 @@ GetPlayerStateByUID(UID: number) -> PlayerState
 GetPlayerStateByPlayerController(PlayerController: ASTExtraPlayerController) -> PlayerState
 ```
 
-根据 PlayerController 获取 PlayerState
+根据普通玩家和人机玩家的 PlayerController 获取 PlayerState
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `ASTExtraPlayerController` | 玩家 Controller |
+| `PlayerController` | `ASTExtraPlayerController` | 普通玩家和人机玩家的 Controller |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `PlayerState` | 玩家 PlayerState |
+| `PlayerState` | 普通玩家和人机玩家的 PlayerState |
 
 ### `GetUIDByPlayerController`
 
@@ -1046,20 +1821,20 @@ RespawnAllPlayers()
 GetPlayerNum(IsIgnoreAI: boolean) -> number
 ```
 
-获取玩家数量
+获取普通玩家和人机玩家的数量
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `IsIgnoreAI` | `boolean` | 是否忽略 AI |
+| `IsIgnoreAI` | `boolean` | 是否忽略人机玩家 |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `number` | 玩家数量 |
+| `number` | 普通玩家和人机玩家数量 |
 
 ### `GetControllerByPawn`
 
@@ -1067,14 +1842,14 @@ GetPlayerNum(IsIgnoreAI: boolean) -> number
 GetControllerByPawn(PlayerPawn: APawn) -> AController
 ```
 
-获取角色 Controller，包括 AI
+获取普通玩家和人机玩家角色的 Controller，包括人机玩家的 AI
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `APawn` | - |
+| `PlayerPawn` | `APawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -1104,7 +1879,7 @@ ApplyRadialDamageWhiteList(BaseDamage: number, MinimumDamage: number, Origin: Ve
 | `DamageTypeTags` | `FGameplayTag[]` | 造成伤害的自定义类型列表 |
 | `GivenActors` | `Actor[]` | 指定受伤害的 Actor 列表 |
 | `DamageCauser` | `Actor` | 造成伤害的人/物体 |
-| `InstigatedByController` | `Controller` | 煽动者的玩家控制器 |
+| `InstigatedByController` | `Controller` | 煽动者的控制器，可传入普通玩家和人机玩家的Controller |
 | `DamagePreventionChannel` | `ECollisionChannel` | 伤害可见性阻挡通道 |
 | `ItemID` | `number` | 造成伤害的物品 ID |
 
@@ -1136,7 +1911,7 @@ ApplyRadialDamage(BaseDamage: number, MinimumDamage: number, Origin: Vector, Dam
 | `DamageTypeTags` | `FGameplayTag[]` | 造成伤害的自定义类型列表 |
 | `IgnoreActors` | `Actor[]` | 伤害忽略 Actor 列表 |
 | `DamageCauser` | `Actor` | 造成伤害的人/物体 |
-| `InstigatedByController` | `Controller` | 煽动者的玩家控制器 |
+| `InstigatedByController` | `Controller` | 煽动者的控制器，可传入普通玩家和人机玩家的Controller |
 | `DamagePreventionChannel` | `ECollisionChannel` | 伤害可见性阻挡通道 |
 | `ItemID` | `number` | 造成伤害的物品 ID |
 
@@ -1163,7 +1938,7 @@ ApplyPointDamage(DamagedActor: Actor, BaseDamage: number, HitFromDirection: Vect
 | `BaseDamage` | `number` | 伤害值 |
 | `HitFromDirection` | `Vector` | 伤害来源方向（如子弹射击方向） |
 | `HitInfo` | `FHitResult` | 命中信息 |
-| `EventInstigator` | `Controller` | 事件煽动者的玩家控制器 |
+| `EventInstigator` | `Controller` | 事件煽动者的控制器，可传入普通玩家和人机玩家的Controller |
 | `DamageCauser` | `Actor` | 造成伤害的人/物体 |
 | `DamageTypeTags` | `FGameplayTag[]` | 造成伤害的自定义类型列表 |
 | `ItemID` | `number` | 造成伤害的物品 ID |
@@ -1189,7 +1964,7 @@ ApplyAvatarPositionDamage(DamagedActor: Actor, BaseDamage: number, EventInstigat
 |---|---|---|
 | `DamagedActor` | `Actor` | 伤害目标 |
 | `BaseDamage` | `number` | 伤害值 |
-| `EventInstigator` | `Controller` | 事件煽动者的玩家控制器 |
+| `EventInstigator` | `Controller` | 事件煽动者的控制器，可传入普通玩家和人机玩家的Controller |
 | `DamageCauser` | `Actor` | 造成伤害的人/物体 |
 | `AvatarDamagePosition` | `EAvatarDamagePosition` | 造成伤害的部位 |
 | `DamageTypeTags` | `FGameplayTag[]` | 造成伤害的自定义类型列表 |
@@ -1215,7 +1990,7 @@ ApplyDamage(DamagedActor: Actor, BaseDamage: number, EventInstigator: Controller
 |---|---|---|
 | `DamagedActor` | `Actor` | 伤害目标 |
 | `BaseDamage` | `number` | 伤害值 |
-| `EventInstigator` | `Controller` | 事件煽动者的玩家控制器 |
+| `EventInstigator` | `Controller` | 事件煽动者的控制器，可传入普通玩家和人机玩家的Controller |
 | `DamageCauser` | `Actor` | 造成伤害的人/物体 |
 | `DamageTypeTags` | `FGameplayTag[]` | 造成伤害的自定义类型列表 |
 
@@ -1649,7 +2424,7 @@ UploadOfficialModuleData(playerUid: string, moduleName: string, data: table)
 上传玩家维度的官方模块自定义数据
  moduleName = "national_arena"（全民赛场）:
    用于团竞类赛事结算数据上报。内核强制只允许 4 个字段，全部 number，不多不少。
-   调用后仅缓存，不立即发送。等 ugc_result 发送时自动取用并合并到 UGCPlayerBattleResult，取后即清。
+   调用后由平台在对局结算时自动上报，创作者无需关心发送时机。
    data 结构：
      {
        player_kill_num = 5,      -- number, 击杀数，只有团竞类才有
@@ -1659,26 +2434,10 @@ UploadOfficialModuleData(playerUid: string, moduleName: string, data: table)
      }
 
  moduleName = "camp"（营地）:
-   用于玩家档案、最近游玩、玩法详情等自定义数据展示。字段不强制限制，推荐以下结构。
-   缓冲队列 + 防抖，同一 UID 10 秒内多次上传直接覆盖（不 deep merge），不发送。
-   后台协议未定，实际发送逻辑暂留空。
-   data 推荐结构：
-     {
-       profile = {               -- 数据档案
-         history_play = "128",   -- 历史游玩次数
-         max_power = "98000",    -- 最高战力
-         realm = "化神",         -- 境界
-       },
-       recent = {                -- 最近游玩
-         rank = "钻石",          -- 段位
-         score = "2600",         -- 积分
-         power = "87000",        -- 当前战力
-       },
-       detail = {                -- 玩法详情
-         title = "宗门长老",     -- 称号
-         career = "剑修",        -- 职业
-       },
-     }
+   用于玩家档案、最近游玩、玩法详情等自定义数据展示。字段不限制，支持任意 table 结构。
+   调用后由平台在对局结算时自动上报，创作者无需关心发送时机。
+   同一 UID 多次调用直接覆盖，以最后一次上传的数据为准。
+   营地上报开关由后台控制：开关未开启时调用无效（不缓存、不报错），日志会提示上报未开启。
 生效范围：服务器
 
 **Parameters**
@@ -2248,8 +3007,8 @@ LoadStreamLevel(LevelName: string, bMakeVisibleAfterLoad: boolean, bShouldBlockO
 |---|---|---|
 | `LevelName` | `string` | 关卡名字 |
 | `bMakeVisibleAfterLoad` | `boolean` | 是否在加载完成后显示关卡 |
-| `bShouldBlockOnLoad` | `boolean` | 是否延迟加载 |
-| `LatentInfo` | `LatentInfo` | 延迟信息 |
+| `bShouldBlockOnLoad` | `boolean` | 是否同步阻塞加载，仅影响 DS 侧的加载方式，不影响回调是否触发：true=DS 同步阻塞加载（本帧内等关卡加载完成）；false=异步分帧加载。无论 true/false，LatentInfo 回调都在关卡加载完成后触发；传 false 时加载完成得更晚，回调也随之更晚。不阻塞本函数调用本身，也不影响客户端加载。 |
+| `LatentInfo` | `LatentInfo` | 加载完成回调，传入后关卡加载完成时会被自动调用。 |
 
 ### `UnloadStreamLevel`
 
@@ -3058,7 +3817,7 @@ GetTargetEnemy(GenericCharacter: AUGCGenericCharacter) -> AActor
 ```
 
 获取当前仇恨目标
-生效范围：服务器
+生效范围：服务器&客户端
 
 **Parameters**
 
@@ -3427,14 +4186,14 @@ RangeSpawnGenericCharactersByGroupOnTime(WorldContextObject: UObject, GroupID: n
 GetPartTypeSockets(Character: ACharacter) -> UPartTypeSocket[]
 ```
 
-获取角色骨骼里所有的PartTypeSocket
+获取普通玩家和人机玩家角色骨骼里所有的PartTypeSocket
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `Character` | `ACharacter` | 角色 |
+| `Character` | `ACharacter` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -3562,7 +4321,7 @@ GetBlackboard(Actor: AActor) -> UBlackboardComponent
 ListenObjectMessage(ListenedObject: UObject, Message: string, Listener: UObject, Callback: function) -> number
 ```
 
-监听对象的广播信息，作用包含ListenUserDefinedObjectMessage，正常仅调用本接口即可
+监听对象广播的内置GMP消息（自定义消息请使用ListenUserDefinedObjectMessage）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -3578,7 +4337,31 @@ ListenObjectMessage(ListenedObject: UObject, Message: string, Listener: UObject,
 
 | Type | Description |
 |---|---|
-| `number` | 返回监听ID |
+| `number` | 成功返回监听ID(>=1)，失败返回-1 |
+
+### `ListenUserDefinedObjectMessage`
+
+```text
+ListenUserDefinedObjectMessage(ListenedObject: UObject, Message: string, Listener: UObject, Callback: function) -> int
+```
+
+监听自定义的对象广播信息，仅处理自定义消息（本接口即监听自定义消息的接口）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ListenedObject` | `UObject` | 被监听对象 |
+| `Message` | `string` | 广播信息的索引，后续的广播和监听都通过索引进行操作 |
+| `Listener` | `UObject` | 监听对象 |
+| `Callback` | `function` | 监听对象监听到广播后调用的回调函数 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int` | 成功返回监听ID(>=1)，失败返回-1 |
 
 ### `BroadcastUserDefinedObjectMessage`
 
@@ -3586,7 +4369,7 @@ ListenObjectMessage(ListenedObject: UObject, Message: string, Listener: UObject,
 BroadcastUserDefinedObjectMessage(ListenedObject: UObject, Message: string, ...: any)
 ```
 
-广播自定义的对象消息
+广播自定义的对象消息，仅处理自定义消息（内置GMP消息由引擎广播）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -3603,7 +4386,7 @@ BroadcastUserDefinedObjectMessage(ListenedObject: UObject, Message: string, ...:
 ListenGlobalMessage(WorldContextObject: UObject, Message: string, Listener: UObject, Callback: function) -> number
 ```
 
-监听全局的广播信息，作用包含ListenUserDefinedGlobalMessage，正常仅调用本接口即可
+监听全局广播的内置GMP消息（自定义消息请使用ListenUserDefinedGlobalMessage）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -3619,7 +4402,7 @@ ListenGlobalMessage(WorldContextObject: UObject, Message: string, Listener: UObj
 
 | Type | Description |
 |---|---|
-| `number` | 返回监听ID |
+| `number` | 成功返回监听ID(>=1)，失败返回-1 |
 
 ### `ListenUserDefinedGlobalMessage`
 
@@ -3627,7 +4410,7 @@ ListenGlobalMessage(WorldContextObject: UObject, Message: string, Listener: UObj
 ListenUserDefinedGlobalMessage(WorldContextObject: UObject, Message: string, Listener: UObject, Callback: function) -> number
 ```
 
-监听自定义的全局广播信息
+监听自定义的全局广播信息，仅处理自定义消息（本接口即监听自定义消息的接口）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -3643,7 +4426,7 @@ ListenUserDefinedGlobalMessage(WorldContextObject: UObject, Message: string, Lis
 
 | Type | Description |
 |---|---|
-| `number` | 返回监听ID |
+| `number` | 成功返回监听ID(>=1)，失败返回-1 |
 
 ### `BroadcastUserDefinedGlobalMessage`
 
@@ -3651,7 +4434,7 @@ ListenUserDefinedGlobalMessage(WorldContextObject: UObject, Message: string, Lis
 BroadcastUserDefinedGlobalMessage(Message: string, ...: any)
 ```
 
-广播自定义的全局消息
+广播自定义的全局消息，仅处理自定义消息（内置GMP消息由引擎广播）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -3664,10 +4447,10 @@ BroadcastUserDefinedGlobalMessage(Message: string, ...: any)
 ### `UnListenMessage`
 
 ```text
-UnListenMessage(Listener: UObject|number, Message: string)
+UnListenMessage(Listener: UObject|number, Message: string) -> number
 ```
 
-解除监听对象以及全局的广播信息
+解除内置GMP消息的监听（自定义消息请使用UnListenUserDefinedMessage）
 生效范围：服务器&客户端
 
 **Parameters**
@@ -3677,10 +4460,38 @@ UnListenMessage(Listener: UObject|number, Message: string)
 | `Listener` | `UObject\|number` | 监听对象/监听ID |
 | `Message` | `string` | 广播信息的索引，后续的广播和监听都通过索引进行操作 |
 
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 成功返回0或实际移除数(>=1)，失败返回-1 |
+
+### `UnListenUserDefinedMessage`
+
+```text
+UnListenUserDefinedMessage(Listener: UObject|number, Message: string) -> number
+```
+
+解除自定义消息的监听，仅处理自定义消息（本接口即解除自定义消息监听的接口）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Listener` | `UObject\|number` | 监听对象/监听ID |
+| `Message` | `string` | 广播信息的索引，后续的广播和监听都通过索引进行操作 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 返回实际移除数(>=1)，无匹配返回-1 |
+
 ### `GetRemoteMessageHandle`
 
 ```text
-GetRemoteMessageHandle(Message: string) -> UGCRemoteMessageHandle
+GetRemoteMessageHandle(Message: string) -> UGCRemoteMessageHandle|number
 ```
 
 获取远程消息句柄
@@ -3696,7 +4507,7 @@ GetRemoteMessageHandle(Message: string) -> UGCRemoteMessageHandle
 
 | Type | Description |
 |---|---|
-| `UGCRemoteMessageHandle` | 消息句柄，Message非string或为""时返回nil |
+| `UGCRemoteMessageHandle\|number` | 消息句柄，Message非string或为""时返回-1 |
 
 ### `SendServerMessage`
 
@@ -3787,7 +4598,7 @@ UnListenRemoteMessage(Message: string, Callback: function|UGCCommonDelegate, Cal
 RegisterUserDefinedMessage(Message: string) -> string
 ```
 
-注册自定义消息
+注册自定义消息，名字与内置GMP消息重名时拒绝注册
 生效范围：服务器&客户端
 
 **Parameters**
@@ -3800,7 +4611,28 @@ RegisterUserDefinedMessage(Message: string) -> string
 
 | Type | Description |
 |---|---|
-| `string` | 返回注册后的Message，与输入的Message相同 |
+| `string` | 注册成功返回Message，重名拒绝返回nil |
+
+### `IsBuiltinMessage`
+
+```text
+IsBuiltinMessage(Message: string) -> boolean
+```
+
+查询消息是否为内置GMP消息（供监听前判断该用哪个监听接口）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Message` | `string` | 广播信息的索引 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是内置GMP消息返回true，否则false |
 
 ### `ClearAllListeners`
 
@@ -4936,14 +5768,14 @@ ModifyWrapperItemCount(WrapperActor: APickUpWrapperActor, Count: number) -> bool
 DoPickWrapper(PlayerPawn: PlayerPawn, WrapperActor: APickUpWrapperActor) -> boolean
 ```
 
-拾取Wrapper
+让普通玩家和人机玩家拾取Wrapper
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | - |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `WrapperActor` | `APickUpWrapperActor` | 可拾取物 |
 
 **Returns**
@@ -5075,7 +5907,7 @@ V2道具系统接口库
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `UGCItemSystemV2._GetterOverrides` | `-` | 存储外部注册的 Get 重写委托 key: 函数名（如 "GetItemNameV2ByDefineID"）, value: 重写函数 @type table |
+| `UGCItemSystemV2._GetterOverrides` | `-` | 存储外部注册的 Get 重写委托 DS 与 Client 为独立进程，各自维护独立的 Lua 状态，无需区分客户端/服务器侧 key: 函数名（如 "GetItemNameV2ByDefineID"）, value: 重写函数 @type table |
 
 ## Functions
 
@@ -5125,11 +5957,12 @@ UnregisterItemPropertyGetOverride(Key: EItemOverrideKey|nil) -> boolean
 ### `GetConfigItemHandle`
 
 ```text
-GetConfigItemHandle(ItemID: number) -> UBattleItemHandleBase
+GetConfigItemHandle(ItemID: number) -> UBattleItemHandleBase|table
 ```
 
 获取物品ItemHandle配置
 可以通过它取得所有物品中配置的静态数据（只读）
+手机UGC客户端不加载 Handle 蓝图，返回完整物品数据表（CompleteTable）的行数据（table），其余情况返回 Handle 对象
 生效范围：服务器&客户端
 
 **Parameters**
@@ -5142,7 +5975,28 @@ GetConfigItemHandle(ItemID: number) -> UBattleItemHandleBase
 
 | Type | Description |
 |---|---|
-| `UBattleItemHandleBase` | 配置数据 |
+| `UBattleItemHandleBase\|table` | 配置数据 |
+
+### `GetConfigItemHandleCDO`
+
+```text
+GetConfigItemHandleCDO(ItemID: number) -> UObject|table
+```
+
+获取物品ItemHandle配置（CDO）
+手机UGC客户端返回完整物品数据表（CompleteTable）的行数据（table），其余情况返回 Handle CDO
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ItemID` | `number` | 物品 ID |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UObject\|table` | 配置数据 |
 
 ### `GetItemInstanceDataManager`
 
@@ -5158,6 +6012,22 @@ GetItemInstanceDataManager() -> UUGCBattleItemInstanceDataManager
 | Type | Description |
 |---|---|
 | `UUGCBattleItemInstanceDataManager` | 实例数据管理器 |
+
+### `GetCommonItemWidgetClassPath`
+
+```text
+GetCommonItemWidgetClassPath() -> FSoftClassPath
+```
+
+获取 Common_Item 物品显示控件的配置（SoftClassPath）
+该控件用于背包、拾取等场景的物品格子显示
+生效范围：服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FSoftClassPath` | Common_Item 物品显示控件蓝图类路径，未配置时返回 nil |
 
 ### `IsUGCItemV2`
 
@@ -7005,14 +7875,14 @@ GameSettle(IsFinish: boolean)
 GetAllPlayerControllerInCurrentLevel() -> APlayerController[]
 ```
 
-获取关卡里的所有玩家
+获取关卡里的所有普通玩家和人机玩家的 PlayerController
 生效范围：服务器
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `APlayerController[]` | 玩家列表 |
+| `APlayerController[]` | 普通玩家和人机玩家的Controller列表 |
 
 ### `GetCurrentLevelActor`
 
@@ -10277,7 +11147,7 @@ StartNormalAirDrop(WorldObjectContext: UObject, StartPos: Vector2D, DropPos: Vec
 
 # UGCMobPawnSystem
 
-怪物系统接口库
+【废弃】怪物系统接口库
 
 ## Functions
 
@@ -10438,6 +11308,169 @@ RangeSpawnMobsByMobGroupOnTime(WorldContextObject: UObject, MobGroupID: number, 
 | `FirstDelayTime` | `number` | 从接口调用到首次刷怪的延迟时间 |
 | `Callback` | `function` | 回调函数 |
 | `CallbackSelf` | `table` | 回调函数的调用主体，静态函数时留空 |
+
+## Language
+
+`lua`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UGCModeArchiveSystem.json -->
+
+# UGCModeArchiveSystem
+
+UGC 玩法存档系统（ModeArchive）：玩法（mode）维度存档数据的异步存取接口，全部接口仅在服务器生效
+
+## Functions
+
+### `AsyncCreateIntKey`
+
+```text
+AsyncCreateIntKey(BizName: string, InitValue: number, ExpireDays?: number) -> UGCPromiseFuture
+```
+
+异步创建整型 key
+注意：固定"仅当不存在时创建"语义（最小接口集，禁止无条件覆盖存档数据）：
+  key 已存在时返回 KeyAlreadyExists，原值不受影响；未被 float 标记的
+  key 需要重置请显式先 AsyncDeleteKey 再 AsyncCreateIntKey（非原子两步；
+  float 标记不可逆，曾被 float 接口写入的 key 删除后重建 int 仍返回 TypeMismatch）
+注意：float 标记不可逆，若该 key 曾被 float 接口写入，将返回 TypeMismatch
+用法：UGCAsyncUtility.AsyncRun(UGCModeArchiveSystem.AsyncCreateIntKey("TotalKills", 0)):Then(function(Task) local ErrCode = Task:Get() end)
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `BizName` | `string` | 业务键名，非空且不超过 128 字符，同一玩法内全局唯一 |
+| `InitValue` | `number` | 初始值，必须为整数 |
+| `ExpireDays?` | `number` | 可选，过期天数，非负数（默认 0 表示永不过期） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCPromiseFuture` | 结果 (ErrCode) |
+
+### `AsyncCreateFloatKey`
+
+```text
+AsyncCreateFloatKey(BizName: string, InitValue: number, ExpireDays?: number) -> UGCPromiseFuture
+```
+
+异步创建浮点型 key
+注意：固定"仅当不存在时创建"语义（最小接口集，禁止无条件覆盖存档数据）：
+  key 已存在时返回 KeyAlreadyExists，原值不受影响；需要重置请显式先
+  AsyncDeleteKey 再 AsyncCreateFloatKey（非原子两步）
+注意：创建后该 key 永久标记为 float，后续必须使用 float 接口（AsyncModifyFloatValue）
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `BizName` | `string` | 业务键名，非空且不超过 128 字符，同一玩法内全局唯一 |
+| `InitValue` | `number` | 初始值（任意有限数值） |
+| `ExpireDays?` | `number` | 可选，过期天数，非负数（默认 0 表示永不过期） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCPromiseFuture` | 结果 (ErrCode) |
+
+### `AsyncGetKey`
+
+```text
+AsyncGetKey(BizName: string) -> UGCPromiseFuture
+```
+
+异步查询指定 key 的当前值
+协议 v2 直通模式：get 直读 Redis 当前值（modify 即时落盘，无聚合缓存）
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `BizName` | `string` | 业务键名 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCPromiseFuture` | 结果 (ErrCode, Value)：成功时 Value 为 number（超出 number 精度范围的超大整数会透传后台原始 string）；key 不存在时 ErrCode=NotExist 且 Value=nil |
+
+### `AsyncDeleteKey`
+
+```text
+AsyncDeleteKey(BizName: string) -> UGCPromiseFuture
+```
+
+异步删除指定 key（仅当 key 存在时删除）
+key 不存在时返回 NotExist；float 类型标记不随删除清除（永久不可逆语义）
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `BizName` | `string` | 业务键名 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCPromiseFuture` | 结果 (ErrCode) |
+
+### `AsyncModifyIntValue`
+
+```text
+AsyncModifyIntValue(BizName: string, Delta: number) -> UGCPromiseFuture
+```
+
+异步增量修改整型 key（直通强一致：即时执行 Redis INCRBY 原子自增并落盘）
+key 不存在时按 Redis INCRBY 语义从 0 起算（隐式创建，占用 key 数量配额）
+注意：float 标记不可逆，若该 key 曾被 float 接口写入，将返回 TypeMismatch
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `BizName` | `string` | 业务键名 |
+| `Delta` | `number` | 增量，必须为整数（可为负数） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCPromiseFuture` | 结果 (ErrCode, NewValue)：成功时 NewValue 为修改后的最新值（Redis 原子返回值，天然包含其他对局的并发修改；超出 number 精度范围的超大整数会透传后台原始 string）；错误路径 NewValue 为 nil |
+
+### `AsyncModifyFloatValue`
+
+```text
+AsyncModifyFloatValue(BizName: string, Delta: number) -> UGCPromiseFuture
+```
+
+异步增量修改浮点型 key（直通强一致：即时执行 Redis INCRBYFLOAT 原子自增并落盘）
+key 不存在时按 Redis INCRBYFLOAT 语义从 0 起算（隐式创建，占用 key 数量配额）
+注意：修改后该 key 永久标记为 float，后续 int 接口将返回 TypeMismatch
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `BizName` | `string` | 业务键名 |
+| `Delta` | `number` | 增量（任意有限数值，可为负数） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCPromiseFuture` | 结果 (ErrCode, NewValue)：成功时 NewValue 为修改后的最新值（Redis 原子返回值，天然包含其他对局的并发修改）；错误路径 NewValue 为 nil |
 
 ## Language
 
@@ -11489,6 +12522,29 @@ IsWeakObjectPtrValid(InWeakObjectPtr: WeakObjectPtr) -> boolean
 | Type | Description |
 |---|---|
 | `boolean` | 是否有效 |
+
+### `AsyncLoadObjects`
+
+```text
+AsyncLoadObjects(ObjectPaths: string[], Callback: function, Callback_self: UObject) -> boolean
+```
+
+批量异步加载多个对象，全部完成后统一回调，用于一次性预载一批资源
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ObjectPaths` | `string[]` | 对象完整路径列表 |
+| `Callback` | `function` | 完成回调，签名：(Assets)；回调带冒号定义时为 (self, Assets)。Assets 为已加载对象列表，按下标与 ObjectPaths 一一对应，对应路径加载失败时该位置为 nil，请用 for i = 1, #ObjectPaths 遍历取值 |
+| `Callback_self` | `UObject` | 冒号形式回调的 self，可选；带冒号定义时传入 self，不带冒号时传 nil |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 异步加载请求是否成功受理；路径列表为空或含非字符串元素、回调缺失、游戏环境未就绪时返回 false 且不触发回调 |
 
 ## Language
 
@@ -13326,6 +14382,458 @@ PickTargets(OwnerActor: AActor, StartTransform: FTransform, TargetPickerParams: 
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UGCPhysicsUtility.json -->
+
+# UGCPhysicsUtility
+
+统一物理能力接口库
+
+## Functions
+
+### `AddBeginOverlapDelegate`
+
+```text
+AddBeginOverlapDelegate(Component: UPrimitiveComponent, Callback: function, Callback_self: UObject)
+```
+
+注册组件开始重叠事件回调，用于检测物体开始接触（如角色走入触发区域）
+生效范围：服务器&客户端
+      回调签名：(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult)；
+      绑定方式：Component.OnComponentBeginOverlap:Add(Callback, Callback_self)；
+      移除方式：UGCPhysicsUtility.RemoveBeginOverlapDelegate(Component, Callback, Callback_self)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件；双方组件均需生成重叠事件才会触发回调 |
+| `Callback` | `function` | 回调函数，参数为 OverlappedComponent、OtherActor、OtherComp、OtherBodyIndex；如需扫掠细节，可多声明两个参数接收 bFromSweep、SweepResult |
+| `Callback_self` | `UObject` | 冒号形式回调的 self，可选；带冒号定义时传入 self，不带冒号时传 nil |
+
+### `AddEndOverlapDelegate`
+
+```text
+AddEndOverlapDelegate(Component: UPrimitiveComponent, Callback: function, Callback_self: UObject)
+```
+
+注册组件结束重叠事件回调，用于检测物体停止接触（如角色走出触发区域）
+生效范围：服务器&客户端
+      回调签名：(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex)；
+      绑定方式：Component.OnComponentEndOverlap:Add(Callback, Callback_self)；
+      移除方式：UGCPhysicsUtility.RemoveEndOverlapDelegate(Component, Callback, Callback_self)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件；双方组件均需生成重叠事件才会触发回调 |
+| `Callback` | `function` | 回调函数，参数为 OverlappedComponent、OtherActor、OtherComp、OtherBodyIndex |
+| `Callback_self` | `UObject` | 冒号形式回调的 self，可选；带冒号定义时传入 self，不带冒号时传 nil |
+
+### `ApplyAngularImpulse`
+
+```text
+ApplyAngularImpulse(Component: UPrimitiveComponent, AngularImpulse: Vector, BoneName: string, bVelChange: boolean)
+```
+
+对物理组件施加角冲量，用于瞬间改变物体旋转（如受击打转、旋转击飞）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标物理组件；需已启用物理模拟 |
+| `AngularImpulse` | `Vector` | 角冲量，单位为度；方向为旋转轴 |
+| `BoneName` | `string` | 骨骼名称，可选；不传则作用于整体刚体 |
+| `bVelChange` | `boolean` | 是否按角速度变化施加，默认 false；为 true 时不受质量影响 |
+
+### `ApplyForce`
+
+```text
+ApplyForce(Component: UPrimitiveComponent, Force: Vector, BoneName: string, bAccelChange: boolean)
+```
+
+对物理组件施加作用力，每帧调用可实现持续推动（如推进器、风力）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标物理组件；需已启用物理模拟 |
+| `Force` | `Vector` | 世界空间作用力；按质量换算为加速度变化 |
+| `BoneName` | `string` | 骨骼名称，可选；不传则作用于整体刚体 |
+| `bAccelChange` | `boolean` | 是否按加速度变化施加，默认 false；为 true 时不受质量影响 |
+
+### `ApplyImpulse`
+
+```text
+ApplyImpulse(Component: UPrimitiveComponent, Impulse: Vector, BoneName: string, bVelChange: boolean)
+```
+
+对物理组件施加线性冲量，用于击飞、弹射等瞬时加速
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标物理组件；需已启用物理模拟 |
+| `Impulse` | `Vector` | 世界空间冲量；按质量换算为速度变化 |
+| `BoneName` | `string` | 骨骼名称，可选；不传则作用于整体刚体 |
+| `bVelChange` | `boolean` | 是否按速度变化施加，默认 false；为 true 时不受质量影响 |
+
+### `ApplyImpulseAtLocation`
+
+```text
+ApplyImpulseAtLocation(Component: UPrimitiveComponent, Impulse: Vector, Location: Vector, BoneName: string)
+```
+
+在指定世界位置对物理组件施加冲量，用于制造偏心撞击（如击中边缘时推移并打转）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标物理组件；需已启用物理模拟 |
+| `Impulse` | `Vector` | 世界空间冲量；按质量换算为速度变化 |
+| `Location` | `Vector` | 世界空间作用位置 |
+| `BoneName` | `string` | 骨骼名称，可选；不传则作用于整体刚体 |
+
+### `GetAngularVelocity`
+
+```text
+GetAngularVelocity(Component: UPrimitiveComponent) -> Vector
+```
+
+获取物理组件角速度
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Vector` | 角速度，单位为度每秒；Component 无效时返回零向量 |
+
+### `GetCenterOfMass`
+
+```text
+GetCenterOfMass(Component: UPrimitiveComponent) -> Vector
+```
+
+获取物理组件质心位置
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Vector` | 世界空间质心位置；Component 无效时返回零向量 |
+
+### `GetLinearVelocity`
+
+```text
+GetLinearVelocity(Component: UPrimitiveComponent, BoneName: string) -> Vector
+```
+
+获取物理组件线速度
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件 |
+| `BoneName` | `string` | 骨骼名称，可选；不传则取整体刚体 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Vector` | 线速度；Component 无效时返回零向量 |
+
+### `GetMass`
+
+```text
+GetMass(Component: UPrimitiveComponent) -> number
+```
+
+获取物理组件的质量（千克），用于按重量计算受力、浮力等物理效果
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 质量（千克）；组件无效或尚无物理体时返回 0 |
+
+### `GetVelocityAtPoint`
+
+```text
+GetVelocityAtPoint(Component: UPrimitiveComponent, Point: Vector) -> Vector
+```
+
+获取物理组件指定世界位置的线速度
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件 |
+| `Point` | `Vector` | 世界空间采样点 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Vector` | 采样点线速度；Component 无效时返回零向量 |
+
+### `IsActorCollisionEnabled`
+
+```text
+IsActorCollisionEnabled(Actor: Actor) -> boolean
+```
+
+查询 Actor 是否启用碰撞
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `Actor` | 目标 Actor |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | Actor 级碰撞开关是否开启；关闭时该 Actor 的所有组件均不参与碰撞，开启时各组件仍受自身碰撞设置约束；Actor 无效时返回 false |
+
+### `IsOverlapEventsEnabled`
+
+```text
+IsOverlapEventsEnabled(Component: UPrimitiveComponent) -> boolean
+```
+
+查询组件是否生成重叠事件
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否生成重叠事件；需双方组件都开启，重叠事件才会触发；Component 无效时返回 false |
+
+### `IsSimulatingPhysics`
+
+```text
+IsSimulatingPhysics(Component: UPrimitiveComponent, BoneName: string) -> boolean
+```
+
+查询组件是否正在模拟物理，用于判断物体当前是否由物理驱动
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件 |
+| `BoneName` | `string` | 骨骼名称，可选；不传则查询整体刚体 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 组件（或指定骨骼）当前是否处于物理模拟状态；组件无效、无物理体或骨骼名无效时返回 false |
+
+### `GetOverlappingActors`
+
+```text
+GetOverlappingActors(Actor: Actor, ActorClassFilter: UClass) -> Actor[]
+```
+
+获取当前与 Actor 接触的所有 Actor，用于即时查询接触状态（如判断角色是否已在触发区域内）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `Actor` | 目标 Actor；双方组件均需生成重叠事件才会出现在结果中（编辑器新建的组件默认关闭，可用 SetOverlapEventsEnabled 开启） |
+| `ActorClassFilter` | `UClass` | 可选，按类过滤返回的重叠 Actor |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Actor[]` | 当前重叠的 Actor 列表（同一 Actor 只出现一次）；无重叠或 Actor 无效时返回空列表 |
+
+### `RemoveBeginOverlapDelegate`
+
+```text
+RemoveBeginOverlapDelegate(Component: UPrimitiveComponent, Callback: function, Callback_self: UObject)
+```
+
+移除组件开始重叠事件回调，用于停止接触检测（如对象销毁前解除订阅）
+生效范围：服务器&客户端
+      移除方式：Component.OnComponentBeginOverlap:Remove(Callback, Callback_self)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件 |
+| `Callback` | `function` | Add 时注册的回调函数 |
+| `Callback_self` | `UObject` | Add 时传入的 self，可选；需与注册时一致 |
+
+### `RemoveEndOverlapDelegate`
+
+```text
+RemoveEndOverlapDelegate(Component: UPrimitiveComponent, Callback: function, Callback_self: UObject)
+```
+
+移除组件结束重叠事件回调，用于停止离开检测（如对象销毁前解除订阅）
+生效范围：服务器&客户端
+      移除方式：Component.OnComponentEndOverlap:Remove(Callback, Callback_self)
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件 |
+| `Callback` | `function` | Add 时注册的回调函数 |
+| `Callback_self` | `UObject` | Add 时传入的 self，可选；需与注册时一致 |
+
+### `SetActorCollisionEnabled`
+
+```text
+SetActorCollisionEnabled(Actor: Actor, bEnabled: boolean)
+```
+
+设置 Actor 是否参与碰撞
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Actor` | `Actor` | 目标 Actor |
+| `bEnabled` | `boolean` | 是否启用碰撞 |
+
+### `SetOverlapEventsEnabled`
+
+```text
+SetOverlapEventsEnabled(Component: UPrimitiveComponent, bEnabled: boolean)
+```
+
+设置物理组件是否生成重叠事件，用于按需开启或关闭该组件的接触检测
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件 |
+| `bEnabled` | `boolean` | 是否生成重叠事件；需双方组件都开启，重叠事件才会触发；UGC 编辑器新建组件默认关闭，需显式开启 |
+
+### `SetSimulatePhysics`
+
+```text
+SetSimulatePhysics(Component: UPrimitiveComponent, bSimulate: boolean)
+```
+
+设置物理组件是否模拟物理，用于让物体开始或停止受重力与碰撞驱动（如击飞下落、落地固定）
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件；需为带物理体的非静态（Movable）组件 |
+| `bSimulate` | `boolean` | 是否启用物理模拟；启用时会先解除该组件与父级的附着（保持世界变换），关闭后恢复为固定（运动学）状态 |
+
+### `SetAngularVelocity`
+
+```text
+SetAngularVelocity(Component: UPrimitiveComponent, AngularVelocity: Vector)
+```
+
+设置物理组件角速度
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件 |
+| `AngularVelocity` | `Vector` | 角速度，单位为度每秒 |
+
+### `SetLinearVelocity`
+
+```text
+SetLinearVelocity(Component: UPrimitiveComponent, Velocity: Vector)
+```
+
+设置物理组件线速度
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件 |
+| `Velocity` | `Vector` | 线速度 |
+
+### `SetMass`
+
+```text
+SetMass(Component: UPrimitiveComponent, Mass: number)
+```
+
+设置物理组件的质量（千克），用于按重量调整受力、浮力等物理表现
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Component` | `UPrimitiveComponent` | 目标组件 |
+| `Mass` | `number` | 质量（千克），必须为大于 0 的有限数值；设置后该组件质量固定为此值，不再随网格缩放或物理材质密度自动变化 |
+
+## Language
+
+`lua`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/%E5%92%8C%E5%B9%B3%E5%85%A8%E5%B1%80%E6%8E%A5%E5%8F%A3/%E8%A7%92%E8%89%B2%E7%B3%BB%E7%BB%9F/UGCPlayerControllerSystem.json -->
 
 # UGCPlayerControllerSystem
@@ -13347,7 +14855,7 @@ DisableJoyStickSprint(PlayerController: PlayerController)
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
 
 ### `EnableJoyStickSprint`
 
@@ -13362,7 +14870,7 @@ EnableJoyStickSprint(PlayerController: PlayerController)
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
 
 ### `GetTeamID`
 
@@ -13370,20 +14878,20 @@ EnableJoyStickSprint(PlayerController: PlayerController)
 GetTeamID(PlayerController: PlayerController) -> number
 ```
 
-通过 PlayerController 获取 TeamID
+通过普通玩家和人机玩家的 PlayerController 获取 TeamID
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `number` | 玩家队伍 ID |
+| `number` | 普通玩家和人机玩家的队伍 ID |
 
 ### `GetPlayerCharacter`
 
@@ -13391,20 +14899,20 @@ GetTeamID(PlayerController: PlayerController) -> number
 GetPlayerCharacter(PlayerController: PlayerController) -> ASTExtraBaseCharacter
 ```
 
-获取玩家角色
+获取普通玩家和人机玩家的角色
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `ASTExtraBaseCharacter` | 玩家角色 |
+| `ASTExtraBaseCharacter` | 普通玩家和人机玩家角色 |
 
 ### `TeleportTo`
 
@@ -13412,14 +14920,14 @@ GetPlayerCharacter(PlayerController: PlayerController) -> ASTExtraBaseCharacter
 TeleportTo(PlayerController: PlayerController, X: number, Y: number, Z: number)
 ```
 
-瞬移至坐标
+让普通玩家和人机玩家瞬移至坐标
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
 | `X` | `number` | X坐标 |
 | `Y` | `number` | Y坐标 |
 | `Z` | `number` | Z坐标 |
@@ -13430,14 +14938,14 @@ TeleportTo(PlayerController: PlayerController, X: number, Y: number, Z: number)
 SetControlRotation(PlayerController: PlayerController, NewRotation: Rotator)
 ```
 
-设置控制旋转
+设置普通玩家和人机玩家的控制旋转
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
 | `NewRotation` | `Rotator` | 新旋转量 可使用Rotator.New(Roll,Pitch,Yaw)创建,结构{Roll=Roll, Pitch=Pitch, Yaw=Yaw} |
 
 ### `EnableBulletTrackEffect`
@@ -13494,18 +15002,18 @@ IsLocalController(InController: AController) -> boolean
 ### `MountCharacterPreset`
 
 ```text
-MountCharacterPreset(PlayerController: PlayerController, DataAsset: UCharacterPresetDataAsset, PriorityOverride: number) -> number
+MountCharacterPreset(PlayerController: PlayerController, CharacterPresetClass: UClass, PriorityOverride: number) -> number
 ```
 
-挂载角色预设 DataAsset 到 PlayerController 的 UGCCharacterManager
+挂载角色预设到普通玩家和人机玩家的 PlayerController 的 UGCCharacterManager
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
-| `DataAsset` | `UCharacterPresetDataAsset` | 角色预设数据 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
+| `CharacterPresetClass` | `UClass` | 角色预设类 |
 | `PriorityOverride` | `number` | 优先级覆盖，可为 nil |
 
 **Returns**
@@ -13520,14 +15028,14 @@ MountCharacterPreset(PlayerController: PlayerController, DataAsset: UCharacterPr
 UnmountCharacterPreset(PlayerController: PlayerController, Handle: number) -> boolean
 ```
 
-卸载 PlayerController 上的角色预设
+卸载普通玩家和人机玩家的 PlayerController 上的角色预设
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
 | `Handle` | `number` | MountCharacterPreset 返回的 Handle |
 
 **Returns**
@@ -14814,14 +16322,14 @@ PickUpWrapperActor(PlayerPawn: PlayerPawn, TargetWrapper: AActor, ItemData: FPic
 IsAlive(PlayerKey: number) -> boolean
 ```
 
-是否存活
+普通玩家和人机玩家是否存活
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | - |
+| `PlayerKey` | `number` | 普通玩家和人机玩家的PlayerKey |
 
 **Returns**
 
@@ -14898,14 +16406,14 @@ GetPlayerAccountInfo(PlayerKey: number) -> FPlayerAccountInfo
 GetPlayerBattleInfo(PlayerKey: number) -> FPlayerBattleInfo
 ```
 
-获取玩家的战斗数据
+获取普通玩家和人机玩家的战斗数据
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | - |
+| `PlayerKey` | `number` | 普通玩家和人机玩家唯一 Key |
 
 **Returns**
 
@@ -15080,20 +16588,20 @@ GetPlayerPlatformGender(PlatformGender: number, UID: number) -> number
 GetTeamID(PlayerKey: number) -> number
 ```
 
-获取 TeamID
+获取普通玩家和人机玩家的 TeamID
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | - |
+| `PlayerKey` | `number` | 普通玩家和人机玩家唯一 Key |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `number` | - |
+| `number` | 队伍 ID |
 
 ### `GetPlayerKeyInt64`
 
@@ -15101,14 +16609,14 @@ GetTeamID(PlayerKey: number) -> number
 GetPlayerKeyInt64(PlayerState: PlayerState) -> number
 ```
 
-获取 64 位玩家 PlayerKey
+获取 64 位普通玩家和人机玩家的 PlayerKey
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerState` | `PlayerState` | - |
+| `PlayerState` | `PlayerState` | 普通玩家和人机玩家的PlayerState |
 
 **Returns**
 
@@ -15122,20 +16630,42 @@ GetPlayerKeyInt64(PlayerState: PlayerState) -> number
 GetPlayerKey(PlayerState: PlayerState) -> string
 ```
 
-获取字符串玩家 PlayerKey
+获取字符串普通玩家和人机玩家的 PlayerKey
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerState` | `PlayerState` | - |
+| `PlayerState` | `PlayerState` | 普通玩家和人机玩家的PlayerState |
 
 **Returns**
 
 | Type | Description |
 |---|---|
 | `string` | - |
+
+### `QueryPlayerReturnInfos`
+
+```text
+QueryPlayerReturnInfos(UIDs: number[]) -> UGCPromiseFuture
+```
+
+查询玩家回流状态信息
+注意：单次查询不超过 200 个，超过则截断
+生效范围：服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `UIDs` | `number[]` | 玩家 UID 列表 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCPromiseFuture` | 已启动的异步任务，Then 回调内 Task:Get() 取 ResultMap：ResultMap[UID] = FUGCReturnPlayerInfo，失败时为空表 |
 
 ## Language
 
@@ -17206,14 +18736,14 @@ GetTeamPlayersNumber() -> number
 ChangePlayerTeamID(PlayerKey: number, TeamID: number)
 ```
 
-改变玩家 TeamID
+改变普通玩家和人机玩家的 TeamID
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | 玩家 PlayerKey |
+| `PlayerKey` | `number` | 普通玩家和人机玩家 PlayerKey |
 | `TeamID` | `number` | 队伍 ID |
 
 ### `LeaveTeam`
@@ -17325,10 +18855,10 @@ GetUIDsByTeamID(TeamID: number) -> @UID
 ### `GetPlayerKeysByTeamID`
 
 ```text
-GetPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> @PlayerKey
+GetPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> number[]
 ```
 
-根据TeamID获取对应队伍里所有的玩家PlayerKey，PlayerKey需要客户端连上DS后，才会被初始化，若在客户端连上DS前调用该接口，返回的PlayerKey列表不准确
+根据TeamID获取对应队伍里所有普通玩家和人机玩家的PlayerKey，PlayerKey需要客户端连上DS后，才会被初始化，若在客户端连上DS前调用该接口，返回的PlayerKey列表不准确
 生效范围：服务器
 
 **Parameters**
@@ -17342,15 +18872,15 @@ GetPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> @PlayerKey
 
 | Type | Description |
 |---|---|
-| `@PlayerKey` | 列表 |
+| `number[]` | 普通玩家和人机玩家的PlayerKey 列表 |
 
 ### `GetAIPlayerKeysByTeamID`
 
 ```text
-GetAIPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> @PlayerKey
+GetAIPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> number[]
 ```
 
-根据 TeamID 获取对应队伍里所有的假人玩家 AIPlayerKey，PlayerKey需要客户端连上DS后，才会被初始化，若在客户端连上DS前调用该接口，返回的PlayerKey列表不准确
+根据 TeamID 获取对应队伍里所有人机玩家的 AIPlayerKey，PlayerKey需要客户端连上DS后，才会被初始化，若在客户端连上DS前调用该接口，返回的PlayerKey列表不准确
 生效范围：服务器
 
 **Parameters**
@@ -17364,7 +18894,7 @@ GetAIPlayerKeysByTeamID(TeamID: number, bReturnAsLuaTable: boolean) -> @PlayerKe
 
 | Type | Description |
 |---|---|
-| `@PlayerKey` | 列表 |
+| `number[]` | 人机玩家 AIPlayerKey 列表 |
 
 ### `GetPlayerControllersByTeamID`
 
@@ -17390,10 +18920,10 @@ GetPlayerControllersByTeamID(TeamID: number) -> @PlayerController
 ### `GetPlayerPawnsByTeamID`
 
 ```text
-GetPlayerPawnsByTeamID(TeamID: number) -> @PlayerPawn
+GetPlayerPawnsByTeamID(TeamID: number) -> PlayerPawn[]
 ```
 
-根据TeamID获取对应队伍里所有的玩家PlayerPawn
+根据TeamID获取对应队伍里所有普通玩家和人机玩家的PlayerPawn
 生效范围：服务器&客户端
 
 **Parameters**
@@ -17406,15 +18936,15 @@ GetPlayerPawnsByTeamID(TeamID: number) -> @PlayerPawn
 
 | Type | Description |
 |---|---|
-| `@PlayerPawn` | 列表 |
+| `PlayerPawn[]` | 普通玩家和人机玩家的PlayerPawn 列表 |
 
 ### `GetPlayerStatesByTeamID`
 
 ```text
-GetPlayerStatesByTeamID(TeamID: number) -> @PlayerState
+GetPlayerStatesByTeamID(TeamID: number) -> ASTExtraPlayerState[]
 ```
 
-根据TeamID获取对应队伍里所有的玩家PlayerState
+根据TeamID获取对应队伍里所有普通玩家和人机玩家的PlayerState
 生效范围：服务器&客户端
 
 **Parameters**
@@ -17427,7 +18957,7 @@ GetPlayerStatesByTeamID(TeamID: number) -> @PlayerState
 
 | Type | Description |
 |---|---|
-| `@PlayerState` | 列表 |
+| `ASTExtraPlayerState[]` | 普通玩家和人机玩家的PlayerState 列表 |
 
 ### `GetLobbyTeamUIDsByUID`
 
@@ -17666,7 +19196,7 @@ GetTeamIDs(bReturnAsLuaTable: boolean) -> @TeamID
 GetPlayerList(bWithOB?: boolean) -> number[]
 ```
 
-获取所有玩家信息列表
+获取所有普通玩家和人机玩家的信息列表
 生效范围：服务器
 
 **Parameters**
@@ -17679,7 +19209,7 @@ GetPlayerList(bWithOB?: boolean) -> number[]
 
 | Type | Description |
 |---|---|
-| `number[]` | 玩家信息列表 |
+| `number[]` | 普通玩家和人机玩家的信息列表 |
 
 ### `GetTeamSizeByID`
 
@@ -17688,7 +19218,7 @@ GetTeamSizeByID(TeamID: number) -> number
 ```
 
 【废弃】请使用 UGCTeamSystem.GetTeamSizeByTeamID
-获取队伍中的玩家数量
+获取队伍中的普通玩家和人机玩家数量
 生效范围：服务器
 
 **Parameters**
@@ -17701,7 +19231,7 @@ GetTeamSizeByID(TeamID: number) -> number
 
 | Type | Description |
 |---|---|
-| `number` | 玩家数量 |
+| `number` | 普通玩家和人机玩家数量 |
 
 ### `GetTeamSizeByTeamID`
 
@@ -17709,7 +19239,7 @@ GetTeamSizeByID(TeamID: number) -> number
 GetTeamSizeByTeamID(TeamID: number) -> number
 ```
 
-获取队伍中的玩家数量
+获取队伍中的普通玩家和人机玩家数量
 生效范围：服务器
 
 **Parameters**
@@ -17722,7 +19252,7 @@ GetTeamSizeByTeamID(TeamID: number) -> number
 
 | Type | Description |
 |---|---|
-| `number` | 玩家数量 |
+| `number` | 普通玩家和人机玩家数量 |
 
 ### `GetTeamLeaderKeyByTeamID`
 
@@ -17730,7 +19260,7 @@ GetTeamSizeByTeamID(TeamID: number) -> number
 GetTeamLeaderKeyByTeamID(TeamID: number) -> number[]
 ```
 
-通过队伍编号获取队长PlayerKey列表（每个在大厅点击开始游戏的玩家都会被设置为队长，例如四人匹配，队伍里只有一个队长，三人匹配，再随机匹配一个队友，三人里面点击开始游戏的是队长，随机匹配的那个队友也是队长，属于他自己那个小队的队长）
+通过队伍编号获取队长PlayerKey列表，包含普通玩家和人机玩家（每个在大厅点击开始游戏的玩家都会被设置为队长，例如四人匹配，队伍里只有一个队长，三人匹配，再随机匹配一个队友，三人里面点击开始游戏的是队长，随机匹配的那个队友也是队长，属于他自己那个小队的队长）
 生效范围：服务器
 
 **Parameters**
@@ -17743,7 +19273,7 @@ GetTeamLeaderKeyByTeamID(TeamID: number) -> number[]
 
 | Type | Description |
 |---|---|
-| `number[]` | 队长PlayerKey |
+| `number[]` | 普通玩家和人机玩家队长的PlayerKey |
 
 ### `GetIsLeaderOrNotByPlayerKey`
 
@@ -17751,14 +19281,14 @@ GetTeamLeaderKeyByTeamID(TeamID: number) -> number[]
 GetIsLeaderOrNotByPlayerKey(PlayerKey: number) -> boolean
 ```
 
-通过玩家PlayerKey查询身份
+通过普通玩家和人机玩家的PlayerKey查询身份
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | 玩家 PlayerKey |
+| `PlayerKey` | `number` | 普通玩家和人机玩家 PlayerKey |
 
 **Returns**
 
@@ -17836,14 +19366,14 @@ IsTeamIDValid(TeamID: number) -> ASTExtraPlayerState
 GetTeamIDByPlayerKey(PlayerKey: number) -> number
 ```
 
-根据PlayerKey获取队伍ID
+根据PlayerKey获取普通玩家和人机玩家的队伍ID
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | 玩家 PlayerKey |
+| `PlayerKey` | `number` | 普通玩家和人机玩家 PlayerKey |
 
 **Returns**
 
@@ -18067,6 +19597,20 @@ RemoveUETimer(TimerHandle: FTimerHandle)
 Tween 动画系统接口库
 
 ## Functions
+
+### `ReleaseTweenDelegates`
+
+```text
+ReleaseTweenDelegates(Handle: FTweenHandle)
+```
+
+释放某个 Handle 关联的所有 Delegate（解除 FLuaGCObject 根引用）
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Handle` | `FTweenHandle` | 动画句柄 |
 
 ### `MakeConfig`
 
@@ -18393,20 +19937,369 @@ UI管理器（客户端）
 
 ## Functions
 
+### `RegisterUI`
+
+```text
+RegisterUI(Key: string, Config: UGCUIConfig)
+```
+
+注册 UI 配置，供后续通过 Key 加载和打开界面。
+重复注册同一个 Key 会先注销旧配置并销毁旧实例；默认仅保存配置，bPreload=true 时自动预加载。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `string` | 非空的 UI 唯一标识，后续 Open、Close 等接口均使用此标识 |
+| `Config` | `UGCUIConfig` | 必须提供 WidgetClassPath；其余字段的默认值见 UGCUIConfig |
+
+### `UnregisterUI`
+
+```text
+UnregisterUI(Key: string)
+```
+
+注销 UI 配置并销毁已加载的实例，同时取消尚未完成的打开操作。
+已打开的 UI 会先调用 OnClose；注销后需重新 RegisterUI 才能打开。Key 未注册时不做处理。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `string` | UI 注册时使用的唯一标识 |
+
+### `IsRegistered`
+
+```text
+IsRegistered(Key: string) -> boolean
+```
+
+查询是否存在此 Key 的 UI 配置，与界面是否已加载或打开无关。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `string` | UI 注册时使用的唯一标识 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 已注册返回 true，否则返回 false |
+
 ### `RegisterViewModel`
 
 ```text
 RegisterViewModel(VMKey: string, ViewModel: UGCViewModel)
 ```
 
-会在依赖它的View创建时实例化
+注册共享 ViewModel 的原型，首次 GetViewModel 时通过原型的 New 方法创建实例。
+同一个 VMKey 的多个 View 共用一个实例；重复注册只更新原型，已有实例继续使用到被回收。
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `VMKey` | `string` | ViewModel的Key，与UI的Key相互独立 |
-| `ViewModel` | `UGCViewModel` | ViewModel原型 |
+| `VMKey` | `string` | 非空的 ViewModel 唯一标识，与 UI 的 Key 相互独立 |
+| `ViewModel` | `UGCViewModel` | 用于创建实例的原型，需提供 New 方法；可用 NewViewModel 创建后定义 OnInitialize |
+
+### `GetViewModel`
+
+```text
+GetViewModel(VMKey: string, View: UGCView) -> UGCViewModel|nil
+```
+
+获取或创建共享 ViewModel，并记录当前 View 对它的引用。
+同一个 View 重复获取同一个 VMKey 只计一次引用；View 的 Destruct 执行后释放引用。
+最后一个引用释放时销毁实例，保留注册原型，下次获取时重新创建。仅隐藏 View 不释放引用。
+此接口只获取实例并管理引用；属性和命令绑定仍需调用 SetupViewModel、BindProperty 等方法设置。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `VMKey` | `string` | 通过 RegisterViewModel 注册的标识 |
+| `View` | `UGCView` | 使用该实例的有效 View 控件，通常传入控件脚本中的 self，不可传普通 Lua 表 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCViewModel\|nil` | 共享实例；未注册、View 无效或原型 New 返回 nil 时返回 nil |
+
+### `GetViewModelIfExists`
+
+```text
+GetViewModelIfExists(VMKey: string) -> UGCViewModel|nil
+```
+
+查询已经创建的共享 ViewModel，不创建实例，也不增加引用计数。
+适合业务逻辑临时读取或更新已有实例；实例可能随最后一个引用它的 View 销毁而被回收。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `VMKey` | `string` | ViewModel 注册时使用的唯一标识 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UGCViewModel\|nil` | 当前实例；未注册、尚未创建或已被回收时返回 nil |
+
+### `Preload`
+
+```text
+Preload(Key: string) -> PromiseFuture
+```
+
+异步加载 UI 类并创建隐藏的缓存实例，供后续 Open 复用；不调用 OnOpen。
+会等待本地 PlayerController 就绪；已有有效实例时直接复用，不改变其显示状态。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `string` | 已注册的 UI 标识 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `PromiseFuture` | 已启动的异步任务，完成结果为 UUserWidget；未注册、加载失败或加载期间注册被移除、替换时为 nil |
+
+### `PreloadAll`
+
+```text
+PreloadAll(Keys: string[]) -> PromiseFuture
+```
+
+并行预加载多个 UI，等待所有已注册项的加载任务结束；未注册的 Key 会被跳过。
+任务结束不代表每个 UI 都加载成功，可通过 GetWidget 分别检查实例。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Keys` | `string[]` | 需要预加载的 UI 标识数组 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `PromiseFuture` | 已启动的异步任务，仅表示批量加载结束，不返回实例列表 |
+
+### `Open`
+
+```text
+Open(Key: string, ...: any) -> PromiseFuture
+```
+
+异步打开 UI：按需加载实例和层容器，关闭同互斥组的其他界面，再显示并调用 Widget:OnOpen(...)。
+已打开时会移到所在层的最上方并再次调用 OnOpen；正在打开时复用原任务，后续传入的参数不生效。
+可在异步上下文中用 UGCAsyncUtility.Await 等待返回的任务，或通过任务的 Then 方法接收结果。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `string` | 已注册的 UI 标识 |
+| `...` | `any` | 传给 Widget:OnOpen(...) 的参数 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `PromiseFuture` | 已启动的异步任务；打开完成后返回 Widget，未注册、打开失败或被取消时返回 nil |
+
+### `Close`
+
+```text
+Close(Key: string, bDestroy: boolean|nil)
+```
+
+关闭已打开的 UI，先调用 OnClose，再隐藏或销毁实例；注册配置仍然保留。
+默认隐藏为 Collapsed 并缓存复用。正在打开但尚未显示时只取消打开，加载本身可能继续完成并留下缓存。
+对其他未打开的 UI 不做处理，包括已预加载的缓存；若要移除缓存及配置，请调用 UnregisterUI。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `string` | UI 注册时使用的唯一标识 |
+| `bDestroy` | `boolean\|nil` | 可选，true 强制销毁已打开的实例；false 或 nil 仍按配置 bDestroyOnClose 决定是否销毁 |
+
+### `Toggle`
+
+```text
+Toggle(Key: string, ...: any) -> boolean
+```
+
+已打开时调用 Close，否则调用 Open；正在打开时仍走 Open，不会取消打开。
+返回值只表示选择的操作。需要等待打开结果时请直接调用 Open，查询当前打开状态请用 IsOpen。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `string` | 已注册的 UI 标识 |
+| `...` | `any` | 仅在打开分支传给 Widget:OnOpen(...) 的参数 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | true 表示调用了 Open，不保证最终成功；false 表示调用了 Close |
+
+### `CloseAll`
+
+```text
+CloseAll(bDestroy: boolean|nil)
+```
+
+关闭所有当前已打开的 UI，逐个执行 Close；不处理正在加载或仅缓存的 UI。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bDestroy` | `boolean\|nil` | 可选，true 强制销毁；false 或 nil 按各 UI 的 bDestroyOnClose 配置处理 |
+
+### `CloseLayer`
+
+```text
+CloseLayer(Layer: EUGCUILayer, bDestroy: boolean|nil)
+```
+
+关闭指定层中当前已打开的全部 UI，逐个执行 Close。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Layer` | `EUGCUILayer` | 要关闭的 UI 层，例如 EUGCUILayer.Popup |
+| `bDestroy` | `boolean\|nil` | 可选，true 强制销毁；false 或 nil 按各 UI 的 bDestroyOnClose 配置处理 |
+
+### `CloseGroup`
+
+```text
+CloseGroup(GroupName: string, bDestroy: boolean|nil)
+```
+
+关闭属于指定互斥组且当前已打开的 UI，逐个执行 Close。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `GroupName` | `string` | 注册配置 MutexGroups 中使用的组名；组不存在时不做处理 |
+| `bDestroy` | `boolean\|nil` | 可选，true 强制销毁；false 或 nil 按各 UI 的 bDestroyOnClose 配置处理 |
+
+### `IsOpen`
+
+```text
+IsOpen(Key: string) -> boolean
+```
+
+查询管理器是否已将此 UI 标记为打开；不检查控件被外部代码隐藏等情况。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `string` | UI 注册时使用的唯一标识 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 状态为 Open 时返回 true；未注册、正在加载或已关闭时返回 false |
+
+### `GetWidget`
+
+```text
+GetWidget(Key: string) -> UUserWidget|nil
+```
+
+获取当前有效的 UI 实例，不触发加载，也不等待正在进行的打开操作。
+预加载或关闭后缓存的实例也会返回；拿到实例不代表 UI 已打开。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `string` | UI 注册时使用的唯一标识 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UUserWidget\|nil` | 已创建且有效的实例；未注册、尚未创建或实例已失效时返回 nil |
+
+### `GetState`
+
+```text
+GetState(Key: string) -> EUGCUIState
+```
+
+查询 UI 的当前管理状态，可与 EUGCUIState.Open 等枚举值比较。
+Unloaded：未加载；Loading：正在加载实例；Cached：实例已缓存但未打开；Open：已打开。
+等待层容器就绪时可能仍为 Cached；此状态不能单独判断是否有 Open 任务正在执行。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Key` | `string` | UI 注册时使用的唯一标识 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EUGCUIState` | UI 状态枚举值；未注册返回 EUGCUIState.Unloaded，可用 IsRegistered 区分 |
+
+### `GetTopWidget`
+
+```text
+GetTopWidget(Layer: EUGCUILayer) -> string|nil, UUserWidget|nil
+```
+
+获取指定层最上方的已打开 UI；同层最后打开或再次打开的 UI 位于栈顶。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Layer` | `EUGCUILayer` | 要查询的 UI 层 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `string\|nil` | 栈顶 UI 的 Key；该层没有已打开 UI 时返回 nil |
+| `UUserWidget\|nil` | 栈顶 UI 的有效实例；实例失效或栈为空时返回 nil |
+
+### `GetOpennedKeys`
+
+```text
+GetOpennedKeys(Layer: EUGCUILayer|nil) -> string[]
+```
+
+获取当前已打开 UI 的 Key 列表，可按层筛选。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Layer` | `EUGCUILayer\|nil` | 可选，指定层时按从底到顶的顺序返回；不传则返回所有层的已打开 UI，顺序不固定 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `string[]` | UI Key 数组副本；没有符合条件的 UI 时返回空数组 |
 
 ### `NewViewModel`
 
@@ -18414,14 +20307,15 @@ RegisterViewModel(VMKey: string, ViewModel: UGCViewModel)
 NewViewModel() -> UGCViewModel
 ```
 
-创建新的ViewModel
+创建 ViewModel 对象，可作为自定义原型，定义 OnInitialize 后传给 RegisterViewModel。
+管理器首次 GetViewModel 时会调用该原型的 New 创建共享实例，并执行 OnInitialize 声明属性。
 生效范围：客户端
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `UGCViewModel` | ViewModel实例，在OnInitialize中声明属性 |
+| `UGCViewModel` | 新的 ViewModel 对象；本接口不会自动注册到管理器 |
 
 ### `NewView`
 
@@ -18429,14 +20323,15 @@ NewViewModel() -> UGCViewModel
 NewView() -> UGCView
 ```
 
-创建新的View，绑定到指定的ViewModel
+创建 View 的 Lua 对象，供 UI 控件脚本扩展使用；不创建 UUserWidget，也不自动绑定 ViewModel。
+在控件中获取 ViewModel 后，调用 self:SetupViewModel(ViewModel) 设置绑定上下文。
 生效范围：客户端
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `UGCView` | View实例 |
+| `UGCView` | 新的 View 对象，包含属性、命令和集合的绑定接口 |
 
 ### `NewItemView`
 
@@ -18444,14 +20339,15 @@ NewView() -> UGCView
 NewItemView() -> UGCItemView
 ```
 
-创建新的ItemView（列表项View），用于Collection绑定场景
+创建列表项 View 的 Lua 对象，用于集合绑定和列表项复用；不创建 UUserWidget。
+后续由 SetupWithViewModel 设置或切换 ViewModel，并调用 OnSetup 声明绑定。
 生效范围：客户端
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `UGCItemView` | ItemView实例，在OnSetup中通过self.VMProperties/self.VMCommands设置绑定 |
+| `UGCItemView` | 新的列表项 View 对象，在 OnSetup 中通过 self.VMProperties/self.VMCommands 设置绑定 |
 
 ### `NewCollectionBinder`
 
@@ -18459,46 +20355,47 @@ NewItemView() -> UGCItemView
 NewCollectionBinder() -> UGCMVVMCollectionBinder
 ```
 
-创建新的UGCMVVMCollectionBinder，用于派生自定义集合绑定器
+创建继承 UGCMVVMCollectionBinder 的原型，用于实现自定义列表控件的集合绑定器。
+将该原型传给 View:BindCollection 的 BinderClass 参数，由 BindCollection 创建并绑定实例。
 生效范围：客户端
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `UGCMVVMCollectionBinder` | CollectionBinder原型，通过View:BindCollection的BinderClass参数使用 |
+| `UGCMVVMCollectionBinder` | 自定义集合绑定器原型 |
 
 ### `RegisterWidgetUpdater`
 
 ```text
-RegisterWidgetUpdater(BindType: string, UpdaterFunc: fun(Widget:userdata, Value:any) @更新函数)
+RegisterWidgetUpdater(BindType: string)
 ```
 
-注册自定义的Widget更新函数
+注册控件更新函数，供 View:BindProperty 等属性绑定接口按 BindType 调用。
+属性同步时将控件和值传给更新函数；配置了转换器时，Value 为转换后的值。同名注册会覆盖旧函数。
 生效范围：客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `BindType` | `string` | 自定义的绑定类型名 |
-| `UpdaterFunc` | `fun(Widget:userdata, Value:any) @更新函数` | 更新函数 |
+| `BindType` | `string` | 绑定类型名，在属性绑定时使用同一个名称 |
 
 ### `RegisterConverter`
 
 ```text
-RegisterConverter(Name: string, ConverterFunc: fun(Value:any, ...:any):any @转换函数)
+RegisterConverter(Name: string)
 ```
 
-注册自定义值转换器
+注册属性值转换函数，供 View:BindProperty 等接口的 Converter 参数按名称引用。
+转换后的返回值会传给控件更新函数；同名注册会覆盖旧转换器。
 生效范围：客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `Name` | `string` | 转换器名称 |
-| `ConverterFunc` | `fun(Value:any, ...:any):any @转换函数` | 转换函数 |
+| `Name` | `string` | 非空的转换器名称，可作为绑定接口的 Converter 参数 |
 
 ## Language
 
@@ -20438,6 +22335,15 @@ StartFireVehicleWeapon(Vehicle: ASTExtraVehicleBase)
 
 语音系统接口库
 
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `UGCVoiceManagerSystem.VoiceMode` | `-` | - |
+| `UGCVoiceManagerSystem.VoiceChannel` | `-` | - |
+| `UGCVoiceManagerSystem.MicStateChangedEventID` | `-` | - |
+| `UGCVoiceManagerSystem._MicMode` | `-` | - |
+
 ## Functions
 
 ### `GetGVoiceInterface`
@@ -20733,6 +22639,141 @@ GetNormalizedMicVolume() -> integer
 |---|---|
 | `integer` | 归一化音量值 0-100 |
 
+### `_ApplyMicChannel`
+
+```text
+_ApplyMicChannel()
+```
+
+内部：根据当前模式与频道，应用麦克风频道到 gvoice
+Always 模式使用 Open*Micphone（自由发言），Push 模式使用 Open*Interphone（按键发言）
+
+### `_ApplySpeakerChannel`
+
+```text
+_ApplySpeakerChannel()
+```
+
+内部：根据当前频道，应用扬声器频道到 gvoice
+
+### `RefreshVoiceUI`
+
+```text
+RefreshVoiceUI()
+```
+
+刷新主界面语音图标显示
+逻辑层调用切换麦克风或喇叭后调用，通知主界面刷新语音控件状态
+生效范围：客户端
+
+### `SetMicMode`
+
+```text
+SetMicMode(Mode: EVoiceMode)
+```
+
+设置说话模式（始终开启说话 / 按下说话），对应面板两个分区的切换
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Mode` | `EVoiceMode` | 说话模式（VoiceMode.Always 或 VoiceMode.Push） |
+
+### `SetMicChannel`
+
+```text
+SetMicChannel(Channel: EVoiceChannel)
+```
+
+设置麦克风指向的频道（全部 / 队伍 / 组队），对应面板中对应控件呈选中态
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Channel` | `EVoiceChannel` | 麦克风频道（VoiceChannel.All / Team / LobbyTeam） |
+
+### `SetMicEnabled`
+
+```text
+SetMicEnabled(bEnabled: boolean)
+```
+
+开启/关闭麦克风；关闭时对应控件呈禁用图标，开启时恢复到之前选中项
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnabled` | `boolean` | 是否开启麦克风 |
+
+### `SetSpeakerChannel`
+
+```text
+SetSpeakerChannel(Channel: EVoiceChannel)
+```
+
+设置扬声器收听的频道（全部 / 队伍），对应控件呈选中态
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Channel` | `EVoiceChannel` | 扬声器频道（VoiceChannel.All / Team） |
+
+### `SetSpeakerEnabled`
+
+```text
+SetSpeakerEnabled(bEnabled: boolean)
+```
+
+开启/关闭扬声器；关闭时对应控件呈禁用图标，开启时恢复到之前选中项
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnabled` | `boolean` | 是否开启扬声器 |
+
+### `GetMicState`
+
+```text
+GetMicState() -> EVoiceMode, EVoiceChannel, boolean
+```
+
+获取当前麦克风状态（说话模式、麦克风指向频道、开关状态）
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EVoiceMode` | 当前说话模式 |
+| `EVoiceChannel` | 当前麦克风指向频道 |
+| `boolean` | 当前麦克风开关状态 |
+
+### `GetSpeakerState`
+
+```text
+GetSpeakerState() -> EVoiceChannel, boolean
+```
+
+获取当前扬声器状态（收听频道、开关状态）
+生效范围：客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EVoiceChannel` | 当前扬声器收听频道 |
+| `boolean` | 当前扬声器开关状态 |
+
 ## Language
 
 `lua`
@@ -20754,14 +22795,14 @@ GetNormalizedMicVolume() -> integer
 GetWeaponManagerComponent(PlayerPawn: PlayerPawn) -> UWeaponManagerComponent
 ```
 
-获取武器管理组件
+获取普通玩家和人机玩家的武器管理组件
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -20775,14 +22816,14 @@ GetWeaponManagerComponent(PlayerPawn: PlayerPawn) -> UWeaponManagerComponent
 GetWeaponBySlot(PlayerPawn: PlayerPawn, Slot: ESurviveWeaponPropSlot) -> ASTExtraWeapon
 ```
 
-获取对应插槽的武器实例
+获取普通玩家和人机玩家对应插槽的武器实例
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `Slot` | `ESurviveWeaponPropSlot` | 武器槽位 |
 
 **Returns**
@@ -20797,14 +22838,14 @@ GetWeaponBySlot(PlayerPawn: PlayerPawn, Slot: ESurviveWeaponPropSlot) -> ASTExtr
 GetCurrentWeapon(PlayerPawn: PlayerPawn) -> ASTExtraWeapon
 ```
 
-获取当前使用的武器实例
+获取普通玩家和人机玩家当前使用的武器实例
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -20818,14 +22859,14 @@ GetCurrentWeapon(PlayerPawn: PlayerPawn) -> ASTExtraWeapon
 GetLastUsedWeapon(PlayerPawn: PlayerPawn) -> ASTExtraWeapon
 ```
 
-获取上一把武器
+获取普通玩家和人机玩家的上一把武器
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -20839,14 +22880,14 @@ GetLastUsedWeapon(PlayerPawn: PlayerPawn) -> ASTExtraWeapon
 GetCurrentWeaponSlot(PlayerPawn: PlayerPawn) -> ESurviveWeaponPropSlot
 ```
 
-获取当前使用武器插槽
+获取普通玩家和人机玩家当前使用武器插槽
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -20860,14 +22901,14 @@ GetCurrentWeaponSlot(PlayerPawn: PlayerPawn) -> ESurviveWeaponPropSlot
 SwitchWeaponBySlot(PlayerPawn: PlayerPawn, Slot: ESurviveWeaponPropSlot, IsUseAnimation: boolean)
 ```
 
-切换对应槽位的武器
+让普通玩家和人机玩家切换对应槽位的武器
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `Slot` | `ESurviveWeaponPropSlot` | 武器槽位 |
 | `IsUseAnimation` | `boolean` | 是否播放使用动画 |
 
@@ -20877,14 +22918,14 @@ SwitchWeaponBySlot(PlayerPawn: PlayerPawn, Slot: ESurviveWeaponPropSlot, IsUseAn
 CurrentWeaponAttachToBack(PlayerPawn: PlayerPawn)
 ```
 
-收起武器
+让普通玩家和人机玩家收起武器
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 ### `GetWeaponItemID`
 
@@ -20892,7 +22933,7 @@ CurrentWeaponAttachToBack(PlayerPawn: PlayerPawn)
 GetWeaponItemID(Weapon: ASTExtraWeapon) -> number
 ```
 
-获取武器ItemID
+获取普通玩家和人机玩家的武器ItemID
 生效范围：服务器&客户端
 
 **Parameters**
@@ -20913,7 +22954,7 @@ GetWeaponItemID(Weapon: ASTExtraWeapon) -> number
 GetWeaponName(Weapon: ASTExtraWeapon) -> string
 ```
 
-获取武器名
+获取普通玩家和人机玩家的武器名
 生效范围：服务器&客户端
 
 **Parameters**
@@ -20934,14 +22975,14 @@ GetWeaponName(Weapon: ASTExtraWeapon) -> string
 GetCurrentUsingAmmoID(PlayerPawn: PlayerPawn) -> number
 ```
 
-获取当前消耗弹药
+获取普通玩家和人机玩家当前消耗弹药
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -20955,14 +22996,14 @@ GetCurrentUsingAmmoID(PlayerPawn: PlayerPawn) -> number
 SetWeaponSlotVisible(PlayerPawn: PlayerPawn, WeaponSlot: ESurviveWeaponPropSlot, bVisible: boolean)
 ```
 
-设置武器的可见性
+设置普通玩家和人机玩家武器的可见性
 生效范围：客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `PlayerPawn` | 玩家角色 |
+| `PlayerPawn` | `PlayerPawn` | 普通玩家和人机玩家角色 |
 | `WeaponSlot` | `ESurviveWeaponPropSlot` | 武器槽位 |
 | `bVisible` | `boolean` | 是否可见 |
 
@@ -22604,7 +24645,7 @@ GetWidgetGeometry(Widget: UUserWidget) -> FGeometry
 
 | Type | Description |
 |---|---|
-| `FGeometry` | 几何信息 |
+| `FGeometry` | 几何信息；Widget 无效或未上屏（无缓存几何）时返回 nil |
 
 ### `AbsoluteToLocal`
 
@@ -22656,7 +24697,7 @@ LocalToAbsolute(Geometry: FGeometry, LocalCoordinate: FVector2D) -> FVector2D
 GetLocalSize(Geometry: FGeometry) -> FVector2D
 ```
 
-获取控件的本地尺寸
+获取控件的本地尺寸（Slate 单位，未乘 DPI 与渲染变换）
 生效范围：客户端
 
 **Parameters**
@@ -22669,7 +24710,7 @@ GetLocalSize(Geometry: FGeometry) -> FVector2D
 
 | Type | Description |
 |---|---|
-| `FVector2D` | 本地尺寸 |
+| `FVector2D` | 本地尺寸（局部空间） |
 
 ### `GetAbsoluteSize`
 
@@ -22677,7 +24718,7 @@ GetLocalSize(Geometry: FGeometry) -> FVector2D
 GetAbsoluteSize(Geometry: FGeometry) -> FVector2D
 ```
 
-获取控件的绝对尺寸
+获取控件的渲染空间尺寸（含渲染变换；布局占位尺寸请用槽位尺寸接口）
 生效范围：客户端
 
 **Parameters**
@@ -22690,7 +24731,7 @@ GetAbsoluteSize(Geometry: FGeometry) -> FVector2D
 
 | Type | Description |
 |---|---|
-| `FVector2D` | 绝对尺寸 |
+| `FVector2D` | 绝对尺寸（渲染空间，含渲染缩放；旋转或剪切时不是轴对齐包围盒） |
 
 ### `GetAbsolutePosition`
 
@@ -22698,7 +24739,7 @@ GetAbsoluteSize(Geometry: FGeometry) -> FVector2D
 GetAbsolutePosition(Geometry: FGeometry) -> FVector2D
 ```
 
-获取控件的绝对位置
+获取控件的绝对位置（渲染空间，含渲染变换）
 生效范围：客户端
 
 **Parameters**
@@ -22711,7 +24752,7 @@ GetAbsolutePosition(Geometry: FGeometry) -> FVector2D
 
 | Type | Description |
 |---|---|
-| `FVector2D` | 绝对位置 |
+| `FVector2D` | 绝对位置（渲染空间；默认 pivot 在中心，缩放会使左上角位置变化） |
 
 ### `SetWidgetOpacity`
 
@@ -22856,7 +24897,7 @@ GetWidgetSlotPosition(Widget: UUserWidget) -> FVector2D
 SetWidgetSlotSize(Widget: UUserWidget, Size: Vector2D)
 ```
 
-设置控件的slot尺寸
+设置控件的 slot 尺寸（仅 CanvasPanel 槽位；非 CanvasPanel 槽位调用仅记录日志并返回）
 生效范围：客户端
 
 **Parameters**
@@ -22872,7 +24913,7 @@ SetWidgetSlotSize(Widget: UUserWidget, Size: Vector2D)
 GetWidgetSlotSize(Widget: UUserWidget) -> Vector2D
 ```
 
-获取控件slot尺寸
+获取控件的 slot 尺寸（仅 CanvasPanel 槽位）
 生效范围：客户端
 
 **Parameters**
@@ -22885,7 +24926,7 @@ GetWidgetSlotSize(Widget: UUserWidget) -> Vector2D
 
 | Type | Description |
 |---|---|
-| `Vector2D` | 尺寸 |
+| `Vector2D` | 尺寸；Widget 无效或不在 CanvasPanel 槽位时返回 (0, 0) |
 
 ### `SetActiveWidgetIndex`
 
@@ -23133,6 +25174,615 @@ GetWidgetText(Widget: UWidget) -> string
 | Type | Description |
 |---|---|
 | `string` | 文本内容 |
+
+### `AddToViewport`
+
+```text
+AddToViewport(Widget: UUserWidget, ZOrder: number)
+```
+
+把用户控件添加到视口显示（可指定显示层级）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 已创建的用户控件；须没有父容器（仍在槽位中的控件请先 RemoveFromSlot） |
+| `ZOrder` | `number` | 显示层级，数值越大越靠上；不传默认 0；挂载后无法再改，需移除后重新挂载 |
+
+### `RemoveFromViewport`
+
+```text
+RemoveFromViewport(Widget: UUserWidget)
+```
+
+从视口移除用户控件（对槽位挂载的控件同样有效）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 目标用户控件；视口挂载与槽位挂载的控件都可移除 |
+
+### `SetWidgetPositionInViewport`
+
+```text
+SetWidgetPositionInViewport(Widget: UUserWidget, Position: Vector2D, bRemoveDPIScale: boolean)
+```
+
+设置用户控件在视口中的位置（仅对视口挂载的控件生效）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 已挂载到视口的用户控件 |
+| `Position` | `Vector2D` | 视口位置（相对视口左上角）；调用后定位锚点重置为左上角 |
+| `bRemoveDPIScale` | `boolean` | 是否由接口自动移除 DPI 缩放；true（默认）时按视口 DPI 对坐标做逆缩放 |
+
+### `FindComboBoxOptionIndex`
+
+```text
+FindComboBoxOptionIndex(ComboBoxWidget: UComboBoxString, Option: string) -> number
+```
+
+查找下拉菜单中指定选项的索引（对外 1 基）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ComboBoxWidget` | `UComboBoxString` | 下拉菜单控件 |
+| `Option` | `string` | 选项文本；空字符串也是合法选项（引擎按字符串相等匹配） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 从 1 开始的选项索引；未找到返回 0 |
+
+### `GetScrollBoxOffset`
+
+```text
+GetScrollBoxOffset(ScrollBox: UScrollBox) -> number
+```
+
+获取滚动框当前偏移
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ScrollBox` | `UScrollBox` | 滚动框 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 滚动偏移，单位为 Slate Unit；ScrollBox 无效时返回 0 |
+
+### `SetScrollBoxOffset`
+
+```text
+SetScrollBoxOffset(ScrollBox: UScrollBox, Offset: number)
+```
+
+设置滚动框滚动到指定偏移
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ScrollBox` | `UScrollBox` | 滚动框 |
+| `Offset` | `number` | 滚动偏移，单位为 Slate Unit |
+
+### `ScrollBoxToStart`
+
+```text
+ScrollBoxToStart(ScrollBox: UScrollBox)
+```
+
+滚动框内容到顶部（立即生效）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ScrollBox` | `UScrollBox` | 滚动框 |
+
+### `GetSizeBoxSize`
+
+```text
+GetSizeBoxSize(SizeBox: USizeBox) -> table|nil
+```
+
+获取尺寸约束容器的固定尺寸
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SizeBox` | `USizeBox` | 尺寸约束容器 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `table\|nil` | 固定尺寸表 {X=宽, Y=高}；仅某一轴固定时该轴为数值、另一轴为 nil；宽高均未固定时整体返回 nil（与设置接口的取消语义对称） |
+
+### `SetSizeBoxSize`
+
+```text
+SetSizeBoxSize(SizeBox: USizeBox, Size: Vector2D|table|nil)
+```
+
+设置尺寸约束容器的固定尺寸（改布局占位）：固定后尺寸不随内容变化
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SizeBox` | `USizeBox` | 尺寸约束容器 |
+| `Size` | `Vector2D\|table\|nil` | 固定尺寸；传 {X=宽, Y=高} 表时某一轴为 nil（或不传该键）则单独取消该轴固定，也可传 Vector2D（两轴一体生效）；整体传 nil 取消全部固定 |
+
+### `GetTextBoxHintText`
+
+```text
+GetTextBoxHintText(TextBox: UEditableTextBox) -> string
+```
+
+获取文本框的占位文本
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TextBox` | `UEditableTextBox` | 文本框 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `string` | 占位文本；TextBox 无效时返回空字符串 |
+
+### `SetTextBoxHintText`
+
+```text
+SetTextBoxHintText(TextBox: UEditableTextBox, Text: string)
+```
+
+设置文本框的占位文本，用于输入为空时提示输入内容
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TextBox` | `UEditableTextBox` | 文本框 |
+| `Text` | `string` | 占位文本，输入为空时显示 |
+
+### `IsTextBoxReadOnly`
+
+```text
+IsTextBoxReadOnly(TextBox: UEditableTextBox) -> boolean
+```
+
+查询文本框是否为只读
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TextBox` | `UEditableTextBox` | 文本框 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否只读；TextBox 无效时返回 false |
+
+### `SetTextBoxReadOnly`
+
+```text
+SetTextBoxReadOnly(TextBox: UEditableTextBox, bReadOnly: boolean)
+```
+
+设置文本框是否为只读，用于禁止用户编辑输入
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TextBox` | `UEditableTextBox` | 文本框 |
+| `bReadOnly` | `boolean` | 是否只读 |
+
+### `GetTextWidgetStyle`
+
+```text
+GetTextWidgetStyle(TextWidget: UTextBlock) -> table|nil
+```
+
+查询文本控件的字体、颜色、对齐、换行、描边与阴影设置
+生效范围：客户端
+   Font table @字体，含 FontObject、Size、TypefaceFontName、FontMaterial、OutlineSettings(OutlineSize、OutlineColor、OutlineMaterial、bSeparateFillAlpha)
+   Color table @颜色，{R, G, B, A}；原控件取色规则非指定色时附带 ColorUseRule 字段，回传 SetTextWidgetStyle 时保持该规则
+   Justification ETextJustify @水平对齐
+   VerticalJustification ETextVerticalJustify @垂直对齐
+   WrapTextAt number @控件当前生效的换行宽度
+   Shadow table @阴影，含 Offset({X, Y})、Color({R, G, B, A})
+ TextWidget 无效时返回 nil
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TextWidget` | `UTextBlock` | 文本控件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `table\|nil` | 样式表（结构同 SetTextWidgetStyle 的 Style，可直接回传给它）： |
+
+### `SetTextWidgetStyle`
+
+```text
+SetTextWidgetStyle(TextWidget: UTextBlock, Style: table)
+```
+
+批量设置文本控件字体、颜色、对齐、换行、描边与阴影
+生效范围：客户端
+   Font table @字体，字段：FontObject(UObject)、Size(number)、TypefaceFontName(string)、FontMaterial(UObject)、OutlineSettings(table, 字段：OutlineSize、OutlineColor、OutlineMaterial、bSeparateFillAlpha)
+   Color table|string @颜色表 {R,G,B,A}（可携带 ColorUseRule 保持原取色规则），也可传 sRGB 十六进制字符串（如 FFFFFF 或 FFFFFFFF，RGB 分量按 sRGB 转线性）
+   Justification ETextJustify @水平对齐
+   VerticalJustification ETextVerticalJustify @垂直对齐
+   WrapTextAt number @按该宽度换行，0 表示不按固定宽度换行
+   Shadow table @阴影，字段：Offset(Vector2D)、Color(LinearColor)
+   Outline table @描边，字段同 Font.OutlineSettings；与 Font.OutlineSettings 同时传入时以 Outline 为准
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `TextWidget` | `UTextBlock` | 文本控件 |
+| `Style` | `table` | 样式表，仅支持以下键（均为可选）： |
+
+### `SetWidgetRenderRotation`
+
+```text
+SetWidgetRenderRotation(Widget: UWidget, Angle: number)
+```
+
+设置控件的局部渲染旋转角度
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UWidget` | 目标控件 |
+| `Angle` | `number` | 渲染旋转角度，单位为度 |
+
+### `GetWidgetRenderRotation`
+
+```text
+GetWidgetRenderRotation(Widget: UWidget) -> number
+```
+
+获取控件的局部渲染旋转角度
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UWidget` | 目标控件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 渲染旋转角度（度）；Widget 无效时返回 0 |
+
+### `SetWidgetRenderScale`
+
+```text
+SetWidgetRenderScale(Widget: UWidget, Scale: Vector2D)
+```
+
+设置控件的渲染缩放（只改绘制比例，不改布局占位）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UWidget` | 目标控件 |
+| `Scale` | `Vector2D` | 二维渲染缩放倍数（1 为原始比例；围绕 RenderTransformPivot 缩放，默认基准点为控件中心；负值可镜像翻转绘制） |
+
+### `GetWidgetRenderScale`
+
+```text
+GetWidgetRenderScale(Widget: UWidget) -> Vector2D
+```
+
+获取控件的渲染缩放（绘制比例，非布局尺寸）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UWidget` | 目标控件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `Vector2D` | 二维渲染缩放（不改布局占位）；Widget 无效时返回 (0, 0) |
+
+### `SetWidgetFocus`
+
+```text
+SetWidgetFocus(Widget: UWidget)
+```
+
+设置控件的键盘焦点（仅可聚焦控件生效）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UWidget` | 目标控件；需可聚焦（UserWidget 请先设 bIsFocusable = true） |
+
+### `IsWidgetFocused`
+
+```text
+IsWidgetFocused(Widget: UWidget) -> boolean
+```
+
+查询控件是否拥有键盘焦点
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UWidget` | 目标控件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否拥有键盘焦点；Widget 无效时返回 false |
+
+### `SetWidgetPadding`
+
+```text
+SetWidgetPadding(Widget: UUserWidget, Padding: FMargin)
+```
+
+设置控件内边距
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 用户控件 |
+| `Padding` | `FMargin` | 内容内边距，可传 {Left, Top, Right, Bottom} |
+
+### `GetWidgetComponentUserWidget`
+
+```text
+GetWidgetComponentUserWidget(WidgetComponent: UWidgetComponent) -> UUserWidget|nil
+```
+
+获取世界空间控件组件承载的用户控件实例
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WidgetComponent` | `UWidgetComponent` | 世界空间控件组件 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UUserWidget\|nil` | 用户控件实例；组件尚未创建控件时为 nil |
+
+### `SetWidgetComponentTint`
+
+```text
+SetWidgetComponentTint(WidgetComponent: UWidgetComponent, Tint: LinearColor)
+```
+
+设置世界空间控件组件的颜色与透明度
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WidgetComponent` | `UWidgetComponent` | 世界空间控件组件 |
+| `Tint` | `LinearColor` | 颜色与透明度，可传 {R, G, B, A} |
+
+### `RequestWidgetComponentRedraw`
+
+```text
+RequestWidgetComponentRedraw(WidgetComponent: UWidgetComponent)
+```
+
+请求世界空间控件组件重绘
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WidgetComponent` | `UWidgetComponent` | 世界空间控件组件；仅在组件为手动重绘模式（bManuallyRedraw 为 true）时有意义 |
+
+### `IsWidgetAnimationPlaying`
+
+```text
+IsWidgetAnimationPlaying(Widget: UUserWidget, Animation: UWidgetAnimation) -> boolean
+```
+
+查询控件动画是否播放中，常用于播放前判断
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+| `Animation` | `UWidgetAnimation` | 控件动画 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 是否播放中；控件或动画无效时返回 false |
+
+### `PlayWidgetAnimation`
+
+```text
+PlayWidgetAnimation(Widget: UUserWidget, Animation: UWidgetAnimation, StartAtTime: number, NumLoopsToPlay: number, PlayMode: EUMGSequencePlayMode, PlaybackSpeed: number)
+```
+
+播放控件动画
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+| `Animation` | `UWidgetAnimation` | 控件动画 |
+| `StartAtTime` | `number` | 起始时间（秒），默认 0；可传入 PauseWidgetAnimation 的返回值用于续播 |
+| `NumLoopsToPlay` | `number` | 循环次数，默认 1；0 表示无限循环 |
+| `PlayMode` | `EUMGSequencePlayMode` | 播放模式，默认 Forward |
+| `PlaybackSpeed` | `number` | 播放速率，默认 1 |
+
+### `PauseWidgetAnimation`
+
+```text
+PauseWidgetAnimation(Widget: UUserWidget, Animation: UWidgetAnimation) -> number
+```
+
+暂停控件动画
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+| `Animation` | `UWidgetAnimation` | 控件动画 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `number` | 暂停时的动画时间（相对起始位置），可作为 PlayWidgetAnimation 的 StartAtTime 续播；从未播放或播放器已清理时返回 0 |
+
+### `StopWidgetAnimation`
+
+```text
+StopWidgetAnimation(Widget: UUserWidget, Animation: UWidgetAnimation)
+```
+
+停止控件动画
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+| `Animation` | `UWidgetAnimation` | 控件动画 |
+
+### `SetWidgetAnimationPlaybackSpeed`
+
+```text
+SetWidgetAnimationPlaybackSpeed(Widget: UUserWidget, Animation: UWidgetAnimation, PlaybackSpeed: number)
+```
+
+设置正在播放的控件动画速率
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UUserWidget` | 控件实例 |
+| `Animation` | `UWidgetAnimation` | 控件动画 |
+| `PlaybackSpeed` | `number` | 播放速率，默认 1 |
+
+### `TweenWidgetSlotPosition`
+
+```text
+TweenWidgetSlotPosition(Widget: UWidget, TargetPosition: Vector2D, Duration: number, Easing: EEasingType, Config: FUnrealTweenConfig) -> FTweenHandle|nil
+```
+
+缓动控件槽位位置（仅 CanvasPanel 槽位有效）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UWidget` | 目标控件 |
+| `TargetPosition` | `Vector2D` | 目标槽位位置；仅 CanvasPanel 槽位有效 |
+| `Duration` | `number` | 动画时长（秒） |
+| `Easing` | `EEasingType` | 缓动类型（EEasingType 枚举），不传默认 Linear |
+| `Config` | `FUnrealTweenConfig` | 高级配置（可用 UGCTweenSystem.MakeConfig() 创建，不传则使用默认值） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FTweenHandle\|nil` | 动画句柄；参数无效、非 CanvasPanel 槽位或底层缓动未建立时返回 nil |
+
+### `TweenWidgetSlotSize`
+
+```text
+TweenWidgetSlotSize(Widget: UWidget, TargetSize: Vector2D, Duration: number, Easing: EEasingType, Config: FUnrealTweenConfig) -> FTweenHandle|nil
+```
+
+缓动控件槽位尺寸（改布局占位，非渲染缩放；仅 CanvasPanel 槽位有效）
+生效范围：客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Widget` | `UWidget` | 目标控件 |
+| `TargetSize` | `Vector2D` | 目标槽位尺寸（宽度，高度）；仅 CanvasPanel 槽位有效 |
+| `Duration` | `number` | 动画时长（秒） |
+| `Easing` | `EEasingType` | 缓动类型（EEasingType 枚举），不传默认 Linear |
+| `Config` | `FUnrealTweenConfig` | 高级配置（可用 UGCTweenSystem.MakeConfig() 创建，不传则使用默认值） |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FTweenHandle\|nil` | 动画句柄；参数无效、非 CanvasPanel 槽位或底层缓动未建立时返回 nil |
 
 ## Language
 
@@ -24832,2436 +27482,6 @@ OnImageChangeDelegate(BrushChanged: const FSlateBrush&) -> void
 | Name | Type/Value | Description |
 |---|---|---|
 | `CompressionQuality` | `int32` | Level of compression to apply to the image, between 1 (worst quality, best compression) and 100 (best quality, worst compression) |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UImportanceSamplingLibrary.json -->
-
-# UImportanceSamplingLibrary
-
-## Inheritance
-
-`UBlueprintFunctionLibrary`
-
-## Functions
-
-### `RandomSobolFloat`
-
-```text
-RandomSobolFloat(Index: int32, Dimension: int32, Seed: float) -> ENGINE_API float
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `int32` | - Which sequential point |
-| `Dimension` | `int32` | - Which Sobol dimension (0 to 15) |
-| `Seed` | `float` | - Random seed (in the range 0-1) to randomize across multiple sequences |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API float` | Sobol-distributed random number between 0 and 1 |
-
-### `NextSobolFloat`
-
-```text
-NextSobolFloat(Index: int32, Dimension: int32, PreviousValue: float) -> ENGINE_API float
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `int32` | - Which sequential point |
-| `Dimension` | `int32` | - Which Sobol dimension (0 to 15) |
-| `PreviousValue` | `float` | - The Sobol value for Index-1 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API float` | Sobol-distributed random number between 0 and 1 |
-
-### `RandomSobolCell2D`
-
-```text
-RandomSobolCell2D(Index: int32, NumCells: int32, Cell: FVector2D, Seed: FVector2D) -> ENGINE_API FVector2D
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `int32` | - Which sequential point in the cell (starting at 0) |
-| `NumCells` | `int32` | - Size of cell grid, 1 to 32768. Rounded up to the next power of two |
-| `Cell` | `FVector2D` | - Give a point from this integer grid cell |
-| `Seed` | `FVector2D` | - Random 2D seed (components in the range 0-1) to randomize across multiple sequences |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API FVector2D` | Sobol-distributed random 2D position in the given grid cell |
-
-### `NextSobolCell2D`
-
-```text
-NextSobolCell2D(Index: int32, NumCells: int32, PreviousValue: FVector2D) -> ENGINE_API FVector2D
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `int32` | - Which sequential point |
-| `NumCells` | `int32` | - Size of cell grid, 1 to 32768. Rounded up to the next power of two |
-| `PreviousValue` | `FVector2D` | - The Sobol value for Index-1 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API FVector2D` | Sobol-distributed random 2D position in the same grid cell |
-
-### `RandomSobolCell3D`
-
-```text
-RandomSobolCell3D(Index: int32, NumCells: int32, Cell: FVector, Seed: FVector) -> ENGINE_API FVector
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `int32` | - Which sequential point in the cell (starting at 0) |
-| `NumCells` | `int32` | - Size of cell grid, 1 to 1024. Rounded up to the next power of two |
-| `Cell` | `FVector` | - Give a point from this integer grid cell |
-| `Seed` | `FVector` | - Random 3D seed (components in the range 0-1) to randomize across multiple sequences |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API FVector` | Sobol-distributed random 3D vector in the given grid cell |
-
-### `NextSobolCell3D`
-
-```text
-NextSobolCell3D(Index: int32, NumCells: int32, PreviousValue: FVector) -> ENGINE_API FVector
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `int32` | - Which sequential point |
-| `NumCells` | `int32` | - Size of cell grid, 1 to 1024. Rounded up to the next power of two |
-| `PreviousValue` | `FVector` | - The Sobol value for Index-1 |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API FVector` | Sobol-distributed random 3D position in the same grid cell |
-
-### `MakeImportanceTexture`
-
-```text
-MakeImportanceTexture(Texture: UTexture2D *, WeightingFunc: TEnumAsByte < EImportanceWeight :: Type >) -> ENGINE_API FImportanceTexture
-```
-
-Create an FImportanceTexture object for texture-driven importance sampling from a 2D RGBA8 texture
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Texture` | `UTexture2D *` | - Texture object to use. Must be RGBA8 format. |
-| `WeightingFunc` | `TEnumAsByte < EImportanceWeight :: Type >` | - How to turn the texture data into probability weights |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API FImportanceTexture` | new ImportanceTexture object for use with ImportanceSample |
-
-### `BreakImportanceTexture`
-
-```text
-BreakImportanceTexture(ImportanceTexture: FImportanceTexture &, Texture: UTexture2D * &, WeightingFunc: TEnumAsByte < EImportanceWeight :: Type > &) -> ENGINE_API void
-```
-
-Get texture used to create an ImportanceTexture object
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ImportanceTexture` | `FImportanceTexture &` | - The source ImportanceTexture object |
-| `Texture` | `UTexture2D * &` | - |
-| `WeightingFunc` | `TEnumAsByte < EImportanceWeight :: Type > &` | - How to turn the texture data into probability weights |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | new ImportanceTexture object for use with ImportanceSample |
-
-### `ImportanceSample`
-
-```text
-ImportanceSample(Texture: FImportanceTexture &, Rand: FVector2D &, Samples: int, Intensity: float, SamplePosition: FVector2D &, SampleColor: FLinearColor &, SampleIntensity: float &, SampleSize: float &) -> ENGINE_API void
-```
-
-Distribute sample points proportional to Texture2D luminance.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Texture` | `FImportanceTexture &` | - |
-| `Rand` | `FVector2D &` | - Random 2D point with components evenly distributed between 0 and 1 |
-| `Samples` | `int` | - Total number of samples that will be used |
-| `Intensity` | `float` | - Total intensity for light |
-| `SamplePosition` | `FVector2D &` | - |
-| `SampleColor` | `FLinearColor &` | - |
-| `SampleIntensity` | `float &` | - |
-| `SampleSize` | `float &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ENGINE_API void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInGameAdManager.json -->
-
-# UInGameAdManager
-
-## Inheritance
-
-`UPlatformInterfaceBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bShouldPauseWhileAdOpen` | `uint32` | If true, the game will pause when the user clicks on the ad, which could take over the screen |
-| `ClickedBannerDelegates` | `TArray < FOnUserClickedBanner >` | @todo document |
-| `ClosedAdDelegates` | `TArray < FOnUserClosedAdvertisement >` | @todo document |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInheritableComponentHandler.json -->
-
-# UInheritableComponentHandler
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Records` | `TArray < FComponentOverrideRecord >` | All component records |
-| `UnnecessaryComponents` | `TArray < UActorComponent * >` | List of components that were marked unnecessary, need to keep these around so it doesn't regenerate them when a child asks for one |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputActionDelegateBinding.json -->
-
-# UInputActionDelegateBinding
-
-## Inheritance
-
-`UInputDelegateBinding`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `InputActionDelegateBindings` | `TArray < FBlueprintInputActionDelegateBinding >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputAxisDelegateBinding.json -->
-
-# UInputAxisDelegateBinding
-
-## Inheritance
-
-`UInputDelegateBinding`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `InputAxisDelegateBindings` | `TArray < FBlueprintInputAxisDelegateBinding >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputAxisKeyDelegateBinding.json -->
-
-# UInputAxisKeyDelegateBinding
-
-## Inheritance
-
-`UInputDelegateBinding`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `InputAxisKeyDelegateBindings` | `TArray < FBlueprintInputAxisKeyDelegateBinding >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputComponent.json -->
-
-# UInputComponent
-
-Implement an Actor component for input bindings.
- 
-  An Input Component is a transient component that enables an Actor to bind various forms of input events to delegate functions.  
-  Input components are processed from a stack managed by the PlayerController and processed by the PlayerInput.
-  Each binding can consume the input event preventing other components on the input stack from processing the input.
-
-## Inheritance
-
-`UActorComponent`
-
-## Functions
-
-### `IsControllerKeyDown`
-
-```text
-IsControllerKeyDown(Key: FKey) -> bool
-```
-
-Returns true if the given keybutton is pressed on the input of the controller (if present)
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `FKey` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `WasControllerKeyJustPressed`
-
-```text
-WasControllerKeyJustPressed(Key: FKey) -> bool
-```
-
-Returns true if the given keybutton was up last frame and down this frame.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `FKey` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `WasControllerKeyJustReleased`
-
-```text
-WasControllerKeyJustReleased(Key: FKey) -> bool
-```
-
-Returns true if the given keybutton was down last frame and up this frame.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `FKey` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `GetControllerAnalogKeyState`
-
-```text
-GetControllerAnalogKeyState(Key: FKey) -> float
-```
-
-Returns the analog value for the given keybutton.  If analog isn't supported, returns 1 for down and 0 for up.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `FKey` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetControllerVectorKeyState`
-
-```text
-GetControllerVectorKeyState(Key: FKey) -> FVector
-```
-
-Returns the vector value for the given keybutton.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `FKey` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetTouchState`
-
-```text
-GetTouchState(FingerIndex: int32, LocationX: float &, LocationY: float &, bIsCurrentlyPressed: bool &) -> void
-```
-
-Returns the location of a touch, and if it's held down
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `FingerIndex` | `int32` | - |
-| `LocationX` | `float &` | - |
-| `LocationY` | `float &` | - |
-| `bIsCurrentlyPressed` | `bool &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetControllerKeyTimeDown`
-
-```text
-GetControllerKeyTimeDown(Key: FKey) -> float
-```
-
-Returns how long the given keybutton has been down.  Returns 0 if it's up or it just went down this frame.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Key` | `FKey` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetControllerMouseDelta`
-
-```text
-GetControllerMouseDelta(DeltaX: float &, DeltaY: float &) -> void
-```
-
-Retrieves how far the mouse moved this frame.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `DeltaX` | `float &` | - |
-| `DeltaY` | `float &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetControllerAnalogStickState`
-
-```text
-GetControllerAnalogStickState(WhichStick: EControllerAnalogStick :: Type, StickX: float &, StickY: float &) -> void
-```
-
-Retrieves the X and Y displacement of the given analog stick.  For WhickStick, 0 = left, 1 = right.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WhichStick` | `EControllerAnalogStick :: Type` | - |
-| `StickX` | `float &` | - |
-| `StickY` | `float &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputKeyDelegateBinding.json -->
-
-# UInputKeyDelegateBinding
-
-## Inheritance
-
-`UInputDelegateBinding`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `InputKeyDelegateBindings` | `TArray < FBlueprintInputKeyDelegateBinding >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputKeySelector.json -->
-
-# UInputKeySelector
-
-A widget for selecting a single key or a single key with a modifier.
-
-## Inheritance
-
-`UWidget`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `WidgetStyle` | `FButtonStyle` | The button style used at runtime |
-| `TextStyle` | `FTextBlockStyle` | The button style used at runtime |
-| `SelectedKey` | `FInputChord` | The currently selected key chord. |
-| `Font_DEPRECATED` | `FSlateFontInfo` | - |
-| `Margin` | `FMargin` | The amount of blank space around the text used to display the currently selected key. |
-| `ColorAndOpacity_DEPRECATED` | `FLinearColor` | - |
-| `KeySelectionText` | `FText` | Sets the text which is displayed while selecting keys. |
-| `NoKeySpecifiedText` | `FText` | Sets the text to display when no key text is available or not selecting a key. |
-| `bAllowModifierKeys` | `bool` | When true modifier keys such as control and alt are allowed in the <br>	 input chord representing the selected key, if false modifier keys are ignored. |
-| `bAllowGamepadKeys` | `bool` | When true gamepad keys are allowed in the input chord representing the selected key, otherwise they are ignored. |
-| `EscapeKeys` | `TArray < FKey >` | When true gamepad keys are allowed in the input chord representing the selected key, otherwise they are ignored. |
-
-## Functions
-
-### `SetSelectedKey`
-
-```text
-SetSelectedKey(InSelectedKey: FInputChord &) -> void
-```
-
-Sets the currently selected key.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InSelectedKey` | `FInputChord &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetKeySelectionText`
-
-```text
-SetKeySelectionText(InKeySelectionText: FText) -> void
-```
-
-Sets the text which is displayed while selecting keys.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InKeySelectionText` | `FText` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetNoKeySpecifiedText`
-
-```text
-SetNoKeySpecifiedText(InNoKeySpecifiedText: FText) -> void
-```
-
-Sets the text to display when no key text is available or not selecting a key.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InNoKeySpecifiedText` | `FText` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAllowModifierKeys`
-
-```text
-SetAllowModifierKeys(bInAllowModifierKeys: bool) -> void
-```
-
-Sets whether or not modifier keys are allowed in the selected key.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bInAllowModifierKeys` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetAllowGamepadKeys`
-
-```text
-SetAllowGamepadKeys(bInAllowGamepadKeys: bool) -> void
-```
-
-Sets whether or not gamepad keys are allowed in the selected key.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bInAllowGamepadKeys` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetIsSelectingKey`
-
-```text
-GetIsSelectingKey() -> bool
-```
-
-Returns true if the widget is currently selecting a key, otherwise returns false.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `SetTextBlockVisibility`
-
-```text
-SetTextBlockVisibility(InVisibility: ESlateVisibility) -> void
-```
-
-Sets the visibility of the text block.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InVisibility` | `ESlateVisibility` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Delegates
-
-### `OnKeySelected`
-
-```text
-OnKeySelected(SelectedKey: FInputChord) -> void
-```
-
-Called whenever a new key is selected by the user.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `SelectedKey` | `FInputChord` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnIsSelectingKeyChanged`
-
-```text
-OnIsSelectingKeyChanged() -> void
-```
-
-Called whenever the key selection mode starts or stops.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputSettings.json -->
-
-# UInputSettings
-
-Project wide settings for input handling
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `AxisConfig` | `TArray < struct FInputAxisConfigEntry >` | Properties of Axis controls |
-| `bAltEnterTogglesFullscreen` | `uint32` | - |
-| `bF11TogglesFullscreen` | `uint32` | - |
-| `bUseMouseForTouch` | `uint32` | - |
-| `bEnableMouseSmoothing` | `uint32` | - |
-| `bEnableFOVScaling` | `uint32` | - |
-| `FOVScale` | `float` | - |
-| `DoubleClickTime` | `float` | If a key is pressed twice in this amount of time it is considered a "double click" |
-| `bCaptureMouseOnLaunch` | `bool` | Controls if the viewport will capture the mouse on Launch of the application |
-| `DefaultViewportMouseCaptureMode` | `EMouseCaptureMode` | The default mouse capture mode for the game viewport |
-| `bDefaultViewportMouseLock_DEPRECATED` | `bool` | The default mouse lock state when the viewport acquires capture |
-| `DefaultViewportMouseLockMode` | `EMouseLockMode` | The default mouse lock state behavior when the viewport acquires capture |
-| `ActionMappings` | `TArray < struct FInputActionKeyMapping >` | List of Action Mappings |
-| `AxisMappings` | `TArray < struct FInputAxisKeyMapping >` | List of Axis Mappings |
-| `bAlwaysShowTouchInterface` | `bool` | Should the touch input interface be shown always, or only when the platform has a touch screen? |
-| `bShowConsoleOnFourFingerTap` | `bool` | Whether or not to show the console on 4 finger tap, on mobile platforms |
-| `DefaultTouchInterface` | `FSoftObjectPath` | The default on-screen touch input interface for the game (can be null to disable the onscreen interface) |
-| `ConsoleKey_DEPRECATED` | `FKey` | The key which opens the console. |
-| `ConsoleKeys` | `TArray < FKey >` | The keys which open the console. |
-
-## Functions
-
-### `GetInputSettings`
-
-```text
-GetInputSettings() -> UInputSettings *
-```
-
-Returns the game local input settings (action mappings, axis mappings, etc...)
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `UInputSettings *` | - |
-
-### `AddActionMapping`
-
-```text
-AddActionMapping(KeyMapping: FInputActionKeyMapping &, bForceRebuildKeymaps: bool) -> void
-```
-
-Programmatically add an action mapping to the project defaults
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `KeyMapping` | `FInputActionKeyMapping &` | - |
-| `bForceRebuildKeymaps` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetActionMappingByName`
-
-```text
-GetActionMappingByName(InActionName: FName, OutMappings: TArray < FInputActionKeyMapping > &) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InActionName` | `FName` | - |
-| `OutMappings` | `TArray < FInputActionKeyMapping > &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `RemoveActionMapping`
-
-```text
-RemoveActionMapping(KeyMapping: FInputActionKeyMapping &, bForceRebuildKeymaps: bool) -> void
-```
-
-Programmatically remove an action mapping to the project defaults
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `KeyMapping` | `FInputActionKeyMapping &` | - |
-| `bForceRebuildKeymaps` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `AddAxisMapping`
-
-```text
-AddAxisMapping(KeyMapping: FInputAxisKeyMapping &, bForceRebuildKeymaps: bool) -> void
-```
-
-Programmatically add an axis mapping to the project defaults
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `KeyMapping` | `FInputAxisKeyMapping &` | - |
-| `bForceRebuildKeymaps` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetAxisMappingByName`
-
-```text
-GetAxisMappingByName(InAxisName: FName, OutMappings: TArray < FInputAxisKeyMapping > &) -> void
-```
-
-Retrieve all axis mappings by a certain name.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InAxisName` | `FName` | - |
-| `OutMappings` | `TArray < FInputAxisKeyMapping > &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `RemoveAxisMapping`
-
-```text
-RemoveAxisMapping(KeyMapping: FInputAxisKeyMapping &, bForceRebuildKeymaps: bool) -> void
-```
-
-Programmatically remove an axis mapping to the project defaults
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `KeyMapping` | `FInputAxisKeyMapping &` | - |
-| `bForceRebuildKeymaps` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SaveKeyMappings`
-
-```text
-SaveKeyMappings() -> void
-```
-
-Flush the current mapping values to the config file
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetActionNames`
-
-```text
-GetActionNames(ActionNames: TArray < FName > &) -> void
-```
-
-Populate a list of all defined action names
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ActionNames` | `TArray < FName > &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetAxisNames`
-
-```text
-GetAxisNames(AxisNames: TArray < FName > &) -> void
-```
-
-Populate a list of all defined axis names
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `AxisNames` | `TArray < FName > &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ForceRebuildKeymaps`
-
-```text
-ForceRebuildKeymaps() -> void
-```
-
-When changes are made to the default mappings, push those changes out to PlayerInput key maps
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ApplySettings`
-
-```text
-ApplySettings() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ResetToDefaultEditorSettings`
-
-```text
-ResetToDefaultEditorSettings() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SaveToConfig`
-
-```text
-SaveToConfig() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetActionMappings`
-
-```text
-GetActionMappings() -> TArray < struct FInputActionKeyMapping >
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `TArray < struct FInputActionKeyMapping >` | - |
-
-### `GetAxisMappings`
-
-```text
-GetAxisMappings() -> TArray < struct FInputAxisKeyMapping >
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `TArray < struct FInputAxisKeyMapping >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInputTouchDelegateBinding.json -->
-
-# UInputTouchDelegateBinding
-
-## Inheritance
-
-`UInputDelegateBinding`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `InputTouchDelegateBindings` | `TArray < FBlueprintInputTouchDelegateBinding >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInstancedStaticMeshComponent.json -->
-
-# UInstancedStaticMeshComponent
-
-A component that efficiently renders multiple instances of the same StaticMesh.
-
-## Inheritance
-
-`UStaticMeshComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PerInstanceSMData` | `TArray < FInstancedStaticMeshInstanceData >` | Array of instances, bulk serialized. |
-| `InstancingRandomSeed` | `int32` | Value used to seed the random number stream that generates random numbers for each of this mesh's instances.<br>		this is set to zero (default), it will be populated automatically by the editor. |
-| `InstanceStartCullDistance` | `int32` | Distance from camera at which each instance begins to fade out. |
-| `InstanceEndCullDistance` | `int32` | Distance from camera at which each instance completely fades out. |
-| `InstanceNearCullDistance` | `int32` | Distance from camera at which each instance. |
-| `bIsFlyType` | `bool` | - |
-| `bIsFoliage` | `bool` | - |
-| `bIsPCFoliage` | `bool` | - |
-| `InstanceReorderTable` | `TArray < int32 >` | Mapping from PerInstanceSMData order to instance render buffer order. If empty, the PerInstanceSMData order is used. |
-| `RemovedInstances` | `TArray < int32 >` | - |
-| `InstanceVisibilityMapping` | `TMap < int32 , FInstanceVisibilityData >` | - |
-| `UseDynamicInstanceBuffer` | `bool` | Set to true to permit updating the vertex buffer used in the instance buffer without recreating it completely. This should be used if you plan on dynamically changing the instances at run-time. |
-| `KeepInstanceBufferCPUAccess` | `bool` | Set to true to keep instance buffer accessible by the CPU, otherwise it's discarded and considered never changing, only GPU has a copy of the data. |
-| `DynamicInstancingParametersValue` | `TArray < FVector4 >` | - |
-| `PerInstanceDynamicInstancingParameterCount` | `int32` | PerInstanceDynamicInstancingParameterCount |
-| `PhysicsSerializer` | `UPhysicsSerializer *` | Serialization of all the InstanceBodies. Helps speed up physics creation time. |
-| `StashInstanceTransform` | `TMap < int32 , FMatrix >` | - |
-| `NumPendingLightmaps` | `int32` | Number of pending lightmaps still to be calculated (Apply()'d). |
-| `CachedMappings` | `TArray < FInstancedStaticMeshMappingInfo >` | The mappings for all the instances of this component. |
-
-## Functions
-
-### `AddInstance`
-
-```text
-AddInstance(InstanceTransform: FTransform &) -> int32
-```
-
-Add an instance to this component. Transform is given in local space of this component.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InstanceTransform` | `FTransform &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | - |
-
-### `AddInstanceWorldSpace`
-
-```text
-AddInstanceWorldSpace(WorldTransform: FTransform &) -> int32
-```
-
-Add an instance to this component. Transform is given in world space.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldTransform` | `FTransform &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | - |
-
-### `SetInstanceDIP`
-
-```text
-SetInstanceDIP(InstanceIndex: int32, MaterialIndex: int32, Name: FString &, Value: FVector4 &) -> bool
-```
-
-Set a DIP value on one instance for the given material slot.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InstanceIndex` | `int32` | - |
-| `MaterialIndex` | `int32` | - |
-| `Name` | `FString &` | - |
-| `Value` | `FVector4 &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `GetInstanceTransform`
-
-```text
-GetInstanceTransform(InstanceIndex: int32, OutInstanceTransform: FTransform &, bWorldSpace: bool) -> bool
-```
-
-Get the transform for the instance specified. Instance is returned in local space of this component unless bWorldSpace is set.  Returns True on success.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InstanceIndex` | `int32` | - |
-| `OutInstanceTransform` | `FTransform &` | - |
-| `bWorldSpace` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `UpdateInstanceTransform`
-
-```text
-UpdateInstanceTransform(InstanceIndex: int32, NewInstanceTransform: FTransform &, bWorldSpace: bool, bMarkRenderStateDirty: bool, bTeleport: bool) -> bool
-```
-
-Update the transform for the instance specified.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InstanceIndex` | `int32` | The index of the instance to update |
-| `NewInstanceTransform` | `FTransform &` | The new transform |
-| `bWorldSpace` | `bool` | If true, the new transform interpreted as a World Space transform, otherwise it is interpreted as Local Space |
-| `bMarkRenderStateDirty` | `bool` | If true, the change should be visible immediately. If you are updating many instances you should only set this to true for the last instance. |
-| `bTeleport` | `bool` | Whether or not the instance's physics should be moved normally, or teleported (moved instantly, ignoring velocity). |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True on success. |
-
-### `RemoveInstance`
-
-```text
-RemoveInstance(InstanceIndex: int32) -> bool
-```
-
-Remove the instance specified. Returns True on success. Note that this will leave the array in order, but may shrink it.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InstanceIndex` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `ClearInstances`
-
-```text
-ClearInstances() -> void
-```
-
-Clear all instances being rendered by this component.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetInstanceCount`
-
-```text
-GetInstanceCount() -> int32
-```
-
-Get the number of instances in this component.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | - |
-
-### `SetCullDistances`
-
-```text
-SetCullDistances(StartCullDistance: int32, EndCullDistance: int32) -> void
-```
-
-Sets the fading start and culling end distances for this component.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `StartCullDistance` | `int32` | - |
-| `EndCullDistance` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetNearCullDistance`
-
-```text
-SetNearCullDistance(CullDistance: int32) -> void
-```
-
-Sets the cull near distance for this component.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `CullDistance` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetInstancesOverlappingSphere`
-
-```text
-GetInstancesOverlappingSphere(Center: FVector &, Radius: float, bSphereInWorldSpace: bool) -> TArray < int32 >
-```
-
-Returns the instances with instance bounds overlapping the specified sphere. The return value is an array of instance indices.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Center` | `FVector &` | - |
-| `Radius` | `float` | - |
-| `bSphereInWorldSpace` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `TArray < int32 >` | - |
-
-### `GetInstancesOverlappingBox`
-
-```text
-GetInstancesOverlappingBox(Box: FBox &, bBoxInWorldSpace: bool) -> TArray < int32 >
-```
-
-Returns the instances with instance bounds overlapping the specified box. The return value is an array of instance indices.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Box` | `FBox &` | - |
-| `bBoxInWorldSpace` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `TArray < int32 >` | - |
-
-### `HideInstance`
-
-```text
-HideInstance(InstanceIndices: TArray < int32 > &) -> bool
-```
-
-Update the transform for the instance specified.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InstanceIndices` | `TArray < int32 > &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | True on success. |
-
-### `ShowInstance`
-
-```text
-ShowInstance(InstanceIndices: TArray < int32 > &) -> bool
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InstanceIndices` | `TArray < int32 > &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInt32Binding.json -->
-
-# UInt32Binding
-
-## Inheritance
-
-`UPropertyBinding`
-
-## Functions
-
-### `GetValue`
-
-```text
-GetValue() -> int32
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpCurveEdSetup.json -->
-
-# UInterpCurveEdSetup
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Tabs` | `TArray < struct FCurveEdTab >` | - |
-| `ActiveTab` | `int32` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpData.json -->
-
-# UInterpData
-
-Interpolation data, containing keyframe tracks, event tracks etc.
-  This does not contain any  AActor  references or state, so can safely be stored in
-  packages, shared between multiple MatineeActors etc.
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `InterpLength` | `float` | Duration of interpolation sequence - in seconds. |
-| `PathBuildTime` | `float` | Position in Interp to move things to for path-building in editor. |
-| `InterpGroups` | `TArray < UInterpGroup * >` | Actual interpolation data. Groups of InterpTracks. |
-| `CurveEdSetup` | `UInterpCurveEdSetup *` | Used for curve editor to remember curve-editing setup. Only loaded in editor. |
-| `EdSectionStart` | `float` | Used in editor for defining sections to loop, stretch etc. |
-| `EdSectionEnd` | `float` | Used in editor for defining sections to loop, stretch etc. |
-| `bShouldBakeAndPrune` | `uint32` | If true, then the matinee should be baked and pruned at cook time. |
-| `CachedDirectorGroup` | `UInterpGroupDirector *` | Cached version of the director group, if any, for easy access while in game |
-| `AllEventNames` | `TArray < FName >` | Unique names of all events contained across all event tracks |
-| `InterpFilters` | `TArray < UInterpFilter * >` | Used for filtering which tracks are currently visible. |
-| `SelectedFilter` | `UInterpFilter *` | The currently selected filter. |
-| `DefaultFilters` | `TArray < UInterpFilter * >` | Array of default filters. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpFilter.json -->
-
-# UInterpFilter
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Caption` | `FString` | Caption for this filter. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpFilter_Classes.json -->
-
-# UInterpFilter_Classes
-
-## Inheritance
-
-`UInterpFilter`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ClassToFilterBy` | `TSubclassOf < UObject >` | Which class to filter groups by. |
-| `TrackClasses` | `TArray < TSubclassOf < UObject > >` | List of allowed track classes.  If empty, then all track classes will be included.  Only groups that<br>		contain at least one of these types of tracks will be displayed. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpFilter_Custom.json -->
-
-# UInterpFilter_Custom
-
-## Inheritance
-
-`UInterpFilter`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `GroupsToInclude` | `TArray < UInterpGroup * >` | Which groups are included in this filter. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpGroup.json -->
-
-# UInterpGroup
-
-## Inheritance
-
-`UObject` -> `FInterpEdInputInterface`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `InterpTracks` | `TArray < UInterpTrack * >` | - |
-| `GroupName` | `FName` | Within an InterpData, all GroupNames must be unique. <br>	 	Used for naming Variable connectors on the Action in Kismet and finding each groups object. |
-| `GroupColor` | `FColor` | Colour used for drawing tracks etc. related to this group. |
-| `bCollapsed` | `uint32` | Whether or not this group is folded away in the editor. |
-| `bVisible` | `uint32` | Whether or not this group is visible in the editor. |
-| `bIsFolder` | `uint32` | When enabled, this group is treated like a folder in the editor, which should only be used for organization.  Folders are never associated with actors and don't have a presence in the Kismet graph. |
-| `bIsParented` | `uint32` | When true, this group is considered a 'visual child' of another group.  This doesn't at all affect the behavior of the group, it's only for visual organization.  Also, it's implied that the parent is the next prior group in the array that doesn't have a parent. |
-| `bIsSelected` | `uint32` | When enabled, this group will be selected in the interp editor. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpGroupCamera.json -->
-
-# UInterpGroupCamera
-
-## Inheritance
-
-`UInterpGroup`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `CameraAnimInst` | `UCameraAnim *` | - |
-| `CompressTolerance` | `float` | When compress, tolerance option |
-| `Target` | `FCameraPreviewInfo` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpGroupInst.json -->
-
-# UInterpGroupInst
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Group` | `UInterpGroup *` | An instance of an UInterpGroup for a particular Actor. There may be multiple InterpGroupInsts for a single<br>	  UInterpGroup in the InterpData, if multiple Actors are connected to the same UInterpGroup. <br>	  The Outer of an UInterpGroupInst is a MatineeActor<br>	 <br>	 UInterpGroup within the InterpData that this is an instance of. |
-| `GroupActor` | `AActor *` | Actor that this Group instance is acting upon.<br>	 	NB: that this may be set to NULL at any time as a result of the  AActor  being destroyed. |
-| `TrackInst` | `TArray < UInterpTrackInst * >` | Array if InterpTrack instances. TrackInst.Num() == UInterpGroup.InterpTrack.Num() must be true. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpToMovementComponent.json -->
-
-# UInterpToMovementComponent
-
-Move the root component between a series of points over a given time  
- 
-  @see UMovementComponent
-
-## Inheritance
-
-`UMovementComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Duration` | `float` | How long to take to move from the first point to the last (or vice versa) |
-| `bPauseOnImpact` | `uint32` | If true, will pause movement on impact. If false it will behave as if the end of the movement range was reached based on the BehaviourType. |
-| `BehaviourType` | `EInterpToBehaviourType` | Movement behaviour of the component |
-| `bForceSubStepping` | `uint32` | If true, forces sub-stepping to break up movement into discrete smaller steps to improve accuracy of the trajectory.<br>	  Objects that move in a straight line typically do not need to set this, as movement always uses continuous collision detection (sweeps) so collision is not missed.<br>	  Sub-stepping is automatically enabled when under the effects of gravity or when homing towards a target.<br>	  @see MaxSimulationTimeStep, MaxSimulationIterations |
-| `MaxSimulationTimeStep` | `float` | Max time delta for each discrete simulation step.<br>	  Lowering this value can address issues with fast-moving objects or complex collision scenarios, at the cost of performance.<br>	 <br>	  WARNING: if (MaxSimulationTimeStep  MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation.<br>	  @see MaxSimulationIterations, bForceSubStepping |
-| `MaxSimulationIterations` | `int32` | Max number of iterations used for each discrete simulation step.<br>	  Increasing this value can address issues with fast-moving objects or complex collision scenarios, at the cost of performance.<br>	 <br>	  WARNING: if (MaxSimulationTimeStep  MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation.<br>	  @see MaxSimulationTimeStep, bForceSubStepping |
-| `ControlPoints` | `TArray < FInterpControlPoint >` | List of control points to visit. |
-
-## Functions
-
-### `StopSimulating`
-
-```text
-StopSimulating(HitResult: FHitResult &) -> void
-```
-
-Clears the reference to UpdatedComponent, fires stop event, and stops ticking.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `HitResult` | `FHitResult &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `RestartMovement`
-
-```text
-RestartMovement(InitialDirection: float) -> void
-```
-
-Reset to start. Sets time to zero and direction to 1.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InitialDirection` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `FinaliseControlPoints`
-
-```text
-FinaliseControlPoints() -> void
-```
-
-Initialise the control points array. Call after adding control points if they are add after begin play .
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Delegates
-
-### `OnInterpToReverse`
-
-```text
-OnInterpToReverse(ImpactResult: const FHitResult&, Time: float) -> void
-```
-
-Called when InterpTo impacts something and reverse is enabled.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ImpactResult` | `const FHitResult&` | - |
-| `Time` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnInterpToStop`
-
-```text
-OnInterpToStop(ImpactResult: const FHitResult&, Time: float) -> void
-```
-
-Called when InterpTo has come to a stop.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ImpactResult` | `const FHitResult&` | - |
-| `Time` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnWaitBeginDelegate`
-
-```text
-OnWaitBeginDelegate(ImpactResult: const FHitResult&, Time: float) -> void
-```
-
-Called when InterpTo has come to a stop but will resume when possible.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ImpactResult` | `const FHitResult&` | - |
-| `Time` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnWaitEndDelegate`
-
-```text
-OnWaitEndDelegate(ImpactResult: const FHitResult&, Time: float) -> void
-```
-
-Called when InterpTo has resumed following a stop.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ImpactResult` | `const FHitResult&` | - |
-| `Time` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnResetDelegate`
-
-```text
-OnResetDelegate(ImpactResult: const FHitResult&, Time: float) -> void
-```
-
-Called when InterpTo reached the end and reset back to start .
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `ImpactResult` | `const FHitResult&` | - |
-| `Time` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrack.json -->
-
-# UInterpTrack
-
-## Inheritance
-
-`UObject` -> `FCurveEdInterface` -> `FInterpEdInputInterface`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SubTracks` | `TArray < UInterpTrack * >` | A list of subtracks that belong to this track |
-| `TrackInstClass` | `TSubclassOf < UInterpTrackInst >` | - |
-| `ActiveCondition` | `TEnumAsByte < enum ETrackActiveCondition >` | Sets the condition that must be met for this track to be enabled |
-| `TrackTitle` | `FString` | Title of track type. |
-| `bOnePerGroup` | `uint32` | Whether there may only be one of this track in an UInterpGroup. |
-| `bDirGroupOnly` | `uint32` | If this track can only exist inside the Director group. |
-| `bDisableTrack` | `uint32` | Whether or not this track should actually update the target actor. |
-| `bIsSelected` | `uint32` | Whether or not this track is selected in the editor. |
-| `bIsAnimControlTrack` | `uint32` | If true, the  AActor  this track is working on will have BeginAnimControlFinishAnimControl called on it. |
-| `bSubTrackOnly` | `uint32` | If this track can only exist as a sub track. |
-| `bVisible` | `uint32` | Whether or not this track is visible in the editor. |
-| `bIsRecording` | `uint32` | Whether or not this track is recording in the editor. |
-| `SubTrackGroups` | `TArray < struct FSubTrackGroup >` | A list of subtrack groups (for editor UI organization only) |
-| `SupportedSubTracks` | `TArray < struct FSupportedSubTrackInfo >` | A list of supported tracks that can be a subtrack of this track. |
-| `TrackIcon` | `UTexture2D *` | - |
-| `bIsCollapsed` | `uint32` | If this track is collapsed. (Only applies  to tracks with subtracks). |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackAnimControl.json -->
-
-# UInterpTrackAnimControl
-
-## Inheritance
-
-`UInterpTrackFloatBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SlotName` | `FName` | Name of slot to use when playing animation. Passed to Actor. <br>	 	When multiple tracks use the same slot name, they are each given a different ChannelIndex when SetAnimPosition is called. |
-| `AnimSeqs` | `TArray < struct FAnimControlTrackKey >` | Track of different animations to play and when to start playing them. |
-| `bSkipAnimNotifiers` | `uint32` | Skip all anim notifiers |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackBoolProp.json -->
-
-# UInterpTrackBoolProp
-
-## Inheritance
-
-`UInterpTrack`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `BoolTrack` | `TArray < struct FBoolTrackKey >` | Array of booleans to set. |
-| `PropertyName` | `FName` | Name of property in Group  AActor  which this track will modify over time. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackColorProp.json -->
-
-# UInterpTrackColorProp
-
-## Inheritance
-
-`UInterpTrackVectorBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PropertyName` | `FName` | Name of property in Group  AActor  which this track mill modify over time. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackDirector.json -->
-
-# UInterpTrackDirector
-
-## Inheritance
-
-`UInterpTrack`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `CutTrack` | `TArray < struct FDirectorTrackCut >` | Array of cuts between cameras. |
-| `bSimulateCameraCutsOnClients` | `uint32` | True to allow clients to simulate their own camera cuts.  Can help with latency-induced timing issues. |
-| `PreviewCamera` | `ACameraActor *` | The camera actor which the track is currently focused on. Only valid if this track or it's group is selected |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackEvent.json -->
-
-# UInterpTrackEvent
-
-## Inheritance
-
-`UInterpTrack`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EventTrack` | `TArray < struct FEventTrackKey >` | Array of events to fire off. |
-| `bFireEventsWhenForwards` | `uint32` | If events should be fired when passed playing the sequence forwards. |
-| `bFireEventsWhenBackwards` | `uint32` | If events should be fired when passed playing the sequence backwards. |
-| `bFireEventsWhenJumpingForwards` | `uint32` | If true, events on this track are fired even when jumping forwads through a sequence - for example, skipping a cinematic. |
-| `bUseCustomEventName` | `uint32` | If checked each key's event name is the exact name of the custom event function in level script that will be called |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackFade.json -->
-
-# UInterpTrackFade
-
-## Inheritance
-
-`UInterpTrackFloatBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bPersistFade` | `uint32` | InterpTrackFade<br>	 <br>	  Special float property track that controls camera fading over time.<br>	  Should live in a Director group. |
-| `bFadeAudio` | `uint32` | True to set master audio volume along with the visual fade. |
-| `FadeColor` | `FLinearColor` | Color to fade to. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackFloatAnimBPParam.json -->
-
-# UInterpTrackFloatAnimBPParam
-
-## Inheritance
-
-`UInterpTrackFloatBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `AnimBlueprintClass` | `UAnimBlueprintGeneratedClass *` | - |
-| `AnimClass` | `TSubclassOf < UAnimInstance >` | Materials whose parameters we want to change and the references to those materials. |
-| `ParamName` | `FName` | Name of parameter in the MaterialInstance which this track will modify over time. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackFloatBase.json -->
-
-# UInterpTrackFloatBase
-
-## Inheritance
-
-`UInterpTrack`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `FloatTrack` | `FInterpCurveFloat` | Actually track data containing keyframes of float as it varies over time. |
-| `CurveTension` | `float` | Tension of curve, used for keypoints using automatic tangents. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackFloatMaterialParam.json -->
-
-# UInterpTrackFloatMaterialParam
-
-## Inheritance
-
-`UInterpTrackFloatBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `TargetMaterials` | `TArray < UMaterialInterface * >` | Materials whose parameters we want to change and the references to those materials. |
-| `ParamName` | `FName` | Name of parameter in the MaterialInstance which this track will modify over time. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackFloatParticleParam.json -->
-
-# UInterpTrackFloatParticleParam
-
-## Inheritance
-
-`UInterpTrackFloatBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ParamName` | `FName` | Name of property in the Emitter which this track mill modify over time. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackFloatProp.json -->
-
-# UInterpTrackFloatProp
-
-## Inheritance
-
-`UInterpTrackFloatBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PropertyName` | `FName` | Name of property in Group  AActor  which this track mill modify over time. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstAnimControl.json -->
-
-# UInterpTrackInstAnimControl
-
-## Inheritance
-
-`UInterpTrackInst`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `LastUpdatePosition` | `float` | - |
-| `InitPosition` | `FVector` | - |
-| `InitRotation` | `FRotator` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstBoolProp.json -->
-
-# UInterpTrackInstBoolProp
-
-## Inheritance
-
-`UInterpTrackInstProperty`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `BoolProperty` | `UBoolProperty *` | Mask that indicates which bit the boolean property actually uses of the value pointed to by BoolProp. |
-| `ResetBool` | `bool` | Saved value for restoring state when exiting Matinee. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstColorProp.json -->
-
-# UInterpTrackInstColorProp
-
-## Inheritance
-
-`UInterpTrackInstProperty`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ResetColor` | `FColor` | Saved value for restoring state when exiting Matinee. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstDirector.json -->
-
-# UInterpTrackInstDirector
-
-## Inheritance
-
-`UInterpTrackInst`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `OldViewTarget` | `AActor *` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstEvent.json -->
-
-# UInterpTrackInstEvent
-
-## Inheritance
-
-`UInterpTrackInst`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `LastUpdatePosition` | `float` | Position we were in last time we evaluated Events. <br>	 	During UpdateTrack, events between this time and the current time will be fired. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstFloatAnimBPParam.json -->
-
-# UInterpTrackInstFloatAnimBPParam
-
-## Inheritance
-
-`UInterpTrackInst`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `AnimScriptInstance` | `UAnimInstance *` | MIDs we're using to set the desired parameter. |
-| `ResetFloat` | `float` | Saved values for restoring state when exiting Matinee. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstFloatMaterialParam.json -->
-
-# UInterpTrackInstFloatMaterialParam
-
-## Inheritance
-
-`UInterpTrackInst`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `MaterialInstances` | `TArray < UMaterialInstanceDynamic * >` | MIDs we're using to set the desired parameter. |
-| `ResetFloats` | `TArray < float >` | Saved values for restoring state when exiting Matinee. |
-| `PrimitiveMaterialRefs` | `TArray < struct FPrimitiveMaterialRef >` | Primitive components on which materials have been overridden. |
-| `InstancedTrack` | `UInterpTrackFloatMaterialParam *` | track we are an instance of - used in the editor to propagate changes to the track's Materials array immediately |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstFloatParticleParam.json -->
-
-# UInterpTrackInstFloatParticleParam
-
-## Inheritance
-
-`UInterpTrackInst`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ResetFloat` | `float` | Saved value for restoring state when exiting Matinee. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstFloatProp.json -->
-
-# UInterpTrackInstFloatProp
-
-## Inheritance
-
-`UInterpTrackInstProperty`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ResetFloat` | `float` | Saved value for restoring state when exiting Matinee. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstLinearColorProp.json -->
-
-# UInterpTrackInstLinearColorProp
-
-## Inheritance
-
-`UInterpTrackInstProperty`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ResetColor` | `FLinearColor` | Saved value for restoring state when exiting Matinee. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstMove.json -->
-
-# UInterpTrackInstMove
-
-## Inheritance
-
-`UInterpTrackInst`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ResetLocation` | `FVector` | Saved position. Used in editor for resetting when quitting Matinee. |
-| `ResetRotation` | `FRotator` | Saved rotation. Used in editor for resetting when quitting Matinee. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstParticleReplay.json -->
-
-# UInterpTrackInstParticleReplay
-
-## Inheritance
-
-`UInterpTrackInst`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `LastUpdatePosition` | `float` | Position we were in last time we evaluated.<br>	 	During UpdateTrack, events between this time and the current time will be processed. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstProperty.json -->
-
-# UInterpTrackInstProperty
-
-## Inheritance
-
-`UInterpTrackInst`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `InterpProperty` | `UProperty *` | Function to call after updating the value of the color property. |
-| `PropertyOuterObjectInst` | `UObject *` | Pointer to the UObject instance that is the outer of the color property we are interpolating on, this is used to process the property update callback. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstSlomo.json -->
-
-# UInterpTrackInstSlomo
-
-## Inheritance
-
-`UInterpTrackInst`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `OldTimeDilation` | `float` | Backup of initial LevelInfo MatineeTimeDilation setting when interpolation started. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UInterpTrackInstSound.json -->
-
-# UInterpTrackInstSound
-
-## Inheritance
-
-`UInterpTrackInst`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `LastUpdatePosition` | `float` | - |
-| `PlayAudioComp` | `UAudioComponent *` | - |
 
 ## Language
 

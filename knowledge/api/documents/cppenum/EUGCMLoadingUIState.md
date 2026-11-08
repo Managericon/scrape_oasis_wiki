@@ -16,3 +16,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `MAP` | `0` | - |
 | `MATERIAL` | `1` | - |
 | `CosData` | `2` | - |
+| `ExtraPaks` | `3` | - |

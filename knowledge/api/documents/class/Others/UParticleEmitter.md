@@ -28,6 +28,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `QualityLevelSpawnRateScale` | `float` | - |
 | `GPUToCPUEmitterSpawnRateScale` | `float` | - |
 | `DetailMode` | `TEnumAsByte < EDetailMode >` | If detail mode is >= system detail mode, primitive won't be rendered. |
+| `bGrayDisable` | `uint32` | - |
 | `bIsSoloing` | `uint32` | If true, then show only this emitter in the editor |
 | `bCookedOut` | `uint32` | If true, then this emitter was 'cooked out' by the cooker. <br>	 	This means it was completely disabled, but to preserve any<br>	 	indexing schemes, it is left in place. |
 | `bDisabledLODsKeepEmitterAlive` | `uint32` | When true, if the current LOD is disabled the emitter will be kept alive. Otherwise, the emitter will be considered complete if the current LOD is disabled. |

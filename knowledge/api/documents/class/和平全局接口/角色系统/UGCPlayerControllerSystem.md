@@ -26,7 +26,7 @@ DisableJoyStickSprint(PlayerController: PlayerController)
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
 
 ### `EnableJoyStickSprint`
 
@@ -41,7 +41,7 @@ EnableJoyStickSprint(PlayerController: PlayerController)
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
 
 ### `GetTeamID`
 
@@ -49,20 +49,20 @@ EnableJoyStickSprint(PlayerController: PlayerController)
 GetTeamID(PlayerController: PlayerController) -> number
 ```
 
-通过 PlayerController 获取 TeamID
+通过普通玩家和人机玩家的 PlayerController 获取 TeamID
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `number` | 玩家队伍 ID |
+| `number` | 普通玩家和人机玩家的队伍 ID |
 
 ### `GetPlayerCharacter`
 
@@ -70,20 +70,20 @@ GetTeamID(PlayerController: PlayerController) -> number
 GetPlayerCharacter(PlayerController: PlayerController) -> ASTExtraBaseCharacter
 ```
 
-获取玩家角色
+获取普通玩家和人机玩家的角色
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `ASTExtraBaseCharacter` | 玩家角色 |
+| `ASTExtraBaseCharacter` | 普通玩家和人机玩家角色 |
 
 ### `TeleportTo`
 
@@ -91,14 +91,14 @@ GetPlayerCharacter(PlayerController: PlayerController) -> ASTExtraBaseCharacter
 TeleportTo(PlayerController: PlayerController, X: number, Y: number, Z: number)
 ```
 
-瞬移至坐标
+让普通玩家和人机玩家瞬移至坐标
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
 | `X` | `number` | X坐标 |
 | `Y` | `number` | Y坐标 |
 | `Z` | `number` | Z坐标 |
@@ -109,14 +109,14 @@ TeleportTo(PlayerController: PlayerController, X: number, Y: number, Z: number)
 SetControlRotation(PlayerController: PlayerController, NewRotation: Rotator)
 ```
 
-设置控制旋转
+设置普通玩家和人机玩家的控制旋转
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
 | `NewRotation` | `Rotator` | 新旋转量 可使用Rotator.New(Roll,Pitch,Yaw)创建,结构{Roll=Roll, Pitch=Pitch, Yaw=Yaw} |
 
 ### `EnableBulletTrackEffect`
@@ -173,18 +173,18 @@ IsLocalController(InController: AController) -> boolean
 ### `MountCharacterPreset`
 
 ```text
-MountCharacterPreset(PlayerController: PlayerController, DataAsset: UCharacterPresetDataAsset, PriorityOverride: number) -> number
+MountCharacterPreset(PlayerController: PlayerController, CharacterPresetClass: UClass, PriorityOverride: number) -> number
 ```
 
-挂载角色预设 DataAsset 到 PlayerController 的 UGCCharacterManager
+挂载角色预设到普通玩家和人机玩家的 PlayerController 的 UGCCharacterManager
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
-| `DataAsset` | `UCharacterPresetDataAsset` | 角色预设数据 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
+| `CharacterPresetClass` | `UClass` | 角色预设类 |
 | `PriorityOverride` | `number` | 优先级覆盖，可为 nil |
 
 **Returns**
@@ -199,14 +199,14 @@ MountCharacterPreset(PlayerController: PlayerController, DataAsset: UCharacterPr
 UnmountCharacterPreset(PlayerController: PlayerController, Handle: number) -> boolean
 ```
 
-卸载 PlayerController 上的角色预设
+卸载普通玩家和人机玩家的 PlayerController 上的角色预设
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `PlayerController` | 玩家控制器 |
+| `PlayerController` | `PlayerController` | 普通玩家和人机玩家的控制器 |
 | `Handle` | `number` | MountCharacterPreset 返回的 Handle |
 
 **Returns**

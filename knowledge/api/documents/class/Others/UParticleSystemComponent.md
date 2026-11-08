@@ -523,6 +523,27 @@ EnablesDisables a sub-emitter
 |---|---|
 | `void` | - |
 
+### `SetEmitterRenderEnabled`
+
+```text
+SetEmitterRenderEnabled(EmitterName: FName, bNewRenderEnabled: bool) -> bool
+```
+
+EnablesDisables rendering for a sub-emitter without affecting simulation
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterName` | `FName` | The name of the sub-emitter to set it on |
+| `bNewRenderEnabled` | `bool` | Whether the sub-emitter should be rendered |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | Whether a matching sub-emitter was found |
+
 ### `SetFloatParameter`
 
 ```text
@@ -958,6 +979,25 @@ OnSystemFinished(PSystem: UParticleSystemComponent*) -> void
 | Name | Type | Description |
 |---|---|---|
 | `PSystem` | `UParticleSystemComponent*` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ParticleSystemComponentEvent`
+
+```text
+ParticleSystemComponentEvent(PSystem: UParticleSystemComponent*, EventName: FName) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PSystem` | `UParticleSystemComponent*` | - |
+| `EventName` | `FName` | - |
 
 **Returns**
 

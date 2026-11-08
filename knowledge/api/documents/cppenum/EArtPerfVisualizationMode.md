@@ -29,3 +29,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `FSOCOccluder` | `13` | - |
 | `LightmapTypeCheck` | `14` | - |
 | `ReorganizationTagCheck` | `15` | - |
+| `ShadowProxy` | `16` | - |
+| `TexelDensity` | `17` | - |

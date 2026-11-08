@@ -15,6 +15,9 @@ api_root: "https://developer.gp.qq.com/api/"
 |---|---|---|
 | `Thinking` | `0` | - |
 | `FinalResult` | `1` | - |
-| `System` | `2` | - |
-| `Error` | `3` | - |
-| `Unknown` | `4` | - |
+| `StreamDeltaText` | `2` | - |
+| `StreamDeltaReasoning` | `3` | - |
+| `System` | `4` | - |
+| `Error` | `5` | - |
+| `Question` | `6` | - |
+| `Unknown` | `7` | - |

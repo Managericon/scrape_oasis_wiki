@@ -17,7 +17,8 @@ api_root: "https://developer.gp.qq.com/api/"
 |---|---|---|
 | `UGCGameSystemImplementation.PlayerAntiAFKData` | `-` | - |
 | `UGCGameSystemImplementation.NationalArenaCachedData` | `-` | - |
-| `UGCGameSystemImplementation.CampDataBuffer` | `-` | - |
+| `UGCGameSystemImplementation.CampCachedData` | `-` | - |
+| `UGCGameSystemImplementation.bCampReportEnabled` | `-` | - |
 | `UGCGameSystem._RateLimiters` | `-` | - |
 | `UGCGameSystem.GameMode` | `-` | GameMode变量<br>生效范围：服务器 |
 | `UGCGameSystem.GameState` | `-` | GameState变量<br>生效范围：服务器&客户端 |
@@ -33,7 +34,7 @@ api_root: "https://developer.gp.qq.com/api/"
 GetAllPlayerController(NotIgnorePureSpectator: boolean) -> APlayerController[]
 ```
 
-获取所有的 PlayerController，客户端仅能拿到自己的PlayerController
+获取所有普通玩家和人机玩家的 PlayerController（人机玩家的 Controller 为 AIController），客户端仅能拿到自己的PlayerController
 生效范围：服务器&客户端
 
 **Parameters**
@@ -54,7 +55,7 @@ GetAllPlayerController(NotIgnorePureSpectator: boolean) -> APlayerController[]
 GetAllPlayerPawn() -> ASTExtraPlayerCharacter[]
 ```
 
-获取所有的 PlayerPawn
+获取所有普通玩家和人机玩家的 PlayerPawn
 生效范围：服务器&客户端
 
 **Returns**
@@ -69,7 +70,7 @@ GetAllPlayerPawn() -> ASTExtraPlayerCharacter[]
 GetAllPlayerState(NotIgnorePureSpectator?: boolean) -> ASTExtraPlayerState[]
 ```
 
-获取所有的 PlayerState，客户端仅能拿到所有队友的PlayerState
+获取所有普通玩家和人机玩家的 PlayerState，客户端仅能拿到所有队友的PlayerState
 生效范围：服务器&客户端
 
 **Parameters**
@@ -90,7 +91,7 @@ GetAllPlayerState(NotIgnorePureSpectator?: boolean) -> ASTExtraPlayerState[]
 GetAllPlayerKey(NotIgnorePureSpectator?: boolean) -> int[]
 ```
 
-获取所有的 PlayerKey，包括敌人的，该接口通过Pawn获取敌人的PlayerKey，如果敌人没有Pawn，则获取的UID不全
+获取所有普通玩家和人机玩家的 PlayerKey，包括敌人的，该接口通过Pawn获取敌人的PlayerKey，如果敌人没有Pawn，则获取的UID不全
 生效范围：服务器&客户端
 
 **Parameters**
@@ -132,14 +133,14 @@ GetAllUID(NotIgnorePureSpectator: boolean) -> int[]
 GetPlayerKeyByPlayerController(PlayerController: ASTExtraPlayerController) -> number
 ```
 
-通过PlayerController获取PlayerKey
+通过普通玩家和人机玩家的PlayerController获取PlayerKey
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `ASTExtraPlayerController` | - |
+| `PlayerController` | `ASTExtraPlayerController` | 普通玩家和人机玩家的Controller |
 
 **Returns**
 
@@ -153,14 +154,14 @@ GetPlayerKeyByPlayerController(PlayerController: ASTExtraPlayerController) -> nu
 GetPlayerKeyByPlayerPawn(PlayerPawn: ASTExtraPlayerCharacter) -> number
 ```
 
-通过PlayerPawn获取PlayerKey
+通过普通玩家和人机玩家的PlayerPawn获取PlayerKey
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `ASTExtraPlayerCharacter` | - |
+| `PlayerPawn` | `ASTExtraPlayerCharacter` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -174,14 +175,14 @@ GetPlayerKeyByPlayerPawn(PlayerPawn: ASTExtraPlayerCharacter) -> number
 GetPlayerKeyByPlayerState(PlayerState: ASTExtraPlayerState) -> number
 ```
 
-通过PlayerState获取PlayerKey
+通过普通玩家和人机玩家的PlayerState获取PlayerKey
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerState` | `ASTExtraPlayerState` | - |
+| `PlayerState` | `ASTExtraPlayerState` | 普通玩家和人机玩家的PlayerState |
 
 **Returns**
 
@@ -216,20 +217,20 @@ GetPlayerKeyByUID(UID: number) -> number
 GetPlayerControllerByPlayerKey(PlayerKey: number) -> APlayerController
 ```
 
-根据 PlayerKey 获取 PlayerController
+根据 PlayerKey 获取普通玩家和人机玩家的 PlayerController（人机玩家返回 AIController）
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | 玩家唯一 Key |
+| `PlayerKey` | `number` | 普通玩家和人机玩家唯一 Key |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `APlayerController` | 玩家 Controller |
+| `APlayerController` | 普通玩家和人机玩家的 Controller |
 
 ### `GetPlayerControllerByUID`
 
@@ -258,20 +259,20 @@ GetPlayerControllerByUID(UID: number) -> ASTExtraPlayerController
 GetPlayerControllerByPlayerState(PlayerState: ASTExtraPlayerState) -> ASTExtraPlayerController
 ```
 
-通过PlayerState获取PlayerController，客户端只能通过PlayerState获取当前客户端的PlayerController
+通过普通玩家和人机玩家的PlayerState获取PlayerController，客户端只能通过PlayerState获取当前客户端的PlayerController
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerState` | `ASTExtraPlayerState` | - |
+| `PlayerState` | `ASTExtraPlayerState` | 普通玩家和人机玩家的PlayerState |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `ASTExtraPlayerController` | 玩家 Controller |
+| `ASTExtraPlayerController` | 普通玩家和人机玩家的Controller |
 
 ### `GetPlayerControllerByPlayerPawn`
 
@@ -279,20 +280,20 @@ GetPlayerControllerByPlayerState(PlayerState: ASTExtraPlayerState) -> ASTExtraPl
 GetPlayerControllerByPlayerPawn(PlayerPawn: ASTExtraPlayerCharacter) -> ASTExtraPlayerController
 ```
 
-通过PlayerPawn获取PlayerController，客户端只能通过PlayerPawn获取当前客户端的PlayerController
+通过普通玩家和人机玩家的PlayerPawn获取PlayerController，客户端只能通过PlayerPawn获取当前客户端的PlayerController
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `ASTExtraPlayerCharacter` | - |
+| `PlayerPawn` | `ASTExtraPlayerCharacter` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `ASTExtraPlayerController` | 玩家 Controller |
+| `ASTExtraPlayerController` | 普通玩家和人机玩家的Controller |
 
 ### `GetAIControllerByPlayerKey`
 
@@ -300,20 +301,20 @@ GetPlayerControllerByPlayerPawn(PlayerPawn: ASTExtraPlayerCharacter) -> ASTExtra
 GetAIControllerByPlayerKey(AIPlayerKey: number) -> AFakePlayerAIController
 ```
 
-根据 AIPlayerKey 获取 AIController
+根据 AIPlayerKey 获取人机玩家的 AIController
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `AIPlayerKey` | `number` | 假玩家唯一 Key |
+| `AIPlayerKey` | `number` | 人机玩家唯一 Key |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `AFakePlayerAIController` | 假玩家 AIController |
+| `AFakePlayerAIController` | 人机玩家 AIController |
 
 ### `GetPlayerPawnByPlayerKey`
 
@@ -321,20 +322,20 @@ GetAIControllerByPlayerKey(AIPlayerKey: number) -> AFakePlayerAIController
 GetPlayerPawnByPlayerKey(PlayerKey: number) -> PlayerPawn
 ```
 
-根据 PlayerKey 获取 PlayerPawn（不会获取到尸体）
+根据 PlayerKey 获取普通玩家和人机玩家的 PlayerPawn（不会获取到尸体）
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | 玩家唯一 Key |
+| `PlayerKey` | `number` | 普通玩家和人机玩家唯一 Key |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `PlayerPawn` | 玩家 Pawn |
+| `PlayerPawn` | 普通玩家和人机玩家的 Pawn |
 
 ### `GetPlayerPawnByUID`
 
@@ -363,20 +364,20 @@ GetPlayerPawnByUID(UID: number) -> ASTExtraPlayerCharacter
 GetPlayerPawnByPlayerState(PlayerState: ASTExtraPlayerState) -> ASTExtraPlayerCharacter
 ```
 
-通过PlayerState获取PlayerPawn
+通过普通玩家和人机玩家的PlayerState获取PlayerPawn
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerState` | `ASTExtraPlayerState` | - |
+| `PlayerState` | `ASTExtraPlayerState` | 普通玩家和人机玩家的PlayerState |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `ASTExtraPlayerCharacter` | 玩家 Pawn |
+| `ASTExtraPlayerCharacter` | 普通玩家和人机玩家的 Pawn |
 
 ### `GetPlayerPawnByPlayerController`
 
@@ -384,20 +385,20 @@ GetPlayerPawnByPlayerState(PlayerState: ASTExtraPlayerState) -> ASTExtraPlayerCh
 GetPlayerPawnByPlayerController(PlayerController: ASTExtraPlayerController) -> ASTExtraPlayerCharacter
 ```
 
-通过PlayerController获取PlayerPawn
+通过普通玩家和人机玩家的PlayerController获取PlayerPawn
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `ASTExtraPlayerController` | - |
+| `PlayerController` | `ASTExtraPlayerController` | 普通玩家和人机玩家的Controller |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `ASTExtraPlayerCharacter` | 玩家 Pawn |
+| `ASTExtraPlayerCharacter` | 普通玩家和人机玩家的 Pawn |
 
 ### `GetPlayerStateByPlayerKey`
 
@@ -405,20 +406,20 @@ GetPlayerPawnByPlayerController(PlayerController: ASTExtraPlayerController) -> A
 GetPlayerStateByPlayerKey(PlayerKey: number) -> APlayerState
 ```
 
-根据 PlayerKey 获取 PlayerState，客户端只能拿到队友的PlayerState
+根据 PlayerKey 获取普通玩家和人机玩家的 PlayerState，客户端只能拿到队友的PlayerState
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerKey` | `number` | 玩家唯一 Key |
+| `PlayerKey` | `number` | 普通玩家和人机玩家唯一 Key |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `APlayerState` | 玩家 PlayerState |
+| `APlayerState` | 普通玩家和人机玩家的 PlayerState |
 
 ### `GetPlayerStateByPlayerPawn`
 
@@ -426,20 +427,20 @@ GetPlayerStateByPlayerKey(PlayerKey: number) -> APlayerState
 GetPlayerStateByPlayerPawn(PlayerPawn: ASTExtraPlayerCharacter) -> ASTExtraPlayerState
 ```
 
-通过 PlayerPawn 获取 PlayerState，客户端仅能拿到所有队友的PlayerState
+通过普通玩家和人机玩家的 PlayerPawn 获取 PlayerState，客户端仅能拿到所有队友的PlayerState
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `ASTExtraPlayerCharacter` | - |
+| `PlayerPawn` | `ASTExtraPlayerCharacter` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `ASTExtraPlayerState` | 玩家 PlayerState |
+| `ASTExtraPlayerState` | 普通玩家和人机玩家的 PlayerState |
 
 ### `GetPlayerStateByUID`
 
@@ -468,20 +469,20 @@ GetPlayerStateByUID(UID: number) -> PlayerState
 GetPlayerStateByPlayerController(PlayerController: ASTExtraPlayerController) -> PlayerState
 ```
 
-根据 PlayerController 获取 PlayerState
+根据普通玩家和人机玩家的 PlayerController 获取 PlayerState
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerController` | `ASTExtraPlayerController` | 玩家 Controller |
+| `PlayerController` | `ASTExtraPlayerController` | 普通玩家和人机玩家的 Controller |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `PlayerState` | 玩家 PlayerState |
+| `PlayerState` | 普通玩家和人机玩家的 PlayerState |
 
 ### `GetUIDByPlayerController`
 
@@ -682,20 +683,20 @@ RespawnAllPlayers()
 GetPlayerNum(IsIgnoreAI: boolean) -> number
 ```
 
-获取玩家数量
+获取普通玩家和人机玩家的数量
 生效范围：服务器&客户端
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `IsIgnoreAI` | `boolean` | 是否忽略 AI |
+| `IsIgnoreAI` | `boolean` | 是否忽略人机玩家 |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `number` | 玩家数量 |
+| `number` | 普通玩家和人机玩家数量 |
 
 ### `GetControllerByPawn`
 
@@ -703,14 +704,14 @@ GetPlayerNum(IsIgnoreAI: boolean) -> number
 GetControllerByPawn(PlayerPawn: APawn) -> AController
 ```
 
-获取角色 Controller，包括 AI
+获取普通玩家和人机玩家角色的 Controller，包括人机玩家的 AI
 生效范围：服务器
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `PlayerPawn` | `APawn` | - |
+| `PlayerPawn` | `APawn` | 普通玩家和人机玩家角色 |
 
 **Returns**
 
@@ -740,7 +741,7 @@ ApplyRadialDamageWhiteList(BaseDamage: number, MinimumDamage: number, Origin: Ve
 | `DamageTypeTags` | `FGameplayTag[]` | 造成伤害的自定义类型列表 |
 | `GivenActors` | `Actor[]` | 指定受伤害的 Actor 列表 |
 | `DamageCauser` | `Actor` | 造成伤害的人/物体 |
-| `InstigatedByController` | `Controller` | 煽动者的玩家控制器 |
+| `InstigatedByController` | `Controller` | 煽动者的控制器，可传入普通玩家和人机玩家的Controller |
 | `DamagePreventionChannel` | `ECollisionChannel` | 伤害可见性阻挡通道 |
 | `ItemID` | `number` | 造成伤害的物品 ID |
 
@@ -772,7 +773,7 @@ ApplyRadialDamage(BaseDamage: number, MinimumDamage: number, Origin: Vector, Dam
 | `DamageTypeTags` | `FGameplayTag[]` | 造成伤害的自定义类型列表 |
 | `IgnoreActors` | `Actor[]` | 伤害忽略 Actor 列表 |
 | `DamageCauser` | `Actor` | 造成伤害的人/物体 |
-| `InstigatedByController` | `Controller` | 煽动者的玩家控制器 |
+| `InstigatedByController` | `Controller` | 煽动者的控制器，可传入普通玩家和人机玩家的Controller |
 | `DamagePreventionChannel` | `ECollisionChannel` | 伤害可见性阻挡通道 |
 | `ItemID` | `number` | 造成伤害的物品 ID |
 
@@ -799,7 +800,7 @@ ApplyPointDamage(DamagedActor: Actor, BaseDamage: number, HitFromDirection: Vect
 | `BaseDamage` | `number` | 伤害值 |
 | `HitFromDirection` | `Vector` | 伤害来源方向（如子弹射击方向） |
 | `HitInfo` | `FHitResult` | 命中信息 |
-| `EventInstigator` | `Controller` | 事件煽动者的玩家控制器 |
+| `EventInstigator` | `Controller` | 事件煽动者的控制器，可传入普通玩家和人机玩家的Controller |
 | `DamageCauser` | `Actor` | 造成伤害的人/物体 |
 | `DamageTypeTags` | `FGameplayTag[]` | 造成伤害的自定义类型列表 |
 | `ItemID` | `number` | 造成伤害的物品 ID |
@@ -825,7 +826,7 @@ ApplyAvatarPositionDamage(DamagedActor: Actor, BaseDamage: number, EventInstigat
 |---|---|---|
 | `DamagedActor` | `Actor` | 伤害目标 |
 | `BaseDamage` | `number` | 伤害值 |
-| `EventInstigator` | `Controller` | 事件煽动者的玩家控制器 |
+| `EventInstigator` | `Controller` | 事件煽动者的控制器，可传入普通玩家和人机玩家的Controller |
 | `DamageCauser` | `Actor` | 造成伤害的人/物体 |
 | `AvatarDamagePosition` | `EAvatarDamagePosition` | 造成伤害的部位 |
 | `DamageTypeTags` | `FGameplayTag[]` | 造成伤害的自定义类型列表 |
@@ -851,7 +852,7 @@ ApplyDamage(DamagedActor: Actor, BaseDamage: number, EventInstigator: Controller
 |---|---|---|
 | `DamagedActor` | `Actor` | 伤害目标 |
 | `BaseDamage` | `number` | 伤害值 |
-| `EventInstigator` | `Controller` | 事件煽动者的玩家控制器 |
+| `EventInstigator` | `Controller` | 事件煽动者的控制器，可传入普通玩家和人机玩家的Controller |
 | `DamageCauser` | `Actor` | 造成伤害的人/物体 |
 | `DamageTypeTags` | `FGameplayTag[]` | 造成伤害的自定义类型列表 |
 
@@ -1285,7 +1286,7 @@ UploadOfficialModuleData(playerUid: string, moduleName: string, data: table)
 上传玩家维度的官方模块自定义数据
  moduleName = "national_arena"（全民赛场）:
    用于团竞类赛事结算数据上报。内核强制只允许 4 个字段，全部 number，不多不少。
-   调用后仅缓存，不立即发送。等 ugc_result 发送时自动取用并合并到 UGCPlayerBattleResult，取后即清。
+   调用后由平台在对局结算时自动上报，创作者无需关心发送时机。
    data 结构：
      {
        player_kill_num = 5,      -- number, 击杀数，只有团竞类才有
@@ -1295,26 +1296,10 @@ UploadOfficialModuleData(playerUid: string, moduleName: string, data: table)
      }
 
  moduleName = "camp"（营地）:
-   用于玩家档案、最近游玩、玩法详情等自定义数据展示。字段不强制限制，推荐以下结构。
-   缓冲队列 + 防抖，同一 UID 10 秒内多次上传直接覆盖（不 deep merge），不发送。
-   后台协议未定，实际发送逻辑暂留空。
-   data 推荐结构：
-     {
-       profile = {               -- 数据档案
-         history_play = "128",   -- 历史游玩次数
-         max_power = "98000",    -- 最高战力
-         realm = "化神",         -- 境界
-       },
-       recent = {                -- 最近游玩
-         rank = "钻石",          -- 段位
-         score = "2600",         -- 积分
-         power = "87000",        -- 当前战力
-       },
-       detail = {                -- 玩法详情
-         title = "宗门长老",     -- 称号
-         career = "剑修",        -- 职业
-       },
-     }
+   用于玩家档案、最近游玩、玩法详情等自定义数据展示。字段不限制，支持任意 table 结构。
+   调用后由平台在对局结算时自动上报，创作者无需关心发送时机。
+   同一 UID 多次调用直接覆盖，以最后一次上传的数据为准。
+   营地上报开关由后台控制：开关未开启时调用无效（不缓存、不报错），日志会提示上报未开启。
 生效范围：服务器
 
 **Parameters**
@@ -1884,8 +1869,8 @@ LoadStreamLevel(LevelName: string, bMakeVisibleAfterLoad: boolean, bShouldBlockO
 |---|---|---|
 | `LevelName` | `string` | 关卡名字 |
 | `bMakeVisibleAfterLoad` | `boolean` | 是否在加载完成后显示关卡 |
-| `bShouldBlockOnLoad` | `boolean` | 是否延迟加载 |
-| `LatentInfo` | `LatentInfo` | 延迟信息 |
+| `bShouldBlockOnLoad` | `boolean` | 是否同步阻塞加载，仅影响 DS 侧的加载方式，不影响回调是否触发：true=DS 同步阻塞加载（本帧内等关卡加载完成）；false=异步分帧加载。无论 true/false，LatentInfo 回调都在关卡加载完成后触发；传 false 时加载完成得更晚，回调也随之更晚。不阻塞本函数调用本身，也不影响客户端加载。 |
+| `LatentInfo` | `LatentInfo` | 加载完成回调，传入后关卡加载完成时会被自动调用。 |
 
 ### `UnloadStreamLevel`
 

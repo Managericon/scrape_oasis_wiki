@@ -250,6 +250,35 @@ AddAndEquipItemV2(Player: PlayerPawn | PlayerController @玩家角色或者玩�
 |---|---|
 | `EItemAddAndEquipResultV2` | 添加装备返回结果枚举 |
 
+### `AddAndEquipItemToSlotV2`
+
+```text
+AddAndEquipItemToSlotV2(Player: PlayerPawn | PlayerController @玩家角色或者玩家控制器, DefineID: ItemDefineID, ParentItem: ItemDefineID, SlotName: string) -> EItemAddAndEquipResultV2
+```
+
+添加并装备物品到指定槽位
+生效范围：服务器
+
+通过 ItemDefineID 添加物品到背包并装备到指定槽位。
+指定槽位支持背包槽位和物品槽位：ParentItem 为空 DefineID 时装备到背包槽位；ParentItem 有效时作为配件装备到该物品的槽位。
+如果目标槽位已有物品，会先卸下原物品再装备新物品。
+装备类型无法堆叠，因此无需指定添加数量。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Player` | `PlayerPawn \| PlayerController @玩家角色或者玩家控制器` | 玩家角色或者玩家控制器 |
+| `DefineID` | `ItemDefineID` | 物品 DefineID |
+| `ParentItem` | `ItemDefineID` | 父物品 DefineID。为空表示背包槽位；有效表示物品槽位所属的父物品 |
+| `SlotName` | `string` | 目标槽位名称 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EItemAddAndEquipResultV2` | 添加装备返回结果枚举 |
+
 ### `RemoveItemV2`
 
 ```text
@@ -1580,7 +1609,7 @@ GetEquipSlotEnable(Player: PlayerPawn | PlayerController @玩家角色或者玩�
 GetCustomUIWidget(Player: PlayerPawn | PlayerController @玩家角色或者玩家控制器, Type: ECustomUIType, DefineID: ItemDefineID) -> UserWidget
 ```
 
-获取指定类型的自定义控件（打开过背包才会添加自定义控件）
+获取指定类型的自定义控件（打开过背包才会添加自定义控件,废弃）
 生效范围：客户端
 注意，背包UI在物品变更后延时刷新，不要在添加物品后 立即获取格子自定义控件
 
@@ -1833,7 +1862,7 @@ GetBackpackPersistData(Player: PlayerPawn | PlayerController @玩家角色或者
 ### `GetBackpackUIComponentConfig`
 
 ```text
-GetBackpackUIComponentConfig(ConfigKey: EBackpackUIComponentConfigKey) -> table|nil
+GetBackpackUIComponentConfig(ConfigKey: EBackpackUIComponentConfigKey, ...: any) -> table|nil
 ```
 
 获取 BackpackUIComponent 上的配置属性
@@ -1847,6 +1876,7 @@ GetBackpackUIComponentConfig(ConfigKey: EBackpackUIComponentConfigKey) -> table|
 | Name | Type | Description |
 |---|---|---|
 | `ConfigKey` | `EBackpackUIComponentConfigKey` | 配置属性的枚举键值 |
+| `...` | `any` | 可变参数，读取BtnFuncList需要透传(DefineID, DataType) |
 
 **Returns**
 

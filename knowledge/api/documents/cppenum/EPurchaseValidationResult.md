@@ -20,4 +20,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `NoPrivilege` | `4` | 没有购买商品的绿洲特权 |
 | `InvalidCurrencyType` | `5` | ServerBuyProduct传入的商品为绿洲币商品 |
 | `Canceled` | `6` | 取消购买 |
+| `InvalidNum` | `7` | 购买数量错误 |
 | `Other` | `100` | 其他错误 |

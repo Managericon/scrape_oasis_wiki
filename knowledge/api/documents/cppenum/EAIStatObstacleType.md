@@ -25,3 +25,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `CABLEPLACE` | `9` | - |
 | `SHRINES` | `10` | - |
 | `CELLAR_BREAKABLE_DOOR` | `11` | - |
+| `HEAVY_WEAPON_BOX` | `12` | - |

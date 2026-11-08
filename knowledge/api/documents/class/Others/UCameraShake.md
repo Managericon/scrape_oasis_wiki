@@ -55,6 +55,7 @@ A CameraShake is an asset that defines how to shake the camera in
 | `CameraOwner` | `APlayerCameraManager *` | - |
 | `ShakeScale` | `float` | Overall intensity scale for this shake instance. |
 | `OscillatorTimeRemaining` | `float` | Time remaining for oscillation shakes. Less than 0.f means shake infinitely. |
+| `AnimInstances` | `TArray < UCameraAnimInst * >` | The playing instances of the CameraAnim-based shake, if any. |
 | `AttenuationFloatCurve` | `UCurveFloat *` | Source camera curve to add. Can be null. |
 
 ## Functions

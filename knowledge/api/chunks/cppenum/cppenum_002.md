@@ -6,6 +6,971 @@ category: "API Wiki/cppenum"
 kind: "api_chunk"
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEdGraphSchemaAction_K2Graph.json -->
+
+# EEdGraphSchemaAction_K2Graph
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Graph` | `0` | - |
+| `Subgraph` | `1` | - |
+| `Function` | `2` | - |
+| `Interface` | `3` | - |
+| `Macro` | `4` | - |
+| `MAX` | `5` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEditorArchiveDataType.json -->
+
+# EEditorArchiveDataType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EditorLoadArchiveData` | `0` | - |
+| `EditorUseBlueprintData` | `1` | - |
+| `EditorClearArchiveData` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEditorResToolRenameType.json -->
+
+# EEditorResToolRenameType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Prefix` | `0` | - |
+| `Suffix` | `1` | - |
+| `Replace` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEditorScriptingFilterType.json -->
+
+# EEditorScriptingFilterType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Include` | `0` | - |
+| `Exclude` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEditorScriptingStringMatchType.json -->
+
+# EEditorScriptingStringMatchType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Contains` | `0` | - |
+| `MatchesWildcard` | `1` | - |
+| `ExactMatch` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEditorToolColorChannel.json -->
+
+# EEditorToolColorChannel
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ETCC_R` | `0` | - |
+| `ETCC_G` | `1` | - |
+| `ETCC_B` | `2` | - |
+| `ETCC_A` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEffectAdjustType.json -->
+
+# EEffectAdjustType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EAT_MinShowDistanceAndLerp` | `0` | - |
+| `EAT_MinShowDistanceAndHide` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEffectModifierAutoReflectParamType.json -->
+
+# EEffectModifierAutoReflectParamType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Float` | `1` | - |
+| `Int32` | `2` | - |
+| `GameAttribute` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEffectModifierGenericParamType.json -->
+
+# EEffectModifierGenericParamType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Int32` | `1` | - |
+| `Float` | `2` | - |
+| `InstancedStruct` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEffectSpreadState.json -->
+
+# EEffectSpreadState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ESS_InitialTrace` | `0` | - |
+| `ESS_InitialProcess` | `1` | - |
+| `ESS_Spreading` | `2` | - |
+| `ESS_SpreadDone` | `3` | - |
+| `ESS_Ending` | `4` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EElecMusicState.json -->
+
+# EElecMusicState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `StartState` | `0` | - |
+| `StartToPlay` | `1` | - |
+| `Playing` | `2` | - |
+| `DropItemAdvanced` | `3` | - |
+| `DropItemOrdinary` | `4` | - |
+| `GameEnd` | `5` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EElevatorOp.json -->
+
+# EElevatorOp
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EElevator_None` | `0` | - |
+| `EElevator_Up` | `1` | - |
+| `EElevator_Down` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EElevatorOrderSortMode.json -->
+
+# EElevatorOrderSortMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EEOSM_Ascending` | `0` | - |
+| `EEOSM_Descending` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EElevatorStatus.json -->
+
+# EElevatorStatus
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EElevatorStatus_Wait` | `0` | - |
+| `EElevatorStatus_Up` | `1` | - |
+| `EElevatorStatus_Down` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmitterDynamicParameterValue.json -->
+
+# EEmitterDynamicParameterValue
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EDPV_UserSet` | `0` | - |
+| `EDPV_AutoSet` | `1` | - |
+| `EDPV_VelocityX` | `2` | - |
+| `EDPV_VelocityY` | `3` | - |
+| `EDPV_VelocityZ` | `4` | - |
+| `EDPV_VelocityMag` | `5` | - |
+| `EDPV_MAX` | `6` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmitterNormalsMode.json -->
+
+# EEmitterNormalsMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ENM_CameraFacing` | `0` | - |
+| `ENM_Spherical` | `1` | - |
+| `ENM_Cylindrical` | `2` | - |
+| `ENM_MAX` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmitterRenderMode.json -->
+
+# EEmitterRenderMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ERM_Normal` | `0` | - |
+| `ERM_Point` | `1` | - |
+| `ERM_Cross` | `2` | - |
+| `ERM_LightsOnly` | `3` | - |
+| `ERM_None` | `4` | - |
+| `ERM_MAX` | `5` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmitterRotationMode.json -->
+
+# EEmitterRotationMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `RotateAroundX` | `0` | - |
+| `RotateAroundY` | `1` | - |
+| `RotateAroundZ` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmitterSelfRotationMode.json -->
+
+# EEmitterSelfRotationMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SelfRotateAroundX` | `0` | - |
+| `SelfRotateAroundY` | `1` | - |
+| `SelfRotateAroundZ` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmitterType.json -->
+
+# EEmitterType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Gravity` | `0` | - |
+| `Radial` | `1` | - |
+| `Curve` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmoteAIEvent.json -->
+
+# EEmoteAIEvent
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Start` | `1` | - |
+| `Interrupt` | `2` | - |
+| `Finish` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmoteEndReason.json -->
+
+# EEmoteEndReason
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Finished` | `0` | - |
+| `PlayAnotherEmote` | `1` | - |
+| `SequenceNext` | `2` | - |
+| `Interrupted` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmoteMesh.json -->
+
+# EEmoteMesh
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Body` | `0` | - |
+| `Facial` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEmoteType.json -->
+
+# EEmoteType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `AnimationEmote` | `0` | - |
+| `SkillEmote` | `1` | - |
+| `PairEmote` | `2` | - |
+| `ActivityEmote` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEMPZoneGenerateType.json -->
+
+# EEMPZoneGenerateType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Ringtaw` | `1` | - |
+| `Ringtaw1` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEMPZoneState.json -->
+
+# EEMPZoneState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Warning` | `1` | - |
+| `Active` | `2` | - |
+| `IsEnd` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEndPlayReason.json -->
+
+# EEndPlayReason
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Destroyed` | `0` | - |
+| `LevelTransition` | `1` | - |
+| `EndPlayInEditor` | `2` | - |
+| `RemovedFromWorld` | `3` | - |
+| `Quit` | `4` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnemyType.json -->
+
+# EEnemyType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EPlayer` | `0` | - |
+| `EZombie` | `1` | - |
+| `EBuildings` | `2` | - |
+| `ETreasureBox` | `3` | - |
+| `EProjectile` | `4` | - |
+| `EAttackMeEnemy` | `5` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEntitlementCacheLevelRequest.json -->
+
+# EEntitlementCacheLevelRequest
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Memory` | `1` | - |
+| `Disk` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEntitlementCacheLevelRetrieved.json -->
+
+# EEntitlementCacheLevelRetrieved
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Memory` | `1` | - |
+| `Disk` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/eEntityMemberAnimationState.json -->
+
+# eEntityMemberAnimationState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Idle` | `1` | - |
+| `Run` | `2` | - |
+| `Walk` | `3` | - |
+| `AttackedIdle` | `4` | - |
+| `AttackedWalk` | `5` | - |
+| `AttackedRunning` | `6` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEntityMemberAnimSharingState.json -->
+
+# EEntityMemberAnimSharingState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Idle` | `0` | - |
+| `Run` | `1` | - |
+| `Walk` | `2` | - |
+| `Attack` | `3` | - |
+| `Hurt` | `4` | - |
+| `Dead` | `5` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/eEntityState.json -->
+
+# eEntityState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Idle` | `0` | - |
+| `Moving` | `1` | - |
+| `Attack` | `2` | - |
+| `DestinationUnreachable` | `3` | - |
+| `NearDeath` | `4` | - |
+| `AttackedByPlayer` | `5` | - |
+| `Die` | `6` | - |
+| `StartAttackAnim` | `7` | - |
+| `Born` | `8` | - |
+| `Climb` | `9` | - |
+| `Falling` | `10` | - |
+| `Skill` | `11` | - |
+| `Max` | `12` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/eEntityTpye.json -->
+
+# eEntityTpye
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Melee` | `0` | - |
+| `Rnage` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvDirection.json -->
+
+# EEnvDirection
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `TwoPoints` | `0` | - |
+| `Rotation` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvironmentType.json -->
+
+# EEnvironmentType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Rainy` | `1` | - |
+| `Snowy` | `2` | - |
+| `Blizzard` | `3` | - |
+| `SandStorm` | `4` | - |
+| `Max` | `5` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvOverlapShape.json -->
+
+# EEnvOverlapShape
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Box` | `0` | - |
+| `Sphere` | `1` | - |
+| `Capsule` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvQueryHightlightMode.json -->
+
+# EEnvQueryHightlightMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `All` | `0` | - |
+| `Best5Pct` | `1` | - |
+| `Best25Pct` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvQueryParam.json -->
+
+# EEnvQueryParam
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Float` | `0` | - |
+| `Int` | `1` | - |
+| `Bool` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvQueryRunMode.json -->
+
+# EEnvQueryRunMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SingleResult` | `0` | - |
+| `RandomBest5Pct` | `1` | - |
+| `RandomBest25Pct` | `2` | - |
+| `AllMatching` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvQueryStatus.json -->
+
+# EEnvQueryStatus
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Processing` | `0` | - |
+| `Success` | `1` | - |
+| `Failed` | `2` | - |
+| `Aborted` | `3` | - |
+| `OwnerLost` | `4` | - |
+| `MissingParam` | `5` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvQueryTestClamping.json -->
+
+# EEnvQueryTestClamping
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `SpecifiedValue` | `1` | - |
+| `FilterThreshold` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvQueryTrace.json -->
+
+# EEnvQueryTrace
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Navigation` | `1` | - |
+| `Geometry` | `2` | - |
+| `NavigationOverLedges` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestCost.json -->
+
+# EEnvTestCost
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Low` | `0` | - |
+| `Medium` | `1` | - |
+| `High` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestDistance.json -->
+
+# EEnvTestDistance
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Distance3D` | `0` | - |
+| `Distance2D` | `1` | - |
+| `DistanceZ` | `2` | - |
+| `DistanceAbsoluteZ` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestDot.json -->
+
+# EEnvTestDot
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Dot3D` | `0` | - |
+| `Dot2D` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestFilterOperator.json -->
+
+# EEnvTestFilterOperator
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `AllPass` | `0` | - |
+| `AnyPass` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestFilterType.json -->
+
+# EEnvTestFilterType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Minimum` | `0` | - |
+| `Maximum` | `1` | - |
+| `Range` | `2` | - |
+| `Match` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestPathfinding.json -->
+
+# EEnvTestPathfinding
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PathExist` | `0` | - |
+| `PathCost` | `1` | - |
+| `PathLength` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestPurpose.json -->
+
+# EEnvTestPurpose
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Filter` | `0` | - |
+| `Score` | `1` | - |
+| `FilterAndScore` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestScoreEquation.json -->
+
+# EEnvTestScoreEquation
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Linear` | `0` | - |
+| `Square` | `1` | - |
+| `InverseLinear` | `2` | - |
+| `SquareRoot` | `3` | - |
+| `Constant` | `4` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestScoreOperator.json -->
+
+# EEnvTestScoreOperator
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `AverageScore` | `0` | - |
+| `MinScore` | `1` | - |
+| `MaxScore` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTestWeight.json -->
+
+# EEnvTestWeight
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `Square` | `1` | - |
+| `Inverse` | `2` | - |
+| `Unused` | `3` | - |
+| `Constant` | `4` | - |
+| `Skip` | `5` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEnvTraceShape.json -->
+
+# EEnvTraceShape
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Line` | `0` | - |
+| `Box` | `1` | - |
+| `Sphere` | `2` | - |
+| `Capsule` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEQCompareOp.json -->
+
+# EEQCompareOp
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `GreateOrEqual` | `0` | - |
+| `Less` | `1` | - |
+| `NUM` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEQSNormalizationType.json -->
+
+# EEQSNormalizationType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Absolute` | `0` | - |
+| `RelativeToScores` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscalatorApplySpeedType.json -->
+
+# EEscalatorApplySpeedType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Absolute` | `1` | - |
+| `Relative` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeActorType.json -->
+
+# EEscapeActorType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Normal` | `0` | - |
+| `Helicopter` | `1` | - |
+| `Minecart` | `2` | - |
+| `HardPoint` | `3` | - |
+| `Backup` | `4` | - |
+| `WorldBoss` | `5` | - |
+| `MouseBall` | `6` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeAttachmentSlotType.json -->
+
+# EEscapeAttachmentSlotType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `GunPoint` | `1` | - |
+| `Grip` | `2` | - |
+| `Magazine` | `3` | - |
+| `Gunstock` | `4` | - |
+| `OpticalSight` | `5` | - |
+| `AngledOpticalSight` | `6` | - |
+| `ArmorSlot1` | `7` | - |
+| `ArmorSlot2` | `8` | - |
+| `ArmorSlot3` | `9` | - |
+| `ArmorSlot4` | `10` | - |
+| `ArmorSlot5` | `11` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeBPTableType.json -->
+
+# EEscapeBPTableType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Avatar` | `0` | - |
+| `Weapon` | `1` | - |
+| `Consumable` | `2` | - |
+| `CombineModel` | `3` | - |
+| `SeasonMission` | `4` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeEquipReservedReason.json -->
 
 # EEscapeEquipReservedReason
@@ -76,6 +1041,24 @@ kind: "api_chunk"
 | `MutationCore` | `13` | - |
 | `GuineaPig` | `14` | - |
 | `WindChimes` | `15` | - |
+| `Assembly` | `16` | - |
+| `CatTree` | `17` | - |
+| `Hammock` | `18` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EEscapeGalleryPetType.json -->
+
+# EEscapeGalleryPetType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `EGGameGalleryPetType_Cat` | `5` | - |
+| `EGGameGalleryPetType_GuineaPig` | `14` | - |
+| `EGGameGalleryPetType_MAXNUM` | `15` | - |
 
 
 ---
@@ -726,6 +1709,10 @@ kind: "api_chunk"
 | `FastDraw_KeepingAimOff` | `4` | - |
 | `FastDraw_KeepingMoveBS` | `5` | - |
 | `FastDraw_Obstructed` | `6` | - |
+| `FastDraw_SprintSwitchIn` | `7` | - |
+| `FastDraw_SprintSwitchOut_LeftWeapon` | `8` | - |
+| `FastDraw_SprintSwitchOut_RightWeapon` | `9` | - |
+| `FastDraw_SprintSwitchOut_All` | `10` | - |
 
 
 ---
@@ -795,6 +1782,38 @@ kind: "api_chunk"
 | `OwnerDied` | `0` | - |
 | `OwnerDestroyed` | `1` | - |
 | `None` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EExtraItemAssignMode.json -->
+
+# EExtraItemAssignMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PureRandom` | `0` | - |
+| `RankRolling` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EExtraMontageType.json -->
+
+# EExtraMontageType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `VehicleMontageShow_Holographic` | `16` | - |
+| `VehicleMontageShow_HorseJump` | `1` | - |
+| `VehicleMontageShow_HorseFootprints` | `2` | - |
+| `VehicleMontageShow_HorseRechargeEnergy` | `3` | - |
+| `VehicleMontageShow_HorseSwim` | `4` | - |
+| `VehicleMontageShow_HorseIdleShow` | `5` | - |
 
 
 ---
@@ -3069,6 +4088,35 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EFSOCOccluderDrawContent.json -->
+
+# EFSOCOccluderDrawContent
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SolidAndWireframe` | `0` | - |
+| `SolidOnly` | `1` | - |
+| `WireframeOnly` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EFSOCVisualizationLitMode.json -->
+
+# EFSOCVisualizationLitMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Unlit` | `0` | - |
+| `Lit` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EFullyLoadPackageType.json -->
 
 # EFullyLoadPackageType
@@ -3716,7 +4764,9 @@ kind: "api_chunk"
 | `EGATD_OCT_ChangeSuit` | `3` | - |
 | `EGATD_OCT_Clear` | `4` | - |
 | `EGATD_OCT_Clint_AsyncPuton` | `5` | - |
-| `EGATD_OCT_Max` | `6` | - |
+| `EGATD_OCT_NoDS_AsyncPuton` | `6` | - |
+| `EGATD_OCT_NoDS_AsyncClear` | `7` | - |
+| `EGATD_OCT_MAX` | `8` | - |
 
 
 ---
@@ -4341,6 +5391,7 @@ kind: "api_chunk"
 | `EGDMT_PlayerRespawn` | `15` | - |
 | `EGDMT_GameModeStateManager` | `16` | - |
 | `EGDMT_LevelManager` | `17` | - |
+| `EGDMT_PlayerDamageStats` | `18` | - |
 
 
 ---
@@ -5114,6 +6165,21 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EHardpointStatus.json -->
+
+# EHardpointStatus
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `NEUTRAL` | `0` | - |
+| `OCCUPIED` | `1` | - |
+| `CONTENDING` | `2` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EHardwareClass.json -->
 
 # EHardwareClass
@@ -5605,6 +6671,20 @@ kind: "api_chunk"
 | `None` | `0` | - |
 | `MeshSection` | `1` | - |
 | `Instancing` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EHLODPropertyFilter.json -->
+
+# EHLODPropertyFilter
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Grid` | `0` | - |
+| `Cluster` | `1` | - |
 
 
 ---
@@ -6151,6 +7231,114 @@ kind: "api_chunk"
 |---|---|---|
 | `Normal` | `0` | - |
 | `Soar` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EHoudiniHandleType.json -->
+
+# EHoudiniHandleType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Xform` | `0` | - |
+| `Bounder` | `1` | - |
+| `Unsupported` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EHoudiniRuntimeSettingsAxisImport.json -->
+
+# EHoudiniRuntimeSettingsAxisImport
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `HRSAI_Unreal` | `0` | - |
+| `HRSAI_Houdini` | `1` | - |
+| `HRSAI_MAX` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EHoudiniRuntimeSettingsRecomputeFlag.json -->
+
+# EHoudiniRuntimeSettingsRecomputeFlag
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `HRSRF_Always` | `0` | - |
+| `HRSRF_OnlyIfMissing` | `1` | - |
+| `HRSRF_Nothing` | `2` | - |
+| `HRSRF_MAX` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EHoudiniRuntimeSettingsSessionType.json -->
+
+# EHoudiniRuntimeSettingsSessionType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `HRSST_InProcess` | `0` | - |
+| `HRSST_Socket` | `1` | - |
+| `HRSST_NamedPipe` | `2` | - |
+| `HRSST_MAX` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EHoudiniToolSelectionType.json -->
+
+# EHoudiniToolSelectionType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `HTOOL_SELECTION_ALL` | `0` | - |
+| `HTOOL_SELECTION_WORLD_ONLY` | `1` | - |
+| `HTOOL_SELECTION_CB_ONLY` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EHoudiniToolType.json -->
+
+# EHoudiniToolType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `HTOOLTYPE_GENERATOR` | `0` | - |
+| `HTOOLTYPE_OPERATOR_SINGLE` | `1` | - |
+| `HTOOLTYPE_OPERATOR_MULTI` | `2` | - |
+| `HTOOLTYPE_OPERATOR_BATCH` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EHoudiniVertexAttributeDataType.json -->
+
+# EHoudiniVertexAttributeDataType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `VADT_Float` | `0` | - |
+| `VADT_Int32` | `1` | - |
+| `VADT_Bool` | `2` | - |
 
 
 ---
@@ -6740,6 +7928,9 @@ kind: "api_chunk"
 | `InputAction_PeekLeft` | `5` | - |
 | `InputAction_PeekRight` | `6` | - |
 | `InputAction_Scope` | `7` | - |
+| `InputAction_MainShootWeapon1` | `8` | - |
+| `InputAction_MainShootWeapon2` | `9` | - |
+| `InputAction_SubShootWeapon` | `10` | - |
 
 
 ---
@@ -7084,6 +8275,9 @@ kind: "api_chunk"
 | `IOSMetalSLStandard_1_2` | `2` | - |
 | `IOSMetalSLStandard_2_0` | `3` | - |
 | `IOSMetalSLStandard_2_1` | `4` | - |
+| `IOSMetalSLStandard_2_2` | `5` | - |
+| `IOSMetalSLStandard_2_3` | `6` | - |
+| `IOSMetalSLStandard_2_4` | `7` | - |
 
 
 ---
@@ -7103,6 +8297,9 @@ kind: "api_chunk"
 | `IOS_10` | `10` | - |
 | `IOS_11` | `11` | - |
 | `IOS_12` | `12` | - |
+| `IOS_13` | `13` | - |
+| `IOS_14` | `14` | - |
+| `IOS_15` | `15` | - |
 
 
 ---
@@ -7146,6 +8343,20 @@ kind: "api_chunk"
 |---|---|---|
 | `WholeItem` | `0` | - |
 | `DragPoint` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EISLDragVisualSizeMode.json -->
+
+# EISLDragVisualSizeMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `DesiredSize` | `0` | - |
+| `MatchSourceRow` | `1` | - |
 
 
 ---
@@ -7412,6 +8623,20 @@ kind: "api_chunk"
 |---|---|---|
 | `Generate` | `0` | - |
 | `Circulation` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EItemSegmentType.json -->
+
+# EItemSegmentType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Rail` | `0` | - |
+| `Light` | `1` | - |
 
 
 ---
@@ -8179,6 +9404,20 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELaunchMoveDirSource.json -->
+
+# ELaunchMoveDirSource
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LaunchMoveDir_Blackboard` | `0` | - |
+| `LaunchMoveDir_Crosshair` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELavaType.json -->
 
 # ELavaType
@@ -8362,40 +9601,6 @@ kind: "api_chunk"
 | Name | Type/Value | Description |
 |---|---|---|
 | `ELevelObjectSets_Level` | `0` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELevelPartitionGeneratedAssetKind.json -->
-
-# ELevelPartitionGeneratedAssetKind
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PrimaryLevel` | `0` | - |
-| `ParentLevel` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELevelPartitionRuleKind.json -->
-
-# ELevelPartitionRuleKind
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Grid` | `0` | - |
-| `HLOD` | `1` | - |
-| `BuildingInterior` | `2` | - |
-| `GamePlayObject` | `3` | - |
-| `NatureObjectSize` | `4` | - |
-| `Vegetation` | `5` | - |
-| `Vision` | `6` | - |
-| `Diagnostics` | `7` | - |
 
 
 ---
@@ -9028,6 +10233,21 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELobbyDuoStaticEmoteType.json -->
+
+# ELobbyDuoStaticEmoteType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `CommonShow` | `0` | - |
+| `InvitationShow` | `1` | - |
+| `IdleShow` | `2` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELobbyGameType.json -->
 
 # ELobbyGameType
@@ -9251,6 +10471,22 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELobbyTargetGestureType.json -->
+
+# ELobbyTargetGestureType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `DoubleTap` | `1` | - |
+| `PinchOut` | `2` | - |
+| `PinchIn` | `3` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELobbyUseSWPState.json -->
 
 # ELobbyUseSWPState
@@ -9409,6 +10645,20 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELockActivateMode.json -->
+
+# ELockActivateMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `AutoActivate` | `0` | - |
+| `ManualActivate` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELockedVehicleState.json -->
 
 # ELockedVehicleState
@@ -9421,6 +10671,54 @@ kind: "api_chunk"
 | `EUnLockedVehicle` | `1` | - |
 | `ElockedVehicleOnlyOwnerDrive` | `2` | - |
 | `ELockedVehicleStrangerOnlyPassenger` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELockFilterAngleType.json -->
+
+# ELockFilterAngleType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Less` | `0` | - |
+| `Greater` | `1` | - |
+| `Equal` | `2` | - |
+| `LessEqual` | `3` | - |
+| `GreaterEqual` | `4` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELockFilterType.json -->
+
+# ELockFilterType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Visibility` | `0` | - |
+| `Angle` | `1` | - |
+| `Class` | `2` | - |
+| `Camp` | `3` | - |
+| `Custom` | `4` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELockMode.json -->
+
+# ELockMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Exclusive` | `0` | - |
+| `Shared` | `1` | - |
 
 
 ---
@@ -9449,6 +10747,55 @@ kind: "api_chunk"
 |---|---|---|
 | `ELPPT_FPP` | `0` | - |
 | `ELPPT_TPP` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELockSelector.json -->
+
+# ELockSelector
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Sphere` | `0` | - |
+| `Custom` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELockSorterType.json -->
+
+# ELockSorterType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Distance` | `0` | - |
+| `Angle` | `1` | - |
+| `Custom` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELockTakeOutWeaponPriorityType.json -->
+
+# ELockTakeOutWeaponPriorityType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LockTakeOutWeaponPriorityType_Lowest` | `0` | - |
+| `LockTakeOutWeaponPriorityType_1` | `1` | - |
+| `LockTakeOutWeaponPriorityType_2` | `2` | - |
+| `LockTakeOutWeaponPriorityType_3` | `3` | - |
+| `LockTakeOutWeaponPriorityType_4` | `4` | - |
+| `LockTakeOutWeaponPriorityType_5` | `5` | - |
+| `LockTakeOutWeaponPriorityType_6` | `6` | - |
+| `LockTakeOutWeaponPriorityType_Highest` | `7` | - |
 
 
 ---
@@ -9825,6 +11172,122 @@ kind: "api_chunk"
 | `NoGC` | `0` | - |
 | `FreeUnusedAndCache` | `1` | - |
 | `PendingCrash` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELPRGeneratedAssetKind.json -->
+
+# ELPRGeneratedAssetKind
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PartitionedLevel` | `0` | - |
+| `ParentLevel` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELPRIncrementalAction.json -->
+
+# ELPRIncrementalAction
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `None` | `0` | - |
+| `RuleSkipped` | `1` | - |
+| `Reused` | `2` | - |
+| `Created` | `3` | - |
+| `Rebuilt` | `4` | - |
+| `HLODBuilt` | `5` | - |
+| `HLODSkipped` | `6` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELPRKind.json -->
+
+# ELPRKind
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Grid` | `0` | - |
+| `HLOD` | `1` | - |
+| `BuildingInterior` | `2` | - |
+| `GamePlayObject` | `3` | - |
+| `NatureObjectSize` | `4` | - |
+| `Vegetation` | `5` | - |
+| `Vision` | `6` | - |
+| `Diagnostics` | `7` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELPRSnapshotChangeType.json -->
+
+# ELPRSnapshotChangeType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Added` | `0` | - |
+| `Removed` | `1` | - |
+| `Changed` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELPRSnapshotKind.json -->
+
+# ELPRSnapshotKind
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Reorganization` | `1` | - |
+| `HLOD` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELPRSnapshotPass.json -->
+
+# ELPRSnapshotPass
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `RuleConfig` | `0` | - |
+| `Input` | `1` | - |
+| `Output` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ELPRSnapshotScope.json -->
+
+# ELPRSnapshotScope
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SourceObject` | `0` | - |
+| `DependencyAsset` | `1` | - |
+| `Config` | `2` | - |
+| `HLODEnvironment` | `3` | - |
+| `HLODConfig` | `4` | - |
+| `ReorganizationOutput` | `5` | - |
+| `HLODOutput` | `6` | - |
 
 
 ---
@@ -10507,6 +11970,32 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EMaterialCookShaderPlatform.json -->
+
+# EMaterialCookShaderPlatform
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `GLSL_ES2_Android` | `0` | - |
+| `GLSL_ES3_1_Android` | `1` | - |
+| `Vulkan_ES3_1_Android` | `2` | - |
+| `Metal` | `3` | - |
+| `Metal_MRT` | `4` | - |
+| `PCD3D_ES3_1` | `5` | - |
+| `PCD3D_SM5` | `6` | - |
+| `Vulkan_PC_ES3_1` | `7` | - |
+| `Vulkan_SM5` | `8` | - |
+| `Metal_SM5` | `9` | - |
+| `Metal_MACES3_1` | `10` | - |
+| `Switch` | `11` | - |
+| `GLSL_ES3_1_OpenHarmony` | `12` | - |
+| `Num` | `13` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EMaterialDecalResponse.json -->
 
 # EMaterialDecalResponse
@@ -10645,6 +12134,20 @@ kind: "api_chunk"
 |---|---|---|
 | `MaterialMergeType_Default` | `0` | - |
 | `MaterialMergeType_Simplygon` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EMaterialParamValueType.json -->
+
+# EMaterialParamValueType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Scalar` | `0` | - |
+| `Color` | `1` | - |
 
 
 ---
@@ -11017,6 +12520,7 @@ kind: "api_chunk"
 | `NotSupported` | `2` | - |
 | `InternalError` | `3` | - |
 | `Unauthorized` | `4` | - |
+| `Busy` | `5` | - |
 
 
 ---
@@ -11323,6 +12827,8 @@ kind: "api_chunk"
 | `CanBreakMontage` | `5` | - |
 | `ChargeJumpEnable` | `6` | - |
 | `OptionalDamageFrame` | `7` | - |
+| `ComboPreInputEnable` | `8` | - |
+| `ComboPreInputDisable` | `9` | - |
 
 
 ---
@@ -13197,6 +14703,7 @@ kind: "api_chunk"
 |---|---|---|
 | `Local` | `0` | - |
 | `Root` | `1` | - |
+| `Unused` | `2` | - |
 
 
 ---
@@ -13590,6 +15097,23 @@ kind: "api_chunk"
 | `Event_UpdateOutScreen` | `15` | - |
 | `Event_CrossDistanceThreshold` | `16` | - |
 | `Event_Max` | `17` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ENatureObjectSizeBucket.json -->
+
+# ENatureObjectSizeBucket
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Small` | `0` | - |
+| `Medium` | `1` | - |
+| `Large` | `2` | - |
+| `Huge` | `3` | - |
+| `Giant` | `4` | - |
 
 
 ---
@@ -14355,6 +15879,31 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ENormalBPTableType.json -->
+
+# ENormalBPTableType
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Weapon` | `0` | - |
+| `Avatar` | `1` | - |
+| `WeaponUpgrade` | `2` | - |
+| `Consumable` | `3` | - |
+| `SeasonMission` | `4` | - |
+| `Emote` | `5` | - |
+| `Decal` | `6` | - |
+| `BuildingActor` | `7` | - |
+| `VehicleAvatar` | `8` | - |
+| `FailEffectPackage` | `9` | - |
+| `CombineModel` | `10` | - |
+| `LobbyPet` | `11` | - |
+| `SideExpression` | `12` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/ENormalMode.json -->
 
 # ENormalMode
@@ -14457,9 +16006,12 @@ kind: "api_chunk"
 |---|---|---|
 | `Thinking` | `0` | - |
 | `FinalResult` | `1` | - |
-| `System` | `2` | - |
-| `Error` | `3` | - |
-| `Unknown` | `4` | - |
+| `StreamDeltaText` | `2` | - |
+| `StreamDeltaReasoning` | `3` | - |
+| `System` | `4` | - |
+| `Error` | `5` | - |
+| `Question` | `6` | - |
+| `Unknown` | `7` | - |
 
 
 ---
@@ -16684,6 +18236,81 @@ kind: "api_chunk"
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPatternCurveHitResult.json -->
+
+# EPatternCurveHitResult
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `NotOnCurve` | `0` | - |
+| `OnHiddenPart` | `1` | - |
+| `OnDrawnPart` | `2` | - |
+| `BeyondHead` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPatternCurveRunState.json -->
+
+# EPatternCurveRunState
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Hidden` | `0` | - |
+| `Running` | `1` | - |
+| `Aborted` | `2` | - |
+| `Finished` | `3` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPatternFadeStrategy.json -->
+
+# EPatternFadeStrategy
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `DirectHide` | `0` | - |
+| `FadeParam` | `1` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPatternProgressMode.json -->
+
+# EPatternProgressMode
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `StaticMeshMaterial` | `0` | - |
+| `SplineMesh` | `1` | - |
+| `Particle` | `2` | - |
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPatternProgressSource.json -->
+
+# EPatternProgressSource
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `RiderFollow` | `0` | - |
+| `LocalTime` | `1` | - |
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPawnActionAbortState.json -->
 
 # EPawnActionAbortState
@@ -17881,1403 +19508,4 @@ kind: "api_chunk"
 | `Vector2AndTwoValues` | `1` | - |
 | `TwoVector2` | `2` | - |
 | `Vector3AndValue` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGMetadataMathsOperation.json -->
-
-# EPCGMetadataMathsOperation
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `UnaryOp` | `-1` | - |
-| `Sign` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Frac` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Truncate` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Round` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Sqrt` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Abs` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Floor` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Ceil` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `OneMinus` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `BinaryOp` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Add` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Subtract` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Multiply` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Divide` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Max` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Min` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Pow` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `ClampMin` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `ClampMax` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Modulo` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Set` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `TernaryOp` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Clamp` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Lerp` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGMetadataOp.json -->
-
-# EPCGMetadataOp
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Min` | `0` | - |
-| `Max` | `1` | - |
-| `Sub` | `2` | - |
-| `Add` | `3` | - |
-| `Mul` | `4` | - |
-| `Div` | `5` | - |
-| `SourceValue` | `6` | - |
-| `TargetValue` | `7` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGMetadataRotatorOperation.json -->
-
-# EPCGMetadataRotatorOperation
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `RotatorOp` | `0` | - |
-| `Combine` | `1` | - |
-| `Invert` | `2` | - |
-| `Lerp` | `3` | - |
-| `Normalize` | `4` | - |
-| `TransformOp` | `100` | - |
-| `TransformRotation` | `101` | - |
-| `InverseTransformRotation` | `102` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGMetadataSettingsBaseMode.json -->
-
-# EPCGMetadataSettingsBaseMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Inferred` | `0` | - |
-| `NoBroadcast` | `1` | - |
-| `Broadcast` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGMetadataSettingsBaseTypes.json -->
-
-# EPCGMetadataSettingsBaseTypes
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `AutoUpcastTypes` | `0` | - |
-| `StrictTypes` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGMetadataStringOperation.json -->
-
-# EPCGMetadataStringOperation
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Append` | `0` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGMetadataTransformOperation.json -->
-
-# EPCGMetadataTransformOperation
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Compose` | `0` | - |
-| `Invert` | `1` | - |
-| `Lerp` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGMetadataTrigOperation.json -->
-
-# EPCGMetadataTrigOperation
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Acos` | `0` | - |
-| `Asin` | `1` | - |
-| `Atan` | `2` | - |
-| `Atan2` | `3` | - |
-| `Cos` | `4` | - |
-| `Sin` | `5` | - |
-| `Tan` | `6` | - |
-| `DegToRad` | `7` | - |
-| `RadToDeg` | `8` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGMetadataTypes.json -->
-
-# EPCGMetadataTypes
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Float` | `0` | - |
-| `Double` | `1` | - |
-| `Integer32` | `2` | - |
-| `Integer64` | `3` | - |
-| `Vector2` | `4` | - |
-| `Vector` | `5` | - |
-| `Vector4` | `6` | - |
-| `Quaternion` | `7` | - |
-| `Transform` | `8` | - |
-| `String` | `9` | - |
-| `Boolean` | `10` | - |
-| `Rotator` | `11` | - |
-| `Name` | `12` | - |
-| `SoftObjectPath` | `13` | - |
-| `SoftClassPath` | `14` | - |
-| `Count` | `15` | - |
-| `Unknown` | `255` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGMetadataTypesConstantStructStringMode.json -->
-
-# EPCGMetadataTypesConstantStructStringMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `String` | `0` | - |
-| `SoftObjectPath` | `1` | - |
-| `SoftClassPath` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGMetadataVectorOperation.json -->
-
-# EPCGMetadataVectorOperation
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `VectorOp` | `0` | - |
-| `Cross` | `1` | - |
-| `Dot` | `2` | - |
-| `Distance` | `3` | - |
-| `Normalize` | `4` | - |
-| `Length` | `5` | - |
-| `RotateAroundAxis` | `6` | - |
-| `TransformOp` | `100` | - |
-| `TransformDirection` | `101` | - |
-| `TransformLocation` | `102` | - |
-| `InverseTransformDirection` | `103` | - |
-| `InverseTransformLocation` | `104` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGNodeTitleType.json -->
-
-# EPCGNodeTitleType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `FullTitle` | `0` | - |
-| `ListView` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGParamsPanelMode.json -->
-
-# EPCGParamsPanelMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `BPParams` | `0` | - |
-| `UserWidget` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGPinStatus.json -->
-
-# EPCGPinStatus
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Normal` | `0` | - |
-| `Required` | `1` | - |
-| `Advanced` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGPinUsage.json -->
-
-# EPCGPinUsage
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Normal` | `0` | - |
-| `Loop` | `1` | - |
-| `Feedback` | `2` | - |
-| `DependencyOnly` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGPointExtentsModifierMode.json -->
-
-# EPCGPointExtentsModifierMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Set` | `0` | - |
-| `Minimum` | `1` | - |
-| `Maximum` | `2` | - |
-| `Add` | `3` | - |
-| `Multiply` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGPointNeighborhoodDensityMode.json -->
-
-# EPCGPointNeighborhoodDensityMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `SetNormalizedDistanceToDensity` | `1` | - |
-| `SetAverageDensity` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGPointPosition.json -->
-
-# EPCGPointPosition
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `CellCenter` | `0` | - |
-| `CellCorners` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGPointProperties.json -->
-
-# EPCGPointProperties
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Density` | `0` | - |
-| `BoundsMin` | `1` | - |
-| `BoundsMax` | `2` | - |
-| `Extents` | `3` | - |
-| `Color` | `4` | - |
-| `Position` | `5` | - |
-| `Rotation` | `6` | - |
-| `Scale` | `7` | - |
-| `Transform` | `8` | - |
-| `Steepness` | `9` | - |
-| `LocalCenter` | `10` | - |
-| `Seed` | `11` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGPrintVerbosity.json -->
-
-# EPCGPrintVerbosity
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Log` | `-1` | - |
-| `Warning` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `Error` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGProjectionColorBlendMode.json -->
-
-# EPCGProjectionColorBlendMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SourceValue` | `0` | - |
-| `TargetValue` | `1` | - |
-| `Add` | `2` | - |
-| `Subtract` | `3` | - |
-| `Multiply` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGProjectionTagMergeMode.json -->
-
-# EPCGProjectionTagMergeMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Source` | `0` | - |
-| `Target` | `1` | - |
-| `Both` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGProxyInterfaceMode.json -->
-
-# EPCGProxyInterfaceMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ByNativeElement` | `-1` | - |
-| `ByBlueprintElement` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-| `BySettings` | `-1` | -- the value appears as -1 more due to UHT parse error rather than it actually be -1.  -- the value appears as -1 more due to UHT parse error rather than it actually be -1. |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGRegionBrushMode.json -->
-
-# EPCGRegionBrushMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Paint` | `0` | - |
-| `Erase` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGRegionBrushVisMode.json -->
-
-# EPCGRegionBrushVisMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `PDIOnly` | `1` | - |
-| `LandscapeOverlay` | `2` | - |
-| `Decal` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGReverseSplineOperation.json -->
-
-# EPCGReverseSplineOperation
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Reverse` | `0` | - |
-| `ForceClockwise` | `1` | - |
-| `ForceCounterClockwise` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSelfPruningType.json -->
-
-# EPCGSelfPruningType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `LargeToSmall` | `0` | - |
-| `SmallToLarge` | `1` | - |
-| `AllEqual` | `2` | - |
-| `None` | `3` | - |
-| `RemoveDuplicates` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSettingsExecutionMode.json -->
-
-# EPCGSettingsExecutionMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Enabled` | `0` | - |
-| `Debug` | `1` | - |
-| `Isolated` | `2` | - |
-| `Disabled` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSettingsType.json -->
-
-# EPCGSettingsType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `InputOutput` | `0` | - |
-| `Spatial` | `1` | - |
-| `Density` | `2` | - |
-| `Blueprint` | `3` | - |
-| `Metadata` | `4` | - |
-| `Filter` | `5` | - |
-| `Sampler` | `6` | - |
-| `Spawner` | `7` | - |
-| `Subgraph` | `8` | - |
-| `Debug` | `9` | - |
-| `Generic` | `10` | - |
-| `Param` | `11` | - |
-| `HierarchicalGeneration` | `12` | - |
-| `ControlFlow` | `13` | - |
-| `PointOps` | `14` | - |
-| `GraphParameters` | `15` | - |
-| `Reroute` | `16` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSocketSource.json -->
-
-# EPCGSocketSource
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `FromInputActor` | `0` | - |
-| `FromStaticMeshPath` | `1` | - |
-| `FromMeshAttribute` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSortMethod.json -->
-
-# EPCGSortMethod
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Ascending` | `0` | - |
-| `Descending` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSpawnActorGenerationTrigger.json -->
-
-# EPCGSpawnActorGenerationTrigger
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Default` | `0` | - |
-| `ForceGenerate` | `1` | - |
-| `DoNotGenerateInEditor` | `2` | - |
-| `DoNotGenerate` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSpawnActorOption.json -->
-
-# EPCGSpawnActorOption
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `CollapseActors` | `0` | - |
-| `MergePCGOnly` | `1` | - |
-| `NoMerging` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSphericalBrushActorSource.json -->
-
-# EPCGSphericalBrushActorSource
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `All` | `0` | - |
-| `Selected` | `1` | - |
-| `Manual` | `2` | - |
-| `ActorClass` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSphericalBrushMode.json -->
-
-# EPCGSphericalBrushMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Paint` | `0` | - |
-| `Erase` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSplineMeshForwardAxis.json -->
-
-# EPCGSplineMeshForwardAxis
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `X` | `0` | - |
-| `Y` | `1` | - |
-| `Z` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSplineMetadataType.json -->
-
-# EPCGSplineMetadataType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Int` | `0` | - |
-| `Float` | `1` | - |
-| `Vector` | `2` | - |
-| `Unknown` | `3` | - |
-| `Guid` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSplineSamplingDimension.json -->
-
-# EPCGSplineSamplingDimension
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `OnSpline` | `0` | - |
-| `OnHorizontal` | `1` | - |
-| `OnVertical` | `2` | - |
-| `OnVolume` | `3` | - |
-| `OnInterior` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSplineSamplingFill.json -->
-
-# EPCGSplineSamplingFill
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Fill` | `0` | - |
-| `EdgesOnly` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSplineSamplingInteriorOrientation.json -->
-
-# EPCGSplineSamplingInteriorOrientation
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Uniform` | `0` | - |
-| `FollowCurvature` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSplineSamplingMode.json -->
-
-# EPCGSplineSamplingMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Subdivision` | `0` | - |
-| `Distance` | `1` | - |
-| `NumberOfSamples` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSplineSamplingSeedingMode.json -->
-
-# EPCGSplineSamplingSeedingMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SeedFromPosition` | `0` | - |
-| `SeedFromIndex` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGSplitAxis.json -->
-
-# EPCGSplitAxis
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `X` | `0` | - |
-| `Y` | `1` | - |
-| `Z` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGTagFilterOperation.json -->
-
-# EPCGTagFilterOperation
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `KeepOnlySelectedTags` | `0` | - |
-| `DeleteSelectedTags` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGTerrainMaskRole.json -->
-
-# EPCGTerrainMaskRole
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Vegetation` | `0` | - |
-| `Water` | `1` | - |
-| `Road` | `2` | - |
-| `Exclusion` | `3` | - |
-| `Custom` | `4` | - |
-| `StoneAllowed` | `5` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGTextureAddressMode.json -->
-
-# EPCGTextureAddressMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Clamp` | `0` | - |
-| `Wrap` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGTextureColorChannel.json -->
-
-# EPCGTextureColorChannel
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Red` | `0` | - |
-| `Green` | `1` | - |
-| `Blue` | `2` | - |
-| `Alpha` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGTextureDensityFunction.json -->
-
-# EPCGTextureDensityFunction
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Ignore` | `0` | - |
-| `Multiply` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGTextureFilter.json -->
-
-# EPCGTextureFilter
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Point` | `0` | - |
-| `Bilinear` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGTextureMappingMethod.json -->
-
-# EPCGTextureMappingMethod
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Planar` | `0` | - |
-| `UVCoordinates` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGToolkitCollisionType.json -->
-
-# EPCGToolkitCollisionType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Landscape` | `0` | - |
-| `WorldStatic` | `1` | - |
-| `WorldDynamic` | `2` | - |
-| `All` | `3` | - |
-| `PhysicsBody` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGToolkitMaskColorScheme.json -->
-
-# EPCGToolkitMaskColorScheme
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `StableRandom` | `0` | - |
-| `Warm` | `1` | - |
-| `Cool` | `2` | - |
-| `HighContrast` | `3` | - |
-| `Soft` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGToolkitToolMessageType.json -->
-
-# EPCGToolkitToolMessageType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Info` | `0` | - |
-| `Warning` | `1` | - |
-| `Error` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGTransformLerpMode.json -->
-
-# EPCGTransformLerpMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `QuatInterp` | `0` | - |
-| `EulerInterp` | `1` | - |
-| `DualQuatInterp` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGTypeConversion.json -->
-
-# EPCGTypeConversion
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `NoConversionRequired` | `0` | - |
-| `CollapseToPoint` | `1` | - |
-| `Filter` | `2` | - |
-| `MakeConcrete` | `3` | - |
-| `SplineToSurface` | `4` | - |
-| `Failed` | `5` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGUnionDensityFunction.json -->
-
-# EPCGUnionDensityFunction
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Maximum` | `0` | - |
-| `ClampedAddition` | `1` | - |
-| `Binary` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGUnionType.json -->
-
-# EPCGUnionType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `LeftToRightPriority` | `0` | - |
-| `RightToLeftPriority` | `1` | - |
-| `KeepAll` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGWorldQueryFilter.json -->
-
-# EPCGWorldQueryFilter
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Include` | `1` | - |
-| `Exclude` | `2` | - |
-| `Require` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGWorldQuerySelectLandscapeHits.json -->
-
-# EPCGWorldQuerySelectLandscapeHits
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Include` | `0` | - |
-| `Exclude` | `1` | - |
-| `Require` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCGWorldRaycastMode.json -->
-
-# EPCGWorldRaycastMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Infinite` | `0` | - |
-| `ScaledVector` | `1` | - |
-| `NormalizedWithLength` | `2` | - |
-| `Segments` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPCInteractionMode.json -->
-
-# EPCInteractionMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Original` | `0` | - |
-| `ScopeInteract` | `1` | - |
-| `PreciseInteract` | `2` | - |
-| `Unknown` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPDPoseDriverOutput.json -->
-
-# EPDPoseDriverOutput
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `DrivePoses` | `0` | - |
-| `DriveCurves` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPDPoseDriverSource.json -->
-
-# EPDPoseDriverSource
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Rotation` | `0` | - |
-| `Translation` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPDPoseDriverType.json -->
-
-# EPDPoseDriverType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SwingAndTwist` | `0` | - |
-| `SwingOnly` | `1` | - |
-| `Translation` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPDRBFDistanceMethod.json -->
-
-# EPDRBFDistanceMethod
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Euclidean` | `0` | - |
-| `Quaternion` | `1` | - |
-| `SwingAngle` | `2` | - |
-| `TwistAngle` | `3` | - |
-| `DefaultMethod` | `4` | - |
-| `DirectionVector` | `5` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPDRBFFunctionType.json -->
-
-# EPDRBFFunctionType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Gaussian` | `0` | - |
-| `Exponential` | `1` | - |
-| `Linear` | `2` | - |
-| `Cubic` | `3` | - |
-| `Quintic` | `4` | - |
-| `DefaultFunction` | `5` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPDRBFNormalizeMethod.json -->
-
-# EPDRBFNormalizeMethod
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `OnlyNormalizeAboveOne` | `0` | - |
-| `AlwaysNormalize` | `1` | - |
-| `NormalizeWithinMedian` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPDRBFSolverType.json -->
-
-# EPDRBFSolverType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Additive` | `0` | - |
-| `Interpolative` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPeaceMemoryActorState.json -->
-
-# EPeaceMemoryActorState
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EPMAS_WaitEndRecord` | `0` | - |
-| `EPMAS_WaitUploadData` | `1` | - |
-| `EPMAS_HasUploadData` | `2` | - |
-| `EPMAS_Max` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPeaceMemorySubType.json -->
-
-# EPeaceMemorySubType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EPMST_None` | `0` | - |
-| `EPMST_TripleKill` | `2` | - |
-| `EPMST_QuadraKill` | `3` | - |
-| `EPMST_PentaKill` | `4` | - |
-| `EPMST_TotalKill` | `5` | - |
-| `EPMST_SnipeHead` | `7` | - |
-| `EPMST_AntitankGrenadeBoom` | `8` | - |
-| `EPMST_WinGame` | `15` | - |
-| `EPMST_ClockIn` | `16` | - |
-| `EPMST_Max` | `17` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEActorAttachEndType.json -->
-
-# EPEActorAttachEndType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EPEActorAttachEndType_Client` | `0` | - |
-| `EPEActorAttachEndType_Server` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEAddonAddReason.json -->
-
-# EPEAddonAddReason
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `GameplayAdd` | `1` | - |
-| `ReviveReAdd` | `2` | - |
-| `RespawnReAdd` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEAddonCustomParamType.json -->
-
-# EPEAddonCustomParamType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `None` | `0` | - |
-| `Float_0` | `1` | - |
-| `Float_1` | `2` | - |
-| `Float_2` | `3` | - |
-| `Float_3` | `4` | - |
-| `Float_4` | `5` | - |
-| `__Max` | `6` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEAttachScaleRule.json -->
-
-# EPEAttachScaleRule
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEAttachScaleRule_KeepRelative` | `0` | - |
-| `PEAttachScaleRule_KeepSelf` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEBackpackMonitorType.json -->
-
-# EPEBackpackMonitorType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EPEBackpackMonitorType_Id` | `0` | - |
-| `EPEBackpackMonitorType_Tag` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEBackpackOperationType.json -->
-
-# EPEBackpackOperationType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEBackpackOperation_None` | `0` | - |
-| `PEBackpackOperation_Pickup` | `1` | - |
-| `PEBackpackOperation_Drop` | `2` | - |
-| `PEBackpackOperation_Use` | `3` | - |
-| `PEBackpackOperation_Remove` | `4` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEBuffAttrModifyType.json -->
-
-# EPEBuffAttrModifyType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEBuffAttrModifyType_Pawn` | `0` | - |
-| `PEBuffAttrModifyType_Weapon` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEBuffDurationType.json -->
-
-# EPEBuffDurationType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEBuffDurationType_Normal` | `0` | - |
-| `PEBuffDurationType_ReduceStackAndRefresh` | `1` | - |
-| `PEBuffDurationType_IndependentCount` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEBuffEffectNetworkMode.json -->
-
-# EPEBuffEffectNetworkMode
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEBuffEffectNetworkMode_AuthorityOnly` | `0` | - |
-| `PEBuffEffectNetworkMode_ClientOnly` | `1` | - |
-| `PEBuffEffectNetworkMode_Both` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEBuffEffectStackType.json -->
-
-# EPEBuffEffectStackType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEBuffEffectStackType_Refresh` | `0` | - |
-| `PEBuffEffectStackType_Add` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEBuffEffectStopType.json -->
-
-# EPEBuffEffectStopType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEBuffEffectStopType_None` | `0` | - |
-| `PEBuffEffectStopType_Stack` | `1` | - |
-| `PEBuffEffectStopType_Unapply` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEBuffEffectTriggerConditionOptType.json -->
-
-# EPEBuffEffectTriggerConditionOptType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEBuffEffectTriggerConditionOptType_Equal` | `0` | - |
-| `PEBuffEffectTriggerConditionOptType_Greater` | `1` | - |
-| `PEBuffEffectTriggerConditionOptType_Less` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEBuffEffectTriggerConditionType.json -->
-
-# EPEBuffEffectTriggerConditionType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEBuffEffectTriggerConditionType_None` | `0` | - |
-| `PEBuffEffectTriggerConditionType_Layers` | `1` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEBuffMergeConditionType.json -->
-
-# EPEBuffMergeConditionType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEBuffMergeConditionType_Block` | `0` | - |
-| `PEBuffMergeConditionType_InstanceByClass` | `1` | - |
-| `PEBuffMergeConditionType_InstanceByCauser` | `2` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEBuffMergeType.json -->
-
-# EPEBuffMergeType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PEBuffMergeType_Refresh` | `0` | - |
-| `PEBuffMergeType_AppendDuration` | `1` | - |
-| `PEBuffMergeType_Stack` | `2` | - |
-| `PEBuffMergeType_RefreshTimeOnly` | `3` | - |
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/cppenum/detail/EPEBuffOcclusionHighlightType.json -->
-
-# EPEBuffOcclusionHighlightType
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `EPEBuffOcclusionHighlightType_Causer` | `0` | - |
-| `EPEBuffOcclusionHighlightType_CauserCamp` | `1` | - |
-| `EPEBuffOcclusionHighlightType_All` | `2` | - |
 

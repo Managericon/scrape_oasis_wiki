@@ -19,8 +19,8 @@ Base class for a track in a Movie Scene
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `EvalOptions` | `FMovieSceneTrackEvalOptions` | General evaluation options for a given track |
 | `EvaluationRunSide` | `int32` | - |
+| `EvalOptions` | `FMovieSceneTrackEvalOptions` | General evaluation options for a given track |
 | `MinRunnableTCQuality` | `int32` | - |
 | `SavedTrackTags` | `TArray < FString >` | - |
 | `TrackTags` | `TArray < TSharedRef < FString > >` | - |

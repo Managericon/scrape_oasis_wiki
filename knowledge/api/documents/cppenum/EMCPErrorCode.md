@@ -18,3 +18,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `NotSupported` | `2` | - |
 | `InternalError` | `3` | - |
 | `Unauthorized` | `4` | - |
+| `Busy` | `5` | - |

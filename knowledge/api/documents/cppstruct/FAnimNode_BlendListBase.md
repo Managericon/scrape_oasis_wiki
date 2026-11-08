@@ -28,3 +28,4 @@ api_root: "https://developer.gp.qq.com/api/"
 | `PerBoneSampleData` | `TArray < FBlendSampleData >` | - |
 | `bResetChildOnActivation` | `bool` | This reinitializes child pose when re-activated. For example, when active child changes |
 | `bResetChildOnBlendListChange` | `bool` | - |
+| `bResetBlendWeightOnBlendListActivation` | `bool` | - |

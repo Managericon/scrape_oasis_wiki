@@ -662,6 +662,29 @@ IsWeakObjectPtrValid(InWeakObjectPtr: WeakObjectPtr) -> boolean
 |---|---|
 | `boolean` | 是否有效 |
 
+### `AsyncLoadObjects`
+
+```text
+AsyncLoadObjects(ObjectPaths: string[], Callback: function, Callback_self: UObject) -> boolean
+```
+
+批量异步加载多个对象，全部完成后统一回调，用于一次性预载一批资源
+生效范围：服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ObjectPaths` | `string[]` | 对象完整路径列表 |
+| `Callback` | `function` | 完成回调，签名：(Assets)；回调带冒号定义时为 (self, Assets)。Assets 为已加载对象列表，按下标与 ObjectPaths 一一对应，对应路径加载失败时该位置为 nil，请用 for i = 1, #ObjectPaths 遍历取值 |
+| `Callback_self` | `UObject` | 冒号形式回调的 self，可选；带冒号定义时传入 self，不带冒号时传 nil |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `boolean` | 异步加载请求是否成功受理；路径列表为空或含非字符串元素、回调缺失、游戏环境未就绪时返回 false 且不触发回调 |
+
 ## Language
 
 `lua`

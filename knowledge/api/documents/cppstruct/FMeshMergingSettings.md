@@ -37,9 +37,9 @@ Mesh merging settings
 | `ExportSpecificLOD_DEPRECATED` | `int32` | - |
 | `SpecificLOD` | `int32` | - |
 | `bUseLandscapeCulling` | `bool` | Whether or not to use available landscape geometry to cull away invisible triangles |
-| `bIncludeImposters` | `bool` | - |
 | `bAllowDistanceField` | `bool` | Whether to allow distance field to be computed for this mesh. Disable this to save memory if the merged mesh will only be rendered in the distance. |
 | `FilteredMinBoundsRadius` | `float` | - |
+| `bIncludeImposters` | `bool` | - |
 | `bDisableBorderSmear` | `bool` | - |
 | `BorderSmearReplaceColor` | `FLinearColor` | - |
 | `CustomOutputSize` | `FIntPoint` | - |

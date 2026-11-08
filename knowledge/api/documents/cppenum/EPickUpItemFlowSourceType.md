@@ -36,3 +36,17 @@ api_root: "https://developer.gp.qq.com/api/"
 | `EPickUpItemFlowSourceType_LostTombUnderworldSoldiers` | `20` | - |
 | `EPickUpItemFlowSourceType_SeasonThemedGameplayBoxTwo` | `21` | - |
 | `EPickUpItemFlowSourceType_EscapeSupplyBox` | `22` | - |
+| `EPickUpItemFlowSourceType_LostTombSupplyBox` | `23` | - |
+| `EPickUpItemFlowSourceType_SupplyBoxLevel1` | `24` | - |
+| `EPickUpItemFlowSourceType_SupplyBoxLevel2` | `25` | - |
+| `EPickUpItemFlowSourceType_SupplyBoxLevel3` | `26` | - |
+| `EPickUpItemFlowSourceType_SupplyBoxLevel4` | `27` | - |
+| `EPickUpItemFlowSourceType_SupplyBoxLevel5` | `28` | - |
+| `EPickUpItemFlowSourceType_SupplyBoxLevel6` | `29` | - |
+| `EPickUpItemFlowSourceType_SupplyBoxLevel7` | `30` | - |
+| `EPickUpItemFlowSourceType_SupplyBoxLevel8` | `31` | - |
+| `EPickUpItemFlowSourceType_SupplyBoxLevel9` | `32` | - |
+| `EPickUpItemFlowSourceType_SupplyBoxLevel10` | `33` | - |
+| `EPickUpItemFlowSourceType_AirDrop_Preview` | `34` | - |
+| `EPickUpItemFlowSourceType_AirDrop_Relive` | `35` | - |
+| `EPickUpItemFlowSourceType_AirDrop_Stuff` | `36` | - |

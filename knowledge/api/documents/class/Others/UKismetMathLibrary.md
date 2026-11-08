@@ -8855,6 +8855,113 @@ Resets the state of a given spring
 |---|---|
 | `void` | - |
 
+### `VectorSpringInterpEx`
+
+```text
+VectorSpringInterpEx(Current: FVector, Target: FVector, SpringState: FVectorSpringStateEx &, Stiffness: float, CriticalDampingFactor: float, DeltaTime: float, Mass: float, TargetVelocityAmount: float, bInitializeFromTarget: bool) -> FVector
+```
+
+Add by zoranouyang
+	 [从 UE5.8 移植，Ex 后缀表示新增的解析解版本]
+	
+	 用弹簧模型把向量从 Current 插值到 Target。
+	
+	 与 VectorSpringInterp（UE4.18 原版）的区别：原版使用显式欧拉积分的 PD 控制器，
+	 本版使用 UE5.8 的解析解（FMath::SpringDamperEx），数值稳定、任意 DeltaTime 无累积误差，
+	 且插值结果与 UE5.8 完全一致。原版函数保持不变，避免影响既有调用方的表现。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Current` | `FVector` | 当前值 |
+| `Target` | `FVector` | 目标值 |
+| `SpringState` | `FVectorSpringStateEx &` | 弹簧状态（速度等），每个弹簧需要独立且跨帧保存的变量 |
+| `Stiffness` | `float` | 弹簧刚度（越大越"硬"，围绕目标值的振荡也越明显） |
+| `CriticalDampingFactor` | `float` | 阻尼系数（0 = 无阻尼，1 = 临界阻尼即无振荡） |
+| `DeltaTime` | `float` | 时间间隔 |
+| `Mass` | `float` | 质量乘数 |
+| `TargetVelocityAmount` | `float` | 目标速度前馈量（0 = 完全不前馈，1 = 完全前馈） |
+| `bInitializeFromTarget` | `bool` | 为 true 时首帧直接吸附到目标值，避免初始突跳 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `QuaternionSpringInterpEx`
+
+```text
+QuaternionSpringInterpEx(Current: FQuat, Target: FQuat, SpringState: FQuaternionSpringStateEx &, Stiffness: float, CriticalDampingFactor: float, DeltaTime: float, Mass: float, TargetVelocityAmount: float, bInitializeFromTarget: bool) -> FQuat
+```
+
+Add by zoranouyang
+	 [从 UE5.8 移植，Ex 后缀表示新增；UE4.18 原本没有四元数弹簧插值]
+	
+	 用弹簧模型把四元数从 Current 插值到 Target。内部把四元数速度与角速度互相转换，
+	 底层复用与 VectorSpringInterpEx 相同的解析解积分器，结果与 UE5.8 完全一致。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Current` | `FQuat` | 当前旋转 |
+| `Target` | `FQuat` | 目标旋转 |
+| `SpringState` | `FQuaternionSpringStateEx &` | 弹簧状态（角速度等），每个弹簧需要独立且跨帧保存的变量 |
+| `Stiffness` | `float` | 弹簧刚度 |
+| `CriticalDampingFactor` | `float` | 阻尼系数（1 = 临界阻尼） |
+| `DeltaTime` | `float` | 时间间隔 |
+| `Mass` | `float` | 质量乘数 |
+| `TargetVelocityAmount` | `float` | 目标角速度前馈量 |
+| `bInitializeFromTarget` | `bool` | 为 true 时首帧直接吸附到目标旋转 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FQuat` | - |
+
+### `ResetVectorSpringStateEx`
+
+```text
+ResetVectorSpringStateEx(SpringState: FVectorSpringStateEx &) -> void
+```
+
+Resets the state of a given spring
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SpringState` | `FVectorSpringStateEx &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ResetQuaternionSpringStateEx`
+
+```text
+ResetQuaternionSpringStateEx(SpringState: FQuaternionSpringStateEx &) -> void
+```
+
+Resets the state of a given spring
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SpringState` | `FQuaternionSpringStateEx &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ### `RandomIntegerFromStream`
 
 ```text

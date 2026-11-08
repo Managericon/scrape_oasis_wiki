@@ -22,6 +22,7 @@ api_root: "https://developer.gp.qq.com/api/"
 | `MaterialIdLayers` | `TArray < ULandscapeMaterialIdLayerInfoObject * >` | 0-255 MaterialID layers |
 | `DiffuseTextureArray` | `UTexture2DArray *` | - |
 | `NormalTextureArray` | `UTexture2DArray *` | - |
+| `MatIDFallbackConfig` | `UMatIDFallbackConfig *` | - |
 | `bTextureArrayDirty` | `bool` | - |
 
 ## Language

@@ -18,3 +18,6 @@ api_root: "https://developer.gp.qq.com/api/"
 | `IOSMetalSLStandard_1_2` | `2` | - |
 | `IOSMetalSLStandard_2_0` | `3` | - |
 | `IOSMetalSLStandard_2_1` | `4` | - |
+| `IOSMetalSLStandard_2_2` | `5` | - |
+| `IOSMetalSLStandard_2_3` | `6` | - |
+| `IOSMetalSLStandard_2_4` | `7` | - |

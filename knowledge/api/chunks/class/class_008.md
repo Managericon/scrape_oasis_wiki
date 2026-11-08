@@ -6,6 +6,2719 @@ category: "API Wiki/class"
 kind: "api_chunk"
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeModulator.json -->
+
+# USoundNodeModulator
+
+Defines a random volume and pitch modification when a sound starts
+
+## Inheritance
+
+`USoundNode`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PitchMin` | `float` | The lower bound of pitch (1.0 is no change). |
+| `PitchMax` | `float` | The upper bound of pitch (1.0 is no change). |
+| `VolumeMin` | `float` | The lower bound of volume (1.0 is no change). |
+| `VolumeMax` | `float` | The upper bound of volume (1.0 is no change). |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeModulatorContinuous.json -->
+
+# USoundNodeModulatorContinuous
+
+Allows named parameter based manipulation of pitch and volume
+
+## Inheritance
+
+`USoundNode`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PitchModulationParams` | `FModulatorContinuousParams` | - |
+| `VolumeModulationParams` | `FModulatorContinuousParams` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeOscillator.json -->
+
+# USoundNodeOscillator
+
+Defines how a sound oscillates
+
+## Inheritance
+
+`USoundNode`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bModulateVolume` | `uint32` | Whether to oscillate volume. |
+| `bModulatePitch` | `uint32` | Whether to oscillate pitch. |
+| `AmplitudeMin` | `float` | An amplitude of 0.25 would oscillate between 0.75 and 1.25. |
+| `AmplitudeMax` | `float` | An amplitude of 0.25 would oscillate between 0.75 and 1.25. |
+| `FrequencyMin` | `float` | A frequency of 20 would oscillate at 10Hz. |
+| `FrequencyMax` | `float` | A frequency of 20 would oscillate at 10Hz. |
+| `OffsetMin` | `float` | Offset into the sine wave. Value modded by 2  PI. |
+| `OffsetMax` | `float` | Offset into the sine wave. Value modded by 2  PI. |
+| `CenterMin` | `float` | A center of 0.5 would oscillate around 0.5. |
+| `CenterMax` | `float` | A center of 0.5 would oscillate around 0.5. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeParamCrossFade.json -->
+
+# USoundNodeParamCrossFade
+
+Crossfades between different sounds based on a parameter
+
+## Inheritance
+
+`USoundNodeDistanceCrossFade`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ParamName` | `FName` | Parameter controlling cross fades. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeRandom.json -->
+
+# USoundNodeRandom
+
+Selects sounds from a random set
+
+## Inheritance
+
+`USoundNode`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Weights` | `TArray < float >` | - |
+| `PreselectAtLevelLoad` | `int32` | If greater than 0, then upon each level load such a number of inputs will be randomly selected<br>	   and the rest will be removed. This can be used to cut down the memory usage of large randomizing<br>	   cues. |
+| `bRandomizeWithoutReplacement` | `uint32` | Determines whether or not this SoundNodeRandom should randomize with or without<br>	  replacement.  <br>	 <br>	  WithoutReplacement means that only nodes left will be valid for <br>	  selection.  So with that, you are guarenteed to have only one occurrence of the<br>	  sound played until all of the other sounds in the set have all been played.<br>	 <br>	  WithReplacement means that a node will be chosen and then placed back into the set.<br>	  So one could play the same sound over and over if the probabilities don't go your way :-) |
+| `HasBeenUsed` | `TArray < bool >` | Internal state of which sounds have been played.  This is only used at runtime<br>	  to keep track of which sounds have been played |
+| `NumRandomUsed` | `int32` | Counter var so we don't have to count all of the used sounds each time we choose a sound |
+| `PIEHiddenNodes` | `TArray < int32 >` | Editor only list of nodes hidden to duplicate behavior of PreselectAtLevelLoad |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeSoundClass.json -->
+
+# USoundNodeSoundClass
+
+Remaps the SoundClass of SoundWaves underneath this
+
+## Inheritance
+
+`USoundNode`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SoundClassOverride` | `USoundClass *` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeSwitch.json -->
+
+# USoundNodeSwitch
+
+Selects a child node based on the value of a integer parameter
+
+## Inheritance
+
+`USoundNode`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `IntParameterName` | `FName` | The name of the integer parameter to use to determine which branch we should take |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeWaveParam.json -->
+
+# USoundNodeWaveParam
+
+Sound node that takes a runtime parameter for the wave to play
+
+## Inheritance
+
+`USoundNode`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `WaveParameterName` | `FName` | The name of the wave parameter to use to look up the SoundWave we should play |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeWavePlayer.json -->
+
+# USoundNodeWavePlayer
+
+Sound node that contains a reference to the raw wave file to be played
+
+## Inheritance
+
+`USoundNodeAssetReferencer`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SoundWaveAssetPtr` | `TSoftObjectPtr < USoundWave >` | - |
+| `SoundWave` | `USoundWave *` | - |
+| `bLooping` | `uint32` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundSourceBus.json -->
+
+# USoundSourceBus
+
+## Inheritance
+
+`USoundWave`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SourceBusChannels` | `ESourceBusChannels` | How many channels to use for the source bus. |
+| `SourceBusDuration` | `float` | The duration (in seconds) to use for the source bus. A duration of 0.0 indicates to play the source bus indefinitely. |
+| `bAutoDeactivateWhenSilent` | `uint32` | Stop the source bus when the volume goes to zero. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundSubmix.json -->
+
+# USoundSubmix
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ChildSubmixes` | `TArray < USoundSubmix * >` | - |
+| `ParentSubmix` | `USoundSubmix *` | - |
+| `SubmixEffectChain` | `TArray < USoundEffectSubmixPreset * >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundWave.json -->
+
+# USoundWave
+
+## Inheritance
+
+`USoundBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `CompressionQuality` | `int32` | Platform agnostic compression quality. 1..100 with 1 being best compression and 100 being best quality. |
+| `bLooping` | `uint32` | If set, when played directly (not through a sound cue) the wave will be played looping. |
+| `bStreaming` | `uint32` | Whether this sound can be streamed to avoid increased memory usage |
+| `StreamingPriority` | `int32` | Priority of this sound when streaming (lower priority streams may not always play) |
+| `bMature` | `uint32` | If set to true if this sound is considered to contain matureadult content. |
+| `bManualWordWrap` | `uint32` | If set to true will disable automatic generation of line breaks - use if the subtitles have been split manually. |
+| `bSingleLine` | `uint32` | If set to true the subtitles display as a sequence of single lines as opposed to multiline. |
+| `bVirtualizeWhenSilent` | `uint32` | Allows sound to play at 0 volume, otherwise will stop the sound when the sound is silent. |
+| `SoundGroup` | `TEnumAsByte < ESoundGroup >` | - |
+| `SpokenText` | `FString` | A localized version of the text that is actually spoken phonetically in the audio. |
+| `SubtitlePriority` | `float` | The priority of the subtitle. |
+| `Volume` | `float` | Playback volume of sound 0 to 1 - Default is 1.0. |
+| `Pitch` | `float` | Playback pitch for sound. |
+| `NumChannels` | `int32` | Number of channels of multichannel data; 1 or 2 for regular mono and stereo files |
+| `SampleRate` | `int32` | Cached sample rate for displaying in the tools |
+| `RawPCMDataSize` | `int32` | Size of RawPCMData, or what RawPCMData would be if the sound was fully decompressed |
+| `Subtitles` | `TArray < struct FSubtitleCue >` | Subtitle cues.  If empty, use SpokenText as the subtitle.  Will often be empty,<br>	  as the contents of the subtitle is commonly identical to what is spoken. |
+| `LocalizedSubtitles` | `TArray < struct FLocalizedSubtitle >` | The array of the subtitles for each language. Generated at cook time. |
+| `Curves` | `UCurveTable *` | Curves associated with this sound wave |
+| `InternalCurves` | `UCurveTable *` | Hold a reference to our internal curve so we can switch back to it if we want to |
+| `ChannelOffsets` | `TArray < int32 >` | Offsets into the bulk data for the source wav data |
+| `ChannelSizes` | `TArray < int32 >` | Sizes of the bulk data for the source wav data |
+| `Comment` | `FString` | Provides contextual information for the sound to the translator. |
+| `SourceFilePath_DEPRECATED` | `FString` | - |
+| `SourceFileTimestamp_DEPRECATED` | `FString` | - |
+| `AssetImportData` | `UAssetImportData *` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USpacer.json -->
+
+# USpacer
+
+A spacer widget; it does not have a visual representation, and just provides padding between other widgets.
+ 
+   No Children
+
+## Inheritance
+
+`UWidget`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Size` | `FVector2D` | The size of the spacer |
+| `UsePcParams` | `bool` | - |
+| `SizePc` | `FVector2D` | - |
+
+## Functions
+
+### `SetSize`
+
+```text
+SetSize(InSize: FVector2D) -> void
+```
+
+Sets the size of the spacer
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InSize` | `FVector2D` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetPcParamController`
+
+```text
+SetPcParamController(InValue: int32) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InValue` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USpectatorPawnMovement.json -->
+
+# USpectatorPawnMovement
+
+## Inheritance
+
+`UFloatingPawnMovement`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bIgnoreTimeDilation` | `uint32` | If true, component moves at full speed no matter the time dilation. Default is false. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USphereComponent.json -->
+
+# USphereComponent
+
+A sphere generally used for simple collision. Bounds are rendered as lines in the editor.
+
+## Inheritance
+
+`UShapeComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SphereRadius` | `float` | The radius of the sphere |
+
+## Functions
+
+### `SetSphereRadius`
+
+```text
+SetSphereRadius(InSphereRadius: float, bUpdateOverlaps: bool) -> void
+```
+
+Change the sphere radius. This is the unscaled radius, before component scale is applied.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InSphereRadius` | `float` | - |
+| `bUpdateOverlaps` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetScaledSphereRadius`
+
+```text
+GetScaledSphereRadius() -> float
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetUnscaledSphereRadius`
+
+```text
+GetUnscaledSphereRadius() -> float
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetShapeScale`
+
+```text
+GetShapeScale() -> float
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USphereReflectionCaptureComponent.json -->
+
+# USphereReflectionCaptureComponent
+
+## Inheritance
+
+`UReflectionCaptureComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `InfluenceRadius` | `float` | Radius of the area that can receive reflections from this capture. |
+| `PerformShapeTestOnMobile` | `bool` | - |
+| `CaptureDistanceScale` | `float` | Not needed anymore, not yet removed in case the artist setup values are needed in the future |
+| `PreviewInfluenceRadius` | `UDrawSphereComponent *` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USpinBox.json -->
+
+# USpinBox
+
+A numerical entry box that allows for direct entry of the number or allows the user to click and slide the number.
+
+## Inheritance
+
+`UWidget`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Value` | `float` | Value stored in this spin box |
+| `ValueDelegate` | `FGetFloat` | A bindable delegate to allow logic to drive the value of the widget |
+| `WidgetStyle` | `FSpinBoxStyle` | The Style |
+| `Style_DEPRECATED` | `USlateWidgetStyleAsset *` | - |
+| `Delta` | `float` | The amount by which to change the spin box value as the slider moves. |
+| `SliderExponent` | `float` | The exponent by which to increase the delta as the mouse moves. 1 is constant (never increases the delta). |
+| `Font` | `FSlateFontInfo` | Font color and opacity (overrides style) |
+| `Justification` | `TEnumAsByte < ETextJustify :: Type >` | The justification the value text should appear as. |
+| `MinDesiredWidth` | `float` | The minimum width of the spin box |
+| `ClearKeyboardFocusOnCommit` | `bool` | Whether to remove the keyboard focus from the spin box when the value is committed |
+| `SelectAllTextOnCommit` | `bool` | Whether to select the text in the spin box when the value is committed |
+| `ForegroundColor` | `FSlateColor` | - |
+| `bOverride_MinValue` | `uint32` | Whether the optional MinValue attribute of the widget is set |
+| `bOverride_MaxValue` | `uint32` | Whether the optional MaxValue attribute of the widget is set |
+| `bOverride_MinSliderValue` | `uint32` | Whether the optional MinSliderValue attribute of the widget is set |
+| `bOverride_MaxSliderValue` | `uint32` | Whether the optional MaxSliderValue attribute of the widget is set |
+| `MinValue` | `float` | The minimum allowable value that can be manually entered into the spin box |
+| `MaxValue` | `float` | The maximum allowable value that can be manually entered into the spin box |
+| `MinSliderValue` | `float` | The minimum allowable value that can be specified using the slider |
+| `MaxSliderValue` | `float` | The maximum allowable value that can be specified using the slider |
+
+## Functions
+
+### `GetValue`
+
+```text
+GetValue() -> float
+```
+
+Get the current value of the spin box.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `SetValue`
+
+```text
+SetValue(NewValue: float) -> void
+```
+
+Set the value of the spin box.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewValue` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetMinValue`
+
+```text
+GetMinValue() -> float
+```
+
+Get the current minimum value that can be manually set in the spin box.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `SetMinValue`
+
+```text
+SetMinValue(NewValue: float) -> void
+```
+
+Set the minimum value that can be manually set in the spin box.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewValue` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ClearMinValue`
+
+```text
+ClearMinValue() -> void
+```
+
+Clear the minimum value that can be manually set in the spin box.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetMaxValue`
+
+```text
+GetMaxValue() -> float
+```
+
+Get the current maximum value that can be manually set in the spin box.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `SetMaxValue`
+
+```text
+SetMaxValue(NewValue: float) -> void
+```
+
+Set the maximum value that can be manually set in the spin box.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewValue` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ClearMaxValue`
+
+```text
+ClearMaxValue() -> void
+```
+
+Clear the maximum value that can be manually set in the spin box.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetMinSliderValue`
+
+```text
+GetMinSliderValue() -> float
+```
+
+Get the current minimum value that can be specified using the slider.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `SetMinSliderValue`
+
+```text
+SetMinSliderValue(NewValue: float) -> void
+```
+
+Set the minimum value that can be specified using the slider.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewValue` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ClearMinSliderValue`
+
+```text
+ClearMinSliderValue() -> void
+```
+
+Clear the minimum value that can be specified using the slider.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetMaxSliderValue`
+
+```text
+GetMaxSliderValue() -> float
+```
+
+Get the current maximum value that can be specified using the slider.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `SetMaxSliderValue`
+
+```text
+SetMaxSliderValue(NewValue: float) -> void
+```
+
+Set the maximum value that can be specified using the slider.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewValue` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ClearMaxSliderValue`
+
+```text
+ClearMaxSliderValue() -> void
+```
+
+Clear the maximum value that can be specified using the slider.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetForegroundColor`
+
+```text
+SetForegroundColor(InForegroundColor: FSlateColor) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InForegroundColor` | `FSlateColor` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Delegates
+
+### `OnValueChanged`
+
+```text
+OnValueChanged(InValue: float) -> void
+```
+
+Called when the value is changed interactively by the user
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InValue` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnValueCommitted`
+
+```text
+OnValueCommitted(InValue: float, CommitMethod: ETextCommit::Type) -> void
+```
+
+Called when the value is committed. Occurs when the user presses Enter or the text box loses focus.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InValue` | `float` | - |
+| `CommitMethod` | `ETextCommit::Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnBeginSliderMovement`
+
+```text
+OnBeginSliderMovement() -> void
+```
+
+Called right before the slider begins to move
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnEndSliderMovement`
+
+```text
+OnEndSliderMovement(InValue: float) -> void
+```
+
+Called right after the slider handle is released by the user
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InValue` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USpinBoxWidgetStyle.json -->
+
+# USpinBoxWidgetStyle
+
+## Inheritance
+
+`USlateWidgetStyleContainerBase`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SpinBoxStyle` | `FSpinBoxStyle` | The actual data describing the button's appearance. |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USplineComponent.json -->
+
+# USplineComponent
+
+A spline component is a spline shape which can be used for other purposes (e.g. animating objects). It contains debug rendering capabilities.
+
+## Inheritance
+
+`UPrimitiveComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SplineCurves` | `FSplineCurves` | - |
+| `SplineInfo_DEPRECATED` | `FInterpCurveVector` | Deprecated - please use GetSplinePointsPosition() to fetch this FInterpCurve |
+| `SplineRotInfo_DEPRECATED` | `FInterpCurveQuat` | Deprecated - please use GetSplinePointsRotation() to fetch this FInterpCurve |
+| `SplineScaleInfo_DEPRECATED` | `FInterpCurveVector` | Deprecated - please use GetSplinePointsScale() to fetch this FInterpCurve |
+| `SplineReparamTable_DEPRECATED` | `FInterpCurveFloat` | - |
+| `bAllowSplineEditingPerInstance_DEPRECATED` | `bool` | - |
+| `ReparamStepsPerSegment` | `int32` | Number of steps per spline segment to place in the reparameterization table |
+| `Duration` | `float` | Specifies the duration of the spline in seconds |
+| `bStationaryEndpoints` | `bool` | Whether the endpoints of the spline are considered stationary when traversing the spline at non-constant velocity.  Essentially this sets the endpoints' tangents to zero vectors. |
+| `bSplineHasBeenEdited` | `bool` | Whether the spline has been edited from its default by the spline component visualizer |
+| `bModifiedByConstructionScript` | `bool` | Whether the UCS has made changes to the spline points |
+| `bInputSplinePointsToConstructionScript` | `bool` | Whether the spline points should be passed to the User Construction Script so they can be further manipulated by it.<br>	  If false, they will not be visible to it, and it will not be able to influence the per-instance positions set in the editor. |
+| `bDrawDebug` | `bool` | If true, the spline will be rendered if the Splines showflag is set. |
+| `bClosedLoop` | `bool` | Whether the spline is to be considered as a closed loop.<br>	  Use SetClosedLoop() to set this property, and IsClosedLoop() to read it. |
+| `bLoopPositionOverride` | `bool` | - |
+| `LoopPosition` | `float` | - |
+| `DefaultUpVector` | `FVector` | Default up vector in local space to be used when calculating transforms along the spline |
+| `bUseConfigRotation` | `bool` | Engine Modify Start |
+| `bUseConfigRotationXY` | `bool` | - |
+| `EditorUnselectedSplineSegmentColor` | `FLinearColor` | Engine Modify End<br>	 <br>	 Color of an unselected spline component segment in the editor |
+| `EditorSelectedSplineSegmentColor` | `FLinearColor` | Color of a selected spline component segment in the editor |
+| `bAllowDiscontinuousSpline` | `bool` | Whether the spline's leave and arrive tangents can be different |
+| `bShouldVisualizeScale` | `bool` | Whether scale visualization should be displayed |
+| `ScaleVisualizationWidth` | `float` | Width of spline in editor for use with scale visualization |
+| `PostionModifyer` | `USplineComponentEditorModifer *` | - |
+| `SelectedIndexs` | `TSet < int32 >` | - |
+| `SnappingType` | `ESplineSnappingType` | - |
+| `SnapInterval` | `float` | - |
+| `SnapTopDownRange` | `FVector2D` | - |
+| `TraceLength` | `float` | - |
+
+## Functions
+
+### `UpdateSpline`
+
+```text
+UpdateSpline() -> void
+```
+
+Update the spline tangents and SplineReparamTable
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetDistanceAlongSplineAtSplineInputKey`
+
+```text
+GetDistanceAlongSplineAtSplineInputKey(InKey: float) -> float
+```
+
+Get distance along the spline at the provided input key value
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InKey` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `SetUnselectedSplineSegmentColor`
+
+```text
+SetUnselectedSplineSegmentColor(SegmentColor: FLinearColor &) -> void
+```
+
+Specify unselected spline component segment color in the editor
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SegmentColor` | `FLinearColor &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetSelectedSplineSegmentColor`
+
+```text
+SetSelectedSplineSegmentColor(SegmentColor: FLinearColor &) -> void
+```
+
+Specify selected spline component segment color in the editor
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SegmentColor` | `FLinearColor &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `EditorSnapToGround`
+
+```text
+EditorSnapToGround() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `EditorNormalizeSplineTangent`
+
+```text
+EditorNormalizeSplineTangent() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetDrawDebug`
+
+```text
+SetDrawDebug(bShow: bool) -> void
+```
+
+Specify whether this spline should be rendered when the EditorGame spline show flag is set
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bShow` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetClosedLoop`
+
+```text
+SetClosedLoop(bInClosedLoop: bool, bUpdateSpline: bool) -> void
+```
+
+Specify whether the spline is a closed loop or not. The loop position will be at 1.0 after the last point's input key
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bInClosedLoop` | `bool` | - |
+| `bUpdateSpline` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetClosedLoopAtPosition`
+
+```text
+SetClosedLoopAtPosition(bInClosedLoop: bool, Key: float, bUpdateSpline: bool) -> void
+```
+
+Specify whether the spline is a closed loop or not, and if so, the input key corresponding to the loop point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bInClosedLoop` | `bool` | - |
+| `Key` | `float` | - |
+| `bUpdateSpline` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `IsClosedLoop`
+
+```text
+IsClosedLoop() -> bool
+```
+
+Check whether the spline is a closed loop or not
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `ClearSplinePoints`
+
+```text
+ClearSplinePoints(bUpdateSpline: bool) -> void
+```
+
+Clears all the points in the spline
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bUpdateSpline` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `AddPoint`
+
+```text
+AddPoint(Point: FSplinePoint &, bUpdateSpline: bool) -> void
+```
+
+Adds an FSplinePoint to the spline. This contains its input key, position, tangent, rotation and scale.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Point` | `FSplinePoint &` | - |
+| `bUpdateSpline` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `AddPoints`
+
+```text
+AddPoints(Points: TArray < FSplinePoint > &, bUpdateSpline: bool) -> void
+```
+
+Adds an array of FSplinePoints to the spline.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Points` | `TArray < FSplinePoint > &` | - |
+| `bUpdateSpline` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `AddSplinePoint`
+
+```text
+AddSplinePoint(Position: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type, bUpdateSpline: bool) -> void
+```
+
+Adds a point to the spline
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Position` | `FVector &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUpdateSpline` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `AddSplinePointAtIndex`
+
+```text
+AddSplinePointAtIndex(Position: FVector &, Index: int32, CoordinateSpace: ESplineCoordinateSpace :: Type, bUpdateSpline: bool) -> void
+```
+
+Adds a point to the spline at the specified index
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Position` | `FVector &` | - |
+| `Index` | `int32` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUpdateSpline` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `RemoveSplinePoint`
+
+```text
+RemoveSplinePoint(Index: int32, bUpdateSpline: bool) -> void
+```
+
+Removes point at specified index from the spline
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Index` | `int32` | - |
+| `bUpdateSpline` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `AddSplineWorldPoint`
+
+```text
+AddSplineWorldPoint(Position: FVector &) -> void
+```
+
+Adds a world space point to the spline
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Position` | `FVector &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `AddSplineLocalPoint`
+
+```text
+AddSplineLocalPoint(Position: FVector &) -> void
+```
+
+Adds a local space point to the spline
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Position` | `FVector &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetSplinePoints`
+
+```text
+SetSplinePoints(Points: TArray < FVector > &, CoordinateSpace: ESplineCoordinateSpace :: Type, bUpdateSpline: bool) -> void
+```
+
+Sets the spline to an array of points
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Points` | `TArray < FVector > &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUpdateSpline` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetSplineWorldPoints`
+
+```text
+SetSplineWorldPoints(Points: TArray < FVector > &) -> void
+```
+
+Sets the spline to an array of world space points
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Points` | `TArray < FVector > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetSplineLocalPoints`
+
+```text
+SetSplineLocalPoints(Points: TArray < FVector > &) -> void
+```
+
+Sets the spline to an array of local space points
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Points` | `TArray < FVector > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetLocationAtSplinePoint`
+
+```text
+SetLocationAtSplinePoint(PointIndex: int32, InLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type, bUpdateSpline: bool) -> void
+```
+
+Move an existing point to a new location
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `InLocation` | `FVector &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUpdateSpline` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetWorldLocationAtSplinePoint`
+
+```text
+SetWorldLocationAtSplinePoint(PointIndex: int32, InLocation: FVector &) -> void
+```
+
+Move an existing point to a new world location
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `InLocation` | `FVector &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetTangentAtSplinePoint`
+
+```text
+SetTangentAtSplinePoint(PointIndex: int32, InTangent: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type, bUpdateSpline: bool) -> void
+```
+
+Specify the tangent at a given spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `InTangent` | `FVector &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUpdateSpline` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetTangentsAtSplinePoint`
+
+```text
+SetTangentsAtSplinePoint(PointIndex: int32, InArriveTangent: FVector &, InLeaveTangent: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type, bUpdateSpline: bool) -> void
+```
+
+Specify the tangents at a given spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `InArriveTangent` | `FVector &` | - |
+| `InLeaveTangent` | `FVector &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUpdateSpline` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetUpVectorAtSplinePoint`
+
+```text
+SetUpVectorAtSplinePoint(PointIndex: int32, InUpVector: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type, bUpdateSpline: bool) -> void
+```
+
+Specify the up vector at a given spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `InUpVector` | `FVector &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUpdateSpline` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetSplinePointType`
+
+```text
+GetSplinePointType(PointIndex: int32) -> ESplinePointType :: Type
+```
+
+Get the type of a spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `ESplinePointType :: Type` | - |
+
+### `SetSplinePointType`
+
+```text
+SetSplinePointType(PointIndex: int32, Type: ESplinePointType :: Type, bUpdateSpline: bool) -> void
+```
+
+Specify the type of a spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `Type` | `ESplinePointType :: Type` | - |
+| `bUpdateSpline` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetNumberOfSplinePoints`
+
+```text
+GetNumberOfSplinePoints() -> int32
+```
+
+Get the number of points that make up this spline
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | - |
+
+### `GetLocationAtSplinePoint`
+
+```text
+GetLocationAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Get the location at spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetWorldLocationAtSplinePoint`
+
+```text
+GetWorldLocationAtSplinePoint(PointIndex: int32) -> FVector
+```
+
+Get the world location at spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetDirectionAtSplinePoint`
+
+```text
+GetDirectionAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Get the location at spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetTangentAtSplinePoint`
+
+```text
+GetTangentAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Get the tangent at spline point. This fetches the Leave tangent of the point.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetArriveTangentAtSplinePoint`
+
+```text
+GetArriveTangentAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Get the arrive tangent at spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetLeaveTangentAtSplinePoint`
+
+```text
+GetLeaveTangentAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Get the leave tangent at spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetRotationAtSplinePoint`
+
+```text
+GetRotationAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FRotator
+```
+
+Get the rotation at spline point as a rotator
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FRotator` | - |
+
+### `GetUpVectorAtSplinePoint`
+
+```text
+GetUpVectorAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Get the up vector at spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetRightVectorAtSplinePoint`
+
+```text
+GetRightVectorAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Get the right vector at spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetRollAtSplinePoint`
+
+```text
+GetRollAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> float
+```
+
+Get the amount of roll at spline point, in degrees
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetScaleAtSplinePoint`
+
+```text
+GetScaleAtSplinePoint(PointIndex: int32) -> FVector
+```
+
+Get the scale at spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetTransformAtSplinePoint`
+
+```text
+GetTransformAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseScale: bool) -> FTransform
+```
+
+Get the transform at spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUseScale` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FTransform` | - |
+
+### `GetLocationAndTangentAtSplinePoint`
+
+```text
+GetLocationAndTangentAtSplinePoint(PointIndex: int32, Location: FVector &, Tangent: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> void
+```
+
+Get location and tangent at a spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `Location` | `FVector &` | - |
+| `Tangent` | `FVector &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetLocalLocationAndTangentAtSplinePoint`
+
+```text
+GetLocalLocationAndTangentAtSplinePoint(PointIndex: int32, LocalLocation: FVector &, LocalTangent: FVector &) -> void
+```
+
+Get local location and tangent at a spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+| `LocalLocation` | `FVector &` | - |
+| `LocalTangent` | `FVector &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetDistanceAlongSplineAtSplinePoint`
+
+```text
+GetDistanceAlongSplineAtSplinePoint(PointIndex: int32) -> float
+```
+
+Get the distance along the spline at the spline point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PointIndex` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetSplineLength`
+
+```text
+GetSplineLength() -> float
+```
+
+Returns total length along this spline
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `SetDefaultUpVector`
+
+```text
+SetDefaultUpVector(UpVector: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> void
+```
+
+Sets the default up vector used by this spline
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `UpVector` | `FVector &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetDefaultUpVector`
+
+```text
+GetDefaultUpVector(CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Gets the default up vector used by this spline
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetInputKeyAtDistanceAlongSpline`
+
+```text
+GetInputKeyAtDistanceAlongSpline(Distance: float) -> float
+```
+
+Given a distance along the length of this spline, return the corresponding input key at that point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Distance` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetTimeAtDistanceAlongSpline`
+
+```text
+GetTimeAtDistanceAlongSpline(Distance: float) -> float
+```
+
+Given a distance along the length of this spline, return the corresponding time at that point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Distance` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetLocationAtDistanceAlongSpline`
+
+```text
+GetLocationAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Given a distance along the length of this spline, return the point in space where this puts you
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Distance` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetWorldLocationAtDistanceAlongSpline`
+
+```text
+GetWorldLocationAtDistanceAlongSpline(Distance: float) -> FVector
+```
+
+Given a distance along the length of this spline, return the point in world space where this puts you
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Distance` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetDirectionAtDistanceAlongSpline`
+
+```text
+GetDirectionAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Given a distance along the length of this spline, return a unit direction vector of the spline tangent there.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Distance` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetWorldDirectionAtDistanceAlongSpline`
+
+```text
+GetWorldDirectionAtDistanceAlongSpline(Distance: float) -> FVector
+```
+
+Given a distance along the length of this spline, return a unit direction vector of the spline tangent there, in world space.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Distance` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetTangentAtDistanceAlongSpline`
+
+```text
+GetTangentAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Given a distance along the length of this spline, return the tangent vector of the spline there.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Distance` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetWorldTangentAtDistanceAlongSpline`
+
+```text
+GetWorldTangentAtDistanceAlongSpline(Distance: float) -> FVector
+```
+
+Given a distance along the length of this spline, return the tangent vector of the spline there, in world space.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Distance` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetRotationAtDistanceAlongSpline`
+
+```text
+GetRotationAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FRotator
+```
+
+Given a distance along the length of this spline, return a rotation corresponding to the spline's rotation there.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Distance` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FRotator` | - |
+
+### `GetWorldRotationAtDistanceAlongSpline`
+
+```text
+GetWorldRotationAtDistanceAlongSpline(Distance: float) -> FRotator
+```
+
+Given a distance along the length of this spline, return a rotation corresponding to the spline's rotation there, in world space.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Distance` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FRotator` | - |
+
+### `GetUpVectorAtDistanceAlongSpline`
+
+```text
+GetUpVectorAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Given a distance along the length of this spline, return a unit direction vector corresponding to the spline's up vector there.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Distance` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetRightVectorAtDistanceAlongSpline`
+
+```text
+GetRightVectorAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Given a distance along the length of this spline, return a unit direction vector corresponding to the spline's right vector there.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Distance` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetRollAtDistanceAlongSpline`
+
+```text
+GetRollAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type) -> float
+```
+
+Given a distance along the length of this spline, return the spline's roll there, in degrees.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Distance` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetScaleAtDistanceAlongSpline`
+
+```text
+GetScaleAtDistanceAlongSpline(Distance: float) -> FVector
+```
+
+Given a distance along the length of this spline, return the spline's scale there.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Distance` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetTransformAtDistanceAlongSpline`
+
+```text
+GetTransformAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseScale: bool) -> FTransform
+```
+
+Given a distance along the length of this spline, return an FTransform corresponding to that point on the spline.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Distance` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUseScale` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FTransform` | - |
+
+### `GetLocationAtTime`
+
+```text
+GetLocationAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool) -> FVector
+```
+
+Given a time from 0 to the spline duration, return the point in space where this puts you
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Time` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUseConstantVelocity` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetWorldLocationAtTime`
+
+```text
+GetWorldLocationAtTime(Time: float, bUseConstantVelocity: bool) -> FVector
+```
+
+Given a time from 0 to the spline duration, return the point in space where this puts you
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Time` | `float` | - |
+| `bUseConstantVelocity` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetDirectionAtTime`
+
+```text
+GetDirectionAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool) -> FVector
+```
+
+Given a time from 0 to the spline duration, return a unit direction vector of the spline tangent there.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Time` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUseConstantVelocity` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetWorldDirectionAtTime`
+
+```text
+GetWorldDirectionAtTime(Time: float, bUseConstantVelocity: bool) -> FVector
+```
+
+Given a time from 0 to the spline duration, return a unit direction vector of the spline tangent there.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Time` | `float` | - |
+| `bUseConstantVelocity` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetTangentAtTime`
+
+```text
+GetTangentAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool) -> FVector
+```
+
+Given a time from 0 to the spline duration, return the spline's tangent there.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Time` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUseConstantVelocity` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetRotationAtTime`
+
+```text
+GetRotationAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool) -> FRotator
+```
+
+Given a time from 0 to the spline duration, return a rotation corresponding to the spline's position and direction there.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Time` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUseConstantVelocity` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FRotator` | - |
+
+### `GetWorldRotationAtTime`
+
+```text
+GetWorldRotationAtTime(Time: float, bUseConstantVelocity: bool) -> FRotator
+```
+
+Given a time from 0 to the spline duration, return a rotation corresponding to the spline's position and direction there.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Time` | `float` | - |
+| `bUseConstantVelocity` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FRotator` | - |
+
+### `GetUpVectorAtTime`
+
+```text
+GetUpVectorAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool) -> FVector
+```
+
+Given a time from 0 to the spline duration, return the spline's up vector there.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Time` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUseConstantVelocity` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetRightVectorAtTime`
+
+```text
+GetRightVectorAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool) -> FVector
+```
+
+Given a time from 0 to the spline duration, return the spline's right vector there.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Time` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUseConstantVelocity` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `GetTransformAtTime`
+
+```text
+GetTransformAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool, bUseScale: bool) -> FTransform
+```
+
+Given a time from 0 to the spline duration, return the spline's transform at the corresponding position.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Time` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUseConstantVelocity` | `bool` | - |
+| `bUseScale` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FTransform` | - |
+
+### `GetRollAtTime`
+
+```text
+GetRollAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool) -> float
+```
+
+Given a time from 0 to the spline duration, return the spline's roll there, in degrees.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Time` | `float` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUseConstantVelocity` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetScaleAtTime`
+
+```text
+GetScaleAtTime(Time: float, bUseConstantVelocity: bool) -> FVector
+```
+
+Given a time from 0 to the spline duration, return the spline's scale there.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Time` | `float` | - |
+| `bUseConstantVelocity` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `FindInputKeyClosestToWorldLocation`
+
+```text
+FindInputKeyClosestToWorldLocation(WorldLocation: FVector &) -> float
+```
+
+Given a location, in world space, return the input key closest to that location.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldLocation` | `FVector &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `FindLocationClosestToWorldLocation`
+
+```text
+FindLocationClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Given a location, in world space, return the point on the curve that is closest to the location.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldLocation` | `FVector &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `FindDirectionClosestToWorldLocation`
+
+```text
+FindDirectionClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Given a location, in world spcae, return a unit direction vector of the spline tangent closest to the location.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldLocation` | `FVector &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `FindTangentClosestToWorldLocation`
+
+```text
+FindTangentClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Given a location, in world space, return the tangent vector of the spline closest to the location.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldLocation` | `FVector &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `FindRotationClosestToWorldLocation`
+
+```text
+FindRotationClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FRotator
+```
+
+Given a location, in world space, return rotation corresponding to the spline's rotation closest to the location.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldLocation` | `FVector &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FRotator` | - |
+
+### `FindUpVectorClosestToWorldLocation`
+
+```text
+FindUpVectorClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Given a location, in world space, return a unit direction vector corresponding to the spline's up vector closest to the location.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldLocation` | `FVector &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `FindRightVectorClosestToWorldLocation`
+
+```text
+FindRightVectorClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
+```
+
+Given a location, in world space, return a unit direction vector corresponding to the spline's right vector closest to the location.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldLocation` | `FVector &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `FindRollClosestToWorldLocation`
+
+```text
+FindRollClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> float
+```
+
+Given a location, in world space, return the spline's roll closest to the location, in degrees.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldLocation` | `FVector &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `FindScaleClosestToWorldLocation`
+
+```text
+FindScaleClosestToWorldLocation(WorldLocation: FVector &) -> FVector
+```
+
+Given a location, in world space, return the spline's scale closest to the location.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldLocation` | `FVector &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `FindTransformClosestToWorldLocation`
+
+```text
+FindTransformClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseScale: bool) -> FTransform
+```
+
+Given a location, in world space, return an FTransform closest to that location.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldLocation` | `FVector &` | - |
+| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
+| `bUseScale` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FTransform` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USplineComponentEditorModifer.json -->
+
+# USplineComponentEditorModifer
+
+## Inheritance
+
+`UObject`
+
+## Functions
+
+### `ModifyPostion`
+
+```text
+ModifyPostion(InPosition: FVector) -> FVector
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InPosition` | `FVector` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USplineMeshComponent.json -->
 
 # USplineMeshComponent
@@ -1493,6 +4206,24 @@ SetForcedLodModel(NewForcedLodModel: int32) -> void
 |---|---|
 | `void` | - |
 
+### `SetMinLodModel`
+
+```text
+SetMinLodModel(InMinLod: int32) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InMinLod` | `int32` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ### `SetDistanceFieldSelfShadowBias`
 
 ```text
@@ -2332,6 +5063,30 @@ SetSettings(InSettings: FSubmixEffectSubmixEQSettings &) -> void
 | Type | Description |
 |---|---|
 | `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USubModeDynamicLevelsSettings.json -->
+
+# USubModeDynamicLevelsSettings
+
+每张地图的 SubMode DynamicLevels INI 配置基类
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LevelPath` | `FString` | 用于匹配的关卡路径前缀（例如 "GameMapsPUBG_Baltic"） |
+| `SubModeDynamicLevelsEntries` | `TArray < FSubModeDynamicLevelsEntry >` | 该地图的 SubMode DynamicLevels 条目列表 |
 
 ## Language
 
@@ -3313,16 +6068,16 @@ Get world space size of text
 | `bNoTiling` | `uint32` | If true, the RHI texture will be created using TexCreate_NoTiling |
 | `bUseCinematicMipLevels` | `uint32` | Whether to use the extra cinematic quality mip-levels, when we're forcing mip-levels to be resident. |
 | `AssetUserData` | `TArray < UAssetUserData * >` | Array of user data stored with the asset |
-| `CachedCombinedLODBias` | `int32` | Cached combined group and texture LOD bias to use. |
 | `bAsyncResourceReleaseHasBeenStarted` | `uint32` | Whether the async resource release process has already been kicked off or not |
+| `CachedCombinedLODBias` | `int32` | Cached combined group and texture LOD bias to use. |
 | `CompressionSettings` | `TEnumAsByte < enum TextureCompressionSettings >` | Compression settings to use when building the texture. |
 | `Filter` | `TEnumAsByte < enum TextureFilter >` | The texture filtering mode to use when sampling this texture. |
 | `LODGroup` | `TEnumAsByte < enum TextureGroup >` | Texture group this texture belongs to |
 | `CrunchSetting` | `TEnumAsByte < enum ETextureCrunchSetting >` | - |
 | `bOverrideCrunchCompressionAmount` | `uint32` | - |
 | `CrunchCompressionAmount` | `float` | - |
-| `bOverrideBasisCompressionAmount` | `uint32` | - |
 | `BasisSetting` | `TEnumAsByte < enum ETextureBasisSetting >` | - |
+| `bOverrideBasisCompressionAmount` | `uint32` | - |
 | `BasisCompressionAmount` | `float` | - |
 | `Source` | `FTextureSource` | --------------------------------------------------------------------------<br>	-------------------------------------------------------------------------- |
 | `SourceFilePath_DEPRECATED` | `FString` | - |
@@ -3389,6 +6144,7 @@ Get world space size of text
 | `FirstResourceMemMip` | `int32` | keep track of first mip level used for ResourceMem creation |
 | `bSuperSamplingMipBiasResponsive` | `uint32` | - |
 | `PerTextureMipBias` | `int32` | - |
+| `PerTextureMaxAnisotropy` | `int32` | 单贴图各向异性过滤等级。0 表示使用全局 r.MaxAnisotropy 设置，1-16 为自定义等级。需要 r.Texture.AllowPerTextureAnisotropy 开启才生效。 |
 | `bUseForTerrainRVT` | `uint32` | - |
 | `ImportedSize` | `FIntPoint` | The imported size of the texture. Only valid on cooked builds when texture source is not<br>	  available. Access ONLY via the GetImportedSize() accessor! |
 | `ForceMipLevelsToBeResidentTimestamp` | `double` | WorldSettings timestamp that tells the streamer to force all miplevels to be resident up until that time. |
@@ -3469,6 +6225,9 @@ RefreshBulkNotExistsMipCount() -> ENGINE_API void
 | `AddressX` | `TEnumAsByte < enum TextureAddress >` | The addressing mode to use for the X axis. |
 | `AddressY` | `TEnumAsByte < enum TextureAddress >` | The addressing mode to use for the Y axis. |
 | `AddressZ` | `TEnumAsByte < enum TextureAddress >` | The addressing mode to use for the Z axis. |
+| `bApplySingleImageAdjustSetting` | `bool` | - |
+| `bCreatedByUGCEditor_Ext` | `bool` | - |
+| `SourceTextures` | `TArray < UTexture2D * >` | Add Textures |
 
 ## Functions
 
@@ -4603,7 +7362,7 @@ Kicks off a generic twitter request
 
 ## Inheritance
 
-`UBackpackAvatarHandle` -> `IUGCItemDataInterface` -> `IUGCObjectItemTableInterface` -> `IUGCItemEquipmentInterface` -> `IUGCItemEquipTargetInterface` -> `IUGCCommonDeadDropItemInterface` -> `IUGCBattleEquipHandleAttachInterface`
+`UBackpackAvatarHandle` -> `IUGCItemDataInterface` -> `IUGCObjectItemTableInterface` -> `IUGCItemEquipmentInterface` -> `IUGCItemEquipTargetInterface` -> `IUGCCommonDeadDropItemInterface` -> `IUGCBattleEquipHandleAttachInterface` -> `IUGCItemCompleteDataFillInterface`
 
 ## Events
 
@@ -4987,6 +7746,31 @@ ItemRemoveDelegate(DefineID: const FItemDefineID&) -> void
 | Type | Description |
 |---|---|
 | `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UUGCMBackpackComponentV2.json -->
+
+# UUGCMBackpackComponentV2
+
+手机 V2背包组件
+
+## Inheritance
+
+`UBackpackComponentV2`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `Compatible_ItemOperationDelegate` | `FItemOperationDelegate` | Delegate<br>	  平替经典 ItemOperationDelegate：物品操作广播<br>	  由经典背包的同名委托原样转发（见 OnClassicItemOperation），参数与经典完全一致<br>	  广播范围：服务端、客户端 |
+| `Compatible_ItemUpdatedDelegate` | `FItemUpdatedDelegate` | Delegate<br>	  平替经典 ItemUpdatedDelegate：物品更新广播<br>	  由经典背包的同名委托原样转发（见 OnClassicItemUpdated），参数与经典完全一致<br>	  广播范围：服务端、客户端 |
+| `Compatible_ItemRemovedDelegate` | `FItemRemovedDelegate` | Delegate<br>	  平替经典 ItemRemovedDelegate：物品移除广播<br>	  由经典背包的同名委托原样转发（见 OnClassicItemRemoved），参数与经典完全一致<br>	  广播范围：服务端、客户端 |
 
 ## Language
 
@@ -5518,8 +8302,8 @@ The user widget is extensible by users through the WidgetBlueprint.
 
 | Name | Type/Value | Description |
 |---|---|---|
-| `ColorAndOpacityDelegate` | `FGetLinearColor` | - |
 | `ColorAndOpacity` | `FLinearColor` | The color and opacity of this widget.  Tints all child widgets. |
+| `ColorAndOpacityDelegate` | `FGetLinearColor` | - |
 | `ForegroundColor` | `FSlateColor` | The foreground color of the widget, this is inherited by sub widgets.  Any color property<br>	  that is marked as inherit will use this color. |
 | `ForegroundColorDelegate` | `FGetSlateColor` | - |
 | `Padding` | `FMargin` | The padding area around the content. |
@@ -5670,24 +8454,6 @@ SetOffsetsInViewport(Margin: FMargin) -> void
 |---|---|
 | `void` | - |
 
-### `SetAlignmentInViewport`
-
-```text
-SetAlignmentInViewport(Alignment: FVector2D) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Alignment` | `FVector2D` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
 ### `SetAnchorsInViewport`
 
 ```text
@@ -5699,6 +8465,24 @@ SetAnchorsInViewport(Anchors: FAnchors) -> void
 | Name | Type | Description |
 |---|---|---|
 | `Anchors` | `FAnchors` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAlignmentInViewport`
+
+```text
+SetAlignmentInViewport(Alignment: FVector2D) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Alignment` | `FVector2D` | - |
 
 **Returns**
 
@@ -6410,28 +9194,6 @@ Called during drag and drop when the drag leaves the widget.
 |---|---|
 | `void` | - |
 
-### `OnDragOver`
-
-```text
-OnDragOver(MyGeometry: FGeometry, PointerEvent: FPointerEvent, Operation: UDragDropOperation *) -> bool
-```
-
-Called during drag and drop when the the mouse is being dragged over a widget.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `MyGeometry` | `FGeometry` | The geometry of the widget receiving the event. |
-| `PointerEvent` | `FPointerEvent` | The mouse event from when the drag occurred over the widget. |
-| `Operation` | `UDragDropOperation *` | The drag operation over the widget. |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | 'true' to indicate that you handled the drag over operation.  Returning 'false' will cause the operation to continue to bubble up. |
-
 ### `OnDrop`
 
 ```text
@@ -6453,6 +9215,28 @@ Called when the user is dropping something onto a widget.  Ends the drag and dro
 | Type | Description |
 |---|---|
 | `bool` | 'true' to indicate you handled the drop operation. |
+
+### `OnDragOver`
+
+```text
+OnDragOver(MyGeometry: FGeometry, PointerEvent: FPointerEvent, Operation: UDragDropOperation *) -> bool
+```
+
+Called during drag and drop when the the mouse is being dragged over a widget.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `MyGeometry` | `FGeometry` | The geometry of the widget receiving the event. |
+| `PointerEvent` | `FPointerEvent` | The mouse event from when the drag occurred over the widget. |
+| `Operation` | `UDragDropOperation *` | The drag operation over the widget. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 'true' to indicate that you handled the drag over operation.  Returning 'false' will cause the operation to continue to bubble up. |
 
 ### `OnTouchGesture`
 
@@ -7601,8 +10385,8 @@ The user widget UI
 | Name | Type/Value | Description |
 |---|---|---|
 | `LayoutDataList` | `TMap < int32 , FMainUILayoutData >` | Widget Main UI. |
-| `WidgetUIBlueprintType` | `TEnumAsByte < EWidgetUIBlueprintType >` | - |
 | `WidgetType` | `int32` | - |
+| `WidgetUIBlueprintType` | `TEnumAsByte < EWidgetUIBlueprintType >` | - |
 
 ## Functions
 
@@ -7618,10 +10402,10 @@ ReceiveApply() -> void
 |---|---|
 | `void` | - |
 
-### `ReceiveCleanup`
+### `ReceiveRevert`
 
 ```text
-ReceiveCleanup() -> void
+ReceiveRevert() -> void
 ```
 
 **Returns**
@@ -7630,10 +10414,10 @@ ReceiveCleanup() -> void
 |---|---|
 | `void` | - |
 
-### `ReceiveRevert`
+### `ReceiveCleanup`
 
 ```text
-ReceiveRevert() -> void
+ReceiveCleanup() -> void
 ```
 
 **Returns**
@@ -13322,6 +16106,26 @@ Sets the inner slot padding goes between slots sharing borders
 | Name | Type | Description |
 |---|---|---|
 | `InPadding` | `FVector2D` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetWrapWidth`
+
+```text
+SetWrapWidth(InWrapWidth: float) -> void
+```
+
+Sets the wrap width. Elements exceeding this width will wrap to the next line.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InWrapWidth` | `float` | - |
 
 **Returns**
 

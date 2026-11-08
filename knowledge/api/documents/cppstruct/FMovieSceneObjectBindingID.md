@@ -18,3 +18,4 @@ Persistent identifier to a specific object binding within a sequence hierarchy.
 | `SequenceID` | `int32` | Sequence ID stored as an int32 so that it can be used in the blueprint VM |
 | `Space` | `EMovieSceneObjectBindingSpace` | The binding's resolution space |
 | `Guid` | `FGuid` | Identifier for the object binding within the sequence |
+| `ResolveParentIndex` | `int32` | Parent index to resolve the sequence ID from. 0 = local, N>0 = Nth parent, -1 = fixed to root. |

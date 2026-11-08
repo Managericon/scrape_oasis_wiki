@@ -16,4 +16,5 @@ api_root: "https://developer.gp.qq.com/api/"
 | `EDropExtraItemType_Default` | `0` | - |
 | `EDropExtraItemType_PlayerRank` | `1` | - |
 | `EDropExtraItemType_GlobalRank` | `2` | - |
-| `EDropExtraItemType_None` | `3` | - |
+| `EDropExtraItemType_DropConfig` | `3` | - |
+| `EDropExtraItemType_None` | `4` | - |

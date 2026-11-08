@@ -6,6 +6,2623 @@ category: "API Wiki/class"
 kind: "api_chunk"
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UParticleSystemComponent.json -->
+
+# UParticleSystemComponent
+
+A particle emitter.
+
+## Inheritance
+
+`UPrimitiveComponent` -> `IWTACAggregateInterface` -> `IObjectPoolInterface`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `TemplateBindingType` | `EParticleTemplateBindingType` | - |
+| `Template` | `UParticleSystem *` | - |
+| `SoftTemplate` | `TSoftObjectPtr < UParticleSystem >` | - |
+| `EmitterMaterials` | `TArray < UMaterialInterface * >` | - |
+| `SkelMeshComponents` | `TArray < USkeletalMeshComponent * >` | The skeletal mesh components used with the socket location module.<br>	 	This is to prevent them from being garbage collected. |
+| `bResetOnDetach` | `uint8` | - |
+| `bUpdateOnDedicatedServer` | `uint8` | whether to update the particle system on dedicated servers |
+| `bAllowRecycling` | `uint8` | If true, this Particle System will be available for recycling after it has completed. Auto-destroyed systems cannot be recycled.<br>	  Some systems (currently particle trail effects) can recycle components to avoid respawning them to play new effects.<br>	  This is only an optimization and does not change particle system behavior, aside from not triggering normal component initialization events more than once. |
+| `bAutoManageAttachment` | `uint8` | True if we should automatically attach to AutoAttachParent when activated, and detach from our parent when completed.<br>	  This overrides any current attachment that may be present at the time of activation (deferring initial attachment until activation, if AutoAttachParent is null).<br>	  When enabled, detachment occurs regardless of whether AutoAttachParent is assigned, and the relative transform from the time of activation is restored.<br>	  This also disables attachment on dedicated servers, where we don't actually activate even if bAutoActivate is true.<br>	  @see AutoAttachParent, AutoAttachSocketName, AutoAttachLocationType |
+| `bWarmingUp` | `uint8` | - |
+| `bOverrideLODMethod` | `uint8` | indicates that the component's LODMethod overrides the Template's |
+| `bSkipUpdateDynamicDataDuringTick` | `uint8` | Flag indicating that dynamic updating of render data should NOT occur during Tick.<br>	 	This is used primarily to allow for warming up and simulated effects to a certain state. |
+| `LODMethod` | `TEnumAsByte < enum ParticleSystemLODMethod >` | The method of LOD level determination to utilize for this particle system |
+| `RequiredSignificance` | `EParticleSignificanceLevel` | The significance this component requires of it's emitters for them to be enabled. |
+| `bShouldUseTagGetSkeletalMesh` | `bool` | Array holding name instance parameters for this ParticleSystemComponent.<br>	 	Parameters can be used in Cascade using DistributionFloatVectorParticleParameters. |
+| `SkeletalMeshTagName` | `FName` | - |
+| `InstanceParameters` | `TArray < FParticleSysParam >` | - |
+| `OnParticleSpawn` | `FParticleSpawnSignature` | - |
+| `OnParticleBurst` | `FParticleBurstSignature` | - |
+| `OnParticleDeath` | `FParticleDeathSignature` | - |
+| `OnParticleCollide` | `FParticleCollisionSignature` | - |
+| `OldPosition` | `FVector` | - |
+| `PartSysVelocity` | `FVector` | - |
+| `WarmupTime` | `float` | - |
+| `WarmupTickRate` | `float` | - |
+| `OverrideEmitterMeshDataMap` | `TMap < FName , UStaticMesh * >` | - |
+| `SecondsBeforeInactive` | `float` | Number of seconds of emitter not being rendered that need to pass before it<br>	  no longer gets ticked becomes inactive. |
+| `MaxTimeBeforeForceUpdateTransform` | `float` | Time between forced UpdateTransforms for systems that use dynamically calculated bounds,<br>	  Which is effectively how often the bounds are shrunk. |
+| `ReplayClips` | `TArray < UParticleSystemReplay * >` | Array of replay clips for this particle system component.  These are serialized to disk.  You really should never add anything to this in the editor.  It's exposed so that you can delete clips if you need to, but be careful when doing so! |
+| `CustomTimeDilation` | `float` | Scales DeltaTime in UParticleSystemComponent::Tick(...) |
+| `bIsPCPlatformResource` | `bool` | Is PC Redirect Particle Resource |
+| `AutoAttachParent` | `TWeakObjectPtr < USceneComponent >` | Component we automatically attach to when activated, if bAutoManageAttachment is true.<br>	  If null during registration, we assign the existing AttachParent and defer attachment until we activate.<br>	  @see bAutoManageAttachment |
+| `AutoAttachSocketName` | `FName` | Socket we automatically attach to on the AutoAttachParent, if bAutoManageAttachment is true.<br>	  @see bAutoManageAttachment |
+| `AutoAttachLocationRule` | `EAttachmentRule` | Options for how we handle our location when we attach to the AutoAttachParent, if bAutoManageAttachment is true.<br>	  @see bAutoManageAttachment, EAttachmentRule |
+| `AutoAttachRotationRule` | `EAttachmentRule` | Options for how we handle our rotation when we attach to the AutoAttachParent, if bAutoManageAttachment is true.<br>	  @see bAutoManageAttachment, EAttachmentRule |
+| `AutoAttachScaleRule` | `EAttachmentRule` | Options for how we handle our scale when we attach to the AutoAttachParent, if bAutoManageAttachment is true.<br>	  @see bAutoManageAttachment, EAttachmentRule |
+| `bForceNoAsync` | `bool` | - |
+| `SystemFixedWorldBounds` | `FBox` | - |
+| `SystemFixedLocalBounds` | `FBox` | - |
+| `CollisionIgnoreActorList` | `TArray < AActor * >` | - |
+| `CollisionIgnoreComponentList` | `TArray < UPrimitiveComponent * >` | - |
+| `CollisionIgnoreInfoLastClearTime` | `float` | - |
+| `EditorLODLevel` | `int32` | INTERNAL. Used by the editor to set the LODLevel |
+| `EditorDetailMode` | `int32` | Used for applying Cascade's detail mode setting to in-level particle systems |
+| `AutoAttachLocationType_DEPRECATED` | `TEnumAsByte < EAttachLocation :: Type >` | DEPRECATED: Options for how we handle our location when we attach to the AutoAttachParent, if bAutoManageAttachment is true.<br>	  @see bAutoManageAttachment, EAttachLocation::Type |
+
+## Functions
+
+### `GetDuration`
+
+```text
+GetDuration() -> float
+```
+
+Returns duration
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `SetSystemFixedWorldBounds`
+
+```text
+SetSystemFixedWorldBounds(WorldBounds: FBox) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldBounds` | `FBox` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetSystemFixedLocalBounds`
+
+```text
+SetSystemFixedLocalBounds(LocalBounds: FBox) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `LocalBounds` | `FBox` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ClearSystemFixedBounds`
+
+```text
+ClearSystemFixedBounds() -> void
+```
+
+Clear any previously set fixed bounds for the system instance.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetWarmUp`
+
+```text
+SetWarmUp(WarmUpTime: float, WarmUpRate: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WarmUpTime` | `float` | - |
+| `WarmUpRate` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAutoAttachParams`
+
+```text
+SetAutoAttachParams(Parent: USceneComponent *, SocketName: FName, LocationType: EAttachLocation :: Type) -> void
+```
+
+DEPRECATED: Set AutoAttachParent, AutoAttachSocketName, AutoAttachLocationType to the specified parameters. Does not change bAutoManageAttachment; that must be set separately.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Parent` | `USceneComponent *` | Component to attach to. |
+| `SocketName` | `FName` | Socket on Parent to attach to. |
+| `LocationType` | `EAttachLocation :: Type` | Option for how we handle our location when we attach to Parent. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetAutoAttachmentParameters`
+
+```text
+SetAutoAttachmentParameters(Parent: USceneComponent *, SocketName: FName, LocationRule: EAttachmentRule, RotationRule: EAttachmentRule, ScaleRule: EAttachmentRule) -> void
+```
+
+Set AutoAttachParent, AutoAttachSocketName, AutoAttachLocationRule, AutoAttachRotationRule, AutoAttachScaleRule to the specified parameters. Does not change bAutoManageAttachment; that must be set separately.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Parent` | `USceneComponent *` | Component to attach to. |
+| `SocketName` | `FName` | Socket on Parent to attach to. |
+| `LocationRule` | `EAttachmentRule` | Option for how we handle our location when we attach to Parent. |
+| `RotationRule` | `EAttachmentRule` | Option for how we handle our rotation when we attach to Parent. |
+| `ScaleRule` | `EAttachmentRule` | Option for how we handle our scale when we attach to Parent. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetBeamEndPoint`
+
+```text
+SetBeamEndPoint(EmitterIndex: int32, NewEndPoint: FVector) -> void
+```
+
+Set the beam end point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterIndex` | `int32` | The index of the emitter to set it on |
+| `NewEndPoint` | `FVector` | The value to set it to |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetBeamSourcePoint`
+
+```text
+SetBeamSourcePoint(EmitterIndex: int32, NewSourcePoint: FVector, SourceIndex: int32) -> void
+```
+
+Set the beam source point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterIndex` | `int32` | The index of the emitter to set it on |
+| `NewSourcePoint` | `FVector` | The value to set it to |
+| `SourceIndex` | `int32` | Which beam within the emitter to set it on |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetBeamSourceTangent`
+
+```text
+SetBeamSourceTangent(EmitterIndex: int32, NewTangentPoint: FVector, SourceIndex: int32) -> void
+```
+
+Set the beam source tangent
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterIndex` | `int32` | The index of the emitter to set it on |
+| `NewTangentPoint` | `FVector` | The value to set it to |
+| `SourceIndex` | `int32` | Which beam within the emitter to set it on |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetBeamSourceStrength`
+
+```text
+SetBeamSourceStrength(EmitterIndex: int32, NewSourceStrength: float, SourceIndex: int32) -> void
+```
+
+Set the beam source strength
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterIndex` | `int32` | The index of the emitter to set it on |
+| `NewSourceStrength` | `float` | The value to set it to |
+| `SourceIndex` | `int32` | Which beam within the emitter to set it on |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetBeamTargetPoint`
+
+```text
+SetBeamTargetPoint(EmitterIndex: int32, NewTargetPoint: FVector, TargetIndex: int32) -> void
+```
+
+Set the beam target point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterIndex` | `int32` | The index of the emitter to set it on |
+| `NewTargetPoint` | `FVector` | The value to set it to |
+| `TargetIndex` | `int32` | Which beam within the emitter to set it on |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetBeamTargetTangent`
+
+```text
+SetBeamTargetTangent(EmitterIndex: int32, NewTangentPoint: FVector, TargetIndex: int32) -> void
+```
+
+Set the beam target tangent
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterIndex` | `int32` | The index of the emitter to set it on |
+| `NewTangentPoint` | `FVector` | The value to set it to |
+| `TargetIndex` | `int32` | Which beam within the emitter to set it on |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetBeamTargetStrength`
+
+```text
+SetBeamTargetStrength(EmitterIndex: int32, NewTargetStrength: float, TargetIndex: int32) -> void
+```
+
+Set the beam target strength
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterIndex` | `int32` | The index of the emitter to set it on |
+| `NewTargetStrength` | `float` | The value to set it to |
+| `TargetIndex` | `int32` | Which beam within the emitter to set it on |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetBeamEndPoint`
+
+```text
+GetBeamEndPoint(EmitterIndex: int32, OutEndPoint: FVector &) -> bool
+```
+
+Get the beam end point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterIndex` | `int32` | The index of the emitter to get the value of |
+| `OutEndPoint` | `FVector &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true		EmitterIndex is valid and End point is set - OutEndPoint is valid |
+
+### `GetBeamSourcePoint`
+
+```text
+GetBeamSourcePoint(EmitterIndex: int32, SourceIndex: int32, OutSourcePoint: FVector &) -> bool
+```
+
+Get the beam source point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterIndex` | `int32` | The index of the emitter to get |
+| `SourceIndex` | `int32` | Which beam within the emitter to get |
+| `OutSourcePoint` | `FVector &` | Value of source point |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true		EmitterIndex and SourceIndex are valid - OutSourcePoint is valid |
+
+### `GetBeamSourceTangent`
+
+```text
+GetBeamSourceTangent(EmitterIndex: int32, SourceIndex: int32, OutTangentPoint: FVector &) -> bool
+```
+
+Get the beam source tangent
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterIndex` | `int32` | The index of the emitter to get |
+| `SourceIndex` | `int32` | Which beam within the emitter to get |
+| `OutTangentPoint` | `FVector &` | Value of source tangent |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true		EmitterIndex and SourceIndex are valid - OutTangentPoint is valid |
+
+### `GetBeamSourceStrength`
+
+```text
+GetBeamSourceStrength(EmitterIndex: int32, SourceIndex: int32, OutSourceStrength: float &) -> bool
+```
+
+Get the beam source strength
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterIndex` | `int32` | The index of the emitter to get |
+| `SourceIndex` | `int32` | Which beam within the emitter to get |
+| `OutSourceStrength` | `float &` | Value of source tangent |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true		EmitterIndex and SourceIndex are valid - OutSourceStrength is valid |
+
+### `GetBeamTargetPoint`
+
+```text
+GetBeamTargetPoint(EmitterIndex: int32, TargetIndex: int32, OutTargetPoint: FVector &) -> bool
+```
+
+Get the beam target point
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterIndex` | `int32` | The index of the emitter to get |
+| `TargetIndex` | `int32` | Which beam within the emitter to get |
+| `OutTargetPoint` | `FVector &` | Value of target point |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true		EmitterIndex and TargetIndex are valid - OutTargetPoint is valid |
+
+### `GetBeamTargetTangent`
+
+```text
+GetBeamTargetTangent(EmitterIndex: int32, TargetIndex: int32, OutTangentPoint: FVector &) -> bool
+```
+
+Get the beam target tangent
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterIndex` | `int32` | The index of the emitter to get |
+| `TargetIndex` | `int32` | Which beam within the emitter to get |
+| `OutTangentPoint` | `FVector &` | Value of target tangent |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true		EmitterIndex and TargetIndex are valid - OutTangentPoint is valid |
+
+### `GetBeamTargetStrength`
+
+```text
+GetBeamTargetStrength(EmitterIndex: int32, TargetIndex: int32, OutTargetStrength: float &) -> bool
+```
+
+Get the beam target strength
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterIndex` | `int32` | The index of the emitter to get |
+| `TargetIndex` | `int32` | Which beam within the emitter to get |
+| `OutTargetStrength` | `float &` | Value of target tangent |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | true		EmitterIndex and TargetIndex are valid - OutTargetStrength is valid |
+
+### `SetEmitterEnable`
+
+```text
+SetEmitterEnable(EmitterName: FName, bNewEnableState: bool) -> void
+```
+
+EnablesDisables a sub-emitter
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterName` | `FName` | The name of the sub-emitter to set it on |
+| `bNewEnableState` | `bool` | The value to set it to |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetEmitterRenderEnabled`
+
+```text
+SetEmitterRenderEnabled(EmitterName: FName, bNewRenderEnabled: bool) -> bool
+```
+
+EnablesDisables rendering for a sub-emitter without affecting simulation
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `EmitterName` | `FName` | The name of the sub-emitter to set it on |
+| `bNewRenderEnabled` | `bool` | Whether the sub-emitter should be rendered |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | Whether a matching sub-emitter was found |
+
+### `SetFloatParameter`
+
+```text
+SetFloatParameter(ParameterName: FName, Param: float) -> void
+```
+
+Change a named float parameter
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ParameterName` | `FName` | - |
+| `Param` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetVectorParameter`
+
+```text
+SetVectorParameter(ParameterName: FName, Param: FVector) -> void
+```
+
+Set a named vector instance parameter on this ParticleSystemComponent.
+	 	Updates the parameter if it already exists, or creates a new entry if not.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ParameterName` | `FName` | - |
+| `Param` | `FVector` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetColorParameter`
+
+```text
+SetColorParameter(ParameterName: FName, Param: FLinearColor) -> void
+```
+
+Set a named color instance parameter on this ParticleSystemComponent.
+	 	Updates the parameter if it already exists, or creates a new entry if not.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ParameterName` | `FName` | - |
+| `Param` | `FLinearColor` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetActorParameter`
+
+```text
+SetActorParameter(ParameterName: FName, Param: AActor *) -> void
+```
+
+Set a named actor instance parameter on this ParticleSystemComponent.
+	 	Updates the parameter if it already exists, or creates a new entry if not.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ParameterName` | `FName` | - |
+| `Param` | `AActor *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetMaterialParameter`
+
+```text
+SetMaterialParameter(ParameterName: FName, Param: UMaterialInterface *) -> void
+```
+
+Set a named material instance parameter on this ParticleSystemComponent.
+	 	Updates the parameter if it already exists, or creates a new entry if not.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ParameterName` | `FName` | - |
+| `Param` | `UMaterialInterface *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetTemplate`
+
+```text
+SetTemplate(NewTemplate: UParticleSystem *) -> void
+```
+
+Change the ParticleSystem used by this ParticleSystemComponent
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewTemplate` | `UParticleSystem *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetNumActiveParticles`
+
+```text
+GetNumActiveParticles() -> int32
+```
+
+Get the current number of active particles in this system
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `int32` | - |
+
+### `BeginTrails`
+
+```text
+BeginTrails(InFirstSocketName: FName, InSecondSocketName: FName, InWidthMode: ETrailWidthMode, InWidth: float) -> void
+```
+
+Begins all trail emitters in this component.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InFirstSocketName` | `FName` | The name of the first socket for the trail. |
+| `InSecondSocketName` | `FName` | The name of the second socket for the trail. |
+| `InWidthMode` | `ETrailWidthMode` | How the width value is applied to the trail. |
+| `InWidth` | `float` | The width of the trail. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `EndTrails`
+
+```text
+EndTrails() -> void
+```
+
+Ends all trail emitters in this component.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetTrailSourceData`
+
+```text
+SetTrailSourceData(InFirstSocketName: FName, InSecondSocketName: FName, InWidthMode: ETrailWidthMode, InWidth: float) -> void
+```
+
+Sets the defining data for all trails in this component.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InFirstSocketName` | `FName` | The name of the first socket for the trail. |
+| `InSecondSocketName` | `FName` | The name of the second socket for the trail. |
+| `InWidthMode` | `ETrailWidthMode` | How the width value is applied to the trail. |
+| `InWidth` | `float` | The width of the trail. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetSocketName`
+
+```text
+SetSocketName(InSocketName: FName) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InSocketName` | `FName` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ManuallyTickComponent`
+
+```text
+ManuallyTickComponent(DeltaTime: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `DeltaTime` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `K2_Activate`
+
+```text
+K2_Activate(bReset: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bReset` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `K2_ActivateSystem`
+
+```text
+K2_ActivateSystem(bFlagAsJustAttached: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bFlagAsJustAttached` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `K2_Deactivate`
+
+```text
+K2_Deactivate() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `K2_DeactivateSystem`
+
+```text
+K2_DeactivateSystem() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `CreateNamedDynamicMaterialInstance`
+
+```text
+CreateNamedDynamicMaterialInstance(InName: FName, SourceMaterial: UMaterialInterface *) -> UMaterialInstanceDynamic *
+```
+
+Creates a Dynamic Material Instance for the specified named material override, optionally from the supplied material.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InName` | `FName` | - |
+| `SourceMaterial` | `UMaterialInterface *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMaterialInstanceDynamic *` | - |
+
+### `GetNamedMaterial`
+
+```text
+GetNamedMaterial(InName: FName) -> UMaterialInterface *
+```
+
+Returns a named material. If this named material is not found, returns NULL.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InName` | `FName` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMaterialInterface *` | - |
+
+### `GenerateParticleEvent`
+
+```text
+GenerateParticleEvent(InEventName: FName, InEmitterTime: float, InLocation: FVector, InDirection: FVector, InVelocity: FVector) -> void
+```
+
+Record a kismet event.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InEventName` | `FName` | The name of the event that fired. |
+| `InEmitterTime` | `float` | The emitter time when the event fired. |
+| `InLocation` | `FVector` | The location of the particle when the event fired. |
+| `InDirection` | `FVector` | - |
+| `InVelocity` | `FVector` | The velocity of the particle when the event fired. |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetVectorRandParameter`
+
+```text
+SetVectorRandParameter(ParameterName: FName, Param: FVector &, ParamLow: FVector &) -> void
+```
+
+Set a named random vector instance parameter on this ParticleSystemComponent.
+	 	Updates the parameter if it already exists, or creates a new entry if not.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ParameterName` | `FName` | - |
+| `Param` | `FVector &` | - |
+| `ParamLow` | `FVector &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetFloatRandParameter`
+
+```text
+SetFloatRandParameter(ParameterName: FName, Param: float, ParamLow: float) -> void
+```
+
+Set a named random float instance parameter on this ParticleSystemComponent.
+	 	Updates the parameter if it already exists, or creates a new entry if not.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ParameterName` | `FName` | - |
+| `Param` | `float` | - |
+| `ParamLow` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `RewindEmitterInstances`
+
+```text
+RewindEmitterInstances() -> void
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Delegates
+
+### `OnSystemFinished`
+
+```text
+OnSystemFinished(PSystem: UParticleSystemComponent*) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PSystem` | `UParticleSystemComponent*` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ParticleSystemComponentEvent`
+
+```text
+ParticleSystemComponentEvent(PSystem: UParticleSystemComponent*, EventName: FName) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `PSystem` | `UParticleSystemComponent*` | - |
+| `EventName` | `FName` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UParticleSystemReplay.json -->
+
+# UParticleSystemReplay
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ClipIDNumber` | `int32` | Unique ID number for this replay clip |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPartTypeSocket.json -->
+
+# UPartTypeSocket
+
+## Inheritance
+
+`USkeletalMeshSocket`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PartType` | `uint8` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPathFollowingComponent.json -->
+
+# UPathFollowingComponent
+
+## Inheritance
+
+`UActorComponent` -> `IAIResourceInterface`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `MovementComp` | `UNavMovementComponent *` | associated movement component |
+| `MyNavData` | `ANavigationData *` | navigation data for agent described in movement component |
+
+## Functions
+
+### `OnActorBump`
+
+```text
+OnActorBump(SelfActor: AActor *, OtherActor: AActor *, NormalImpulse: FVector, Hit: FHitResult &) -> void
+```
+
+called when moving agent collides with another actor
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SelfActor` | `AActor *` | - |
+| `OtherActor` | `AActor *` | - |
+| `NormalImpulse` | `FVector` | - |
+| `Hit` | `FHitResult &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetPathActionType`
+
+```text
+GetPathActionType() -> EPathFollowingAction :: Type
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EPathFollowingAction :: Type` | - |
+
+### `GetPathDestination`
+
+```text
+GetPathDestination() -> FVector
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+### `OnNavDataRegistered`
+
+```text
+OnNavDataRegistered(NavData: ANavigationData *) -> void
+```
+
+called when NavigationSystem registers new navigation data type while this component
+	 	instance has empty MyNavData. This is usually the case for AI agents hand-placed
+	 	on levels.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NavData` | `ANavigationData *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPathNameMappingDataAsset.json -->
+
+# UPathNameMappingDataAsset
+
+## Inheritance
+
+`UDataAsset`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `VersionID` | `int32` | - |
+| `AllPathNameMapForLoad` | `TArray < FName >` | - |
+| `AllPathNameMapForWrite` | `TMap < FName , int32 >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPathNameMappingManager.json -->
+
+# UPathNameMappingManager
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PathNameMappingDataAsset` | `UPathNameMappingDataAsset *` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnAction.json -->
+
+# UPawnAction
+
+Things to remember:
+ 	 Actions are created paused
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ChildAction` | `UPawnAction *` | Current child node executing on top of this Action |
+| `ParentAction` | `UPawnAction *` | - |
+| `OwnerComponent` | `UPawnActionsComponent *` | Extra reference to the component this action is being governed by |
+| `Instigator` | `UObject *` | indicates an object that caused this action. Used for mass removal of actions <br>	 	by specific object |
+| `BrainComp` | `UBrainComponent *` | @Note: THIS IS HERE _ONLY_ BECAUSE OF THE WAY AI MESSAGING IS CURRENTLY IMPLEMENTED. WILL GO AWAY! |
+| `bAllowNewSameClassInstance` | `uint32` | if this is FALSE and we're trying to push a new instance of a given class,<br>	 	but the top of the stack is already an instance of that class ignore the attempted push |
+| `bReplaceActiveSameClassInstance` | `uint32` | if this is TRUE, when we try to push a new instance of an action who has the<br>	 	same class as the action on the top of the stack, pop the one on the stack, and push the new one<br>	 	NOTE: This trumps bAllowNewClassInstance (e.g. if this is true and bAllowNewClassInstance<br>	 	is false the active instance will still be replaced) |
+| `bShouldPauseMovement` | `uint32` | this is a temporary solution to allow having movement action running in background while there's <br>	 	another action on top doing its thing<br>	 	@note should go away once AI resource locking comes on-line |
+| `bAlwaysNotifyOnFinished` | `uint32` | if set, action will call OnFinished notify even when ending as FailedToStart |
+
+## Functions
+
+### `GetActionPriority`
+
+```text
+GetActionPriority() -> TEnumAsByte < EAIRequestPriority :: Type >
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `TEnumAsByte < EAIRequestPriority :: Type >` | - |
+
+### `CreateActionInstance`
+
+```text
+CreateActionInstance(WorldContextObject: UObject *, ActionClass: TSubclassOf < UPawnAction >) -> UPawnAction *
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldContextObject` | `UObject *` | - |
+| `ActionClass` | `TSubclassOf < UPawnAction >` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UPawnAction *` | - |
+
+### `Finish`
+
+```text
+Finish(WithResult: TEnumAsByte < EPawnActionResult :: Type >) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WithResult` | `TEnumAsByte < EPawnActionResult :: Type >` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnAction_BlueprintBase.json -->
+
+# UPawnAction_BlueprintBase
+
+## Inheritance
+
+`UPawnAction`
+
+## Functions
+
+### `ActionStart`
+
+```text
+ActionStart(ControlledPawn: APawn *) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ControlledPawn` | `APawn *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ActionTick`
+
+```text
+ActionTick(ControlledPawn: APawn *, DeltaSeconds: float) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ControlledPawn` | `APawn *` | - |
+| `DeltaSeconds` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ActionPause`
+
+```text
+ActionPause(ControlledPawn: APawn *) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ControlledPawn` | `APawn *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ActionResume`
+
+```text
+ActionResume(ControlledPawn: APawn *) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ControlledPawn` | `APawn *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `ActionFinished`
+
+```text
+ActionFinished(ControlledPawn: APawn *, WithResult: EPawnActionResult :: Type) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ControlledPawn` | `APawn *` | - |
+| `WithResult` | `EPawnActionResult :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnAction_Move.json -->
+
+# UPawnAction_Move
+
+## Inheritance
+
+`UPawnAction`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `GoalActor` | `AActor *` | - |
+| `GoalLocation` | `FVector` | - |
+| `AcceptableRadius` | `float` | - |
+| `FilterClass` | `TSubclassOf < UNavigationQueryFilter >` | "None" will result in default filter being used |
+| `bAllowStrafe` | `uint32` | - |
+| `bFinishOnOverlap` | `uint32` | if set to true (default) will make action succeed when the pawn's collision component overlaps with goal's collision component |
+| `bUsePathfinding` | `uint32` | if set, movement will use path finding |
+| `bAllowPartialPath` | `uint32` | if set, use incomplete path when goal can't be reached |
+| `bProjectGoalToNavigation` | `uint32` | if set, GoalLocation will be projected on navigation before using |
+| `bUpdatePathToGoal` | `uint32` | if set, path to GoalActor will be updated with goal's movement |
+| `bAbortChildActionOnPathChange` | `uint32` | if set, other actions with the same priority will be aborted when path is changed |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnAction_Repeat.json -->
+
+# UPawnAction_Repeat
+
+## Inheritance
+
+`UPawnAction`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ActionToRepeat` | `UPawnAction *` | Action to repeat. This instance won't really be run, it's a source for copying actions to be actually performed |
+| `RecentActionCopy` | `UPawnAction *` | - |
+| `ChildFailureHandlingMode` | `TEnumAsByte < EPawnActionFailHandling :: Type >` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnAction_Sequence.json -->
+
+# UPawnAction_Sequence
+
+## Inheritance
+
+`UPawnAction`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ActionSequence` | `TArray < UPawnAction * >` | - |
+| `ChildFailureHandlingMode` | `TEnumAsByte < EPawnActionFailHandling :: Type >` | - |
+| `RecentActionCopy` | `UPawnAction *` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnAction_Wait.json -->
+
+# UPawnAction_Wait
+
+uses system timers rather then ticking
+
+## Inheritance
+
+`UPawnAction`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `TimeToWait` | `float` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnActionsComponent.json -->
+
+# UPawnActionsComponent
+
+## Inheritance
+
+`UActorComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `ControlledPawn` | `APawn *` | - |
+| `ActionStacks` | `TArray < FPawnActionStack >` | - |
+| `ActionEvents` | `TArray < FPawnActionEvent >` | - |
+| `CurrentAction` | `UPawnAction *` | - |
+
+## Functions
+
+### `K2_PerformAction`
+
+```text
+K2_PerformAction(Pawn: APawn *, Action: UPawnAction *, Priority: TEnumAsByte < EAIRequestPriority :: Type >) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Pawn` | `APawn *` | - |
+| `Action` | `UPawnAction *` | - |
+| `Priority` | `TEnumAsByte < EAIRequestPriority :: Type >` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `K2_PushAction`
+
+```text
+K2_PushAction(NewAction: UPawnAction *, Priority: EAIRequestPriority :: Type, Instigator: UObject *) -> bool
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewAction` | `UPawnAction *` | - |
+| `Priority` | `EAIRequestPriority :: Type` | - |
+| `Instigator` | `UObject *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `K2_AbortAction`
+
+```text
+K2_AbortAction(ActionToAbort: UPawnAction *) -> EPawnActionAbortState :: Type
+```
+
+Aborts given action instance
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ActionToAbort` | `UPawnAction *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EPawnActionAbortState :: Type` | - |
+
+### `K2_ForceAbortAction`
+
+```text
+K2_ForceAbortAction(ActionToAbort: UPawnAction *) -> EPawnActionAbortState :: Type
+```
+
+Aborts given action instance
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `ActionToAbort` | `UPawnAction *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EPawnActionAbortState :: Type` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnMovementComponent.json -->
+
+# UPawnMovementComponent
+
+PawnMovementComponent can be used to update movement for an associated Pawn.
+  It also provides ways to accumulate and read directional input in a generic way (with AddInputVector(), ConsumeInputVector(), etc).
+  @see APawn
+
+## Inheritance
+
+`UNavMovementComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `PawnOwner` | `APawn *` | Pawn that owns this component. |
+
+## Functions
+
+### `AddInputVector`
+
+```text
+AddInputVector(WorldVector: FVector, bForce: bool) -> void
+```
+
+Adds the given vector to the accumulated input in world space. Input vectors are usually between 0 and 1 in magnitude. 
+	  They are accumulated during a frame then applied as acceleration during the movement update.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `WorldVector` | `FVector` | - |
+| `bForce` | `bool` | If true always add the input, ignoring the result of IsMoveInputIgnored(). |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetPendingInputVector`
+
+```text
+GetPendingInputVector() -> FVector
+```
+
+Return the pending input vector in world space. This is the most up-to-date value of the input vector, pending ConsumeMovementInputVector() which clears it.
+	  PawnMovementComponents implementing movement usually want to use either this or ConsumeInputVector() as these functions represent the most recent state of input.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | The pending input vector in world space. |
+
+### `GetLastInputVector`
+
+```text
+GetLastInputVector() -> FVector
+```
+
+Return the last input vector in world space that was processed by ConsumeInputVector(), which is usually done by the Pawn or PawnMovementComponent.
+	 Any user that needs to know about the input that last affected movement should use this function.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | The last input vector in world space that was processed by ConsumeInputVector(). |
+
+### `ConsumeInputVector`
+
+```text
+ConsumeInputVector() -> FVector
+```
+
+Returns the pending input vector and resets it to zero.
+	  This should be used during a movement update (by the Pawn or PawnMovementComponent) to prevent accumulation of control input between frames.
+	  Copies the pending input vector to the saved input vector (GetLastMovementInputVector()).
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | The pending input vector. |
+
+### `IsMoveInputIgnored`
+
+```text
+IsMoveInputIgnored() -> bool
+```
+
+Helper to see if move input is ignored. If there is no Pawn or UpdatedComponent, returns true, otherwise defers to the Pawn's implementation of IsMoveInputIgnored().
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | - |
+
+### `GetPawnOwner`
+
+```text
+GetPawnOwner() -> APawn *
+```
+
+Return the Pawn that owns UpdatedComponent.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `APawn *` | - |
+
+### `K2_GetInputVector`
+
+```text
+K2_GetInputVector() -> FVector
+```
+
+(Deprecated) Return the input vector in world space.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `FVector` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnNoiseEmitterComponent.json -->
+
+# UPawnNoiseEmitterComponent
+
+PawnNoiseEmitterComponent tracks noise event data used by SensingComponents to hear a Pawn.
+  This component is intended to exist on either a Pawn or its Controller. It does nothing on network clients.
+
+## Inheritance
+
+`UActorComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `bAIPerceptionSystemCompatibilityMode` | `uint32` | - |
+| `LastRemoteNoisePosition` | `FVector` | - |
+| `NoiseLifetime` | `float` | - |
+| `LastRemoteNoiseVolume` | `float` | - |
+| `LastRemoteNoiseTime` | `float` | - |
+| `LastLocalNoiseVolume` | `float` | - |
+| `LastLocalNoiseTime` | `float` | - |
+
+## Functions
+
+### `MakeNoise`
+
+```text
+MakeNoise(NoiseMaker: AActor *, Loudness: float, NoiseLocation: FVector &) -> void
+```
+
+Cache noises instigated by the owning pawn for AI sensing
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NoiseMaker` | `AActor *` | - is the actual actor which made the noise |
+| `Loudness` | `float` | - is the relative loudness of the noise (0.0 to 1.0) |
+| `NoiseLocation` | `FVector &` | - is the position of the noise |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPawnSensingComponent.json -->
+
+# UPawnSensingComponent
+
+SensingComponent encapsulates sensory (ie sight and hearing) settings and functionality for an Actor,
+  allowing the actor to seehear Pawns in the world. It does nothing on network clients.
+
+## Inheritance
+
+`UActorComponent`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `HearingThreshold` | `float` | Max distance at which a makenoise(1.0) loudness sound can be heard, regardless of occlusion |
+| `LOSHearingThreshold` | `float` | Max distance at which a makenoise(1.0) loudness sound can be heard if unoccluded (LOSHearingThreshold should be > HearingThreshold) |
+| `SightRadius` | `float` | Maximum sight distance. |
+| `SensingInterval` | `float` | Amount of time between pawn sensing updates. Use SetSensingInterval() to adjust this at runtime. A value <= 0 prevents any updates. |
+| `HearingMaxSoundAge` | `float` | - |
+| `bEnableSensingUpdates` | `uint32` | If true, component will perform sensing updates. At runtime change this using SetSensingUpdatesEnabled(). |
+| `bOnlySensePlayers` | `uint32` | If true, will only sense player-controlled pawns in the world. Default: true |
+| `bSeePawns` | `uint32` | If true, we will perform visibility tests and will trigger notifications when a Pawn is visible. Default: true |
+| `bHearNoises` | `uint32` | If true, we will perform audibility tests and will be notified when a Pawn makes a noise that can be heard. Default: true<br>	  IMPORTANT NOTE: If we can see pawns (bSeePawns is true), and the pawn is visible, noise notifications are not triggered. |
+| `PeripheralVisionAngle` | `float` | How far to the side AI can see, in degrees. Use SetPeripheralVisionAngle to change the value at runtime. |
+| `PeripheralVisionCosine` | `float` | Cosine of limits of peripheral vision. Computed from PeripheralVisionAngle. |
+
+## Functions
+
+### `SetSensingInterval`
+
+```text
+SetSensingInterval(NewSensingInterval: float) -> void
+```
+
+Changes the SensingInterval.
+	  If we are currently waiting for an interval, this can either extend or shorten that interval.
+	  A value <= 0 prevents any updates.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewSensingInterval` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetSensingUpdatesEnabled`
+
+```text
+SetSensingUpdatesEnabled(bEnabled: bool) -> void
+```
+
+Enables or disables sensing updates. The timer is reset in either case.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnabled` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetPeripheralVisionAngle`
+
+```text
+SetPeripheralVisionAngle(NewPeripheralVisionAngle: float) -> void
+```
+
+Sets PeripheralVisionAngle. Calculates PeripheralVisionCosine from PeripheralVisionAngle
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewPeripheralVisionAngle` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetPeripheralVisionAngle`
+
+```text
+GetPeripheralVisionAngle() -> float
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetPeripheralVisionCosine`
+
+```text
+GetPeripheralVisionCosine() -> float
+```
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+## Delegates
+
+### `OnSeePawn`
+
+```text
+OnSeePawn(Pawn: APawn*) -> void
+```
+
+Delegate to execute when we see a Pawn.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Pawn` | `APawn*` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnHearNoise`
+
+```text
+OnHearNoise(Instigator: APawn*, Location: const FVector&, Volume: float) -> void
+```
+
+Delegate to execute when we hear a noise from a Pawn's PawnNoiseEmitterComponent.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Instigator` | `APawn*` | - |
+| `Location` | `const FVector&` | - |
+| `Volume` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPendingNetGame.json -->
+
+# UPendingNetGame
+
+## Inheritance
+
+`UObject` -> `FNetworkNotify`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `NetDriver` | `UNetDriver *` | Net driver created for contacting the new server<br>	  Transferred to world on successful connection |
+| `DemoNetDriver` | `UDemoNetDriver *` | Demo Net driver created for loading demos, but we need to go through pending net game<br>	  Transferred to world on successful connection |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPersistBaseComponent.json -->
+
+# UPersistBaseComponent
+
+技能Buff组件
+
+## Inheritance
+
+`UGameplayTasksComponent` -> `IObjectPoolInterface`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `SlotStackPriorityConfig` | `UPESkillSlotPriorityDataAsset *` | 技能槽位优先级配置：配置技能Class与优先级数值。<br>	  RegisterPersistEffectWithSlotStack 注册时按优先级数值排序，数值最高的技能注册到槽位。 |
+
+## Functions
+
+### `RegisterPersistEffectWithSlot`
+
+```text
+RegisterPersistEffectWithSlot(Slot: FGameplayTag, InPE: UPersistEffectBase *, bShouldUnapply: bool) -> bool
+```
+
+生效范围：服务器
+	  将PersistEffect注册到目标槽位中
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Slot` | `FGameplayTag` | 槽位 |
+| `InPE` | `UPersistEffectBase *` | 注册到槽位的PersistEffect |
+| `bShouldUnapply` | `bool` | 是否将原来槽位上的PersistEffect进行Unapply |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 注册是否成功 |
+
+### `UnRegisterPersistEffectWithSlot`
+
+```text
+UnRegisterPersistEffectWithSlot(Slot: FGameplayTag, bShouldUnapply: bool) -> bool
+```
+
+生效范围：服务器
+	  将目标槽位中的PersistEffect解除注册
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Slot` | `FGameplayTag` | 槽位 |
+| `bShouldUnapply` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 解除注册是否成功 |
+
+### `GetPersistEffectBySlot`
+
+```text
+GetPersistEffectBySlot(Slot: FGameplayTag) -> SHADOWTRACKEREXTRA_API UPersistEffectBase *
+```
+
+生效范围：服务器&客户端
+	  获取目标槽位中的PersistEffect
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Slot` | `FGameplayTag` | 槽位 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `SHADOWTRACKEREXTRA_API UPersistEffectBase *` | 槽位上的PersistEffect |
+
+## Delegates
+
+### `DynamicStateEnterHandle`
+
+```text
+DynamicStateEnterHandle(SelfRef: UPersistBaseComponent*, state: FGameplayTag) -> void
+```
+
+Event
+	  生效范围：服务器&客户端
+	  进入状态事件, 注意：服务端DynamicState是有计数的, 服务端多次EnterDynamicState都会触发这个代理
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SelfRef` | `UPersistBaseComponent*` | 监听的组件 |
+| `state` | `FGameplayTag` | 进入的状态 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `DynamicStateLeaveHandle`
+
+```text
+DynamicStateLeaveHandle(SelfRef: UPersistBaseComponent*, state: FGameplayTag) -> void
+```
+
+Event
+      生效范围：服务器&客户端
+      离开状态事件, 注意：服务端DynamicState是有计数的, 服务端多次LeaveDynamicState都会触发这个代理, 只有当前计数为0时再Leave就不会触发
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SelfRef` | `UPersistBaseComponent*` | 监听的组件 |
+| `state` | `FGameplayTag` | 离开的状态 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `DynamicStateInterruptedHandle`
+
+```text
+DynamicStateInterruptedHandle(SelfRef: UPersistBaseComponent*, state: FGameplayTag) -> void
+```
+
+Event
+	  生效范围：服务器&客户端
+	  打断状态事件
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SelfRef` | `UPersistBaseComponent*` | 监听的组件 |
+| `state` | `FGameplayTag` | 打断的状态 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `DynamicStateInterruptedWithSourceHandle`
+
+```text
+DynamicStateInterruptedWithSourceHandle(SelfRef: UPersistBaseComponent*, InterruptedState: FGameplayTag, SourceState: FGameplayTag) -> void
+```
+
+Event
+	  生效范围：服务器
+	  打断状态事件
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SelfRef` | `UPersistBaseComponent*` | 监听的组件 |
+| `InterruptedState` | `FGameplayTag` | - |
+| `SourceState` | `FGameplayTag` | 打断的状态的来源 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `DynamicStateDisabledChangedHandle`
+
+```text
+DynamicStateDisabledChangedHandle(SelfRef: UPersistBaseComponent*, state: FGameplayTag, bNewDisabled: bool) -> void
+```
+
+Event
+	  生效范围：服务器&客户端
+	  禁用状态事件
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SelfRef` | `UPersistBaseComponent*` | 监听的组件 |
+| `state` | `FGameplayTag` | 禁用的状态 |
+| `bNewDisabled` | `bool` | 禁用解除禁用 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `DynamicStateDisabledResetHandle`
+
+```text
+DynamicStateDisabledResetHandle(SelfRef: UPersistBaseComponent*, state: FGameplayTag) -> void
+```
+
+Event
+	  生效范围：服务器&客户端
+	  重置禁用状态事件
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `SelfRef` | `UPersistBaseComponent*` | 监听的组件 |
+| `state` | `FGameplayTag` | 重置禁用的状态 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPersistEffectBase.json -->
+
+# UPersistEffectBase
+
+PersistEffectBase, PersistEffectSkill和PersistEffectBuff的基类
+
+## Inheritance
+
+`UBasicPersistEffect` -> `IGameplayTaskOwnerInterface` -> `ILimitationInterface` -> `IOwnershipChainInterface`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `UnApplyPolicy` | `EPersistEffectUnApplyPolicy` | Unapply 后的实例处理策略。<br>	  Cache 会缓存到 PlayerState 上的 PersistEffectCacheComponent，<br>	  下次同类型 Apply 会取回并触发 OnRecover。<br>	  CacheAndApplyOnRespawn 会缓存实例，并在角色复活后自动恢复到 PersistBaseComponent。 |
+
+## Functions
+
+### `HasAuthority`
+
+```text
+HasAuthority() -> bool
+```
+
+检查当前对象是否运行在服务器端
+	  生效范围: 服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 否运行在服务器端 |
+
+### `IsAutonomous`
+
+```text
+IsAutonomous(bConsiderObReplay: bool) -> const bool
+```
+
+检查当前对象是否运行在主控客户端
+	  生效范围: 服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bConsiderObReplay` | `bool` | 是否包含观战和回放时的主控端 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `const bool` | 否运行在主控客户端 |
+
+### `RefreshValidTime`
+
+```text
+RefreshValidTime() -> void
+```
+
+刷新PersistEffect的生效时间
+	  生效范围: 服务器
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetTickEnable`
+
+```text
+SetTickEnable(bEnable: bool) -> void
+```
+
+设置PersistEffect是否每帧执行Tick函数，在服务器调用只会开启服务器的Tick，在客户端调用只会开启客户端的Tick
+	  生效范围: 服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bEnable` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetApplyTime`
+
+```text
+SetApplyTime(Time: float) -> void
+```
+
+设置PersistEffect的生效时间
+	  生效范围: 服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Time` | `float` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetApplyTime`
+
+```text
+GetApplyTime() -> float
+```
+
+获取PersistEffect的生效时间
+	  生效范围: 服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `GetTimeStamp`
+
+```text
+GetTimeStamp() -> float
+```
+
+获取当前服务器时间戳
+	  生效范围: 服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | - |
+
+### `HasTag`
+
+```text
+HasTag(Tag: FGameplayTag) -> bool
+```
+
+检查当前技能或Buff是否有某个类型的Tag
+	  生效范围SC
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Tag` | `FGameplayTag` | 要检查的Tag |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否有对应的Tag |
+
+### `GetRemainingTime`
+
+```text
+GetRemainingTime() -> float
+```
+
+获取剩余时间
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `float` | 剩余时间 |
+
+### `SetUnApplyPolicy`
+
+```text
+SetUnApplyPolicy(InUnApplyPolicy: EPersistEffectUnApplyPolicy) -> void
+```
+
+运行时动态修改 UnApply 后的实例处理策略。仅服务端生效，不进行网络复制。
+	  可在 OnApply  Tick  OnUnApply_BP 等任意服务端时机调用。
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InUnApplyPolicy` | `EPersistEffectUnApplyPolicy` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `GetUnApplyPolicy`
+
+```text
+GetUnApplyPolicy() -> EPersistEffectUnApplyPolicy
+```
+
+获取当前 UnApply 后的实例处理策略（含运行时修改值）。
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `EPersistEffectUnApplyPolicy` | - |
+
+### `GetOwnerActor`
+
+```text
+GetOwnerActor() -> AActor *
+```
+
+获取PersistEffect所属的Actor
+	  生效范围: 服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `AActor *` | - |
+
+### `GetOwnerComponent`
+
+```text
+GetOwnerComponent() -> UPersistBaseComponent *
+```
+
+获取PersistEffect所属的组件
+	  生效范围: 服务器&客户端
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UPersistBaseComponent *` | - |
+
+## Events
+
+### `OnApply_BP`
+
+```text
+OnApply_BP(Character: AActor *) -> void
+```
+
+当PersistEffect挂载到角色身上时调用
+	  生效范围: 服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Character` | `AActor *` | 挂载的角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnUnApply_BP`
+
+```text
+OnUnApply_BP(Character: AActor *, Reason: EPersistEffectUnApplyReason) -> void
+```
+
+当PersistEffect从角色身上移除时调用
+	  生效范围: 服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Character` | `AActor *` | 挂载的角色 |
+| `Reason` | `EPersistEffectUnApplyReason` | 移除的原因 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `CanApply_BP`
+
+```text
+CanApply_BP(Character: AActor *) -> bool
+```
+
+当PersistEffect挂载到角色身上前检查是否可挂载时调用
+	  生效范围: 服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Character` | `AActor *` | 尝试挂载的角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否可以挂载 |
+
+### `OnMerge_BP`
+
+```text
+OnMerge_BP(Target: UPersistEffectBase *, ApplyTime: float) -> void
+```
+
+当PersistEffect合并时调用
+	  生效范围: 服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Target` | `UPersistEffectBase *` | 被合并的PersistEffect |
+| `ApplyTime` | `float` | 被合并的PersistEffect的生效时长 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `CanMerge_BP`
+
+```text
+CanMerge_BP(Target: UPersistEffectBase *) -> bool
+```
+
+当PersistEffect合并前检查是否可合并时调用
+	  生效范围: 服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Target` | `UPersistEffectBase *` | 被合并的PersistEffect |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否可以合并 |
+
+### `OnRecover_BP`
+
+```text
+OnRecover_BP(Character: AActor *) -> void
+```
+
+当PersistEffect从缓存中恢复使用
+	  生效范围: 服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Character` | `AActor *` | 恢复后的新挂载角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `Tick_BP`
+
+```text
+Tick_BP(Character: AActor *, DeltaTime: float) -> void
+```
+
+PersistEffect每帧调用，开启Tick需要SetTickEnable(true)
+	  生效范围: 服务器&客户端
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Character` | `AActor *` | 挂载的角色 |
+| `DeltaTime` | `float` | 距离上次触发后经过的时间 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnInterrupted_BP`
+
+```text
+OnInterrupted_BP(Character: AActor *) -> void
+```
+
+当PersistEffect被打断时调用
+	  生效范围: 服务器
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `Character` | `AActor *` | 挂载的角色 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UPersistEffectBuff.json -->
 
 # UPersistEffectBuff
@@ -591,6 +3208,27 @@ ConsumeCD() -> bool
 
 生效范围：服务器
 	  消耗CD
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否成功消耗 |
+
+### `ConsumeCDOverride`
+
+```text
+ConsumeCDOverride(OverwriteCDConsume: float) -> bool
+```
+
+生效范围：服务器
+	  消耗CD，能量类型使用传入的百分比（不大于0时使用技能默认值），计时类型扣除一层
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `OverwriteCDConsume` | `float` | - |
 
 **Returns**
 
@@ -1780,6 +4418,36 @@ OnEnableChange_BP(bIsEnable: bool) -> void
 | Name | Type | Description |
 |---|---|---|
 | `bIsEnable` | `bool` | 技能是否Enable |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnActivateSkill_BP`
+
+```text
+OnActivateSkill_BP() -> void
+```
+
+当控件绑定的技能激活时触发
+	  生效范围C
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `OnDeActivateSkill_BP`
+
+```text
+OnDeActivateSkill_BP() -> void
+```
+
+当控件绑定的技能结束或当前未激活时触发
+	  生效范围C
 
 **Returns**
 
@@ -3452,6 +6120,8 @@ UPlanarReflectionComponent
 | `FrustumOptim` | `bool` | Frustum Cull Range Optimization |
 | `NoReflectionShadow` | `bool` | Do Not Render Shadow for PlanarRefelction |
 | `FrameBufferCache` | `bool` | Enable FrameBuffer Cache Or Not |
+| `bUseUnderPlaneClip` | `bool` | 是否启用反射平面下方裁剪（Oblique Near Clip Plane）。<br>	  开启后，穿过反射平面的物体在反射中不会显示其平面下方的部分。<br>	  需要同时开启 CVar r.PlanarReflection.ObliqueClipPlane 才能生效。 |
+| `UnderPlaneClipBias` | `float` | 裁剪平面沿法线方向的偏移量（世界单位）。<br>	  正值将裁剪面向上移动（裁剪更多），负值向下移动（裁剪更少）。<br>	  仅在 bUseUnderPlaneClip 开启时生效。 |
 
 ## Language
 
@@ -4703,8 +7373,9 @@ Pose Asset that can be blended by weight of curves
 |---|---|---|
 | `Node` | `UEdGraphNode *` | - |
 | `PoseWatchColour` | `FColor` | - |
-| `CustomPoseDrawColour` | `FColor` | - |
 | `CustomBoneText` | `FText` | - |
+| `bIsEnabled` | `bool` | - |
+| `ViewportOffset` | `FVector` | - |
 
 ## Language
 
@@ -4935,6 +7606,7 @@ PrimitiveComponents are SceneComponents that contain or generate some sort of ge
 | `VLMOptimizeType` | `EVLMOptimizeType` | To optimize performance, VLM can select optimization method. |
 | `bInstanceCulling` | `uint8` | - |
 | `OverrideQueryMobilityType` | `EOverrideQueryMobilityType` | - |
+| `SignificanceForOcclusionCull` | `ESignificanceForOcclusionCull` | - |
 | `bUseAsPVSOC` | `uint8` | - |
 | `bUseDynamicPVS` | `uint8` | - |
 | `FramePredictionCacheState` | `EFPCacheState` | - |
@@ -5001,6 +7673,8 @@ PrimitiveComponents are SceneComponents that contain or generate some sort of ge
 | `ScopeLocalTranslation` | `FVector` | - |
 | `ScopeLocalRotation` | `FRotator` | - |
 | `ScopeRadius` | `float` | - |
+| `bIsInScopeCullingLens` | `uint8` | 标记此 Component 为 In-Scope Culling 的准镜镜片 Stencil Mark Mesh（美术提供的独立片状 Mesh） |
+| `ScopeCullingParticipation` | `EScopeCullingParticipation` | 控制此 Primitive 是否参与准镜 Stencil 剔除。<br>	   Default = 由系统规则决定；Participate = 强制参与；Exempt = 强制豁免（即使是 FppLayer 也不参与） |
 | `bIsFppLayer` | `uint8` | - |
 | `bIsTppLayer` | `uint8` | When enabled, the component will NOT cast a shadow on components with bIsFppLayer enabled.<br>	  This requires bCastInsetShadow to be enabled. |
 | `bUseAsOccluder` | `uint8` | Whether to render the primitive in the depth only pass.<br>	  This should generally be true for all objects, and let the renderer make decisions about whether to render objects in the depth only pass.<br>	  @todo - if any rendering features rely on a complete depth only pass, this variable needs to go away. |
@@ -5043,7 +7717,8 @@ PrimitiveComponents are SceneComponents that contain or generate some sort of ge
 | `bRenderCustomDepth` | `uint8` | If true, this component will be rendered in the CustomDepth pass (usually used for outlines) |
 | `bUpdateTransformUseTeleportPhysics` | `uint8` | - |
 | `bUseAsyncCompilePSO` | `uint8` | #if WITH_ANDROID_ASYNC_COMPILE_PSO<br>	 whether this mesh is using async compile pso , only used for android |
-| `bIgnoreOtherCanBeOverlap` | `uint8` | - |
+| `bMightTransformToSkeletal` | `uint8` | whether this mesh is relating to a skeletal mesh which it might transform to later |
+| `bIgnoreOtherCanBeOverlap` | `uint8` | #endif |
 | `bMoveMultiPenetratingIgnoreFlag` | `uint8` | 是否在移动的时候，有多个渗透，就忽略开启本标志的物体 |
 | `bHasCustomNavigableGeometry` | `TEnumAsByte < EHasCustomNavigableGeometry :: Type >` | If true then DoCustomNavigableGeometryExport will be called to collect navigable geometry of this component. |
 | `CanCharacterStepUpOn` | `TEnumAsByte < enum ECanBeCharacterBase >` | Determine whether a Character can step up onto this component.<br>	  This controls whether they can try to step up on it when they bump in to it, not whether they can walk on it after landing on it.<br>	  @see FWalkableSlopeOverride |
@@ -8126,6 +10801,24 @@ IsComponentDeviceEnough() -> bool
 |---|---|
 | `bool` | - |
 
+### `SetUseAsOccluder`
+
+```text
+SetUseAsOccluder(bInUseAsOccluder: bool) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `bInUseAsOccluder` | `bool` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ## Delegates
 
 ### `OnComponentHit`
@@ -8671,6 +11364,26 @@ GetOppositePercent() -> float
 | Type | Description |
 |---|---|
 | `float` | - |
+
+### `SetBarFillType`
+
+```text
+SetBarFillType(InBarFillType: EProgressBarFillType :: Type) -> void
+```
+
+Sets the fill type of the progress bar.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InBarFillType` | `EProgressBarFillType :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
 
 ## Delegates
 
@@ -9386,6 +12099,30 @@ Rendering settings.
 
 ---
 
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/UReorgLODLevelsSettings.json -->
+
+# UReorgLODLevelsSettings
+
+每张地图的 Reorg LOD 关卡路径白名单 INI 配置基类
+
+## Inheritance
+
+`UObject`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `LevelPath` | `FString` | 用于匹配的关卡路径前缀（例如 "GameMapsPUBG_Baltic"） |
+| `LODLevelsPath` | `TArray < FString >` | 命中后即视为"真正 LOD 关卡"的路径白名单（前缀匹配） |
+
+## Language
+
+`cpp`
+
+
+---
+
 <!-- Source: https://developer.gp.qq.com/api/class/detail/Others/URetainerBox.json -->
 
 # URetainerBox
@@ -9619,24 +12356,339 @@ The rich text block
 | Name | Type/Value | Description |
 |---|---|---|
 | `Text` | `FText` | The text to display |
-| `TextDelegate` | `FGetText` | A bindable delegate to allow logic to drive the text of the widget |
-| `Font` | `FSlateFontInfo` | The default font for the text. |
-| `Color` | `FLinearColor` | The default color for the text. |
-| `Decorators` | `TArray < URichTextBlockDecorator * >` | - |
+| `TextStyleSet` | `UDataTable *` | The data table containing rich text styles |
+| `DecoratorClasses` | `TArray < TSubclassOf < URichTextBlockDecorator > >` | Decorator classes to instantiate |
+| `DefaultTextStyleOverride` | `FTextBlockStyle` | Text style to apply by default to text in this block |
+| `MinDesiredWidth` | `float` | The minimum desired size for the text |
+| `bOverrideDefaultStyle` | `bool` | True to specify the default text style for this rich text inline, overriding any default provided in the style set table |
+| `DefaultTextStyle` | `FTextBlockStyle` | - |
+| `InstanceDecorators` | `TArray < URichTextBlockDecorator * >` | - |
 
 ## Functions
 
-### `GetLocalText`
+### `SetDefaultColorAndOpacity`
 
 ```text
-GetLocalText() -> FText
+SetDefaultColorAndOpacity(InColorAndOpacity: FSlateColor) -> UMG_API void
+```
+
+Sets the color and opacity of the default text in this rich text block
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InColorAndOpacity` | `FSlateColor` | The new text color and opacity |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `SetDefaultShadowColorAndOpacity`
+
+```text
+SetDefaultShadowColorAndOpacity(InShadowColorAndOpacity: FLinearColor) -> UMG_API void
+```
+
+Sets the color and opacity of the default text drop shadow
+	  Note: if opacity is zero no shadow will be drawn
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InShadowColorAndOpacity` | `FLinearColor` | The new drop shadow color and opacity |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `SetDefaultShadowOffset`
+
+```text
+SetDefaultShadowOffset(InShadowOffset: FVector2D) -> UMG_API void
+```
+
+Sets the offset that the default text drop shadow should be drawn at
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InShadowOffset` | `FVector2D` | The new offset |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `SetDefaultFont`
+
+```text
+SetDefaultFont(InFontInfo: FSlateFontInfo) -> UMG_API void
+```
+
+Dynamically set the default font info for this rich text block
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InFontInfo` | `FSlateFontInfo` | The new font info |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `SetDefaultStrikeBrush`
+
+```text
+SetDefaultStrikeBrush(InStrikeBrush: FSlateBrush &) -> UMG_API void
+```
+
+Dynamically set the default strike brush for this rich text block
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InStrikeBrush` | `FSlateBrush &` | The new brush to use to strike through text |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `SetMinDesiredWidth`
+
+```text
+SetMinDesiredWidth(InMinDesiredWidth: float) -> UMG_API void
+```
+
+Set the minimum desired width for this rich text block
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InMinDesiredWidth` | `float` | new minimum desired width |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `SetAutoWrapText`
+
+```text
+SetAutoWrapText(InAutoTextWrap: bool) -> UMG_API void
+```
+
+Set the auto wrap for this rich text block
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InAutoTextWrap` | `bool` | to turn wrap on or off |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `SetDefaultTextStyle`
+
+```text
+SetDefaultTextStyle(InDefaultTextStyle: FTextBlockStyle &) -> UMG_API void
+```
+
+Wholesale override of the currently established default text style
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InDefaultTextStyle` | `FTextBlockStyle &` | The new text style to apply to all default (i.e. undecorated) text in the block |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `SetDefaultMaterial`
+
+```text
+SetDefaultMaterial(InMaterial: UMaterialInterface *) -> UMG_API void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InMaterial` | `UMaterialInterface *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `ClearAllDefaultStyleOverrides`
+
+```text
+ClearAllDefaultStyleOverrides() -> UMG_API void
+```
+
+Remove all overrides made to the default text style and return to the style specified in the style set data table
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `GetDefaultDynamicMaterial`
+
+```text
+GetDefaultDynamicMaterial() -> UMG_API UMaterialInstanceDynamic *
+```
+
+Creates a dynamic material for the default font or returns it if it already exists
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API UMaterialInstanceDynamic *` | - |
+
+### `SetDecorators`
+
+```text
+SetDecorators(InDecoratorClasses: TArray < TSubclassOf < URichTextBlockDecorator > > &) -> UMG_API void
+```
+
+Replaces the existing decorators with the list provided
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InDecoratorClasses` | `TArray < TSubclassOf < URichTextBlockDecorator > > &` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `GetText`
+
+```text
+GetText() -> UMG_API FText
+```
+
+Returns widgets text.
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API FText` | - |
+
+### `SetText`
+
+```text
+SetText(InText: FText &) -> UMG_API virtual void
+```
+
+Directly sets the widget text.
+	  Warning: This will wipe any binding created for the Text property!
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InText` | `FText &` | The text to assign to the widget |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API virtual void` | - |
+
+### `GetTextStyleSet`
+
+```text
+GetTextStyleSet() -> UMG_API UDataTable *
 ```
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `FText` | - |
+| `UMG_API UDataTable *` | - |
+
+### `SetTextStyleSet`
+
+```text
+SetTextStyleSet(NewTextStyleSet: UDataTable *) -> UMG_API void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `NewTextStyleSet` | `UDataTable *` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
+
+### `GetDecoratorByClass`
+
+```text
+GetDecoratorByClass(DecoratorClass: TSubclassOf < URichTextBlockDecorator >) -> UMG_API URichTextBlockDecorator *
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `DecoratorClass` | `TSubclassOf < URichTextBlockDecorator >` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API URichTextBlockDecorator *` | - |
+
+### `RefreshTextLayout`
+
+```text
+RefreshTextLayout() -> UMG_API void
+```
+
+Causes the text to reflow it's layout and re-evaluate any decorators
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `UMG_API void` | - |
 
 ## Language
 
@@ -9659,6 +12711,29 @@ GetLocalText() -> FText
 |---|---|---|
 | `bReveal` | `bool` | - |
 | `RevealedIndex` | `int32` | - |
+
+## Language
+
+`cpp`
+
+
+---
+
+<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/URichTextBlockWidgetDecorator.json -->
+
+# URichTextBlockWidgetDecorator
+
+Allows you to embed a UserWidget inline within a RichTextBlock. Configure a DataTable (row struct = FRichWidgetRow) to map tag ids to widget classes. Markup usage:  \- id : (required) Row name in the WidgetSet DataTable \- param : (optional) Arbitrary string parameter forwarded to the widget via SetWidgetParam \- width : (optional) Override width in pixels (takes precedence over DataTable value) \- height : (optional) Override height in pixels (ignored when autoHeight is true) \- autoHeight: (optional) "true""1" to let the widget's height follow its DesiredSize, width stays fixed. Overrides the DataTable's bAutoHeight flag. The created UserWidget should implement a function "SetWidgetParam(const FString&)" to receive the param string. This is called via the IWidgetParamReceiver interface or can be done in a subclass override of OnWidgetCreated.
+
+## Inheritance
+
+`URichTextBlockDecorator`
+
+## Variables
+
+| Name | Type/Value | Description |
+|---|---|---|
+| `WidgetSet` | `UDataTable *` | - |
 
 ## Language
 
@@ -12261,6 +15336,7 @@ The Slot for the UScrollBox, contains the widget that are scrollable
 |---|---|---|
 | `Padding` | `FMargin` | The padding area between the slot and the content it contains. |
 | `HorizontalAlignment` | `TEnumAsByte < EHorizontalAlignment >` | The alignment of the object horizontally. |
+| `VerticalAlignment` | `TEnumAsByte < EVerticalAlignment >` | The alignment of the object vertically. |
 
 ## Functions
 
@@ -12293,6 +15369,24 @@ SetHorizontalAlignment(InHorizontalAlignment: EHorizontalAlignment) -> void
 | Name | Type | Description |
 |---|---|---|
 | `InHorizontalAlignment` | `EHorizontalAlignment` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `SetVerticalAlignment`
+
+```text
+SetVerticalAlignment(InVerticalAlignment: EVerticalAlignment) -> void
+```
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InVerticalAlignment` | `EVerticalAlignment` | - |
 
 **Returns**
 
@@ -18213,2719 +21307,6 @@ Defines how concurrent sounds are mixed together
 | Name | Type/Value | Description |
 |---|---|---|
 | `InputVolume` | `TArray < float >` | A volume for each input.  Automatically sized. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeModulator.json -->
-
-# USoundNodeModulator
-
-Defines a random volume and pitch modification when a sound starts
-
-## Inheritance
-
-`USoundNode`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PitchMin` | `float` | The lower bound of pitch (1.0 is no change). |
-| `PitchMax` | `float` | The upper bound of pitch (1.0 is no change). |
-| `VolumeMin` | `float` | The lower bound of volume (1.0 is no change). |
-| `VolumeMax` | `float` | The upper bound of volume (1.0 is no change). |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeModulatorContinuous.json -->
-
-# USoundNodeModulatorContinuous
-
-Allows named parameter based manipulation of pitch and volume
-
-## Inheritance
-
-`USoundNode`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `PitchModulationParams` | `FModulatorContinuousParams` | - |
-| `VolumeModulationParams` | `FModulatorContinuousParams` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeOscillator.json -->
-
-# USoundNodeOscillator
-
-Defines how a sound oscillates
-
-## Inheritance
-
-`USoundNode`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bModulateVolume` | `uint32` | Whether to oscillate volume. |
-| `bModulatePitch` | `uint32` | Whether to oscillate pitch. |
-| `AmplitudeMin` | `float` | An amplitude of 0.25 would oscillate between 0.75 and 1.25. |
-| `AmplitudeMax` | `float` | An amplitude of 0.25 would oscillate between 0.75 and 1.25. |
-| `FrequencyMin` | `float` | A frequency of 20 would oscillate at 10Hz. |
-| `FrequencyMax` | `float` | A frequency of 20 would oscillate at 10Hz. |
-| `OffsetMin` | `float` | Offset into the sine wave. Value modded by 2  PI. |
-| `OffsetMax` | `float` | Offset into the sine wave. Value modded by 2  PI. |
-| `CenterMin` | `float` | A center of 0.5 would oscillate around 0.5. |
-| `CenterMax` | `float` | A center of 0.5 would oscillate around 0.5. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeParamCrossFade.json -->
-
-# USoundNodeParamCrossFade
-
-Crossfades between different sounds based on a parameter
-
-## Inheritance
-
-`USoundNodeDistanceCrossFade`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ParamName` | `FName` | Parameter controlling cross fades. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeRandom.json -->
-
-# USoundNodeRandom
-
-Selects sounds from a random set
-
-## Inheritance
-
-`USoundNode`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Weights` | `TArray < float >` | - |
-| `PreselectAtLevelLoad` | `int32` | If greater than 0, then upon each level load such a number of inputs will be randomly selected<br>	   and the rest will be removed. This can be used to cut down the memory usage of large randomizing<br>	   cues. |
-| `bRandomizeWithoutReplacement` | `uint32` | Determines whether or not this SoundNodeRandom should randomize with or without<br>	  replacement.  <br>	 <br>	  WithoutReplacement means that only nodes left will be valid for <br>	  selection.  So with that, you are guarenteed to have only one occurrence of the<br>	  sound played until all of the other sounds in the set have all been played.<br>	 <br>	  WithReplacement means that a node will be chosen and then placed back into the set.<br>	  So one could play the same sound over and over if the probabilities don't go your way :-) |
-| `HasBeenUsed` | `TArray < bool >` | Internal state of which sounds have been played.  This is only used at runtime<br>	  to keep track of which sounds have been played |
-| `NumRandomUsed` | `int32` | Counter var so we don't have to count all of the used sounds each time we choose a sound |
-| `PIEHiddenNodes` | `TArray < int32 >` | Editor only list of nodes hidden to duplicate behavior of PreselectAtLevelLoad |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeSoundClass.json -->
-
-# USoundNodeSoundClass
-
-Remaps the SoundClass of SoundWaves underneath this
-
-## Inheritance
-
-`USoundNode`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SoundClassOverride` | `USoundClass *` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeSwitch.json -->
-
-# USoundNodeSwitch
-
-Selects a child node based on the value of a integer parameter
-
-## Inheritance
-
-`USoundNode`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `IntParameterName` | `FName` | The name of the integer parameter to use to determine which branch we should take |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeWaveParam.json -->
-
-# USoundNodeWaveParam
-
-Sound node that takes a runtime parameter for the wave to play
-
-## Inheritance
-
-`USoundNode`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `WaveParameterName` | `FName` | The name of the wave parameter to use to look up the SoundWave we should play |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundNodeWavePlayer.json -->
-
-# USoundNodeWavePlayer
-
-Sound node that contains a reference to the raw wave file to be played
-
-## Inheritance
-
-`USoundNodeAssetReferencer`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SoundWaveAssetPtr` | `TSoftObjectPtr < USoundWave >` | - |
-| `SoundWave` | `USoundWave *` | - |
-| `bLooping` | `uint32` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundSourceBus.json -->
-
-# USoundSourceBus
-
-## Inheritance
-
-`USoundWave`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SourceBusChannels` | `ESourceBusChannels` | How many channels to use for the source bus. |
-| `SourceBusDuration` | `float` | The duration (in seconds) to use for the source bus. A duration of 0.0 indicates to play the source bus indefinitely. |
-| `bAutoDeactivateWhenSilent` | `uint32` | Stop the source bus when the volume goes to zero. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundSubmix.json -->
-
-# USoundSubmix
-
-## Inheritance
-
-`UObject`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `ChildSubmixes` | `TArray < USoundSubmix * >` | - |
-| `ParentSubmix` | `USoundSubmix *` | - |
-| `SubmixEffectChain` | `TArray < USoundEffectSubmixPreset * >` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USoundWave.json -->
-
-# USoundWave
-
-## Inheritance
-
-`USoundBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `CompressionQuality` | `int32` | Platform agnostic compression quality. 1..100 with 1 being best compression and 100 being best quality. |
-| `bLooping` | `uint32` | If set, when played directly (not through a sound cue) the wave will be played looping. |
-| `bStreaming` | `uint32` | Whether this sound can be streamed to avoid increased memory usage |
-| `StreamingPriority` | `int32` | Priority of this sound when streaming (lower priority streams may not always play) |
-| `bMature` | `uint32` | If set to true if this sound is considered to contain matureadult content. |
-| `bManualWordWrap` | `uint32` | If set to true will disable automatic generation of line breaks - use if the subtitles have been split manually. |
-| `bSingleLine` | `uint32` | If set to true the subtitles display as a sequence of single lines as opposed to multiline. |
-| `bVirtualizeWhenSilent` | `uint32` | Allows sound to play at 0 volume, otherwise will stop the sound when the sound is silent. |
-| `SoundGroup` | `TEnumAsByte < ESoundGroup >` | - |
-| `SpokenText` | `FString` | A localized version of the text that is actually spoken phonetically in the audio. |
-| `SubtitlePriority` | `float` | The priority of the subtitle. |
-| `Volume` | `float` | Playback volume of sound 0 to 1 - Default is 1.0. |
-| `Pitch` | `float` | Playback pitch for sound. |
-| `NumChannels` | `int32` | Number of channels of multichannel data; 1 or 2 for regular mono and stereo files |
-| `SampleRate` | `int32` | Cached sample rate for displaying in the tools |
-| `RawPCMDataSize` | `int32` | Size of RawPCMData, or what RawPCMData would be if the sound was fully decompressed |
-| `Subtitles` | `TArray < struct FSubtitleCue >` | Subtitle cues.  If empty, use SpokenText as the subtitle.  Will often be empty,<br>	  as the contents of the subtitle is commonly identical to what is spoken. |
-| `LocalizedSubtitles` | `TArray < struct FLocalizedSubtitle >` | The array of the subtitles for each language. Generated at cook time. |
-| `Curves` | `UCurveTable *` | Curves associated with this sound wave |
-| `InternalCurves` | `UCurveTable *` | Hold a reference to our internal curve so we can switch back to it if we want to |
-| `ChannelOffsets` | `TArray < int32 >` | Offsets into the bulk data for the source wav data |
-| `ChannelSizes` | `TArray < int32 >` | Sizes of the bulk data for the source wav data |
-| `Comment` | `FString` | Provides contextual information for the sound to the translator. |
-| `SourceFilePath_DEPRECATED` | `FString` | - |
-| `SourceFileTimestamp_DEPRECATED` | `FString` | - |
-| `AssetImportData` | `UAssetImportData *` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USpacer.json -->
-
-# USpacer
-
-A spacer widget; it does not have a visual representation, and just provides padding between other widgets.
- 
-   No Children
-
-## Inheritance
-
-`UWidget`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Size` | `FVector2D` | The size of the spacer |
-| `UsePcParams` | `bool` | - |
-| `SizePc` | `FVector2D` | - |
-
-## Functions
-
-### `SetSize`
-
-```text
-SetSize(InSize: FVector2D) -> void
-```
-
-Sets the size of the spacer
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InSize` | `FVector2D` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetPcParamController`
-
-```text
-SetPcParamController(InValue: int32) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InValue` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USpectatorPawnMovement.json -->
-
-# USpectatorPawnMovement
-
-## Inheritance
-
-`UFloatingPawnMovement`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `bIgnoreTimeDilation` | `uint32` | If true, component moves at full speed no matter the time dilation. Default is false. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USphereComponent.json -->
-
-# USphereComponent
-
-A sphere generally used for simple collision. Bounds are rendered as lines in the editor.
-
-## Inheritance
-
-`UShapeComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SphereRadius` | `float` | The radius of the sphere |
-
-## Functions
-
-### `SetSphereRadius`
-
-```text
-SetSphereRadius(InSphereRadius: float, bUpdateOverlaps: bool) -> void
-```
-
-Change the sphere radius. This is the unscaled radius, before component scale is applied.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InSphereRadius` | `float` | - |
-| `bUpdateOverlaps` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetScaledSphereRadius`
-
-```text
-GetScaledSphereRadius() -> float
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetUnscaledSphereRadius`
-
-```text
-GetUnscaledSphereRadius() -> float
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetShapeScale`
-
-```text
-GetShapeScale() -> float
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USphereReflectionCaptureComponent.json -->
-
-# USphereReflectionCaptureComponent
-
-## Inheritance
-
-`UReflectionCaptureComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `InfluenceRadius` | `float` | Radius of the area that can receive reflections from this capture. |
-| `PerformShapeTestOnMobile` | `bool` | - |
-| `CaptureDistanceScale` | `float` | Not needed anymore, not yet removed in case the artist setup values are needed in the future |
-| `PreviewInfluenceRadius` | `UDrawSphereComponent *` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USpinBox.json -->
-
-# USpinBox
-
-A numerical entry box that allows for direct entry of the number or allows the user to click and slide the number.
-
-## Inheritance
-
-`UWidget`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `Value` | `float` | Value stored in this spin box |
-| `ValueDelegate` | `FGetFloat` | A bindable delegate to allow logic to drive the value of the widget |
-| `WidgetStyle` | `FSpinBoxStyle` | The Style |
-| `Style_DEPRECATED` | `USlateWidgetStyleAsset *` | - |
-| `Delta` | `float` | The amount by which to change the spin box value as the slider moves. |
-| `SliderExponent` | `float` | The exponent by which to increase the delta as the mouse moves. 1 is constant (never increases the delta). |
-| `Font` | `FSlateFontInfo` | Font color and opacity (overrides style) |
-| `Justification` | `TEnumAsByte < ETextJustify :: Type >` | The justification the value text should appear as. |
-| `MinDesiredWidth` | `float` | The minimum width of the spin box |
-| `ClearKeyboardFocusOnCommit` | `bool` | Whether to remove the keyboard focus from the spin box when the value is committed |
-| `SelectAllTextOnCommit` | `bool` | Whether to select the text in the spin box when the value is committed |
-| `ForegroundColor` | `FSlateColor` | - |
-| `bOverride_MinValue` | `uint32` | Whether the optional MinValue attribute of the widget is set |
-| `bOverride_MaxValue` | `uint32` | Whether the optional MaxValue attribute of the widget is set |
-| `bOverride_MinSliderValue` | `uint32` | Whether the optional MinSliderValue attribute of the widget is set |
-| `bOverride_MaxSliderValue` | `uint32` | Whether the optional MaxSliderValue attribute of the widget is set |
-| `MinValue` | `float` | The minimum allowable value that can be manually entered into the spin box |
-| `MaxValue` | `float` | The maximum allowable value that can be manually entered into the spin box |
-| `MinSliderValue` | `float` | The minimum allowable value that can be specified using the slider |
-| `MaxSliderValue` | `float` | The maximum allowable value that can be specified using the slider |
-
-## Functions
-
-### `GetValue`
-
-```text
-GetValue() -> float
-```
-
-Get the current value of the spin box.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `SetValue`
-
-```text
-SetValue(NewValue: float) -> void
-```
-
-Set the value of the spin box.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewValue` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetMinValue`
-
-```text
-GetMinValue() -> float
-```
-
-Get the current minimum value that can be manually set in the spin box.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `SetMinValue`
-
-```text
-SetMinValue(NewValue: float) -> void
-```
-
-Set the minimum value that can be manually set in the spin box.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewValue` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ClearMinValue`
-
-```text
-ClearMinValue() -> void
-```
-
-Clear the minimum value that can be manually set in the spin box.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetMaxValue`
-
-```text
-GetMaxValue() -> float
-```
-
-Get the current maximum value that can be manually set in the spin box.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `SetMaxValue`
-
-```text
-SetMaxValue(NewValue: float) -> void
-```
-
-Set the maximum value that can be manually set in the spin box.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewValue` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ClearMaxValue`
-
-```text
-ClearMaxValue() -> void
-```
-
-Clear the maximum value that can be manually set in the spin box.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetMinSliderValue`
-
-```text
-GetMinSliderValue() -> float
-```
-
-Get the current minimum value that can be specified using the slider.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `SetMinSliderValue`
-
-```text
-SetMinSliderValue(NewValue: float) -> void
-```
-
-Set the minimum value that can be specified using the slider.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewValue` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ClearMinSliderValue`
-
-```text
-ClearMinSliderValue() -> void
-```
-
-Clear the minimum value that can be specified using the slider.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetMaxSliderValue`
-
-```text
-GetMaxSliderValue() -> float
-```
-
-Get the current maximum value that can be specified using the slider.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `SetMaxSliderValue`
-
-```text
-SetMaxSliderValue(NewValue: float) -> void
-```
-
-Set the maximum value that can be specified using the slider.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `NewValue` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `ClearMaxSliderValue`
-
-```text
-ClearMaxSliderValue() -> void
-```
-
-Clear the maximum value that can be specified using the slider.
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetForegroundColor`
-
-```text
-SetForegroundColor(InForegroundColor: FSlateColor) -> void
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InForegroundColor` | `FSlateColor` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Delegates
-
-### `OnValueChanged`
-
-```text
-OnValueChanged(InValue: float) -> void
-```
-
-Called when the value is changed interactively by the user
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InValue` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnValueCommitted`
-
-```text
-OnValueCommitted(InValue: float, CommitMethod: ETextCommit::Type) -> void
-```
-
-Called when the value is committed. Occurs when the user presses Enter or the text box loses focus.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InValue` | `float` | - |
-| `CommitMethod` | `ETextCommit::Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnBeginSliderMovement`
-
-```text
-OnBeginSliderMovement() -> void
-```
-
-Called right before the slider begins to move
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnEndSliderMovement`
-
-```text
-OnEndSliderMovement(InValue: float) -> void
-```
-
-Called right after the slider handle is released by the user
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InValue` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USpinBoxWidgetStyle.json -->
-
-# USpinBoxWidgetStyle
-
-## Inheritance
-
-`USlateWidgetStyleContainerBase`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SpinBoxStyle` | `FSpinBoxStyle` | The actual data describing the button's appearance. |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USplineComponent.json -->
-
-# USplineComponent
-
-A spline component is a spline shape which can be used for other purposes (e.g. animating objects). It contains debug rendering capabilities.
-
-## Inheritance
-
-`UPrimitiveComponent`
-
-## Variables
-
-| Name | Type/Value | Description |
-|---|---|---|
-| `SplineCurves` | `FSplineCurves` | - |
-| `SplineInfo_DEPRECATED` | `FInterpCurveVector` | Deprecated - please use GetSplinePointsPosition() to fetch this FInterpCurve |
-| `SplineRotInfo_DEPRECATED` | `FInterpCurveQuat` | Deprecated - please use GetSplinePointsRotation() to fetch this FInterpCurve |
-| `SplineScaleInfo_DEPRECATED` | `FInterpCurveVector` | Deprecated - please use GetSplinePointsScale() to fetch this FInterpCurve |
-| `SplineReparamTable_DEPRECATED` | `FInterpCurveFloat` | - |
-| `bAllowSplineEditingPerInstance_DEPRECATED` | `bool` | - |
-| `ReparamStepsPerSegment` | `int32` | Number of steps per spline segment to place in the reparameterization table |
-| `Duration` | `float` | Specifies the duration of the spline in seconds |
-| `bStationaryEndpoints` | `bool` | Whether the endpoints of the spline are considered stationary when traversing the spline at non-constant velocity.  Essentially this sets the endpoints' tangents to zero vectors. |
-| `bSplineHasBeenEdited` | `bool` | Whether the spline has been edited from its default by the spline component visualizer |
-| `bModifiedByConstructionScript` | `bool` | Whether the UCS has made changes to the spline points |
-| `bInputSplinePointsToConstructionScript` | `bool` | Whether the spline points should be passed to the User Construction Script so they can be further manipulated by it.<br>	  If false, they will not be visible to it, and it will not be able to influence the per-instance positions set in the editor. |
-| `bDrawDebug` | `bool` | If true, the spline will be rendered if the Splines showflag is set. |
-| `bClosedLoop` | `bool` | Whether the spline is to be considered as a closed loop.<br>	  Use SetClosedLoop() to set this property, and IsClosedLoop() to read it. |
-| `bLoopPositionOverride` | `bool` | - |
-| `LoopPosition` | `float` | - |
-| `DefaultUpVector` | `FVector` | Default up vector in local space to be used when calculating transforms along the spline |
-| `bUseConfigRotation` | `bool` | Engine Modify Start |
-| `bUseConfigRotationXY` | `bool` | - |
-| `EditorUnselectedSplineSegmentColor` | `FLinearColor` | Engine Modify End<br>	 <br>	 Color of an unselected spline component segment in the editor |
-| `EditorSelectedSplineSegmentColor` | `FLinearColor` | Color of a selected spline component segment in the editor |
-| `bAllowDiscontinuousSpline` | `bool` | Whether the spline's leave and arrive tangents can be different |
-| `bShouldVisualizeScale` | `bool` | Whether scale visualization should be displayed |
-| `ScaleVisualizationWidth` | `float` | Width of spline in editor for use with scale visualization |
-| `PostionModifyer` | `USplineComponentEditorModifer *` | - |
-| `SelectedIndexs` | `TSet < int32 >` | - |
-| `SnappingType` | `ESplineSnappingType` | - |
-| `SnapInterval` | `float` | - |
-| `SnapTopDownRange` | `FVector2D` | - |
-| `TraceLength` | `float` | - |
-
-## Functions
-
-### `UpdateSpline`
-
-```text
-UpdateSpline() -> void
-```
-
-Update the spline tangents and SplineReparamTable
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetDistanceAlongSplineAtSplineInputKey`
-
-```text
-GetDistanceAlongSplineAtSplineInputKey(InKey: float) -> float
-```
-
-Get distance along the spline at the provided input key value
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InKey` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `SetUnselectedSplineSegmentColor`
-
-```text
-SetUnselectedSplineSegmentColor(SegmentColor: FLinearColor &) -> void
-```
-
-Specify unselected spline component segment color in the editor
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `SegmentColor` | `FLinearColor &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetSelectedSplineSegmentColor`
-
-```text
-SetSelectedSplineSegmentColor(SegmentColor: FLinearColor &) -> void
-```
-
-Specify selected spline component segment color in the editor
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `SegmentColor` | `FLinearColor &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `EditorSnapToGround`
-
-```text
-EditorSnapToGround() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `EditorNormalizeSplineTangent`
-
-```text
-EditorNormalizeSplineTangent() -> void
-```
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetDrawDebug`
-
-```text
-SetDrawDebug(bShow: bool) -> void
-```
-
-Specify whether this spline should be rendered when the EditorGame spline show flag is set
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bShow` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetClosedLoop`
-
-```text
-SetClosedLoop(bInClosedLoop: bool, bUpdateSpline: bool) -> void
-```
-
-Specify whether the spline is a closed loop or not. The loop position will be at 1.0 after the last point's input key
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bInClosedLoop` | `bool` | - |
-| `bUpdateSpline` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetClosedLoopAtPosition`
-
-```text
-SetClosedLoopAtPosition(bInClosedLoop: bool, Key: float, bUpdateSpline: bool) -> void
-```
-
-Specify whether the spline is a closed loop or not, and if so, the input key corresponding to the loop point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bInClosedLoop` | `bool` | - |
-| `Key` | `float` | - |
-| `bUpdateSpline` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `IsClosedLoop`
-
-```text
-IsClosedLoop() -> bool
-```
-
-Check whether the spline is a closed loop or not
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `bool` | - |
-
-### `ClearSplinePoints`
-
-```text
-ClearSplinePoints(bUpdateSpline: bool) -> void
-```
-
-Clears all the points in the spline
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `bUpdateSpline` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `AddPoint`
-
-```text
-AddPoint(Point: FSplinePoint &, bUpdateSpline: bool) -> void
-```
-
-Adds an FSplinePoint to the spline. This contains its input key, position, tangent, rotation and scale.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Point` | `FSplinePoint &` | - |
-| `bUpdateSpline` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `AddPoints`
-
-```text
-AddPoints(Points: TArray < FSplinePoint > &, bUpdateSpline: bool) -> void
-```
-
-Adds an array of FSplinePoints to the spline.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Points` | `TArray < FSplinePoint > &` | - |
-| `bUpdateSpline` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `AddSplinePoint`
-
-```text
-AddSplinePoint(Position: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type, bUpdateSpline: bool) -> void
-```
-
-Adds a point to the spline
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Position` | `FVector &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUpdateSpline` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `AddSplinePointAtIndex`
-
-```text
-AddSplinePointAtIndex(Position: FVector &, Index: int32, CoordinateSpace: ESplineCoordinateSpace :: Type, bUpdateSpline: bool) -> void
-```
-
-Adds a point to the spline at the specified index
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Position` | `FVector &` | - |
-| `Index` | `int32` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUpdateSpline` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `RemoveSplinePoint`
-
-```text
-RemoveSplinePoint(Index: int32, bUpdateSpline: bool) -> void
-```
-
-Removes point at specified index from the spline
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Index` | `int32` | - |
-| `bUpdateSpline` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `AddSplineWorldPoint`
-
-```text
-AddSplineWorldPoint(Position: FVector &) -> void
-```
-
-Adds a world space point to the spline
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Position` | `FVector &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `AddSplineLocalPoint`
-
-```text
-AddSplineLocalPoint(Position: FVector &) -> void
-```
-
-Adds a local space point to the spline
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Position` | `FVector &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetSplinePoints`
-
-```text
-SetSplinePoints(Points: TArray < FVector > &, CoordinateSpace: ESplineCoordinateSpace :: Type, bUpdateSpline: bool) -> void
-```
-
-Sets the spline to an array of points
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Points` | `TArray < FVector > &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUpdateSpline` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetSplineWorldPoints`
-
-```text
-SetSplineWorldPoints(Points: TArray < FVector > &) -> void
-```
-
-Sets the spline to an array of world space points
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Points` | `TArray < FVector > &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetSplineLocalPoints`
-
-```text
-SetSplineLocalPoints(Points: TArray < FVector > &) -> void
-```
-
-Sets the spline to an array of local space points
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Points` | `TArray < FVector > &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetLocationAtSplinePoint`
-
-```text
-SetLocationAtSplinePoint(PointIndex: int32, InLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type, bUpdateSpline: bool) -> void
-```
-
-Move an existing point to a new location
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `InLocation` | `FVector &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUpdateSpline` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetWorldLocationAtSplinePoint`
-
-```text
-SetWorldLocationAtSplinePoint(PointIndex: int32, InLocation: FVector &) -> void
-```
-
-Move an existing point to a new world location
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `InLocation` | `FVector &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetTangentAtSplinePoint`
-
-```text
-SetTangentAtSplinePoint(PointIndex: int32, InTangent: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type, bUpdateSpline: bool) -> void
-```
-
-Specify the tangent at a given spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `InTangent` | `FVector &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUpdateSpline` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetTangentsAtSplinePoint`
-
-```text
-SetTangentsAtSplinePoint(PointIndex: int32, InArriveTangent: FVector &, InLeaveTangent: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type, bUpdateSpline: bool) -> void
-```
-
-Specify the tangents at a given spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `InArriveTangent` | `FVector &` | - |
-| `InLeaveTangent` | `FVector &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUpdateSpline` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `SetUpVectorAtSplinePoint`
-
-```text
-SetUpVectorAtSplinePoint(PointIndex: int32, InUpVector: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type, bUpdateSpline: bool) -> void
-```
-
-Specify the up vector at a given spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `InUpVector` | `FVector &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUpdateSpline` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetSplinePointType`
-
-```text
-GetSplinePointType(PointIndex: int32) -> ESplinePointType :: Type
-```
-
-Get the type of a spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `ESplinePointType :: Type` | - |
-
-### `SetSplinePointType`
-
-```text
-SetSplinePointType(PointIndex: int32, Type: ESplinePointType :: Type, bUpdateSpline: bool) -> void
-```
-
-Specify the type of a spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `Type` | `ESplinePointType :: Type` | - |
-| `bUpdateSpline` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetNumberOfSplinePoints`
-
-```text
-GetNumberOfSplinePoints() -> int32
-```
-
-Get the number of points that make up this spline
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `int32` | - |
-
-### `GetLocationAtSplinePoint`
-
-```text
-GetLocationAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Get the location at spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetWorldLocationAtSplinePoint`
-
-```text
-GetWorldLocationAtSplinePoint(PointIndex: int32) -> FVector
-```
-
-Get the world location at spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetDirectionAtSplinePoint`
-
-```text
-GetDirectionAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Get the location at spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetTangentAtSplinePoint`
-
-```text
-GetTangentAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Get the tangent at spline point. This fetches the Leave tangent of the point.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetArriveTangentAtSplinePoint`
-
-```text
-GetArriveTangentAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Get the arrive tangent at spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetLeaveTangentAtSplinePoint`
-
-```text
-GetLeaveTangentAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Get the leave tangent at spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetRotationAtSplinePoint`
-
-```text
-GetRotationAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FRotator
-```
-
-Get the rotation at spline point as a rotator
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FRotator` | - |
-
-### `GetUpVectorAtSplinePoint`
-
-```text
-GetUpVectorAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Get the up vector at spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetRightVectorAtSplinePoint`
-
-```text
-GetRightVectorAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Get the right vector at spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetRollAtSplinePoint`
-
-```text
-GetRollAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type) -> float
-```
-
-Get the amount of roll at spline point, in degrees
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetScaleAtSplinePoint`
-
-```text
-GetScaleAtSplinePoint(PointIndex: int32) -> FVector
-```
-
-Get the scale at spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetTransformAtSplinePoint`
-
-```text
-GetTransformAtSplinePoint(PointIndex: int32, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseScale: bool) -> FTransform
-```
-
-Get the transform at spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUseScale` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FTransform` | - |
-
-### `GetLocationAndTangentAtSplinePoint`
-
-```text
-GetLocationAndTangentAtSplinePoint(PointIndex: int32, Location: FVector &, Tangent: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> void
-```
-
-Get location and tangent at a spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `Location` | `FVector &` | - |
-| `Tangent` | `FVector &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetLocalLocationAndTangentAtSplinePoint`
-
-```text
-GetLocalLocationAndTangentAtSplinePoint(PointIndex: int32, LocalLocation: FVector &, LocalTangent: FVector &) -> void
-```
-
-Get local location and tangent at a spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-| `LocalLocation` | `FVector &` | - |
-| `LocalTangent` | `FVector &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetDistanceAlongSplineAtSplinePoint`
-
-```text
-GetDistanceAlongSplineAtSplinePoint(PointIndex: int32) -> float
-```
-
-Get the distance along the spline at the spline point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `PointIndex` | `int32` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetSplineLength`
-
-```text
-GetSplineLength() -> float
-```
-
-Returns total length along this spline
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `SetDefaultUpVector`
-
-```text
-SetDefaultUpVector(UpVector: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> void
-```
-
-Sets the default up vector used by this spline
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `UpVector` | `FVector &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `GetDefaultUpVector`
-
-```text
-GetDefaultUpVector(CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Gets the default up vector used by this spline
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetInputKeyAtDistanceAlongSpline`
-
-```text
-GetInputKeyAtDistanceAlongSpline(Distance: float) -> float
-```
-
-Given a distance along the length of this spline, return the corresponding input key at that point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Distance` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetTimeAtDistanceAlongSpline`
-
-```text
-GetTimeAtDistanceAlongSpline(Distance: float) -> float
-```
-
-Given a distance along the length of this spline, return the corresponding time at that point
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Distance` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetLocationAtDistanceAlongSpline`
-
-```text
-GetLocationAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Given a distance along the length of this spline, return the point in space where this puts you
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Distance` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetWorldLocationAtDistanceAlongSpline`
-
-```text
-GetWorldLocationAtDistanceAlongSpline(Distance: float) -> FVector
-```
-
-Given a distance along the length of this spline, return the point in world space where this puts you
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Distance` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetDirectionAtDistanceAlongSpline`
-
-```text
-GetDirectionAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Given a distance along the length of this spline, return a unit direction vector of the spline tangent there.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Distance` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetWorldDirectionAtDistanceAlongSpline`
-
-```text
-GetWorldDirectionAtDistanceAlongSpline(Distance: float) -> FVector
-```
-
-Given a distance along the length of this spline, return a unit direction vector of the spline tangent there, in world space.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Distance` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetTangentAtDistanceAlongSpline`
-
-```text
-GetTangentAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Given a distance along the length of this spline, return the tangent vector of the spline there.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Distance` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetWorldTangentAtDistanceAlongSpline`
-
-```text
-GetWorldTangentAtDistanceAlongSpline(Distance: float) -> FVector
-```
-
-Given a distance along the length of this spline, return the tangent vector of the spline there, in world space.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Distance` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetRotationAtDistanceAlongSpline`
-
-```text
-GetRotationAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FRotator
-```
-
-Given a distance along the length of this spline, return a rotation corresponding to the spline's rotation there.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Distance` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FRotator` | - |
-
-### `GetWorldRotationAtDistanceAlongSpline`
-
-```text
-GetWorldRotationAtDistanceAlongSpline(Distance: float) -> FRotator
-```
-
-Given a distance along the length of this spline, return a rotation corresponding to the spline's rotation there, in world space.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Distance` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FRotator` | - |
-
-### `GetUpVectorAtDistanceAlongSpline`
-
-```text
-GetUpVectorAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Given a distance along the length of this spline, return a unit direction vector corresponding to the spline's up vector there.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Distance` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetRightVectorAtDistanceAlongSpline`
-
-```text
-GetRightVectorAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Given a distance along the length of this spline, return a unit direction vector corresponding to the spline's right vector there.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Distance` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetRollAtDistanceAlongSpline`
-
-```text
-GetRollAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type) -> float
-```
-
-Given a distance along the length of this spline, return the spline's roll there, in degrees.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Distance` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetScaleAtDistanceAlongSpline`
-
-```text
-GetScaleAtDistanceAlongSpline(Distance: float) -> FVector
-```
-
-Given a distance along the length of this spline, return the spline's scale there.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Distance` | `float` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetTransformAtDistanceAlongSpline`
-
-```text
-GetTransformAtDistanceAlongSpline(Distance: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseScale: bool) -> FTransform
-```
-
-Given a distance along the length of this spline, return an FTransform corresponding to that point on the spline.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Distance` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUseScale` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FTransform` | - |
-
-### `GetLocationAtTime`
-
-```text
-GetLocationAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool) -> FVector
-```
-
-Given a time from 0 to the spline duration, return the point in space where this puts you
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Time` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUseConstantVelocity` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetWorldLocationAtTime`
-
-```text
-GetWorldLocationAtTime(Time: float, bUseConstantVelocity: bool) -> FVector
-```
-
-Given a time from 0 to the spline duration, return the point in space where this puts you
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Time` | `float` | - |
-| `bUseConstantVelocity` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetDirectionAtTime`
-
-```text
-GetDirectionAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool) -> FVector
-```
-
-Given a time from 0 to the spline duration, return a unit direction vector of the spline tangent there.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Time` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUseConstantVelocity` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetWorldDirectionAtTime`
-
-```text
-GetWorldDirectionAtTime(Time: float, bUseConstantVelocity: bool) -> FVector
-```
-
-Given a time from 0 to the spline duration, return a unit direction vector of the spline tangent there.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Time` | `float` | - |
-| `bUseConstantVelocity` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetTangentAtTime`
-
-```text
-GetTangentAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool) -> FVector
-```
-
-Given a time from 0 to the spline duration, return the spline's tangent there.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Time` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUseConstantVelocity` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetRotationAtTime`
-
-```text
-GetRotationAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool) -> FRotator
-```
-
-Given a time from 0 to the spline duration, return a rotation corresponding to the spline's position and direction there.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Time` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUseConstantVelocity` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FRotator` | - |
-
-### `GetWorldRotationAtTime`
-
-```text
-GetWorldRotationAtTime(Time: float, bUseConstantVelocity: bool) -> FRotator
-```
-
-Given a time from 0 to the spline duration, return a rotation corresponding to the spline's position and direction there.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Time` | `float` | - |
-| `bUseConstantVelocity` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FRotator` | - |
-
-### `GetUpVectorAtTime`
-
-```text
-GetUpVectorAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool) -> FVector
-```
-
-Given a time from 0 to the spline duration, return the spline's up vector there.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Time` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUseConstantVelocity` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetRightVectorAtTime`
-
-```text
-GetRightVectorAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool) -> FVector
-```
-
-Given a time from 0 to the spline duration, return the spline's right vector there.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Time` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUseConstantVelocity` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `GetTransformAtTime`
-
-```text
-GetTransformAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool, bUseScale: bool) -> FTransform
-```
-
-Given a time from 0 to the spline duration, return the spline's transform at the corresponding position.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Time` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUseConstantVelocity` | `bool` | - |
-| `bUseScale` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FTransform` | - |
-
-### `GetRollAtTime`
-
-```text
-GetRollAtTime(Time: float, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseConstantVelocity: bool) -> float
-```
-
-Given a time from 0 to the spline duration, return the spline's roll there, in degrees.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Time` | `float` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUseConstantVelocity` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `GetScaleAtTime`
-
-```text
-GetScaleAtTime(Time: float, bUseConstantVelocity: bool) -> FVector
-```
-
-Given a time from 0 to the spline duration, return the spline's scale there.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `Time` | `float` | - |
-| `bUseConstantVelocity` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `FindInputKeyClosestToWorldLocation`
-
-```text
-FindInputKeyClosestToWorldLocation(WorldLocation: FVector &) -> float
-```
-
-Given a location, in world space, return the input key closest to that location.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldLocation` | `FVector &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `FindLocationClosestToWorldLocation`
-
-```text
-FindLocationClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Given a location, in world space, return the point on the curve that is closest to the location.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldLocation` | `FVector &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `FindDirectionClosestToWorldLocation`
-
-```text
-FindDirectionClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Given a location, in world spcae, return a unit direction vector of the spline tangent closest to the location.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldLocation` | `FVector &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `FindTangentClosestToWorldLocation`
-
-```text
-FindTangentClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Given a location, in world space, return the tangent vector of the spline closest to the location.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldLocation` | `FVector &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `FindRotationClosestToWorldLocation`
-
-```text
-FindRotationClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FRotator
-```
-
-Given a location, in world space, return rotation corresponding to the spline's rotation closest to the location.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldLocation` | `FVector &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FRotator` | - |
-
-### `FindUpVectorClosestToWorldLocation`
-
-```text
-FindUpVectorClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Given a location, in world space, return a unit direction vector corresponding to the spline's up vector closest to the location.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldLocation` | `FVector &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `FindRightVectorClosestToWorldLocation`
-
-```text
-FindRightVectorClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> FVector
-```
-
-Given a location, in world space, return a unit direction vector corresponding to the spline's right vector closest to the location.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldLocation` | `FVector &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `FindRollClosestToWorldLocation`
-
-```text
-FindRollClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type) -> float
-```
-
-Given a location, in world space, return the spline's roll closest to the location, in degrees.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldLocation` | `FVector &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `float` | - |
-
-### `FindScaleClosestToWorldLocation`
-
-```text
-FindScaleClosestToWorldLocation(WorldLocation: FVector &) -> FVector
-```
-
-Given a location, in world space, return the spline's scale closest to the location.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldLocation` | `FVector &` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
-
-### `FindTransformClosestToWorldLocation`
-
-```text
-FindTransformClosestToWorldLocation(WorldLocation: FVector &, CoordinateSpace: ESplineCoordinateSpace :: Type, bUseScale: bool) -> FTransform
-```
-
-Given a location, in world space, return an FTransform closest to that location.
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `WorldLocation` | `FVector &` | - |
-| `CoordinateSpace` | `ESplineCoordinateSpace :: Type` | - |
-| `bUseScale` | `bool` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FTransform` | - |
-
-## Language
-
-`cpp`
-
-
----
-
-<!-- Source: https://developer.gp.qq.com/api/class/detail/Others/USplineComponentEditorModifer.json -->
-
-# USplineComponentEditorModifer
-
-## Inheritance
-
-`UObject`
-
-## Functions
-
-### `ModifyPostion`
-
-```text
-ModifyPostion(InPosition: FVector) -> FVector
-```
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InPosition` | `FVector` | - |
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `FVector` | - |
 
 ## Language
 

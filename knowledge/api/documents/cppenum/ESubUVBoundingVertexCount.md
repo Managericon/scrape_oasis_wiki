@@ -15,3 +15,4 @@ api_root: "https://developer.gp.qq.com/api/"
 |---|---|---|
 | `BVC_FourVertices` | `0` | - |
 | `BVC_EightVertices` | `1` | - |
+| `BVC_ConvexHull` | `2` | - |

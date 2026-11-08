@@ -138,6 +138,26 @@ GetOppositePercent() -> float
 |---|---|
 | `float` | - |
 
+### `SetBarFillType`
+
+```text
+SetBarFillType(InBarFillType: EProgressBarFillType :: Type) -> void
+```
+
+Sets the fill type of the progress bar.
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `InBarFillType` | `EProgressBarFillType :: Type` | - |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
 ## Delegates
 
 ### `OnPercentChangeDelegate`

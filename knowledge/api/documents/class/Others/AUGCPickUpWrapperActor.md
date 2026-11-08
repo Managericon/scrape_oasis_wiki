@@ -71,47 +71,43 @@ GetItemCount() -> int32
 |---|---|
 | `int32` | 物品数量 |
 
-### `TryGetBatchedMeshes`
+### `SetItemOwner`
 
 ```text
-TryGetBatchedMeshes(InItemID: int32) -> bool
+SetItemOwner(NewItemOwner: ASTExtraPlayerController *) -> void
 ```
 
-尝试用合批缓存创建并附加组件到拾取物
-	  只在客户端有效（IS_CLIENT）
+设置物品所有者
+	  设置后只有所有者能拾取该物品，其余玩家的拾取请求会被拒绝
+	  所有者以 PlayerController 标识，所有者角色死亡重生后依然有效
+	  DS 调用
 
 **Parameters**
 
 | Name | Type | Description |
 |---|---|---|
-| `InItemID` | `int32` | - |
+| `NewItemOwner` | `ASTExtraPlayerController *` | 物品所有者，传 nullptr 清除所有者，恢复所有玩家可拾取 |
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `bool` | true=合批命中，已创建组件；false=未命中或关闭，走原逻辑 |
+| `void` | - |
 
-### `SubmitForCaching`
+### `GetItemOwner`
 
 ```text
-SubmitForCaching(InItemID: int32, SourceActors: TArray < AActor * > &) -> bool
+GetItemOwner() -> ASTExtraPlayerController *
 ```
 
-提交源 Actor 给合批缓存；请求被受理后注册替换回调。
-
-**Parameters**
-
-| Name | Type | Description |
-|---|---|---|
-| `InItemID` | `int32` | - |
-| `SourceActors` | `TArray < AActor * > &` | 当前已附加到拾取物的显示用子Actor |
+获取物品所有者，未设置时返回 nullptr
+	  DS & 客户端 可调用
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `bool` | true=已提交、已去重或等待材质；false=数量不足、请求拒绝或已同步命中缓存并替换 |
+| `ASTExtraPlayerController *` | 物品所有者 |
 
 ### `CanShowPickUpWidget`
 
@@ -128,6 +124,49 @@ CanShowPickUpWidget() -> bool
 | Type | Description |
 |---|---|
 | `bool` | - |
+
+### `OpenCustomizeNetRelevantCondition`
+
+```text
+OpenCustomizeNetRelevantCondition() -> void
+```
+
+开启自定义网络相关性条件
+	  DS  可调用
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `void` | - |
+
+### `CustomizeCanNetRelevantFor`
+
+```text
+CustomizeCanNetRelevantFor(RealViewer: AActor *, ViewTarget: AActor *, SrcLocation: FVector &) -> bool
+```
+
+自定义网络相关性（此Actor是否对目标玩家可见）
+	  需要先调用 OpenCustomizeNetRelevantCondition 开启自定义网络相关性
+	  此函数返回值只是参与网络相关性计算，如果有其它内置条件，也会影响最终网络相关性结果。
+	  计算方式：Result = ResultA and ResultB and ResultC ...
+	  
+	  可重载并自定义
+	  DS 被调用
+
+**Parameters**
+
+| Name | Type | Description |
+|---|---|---|
+| `RealViewer` | `AActor *` | 该客户端的 PlayerController，标识“是谁这条连接” |
+| `ViewTarget` | `AActor *` | 当前视角 Actor，通常是该玩家的 Pawn；观战时为被观战者 |
+| `SrcLocation` | `FVector &` | 摄像机位置（GetPlayerViewPoint），距离判定应使用此点 |
+
+**Returns**
+
+| Type | Description |
+|---|---|
+| `bool` | 是否网络相关（此Actor是否对目标玩家可见） |
 
 ## Events
 
@@ -212,21 +251,6 @@ OnUnInitPickupWrapper() -> void
 	  DS & 客户端 被调用
 	 
 	  能通过此事件，实现自定义的反初始化逻辑
-
-**Returns**
-
-| Type | Description |
-|---|---|
-| `void` | - |
-
-### `OnBatchedMeshesReplaced`
-
-```text
-OnBatchedMeshesReplaced() -> void
-```
-
-合批结果已替换原始子Actor后回调（用于清空 Lua MeshActorList 等）
-	  客户端 被调用
 
 **Returns**
 

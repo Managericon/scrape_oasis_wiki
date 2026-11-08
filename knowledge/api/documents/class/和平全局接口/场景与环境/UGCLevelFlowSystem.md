@@ -169,14 +169,14 @@ GameSettle(IsFinish: boolean)
 GetAllPlayerControllerInCurrentLevel() -> APlayerController[]
 ```
 
-获取关卡里的所有玩家
+获取关卡里的所有普通玩家和人机玩家的 PlayerController
 生效范围：服务器
 
 **Returns**
 
 | Type | Description |
 |---|---|
-| `APlayerController[]` | 玩家列表 |
+| `APlayerController[]` | 普通玩家和人机玩家的Controller列表 |
 
 ### `GetCurrentLevelActor`
 
